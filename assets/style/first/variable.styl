@@ -1,0 +1,100 @@
+// Background Colors
+$bg-color-primary = #fff
+$bg-color-secondary = #000
+
+$light-grey = #D8D8D8
+$dark-grey = #232323
+$grey = #979797
+$black = #000000
+$red = #7A0307
+$dark-red = #AF060F
+$yellow = #ffce00
+// Font Colors
+$ft-color-primary = $bg-color-secondary
+$ft-color-secondary = $bg-color-primary
+$ft-color-tertiary = $dark-grey
+
+$font-size-1 = 2em
+$font-size-2 = 1.8em
+$font-size-3 = 1.5em
+$font-size-4 = 1.1em
+
+// Font Families
+$ft-family-primary = 'Gotham', Helvetica, Arial, sans-serif;
+$ft-family-secondary = 'Knockout', Helvetica, Arial, sans-serif;
+
+// Link Colors
+$lk-color-primary = $ft-color-tertiary
+
+// Border Colors
+$br-color-primary = $bg-color-tertiary
+
+$duration-1 = 1s
+$duration-2 = 0.9s
+// Transitions
+$tn-primary = all $duration-1 ease
+$tn-secondary = all $duration-2 ease
+
+$bs-bp-sm-max = 991px
+
+$login-height-sd = 46px
+$login-height = 32px
+// Bootstrap Breakpoints
+
+$break-min = 34em
+$break-med = 48em
+$break-larg = 62em
+$break-xlarg = 75em
+
+// Small devices (landscape phones, 34em and up)
+$bs-screen-sd-min = unquote('screen and (min-width: '+$break-min+') and (min-height:420px)')
+// Medium devices (tablets, 48em and up)
+$bs-screen-md-min = unquote('screen and (min-width: '+$break-med+')')
+// Large devices (desktops, 62em and up)
+$bs-screen-ld-min = unquote('screen and (min-width: '+$break-larg+')')
+// Extra large devices (large desktops, 75em and up)
+$bs-screen-xld-min = unquote('screen and (min-width: '+$break-xlarg+')')
+
+// Extra small devices (portrait phones, less than 34em)
+$bs-screen-xsd-max = unquote('screen and (max-width: '+($break-min - 0.1em)+'), screen and (max-height:420px) ')
+// Small devices (landscape phones, less than 48em)
+$bs-screen-sd-max = unquote('screen and (max-width: '+($break-med - 0.1em)+'), screen and (max-height:420px) ')
+// Medium devices (tablets, less than 62em)
+$bs-screen-md-max = unquote('screen and (max-width: '+($break-larg - 0.1em)+')')
+// Large devices (desktops, less than 75em)
+$bs-screen-ld-max = unquote('screen and (max-width: '+($break-xlarg - 0.1em)+')')
+// Extra large devices (large desktops)
+// No media query since the extra-large breakpoint has no upper bound on its width
+
+
+$bs-max-width = unquote('screen and (min-width: 900px)')
+$bs-max-width-under = unquote('screen and (max-width: 900px)')
+
+
+$mobile-layout = $bs-screen-xsd-max
+$desktop-layout = $bs-screen-sd-min
+
+$break-nav = $bs-screen-sd-min
+
+$space-1 = 10px
+$space-2 = $space-1 * 2
+$space-3 = $space-1 * 3
+$height-header-desktop = 75vh
+
+navigation-height = 47px
+navigation-width = 120px
+navigation-left = 50px
+navigation-footer-height = 50px
+burger-height = 25px
+burger-width = 30px
+mobilenavheight = 62px
+
+$paddingHeader = ($space-1 / 3)
+$marg = 2
+$doubleMarg = $marg * 2
+
+$prevnextheight = ($space-1 * 1.5)
+
+.darkgreybg
+	background $dark-grey
+	color $light-grey

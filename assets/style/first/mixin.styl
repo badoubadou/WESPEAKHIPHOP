@@ -1,0 +1,50 @@
+vert_align_middle()
+	position absolute
+	top 50%
+	transform translateY(-50%)
+
+align_middle()
+	position absolute
+	left 50%
+	transform translateX(-50%)
+
+center()
+	position absolute
+	top 50%
+	left 50%
+	transform translate(-50%,-50%)
+				
+pseudo_full(color, op = 1, height = 100%, width = 100%)
+	content ''
+	position absolute
+	top 0
+	left 0
+	width width
+	height height
+	background color
+	opacity op
+
+on-circle($item-count, $circle-size, $item-size)
+	center()
+	position relative
+	width $circle-size
+	height $circle-size
+	padding 0
+	border-radius 50%
+	list-style none
+	margin 0
+	> *
+		display block
+		position absolute
+		top 50%
+		left 50%
+		width $item-size
+		height 20px
+		margin-top -10px
+		margin-left -($item-size / 2)
+		$angle = (360 / $item-count)
+		$rot = -90
+		for $i in (1)..($item-count)
+			&:nth-of-type({$i})
+				transform rotate($rot * 1deg) translate($circle-size / 2) rotate($rot * -1deg)
+			$rot = $rot + $angle

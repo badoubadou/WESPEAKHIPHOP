@@ -1,0 +1,14 @@
+- if($my_query->have_posts()):
+	.warp_btn.full_height.full_width
+		ul#list_artists.layer_0
+			- while ($my_query->have_posts()) : $my_query->the_post();
+				li
+					- $iframe = get_field('video');
+					- preg_match('/src="(.+?)"/', $iframe, $matches);
+					- $src = $matches[1];
+					- $video_id = parse_video_uri(get_field('video'));
+					a(href!='<?php echo "http://www.youtube.com/watch?v=".$video_id;?>' data-idyoutube!='<?php echo $video_id;?>')
+						- the_title();
+			- endwhile;
+- endif;
+

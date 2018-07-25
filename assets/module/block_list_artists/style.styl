@@ -1,0 +1,15 @@
+#list_artists
+	on-circle(28, $size_name_circle_medium, 250px)
+	
+	@media (max-height ($size_name_circle_medium + 30px))	
+		on-circle(28, $size_name_circle_small, 250px)
+	@media (max-width ($size_name_circle_medium + 30px))	
+		on-circle(28, $size_name_circle_small, 250px)
+
+	@media (min-height ($size_name_circle_large - 30px)) and (min-width ($size_name_circle_medium - 30px))	
+		on-circle(28, $size_name_circle_large, 250px)
+
+
+	li a
+		bottom 0
+		align_middle()

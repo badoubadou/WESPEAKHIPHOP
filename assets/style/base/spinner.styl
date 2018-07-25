@@ -1,0 +1,31 @@
+@keyframes lds-dual-ring{
+    0%{
+        transform rotate(0deg)
+    }
+    100%{
+        transform rotate(360deg)
+    }
+}
+
+.lds-dual-ring
+    display inline-block
+    width 46px
+    height 46px
+    z-index 2
+    center()
+    &:after
+        content " "
+        display block
+        width 46px
+        height 46px
+        margin 0
+        border-radius 50%
+        border 5px solid #000
+        border-color #000 transparent #000 transparent
+        animation-name lds-dual-ring 
+        animation-duration 1.2s 
+        animation-iteration-count infinite
+    
+    &.done
+        display none
+

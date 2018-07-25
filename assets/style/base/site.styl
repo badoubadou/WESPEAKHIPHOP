@@ -1,0 +1,75 @@
+html
+	font-size 100%
+	position relative
+
+body
+	color $ft-color-primary
+	font-family $ft-family-primary
+	font-size 14px
+	margin 0 
+	background $bg-color-primary
+	width 100%
+	overflow-x hidden
+	text-transform uppercase
+
+	&.admin-bar
+		padding-top 32px
+
+	@media $bs-screen-sd-max
+		&.admin-bar
+			padding-top 46px
+
+a
+	color $ft-color-primary
+	text-decoration none
+	transition color
+	transition-duration 0.4s
+	&:visited
+		color $ft-color-primary
+		
+	&:hover
+		color $ft-color-primary
+		.hasHover &
+			color $ft-color-primary
+	
+	&.normal
+		color $ft-color-tertiary
+		text-decoration underline
+
+////stiky footer
+html,
+body
+	height 100%
+
+body
+	display flex
+	flex-direction column
+			
+p
+	word-wrap break-word
+	&:empty
+		display none
+
+.largedevice
+	display none
+
+.hide
+	display none !important
+
+.absolute
+	position absolute
+
+.relative
+	position relative
+
+.centered
+	center()
+	
+@media $bs-screen-md-min
+	.largedevice
+		display block 
+	span.largedevice
+		display inline-block
+	.smalldevice
+		display none
+
