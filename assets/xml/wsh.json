@@ -4,7 +4,7 @@
       "title": "wespeakhiphop",
       "link": "http://wespeakhiphop.romza.eu",
       "description": "Just another Romain Malauzat Illustration Sites site",
-      "pubDate": "Thu, 26 Jul 2018 09:51:21 +0000",
+      "pubDate": "Thu, 26 Jul 2018 15:36:04 +0000",
       "language": "en-US",
       "wxr_version": "1.2",
       "base_site_url": "http://romza.eu/",
@@ -92,6 +92,13 @@
          },
          {
             "term_id": "2",
+            "term_taxonomy": "pays",
+            "term_slug": "france",
+            "term_parent": null,
+            "term_name": "France"
+         },
+         {
+            "term_id": "48",
             "term_taxonomy": "pays",
             "term_slug": "france",
             "term_parent": null,
@@ -294,6 +301,14 @@
             "term_parent": null,
             "term_name": "pll_5b4e07c444ad2",
             "term_description": "a:2:{s:2:\"en\";i:48;s:2:\"fr\";i:26;}"
+         },
+         {
+            "term_id": "49",
+            "term_taxonomy": "term_translations",
+            "term_slug": "pll_5b59ea43183bd",
+            "term_parent": null,
+            "term_name": "pll_5b59ea43183bd",
+            "term_description": "a:1:{s:2:\"en\";i:48;}"
          },
          {
             "term_id": "42",
@@ -542,7 +557,7 @@
          },
          {
             "title": "Cut killer",
-            "link": "http://wespeakhiphop.romza.eu/videos/cut-killer/",
+            "link": "http://wespeakhiphop.romza.eu/en/videos/cut-killer/",
             "pubDate": "Thu, 12 Jul 2018 14:24:27 +0000",
             "creator": "romain",
             "guid": {
@@ -567,9 +582,9 @@
             "post_password": null,
             "is_sticky": "0",
             "category": {
-               "@domain": "pays",
-               "@nicename": "france",
-               "#text": "France"
+               "@domain": "language",
+               "@nicename": "en",
+               "#text": "English"
             },
             "postmeta": [
                {
@@ -578,7 +593,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": null
+                  "meta_value": "https://www.youtube.com/watch?v=XCjRpe07AKk"
                },
                {
                   "meta_key": "_video",

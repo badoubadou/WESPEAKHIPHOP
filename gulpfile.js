@@ -20,11 +20,20 @@ var concat       = require('gulp-concat');
 var uglify       = require('gulp-uglify');
 var del = require('del');
 
+var config = {
+    accessKeyId: "AKIAJUYRDM6H3KW3O5FQ",
+    secretAccessKey: "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"
+}
+
+var gulp = require('gulp');
+var s3 = require('gulp-s3-upload')(config);
+
 var pugfile = ['assets/pug/*.pug'];
-var stylfile = ['assets/style/style.styl'];
+var stylfile = ['assets/style/**/*.styl', 'assets/module/**/*.styl'];
 var jsfile = ['assets/coffee/module.coffee', 'assets/module/**/*.coffee', 'assets/coffee/base.coffee'];
-var misk = ['assets/image'];
+var misc = ['assets/image/**'];
 var dest = 'public/';
+var toUpload = ['public/image/**', 'public/css/style.css', 'public/js/**'];
 
 var watch_coffee = jsfile;
 var src_coffee = jsfile;
@@ -57,7 +66,7 @@ gulp.task('coffee', ['clean:js'], function (cb) {
 });
 
 gulp.task('css', function() {
-	return gulp.src(stylfile)
+	return gulp.src('assets/style/style.styl')
 		.pipe(stylus({
 			use: nib(),
 			compress: true
@@ -65,23 +74,6 @@ gulp.task('css', function() {
 		.pipe(gulp.dest(dest+'css'))
 		.pipe(notify({ message: 'CSS task complete' }));
 });
- 
-// gulp.task('pug', function buildHTML() {
-// 	return gulp.src(pugfile)
-// 		.pipe(pug({
-// 		// Your options in here.
-// 		}))
-// 		.pipe(gulp.dest(dest))
-// });
-
-// gulp.task('pug', function() {
-//     return gulp.src(pugfile)
-//         .pipe(data(function(file) {
-//             return JSON.parse(fs.readFileSync('assets/temp/data.json'))
-//         }))
-//         .pipe(pug())
-//         .pipe(gulp.dest(dest));
-// });
 
 gulp.task('pug:data', function() {
     return gulp.src('assets/json/**/*.json')
@@ -114,26 +106,31 @@ gulp.task('pug', ['pug:data'], function() {
         .pipe(gulp.dest(dest));
 });
 
-
 gulp.task('misc', function () {
-	gulp.src(misk)
-	.pipe(gulp.dest(dest));
+	gulp.src(misc)
+	.pipe(gulp.dest(dest+'image/'));
 });
-
 
 gulp.task('default', ['misc'], function (cb) {
     runSequence(['pug', 'css', 'coffee', 'watch'], cb);
 });
 
-// gulp.task('default', function() {
-//   	gulp.start('javascript');
-//   	gulp.start('pug');
-// 	gulp.start('css');
-// 	gulp.start('watch');
-// });
-
 gulp.task('watch', function() {
+	gulp.watch(misc, ['misc']);
 	gulp.watch(jsfile, ['coffee']);
 	gulp.watch(stylfile, ['css']);
 	gulp.watch(['assets/pug/*.pug', 'assets/module/**/*.pug'], ['pug']);
 });
+
+gulp.task("upload", function() {
+    gulp.src(toUpload)
+        .pipe(s3({
+            Bucket: 'wespeakhiphop-assets', //  Required
+            ACL:    'public-read'       //  Needs to be user-defined
+        }, {
+            // S3 Constructor Options, ie:
+            maxRetries: 5
+        }))
+    ;
+});
+
