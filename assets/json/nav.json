@@ -1,0 +1,23 @@
+{
+    "links": [
+        {
+            "href": "/link1",
+            "displayName": "Link 1"
+        },
+
+        {
+            "href": "/link2",
+            "displayName": "Link 2"
+        },
+
+        {
+            "href": "/link3",
+            "displayName": "Link 3"
+        },
+
+        {
+            "href": "/link4",
+            "displayName": "Link 4"
+        }
+    ]
+}

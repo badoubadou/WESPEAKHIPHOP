@@ -1,0 +1,10 @@
+{
+    "title": "Our Awesome Website",
+    "author": "Tushar Ghate",
+    "meta": {
+        "charset": "utf8",
+        "description": "Lorem ipsum dolor sit amit.",
+        "keywords": "lorem, ipsum, dolor, sit, amit",
+        "favicon": "favicon.ico"
+    }
+}

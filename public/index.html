@@ -1,4 +1,96 @@
-<!DOCTYPE html  ><html lang="en"> <head><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="descrition" content="We speak Hiphop est un site etc."/><meta name="author" content="David Boisseaux &amp; Vina Hiridjee"/><meta property="og:title" content="We Speak Hiphop"/><meta property="og:description" content="We speak Hiphop est un site etc."/><meta property="og:type" content="website"/><meta property="og:site_name" content="We Speak Hiphop"/><title>We Speak Hiphop</title><link rel="shortcut icon" href="ico/favicon.ico" type="image/x-icon"/><link rel="apple-touch-icon-precomposed" sizes="152x152" href="ico/images/favico/favicon-152.png"/><link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/images/favico/favicon-144.png"/><link rel="apple-touch-icon-precomposed" sizes="120x120" href="ico/images/favico/favicon-120.png"/><link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/images/favico/favicon-114.png"/><link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/images/favico/favicon-72.png"/><link rel="apple-touch-icon-precomposed" href="ico/images/favico/favicon-57.png"/><link type="text/css" rel="stylesheet" href="public/css/style.css"/><link href="https://vjs.zencdn.net/7.0.5/video-js.css" rel="stylesheet"/><script src="https://unpkg.com/video.js@6.5.1/dist/video.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/utils/Draggable.min.js"></script><script src="public/vendor/ThrowPropsPlugin.min.js"></script><!--[if lt IE 10]><script src="vendor/modernizr-2.8.3.min.js"></script><![endif]--><script>document.cookie='resolution='+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+'; path=/';</script></head><body><div class="absolute centered layer_2 full_height full_width" id="face_artistes"><div class="absolute centered layer_2 circular_mask size_disk" id="disk"><div class="absolute align_middle full_height full_width circular_mask" id="knob"><div class="absolute align_middle" id="marker"></div></div></div><div class="circular_mask absolute centered layer_1 size_video" id="mask_video"><div class="lds-dual-ring"></div><video class="video-js absolute centered" id="player" controls="none" preload="true" muted="true" loop="true" width="640" height="264" poster="http://vjs.zencdn.net/v/oceans.png"><source src="" type="video/mp4"/></video></div></div><div class="absolute centered layer_2 full_height full_width" id="face_pays"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<!DOCTYPE html  >
+<html lang="en"> 
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="descrition" content="We speak Hiphop est un site etc."/>
+    <meta name="author" content="David Boisseaux &amp; Vina Hiridjee"/>
+    <meta property="og:title" content="We Speak Hiphop"/>
+    <meta property="og:description" content="We speak Hiphop est un site etc."/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="We Speak Hiphop"/>
+    <title>We Speak Hiphop</title>
+    <link rel="shortcut icon" href="ico/favicon.ico" type="image/x-icon"/>
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="ico/images/favico/favicon-152.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/images/favico/favicon-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="ico/images/favico/favicon-120.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/images/favico/favicon-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/images/favico/favicon-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="ico/images/favico/favicon-57.png"/>
+    <link type="text/css" rel="stylesheet" href="public/css/style.css"/>
+    <link href="https://vjs.zencdn.net/7.0.5/video-js.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/video.js@6.5.1/dist/video.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/utils/Draggable.min.js"></script>
+    <script src="public/vendor/ThrowPropsPlugin.min.js"></script><!--[if lt IE 10]>
+    <script src="vendor/modernizr-2.8.3.min.js"></script><![endif]-->
+    <script>document.cookie='resolution='+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+'; path=/';</script>
+  </head>
+  <body>
+    <div class="absolute centered layer_2 full_height full_width" id="face_artistes">
+      <!-- - if($my_query->have_posts()):-->
+      <!-- 	.warp_btn.full_height.full_width-->
+      <!-- 		ul#list_artists.layer_0-->
+      <!-- 			- while ($my_query->have_posts()) : $my_query->the_post();-->
+      <!-- 				li-->
+      <!-- 					- $iframe = get_field('video');-->
+      <!-- 					- preg_match('/src="(.+?)"/', $iframe, $matches);-->
+      <!-- 					- $src = $matches[1];-->
+      <!-- 					- $video_id = parse_video_uri(get_field('video'));-->
+      <!-- 					a(href!='<?php echo "http://www.youtube.com/watch?v=".$video_id;?>' data-idyoutube!='<?php echo $video_id;?>')-->
+      <!-- 						- the_title();-->
+      <!-- 			- endwhile;-->
+      <!-- - endif;-->
+      <ul class="nav">
+        <li><a href="videos">Cut killer</a></li>
+        <li><a href="videos">End of the game</a></li>
+        <li><a href="videos">Passi</a></li>
+        <li><a href="videos">JeanJass</a></li>
+        <li><a href="videos">Ali gul pir</a></li>
+        <li><a href="videos">Faris</a></li>
+        <li><a href="videos">D-coy</a></li>
+        <li><a href="videos">Awadi</a></li>
+        <li><a href="videos">Afraa</a></li>
+        <li><a href="videos">Dynamic Duo</a></li>
+        <li><a href="videos">Casa crew</a></li>
+        <li><a href="videos">Joe flizzow</a></li>
+        <li><a href="videos">Wu tang Clan</a></li>
+        <li><a href="videos">NIGEL HA’ ADMOR</a></li>
+        <li><a href="videos">Geeg</a></li>
+        <li><a href="videos">Joe Flizzow</a></li>
+        <li><a href="videos">Kap Yahandz</a></li>
+        <li><a href="videos">Big</a></li>
+        <li><a href="videos">Dam</a></li>
+        <li><a href="videos">Deeg J Force 3</a></li>
+        <li><a href="videos">Admore</a></li>
+        <li><a href="videos">Masta g</a></li>
+        <li><a href="videos">Muki</a></li>
+        <li><a href="videos">Faso Combat</a></li>
+        <li><a href="videos">Saykoji</a></li>
+        <li><a href="videos">Epik High</a></li>
+        <li><a href="videos">Shazet</a></li>
+        <li><a href="videos">Priska</a></li>
+        <li><a href="videos">Thaitanium</a></li>
+        <li><a href="videos">Racine J</a></li>
+        <li><a href="videos">Daara</a></li>
+        <li><a href="videos">Label KlapYaHandz</a></li>
+        <li><a href="videos">Casa crew</a></li>
+        <li><a href="videos">Big</a></li>
+        <li><a href="videos">AFRAA</a></li>
+        <li><a href="videos">test</a></li>
+      </ul>
+      <div class="absolute centered layer_2 circular_mask size_disk" id="disk">
+        <div class="absolute align_middle full_height full_width circular_mask" id="knob">
+          <div class="absolute align_middle" id="marker"></div>
+        </div>
+      </div>
+      <div class="circular_mask absolute centered layer_1 size_video" id="mask_video">
+        <div class="lds-dual-ring"></div>
+        <video class="video-js absolute centered" id="player" controls="none" preload="true" muted="true" loop="true" width="640" height="264" poster="http://vjs.zencdn.net/v/oceans.png">
+          <source src="" type="video/mp4"/>
+        </video>
+      </div>
+    </div>
+    <div class="absolute centered layer_2 full_height full_width" id="face_pays"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1887.2 1190.5" style="enable-background:new 0 0 1887.2 1190.5;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FFCE00;}
@@ -4653,11 +4745,33 @@
 		l1,0.8l0.1,0.9l-1,0.9l-1.1,0.4l1.2,0.5l2.5-0.4l1.1-0.9l0-1.1l-0.5-0.9l1.2-1.2L610.6,677.1z"/>
 </g>
 </svg>
-</div><div class="footer layer_top"><ul id="mode_switcher"><li><a href="#contrys" data-face="face_pays">Face Pays</a></li><li><a href="#artists" data-face="face_artistes">Face Artistes</a></li></ul><ul id="infos"><li><a href="#apropos">&agrave; propos</a></li><li><a href="#help">aide</a></li><li><span id="sound"><?xml version="1.0" encoding="utf-8"?>
+
+    </div>
+    <div class="footer layer_top">
+      <ul id="mode_switcher">
+        <li><a href="#contrys" data-face="face_pays">Face Pays</a></li>
+        <li><a href="#artists" data-face="face_artistes">Face Artistes</a></li>
+      </ul>
+      <ul id="infos">
+        <li><a href="#apropos">&agrave; propos</a></li>
+        <li><a href="#help">aide</a></li>
+        <li><span id="sound"><?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
 <path d="M21.6,1.5l-9.2,8.4l-9.6,0c-0.6,0-1.1,0.5-1.1,1.1v11.2c0,0.6,0.5,1.1,1.1,1.1h8.4c0.2,0,0.5,0.1,0.7,0.2l9.7,7.7
 	c0.7,0.6,1.8,0.1,1.8-0.9v-4v-0.9v-7.2V2.3C23.4,1.4,22.3,0.9,21.6,1.5z"/>
 </svg>
-</span></li><li><div id="fullscreen"></div></li><li><div id="share"></div></li></ul></div></body><script src="public/js/vendor/vendor.js"></script><script src="public/js/base.js"></script></html>
+</span></li>
+        <li>
+          <div id="fullscreen"></div>
+        </li>
+        <li>
+          <div id="share"></div>
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script src="public/js/vendor/vendor.js"></script>
+  <script src="public/js/base.js"></script>
+</html>
