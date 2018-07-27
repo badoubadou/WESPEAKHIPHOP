@@ -26,41 +26,42 @@
     <script>document.cookie='resolution='+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+'; path=/';</script>
   </head>
   <body>
-    <div id="bg"></div>
-    <div class="absolute centered layer_2 full_height full_width" id="face_artistes">
-      <ul class="layer_0" id="list_artists">
-        <li><a>D-coy</a></li>
-        <li><a>Awadi</a></li>
-        <li><a>Afraa</a></li>
-        <li><a>Dynamic Duo</a></li>
-        <li><a>Casa crew</a></li>
-        <li><a>Joe flizzow</a></li>
-        <li><a>Wu tang Clan</a></li>
-        <li><a>Joe Flizzow</a></li>
-        <li><a>Kap Yahandz</a></li>
-        <li><a>Big</a></li>
-        <li><a>Dam</a></li>
-        <li><a>Deeg J Force 3</a></li>
-        <li><a>Admore</a></li>
-        <li><a>Masta g</a></li>
-        <li><a>Muki</a></li>
-        <li><a>Faso Combat</a></li>
-        <li><a>Saykoji</a></li>
-        <li><a>Epik High</a></li>
-      </ul>
-      <div class="absolute centered layer_2 circular_mask size_disk" id="disk">
-        <div class="absolute align_middle full_height full_width circular_mask" id="knob">
-          <div class="absolute align_middle" id="marker"></div>
+    <div class="absolute full_height_minus_footer full_width" id="main">
+      <div id="bg"></div>
+      <div class="absolute centered layer_2 full_height full_width" id="face_artistes">
+        <ul class="layer_0" id="list_artists">
+          <li><a>D-coy</a></li>
+          <li><a>Awadi</a></li>
+          <li><a>Afraa</a></li>
+          <li><a>Dynamic Duo</a></li>
+          <li><a>Casa crew</a></li>
+          <li><a>Joe flizzow</a></li>
+          <li><a>Wu tang Clan</a></li>
+          <li><a>Joe Flizzow</a></li>
+          <li><a>Kap Yahandz</a></li>
+          <li><a>Big</a></li>
+          <li><a>Dam</a></li>
+          <li><a>Deeg J Force 3</a></li>
+          <li><a>Admore</a></li>
+          <li><a>Masta g</a></li>
+          <li><a>Muki</a></li>
+          <li><a>Faso Combat</a></li>
+          <li><a>Saykoji</a></li>
+          <li><a>Epik High</a></li>
+        </ul>
+        <div class="absolute centered layer_2 circular_mask size_disk" id="disk">
+          <div class="absolute align_middle full_height full_width circular_mask" id="knob">
+            <div class="absolute align_middle" id="marker"></div>
+          </div>
+        </div>
+        <div class="circular_mask absolute centered layer_1 size_video" id="mask_video">
+          <div class="lds-dual-ring"></div>
+          <video class="video-js absolute centered" id="player" controls="none" preload="true" muted="true" loop="true" width="640" height="264" poster="http://vjs.zencdn.net/v/oceans.png">
+            <source src="" type="video/mp4"/>
+          </video>
         </div>
       </div>
-      <div class="circular_mask absolute centered layer_1 size_video" id="mask_video">
-        <div class="lds-dual-ring"></div>
-        <video class="video-js absolute centered" id="player" controls="none" preload="true" muted="true" loop="true" width="640" height="264" poster="http://vjs.zencdn.net/v/oceans.png">
-          <source src="" type="video/mp4"/>
-        </video>
-      </div>
-    </div>
-    <div class="absolute centered layer_2 full_height full_width" id="face_pays"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      <div class="absolute centered layer_2 full_height full_width" id="face_pays"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1887.2 1190.5" style="enable-background:new 0 0 1887.2 1190.5;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FFCE00;}
@@ -4716,6 +4717,7 @@
 </g>
 </svg>
 
+      </div>
     </div>
     <div class="footer layer_top">
       <ul id="mode_switcher">

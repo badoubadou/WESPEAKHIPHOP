@@ -201,6 +201,11 @@
     bindEvents() {
       var duration, options, rotationSnap, sequence, that;
       that = this;
+      //------------------- SOUND ---------------------------#
+      $('#sound').on('click', function() {
+        that.player.muted(!that.player.muted());
+        return $('#sound').toggleClass('actif');
+      });
       //------------------- TWEEN ---------------------------#
       this.timelineInfo = new TimelineMax({
         paused: true
@@ -429,7 +434,8 @@
         onDragStart: function() {
           $('#knob').addClass('drag');
           if (that.player.muted()) {
-            return that.player.muted(false);
+            that.player.muted(false);
+            return $('#sound').addClass('actif');
           }
         },
         onDrag: function() {

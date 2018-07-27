@@ -57,6 +57,11 @@ class player_video
 		
 	bindEvents: ->
 		that = @
+		#------------------- SOUND ---------------------------#
+		$('#sound').on 'click', ->
+			that.player.muted(!that.player.muted())
+			$('#sound').toggleClass 'actif'
+
 		#------------------- TWEEN ---------------------------#
 		@timelineInfo = new TimelineMax(paused: true)
 		duration =  160.49
@@ -162,6 +167,7 @@ class player_video
 				$('#knob').addClass 'drag'
 				if(that.player.muted())
 					that.player.muted(false)
+					$('#sound').addClass 'actif'
 			onDrag: ->
 				that.changeCurrentTime(this.rotation % 360, that.player)
 			onThrowUpdate: ->

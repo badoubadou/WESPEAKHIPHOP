@@ -38,12 +38,13 @@ html(lang='en')
 			| document.cookie='resolution='+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+'; path=/';
 
 	body
-		#bg
-		#face_artistes.absolute.centered.layer_2.full_height.full_width
-			include ../module/block_list_artists/index.pug
-			include ../module/block_video_disk/index.pug
-		#face_pays.absolute.centered.layer_2.full_height.full_width
-			include ../module/block_pays/index.pug
+		#main.absolute.full_height_minus_footer.full_width
+			#bg
+			#face_artistes.absolute.centered.layer_2.full_height.full_width
+				include ../module/block_list_artists/index.pug
+				include ../module/block_video_disk/index.pug
+			#face_pays.absolute.centered.layer_2.full_height.full_width
+				include ../module/block_pays/index.pug
 
 		include ../module/block_footer/index.pug
 
