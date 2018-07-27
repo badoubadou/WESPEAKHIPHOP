@@ -1,9 +1,20 @@
+- var all_videos = []
+each it in channel.item
+	if it.post_type == 'videos'
+		- all_videos.push(it) 
+
+- var videos = []
+each vid in all_videos
+	if vid.category
+		each cat in vid.category
+			if cat.nicename == 'fr'
+				- videos.push(vid) 
+
 ul#list_artists.layer_0
-	each it in channel.item
-		if it.post_type == 'videos'
-			each meta in it.postmeta
-				if meta.meta_key == 'video'
-					- var youtube_link = meta.meta_value
-					li
-						a(href=youtube_link)= it.title
-					
+	each video in videos
+		each meta in video.postmeta
+			if meta.meta_key == 'video'
+				- var youtube_link = meta.meta_value
+				li
+					a(href=youtube_link)= video.title
+				

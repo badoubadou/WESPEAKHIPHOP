@@ -1,10 +1,10 @@
 {
-   "@version": "2.0",
+   "version": "2.0",
    "channel": {
       "title": "wespeakhiphop",
       "link": "http://wespeakhiphop.romza.eu",
       "description": "Just another Romain Malauzat Illustration Sites site",
-      "pubDate": "Thu, 26 Jul 2018 15:36:04 +0000",
+      "pubDate": "Thu, 26 Jul 2018 09:51:21 +0000",
       "language": "en-US",
       "wxr_version": "1.2",
       "base_site_url": "http://romza.eu/",
@@ -92,13 +92,6 @@
          },
          {
             "term_id": "2",
-            "term_taxonomy": "pays",
-            "term_slug": "france",
-            "term_parent": null,
-            "term_name": "France"
-         },
-         {
-            "term_id": "48",
             "term_taxonomy": "pays",
             "term_slug": "france",
             "term_parent": null,
@@ -303,14 +296,6 @@
             "term_description": "a:2:{s:2:\"en\";i:48;s:2:\"fr\";i:26;}"
          },
          {
-            "term_id": "49",
-            "term_taxonomy": "term_translations",
-            "term_slug": "pll_5b59ea43183bd",
-            "term_parent": null,
-            "term_name": "pll_5b59ea43183bd",
-            "term_description": "a:1:{s:2:\"en\";i:48;}"
-         },
-         {
             "term_id": "42",
             "term_taxonomy": "pays",
             "term_slug": "senegal",
@@ -333,7 +318,7 @@
             "pubDate": "Thu, 12 Jul 2018 09:15:14 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?p=1"
             },
             "description": [],
@@ -355,13 +340,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "language",
-                  "@nicename": "en",
+                  "domain": "language",
+                  "nicename": "en",
                   "#text": "English"
                },
                {
-                  "@domain": "category",
-                  "@nicename": "uncategorized",
+                  "domain": "category",
+                  "nicename": "uncategorized",
                   "#text": "Uncategorized"
                }
             ],
@@ -386,7 +371,7 @@
             "pubDate": "Thu, 12 Jul 2018 09:15:14 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?page_id=2"
             },
             "description": [],
@@ -407,8 +392,8 @@
             "post_password": null,
             "is_sticky": "0",
             "category": {
-               "@domain": "language",
-               "@nicename": "en",
+               "domain": "language",
+               "nicename": "en",
                "#text": "English"
             },
             "postmeta": {
@@ -422,7 +407,7 @@
             "pubDate": "Thu, 12 Jul 2018 13:53:56 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=acf-field-group&p=5"
             },
             "description": [],
@@ -453,7 +438,7 @@
             "pubDate": "Thu, 12 Jul 2018 13:53:56 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=acf-field&p=6"
             },
             "description": [],
@@ -480,7 +465,7 @@
             "pubDate": "Thu, 12 Jul 2018 13:53:56 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=acf-field&p=7"
             },
             "description": [],
@@ -507,7 +492,7 @@
             "pubDate": "Thu, 12 Jul 2018 13:53:56 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=acf-field&p=8"
             },
             "description": [],
@@ -534,7 +519,7 @@
             "pubDate": "Thu, 12 Jul 2018 13:53:56 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=acf-field&p=9"
             },
             "description": [],
@@ -557,11 +542,11 @@
          },
          {
             "title": "Cut killer",
-            "link": "http://wespeakhiphop.romza.eu/en/videos/cut-killer/",
+            "link": "http://wespeakhiphop.romza.eu/videos/cut-killer/",
             "pubDate": "Thu, 12 Jul 2018 14:24:27 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=11"
             },
             "description": [],
@@ -582,9 +567,9 @@
             "post_password": null,
             "is_sticky": "0",
             "category": {
-               "@domain": "language",
-               "@nicename": "en",
-               "#text": "English"
+               "domain": "pays",
+               "nicename": "france",
+               "#text": "France"
             },
             "postmeta": [
                {
@@ -593,7 +578,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=XCjRpe07AKk"
+                  "meta_value": null
                },
                {
                   "meta_key": "_video",
@@ -631,7 +616,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:25:31 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=12"
             },
             "description": [],
@@ -652,8 +637,8 @@
             "post_password": null,
             "is_sticky": "0",
             "category": {
-               "@domain": "pays",
-               "@nicename": "france",
+               "domain": "pays",
+               "nicename": "france",
                "#text": "France"
             },
             "postmeta": [
@@ -701,7 +686,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:25:58 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=13"
             },
             "description": [],
@@ -722,8 +707,8 @@
             "post_password": null,
             "is_sticky": "0",
             "category": {
-               "@domain": "pays",
-               "@nicename": "france",
+               "domain": "pays",
+               "nicename": "france",
                "#text": "France"
             },
             "postmeta": [
@@ -771,7 +756,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:26:26 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=14"
             },
             "description": [],
@@ -792,8 +777,8 @@
             "post_password": null,
             "is_sticky": "0",
             "category": {
-               "@domain": "pays",
-               "@nicename": "france",
+               "domain": "pays",
+               "nicename": "france",
                "#text": "France"
             },
             "postmeta": [
@@ -841,7 +826,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:28:28 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=15"
             },
             "description": [],
@@ -862,8 +847,8 @@
             "post_password": null,
             "is_sticky": "0",
             "category": {
-               "@domain": "pays",
-               "@nicename": "israel",
+               "domain": "pays",
+               "nicename": "israel",
                "#text": "Israel"
             },
             "postmeta": [
@@ -911,7 +896,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:30:16 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=16"
             },
             "description": [],
@@ -932,8 +917,8 @@
             "post_password": null,
             "is_sticky": "0",
             "category": {
-               "@domain": "pays",
-               "@nicename": "pakistan",
+               "domain": "pays",
+               "nicename": "pakistan",
                "#text": "Pakistan"
             },
             "postmeta": [
@@ -981,7 +966,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:34:11 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=18"
             },
             "description": [],
@@ -1003,13 +988,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                },
                {
-                  "@domain": "pays",
-                  "@nicename": "philippines",
+                  "domain": "pays",
+                  "nicename": "philippines",
                   "#text": "Philippines"
                }
             ],
@@ -1058,7 +1043,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:34:57 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=19"
             },
             "description": [],
@@ -1080,13 +1065,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                },
                {
-                  "@domain": "pays",
-                  "@nicename": "senegal",
+                  "domain": "pays",
+                  "nicename": "senegal",
                   "#text": "Senegal"
                }
             ],
@@ -1135,7 +1120,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:38:11 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=23"
             },
             "description": [],
@@ -1157,13 +1142,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                },
                {
-                  "@domain": "pays",
-                  "@nicename": "japon",
+                  "domain": "pays",
+                  "nicename": "japon",
                   "#text": "japon"
                }
             ],
@@ -1212,7 +1197,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:39:56 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=25"
             },
             "description": [],
@@ -1234,13 +1219,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "pays",
-                  "@nicename": "coree-du-sud",
+                  "domain": "pays",
+                  "nicename": "coree-du-sud",
                   "#text": "Corée du sud"
                },
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                }
             ],
@@ -1289,7 +1274,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:40:36 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=26"
             },
             "description": [],
@@ -1311,18 +1296,18 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                },
                {
-                  "@domain": "pays",
-                  "@nicename": "maroc",
+                  "domain": "pays",
+                  "nicename": "maroc",
                   "#text": "Maroc"
                },
                {
-                  "@domain": "post_translations",
-                  "@nicename": "pll_5b4e07c444ad2",
+                  "domain": "post_translations",
+                  "nicename": "pll_5b4e07c444ad2",
                   "#text": "pll_5b4e07c444ad2"
                }
             ],
@@ -1371,7 +1356,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:41:41 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=27"
             },
             "description": [],
@@ -1393,13 +1378,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                },
                {
-                  "@domain": "pays",
-                  "@nicename": "malaisie",
+                  "domain": "pays",
+                  "nicename": "malaisie",
                   "#text": "Malaisie"
                }
             ],
@@ -1448,7 +1433,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:42:32 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=28"
             },
             "description": [],
@@ -1470,13 +1455,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                },
                {
-                  "@domain": "pays",
-                  "@nicename": "usa",
+                  "domain": "pays",
+                  "nicename": "usa",
                   "#text": "USA"
                }
             ],
@@ -1525,7 +1510,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:32:46 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=17"
             },
             "description": [],
@@ -1546,8 +1531,8 @@
             "post_password": null,
             "is_sticky": "0",
             "category": {
-               "@domain": "pays",
-               "@nicename": "israel",
+               "domain": "pays",
+               "nicename": "israel",
                "#text": "Israel"
             },
             "postmeta": [
@@ -1607,7 +1592,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:35:35 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=20"
             },
             "description": [],
@@ -1628,8 +1613,8 @@
             "post_password": null,
             "is_sticky": "0",
             "category": {
-               "@domain": "language",
-               "@nicename": "fr",
+               "domain": "language",
+               "nicename": "fr",
                "#text": "Français"
             },
             "postmeta": [
@@ -1689,7 +1674,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:36:17 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=21"
             },
             "description": [],
@@ -1711,13 +1696,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                },
                {
-                  "@domain": "pays",
-                  "@nicename": "malaisie",
+                  "domain": "pays",
+                  "nicename": "malaisie",
                   "#text": "Malaisie"
                }
             ],
@@ -1778,7 +1763,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:37:18 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=22"
             },
             "description": [],
@@ -1800,13 +1785,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "pays",
-                  "@nicename": "cambodge",
+                  "domain": "pays",
+                  "nicename": "cambodge",
                   "#text": "Cambodge"
                },
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                }
             ],
@@ -1867,7 +1852,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:47:36 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=30"
             },
             "description": [],
@@ -1889,13 +1874,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                },
                {
-                  "@domain": "pays",
-                  "@nicename": "maroc",
+                  "domain": "pays",
+                  "nicename": "maroc",
                   "#text": "Maroc"
                }
             ],
@@ -1944,7 +1929,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:48:03 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=31"
             },
             "description": [],
@@ -1966,13 +1951,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                },
                {
-                  "@domain": "pays",
-                  "@nicename": "israel",
+                  "domain": "pays",
+                  "nicename": "israel",
                   "#text": "Israel"
                }
             ],
@@ -2021,7 +2006,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:48:59 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=32"
             },
             "description": [],
@@ -2043,13 +2028,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                },
                {
-                  "@domain": "pays",
-                  "@nicename": "guinee-conakry",
+                  "domain": "pays",
+                  "nicename": "guinee-conakry",
                   "#text": "guinée conakry"
                }
             ],
@@ -2098,7 +2083,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:49:43 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=33"
             },
             "description": [],
@@ -2120,13 +2105,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                },
                {
-                  "@domain": "pays",
-                  "@nicename": "israel",
+                  "domain": "pays",
+                  "nicename": "israel",
                   "#text": "Israel"
                }
             ],
@@ -2175,7 +2160,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:50:20 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=34"
             },
             "description": [],
@@ -2197,13 +2182,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                },
                {
-                  "@domain": "pays",
-                  "@nicename": "guinee-conakry",
+                  "domain": "pays",
+                  "nicename": "guinee-conakry",
                   "#text": "guinée conakry"
                }
             ],
@@ -2252,7 +2237,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:50:40 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=35"
             },
             "description": [],
@@ -2274,13 +2259,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                },
                {
-                  "@domain": "pays",
-                  "@nicename": "israel",
+                  "domain": "pays",
+                  "nicename": "israel",
                   "#text": "Israel"
                }
             ],
@@ -2329,7 +2314,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:51:19 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=36"
             },
             "description": [],
@@ -2351,13 +2336,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "pays",
-                  "@nicename": "burkina-faso",
+                  "domain": "pays",
+                  "nicename": "burkina-faso",
                   "#text": "burkina faso"
                },
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                }
             ],
@@ -2406,7 +2391,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:51:46 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=37"
             },
             "description": [],
@@ -2428,13 +2413,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                },
                {
-                  "@domain": "pays",
-                  "@nicename": "indonesie",
+                  "domain": "pays",
+                  "nicename": "indonesie",
                   "#text": "Indonésie"
                }
             ],
@@ -2483,7 +2468,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:52:04 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=38"
             },
             "description": [],
@@ -2505,13 +2490,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "pays",
-                  "@nicename": "coree-du-sud",
+                  "domain": "pays",
+                  "nicename": "coree-du-sud",
                   "#text": "Corée du sud"
                },
                {
-                  "@domain": "language",
-                  "@nicename": "fr",
+                  "domain": "language",
+                  "nicename": "fr",
                   "#text": "Français"
                }
             ],
@@ -2560,7 +2545,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:52:38 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=39"
             },
             "description": [],
@@ -2581,8 +2566,8 @@
             "post_password": null,
             "is_sticky": "0",
             "category": {
-               "@domain": "language",
-               "@nicename": "fr",
+               "domain": "language",
+               "nicename": "fr",
                "#text": "Français"
             },
             "postmeta": [
@@ -2630,7 +2615,7 @@
             "pubDate": "Fri, 13 Jul 2018 13:14:00 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=42"
             },
             "description": [],
@@ -2651,8 +2636,8 @@
             "post_password": null,
             "is_sticky": "0",
             "category": {
-               "@domain": "pays",
-               "@nicename": "cote-divoire",
+               "domain": "pays",
+               "nicename": "cote-divoire",
                "#text": "Côte d’Ivoire"
             },
             "postmeta": [
@@ -2700,7 +2685,7 @@
             "pubDate": "Fri, 13 Jul 2018 13:38:05 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=43"
             },
             "description": [],
@@ -2765,7 +2750,7 @@
             "pubDate": "Fri, 13 Jul 2018 13:41:49 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=44"
             },
             "description": [],
@@ -2830,7 +2815,7 @@
             "pubDate": "Fri, 13 Jul 2018 13:42:51 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=45"
             },
             "description": [],
@@ -2851,8 +2836,8 @@
             "post_password": null,
             "is_sticky": "0",
             "category": {
-               "@domain": "pays",
-               "@nicename": "senegal",
+               "domain": "pays",
+               "nicename": "senegal",
                "#text": "Senegal"
             },
             "postmeta": [
@@ -2900,7 +2885,7 @@
             "pubDate": "Fri, 13 Jul 2018 13:45:06 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=46"
             },
             "description": [],
@@ -2965,7 +2950,7 @@
             "pubDate": "Tue, 17 Jul 2018 15:14:12 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=48"
             },
             "description": [],
@@ -2987,13 +2972,13 @@
             "is_sticky": "0",
             "category": [
                {
-                  "@domain": "language",
-                  "@nicename": "en",
+                  "domain": "language",
+                  "nicename": "en",
                   "#text": "English"
                },
                {
-                  "@domain": "post_translations",
-                  "@nicename": "pll_5b4e07c444ad2",
+                  "domain": "post_translations",
+                  "nicename": "pll_5b4e07c444ad2",
                   "#text": "pll_5b4e07c444ad2"
                }
             ],
@@ -3042,7 +3027,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:38:51 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=24"
             },
             "description": [],
@@ -3119,7 +3104,7 @@
             "pubDate": "Thu, 12 Jul 2018 14:46:46 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=29"
             },
             "description": [],
@@ -3140,8 +3125,8 @@
             "post_password": null,
             "is_sticky": "0",
             "category": {
-               "@domain": "language",
-               "@nicename": "fr",
+               "domain": "language",
+               "nicename": "fr",
                "#text": "Français"
             },
             "postmeta": [
@@ -3201,7 +3186,7 @@
             "pubDate": "Tue, 17 Jul 2018 15:13:28 +0000",
             "creator": "romain",
             "guid": {
-               "@isPermaLink": "false",
+               "isPermaLink": "false",
                "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=47"
             },
             "description": [],
@@ -3222,8 +3207,8 @@
             "post_password": null,
             "is_sticky": "0",
             "category": {
-               "@domain": "language",
-               "@nicename": "en",
+               "domain": "language",
+               "nicename": "en",
                "#text": "English"
             },
             "postmeta": [
