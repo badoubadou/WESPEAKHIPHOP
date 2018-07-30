@@ -100,7 +100,7 @@ gulp.task('pug', ['pug:data'], function() {
             return JSON.parse(fs.readFileSync('assets/temp/data.json'))
         }))
         .pipe(pug({
-            pretty: true,
+            pretty: false,
             basedir: './'
         }))
         .pipe(gulp.dest(dest));
