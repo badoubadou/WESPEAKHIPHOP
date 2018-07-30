@@ -1,0 +1,19 @@
+.header
+	@media $mobile_et_ipad
+		height $height_header_info_mobile
+		width 100%
+		position absolute 
+		background $yellow
+
+		#logo
+			vert_align_middle()
+			left 10px
+			svg
+				width 100px
+				height auto
+	
+	@media $desktop
+		#logo svg
+			width 215px
+			height auto		
+	

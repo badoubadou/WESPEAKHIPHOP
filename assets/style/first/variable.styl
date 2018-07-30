@@ -67,6 +67,13 @@ $bs-screen-ld-max = unquote('screen and (max-width: '+($break-xlarg - 0.1em)+')'
 // Extra large devices (large desktops)
 // No media query since the extra-large breakpoint has no upper bound on its width
 
+$mobile = $bs-screen-sd-max /// mobile
+$ipad = $bs-screen-md-min /// ipad
+$desktop = $bs-screen-ld-min /// desktop
+$large_screen = $bs-screen-xld-min ///// mega big
+$mobile_et_ipad = $bs-screen-md-max /// mobile et ipad
+
+
 
 $bs-max-width = unquote('screen and (min-width: 900px)')
 $bs-max-width-under = unquote('screen and (max-width: 900px)')

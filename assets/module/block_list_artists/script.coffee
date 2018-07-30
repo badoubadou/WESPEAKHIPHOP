@@ -3,6 +3,16 @@ class player_youtube
 		@bindEvents()
 
 	bindEvents : ->
+		YouTubeGetID = (url) ->
+			ID = ''
+			url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/)
+			if url[2] != undefined
+				ID = url[2].split(/[^0-9a-z_\-]/i)
+				ID = ID[0]
+			else
+				ID = url
+				ID
+
 		window.onYouTubeIframeAPIReady = ->
 			$('#zone_youtube .shield').on 'click', ->
 				$('#zone_youtube').removeClass 'play'
@@ -12,9 +22,13 @@ class player_youtube
 
 			$('#list_artists li a').on 'click', ->
 				event.preventDefault()
-				idyoutube = $(this).data 'idyoutube'
+				idyoutube = YouTubeGetID($(this).attr('href'))
+				console.log idyoutube
+
 				$('.lds-dual-ring').removeClass 'done'
+				console.log window.playerYT
 				if(!window.playerYT)
+					console.log 'not yet'
 					window.playerYT = new (YT.Player)('player_youtube',
 						height: '390'
 						width: '640'
@@ -44,6 +58,7 @@ class player_youtube
 				return
 				
 		window.onPlayerReady = (event) ->
+			console.log 'onPlayerReady'
 			$('#zone_youtube').addClass 'play'
 			$('.lds-dual-ring').addClass 'done'
 			event.target.playVideo()

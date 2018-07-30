@@ -1,52 +1,6 @@
-doctype html  
-html(lang='en')  
-	head
-		meta(name="viewport" content="width=device-width, initial-scale=1")
-		meta(name="descrition" content="We speak Hiphop est un site etc.")
-		meta(name="author" content="David Boisseaux & Vina Hiridjee")
-		meta(property="og:title" content="We Speak Hiphop")
-		meta(property="og:description" content="We speak Hiphop est un site etc.")
-		meta(property="og:type" content="website")
-		meta(property="og:site_name" content="We Speak Hiphop")
-		//- meta(property="og:url" content="<?php echo \"http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]\"; ?>")
-		//- meta(name="og:image" property="og:image" content="<?php echo $og_img; ?>")
-		//- meta( property="device_type" content="<?php echo get_device_type(); ?>")
+extends layout.pug
 
-		title We Speak Hiphop
-
-		link(rel="shortcut icon" href="ico/favicon.ico" type="image/x-icon" )
-		link(rel="apple-touch-icon-precomposed" sizes="152x152" href="ico/images/favico/favicon-152.png")
-		link(rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/images/favico/favicon-144.png")
-		link(rel="apple-touch-icon-precomposed" sizes="120x120" href="ico/images/favico/favicon-120.png")
-		link(rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/images/favico/favicon-114.png")
-		link(rel="apple-touch-icon-precomposed" sizes="72x72"   href="ico/images/favico/favicon-72.png")
-		link(rel="apple-touch-icon-precomposed"                 href="ico/images/favico/favicon-57.png")
-
-		link(type="text/css" rel="stylesheet" href="public/css/style.css")
-
-		link(href="https://vjs.zencdn.net/7.0.5/video-js.css" rel="stylesheet")
-
-		script(src="https://unpkg.com/video.js@6.5.1/dist/video.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/utils/Draggable.min.js")
-		script(src="public/vendor/ThrowPropsPlugin.min.js")
-
-		|<!--[if lt IE 10]>
-		script(src='vendor/modernizr-2.8.3.min.js')
-		|<![endif]-->
-		script
-			| document.cookie='resolution='+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+'; path=/';
-
-	body
-		#main.absolute.full_height_minus_footer.full_width
-			#bg
-			#face_artistes.absolute.centered.layer_2.full_height.full_width
-				include ../module/block_list_artists/index.pug
-				include ../module/block_video_disk/index.pug
-			#face_pays.absolute.centered.layer_2.full_height.full_width
-				include ../module/block_pays/index.pug
-
-		include ../module/block_footer/index.pug
-
-	script(src='public/js/vendor/vendor.js')
-	script(src='public/js/base.js')
+block data
+	- var pageTitle = "Pudome"
+	- var langage = "fr"
+	

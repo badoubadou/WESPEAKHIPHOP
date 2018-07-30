@@ -5,6 +5,7 @@
 	bottom 0
 	position absolute
 	color #fff
+	font-size .7em
 
 	ul
 		padding 0
@@ -12,10 +13,23 @@
 		display inline-block
 		decoration none
 		
-		#sound
+		#share
 			svg
-				width 40px
-				height 40px
+				width 13px
+				height 13px
+
+		#sound
+			width 40px
+			height 40px
+			display block
+			margin 0
+			padding 0
+			cursor pointer
+			vert_align_middle()
+			svg
+				width 15px
+				height 15px			
+				vert_align_middle()
 				#lign
 					display none
 			&.actif

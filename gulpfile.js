@@ -95,9 +95,9 @@ gulp.task('pug:data', function() {
 });
 
 gulp.task('pug', ['pug:data'], function() {
-    return gulp.src(pugfile)
+    return gulp.src('assets/pug/index.pug')
         .pipe(data(function() {
-            return JSON.parse(fs.readFileSync('assets/xml/wsh.json'))
+            return JSON.parse(fs.readFileSync('assets/temp/data.json'))
         }))
         .pipe(pug({
             pretty: true,
@@ -119,7 +119,7 @@ gulp.task('watch', function() {
 	gulp.watch(misc, ['misc']);
 	gulp.watch(jsfile, ['coffee']);
 	gulp.watch(stylfile, ['css']);
-	gulp.watch(['assets/pug/*.pug', 'assets/module/**/*.pug'], ['pug']);
+	gulp.watch(['assets/pug/*.pug', 'assets/module/**/*.pug', 'assets/image/*.svg'], ['pug']);
 });
 
 gulp.task("upload", function() {

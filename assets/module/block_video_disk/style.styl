@@ -1,48 +1,52 @@
 #marker
 	display block
 	width 10px
-	height (($size_disk_medium / 2) - ($size_video / 2))
+	height (($size_disk_small - $size_video_small) / 2)
 	top 0
-	align_middle()
-
-	@media (max-height ($size_name_circle_medium + 30px))	
-		height (($size_disk_small / 2) - ($size_video / 2))
-	@media (max-width ($size_name_circle_medium + 30px))	
-		height (($size_disk_small / 2) - ($size_video / 2))
-	
-	@media (min-height ($size_name_circle_large - 30px)) and (min-width ($size_name_circle_medium - 30px))		
-		height (($size_disk_large / 2) - ($size_video / 2))
-	
-#marker
 	background #000
+	align_middle()
+	@media $ipad
+		height (($size_disk_medium - $size_video_medium) / 2)
+		
+	@media $medium_large
+		height (($size_disk_large - $size_disk_large) / 2)
+	
 
 .circular_mask
 	overflow hidden
 	border-radius 50%
 
 .size_video
-	width $size_video
-	height $size_video
+	width $size_video_small
+	height $size_video_small
 	
+	@media $ipad
+		width $size_video_medium
+		height $size_video_medium
+		
+	@media $large_screen
+		width $size_video_large
+		height $size_video_large
+		
 .size_disk
-	width $size_disk_medium 
-	height $size_disk_medium 
+	width $size_disk_small
+	height $size_disk_small
 	
-	@media (max-height ($size_name_circle_medium + 30px))	
-		width $size_disk_small
-		height $size_disk_small
-	@media (max-width ($size_name_circle_medium + 30px))	
-		width $size_disk_small
-		height $size_disk_small
-	
-	@media (min-height ($size_name_circle_large - 30px)) and (min-width ($size_name_circle_medium - 30px))		
+	@media $ipad
+		width $size_disk_medium
+		height $size_disk_medium
+	@media $large_screen
 		width $size_disk_large
 		height $size_disk_large
+	
 	
 #mask_video
 	border 8px solid #000
 	
 #disk
 	border 2px solid #000
-	cursor: url("wespeakhiphop/images/hand.png"), auto;
+	cursor url("wespeakhiphop/images/hand.png"), auto;
+	
+#disk_lign
+	background $yellow
 	

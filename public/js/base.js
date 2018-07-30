@@ -54,7 +54,19 @@
     }
 
     bindEvents() {
-      var done, firstScriptTag, player;
+      var YouTubeGetID, done, firstScriptTag, player;
+      YouTubeGetID = function(url) {
+        var ID;
+        ID = '';
+        url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+        if (url[2] !== void 0) {
+          ID = url[2].split(/[^0-9a-z_\-]/i);
+          return ID = ID[0];
+        } else {
+          ID = url;
+          return ID;
+        }
+      };
       window.onYouTubeIframeAPIReady = function() {
         $('#zone_youtube .shield').on('click', function() {
           $('#zone_youtube').removeClass('play');
@@ -64,9 +76,12 @@
         return $('#list_artists li a').on('click', function() {
           var idyoutube;
           event.preventDefault();
-          idyoutube = $(this).data('idyoutube');
+          idyoutube = YouTubeGetID($(this).attr('href'));
+          console.log(idyoutube);
           $('.lds-dual-ring').removeClass('done');
+          console.log(window.playerYT);
           if (!window.playerYT) {
+            console.log('not yet');
             window.playerYT = new YT.Player('player_youtube', {
               height: '390',
               width: '640',
@@ -98,6 +113,7 @@
         });
       };
       window.onPlayerReady = function(event) {
+        console.log('onPlayerReady');
         $('#zone_youtube').addClass('play');
         $('.lds-dual-ring').addClass('done');
         event.target.playVideo();
@@ -125,6 +141,26 @@
 }).call(this);
 
 (function() {
+  var popin;
+
+  popin = class popin {
+    constructor() {
+      this.bindEvents();
+    }
+
+    bindEvents() {
+      return $('#share').on('click', function() {
+        return $('#popin').toggleClass('hide');
+      });
+    }
+
+  };
+
+  module.popin = popin;
+
+}).call(this);
+
+(function() {
   var player_video;
 
   player_video = class player_video {
@@ -138,9 +174,8 @@
     loadVideo() {
       var req, that, videoUrl;
       videoUrl = 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/5secondes.mp4';
-      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.hostname === '') {
-        videoUrl = 'http://milkyweb.eu/video/5secondes.mp4';
-      }
+      // if location.hostname == 'localhost' or location.hostname == '127.0.0.1' or location.hostname == ''
+      // 	videoUrl = 'http://milkyweb.eu/video/5secondes.mp4'
       that = this;
       req = new XMLHttpRequest;
       req.open('GET', videoUrl, true);
@@ -199,18 +234,39 @@
     }
 
     bindEvents() {
-      var duration, options, rotationSnap, sequence, that;
+      var duration, options, rotationSnap, sequence, that, windowBlurred, windowFocused;
       that = this;
+      //------------------- FOCUS ---------------------------#
+      windowBlurred = function() {
+        console.log('blur');
+        if (that.player) {
+          that.player.pause();
+        }
+      };
+      windowFocused = function() {
+        console.log('focus');
+        if (that.player) {
+          that.player.play();
+        }
+      };
+      $(window).on('pagehide blur', windowBlurred);
+      $(window).on('pageshow focus', windowFocused);
       //------------------- SOUND ---------------------------#
       $('#sound').on('click', function() {
         that.player.muted(!that.player.muted());
         return $('#sound').toggleClass('actif');
       });
       //------------------- TWEEN ---------------------------#
+      duration = 160.49;
+      this.timelineKnob = new TimelineMax({
+        paused: true
+      });
+      this.timelineKnob.to(['#knob'], duration, {
+        rotation: 360
+      });
       this.timelineInfo = new TimelineMax({
         paused: true
       });
-      duration = 160.49;
       // sequence = '+='+((duration / 28)-1)
       sequence = '+=4.5';
       console.log(sequence);
@@ -398,35 +454,35 @@
         var myPlayer;
         myPlayer = this;
         myPlayer.on('play', function() {
-          return that.timelineInfo.play();
+          console.log('play');
+          that.timelineInfo.play();
+          return that.timelineKnob.play();
         });
         myPlayer.on('pause', function() {
-          return that.timelineInfo.pause();
+          console.log('pause');
+          that.timelineInfo.pause();
+          return that.timelineKnob.pause();
         });
         myPlayer.on('seeked', function() {
-          return that.timelineInfo.time(myPlayer.currentTime());
-        });
-        myPlayer.on('timeupdate', function() {
-          var deg, percentage, whereYouAt;
           that.timelineInfo.time(myPlayer.currentTime());
-          if ($('#knob').hasClass('drag')) {
-            return;
-          }
-          percentage = (myPlayer.currentTime() / myPlayer.duration()) * 100;
-          whereYouAt = myPlayer.currentTime();
-          deg = Math.round(360 * (percentage / 100));
-          if (deg) {
-            TweenMax.to(['#knob'], .5, {
-              rotation: deg
-            });
-          } else {
-            console.log('yo');
-            TweenMax.to(['#knob'], 0, {
-              rotation: deg
-            });
-          }
+          return that.timelineKnob.time(myPlayer.currentTime());
         });
       });
+      
+      // myPlayer.on 'timeupdate', ->
+      // 	that.timelineInfo.time myPlayer.currentTime()
+
+      // 	if($('#knob').hasClass 'drag')
+      // 		return
+      // 	percentage = ( myPlayer.currentTime() / myPlayer.duration() ) * 100;
+      // 	whereYouAt = myPlayer.currentTime()
+      // 	deg = Math.round((360 * (percentage / 100)))
+      // 	if deg
+      // 		TweenMax.to(['#knob'], .5, {rotation:deg});
+      // 	else
+      // 		console.log 'yo'
+      // 		TweenMax.to [ '#knob' ], 0, rotation: deg
+      // 	return
       rotationSnap = 360 / 28;
       Draggable.create('#knob', {
         type: 'rotation',
@@ -463,7 +519,7 @@
 }).call(this);
 
 (function() {
-  var flip_disk, hasTouch, init, player_video, player_youtube;
+  var flip_disk, hasTouch, init, player_video, player_youtube, popin;
 
   init = function() {
     $('body').addClass('doc-ready');
@@ -485,5 +541,7 @@
   player_youtube = new module.player_youtube();
 
   flip_disk = new module.flip_disk();
+
+  popin = new module.popin();
 
 }).call(this);

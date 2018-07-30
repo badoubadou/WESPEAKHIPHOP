@@ -1,0 +1,10 @@
+ul#artists_info.layer_0
+	each video in videos
+		li
+			span.name= video.title
+			each meta in video.postmeta
+				if meta.meta_key == 'tag_line'
+					span.tagline= meta.meta_value
+				if meta.meta_key == 'date'
+					span.tagline= meta.meta_value
+				

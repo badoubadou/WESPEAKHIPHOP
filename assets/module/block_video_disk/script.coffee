@@ -6,8 +6,8 @@ class player_video
 
 	loadVideo: ->
 		videoUrl = 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/5secondes.mp4'
-		if location.hostname == 'localhost' or location.hostname == '127.0.0.1' or location.hostname == ''
-			videoUrl = 'http://milkyweb.eu/video/5secondes.mp4'
+		# if location.hostname == 'localhost' or location.hostname == '127.0.0.1' or location.hostname == ''
+		# 	videoUrl = 'http://milkyweb.eu/video/5secondes.mp4'
 		
 		that = @
 		req = new XMLHttpRequest
@@ -57,14 +57,33 @@ class player_video
 		
 	bindEvents: ->
 		that = @
+		#------------------- FOCUS ---------------------------#
+		windowBlurred = ->
+			console.log 'blur'
+			if that.player
+				that.player.pause()
+			return
+
+		windowFocused = ->
+			console.log 'focus'
+			if that.player
+				that.player.play()
+			return
+
+		$(window).on 'pagehide blur', windowBlurred
+		$(window).on 'pageshow focus', windowFocused
+
 		#------------------- SOUND ---------------------------#
 		$('#sound').on 'click', ->
 			that.player.muted(!that.player.muted())
 			$('#sound').toggleClass 'actif'
 
 		#------------------- TWEEN ---------------------------#
-		@timelineInfo = new TimelineMax(paused: true)
 		duration =  160.49
+		@timelineKnob = new TimelineMax(paused: true)
+		@timelineKnob.to(['#knob'], duration, {rotation:360})
+
+		@timelineInfo = new TimelineMax(paused: true)
 		# sequence = '+='+((duration / 28)-1)
 		sequence = '+=4.5'
 		console.log sequence
@@ -133,28 +152,33 @@ class player_video
 			myPlayer = this
 			
 			myPlayer.on 'play', ->
+				console.log 'play'
 				that.timelineInfo.play()
+				that.timelineKnob.play()
 			
 			myPlayer.on 'pause', ->
+				console.log 'pause'
 				that.timelineInfo.pause()
+				that.timelineKnob.pause()
 
 			myPlayer.on 'seeked', ->
 				that.timelineInfo.time myPlayer.currentTime()
+				that.timelineKnob.time myPlayer.currentTime()
 			
-			myPlayer.on 'timeupdate', ->
-				that.timelineInfo.time myPlayer.currentTime()
+			# myPlayer.on 'timeupdate', ->
+			# 	that.timelineInfo.time myPlayer.currentTime()
 
-				if($('#knob').hasClass 'drag')
-					return
-				percentage = ( myPlayer.currentTime() / myPlayer.duration() ) * 100;
-				whereYouAt = myPlayer.currentTime()
-				deg = Math.round((360 * (percentage / 100)))
-				if deg
-					TweenMax.to(['#knob'], .5, {rotation:deg});
-				else
-					console.log 'yo'
-					TweenMax.to [ '#knob' ], 0, rotation: deg
-				return
+			# 	if($('#knob').hasClass 'drag')
+			# 		return
+			# 	percentage = ( myPlayer.currentTime() / myPlayer.duration() ) * 100;
+			# 	whereYouAt = myPlayer.currentTime()
+			# 	deg = Math.round((360 * (percentage / 100)))
+			# 	if deg
+			# 		TweenMax.to(['#knob'], .5, {rotation:deg});
+			# 	else
+			# 		console.log 'yo'
+			# 		TweenMax.to [ '#knob' ], 0, rotation: deg
+			# 	return
 
 			return
 		)

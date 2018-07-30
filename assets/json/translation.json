@@ -1,6 +1,22 @@
 {
-    "HELLO_WORLD": {
-        "en-CA": "Hello World",
-        "fr-CA": "Bonjour le monde"
+    "face_pays": {
+        "en": "Contry side",
+        "fr": "Face pays"
+    },
+    "face_artistes": {
+        "en": "Artists side",
+        "fr": "Face artistes"
+    },
+    "a_propos": {
+        "en": "About",
+        "fr": "à propos"
+    },
+    "aide": {
+        "en": "Help",
+        "fr": "Aide"
+    },
+    "partager": {
+        "en": "Share",
+        "fr": "Partager"
     }
 }

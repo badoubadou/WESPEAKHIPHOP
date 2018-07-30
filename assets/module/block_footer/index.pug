@@ -1,20 +1,26 @@
 .footer.layer_top
 	ul#mode_switcher
 		li
-			a(href='#contrys' data-face='face_pays') Face Pays
+			a(href='#contrys' data-face='face_pays')
+				| #{TRANSLATION.face_pays[langage]}
 		li
-			a(href='#artists' data-face='face_artistes') Face Artistes
+			a(href='#artists' data-face='face_artistes')
+				| #{TRANSLATION.face_artistes[langage]}
 
 
 	ul#infos
 		li
-			a(href='#apropos') &agrave; propos
+			a(href='#apropos')
+				| #{TRANSLATION.a_propos[langage]}
 		li
-			a(href='#help') aide
+			a(href='#help') 
+				| #{TRANSLATION.aide[langage]}
 		li
 			span#sound
 				include ../../image/unmute.svg
 		li
 			#fullscreen
 		li
-			#share
+			span#share
+				include ../../image/share.svg
+				| #{TRANSLATION.partager[langage]}

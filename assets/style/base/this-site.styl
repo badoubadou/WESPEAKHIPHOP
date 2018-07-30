@@ -6,6 +6,13 @@
 
 .full_height_minus_footer
 	height calc(100% - 40px)
+	
+.full_height_minus_footer_minus_header_mobile
+	@media $bs-screen-sd-max	
+		top 80px
+		height calc(100% - 40px - 80px )
+	
+
 .max_width
 	margin 0 $space-1
 	
@@ -32,6 +39,9 @@
 
 .layer_top
 	z-index 10
+
+.overflow_hidden
+	overflow hidden
 
 .site
 	position relative

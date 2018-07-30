@@ -1,19 +1,23 @@
 html
+	width 100%
+	height 100%
 	font-size 100%
 	position relative
+	overflow hidden
 
 body
 	font-family $ft-family-primary
 	font-size 14px
 	margin 0 
 	width 100%
-	overflow-x hidden
+	height 100%
 	text-transform uppercase
 
 	&.admin-bar
 		padding-top 32px
 
 	@media $bs-screen-sd-max
+		font-size 12px
 		&.admin-bar
 			padding-top 46px
 
