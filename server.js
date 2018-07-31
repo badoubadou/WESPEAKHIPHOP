@@ -15,9 +15,11 @@ var port = process.env.PORT || 1881;
 
 http.createServer(function (request, response) {
     console.log('request starting...');
-    var filePath = '.' + request.url;
-    if (filePath == './')
-        filePath = './public/index.html';
+    // var filePath = '.' + request.url;
+    // if (filePath == './')
+    //     filePath = './public/index.html';
+    var filePath = './public/' + request.url;
+
     var extname = path.extname(filePath);
     var contentType = 'text/html';
     switch (extname) {
@@ -38,6 +40,12 @@ http.createServer(function (request, response) {
             break;
         case '.wav':
             contentType = 'audio/wav';
+            break;
+        case '.woff2':
+            contentType = 'font/font-woff2';
+            break;
+        case '.woff':
+            contentType = 'font/font-woff';
             break;
     }
     fs.readFile(filePath, function(error, content) {

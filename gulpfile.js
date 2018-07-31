@@ -28,7 +28,7 @@ var config = {
 var gulp = require('gulp');
 var s3 = require('gulp-s3-upload')(config);
 
-var pugfile = ['assets/pug/*.pug'];
+var pugfile = ['assets/pug/*.pug', '!assets/pug/layout.pug'];
 var stylfile = ['assets/style/**/*.styl', 'assets/module/**/*.styl'];
 var jsfile = ['assets/coffee/module.coffee', 'assets/module/**/*.coffee', 'assets/coffee/base.coffee'];
 var misc = ['assets/image/**'];
@@ -66,7 +66,7 @@ gulp.task('coffee', ['clean:js'], function (cb) {
 });
 
 gulp.task('css', function() {
-	return gulp.src('assets/style/style.styl')
+	return gulp.src('assets/style/*.styl')
 		.pipe(stylus({
 			use: nib(),
 			compress: false
@@ -95,7 +95,7 @@ gulp.task('pug:data', function() {
 });
 
 gulp.task('pug', ['pug:data'], function() {
-    return gulp.src('assets/pug/index.pug')
+    return gulp.src(pugfile)
         .pipe(data(function() {
             return JSON.parse(fs.readFileSync('assets/temp/data.json'))
         }))
