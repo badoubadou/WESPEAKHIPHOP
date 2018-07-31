@@ -85,11 +85,40 @@ body {
   right: 0;
 }
 @font-face {
-  font-family: Knockout;
-  src: url("../font/Knockout-HTF28-JuniorFeatherwt.woff2") format("woff2"), url("../font/Knockout-HTF28-JuniorFeatherwt.woff") format("woff");
+  font-family: Gotham;
+  font-style: normal;
+  font-weight: normal;
+  src: url("../font/Gotham-Book.woff2") format("woff2"), url("../font/Gotham-Book.woff") format("woff");
 }
-body {
+@font-face {
+  font-family: Gotham;
+  font-style: normal;
+  font-weight: 700;
+  src: url("../font/Gotham-Bold.woff2") format("woff2"), url("../font/Gotham-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: Gotham;
+  font-style: normal;
+  font-weight: 900;
+  src: url("../font/Gotham-Black.woff2") format("woff2"), url("../font/Gotham-Black.woff") format("woff");
+}
+@font-face {
+  font-family: Gotham;
+  font-style: normal;
+  font-weight: 100;
+  src: url("../font/Gotham-Light.woff2") format("woff2"), url("../font/Gotham-Light.woff") format("woff");
+}
+@font-face {
   font-family: Knockout;
+  font-style: normal;
+  font-weight: normal;
+  src: url("../font/Knockout-HTF70-FullWelterwt.woff2") format("woff2"), url("../font/Knockout-HTF70-FullWelterwt.woff") format("woff");
+}
+@font-face {
+  font-family: Knockout;
+  font-style: normal;
+  font-weight: 100;
+  src: url("../font/Knockout-HTF28-JuniorFeatherwt.woff2") format("woff2"), url("../font/Knockout-HTF28-JuniorFeatherwt.woff") format("woff");
 }
 .loader-bar {
   height: 0px;
@@ -736,6 +765,7 @@ p:empty {
 }
 #artists_info li .name {
   text-transform: uppercase;
+  font-family: Knockout, Helvetica, Arial, sans-serif;
   font-size: 3em;
   line-height: 0.8em;
 }
@@ -749,6 +779,7 @@ p:empty {
 #artists_info li .date,
 #artists_info li .contry {
   font-weight: 100;
+  font-family: Knockout, Helvetica, Arial, sans-serif;
   display: inline-block;
   width: auto;
   font-size: 2.4em;
