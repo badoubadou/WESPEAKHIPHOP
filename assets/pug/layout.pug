@@ -6,12 +6,14 @@ each it in WSH.channel.item
 		- all_videos.push(it) 
 
 - var videos = []
-each vid in all_videos
-	if vid.category
-		each cat in vid.category
+each video in all_videos
+	if video.category
+		each cat in video.category
 			if cat.nicename == langage
-				- videos.push(vid) 
+				- videos.push(video) 
 
+
+- videos.sort(function(a, b) {return a.menu_order - b.menu_order;})
 
 // - vidInOrder = []
 // while vidInOrder.length < videos.length

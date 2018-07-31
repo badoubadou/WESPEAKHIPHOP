@@ -4,7 +4,7 @@
       "title": "wespeakhiphop",
       "link": "http://wespeakhiphop.romza.eu",
       "description": "Just another Romain Malauzat Illustration Sites site",
-      "pubDate": "Tue, 31 Jul 2018 08:21:11 +0000",
+      "pubDate": "Tue, 31 Jul 2018 16:50:13 +0000",
       "language": "en-US",
       "wxr_version": "1.2",
       "base_site_url": "http://romza.eu/",
@@ -217,6 +217,13 @@
             "term_name": "Pakistan"
          },
          {
+            "term_id": "85",
+            "term_taxonomy": "pays",
+            "term_slug": "pakistan",
+            "term_parent": null,
+            "term_name": "pakistan"
+         },
+         {
             "term_id": "7",
             "term_taxonomy": "pays",
             "term_slug": "palestine",
@@ -365,14 +372,6 @@
             "term_description": "a:2:{s:2:\"fr\";i:44;s:2:\"en\";i:75;}"
          },
          {
-            "term_id": "47",
-            "term_taxonomy": "post_translations",
-            "term_slug": "pll_5b4e07c444ad2",
-            "term_parent": null,
-            "term_name": "pll_5b4e07c444ad2",
-            "term_description": "a:2:{s:2:\"en\";i:48;s:2:\"fr\";i:26;}"
-         },
-         {
             "term_id": "62",
             "term_taxonomy": "term_translations",
             "term_slug": "pll_5b5b44e55490a",
@@ -381,28 +380,20 @@
             "term_description": "a:2:{s:2:\"en\";i:46;s:2:\"fr\";i:63;}"
          },
          {
-            "term_id": "81",
-            "term_taxonomy": "post_translations",
-            "term_slug": "pll_5b5b465cedade",
+            "term_id": "84",
+            "term_taxonomy": "term_translations",
+            "term_slug": "pll_5b6086bd3cdd3",
             "term_parent": null,
-            "term_name": "pll_5b5b465cedade",
-            "term_description": "a:2:{s:2:\"en\";i:50;s:2:\"fr\";i:25;}"
+            "term_name": "pll_5b6086bd3cdd3",
+            "term_description": "a:2:{s:2:\"fr\";i:3;s:2:\"en\";i:85;}"
          },
          {
-            "term_id": "82",
-            "term_taxonomy": "post_translations",
-            "term_slug": "pll_5b5b4732ce598",
+            "term_id": "89",
+            "term_taxonomy": "term_translations",
+            "term_slug": "pll_5b6092e871275",
             "term_parent": null,
-            "term_name": "pll_5b5b4732ce598",
-            "term_description": "a:2:{s:2:\"en\";i:51;s:2:\"fr\";i:30;}"
-         },
-         {
-            "term_id": "83",
-            "term_taxonomy": "post_translations",
-            "term_slug": "pll_5b5b47b3a4512",
-            "term_parent": null,
-            "term_name": "pll_5b5b47b3a4512",
-            "term_description": "a:2:{s:2:\"fr\";i:53;s:2:\"en\";i:46;}"
+            "term_name": "pll_5b6092e871275",
+            "term_description": "a:2:{s:2:\"fr\";i:88;s:2:\"en\";i:90;}"
          },
          {
             "term_id": "42",
@@ -431,6 +422,20 @@
             "term_slug": "state-of-palestine",
             "term_parent": null,
             "term_name": "State of Palestine"
+         },
+         {
+            "term_id": "90",
+            "term_taxonomy": "pays",
+            "term_slug": "thailand",
+            "term_parent": null,
+            "term_name": "Thailand"
+         },
+         {
+            "term_id": "88",
+            "term_taxonomy": "pays",
+            "term_slug": "thailande",
+            "term_parent": null,
+            "term_name": "Thaïlande"
          },
          {
             "term_id": "38",
@@ -590,7 +595,7 @@
          },
          {
             "title": "Cut killer",
-            "link": "http://wespeakhiphop.romza.eu/en/videos/cut-killer/",
+            "link": "http://wespeakhiphop.romza.eu/fr/videos/cut-killer/",
             "pubDate": "Thu, 12 Jul 2018 14:24:27 +0000",
             "creator": "romain",
             "guid": {
@@ -610,15 +615,22 @@
             "post_name": "cut-killer",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "30",
+            "menu_order": "26",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
-            "category": {
-               "domain": "language",
-               "nicename": "en",
-               "#text": "English"
-            },
+            "category": [
+               {
+                  "domain": "language",
+                  "nicename": "fr",
+                  "#text": "Français"
+               },
+               {
+                  "domain": "pays",
+                  "nicename": "france",
+                  "#text": "France"
+               }
+            ],
             "postmeta": [
                {
                   "meta_key": "_edit_last",
@@ -660,7 +672,7 @@
          },
          {
             "title": "End of the game",
-            "link": "http://wespeakhiphop.romza.eu/videos/end-of-the-game/",
+            "link": "http://wespeakhiphop.romza.eu/fr/videos/end-of-the-game/",
             "pubDate": "Thu, 12 Jul 2018 14:25:31 +0000",
             "creator": "romain",
             "guid": {
@@ -680,15 +692,22 @@
             "post_name": "end-of-the-game",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "29",
+            "menu_order": "25",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
-            "category": {
-               "domain": "pays",
-               "nicename": "france",
-               "#text": "France"
-            },
+            "category": [
+               {
+                  "domain": "language",
+                  "nicename": "fr",
+                  "#text": "Français"
+               },
+               {
+                  "domain": "pays",
+                  "nicename": "france",
+                  "#text": "France"
+               }
+            ],
             "postmeta": [
                {
                   "meta_key": "_edit_last",
@@ -730,7 +749,7 @@
          },
          {
             "title": "Passi",
-            "link": "http://wespeakhiphop.romza.eu/videos/passi/",
+            "link": "http://wespeakhiphop.romza.eu/fr/videos/passi/",
             "pubDate": "Thu, 12 Jul 2018 14:25:58 +0000",
             "creator": "romain",
             "guid": {
@@ -750,15 +769,22 @@
             "post_name": "passi",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "28",
+            "menu_order": "24",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
-            "category": {
-               "domain": "pays",
-               "nicename": "france",
-               "#text": "France"
-            },
+            "category": [
+               {
+                  "domain": "language",
+                  "nicename": "fr",
+                  "#text": "Français"
+               },
+               {
+                  "domain": "pays",
+                  "nicename": "france",
+                  "#text": "France"
+               }
+            ],
             "postmeta": [
                {
                   "meta_key": "_edit_last",
@@ -800,7 +826,7 @@
          },
          {
             "title": "JeanJass",
-            "link": "http://wespeakhiphop.romza.eu/videos/jeanjass/",
+            "link": "http://wespeakhiphop.romza.eu/fr/videos/jeanjass/",
             "pubDate": "Thu, 12 Jul 2018 14:26:26 +0000",
             "creator": "romain",
             "guid": {
@@ -820,15 +846,22 @@
             "post_name": "jeanjass",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "27",
+            "menu_order": "23",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
-            "category": {
-               "domain": "pays",
-               "nicename": "france",
-               "#text": "France"
-            },
+            "category": [
+               {
+                  "domain": "language",
+                  "nicename": "fr",
+                  "#text": "Français"
+               },
+               {
+                  "domain": "pays",
+                  "nicename": "france",
+                  "#text": "France"
+               }
+            ],
             "postmeta": [
                {
                   "meta_key": "_edit_last",
@@ -870,7 +903,7 @@
          },
          {
             "title": "Ali gul pir",
-            "link": "http://wespeakhiphop.romza.eu/videos/ali-gul-pir/",
+            "link": "http://wespeakhiphop.romza.eu/fr/videos/ali-gul-pir/",
             "pubDate": "Thu, 12 Jul 2018 14:28:28 +0000",
             "creator": "romain",
             "guid": {
@@ -890,15 +923,22 @@
             "post_name": "ali-gul-pir",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "26",
+            "menu_order": "22",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
-            "category": {
-               "domain": "pays",
-               "nicename": "israel",
-               "#text": "Israel"
-            },
+            "category": [
+               {
+                  "domain": "language",
+                  "nicename": "fr",
+                  "#text": "Français"
+               },
+               {
+                  "domain": "pays",
+                  "nicename": "israel",
+                  "#text": "Israel"
+               }
+            ],
             "postmeta": [
                {
                   "meta_key": "_edit_last",
@@ -940,7 +980,7 @@
          },
          {
             "title": "Faris",
-            "link": "http://wespeakhiphop.romza.eu/videos/faris/",
+            "link": "http://wespeakhiphop.romza.eu/fr/videos/faris/",
             "pubDate": "Thu, 12 Jul 2018 14:30:16 +0000",
             "creator": "romain",
             "guid": {
@@ -960,15 +1000,22 @@
             "post_name": "faris",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "15",
+            "menu_order": "11",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
-            "category": {
-               "domain": "pays",
-               "nicename": "pakistan",
-               "#text": "Pakistan"
-            },
+            "category": [
+               {
+                  "domain": "language",
+                  "nicename": "fr",
+                  "#text": "Français"
+               },
+               {
+                  "domain": "pays",
+                  "nicename": "pakistan",
+                  "#text": "Pakistan"
+               }
+            ],
             "postmeta": [
                {
                   "meta_key": "_edit_last",
@@ -1030,7 +1077,7 @@
             "post_name": "d-coy",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "13",
+            "menu_order": "9",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
@@ -1107,7 +1154,7 @@
             "post_name": "awadi",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "12",
+            "menu_order": "8",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
@@ -1184,7 +1231,7 @@
             "post_name": "afraa",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "8",
+            "menu_order": "4",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
@@ -1240,170 +1287,6 @@
             ]
          },
          {
-            "title": "Dynamic Duo",
-            "link": "http://wespeakhiphop.romza.eu/fr/videos/dynamic-duo/",
-            "pubDate": "Thu, 12 Jul 2018 14:39:56 +0000",
-            "creator": "romain",
-            "guid": {
-               "isPermaLink": "false",
-               "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=25"
-            },
-            "description": [],
-            "encoded": [
-               null,
-               null
-            ],
-            "post_id": "25",
-            "post_date": "2018-07-12 14:39:56",
-            "post_date_gmt": "2018-07-12 14:39:56",
-            "comment_status": "closed",
-            "ping_status": "closed",
-            "post_name": "dynamic-duo",
-            "status": "publish",
-            "post_parent": "0",
-            "menu_order": "6",
-            "post_type": "videos",
-            "post_password": null,
-            "is_sticky": "0",
-            "category": [
-               {
-                  "domain": "pays",
-                  "nicename": "coree-du-sud",
-                  "#text": "Corée du sud"
-               },
-               {
-                  "domain": "language",
-                  "nicename": "fr",
-                  "#text": "Français"
-               },
-               {
-                  "domain": "post_translations",
-                  "nicename": "pll_5b5b465cedade",
-                  "#text": "pll_5b5b465cedade"
-               }
-            ],
-            "postmeta": [
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
-               },
-               {
-                  "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=jWFb5z3kUSQ"
-               },
-               {
-                  "meta_key": "tag_line",
-                  "meta_value": "Dinamic duo rocks"
-               },
-               {
-                  "meta_key": "description",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "date",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_video",
-                  "meta_value": "field_5b473e562c1bd"
-               },
-               {
-                  "meta_key": "_tag_line",
-                  "meta_value": "field_5b473e9b2c1be"
-               },
-               {
-                  "meta_key": "_description",
-                  "meta_value": "field_5b475d3a2c1bf"
-               },
-               {
-                  "meta_key": "_date",
-                  "meta_value": "field_5b475d502c1c0"
-               }
-            ]
-         },
-         {
-            "title": "Casa crew",
-            "link": "http://wespeakhiphop.romza.eu/fr/videos/casa-crew/",
-            "pubDate": "Thu, 12 Jul 2018 14:40:36 +0000",
-            "creator": "romain",
-            "guid": {
-               "isPermaLink": "false",
-               "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=26"
-            },
-            "description": [],
-            "encoded": [
-               null,
-               null
-            ],
-            "post_id": "26",
-            "post_date": "2018-07-12 14:40:36",
-            "post_date_gmt": "2018-07-12 14:40:36",
-            "comment_status": "closed",
-            "ping_status": "closed",
-            "post_name": "casa-crew",
-            "status": "publish",
-            "post_parent": "0",
-            "menu_order": "5",
-            "post_type": "videos",
-            "post_password": null,
-            "is_sticky": "0",
-            "category": [
-               {
-                  "domain": "language",
-                  "nicename": "fr",
-                  "#text": "Français"
-               },
-               {
-                  "domain": "pays",
-                  "nicename": "maroc",
-                  "#text": "Maroc"
-               },
-               {
-                  "domain": "post_translations",
-                  "nicename": "pll_5b4e07c444ad2",
-                  "#text": "pll_5b4e07c444ad2"
-               }
-            ],
-            "postmeta": [
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
-               },
-               {
-                  "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=W10F0ezCTIQ"
-               },
-               {
-                  "meta_key": "_video",
-                  "meta_value": "field_5b473e562c1bd"
-               },
-               {
-                  "meta_key": "tag_line",
-                  "meta_value": "A Tooth For An Eye' from The Knife's album 'Shaking The Habitual', out now"
-               },
-               {
-                  "meta_key": "_tag_line",
-                  "meta_value": "field_5b473e9b2c1be"
-               },
-               {
-                  "meta_key": "description",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_description",
-                  "meta_value": "field_5b475d3a2c1bf"
-               },
-               {
-                  "meta_key": "date",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_date",
-                  "meta_value": "field_5b475d502c1c0"
-               }
-            ]
-         },
-         {
             "title": "Joe flizzow",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/joe-flizzow/",
             "pubDate": "Thu, 12 Jul 2018 14:41:41 +0000",
@@ -1425,7 +1308,7 @@
             "post_name": "joe-flizzow",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "32",
+            "menu_order": "28",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
@@ -1502,7 +1385,7 @@
             "post_name": "wu-tang-clan",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "31",
+            "menu_order": "27",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
@@ -1558,88 +1441,6 @@
             ]
          },
          {
-            "title": "Big",
-            "link": "http://wespeakhiphop.romza.eu/fr/videos/3-big/",
-            "pubDate": "Thu, 12 Jul 2018 14:47:36 +0000",
-            "creator": "romain",
-            "guid": {
-               "isPermaLink": "false",
-               "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=30"
-            },
-            "description": [],
-            "encoded": [
-               null,
-               null
-            ],
-            "post_id": "30",
-            "post_date": "2018-07-12 14:47:36",
-            "post_date_gmt": "2018-07-12 14:47:36",
-            "comment_status": "closed",
-            "ping_status": "closed",
-            "post_name": "3-big",
-            "status": "publish",
-            "post_parent": "0",
-            "menu_order": "7",
-            "post_type": "videos",
-            "post_password": null,
-            "is_sticky": "0",
-            "category": [
-               {
-                  "domain": "language",
-                  "nicename": "fr",
-                  "#text": "Français"
-               },
-               {
-                  "domain": "pays",
-                  "nicename": "maroc",
-                  "#text": "Maroc"
-               },
-               {
-                  "domain": "post_translations",
-                  "nicename": "pll_5b5b4732ce598",
-                  "#text": "pll_5b5b4732ce598"
-               }
-            ],
-            "postmeta": [
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
-               },
-               {
-                  "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=gKhjaGRhIYU"
-               },
-               {
-                  "meta_key": "tag_line",
-                  "meta_value": "Big Big Big, it's too big."
-               },
-               {
-                  "meta_key": "description",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "date",
-                  "meta_value": "2012"
-               },
-               {
-                  "meta_key": "_video",
-                  "meta_value": "field_5b473e562c1bd"
-               },
-               {
-                  "meta_key": "_tag_line",
-                  "meta_value": "field_5b473e9b2c1be"
-               },
-               {
-                  "meta_key": "_description",
-                  "meta_value": "field_5b475d3a2c1bf"
-               },
-               {
-                  "meta_key": "_date",
-                  "meta_value": "field_5b475d502c1c0"
-               }
-            ]
-         },
-         {
             "title": "Dam",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/6-dam/",
             "pubDate": "Thu, 12 Jul 2018 14:48:03 +0000",
@@ -1661,7 +1462,7 @@
             "post_name": "6-dam",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "10",
+            "menu_order": "6",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
@@ -1717,423 +1518,6 @@
             ]
          },
          {
-            "title": "Dynamic Duo",
-            "link": "http://wespeakhiphop.romza.eu/en/videos/dynamic-duo/",
-            "pubDate": "Fri, 27 Jul 2018 16:20:45 +0000",
-            "creator": "romain",
-            "guid": {
-               "isPermaLink": "false",
-               "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=50"
-            },
-            "description": [],
-            "encoded": [
-               null,
-               null
-            ],
-            "post_id": "50",
-            "post_date": "2018-07-27 16:20:45",
-            "post_date_gmt": "2018-07-27 16:20:45",
-            "comment_status": "closed",
-            "ping_status": "closed",
-            "post_name": "dynamic-duo",
-            "status": "publish",
-            "post_parent": "0",
-            "menu_order": "3",
-            "post_type": "videos",
-            "post_password": null,
-            "is_sticky": "0",
-            "category": [
-               {
-                  "domain": "language",
-                  "nicename": "en",
-                  "#text": "English"
-               },
-               {
-                  "domain": "post_translations",
-                  "nicename": "pll_5b5b465cedade",
-                  "#text": "pll_5b5b465cedade"
-               },
-               {
-                  "domain": "pays",
-                  "nicename": "south-korea",
-                  "#text": "South Korea"
-               }
-            ],
-            "postmeta": [
-               {
-                  "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=jWFb5z3kUSQ"
-               },
-               {
-                  "meta_key": "tag_line",
-                  "meta_value": "Dinamic duo rocks"
-               },
-               {
-                  "meta_key": "description",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "date",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
-               },
-               {
-                  "meta_key": "_video",
-                  "meta_value": "field_5b473e562c1bd"
-               },
-               {
-                  "meta_key": "_tag_line",
-                  "meta_value": "field_5b473e9b2c1be"
-               },
-               {
-                  "meta_key": "_description",
-                  "meta_value": "field_5b475d3a2c1bf"
-               },
-               {
-                  "meta_key": "_date",
-                  "meta_value": "field_5b475d502c1c0"
-               }
-            ]
-         },
-         {
-            "title": "Big",
-            "link": "http://wespeakhiphop.romza.eu/en/videos/big/",
-            "pubDate": "Fri, 27 Jul 2018 16:24:19 +0000",
-            "creator": "romain",
-            "guid": {
-               "isPermaLink": "false",
-               "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=51"
-            },
-            "description": [],
-            "encoded": [
-               null,
-               null
-            ],
-            "post_id": "51",
-            "post_date": "2018-07-27 16:24:19",
-            "post_date_gmt": "2018-07-27 16:24:19",
-            "comment_status": "closed",
-            "ping_status": "closed",
-            "post_name": "big",
-            "status": "publish",
-            "post_parent": "0",
-            "menu_order": "1",
-            "post_type": "videos",
-            "post_password": null,
-            "is_sticky": "0",
-            "category": [
-               {
-                  "domain": "language",
-                  "nicename": "en",
-                  "#text": "English"
-               },
-               {
-                  "domain": "pays",
-                  "nicename": "morocco",
-                  "#text": "Morocco"
-               },
-               {
-                  "domain": "post_translations",
-                  "nicename": "pll_5b5b4732ce598",
-                  "#text": "pll_5b5b4732ce598"
-               }
-            ],
-            "postmeta": [
-               {
-                  "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=gKhjaGRhIYU"
-               },
-               {
-                  "meta_key": "tag_line",
-                  "meta_value": "Big Big Big, it's too big."
-               },
-               {
-                  "meta_key": "description",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "date",
-                  "meta_value": "2012"
-               },
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
-               },
-               {
-                  "meta_key": "_video",
-                  "meta_value": "field_5b473e562c1bd"
-               },
-               {
-                  "meta_key": "_tag_line",
-                  "meta_value": "field_5b473e9b2c1be"
-               },
-               {
-                  "meta_key": "_description",
-                  "meta_value": "field_5b475d3a2c1bf"
-               },
-               {
-                  "meta_key": "_date",
-                  "meta_value": "field_5b475d502c1c0"
-               }
-            ]
-         },
-         {
-            "title": "NIGEL HA’ ADMOR",
-            "link": "http://wespeakhiphop.romza.eu/videos/nigel-ha-admor__trashed/",
-            "pubDate": "Thu, 12 Jul 2018 14:32:46 +0000",
-            "creator": "romain",
-            "guid": {
-               "isPermaLink": "false",
-               "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=17"
-            },
-            "description": [],
-            "encoded": [
-               null,
-               null
-            ],
-            "post_id": "17",
-            "post_date": "2018-07-12 14:32:46",
-            "post_date_gmt": "2018-07-12 14:32:46",
-            "comment_status": "closed",
-            "ping_status": "closed",
-            "post_name": "nigel-ha-admor__trashed",
-            "status": "trash",
-            "post_parent": "0",
-            "menu_order": "23",
-            "post_type": "videos",
-            "post_password": null,
-            "is_sticky": "0",
-            "category": {
-               "domain": "pays",
-               "nicename": "israel",
-               "#text": "Israel"
-            },
-            "postmeta": [
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
-               },
-               {
-                  "meta_key": "video",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_video",
-                  "meta_value": "field_5b473e562c1bd"
-               },
-               {
-                  "meta_key": "tag_line",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_tag_line",
-                  "meta_value": "field_5b473e9b2c1be"
-               },
-               {
-                  "meta_key": "description",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_description",
-                  "meta_value": "field_5b475d3a2c1bf"
-               },
-               {
-                  "meta_key": "date",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_date",
-                  "meta_value": "field_5b475d502c1c0"
-               },
-               {
-                  "meta_key": "_wp_trash_meta_status",
-                  "meta_value": "publish"
-               },
-               {
-                  "meta_key": "_wp_trash_meta_time",
-                  "meta_value": "1531489623"
-               },
-               {
-                  "meta_key": "_wp_desired_post_slug",
-                  "meta_value": "nigel-ha-admor"
-               }
-            ]
-         },
-         {
-            "title": "Geeg",
-            "link": "http://wespeakhiphop.romza.eu/fr/videos/geeg__trashed/",
-            "pubDate": "Thu, 12 Jul 2018 14:35:35 +0000",
-            "creator": "romain",
-            "guid": {
-               "isPermaLink": "false",
-               "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=20"
-            },
-            "description": [],
-            "encoded": [
-               null,
-               null
-            ],
-            "post_id": "20",
-            "post_date": "2018-07-12 14:35:35",
-            "post_date_gmt": "2018-07-12 14:35:35",
-            "comment_status": "closed",
-            "ping_status": "closed",
-            "post_name": "geeg__trashed",
-            "status": "trash",
-            "post_parent": "0",
-            "menu_order": "22",
-            "post_type": "videos",
-            "post_password": null,
-            "is_sticky": "0",
-            "category": {
-               "domain": "language",
-               "nicename": "fr",
-               "#text": "Français"
-            },
-            "postmeta": [
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
-               },
-               {
-                  "meta_key": "video",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_video",
-                  "meta_value": "field_5b473e562c1bd"
-               },
-               {
-                  "meta_key": "tag_line",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_tag_line",
-                  "meta_value": "field_5b473e9b2c1be"
-               },
-               {
-                  "meta_key": "description",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_description",
-                  "meta_value": "field_5b475d3a2c1bf"
-               },
-               {
-                  "meta_key": "date",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_date",
-                  "meta_value": "field_5b475d502c1c0"
-               },
-               {
-                  "meta_key": "_wp_trash_meta_status",
-                  "meta_value": "publish"
-               },
-               {
-                  "meta_key": "_wp_trash_meta_time",
-                  "meta_value": "1531489632"
-               },
-               {
-                  "meta_key": "_wp_desired_post_slug",
-                  "meta_value": "geeg"
-               }
-            ]
-         },
-         {
-            "title": "Joe Flizzow",
-            "link": "http://wespeakhiphop.romza.eu/fr/videos/daam__trashed/",
-            "pubDate": "Thu, 12 Jul 2018 14:36:17 +0000",
-            "creator": "romain",
-            "guid": {
-               "isPermaLink": "false",
-               "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=21"
-            },
-            "description": [],
-            "encoded": [
-               null,
-               null
-            ],
-            "post_id": "21",
-            "post_date": "2018-07-12 14:36:17",
-            "post_date_gmt": "2018-07-12 14:36:17",
-            "comment_status": "closed",
-            "ping_status": "closed",
-            "post_name": "daam__trashed",
-            "status": "trash",
-            "post_parent": "0",
-            "menu_order": "19",
-            "post_type": "videos",
-            "post_password": null,
-            "is_sticky": "0",
-            "category": [
-               {
-                  "domain": "language",
-                  "nicename": "fr",
-                  "#text": "Français"
-               },
-               {
-                  "domain": "pays",
-                  "nicename": "malaisie",
-                  "#text": "Malaisie"
-               }
-            ],
-            "postmeta": [
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
-               },
-               {
-                  "meta_key": "video",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_video",
-                  "meta_value": "field_5b473e562c1bd"
-               },
-               {
-                  "meta_key": "tag_line",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_tag_line",
-                  "meta_value": "field_5b473e9b2c1be"
-               },
-               {
-                  "meta_key": "description",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_description",
-                  "meta_value": "field_5b475d3a2c1bf"
-               },
-               {
-                  "meta_key": "date",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_date",
-                  "meta_value": "field_5b475d502c1c0"
-               },
-               {
-                  "meta_key": "_wp_trash_meta_status",
-                  "meta_value": "publish"
-               },
-               {
-                  "meta_key": "_wp_trash_meta_time",
-                  "meta_value": "1531489046"
-               },
-               {
-                  "meta_key": "_wp_desired_post_slug",
-                  "meta_value": "daam"
-               }
-            ]
-         },
-         {
             "title": "Deeg J Force 3",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/deeg-j-force-3/",
             "pubDate": "Thu, 12 Jul 2018 14:48:59 +0000",
@@ -2155,7 +1539,7 @@
             "post_name": "deeg-j-force-3",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "11",
+            "menu_order": "7",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
@@ -2232,7 +1616,7 @@
             "post_name": "admore",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "14",
+            "menu_order": "10",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
@@ -2309,7 +1693,7 @@
             "post_name": "masta-g",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "16",
+            "menu_order": "12",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
@@ -2365,6 +1749,160 @@
             ]
          },
          {
+            "title": "Dynamic Duo",
+            "link": "http://wespeakhiphop.romza.eu/fr/videos/dynamic-duo/",
+            "pubDate": "Fri, 27 Jul 2018 16:20:45 +0000",
+            "creator": "romain",
+            "guid": {
+               "isPermaLink": "false",
+               "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=50"
+            },
+            "description": [],
+            "encoded": [
+               null,
+               null
+            ],
+            "post_id": "50",
+            "post_date": "2018-07-27 16:20:45",
+            "post_date_gmt": "2018-07-27 16:20:45",
+            "comment_status": "closed",
+            "ping_status": "closed",
+            "post_name": "dynamic-duo",
+            "status": "publish",
+            "post_parent": "0",
+            "menu_order": "2",
+            "post_type": "videos",
+            "post_password": null,
+            "is_sticky": "0",
+            "category": [
+               {
+                  "domain": "pays",
+                  "nicename": "coree-du-sud",
+                  "#text": "Corée du sud"
+               },
+               {
+                  "domain": "language",
+                  "nicename": "fr",
+                  "#text": "Français"
+               }
+            ],
+            "postmeta": [
+               {
+                  "meta_key": "video",
+                  "meta_value": "https://www.youtube.com/watch?v=jWFb5z3kUSQ"
+               },
+               {
+                  "meta_key": "tag_line",
+                  "meta_value": "Dinamic duo rocks"
+               },
+               {
+                  "meta_key": "description",
+                  "meta_value": null
+               },
+               {
+                  "meta_key": "date",
+                  "meta_value": "2001"
+               },
+               {
+                  "meta_key": "_edit_last",
+                  "meta_value": "1"
+               },
+               {
+                  "meta_key": "_video",
+                  "meta_value": "field_5b473e562c1bd"
+               },
+               {
+                  "meta_key": "_tag_line",
+                  "meta_value": "field_5b473e9b2c1be"
+               },
+               {
+                  "meta_key": "_description",
+                  "meta_value": "field_5b475d3a2c1bf"
+               },
+               {
+                  "meta_key": "_date",
+                  "meta_value": "field_5b475d502c1c0"
+               }
+            ]
+         },
+         {
+            "title": "Big",
+            "link": "http://wespeakhiphop.romza.eu/fr/videos/big/",
+            "pubDate": "Fri, 27 Jul 2018 16:24:19 +0000",
+            "creator": "romain",
+            "guid": {
+               "isPermaLink": "false",
+               "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=51"
+            },
+            "description": [],
+            "encoded": [
+               null,
+               null
+            ],
+            "post_id": "51",
+            "post_date": "2018-07-27 16:24:19",
+            "post_date_gmt": "2018-07-27 16:24:19",
+            "comment_status": "closed",
+            "ping_status": "closed",
+            "post_name": "big",
+            "status": "publish",
+            "post_parent": "0",
+            "menu_order": "3",
+            "post_type": "videos",
+            "post_password": null,
+            "is_sticky": "0",
+            "category": [
+               {
+                  "domain": "language",
+                  "nicename": "fr",
+                  "#text": "Français"
+               },
+               {
+                  "domain": "pays",
+                  "nicename": "maroc",
+                  "#text": "Maroc"
+               }
+            ],
+            "postmeta": [
+               {
+                  "meta_key": "video",
+                  "meta_value": "https://www.youtube.com/watch?v=gKhjaGRhIYU"
+               },
+               {
+                  "meta_key": "tag_line",
+                  "meta_value": "Big Big Big, it's too big."
+               },
+               {
+                  "meta_key": "description",
+                  "meta_value": null
+               },
+               {
+                  "meta_key": "date",
+                  "meta_value": "2012"
+               },
+               {
+                  "meta_key": "_edit_last",
+                  "meta_value": "1"
+               },
+               {
+                  "meta_key": "_video",
+                  "meta_value": "field_5b473e562c1bd"
+               },
+               {
+                  "meta_key": "_tag_line",
+                  "meta_value": "field_5b473e9b2c1be"
+               },
+               {
+                  "meta_key": "_description",
+                  "meta_value": "field_5b475d3a2c1bf"
+               },
+               {
+                  "meta_key": "_date",
+                  "meta_value": "field_5b475d502c1c0"
+               }
+            ]
+         },
+         {
             "title": "Muki",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/muki/",
             "pubDate": "Thu, 12 Jul 2018 14:50:40 +0000",
@@ -2386,7 +1924,7 @@
             "post_name": "muki",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "19",
+            "menu_order": "15",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
@@ -2463,7 +2001,7 @@
             "post_name": "faso-combat",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "17",
+            "menu_order": "13",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
@@ -2540,7 +2078,7 @@
             "post_name": "saykoji",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "18",
+            "menu_order": "14",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
@@ -2617,7 +2155,7 @@
             "post_name": "epik-high",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "21",
+            "menu_order": "17",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
@@ -2694,15 +2232,22 @@
             "post_name": "shazet",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "20",
+            "menu_order": "16",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
-            "category": {
-               "domain": "language",
-               "nicename": "fr",
-               "#text": "Français"
-            },
+            "category": [
+               {
+                  "domain": "language",
+                  "nicename": "fr",
+                  "#text": "Français"
+               },
+               {
+                  "domain": "pays",
+                  "nicename": "malaisie",
+                  "#text": "Malaisie"
+               }
+            ],
             "postmeta": [
                {
                   "meta_key": "_edit_last",
@@ -2744,7 +2289,7 @@
          },
          {
             "title": "Priska",
-            "link": "http://wespeakhiphop.romza.eu/videos/priska/",
+            "link": "http://wespeakhiphop.romza.eu/fr/videos/priska/",
             "pubDate": "Fri, 13 Jul 2018 13:14:00 +0000",
             "creator": "romain",
             "guid": {
@@ -2764,15 +2309,22 @@
             "post_name": "priska",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "24",
+            "menu_order": "20",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
-            "category": {
-               "domain": "pays",
-               "nicename": "cote-divoire",
-               "#text": "Côte d’Ivoire"
-            },
+            "category": [
+               {
+                  "domain": "pays",
+                  "nicename": "cote-divoire",
+                  "#text": "Côte d'Ivoire"
+               },
+               {
+                  "domain": "language",
+                  "nicename": "fr",
+                  "#text": "Français"
+               }
+            ],
             "postmeta": [
                {
                   "meta_key": "_edit_last",
@@ -2814,7 +2366,7 @@
          },
          {
             "title": "Thaitanium",
-            "link": "http://wespeakhiphop.romza.eu/videos/thaitanium/",
+            "link": "http://wespeakhiphop.romza.eu/fr/videos/thaitanium/",
             "pubDate": "Fri, 13 Jul 2018 13:38:05 +0000",
             "creator": "romain",
             "guid": {
@@ -2834,10 +2386,22 @@
             "post_name": "thaitanium",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "25",
+            "menu_order": "21",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
+            "category": [
+               {
+                  "domain": "language",
+                  "nicename": "fr",
+                  "#text": "Français"
+               },
+               {
+                  "domain": "pays",
+                  "nicename": "thailande",
+                  "#text": "Thaïlande"
+               }
+            ],
             "postmeta": [
                {
                   "meta_key": "_edit_last",
@@ -2879,7 +2443,7 @@
          },
          {
             "title": "Racine J",
-            "link": "http://wespeakhiphop.romza.eu/videos/racine-j/",
+            "link": "http://wespeakhiphop.romza.eu/fr/videos/racine-j/",
             "pubDate": "Fri, 13 Jul 2018 13:41:49 +0000",
             "creator": "romain",
             "guid": {
@@ -2899,10 +2463,22 @@
             "post_name": "racine-j",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "22",
+            "menu_order": "18",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
+            "category": [
+               {
+                  "domain": "language",
+                  "nicename": "fr",
+                  "#text": "Français"
+               },
+               {
+                  "domain": "pays",
+                  "nicename": "guinee-conakry",
+                  "#text": "guinée conakry"
+               }
+            ],
             "postmeta": [
                {
                   "meta_key": "_edit_last",
@@ -2944,7 +2520,7 @@
          },
          {
             "title": "Daara",
-            "link": "http://wespeakhiphop.romza.eu/videos/daara/",
+            "link": "http://wespeakhiphop.romza.eu/fr/videos/daara/",
             "pubDate": "Fri, 13 Jul 2018 13:42:51 +0000",
             "creator": "romain",
             "guid": {
@@ -2964,15 +2540,22 @@
             "post_name": "daara",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "23",
+            "menu_order": "19",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
-            "category": {
-               "domain": "pays",
-               "nicename": "senegal",
-               "#text": "Senegal"
-            },
+            "category": [
+               {
+                  "domain": "language",
+                  "nicename": "fr",
+                  "#text": "Français"
+               },
+               {
+                  "domain": "pays",
+                  "nicename": "senegal",
+                  "#text": "Senegal"
+               }
+            ],
             "postmeta": [
                {
                   "meta_key": "_edit_last",
@@ -2983,28 +2566,28 @@
                   "meta_value": null
                },
                {
-                  "meta_key": "_video",
-                  "meta_value": "field_5b473e562c1bd"
-               },
-               {
                   "meta_key": "tag_line",
                   "meta_value": null
-               },
-               {
-                  "meta_key": "_tag_line",
-                  "meta_value": "field_5b473e9b2c1be"
                },
                {
                   "meta_key": "description",
                   "meta_value": null
                },
                {
-                  "meta_key": "_description",
-                  "meta_value": "field_5b475d3a2c1bf"
-               },
-               {
                   "meta_key": "date",
                   "meta_value": null
+               },
+               {
+                  "meta_key": "_video",
+                  "meta_value": "field_5b473e562c1bd"
+               },
+               {
+                  "meta_key": "_tag_line",
+                  "meta_value": "field_5b473e9b2c1be"
+               },
+               {
+                  "meta_key": "_description",
+                  "meta_value": "field_5b475d3a2c1bf"
                },
                {
                   "meta_key": "_date",
@@ -3014,7 +2597,7 @@
          },
          {
             "title": "Label KlapYaHandz",
-            "link": "http://wespeakhiphop.romza.eu/en/videos/label-klapyahandz/",
+            "link": "http://wespeakhiphop.romza.eu/fr/videos/label-klapyahandz/",
             "pubDate": "Fri, 13 Jul 2018 13:45:06 +0000",
             "creator": "romain",
             "guid": {
@@ -3034,25 +2617,20 @@
             "post_name": "label-klapyahandz",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "9",
+            "menu_order": "5",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
             "category": [
                {
                   "domain": "language",
-                  "nicename": "en",
-                  "#text": "English"
+                  "nicename": "fr",
+                  "#text": "Français"
                },
                {
                   "domain": "pays",
-                  "nicename": "japan",
-                  "#text": "Japan"
-               },
-               {
-                  "domain": "post_translations",
-                  "nicename": "pll_5b5b47b3a4512",
-                  "#text": "pll_5b5b47b3a4512"
+                  "nicename": "japon",
+                  "#text": "japon"
                }
             ],
             "postmeta": [
@@ -3096,7 +2674,7 @@
          },
          {
             "title": "Casa crew",
-            "link": "http://wespeakhiphop.romza.eu/en/videos/casa-crew-2/",
+            "link": "http://wespeakhiphop.romza.eu/fr/videos/casa-crew-2/",
             "pubDate": "Tue, 17 Jul 2018 15:14:12 +0000",
             "creator": "romain",
             "guid": {
@@ -3116,25 +2694,20 @@
             "post_name": "casa-crew-2",
             "status": "publish",
             "post_parent": "0",
-            "menu_order": "4",
+            "menu_order": "1",
             "post_type": "videos",
             "post_password": null,
             "is_sticky": "0",
             "category": [
                {
                   "domain": "language",
-                  "nicename": "en",
-                  "#text": "English"
+                  "nicename": "fr",
+                  "#text": "Français"
                },
                {
                   "domain": "pays",
-                  "nicename": "morocco",
-                  "#text": "Morocco"
-               },
-               {
-                  "domain": "post_translations",
-                  "nicename": "pll_5b4e07c444ad2",
-                  "#text": "pll_5b4e07c444ad2"
+                  "nicename": "maroc",
+                  "#text": "Maroc"
                }
             ],
             "postmeta": [
@@ -3152,7 +2725,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2002"
                },
                {
                   "meta_key": "_edit_last",
@@ -3173,418 +2746,6 @@
                {
                   "meta_key": "_date",
                   "meta_value": "field_5b475d502c1c0"
-               }
-            ]
-         },
-         {
-            "title": "Label KlapYaHandz",
-            "link": "http://wespeakhiphop.romza.eu/fr/videos/label-klapyahandz/",
-            "pubDate": "Fri, 27 Jul 2018 16:26:27 +0000",
-            "creator": "romain",
-            "guid": {
-               "isPermaLink": "false",
-               "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=53"
-            },
-            "description": [],
-            "encoded": [
-               null,
-               null
-            ],
-            "post_id": "53",
-            "post_date": "2018-07-27 16:26:27",
-            "post_date_gmt": "2018-07-27 16:26:27",
-            "comment_status": "closed",
-            "ping_status": "closed",
-            "post_name": "label-klapyahandz",
-            "status": "publish",
-            "post_parent": "0",
-            "menu_order": "2",
-            "post_type": "videos",
-            "post_password": null,
-            "is_sticky": "0",
-            "category": [
-               {
-                  "domain": "language",
-                  "nicename": "fr",
-                  "#text": "Français"
-               },
-               {
-                  "domain": "pays",
-                  "nicename": "japon",
-                  "#text": "japon"
-               },
-               {
-                  "domain": "post_translations",
-                  "nicename": "pll_5b5b47b3a4512",
-                  "#text": "pll_5b5b47b3a4512"
-               }
-            ],
-            "postmeta": [
-               {
-                  "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=r2CpcLvc90M"
-               },
-               {
-                  "meta_key": "tag_line",
-                  "meta_value": "Klap Klap Klap, move yo hands moth'Fuker"
-               },
-               {
-                  "meta_key": "description",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "date",
-                  "meta_value": "2010"
-               },
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
-               },
-               {
-                  "meta_key": "_video",
-                  "meta_value": "field_5b473e562c1bd"
-               },
-               {
-                  "meta_key": "_tag_line",
-                  "meta_value": "field_5b473e9b2c1be"
-               },
-               {
-                  "meta_key": "_description",
-                  "meta_value": "field_5b475d3a2c1bf"
-               },
-               {
-                  "meta_key": "_date",
-                  "meta_value": "field_5b475d502c1c0"
-               }
-            ]
-         },
-         {
-            "title": "Kap Yahandz",
-            "link": "http://wespeakhiphop.romza.eu/fr/videos/kap-yahandz__trashed/",
-            "pubDate": "Thu, 12 Jul 2018 14:37:18 +0000",
-            "creator": "romain",
-            "guid": {
-               "isPermaLink": "false",
-               "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=22"
-            },
-            "description": [],
-            "encoded": [
-               null,
-               null
-            ],
-            "post_id": "22",
-            "post_date": "2018-07-12 14:37:18",
-            "post_date_gmt": "2018-07-12 14:37:18",
-            "comment_status": "closed",
-            "ping_status": "closed",
-            "post_name": "kap-yahandz__trashed",
-            "status": "trash",
-            "post_parent": "0",
-            "menu_order": "22",
-            "post_type": "videos",
-            "post_password": null,
-            "is_sticky": "0",
-            "category": [
-               {
-                  "domain": "pays",
-                  "nicename": "cambodge",
-                  "#text": "Cambodge"
-               },
-               {
-                  "domain": "language",
-                  "nicename": "fr",
-                  "#text": "Français"
-               }
-            ],
-            "postmeta": [
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
-               },
-               {
-                  "meta_key": "video",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_video",
-                  "meta_value": "field_5b473e562c1bd"
-               },
-               {
-                  "meta_key": "tag_line",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_tag_line",
-                  "meta_value": "field_5b473e9b2c1be"
-               },
-               {
-                  "meta_key": "description",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_description",
-                  "meta_value": "field_5b475d3a2c1bf"
-               },
-               {
-                  "meta_key": "date",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_date",
-                  "meta_value": "field_5b475d502c1c0"
-               },
-               {
-                  "meta_key": "_wp_trash_meta_status",
-                  "meta_value": "publish"
-               },
-               {
-                  "meta_key": "_wp_trash_meta_time",
-                  "meta_value": "1531489591"
-               },
-               {
-                  "meta_key": "_wp_desired_post_slug",
-                  "meta_value": "kap-yahandz"
-               }
-            ]
-         },
-         {
-            "title": "Big",
-            "link": "http://wespeakhiphop.romza.eu/videos/big__trashed/",
-            "pubDate": "Thu, 12 Jul 2018 14:38:51 +0000",
-            "creator": "romain",
-            "guid": {
-               "isPermaLink": "false",
-               "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=24"
-            },
-            "description": [],
-            "encoded": [
-               null,
-               null
-            ],
-            "post_id": "24",
-            "post_date": "2018-07-12 14:38:51",
-            "post_date_gmt": "2018-07-12 14:38:51",
-            "comment_status": "closed",
-            "ping_status": "closed",
-            "post_name": "big__trashed",
-            "status": "trash",
-            "post_parent": "0",
-            "menu_order": "0",
-            "post_type": "videos",
-            "post_password": null,
-            "is_sticky": "0",
-            "postmeta": [
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
-               },
-               {
-                  "meta_key": "video",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_video",
-                  "meta_value": "field_5b473e562c1bd"
-               },
-               {
-                  "meta_key": "tag_line",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_tag_line",
-                  "meta_value": "field_5b473e9b2c1be"
-               },
-               {
-                  "meta_key": "description",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_description",
-                  "meta_value": "field_5b475d3a2c1bf"
-               },
-               {
-                  "meta_key": "date",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_date",
-                  "meta_value": "field_5b475d502c1c0"
-               },
-               {
-                  "meta_key": "_wp_trash_meta_status",
-                  "meta_value": "publish"
-               },
-               {
-                  "meta_key": "_wp_trash_meta_time",
-                  "meta_value": "1531407188"
-               },
-               {
-                  "meta_key": "_wp_desired_post_slug",
-                  "meta_value": "big"
-               }
-            ]
-         },
-         {
-            "title": "AFRAA",
-            "link": "http://wespeakhiphop.romza.eu/fr/videos/4-afraa__trashed/",
-            "pubDate": "Thu, 12 Jul 2018 14:46:46 +0000",
-            "creator": "romain",
-            "guid": {
-               "isPermaLink": "false",
-               "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=29"
-            },
-            "description": [],
-            "encoded": [
-               null,
-               null
-            ],
-            "post_id": "29",
-            "post_date": "2018-07-12 14:46:46",
-            "post_date_gmt": "2018-07-12 14:46:46",
-            "comment_status": "closed",
-            "ping_status": "closed",
-            "post_name": "4-afraa__trashed",
-            "status": "trash",
-            "post_parent": "0",
-            "menu_order": "11",
-            "post_type": "videos",
-            "post_password": null,
-            "is_sticky": "0",
-            "category": {
-               "domain": "language",
-               "nicename": "fr",
-               "#text": "Français"
-            },
-            "postmeta": [
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
-               },
-               {
-                  "meta_key": "video",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_video",
-                  "meta_value": "field_5b473e562c1bd"
-               },
-               {
-                  "meta_key": "tag_line",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_tag_line",
-                  "meta_value": "field_5b473e9b2c1be"
-               },
-               {
-                  "meta_key": "description",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_description",
-                  "meta_value": "field_5b475d3a2c1bf"
-               },
-               {
-                  "meta_key": "date",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_date",
-                  "meta_value": "field_5b475d502c1c0"
-               },
-               {
-                  "meta_key": "_wp_trash_meta_status",
-                  "meta_value": "publish"
-               },
-               {
-                  "meta_key": "_wp_trash_meta_time",
-                  "meta_value": "1531485457"
-               },
-               {
-                  "meta_key": "_wp_desired_post_slug",
-                  "meta_value": "4-afraa"
-               }
-            ]
-         },
-         {
-            "title": "test",
-            "link": "http://wespeakhiphop.romza.eu/en/videos/test__trashed/",
-            "pubDate": "Tue, 17 Jul 2018 15:13:28 +0000",
-            "creator": "romain",
-            "guid": {
-               "isPermaLink": "false",
-               "#text": "http://wespeakhiphop.romza.eu/?post_type=videos&p=47"
-            },
-            "description": [],
-            "encoded": [
-               null,
-               null
-            ],
-            "post_id": "47",
-            "post_date": "2018-07-17 15:13:28",
-            "post_date_gmt": "2018-07-17 15:13:28",
-            "comment_status": "closed",
-            "ping_status": "closed",
-            "post_name": "test__trashed",
-            "status": "trash",
-            "post_parent": "0",
-            "menu_order": "1",
-            "post_type": "videos",
-            "post_password": null,
-            "is_sticky": "0",
-            "category": {
-               "domain": "language",
-               "nicename": "en",
-               "#text": "English"
-            },
-            "postmeta": [
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
-               },
-               {
-                  "meta_key": "video",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_video",
-                  "meta_value": "field_5b473e562c1bd"
-               },
-               {
-                  "meta_key": "tag_line",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_tag_line",
-                  "meta_value": "field_5b473e9b2c1be"
-               },
-               {
-                  "meta_key": "description",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_description",
-                  "meta_value": "field_5b475d3a2c1bf"
-               },
-               {
-                  "meta_key": "date",
-                  "meta_value": null
-               },
-               {
-                  "meta_key": "_date",
-                  "meta_value": "field_5b475d502c1c0"
-               },
-               {
-                  "meta_key": "_wp_trash_meta_status",
-                  "meta_value": "publish"
-               },
-               {
-                  "meta_key": "_wp_trash_meta_time",
-                  "meta_value": "1531840430"
-               },
-               {
-                  "meta_key": "_wp_desired_post_slug",
-                  "meta_value": "test"
                }
             ]
          }

@@ -119,7 +119,7 @@ gulp.task('watch', function() {
 	gulp.watch(misc, ['misc']);
 	gulp.watch(jsfile, ['coffee']);
 	gulp.watch(stylfile, ['css']);
-	gulp.watch(['assets/pug/*.pug', 'assets/module/**/*.pug', 'assets/image/*.svg'], ['pug']);
+	gulp.watch(['assets/pug/*.pug', 'assets/module/**/*.pug', 'assets/image/*.svg', 'json/*.json'], ['pug']);
 });
 
 gulp.task("upload", function() {
