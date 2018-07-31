@@ -5,6 +5,11 @@ ul#artists_info.layer_0
 			each meta in video.postmeta
 				if meta.meta_key == 'tag_line'
 					span.tagline= meta.meta_value
+
+			each cat in video.category
+				if cat.domain == 'pays'
+					span.contry= cat['#text']
+
+			each meta in video.postmeta
 				if meta.meta_key == 'date'
-					span.tagline= meta.meta_value
-				
+					span.date= meta.meta_value

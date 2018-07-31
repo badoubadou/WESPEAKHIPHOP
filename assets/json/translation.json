@@ -18,5 +18,17 @@
     "partager": {
         "en": "Share",
         "fr": "Partager"
+    },
+    "sharevideo": {
+        "en": "Share the video",
+        "fr": "Partager la video"
+    },
+    "play_video": {
+        "en": "Play the video",
+        "fr": "Lancer la video"
+    },
+    "startvideo": {
+        "en": "Share the video",
+        "fr": "reprendre la lecture"
     }
 }

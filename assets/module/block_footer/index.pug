@@ -4,7 +4,7 @@
 			a(href='#contrys' data-face='face_pays')
 				| #{TRANSLATION.face_pays[langage]}
 		li
-			a(href='#artists' data-face='face_artistes')
+			a.selected(href='#artists' data-face='face_artistes')
 				| #{TRANSLATION.face_artistes[langage]}
 
 
@@ -22,6 +22,6 @@
 			span#fullscreen
 				include ../../image/fullscreen.svg
 		li
-			a#share(href='#share')
+			a#share(href='#shareinfo')
 				include ../../image/share.svg
 				| #{TRANSLATION.partager[langage]}

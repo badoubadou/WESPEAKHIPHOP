@@ -10,7 +10,8 @@ class flip_disk
 		that = @
 		$('#mode_switcher li a').on 'click':(e) ->
 			e.preventDefault()
-			console.log 'data : '+$(this).data('face')
+			$('.footer .selected').removeClass 'selected'
+			$(this).addClass 'selected'
 			if($(this).data('face')=='face_pays')
 				console.log 'play'+that.flip_tween
 				that.flip_tween.play()

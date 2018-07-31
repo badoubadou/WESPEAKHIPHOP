@@ -10,6 +10,1263 @@ Version: a-number--optional
 General comments/License Statement if any.
 .
 */
-.darkgreybg{background:#232323;color:#d8d8d8}/* HTML5 Boilerplate v5.2.0 | MIT License | https://html5boilerplate.com/ */
-html{color:#000;font-size:1em;line-height:1.4}::-moz-selection{background:#b3d4fc;text-shadow:none}::selection{background:#b3d4fc;text-shadow:none}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}audio,canvas,iframe,img,svg,video{vertical-align:middle}fieldset{border:0;margin:0;padding:0}textarea{resize:vertical}.browserupgrade{margin:.2em 0;background:#ccc;color:#000;padding:.2em 0}body{width:100%;margin:0 auto;padding:0;background-color:#f0f2da;background:url("../image/bg.jpg") no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover}@font-face{font-family:'Gotham';src:url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Book.woff2") format('woff2'),url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Book.woff") format('woff'),font-weight normal;font-style:normal}@font-face{font-family:'Gotham';src:url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Bold.woff2") format('woff2'),url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Bold.woff") format('woff'),font-weight 700;font-style:normal}@font-face{font-family:'Gotham';src:url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Black.woff2") format('woff2'),url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Black.woff") format('woff'),font-weight 900;font-style:normal}@font-face{font-family:'Gotham';src:url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Light.woff2") format('woff2'),url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Light.woff") format('woff'),font-weight 100;font-style:normal}@font-face{font-family:'Gotham';src:url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Light.woff2") format('woff2'),url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Light.woff") format('woff'),font-weight 100;font-style:normal}@font-face{font-family:'Knockout';src:url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Knockout-HTF70-FullWelterwt.woff2") format('woff2'),url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Knockout-HTF70-FullWelterwt.woff") format('woff'),font-weight normal;font-style:normal}@font-face{font-family:'Knockout';src:url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Knockout-HTF28-JuniorFeatherwt.woff2") format('woff2'),url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Knockout-HTF28-JuniorFeatherwt.woff") format('woff'),font-weight 100;font-style:normal}.loader-bar{height:0;width:100%;transition:all 1s ease;position:relative;background:#fff;overflow:hidden;}.loader-bar:before{content:'';position:absolute;top:0;left:0;width:0%;height:100%;background:#7a0307;opacity:1;}.loader-bar:after{content:'';position:absolute;top:0;left:0;width:0%;height:100%;background:#fff;opacity:1}.loader-bar.show-progress{height:2px;}.loader-bar.show-progress:before{animation-duration:2s;animation-iteration-count:infinite;animation-name:makeitgrow}@-moz-keyframes makeitgrow{0%{width:0%;left:0%}50%{width:100%;left:0%}100%{width:100%;left:100%}}@-webkit-keyframes makeitgrow{0%{width:0%;left:0%}50%{width:100%;left:0%}100%{width:100%;left:100%}}@-o-keyframes makeitgrow{0%{width:0%;left:0%}50%{width:100%;left:0%}100%{width:100%;left:100%}}@keyframes makeitgrow{0%{width:0%;left:0%}50%{width:100%;left:0%}100%{width:100%;left:100%}}@-moz-keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(3600deg)}}@-webkit-keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(3600deg)}}@-o-keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(3600deg)}}@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(3600deg)}}/* normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}html{width:100%;height:100%;font-size:100%;position:relative;overflow:hidden}body{font-family:'Gotham',Helvetica,Arial,sans-serif;font-size:14px;margin:0;width:100%;height:100%;text-transform:uppercase;}body.admin-bar{padding-top:32px}@media screen and (max-width:47.9em),screen and (max-height:420px){body{font-size:12px}body.admin-bar{padding-top:46px}}a{color:#000;text-decoration:none;transition:color;transition-duration:.4s;}a:visited{color:#000}a:hover{color:#000;}.hasHover a:hover{color:#000}a.normal{color:#232323;text-decoration:underline}html,body{height:100%}body{display:flex;flex-direction:column}p{word-wrap:break-word;}p:empty{display:none}.largedevice{display:none}.hide{display:none !important}.absolute{position:absolute}.relative{position:relative}.centered{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}@media screen and (min-width:48em){.largedevice{display:block}span.largedevice{display:inline-block}.smalldevice{display:none}}.lds-dual-ring{display:inline-block;width:46px;height:46px;z-index:2;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}.lds-dual-ring:after{content:" ";display:block;width:46px;height:46px;margin:0;border-radius:50%;border:5px solid #000;border-color:#000 transparent #000 transparent;animation-name:lds-dual-ring;animation-duration:1.2s;animation-iteration-count:infinite}.lds-dual-ring.done{display:none}@-moz-keyframes lds-dual-ring{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@-webkit-keyframes lds-dual-ring{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@-o-keyframes lds-dual-ring{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@keyframes lds-dual-ring{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}.full_width{width:100%}.full_height{height:100%}.full_height_minus_footer{height:calc(100% - 40px)}@media screen and (max-width:47.9em),screen and (max-height:420px){.full_height_minus_footer_minus_header_mobile{top:80px;height:calc(100% - 40px - 80px)}}.max_width{margin:0 10px}.layer_bottom{z-index:-1}.layer_0{z-index:0}.layer_1{z-index:1}.layer_2{z-index:2}.layer_3{z-index:3}.layer_4{z-index:4}.layer_5{z-index:5}.layer_top{z-index:10}.overflow_hidden{overflow:hidden}.site{position:relative;width:100%;height:100%}@media screen and (max-width:33.9em),screen and (max-height:420px){.max_width{margin:0}}@media screen and (min-width:34em) and (min-height:420px){.site-main{position:relative;z-index:1}}.footer{background:#000;height:40px;width:100%;bottom:0;position:absolute;color:#fff;font-size:.7em;}.footer ul{margin:0;padding:0;display:inline-block;}.footer ul li{display:inline-block;line-height:40px;}.footer ul li a{line-height:40px;padding:0 30px;height:100%;display:block;color:#fff;}.footer ul li a:hover{color:#d8d8d8}.footer ul li span{display:block;padding:0 30px}.footer ul#mode_switcher li a{background:#232323;}.footer ul#mode_switcher li a.selected,.footer ul#mode_switcher li a:hover{color:#000;background:#ffce00}.footer ul#infos{position:absolute;right:0;}.footer ul#infos li a{padding:0 10px}.footer ul#infos li span{padding:0 10px}.footer #share svg{width:13px;height:13px}.footer #sound,.footer #fullscreen{width:15px;height:40px;display:block;margin:0;cursor:pointer;}.footer #sound svg,.footer #fullscreen svg{width:15px;height:15px;}.footer #sound svg #lign,.footer #fullscreen svg #lign{display:none}.footer #sound.actif svg #lign,.footer #fullscreen.actif svg #lign{display:block}.header #logo{left:10px;top:10px;position:relative}@media screen and (max-width:61.9em){.header{height:80px;width:100%;position:absolute;background:#ffce00}.header #logo{position:absolute;top:50%;transform:translateY(-50%);}.header #logo svg{width:100px;height:auto}}@media screen and (min-width:62em){.header #logo svg{width:215px;height:auto}}#artists_info{display:block;position:absolute;height:200px;width:200px;bottom:0;right:10px;list-style:none;margin:0;padding:0;}@media screen and (max-width:61.9em){#artists_info{top:5px;bottom:auto;height:80px;width:calc(100% - 150px)}}#artists_info li{position:absolute;top:0;left:0;opacity:0}#list_artists{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);position:relative;width:300px;height:300px;padding:0;border-radius:50%;list-style:none;margin:0;}#list_artists > *{display:block;position:absolute;top:50%;left:50%;width:250px;height:20px;margin-top:-10px;margin-left:-125px;}#list_artists > *:nth-of-type(1){transform:rotate(-90deg) translate(150px) rotate(90deg)}#list_artists > *:nth-of-type(2){transform:rotate(-77.14285714285714deg) translate(150px) rotate(77.14285714285714deg)}#list_artists > *:nth-of-type(3){transform:rotate(-64.28571428571428deg) translate(150px) rotate(64.28571428571428deg)}#list_artists > *:nth-of-type(4){transform:rotate(-51.428571428571416deg) translate(150px) rotate(51.428571428571416deg)}#list_artists > *:nth-of-type(5){transform:rotate(-38.571428571428555deg) translate(150px) rotate(38.571428571428555deg)}#list_artists > *:nth-of-type(6){transform:rotate(-25.714285714285698deg) translate(150px) rotate(25.714285714285698deg)}#list_artists > *:nth-of-type(7){transform:rotate(-12.85714285714284deg) translate(150px) rotate(12.85714285714284deg)}#list_artists > *:nth-of-type(8){transform:rotate(1.7763568394002505e-14deg) translate(150px) rotate(-1.7763568394002505e-14deg)}#list_artists > *:nth-of-type(9){transform:rotate(12.857142857142875deg) translate(150px) rotate(-12.857142857142875deg)}#list_artists > *:nth-of-type(10){transform:rotate(25.714285714285733deg) translate(150px) rotate(-25.714285714285733deg)}#list_artists > *:nth-of-type(11){transform:rotate(38.57142857142859deg) translate(150px) rotate(-38.57142857142859deg)}#list_artists > *:nth-of-type(12){transform:rotate(51.428571428571445deg) translate(150px) rotate(-51.428571428571445deg)}#list_artists > *:nth-of-type(13){transform:rotate(64.2857142857143deg) translate(150px) rotate(-64.2857142857143deg)}#list_artists > *:nth-of-type(14){transform:rotate(77.14285714285717deg) translate(150px) rotate(-77.14285714285717deg)}#list_artists > *:nth-of-type(15){transform:rotate(90.00000000000003deg) translate(150px) rotate(-90.00000000000003deg)}#list_artists > *:nth-of-type(16){transform:rotate(102.85714285714289deg) translate(150px) rotate(-102.85714285714289deg)}#list_artists > *:nth-of-type(17){transform:rotate(115.71428571428575deg) translate(150px) rotate(-115.71428571428575deg)}#list_artists > *:nth-of-type(18){transform:rotate(128.5714285714286deg) translate(150px) rotate(-128.5714285714286deg)}#list_artists > *:nth-of-type(19){transform:rotate(141.42857142857147deg) translate(150px) rotate(-141.42857142857147deg)}#list_artists > *:nth-of-type(20){transform:rotate(154.28571428571433deg) translate(150px) rotate(-154.28571428571433deg)}#list_artists > *:nth-of-type(21){transform:rotate(167.1428571428572deg) translate(150px) rotate(-167.1428571428572deg)}#list_artists > *:nth-of-type(22){transform:rotate(180.00000000000006deg) translate(150px) rotate(-180.00000000000006deg)}#list_artists > *:nth-of-type(23){transform:rotate(192.85714285714292deg) translate(150px) rotate(-192.85714285714292deg)}#list_artists > *:nth-of-type(24){transform:rotate(205.71428571428578deg) translate(150px) rotate(-205.71428571428578deg)}#list_artists > *:nth-of-type(25){transform:rotate(218.57142857142864deg) translate(150px) rotate(-218.57142857142864deg)}#list_artists > *:nth-of-type(26){transform:rotate(231.4285714285715deg) translate(150px) rotate(-231.4285714285715deg)}#list_artists > *:nth-of-type(27){transform:rotate(244.28571428571436deg) translate(150px) rotate(-244.28571428571436deg)}#list_artists > *:nth-of-type(28){transform:rotate(257.1428571428572deg) translate(150px) rotate(-257.1428571428572deg)}@media screen and (min-width:48em){#list_artists{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);position:relative;width:570px;height:570px;padding:0;border-radius:50%;list-style:none;margin:0}#list_artists > *{display:block;position:absolute;top:50%;left:50%;width:250px;height:20px;margin-top:-10px;margin-left:-125px;}#list_artists > *:nth-of-type(1){transform:rotate(-90deg) translate(285px) rotate(90deg)}#list_artists > *:nth-of-type(2){transform:rotate(-77.14285714285714deg) translate(285px) rotate(77.14285714285714deg)}#list_artists > *:nth-of-type(3){transform:rotate(-64.28571428571428deg) translate(285px) rotate(64.28571428571428deg)}#list_artists > *:nth-of-type(4){transform:rotate(-51.428571428571416deg) translate(285px) rotate(51.428571428571416deg)}#list_artists > *:nth-of-type(5){transform:rotate(-38.571428571428555deg) translate(285px) rotate(38.571428571428555deg)}#list_artists > *:nth-of-type(6){transform:rotate(-25.714285714285698deg) translate(285px) rotate(25.714285714285698deg)}#list_artists > *:nth-of-type(7){transform:rotate(-12.85714285714284deg) translate(285px) rotate(12.85714285714284deg)}#list_artists > *:nth-of-type(8){transform:rotate(1.7763568394002505e-14deg) translate(285px) rotate(-1.7763568394002505e-14deg)}#list_artists > *:nth-of-type(9){transform:rotate(12.857142857142875deg) translate(285px) rotate(-12.857142857142875deg)}#list_artists > *:nth-of-type(10){transform:rotate(25.714285714285733deg) translate(285px) rotate(-25.714285714285733deg)}#list_artists > *:nth-of-type(11){transform:rotate(38.57142857142859deg) translate(285px) rotate(-38.57142857142859deg)}#list_artists > *:nth-of-type(12){transform:rotate(51.428571428571445deg) translate(285px) rotate(-51.428571428571445deg)}#list_artists > *:nth-of-type(13){transform:rotate(64.2857142857143deg) translate(285px) rotate(-64.2857142857143deg)}#list_artists > *:nth-of-type(14){transform:rotate(77.14285714285717deg) translate(285px) rotate(-77.14285714285717deg)}#list_artists > *:nth-of-type(15){transform:rotate(90.00000000000003deg) translate(285px) rotate(-90.00000000000003deg)}#list_artists > *:nth-of-type(16){transform:rotate(102.85714285714289deg) translate(285px) rotate(-102.85714285714289deg)}#list_artists > *:nth-of-type(17){transform:rotate(115.71428571428575deg) translate(285px) rotate(-115.71428571428575deg)}#list_artists > *:nth-of-type(18){transform:rotate(128.5714285714286deg) translate(285px) rotate(-128.5714285714286deg)}#list_artists > *:nth-of-type(19){transform:rotate(141.42857142857147deg) translate(285px) rotate(-141.42857142857147deg)}#list_artists > *:nth-of-type(20){transform:rotate(154.28571428571433deg) translate(285px) rotate(-154.28571428571433deg)}#list_artists > *:nth-of-type(21){transform:rotate(167.1428571428572deg) translate(285px) rotate(-167.1428571428572deg)}#list_artists > *:nth-of-type(22){transform:rotate(180.00000000000006deg) translate(285px) rotate(-180.00000000000006deg)}#list_artists > *:nth-of-type(23){transform:rotate(192.85714285714292deg) translate(285px) rotate(-192.85714285714292deg)}#list_artists > *:nth-of-type(24){transform:rotate(205.71428571428578deg) translate(285px) rotate(-205.71428571428578deg)}#list_artists > *:nth-of-type(25){transform:rotate(218.57142857142864deg) translate(285px) rotate(-218.57142857142864deg)}#list_artists > *:nth-of-type(26){transform:rotate(231.4285714285715deg) translate(285px) rotate(-231.4285714285715deg)}#list_artists > *:nth-of-type(27){transform:rotate(244.28571428571436deg) translate(285px) rotate(-244.28571428571436deg)}#list_artists > *:nth-of-type(28){transform:rotate(257.1428571428572deg) translate(285px) rotate(-257.1428571428572deg)}}@media $medium_large{#list_artists{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);position:relative;width:900px;height:900px;padding:0;border-radius:50%;list-style:none;margin:0}#list_artists > *{display:block;position:absolute;top:50%;left:50%;width:250px;height:20px;margin-top:-10px;margin-left:-125px;}#list_artists > *:nth-of-type(1){transform:rotate(-90deg) translate(450px) rotate(90deg)}#list_artists > *:nth-of-type(2){transform:rotate(-77.14285714285714deg) translate(450px) rotate(77.14285714285714deg)}#list_artists > *:nth-of-type(3){transform:rotate(-64.28571428571428deg) translate(450px) rotate(64.28571428571428deg)}#list_artists > *:nth-of-type(4){transform:rotate(-51.428571428571416deg) translate(450px) rotate(51.428571428571416deg)}#list_artists > *:nth-of-type(5){transform:rotate(-38.571428571428555deg) translate(450px) rotate(38.571428571428555deg)}#list_artists > *:nth-of-type(6){transform:rotate(-25.714285714285698deg) translate(450px) rotate(25.714285714285698deg)}#list_artists > *:nth-of-type(7){transform:rotate(-12.85714285714284deg) translate(450px) rotate(12.85714285714284deg)}#list_artists > *:nth-of-type(8){transform:rotate(1.7763568394002505e-14deg) translate(450px) rotate(-1.7763568394002505e-14deg)}#list_artists > *:nth-of-type(9){transform:rotate(12.857142857142875deg) translate(450px) rotate(-12.857142857142875deg)}#list_artists > *:nth-of-type(10){transform:rotate(25.714285714285733deg) translate(450px) rotate(-25.714285714285733deg)}#list_artists > *:nth-of-type(11){transform:rotate(38.57142857142859deg) translate(450px) rotate(-38.57142857142859deg)}#list_artists > *:nth-of-type(12){transform:rotate(51.428571428571445deg) translate(450px) rotate(-51.428571428571445deg)}#list_artists > *:nth-of-type(13){transform:rotate(64.2857142857143deg) translate(450px) rotate(-64.2857142857143deg)}#list_artists > *:nth-of-type(14){transform:rotate(77.14285714285717deg) translate(450px) rotate(-77.14285714285717deg)}#list_artists > *:nth-of-type(15){transform:rotate(90.00000000000003deg) translate(450px) rotate(-90.00000000000003deg)}#list_artists > *:nth-of-type(16){transform:rotate(102.85714285714289deg) translate(450px) rotate(-102.85714285714289deg)}#list_artists > *:nth-of-type(17){transform:rotate(115.71428571428575deg) translate(450px) rotate(-115.71428571428575deg)}#list_artists > *:nth-of-type(18){transform:rotate(128.5714285714286deg) translate(450px) rotate(-128.5714285714286deg)}#list_artists > *:nth-of-type(19){transform:rotate(141.42857142857147deg) translate(450px) rotate(-141.42857142857147deg)}#list_artists > *:nth-of-type(20){transform:rotate(154.28571428571433deg) translate(450px) rotate(-154.28571428571433deg)}#list_artists > *:nth-of-type(21){transform:rotate(167.1428571428572deg) translate(450px) rotate(-167.1428571428572deg)}#list_artists > *:nth-of-type(22){transform:rotate(180.00000000000006deg) translate(450px) rotate(-180.00000000000006deg)}#list_artists > *:nth-of-type(23){transform:rotate(192.85714285714292deg) translate(450px) rotate(-192.85714285714292deg)}#list_artists > *:nth-of-type(24){transform:rotate(205.71428571428578deg) translate(450px) rotate(-205.71428571428578deg)}#list_artists > *:nth-of-type(25){transform:rotate(218.57142857142864deg) translate(450px) rotate(-218.57142857142864deg)}#list_artists > *:nth-of-type(26){transform:rotate(231.4285714285715deg) translate(450px) rotate(-231.4285714285715deg)}#list_artists > *:nth-of-type(27){transform:rotate(244.28571428571436deg) translate(450px) rotate(-244.28571428571436deg)}#list_artists > *:nth-of-type(28){transform:rotate(257.1428571428572deg) translate(450px) rotate(-257.1428571428572deg)}}#list_artists li a{bottom:0;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:.75em;}#list_artists li a span.dot{display:none}@media screen and (max-width:47.9em),screen and (max-height:420px){#list_artists li a span.txt{display:none}#list_artists li a span.dot{background:#000;display:block;width:7px;height:7px;border-radius:50%}}#popin{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:.7}#marker{display:block;width:10px;height:75px;top:0;background:#000;position:absolute;left:50%;transform:translateX(-50%);}@media screen and (min-width:48em){#marker{height:150px}}@media $medium_large{#marker{height:0}}.circular_mask{overflow:hidden;border-radius:50%}.size_video{width:100px;height:100px;}@media screen and (min-width:48em){.size_video{width:200px;height:200px}}@media screen and (min-width:75em){.size_video{width:400px;height:400px}}.size_disk{width:250px;height:250px;}@media screen and (min-width:48em){.size_disk{width:500px;height:500px}}@media screen and (min-width:75em){.size_disk{width:800px;height:800px}}#mask_video{border:8px solid #000}#disk{border:2px solid #000;cursor:url("wespeakhiphop/images/hand.png"),auto}#disk_lign{background:#ffce00}
+.darkgreybg {
+  background: #232323;
+  color: #d8d8d8;
+}
+/* HTML5 Boilerplate v5.2.0 | MIT License | https://html5boilerplate.com/ */
+html {
+  color: #000;
+  font-size: 1em;
+  line-height: 1.4;
+}
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+textarea {
+  resize: vertical;
+}
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+body {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0px;
+  background-color: #f0f2da;
+  background: url("../image/bg.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  width: 100vw;
+  height: 56.25vw;
+  background: #ffc0cb;
+  max-height: calc(100vh - 40px);
+  max-width: 160vh;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Book.woff2") format('woff2'), url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Book.woff") format('woff'), font-weight normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Bold.woff2") format('woff2'), url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Bold.woff") format('woff'), font-weight 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Black.woff2") format('woff2'), url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Black.woff") format('woff'), font-weight 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Light.woff2") format('woff2'), url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Light.woff") format('woff'), font-weight 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Light.woff2") format('woff2'), url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Gotham-Light.woff") format('woff'), font-weight 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Knockout';
+  src: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Knockout-HTF70-FullWelterwt.woff2") format('woff2'), url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Knockout-HTF70-FullWelterwt.woff") format('woff'), font-weight normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Knockout';
+  src: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Knockout-HTF28-JuniorFeatherwt.woff2") format('woff2'), url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Knockout-HTF28-JuniorFeatherwt.woff") format('woff'), font-weight 100;
+  font-style: normal;
+}
+.loader-bar {
+  height: 0px;
+  width: 100%;
+  transition: all 1s ease;
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+}
+.loader-bar:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: #7a0307;
+  opacity: 1;
+}
+.loader-bar:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: #fff;
+  opacity: 1;
+}
+.loader-bar.show-progress {
+  height: 2px;
+}
+.loader-bar.show-progress:before {
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: makeitgrow;
+}
+@-moz-keyframes makeitgrow {
+  0% {
+    width: 0%;
+    left: 0%;
+  }
+  50% {
+    width: 100%;
+    left: 0%;
+  }
+  100% {
+    width: 100%;
+    left: 100%;
+  }
+}
+@-webkit-keyframes makeitgrow {
+  0% {
+    width: 0%;
+    left: 0%;
+  }
+  50% {
+    width: 100%;
+    left: 0%;
+  }
+  100% {
+    width: 100%;
+    left: 100%;
+  }
+}
+@-o-keyframes makeitgrow {
+  0% {
+    width: 0%;
+    left: 0%;
+  }
+  50% {
+    width: 100%;
+    left: 0%;
+  }
+  100% {
+    width: 100%;
+    left: 100%;
+  }
+}
+@keyframes makeitgrow {
+  0% {
+    width: 0%;
+    left: 0%;
+  }
+  50% {
+    width: 100%;
+    left: 0%;
+  }
+  100% {
+    width: 100%;
+    left: 100%;
+  }
+}
+@-moz-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(3600deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(3600deg);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(3600deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(3600deg);
+  }
+}
+/* normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+html {
+  font-family: sans-serif /* 1 */;
+  -ms-text-size-adjust: 100% /* 2 */;
+  -webkit-text-size-adjust: 100% /* 2 */;
+}
+body {
+  margin: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block /* 1 */;
+  vertical-align: baseline /* 2 */;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden],
+template {
+  display: none;
+}
+a {
+  background-color: transparent;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b,
+strong {
+  font-weight: bold;
+}
+dfn {
+  font-style: italic;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+mark {
+  background: #ff0;
+  color: #000;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  border: 0;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+figure {
+  margin: 1em 40px;
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+pre {
+  overflow: auto;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit /* 1 */;
+  font: inherit /* 2 */;
+  margin: 0 /* 3 */;
+}
+button {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button /* 2 */;
+  cursor: pointer /* 3 */;
+}
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+input {
+  line-height: normal;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box /* 1 */;
+  padding: 0 /* 2 */;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-appearance: textfield /* 1 */;
+  box-sizing: content-box /* 2 */;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+legend {
+  border: 0 /* 1 */;
+  padding: 0 /* 2 */;
+}
+textarea {
+  overflow: auto;
+}
+optgroup {
+  font-weight: bold;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+html {
+  width: 100%;
+  height: 100%;
+  font-size: 100%;
+  position: relative;
+  overflow: hidden;
+}
+body {
+  font-family: 'Gotham', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  text-transform: uppercase;
+}
+body.admin-bar {
+  padding-top: 32px;
+}
+@media screen and (max-width: 47.9em), screen and (max-height: 420px) {
+  body {
+    font-size: 12px;
+  }
+  body.admin-bar {
+    padding-top: 46px;
+  }
+}
+a {
+  color: #000;
+  text-decoration: none;
+  transition: color;
+  transition-duration: 0.4s;
+}
+a:visited {
+  color: #000;
+}
+a:hover {
+  color: #000;
+}
+.hasHover a:hover {
+  color: #000;
+}
+a.normal {
+  color: #232323;
+  text-decoration: underline;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+p {
+  word-wrap: break-word;
+}
+p:empty {
+  display: none;
+}
+.largedevice {
+  display: none;
+}
+.hide {
+  display: none !important;
+}
+.absolute {
+  position: absolute;
+}
+.relative {
+  position: relative;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.btn {
+  cursor: pointer;
+}
+@media screen and (min-width: 48em) {
+  .largedevice {
+    display: block;
+  }
+  span.largedevice {
+    display: inline-block;
+  }
+  .smalldevice {
+    display: none;
+  }
+}
+.lds-dual-ring {
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 0;
+  border-radius: 50%;
+  border: 5px solid #000;
+  border-color: #000 transparent #000 transparent;
+  animation-name: lds-dual-ring;
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+}
+.lds-dual-ring.done {
+  display: none;
+}
+@-moz-keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.full_width {
+  width: 100%;
+}
+.full_height {
+  height: 100%;
+}
+.full_height_minus_footer {
+  height: calc(100% - 40px);
+}
+@media screen and (max-width: 47.9em), screen and (max-height: 420px) {
+  .full_height_minus_footer_minus_header_mobile {
+    top: 80px;
+    height: calc(100% - 40px - 80px);
+  }
+}
+.max_width {
+  margin: 0 10px;
+}
+.layer_bottom {
+  z-index: -1;
+}
+.layer_0 {
+  z-index: 0;
+}
+.layer_1 {
+  z-index: 1;
+}
+.layer_2 {
+  z-index: 2;
+}
+.layer_3 {
+  z-index: 3;
+}
+.layer_4 {
+  z-index: 4;
+}
+.layer_5 {
+  z-index: 5;
+}
+.layer_top {
+  z-index: 10;
+}
+.overflow_hidden {
+  overflow: hidden;
+}
+.site {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+@media screen and (max-width: 33.9em), screen and (max-height: 420px) {
+  .max_width {
+    margin: 0;
+  }
+}
+@media screen and (min-width: 34em) and (min-height: 420px) {
+  .site-main {
+    position: relative;
+    z-index: 1;
+  }
+}
+.footer {
+  background: #000;
+  height: 40px;
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+  color: #fff;
+  font-size: 0.7em;
+}
+.footer ul {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+.footer ul li {
+  display: inline-block;
+  line-height: 40px;
+}
+.footer ul li a {
+  line-height: 40px;
+  padding: 0 30px;
+  height: 100%;
+  display: block;
+  color: #fff;
+}
+.footer ul li a:hover {
+  color: #d8d8d8;
+}
+.footer ul li span {
+  display: block;
+  padding: 0 30px;
+}
+.footer ul#mode_switcher li a {
+  background: #232323;
+}
+.footer ul#mode_switcher li a.selected,
+.footer ul#mode_switcher li a:hover {
+  color: #000;
+  background: #ffce00;
+}
+.footer ul#infos {
+  position: absolute;
+  right: 0;
+}
+.footer ul#infos li a {
+  padding: 0 10px;
+}
+.footer ul#infos li span {
+  padding: 0 10px;
+}
+.footer #share svg {
+  width: 13px;
+  height: 13px;
+}
+.footer #sound,
+.footer #fullscreen {
+  width: 15px;
+  height: 40px;
+  display: block;
+  margin: 0;
+  cursor: pointer;
+}
+.footer #sound svg,
+.footer #fullscreen svg {
+  width: 15px;
+  height: 15px;
+}
+.footer #sound svg #lign,
+.footer #fullscreen svg #lign {
+  display: none;
+}
+.footer #sound.actif svg #lign,
+.footer #fullscreen.actif svg #lign {
+  display: block;
+}
+.header #logo {
+  left: 10px;
+  top: 10px;
+  position: relative;
+}
+@media screen and (max-width: 61.9em) {
+  .header {
+    height: 80px;
+    width: 100%;
+    position: absolute;
+    background: #ffce00;
+  }
+  .header #logo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .header #logo svg {
+    width: 100px;
+    height: auto;
+  }
+}
+@media screen and (min-width: 62em) {
+  .header #logo svg {
+    width: 215px;
+    height: auto;
+  }
+}
+#artists_info {
+  display: block;
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  bottom: 0px;
+  right: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@media screen and (max-width: 61.9em) {
+  #artists_info {
+    top: 5px;
+    bottom: auto;
+    height: 80px;
+    width: calc(100% - 150px);
+  }
+}
+#artists_info li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+#artists_info li span {
+  display: block;
+  width: 100%;
+}
+#artists_info li .name {
+  text-transform: uppercase;
+  font-family: 'Knockout', Helvetica, Arial, sans-serif;
+  font-size: 3em;
+  line-height: 0.8em;
+}
+#artists_info li .tagline,
+#artists_info li .date {
+  color: #ffce00;
+}
+#artists_info li .tagline {
+  font-weight: 900;
+}
+#artists_info li .date,
+#artists_info li .contry {
+  font-weight: 100;
+  font-family: 'Knockout', Helvetica, Arial, sans-serif;
+  display: inline-block;
+  width: auto;
+  font-size: 2.4em;
+}
+#artists_info li .date.contry,
+#artists_info li .contry.contry {
+  padding-right: 10px;
+}
+#list_artists {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
+  width: 300px;
+  height: 300px;
+  padding: 0;
+  border-radius: 50%;
+  list-style: none;
+  margin: 0;
+}
+#list_artists > * {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -125px;
+}
+#list_artists > *:nth-of-type(1) {
+  transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+#list_artists > *:nth-of-type(2) {
+  transform: rotate(-77.14285714285714deg) translate(150px) rotate(77.14285714285714deg);
+}
+#list_artists > *:nth-of-type(3) {
+  transform: rotate(-64.28571428571428deg) translate(150px) rotate(64.28571428571428deg);
+}
+#list_artists > *:nth-of-type(4) {
+  transform: rotate(-51.428571428571416deg) translate(150px) rotate(51.428571428571416deg);
+}
+#list_artists > *:nth-of-type(5) {
+  transform: rotate(-38.571428571428555deg) translate(150px) rotate(38.571428571428555deg);
+}
+#list_artists > *:nth-of-type(6) {
+  transform: rotate(-25.714285714285698deg) translate(150px) rotate(25.714285714285698deg);
+}
+#list_artists > *:nth-of-type(7) {
+  transform: rotate(-12.85714285714284deg) translate(150px) rotate(12.85714285714284deg);
+}
+#list_artists > *:nth-of-type(8) {
+  transform: rotate(1.8e-14deg) translate(150px) rotate(-1.8e-14deg);
+}
+#list_artists > *:nth-of-type(9) {
+  transform: rotate(12.857142857142875deg) translate(150px) rotate(-12.857142857142875deg);
+}
+#list_artists > *:nth-of-type(10) {
+  transform: rotate(25.714285714285733deg) translate(150px) rotate(-25.714285714285733deg);
+}
+#list_artists > *:nth-of-type(11) {
+  transform: rotate(38.57142857142859deg) translate(150px) rotate(-38.57142857142859deg);
+}
+#list_artists > *:nth-of-type(12) {
+  transform: rotate(51.428571428571445deg) translate(150px) rotate(-51.428571428571445deg);
+}
+#list_artists > *:nth-of-type(13) {
+  transform: rotate(64.2857142857143deg) translate(150px) rotate(-64.2857142857143deg);
+}
+#list_artists > *:nth-of-type(14) {
+  transform: rotate(77.14285714285717deg) translate(150px) rotate(-77.14285714285717deg);
+}
+#list_artists > *:nth-of-type(15) {
+  transform: rotate(90.00000000000003deg) translate(150px) rotate(-90.00000000000003deg);
+}
+#list_artists > *:nth-of-type(16) {
+  transform: rotate(102.85714285714289deg) translate(150px) rotate(-102.85714285714289deg);
+}
+#list_artists > *:nth-of-type(17) {
+  transform: rotate(115.71428571428575deg) translate(150px) rotate(-115.71428571428575deg);
+}
+#list_artists > *:nth-of-type(18) {
+  transform: rotate(128.5714285714286deg) translate(150px) rotate(-128.5714285714286deg);
+}
+#list_artists > *:nth-of-type(19) {
+  transform: rotate(141.42857142857147deg) translate(150px) rotate(-141.42857142857147deg);
+}
+#list_artists > *:nth-of-type(20) {
+  transform: rotate(154.28571428571433deg) translate(150px) rotate(-154.28571428571433deg);
+}
+#list_artists > *:nth-of-type(21) {
+  transform: rotate(167.1428571428572deg) translate(150px) rotate(-167.1428571428572deg);
+}
+#list_artists > *:nth-of-type(22) {
+  transform: rotate(180.00000000000006deg) translate(150px) rotate(-180.00000000000006deg);
+}
+#list_artists > *:nth-of-type(23) {
+  transform: rotate(192.85714285714292deg) translate(150px) rotate(-192.85714285714292deg);
+}
+#list_artists > *:nth-of-type(24) {
+  transform: rotate(205.71428571428578deg) translate(150px) rotate(-205.71428571428578deg);
+}
+#list_artists > *:nth-of-type(25) {
+  transform: rotate(218.57142857142864deg) translate(150px) rotate(-218.57142857142864deg);
+}
+#list_artists > *:nth-of-type(26) {
+  transform: rotate(231.4285714285715deg) translate(150px) rotate(-231.4285714285715deg);
+}
+#list_artists > *:nth-of-type(27) {
+  transform: rotate(244.28571428571436deg) translate(150px) rotate(-244.28571428571436deg);
+}
+#list_artists > *:nth-of-type(28) {
+  transform: rotate(257.1428571428572deg) translate(150px) rotate(-257.1428571428572deg);
+}
+@media screen and (min-width: 48em) {
+  #list_artists {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: relative;
+    width: 570px;
+    height: 570px;
+    padding: 0;
+    border-radius: 50%;
+    list-style: none;
+    margin: 0;
+  }
+  #list_artists > * {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -125px;
+  }
+  #list_artists > *:nth-of-type(1) {
+    transform: rotate(-90deg) translate(285px) rotate(90deg);
+  }
+  #list_artists > *:nth-of-type(2) {
+    transform: rotate(-77.14285714285714deg) translate(285px) rotate(77.14285714285714deg);
+  }
+  #list_artists > *:nth-of-type(3) {
+    transform: rotate(-64.28571428571428deg) translate(285px) rotate(64.28571428571428deg);
+  }
+  #list_artists > *:nth-of-type(4) {
+    transform: rotate(-51.428571428571416deg) translate(285px) rotate(51.428571428571416deg);
+  }
+  #list_artists > *:nth-of-type(5) {
+    transform: rotate(-38.571428571428555deg) translate(285px) rotate(38.571428571428555deg);
+  }
+  #list_artists > *:nth-of-type(6) {
+    transform: rotate(-25.714285714285698deg) translate(285px) rotate(25.714285714285698deg);
+  }
+  #list_artists > *:nth-of-type(7) {
+    transform: rotate(-12.85714285714284deg) translate(285px) rotate(12.85714285714284deg);
+  }
+  #list_artists > *:nth-of-type(8) {
+    transform: rotate(1.8e-14deg) translate(285px) rotate(-1.8e-14deg);
+  }
+  #list_artists > *:nth-of-type(9) {
+    transform: rotate(12.857142857142875deg) translate(285px) rotate(-12.857142857142875deg);
+  }
+  #list_artists > *:nth-of-type(10) {
+    transform: rotate(25.714285714285733deg) translate(285px) rotate(-25.714285714285733deg);
+  }
+  #list_artists > *:nth-of-type(11) {
+    transform: rotate(38.57142857142859deg) translate(285px) rotate(-38.57142857142859deg);
+  }
+  #list_artists > *:nth-of-type(12) {
+    transform: rotate(51.428571428571445deg) translate(285px) rotate(-51.428571428571445deg);
+  }
+  #list_artists > *:nth-of-type(13) {
+    transform: rotate(64.2857142857143deg) translate(285px) rotate(-64.2857142857143deg);
+  }
+  #list_artists > *:nth-of-type(14) {
+    transform: rotate(77.14285714285717deg) translate(285px) rotate(-77.14285714285717deg);
+  }
+  #list_artists > *:nth-of-type(15) {
+    transform: rotate(90.00000000000003deg) translate(285px) rotate(-90.00000000000003deg);
+  }
+  #list_artists > *:nth-of-type(16) {
+    transform: rotate(102.85714285714289deg) translate(285px) rotate(-102.85714285714289deg);
+  }
+  #list_artists > *:nth-of-type(17) {
+    transform: rotate(115.71428571428575deg) translate(285px) rotate(-115.71428571428575deg);
+  }
+  #list_artists > *:nth-of-type(18) {
+    transform: rotate(128.5714285714286deg) translate(285px) rotate(-128.5714285714286deg);
+  }
+  #list_artists > *:nth-of-type(19) {
+    transform: rotate(141.42857142857147deg) translate(285px) rotate(-141.42857142857147deg);
+  }
+  #list_artists > *:nth-of-type(20) {
+    transform: rotate(154.28571428571433deg) translate(285px) rotate(-154.28571428571433deg);
+  }
+  #list_artists > *:nth-of-type(21) {
+    transform: rotate(167.1428571428572deg) translate(285px) rotate(-167.1428571428572deg);
+  }
+  #list_artists > *:nth-of-type(22) {
+    transform: rotate(180.00000000000006deg) translate(285px) rotate(-180.00000000000006deg);
+  }
+  #list_artists > *:nth-of-type(23) {
+    transform: rotate(192.85714285714292deg) translate(285px) rotate(-192.85714285714292deg);
+  }
+  #list_artists > *:nth-of-type(24) {
+    transform: rotate(205.71428571428578deg) translate(285px) rotate(-205.71428571428578deg);
+  }
+  #list_artists > *:nth-of-type(25) {
+    transform: rotate(218.57142857142864deg) translate(285px) rotate(-218.57142857142864deg);
+  }
+  #list_artists > *:nth-of-type(26) {
+    transform: rotate(231.4285714285715deg) translate(285px) rotate(-231.4285714285715deg);
+  }
+  #list_artists > *:nth-of-type(27) {
+    transform: rotate(244.28571428571436deg) translate(285px) rotate(-244.28571428571436deg);
+  }
+  #list_artists > *:nth-of-type(28) {
+    transform: rotate(257.1428571428572deg) translate(285px) rotate(-257.1428571428572deg);
+  }
+}
+@media screen and (min-width: 75em) and (min-height: 990px) {
+  #list_artists {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: relative;
+    width: 900px;
+    height: 900px;
+    padding: 0;
+    border-radius: 50%;
+    list-style: none;
+    margin: 0;
+  }
+  #list_artists > * {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -125px;
+  }
+  #list_artists > *:nth-of-type(1) {
+    transform: rotate(-90deg) translate(450px) rotate(90deg);
+  }
+  #list_artists > *:nth-of-type(2) {
+    transform: rotate(-77.14285714285714deg) translate(450px) rotate(77.14285714285714deg);
+  }
+  #list_artists > *:nth-of-type(3) {
+    transform: rotate(-64.28571428571428deg) translate(450px) rotate(64.28571428571428deg);
+  }
+  #list_artists > *:nth-of-type(4) {
+    transform: rotate(-51.428571428571416deg) translate(450px) rotate(51.428571428571416deg);
+  }
+  #list_artists > *:nth-of-type(5) {
+    transform: rotate(-38.571428571428555deg) translate(450px) rotate(38.571428571428555deg);
+  }
+  #list_artists > *:nth-of-type(6) {
+    transform: rotate(-25.714285714285698deg) translate(450px) rotate(25.714285714285698deg);
+  }
+  #list_artists > *:nth-of-type(7) {
+    transform: rotate(-12.85714285714284deg) translate(450px) rotate(12.85714285714284deg);
+  }
+  #list_artists > *:nth-of-type(8) {
+    transform: rotate(1.8e-14deg) translate(450px) rotate(-1.8e-14deg);
+  }
+  #list_artists > *:nth-of-type(9) {
+    transform: rotate(12.857142857142875deg) translate(450px) rotate(-12.857142857142875deg);
+  }
+  #list_artists > *:nth-of-type(10) {
+    transform: rotate(25.714285714285733deg) translate(450px) rotate(-25.714285714285733deg);
+  }
+  #list_artists > *:nth-of-type(11) {
+    transform: rotate(38.57142857142859deg) translate(450px) rotate(-38.57142857142859deg);
+  }
+  #list_artists > *:nth-of-type(12) {
+    transform: rotate(51.428571428571445deg) translate(450px) rotate(-51.428571428571445deg);
+  }
+  #list_artists > *:nth-of-type(13) {
+    transform: rotate(64.2857142857143deg) translate(450px) rotate(-64.2857142857143deg);
+  }
+  #list_artists > *:nth-of-type(14) {
+    transform: rotate(77.14285714285717deg) translate(450px) rotate(-77.14285714285717deg);
+  }
+  #list_artists > *:nth-of-type(15) {
+    transform: rotate(90.00000000000003deg) translate(450px) rotate(-90.00000000000003deg);
+  }
+  #list_artists > *:nth-of-type(16) {
+    transform: rotate(102.85714285714289deg) translate(450px) rotate(-102.85714285714289deg);
+  }
+  #list_artists > *:nth-of-type(17) {
+    transform: rotate(115.71428571428575deg) translate(450px) rotate(-115.71428571428575deg);
+  }
+  #list_artists > *:nth-of-type(18) {
+    transform: rotate(128.5714285714286deg) translate(450px) rotate(-128.5714285714286deg);
+  }
+  #list_artists > *:nth-of-type(19) {
+    transform: rotate(141.42857142857147deg) translate(450px) rotate(-141.42857142857147deg);
+  }
+  #list_artists > *:nth-of-type(20) {
+    transform: rotate(154.28571428571433deg) translate(450px) rotate(-154.28571428571433deg);
+  }
+  #list_artists > *:nth-of-type(21) {
+    transform: rotate(167.1428571428572deg) translate(450px) rotate(-167.1428571428572deg);
+  }
+  #list_artists > *:nth-of-type(22) {
+    transform: rotate(180.00000000000006deg) translate(450px) rotate(-180.00000000000006deg);
+  }
+  #list_artists > *:nth-of-type(23) {
+    transform: rotate(192.85714285714292deg) translate(450px) rotate(-192.85714285714292deg);
+  }
+  #list_artists > *:nth-of-type(24) {
+    transform: rotate(205.71428571428578deg) translate(450px) rotate(-205.71428571428578deg);
+  }
+  #list_artists > *:nth-of-type(25) {
+    transform: rotate(218.57142857142864deg) translate(450px) rotate(-218.57142857142864deg);
+  }
+  #list_artists > *:nth-of-type(26) {
+    transform: rotate(231.4285714285715deg) translate(450px) rotate(-231.4285714285715deg);
+  }
+  #list_artists > *:nth-of-type(27) {
+    transform: rotate(244.28571428571436deg) translate(450px) rotate(-244.28571428571436deg);
+  }
+  #list_artists > *:nth-of-type(28) {
+    transform: rotate(257.1428571428572deg) translate(450px) rotate(-257.1428571428572deg);
+  }
+}
+#list_artists li a {
+  bottom: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75em;
+}
+#list_artists li a span.dot {
+  display: none;
+}
+@media screen and (max-width: 47.9em), screen and (max-height: 420px) {
+  #list_artists li a span.txt {
+    display: none;
+  }
+  #list_artists li a span.dot {
+    background: #000;
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+}
+.map svg {
+  width: 100%;
+  height: 100%;
+}
+#popin #close {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+#popin:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.7;
+  z-index: -1;
+}
+#popin #shareinfo:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.7;
+}
+#popin .block {
+  width: 20%;
+  height: 70%;
+}
+#popin .yellow,
+#popin .white {
+  width: 100%;
+}
+#popin .yellow {
+  background: #ffce00;
+}
+#popin .white {
+  background: #fff;
+}
+#marker {
+  display: block;
+  width: 10px;
+  height: 75px;
+  top: 0;
+  background: #000;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media screen and (min-width: 48em) {
+  #marker {
+    height: 150px;
+  }
+}
+@media screen and (min-width: 75em) and (min-height: 990px) {
+  #marker {
+    height: 200px;
+  }
+}
+.circular_mask {
+  overflow: hidden;
+  border-radius: 50%;
+}
+.size_video {
+  width: 100px;
+  height: 100px;
+}
+@media screen and (min-width: 48em) {
+  .size_video {
+    width: 200px;
+    height: 200px;
+  }
+}
+@media screen and (min-width: 75em) and (min-height: 990px) {
+  .size_video {
+    width: 400px;
+    height: 400px;
+  }
+  .size_video .player-dimensions {
+    width: 400px;
+    height: 400px;
+  }
+}
+.size_disk {
+  width: 250px;
+  height: 250px;
+}
+@media screen and (min-width: 48em) {
+  .size_disk {
+    width: 500px;
+    height: 500px;
+  }
+}
+@media screen and (min-width: 75em) and (min-height: 990px) {
+  .size_disk {
+    width: 800px;
+    height: 800px;
+  }
+}
+#mask_video {
+  border: 8px solid #000;
+}
+#disk {
+  border: 2px solid #000;
+  cursor: url("wespeakhiphop/images/hand.png"), auto;
+}
+#disk_lign {
+  background: #ffce00;
+}
+#play-video-btn {
+  text-transform: uppercase;
+  background: #ffce00;
+  border-radius: 10px;
+  line-height: 20px;
+  height: 20px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: 30px;
+  font-size: 0.6em;
+  padding: 0 15px;
+  width: auto;
+  display: block;
+  margin-top: 60px;
+}

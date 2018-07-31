@@ -3,6 +3,7 @@ class player_youtube
 		@bindEvents()
 
 	bindEvents : ->
+
 		YouTubeGetID = (url) ->
 			ID = ''
 			url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/)
@@ -53,14 +54,13 @@ class player_youtube
 							'onStateChange': onPlayerStateChange)
 				else
 					window.playerYT.loadVideoById idyoutube
-					$('#zone_youtube').addClass 'play'
+					# $('#zone_youtube').addClass 'play'
 				
 				return
-				
+		
+
 		window.onPlayerReady = (event) ->
 			console.log 'onPlayerReady'
-			$('#zone_youtube').addClass 'play'
-			$('.lds-dual-ring').addClass 'done'
 			event.target.playVideo()
 			return
 
@@ -68,6 +68,10 @@ class player_youtube
 			# if event.data == YT.PlayerState.PLAYING and !done
 			# 	setTimeout stopVideo, 6000
 			# 	done = true
+			if event.data == YT.PlayerState.PLAYING and !done
+				$('#zone_youtube').addClass 'play'
+				$('#popin').removeClass('hide').trigger 'classChange'
+				$('.lds-dual-ring').addClass 'done'
 			return
 
 		window.stopVideo = ->

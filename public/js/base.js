@@ -27,7 +27,8 @@
       $('#mode_switcher li a').on({
         'click': function(e) {
           e.preventDefault();
-          console.log('data : ' + $(this).data('face'));
+          $('.footer .selected').removeClass('selected');
+          $(this).addClass('selected');
           if ($(this).data('face') === 'face_pays') {
             console.log('play' + that.flip_tween);
             return that.flip_tween.play();
@@ -108,20 +109,24 @@
             });
           } else {
             window.playerYT.loadVideoById(idyoutube);
-            $('#zone_youtube').addClass('play');
           }
         });
       };
+      // $('#zone_youtube').addClass 'play'
       window.onPlayerReady = function(event) {
         console.log('onPlayerReady');
-        $('#zone_youtube').addClass('play');
-        $('.lds-dual-ring').addClass('done');
         event.target.playVideo();
       };
-      window.onPlayerStateChange = function(event) {};
-      // if event.data == YT.PlayerState.PLAYING and !done
-      // 	setTimeout stopVideo, 6000
-      // 	done = true
+      window.onPlayerStateChange = function(event) {
+        // if event.data == YT.PlayerState.PLAYING and !done
+        // 	setTimeout stopVideo, 6000
+        // 	done = true
+        if (event.data === YT.PlayerState.PLAYING && !done) {
+          $('#zone_youtube').addClass('play');
+          $('#popin').removeClass('hide').trigger('classChange');
+          $('.lds-dual-ring').addClass('done');
+        }
+      };
       window.stopVideo = function() {
         window.playerYT.stopVideo();
       };
@@ -149,8 +154,24 @@
     }
 
     bindEvents() {
+      $('#close').on('click', function() {
+        if (!$('#popin').hasClass('hide')) {
+          console.log('remove');
+          $('#popin').addClass('hide').trigger('classChange');
+        }
+        if (!$('#shareinfo').hasClass('hide')) {
+          return $('#shareinfo').addClass('hide');
+        }
+      });
       return $('#share').on('click', function() {
-        return $('#popin').toggleClass('hide');
+        if ($('#popin').hasClass('hide')) {
+          $('#popin').removeClass('hide').trigger('classChange');
+        }
+        if ($('#shareinfo').hasClass('hide')) {
+          return $('#shareinfo').removeClass('hide');
+        } else {
+          return $('#shareinfo').addClass('hide');
+        }
       });
     }
 
@@ -234,8 +255,24 @@
     }
 
     bindEvents() {
-      var duration, options, rotationSnap, sequence, that, windowBlurred, windowFocused;
+      var duration, options, rotationSnap, sequence, that, updateInfo, windowBlurred, windowFocused;
       that = this;
+      //------------------- POPIN LISTNER -------------------#
+      $('#popin').on('classChange', function() {
+        console.log('popin change ' + ($(this).hasClass('hide')));
+        if ($(this).hasClass('hide')) {
+          if (window.playerYT) {
+            window.playerYT.stopVideo();
+          }
+          if (that.player) {
+            that.player.play();
+          }
+        } else {
+          if (that.player) {
+            that.player.pause();
+          }
+        }
+      });
       //------------------- FOCUS ---------------------------#
       windowBlurred = function() {
         console.log('blur');
@@ -257,6 +294,12 @@
         return $('#sound').toggleClass('actif');
       });
       //------------------- TWEEN ---------------------------#
+      updateInfo = function(id) {
+        console.log('update' + id);
+        $('#play-video-btn').attr('href', $('#artists_info li:eq(' + id + ') a').attr('href'));
+        $('#artists_info li a.selected').removeClass('selected');
+        return $('#artists_info li:eq(' + id + ') a').addClass('selected');
+      };
       duration = 160.49;
       this.timelineKnob = new TimelineMax({
         paused: true
@@ -270,175 +313,233 @@
       // sequence = '+='+((duration / 28)-1)
       sequence = '+=4.5';
       console.log(sequence);
-      this.timelineInfo.fromTo('#artists_info li:eq(0)', 0.5, {
+      this.timelineInfo.add(function() {
+        return updateInfo(0);
+      }).fromTo('#artists_info li:eq(0)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(0)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(1)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(1);
+      }).fromTo('#artists_info li:eq(1)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(1)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(2)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(2);
+      }).fromTo('#artists_info li:eq(2)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(2)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(3)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(3);
+      }).fromTo('#artists_info li:eq(3)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(3)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(4)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(4);
+      }).fromTo('#artists_info li:eq(4)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(4)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(5)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(5);
+      }).fromTo('#artists_info li:eq(5)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(5)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(6)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(6);
+      }).fromTo('#artists_info li:eq(6)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(6)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(7)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(7);
+      }).fromTo('#artists_info li:eq(7)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(7)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(8)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(8);
+      }).fromTo('#artists_info li:eq(8)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(8)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(9)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(9);
+      }).fromTo('#artists_info li:eq(9)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(9)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(10)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(10);
+      }).fromTo('#artists_info li:eq(10)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(10)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(11)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(11);
+      }).fromTo('#artists_info li:eq(11)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(11)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(12)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(12);
+      }).fromTo('#artists_info li:eq(12)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(12)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(13)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(13);
+      }).fromTo('#artists_info li:eq(13)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(13)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(14)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(14);
+      }).fromTo('#artists_info li:eq(14)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(14)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(15)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(15);
+      }).fromTo('#artists_info li:eq(15)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(15)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(16)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(16);
+      }).fromTo('#artists_info li:eq(16)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(16)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(17)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(17);
+      }).fromTo('#artists_info li:eq(17)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(17)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(18)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(18);
+      }).fromTo('#artists_info li:eq(18)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(18)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(19)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(19);
+      }).fromTo('#artists_info li:eq(19)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(19)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(20)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(20);
+      }).fromTo('#artists_info li:eq(20)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(20)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(21)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(21);
+      }).fromTo('#artists_info li:eq(21)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(21)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(22)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(22);
+      }).fromTo('#artists_info li:eq(22)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(22)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(23)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(23);
+      }).fromTo('#artists_info li:eq(23)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(23)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(24)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(24);
+      }).fromTo('#artists_info li:eq(24)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(24)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(25)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(25);
+      }).fromTo('#artists_info li:eq(25)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(25)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(26)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(26);
+      }).fromTo('#artists_info li:eq(26)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(26)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(27)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(27);
+      }).fromTo('#artists_info li:eq(27)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
       }).to('#artists_info li:eq(27)', 0.5, {
         alpha: 0
-      }, sequence).fromTo('#artists_info li:eq(28)', 0.5, {
+      }, sequence).add(function() {
+        return updateInfo(28);
+      }).fromTo('#artists_info li:eq(28)', 0.5, {
         alpha: 0
       }, {
         alpha: 1
@@ -455,8 +556,8 @@
         myPlayer = this;
         myPlayer.on('play', function() {
           console.log('play');
-          that.timelineInfo.play();
-          return that.timelineKnob.play();
+          that.timelineKnob.play();
+          return that.timelineInfo.play();
         });
         myPlayer.on('pause', function() {
           console.log('pause');

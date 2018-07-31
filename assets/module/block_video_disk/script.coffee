@@ -57,6 +57,19 @@ class player_video
 		
 	bindEvents: ->
 		that = @
+		#------------------- POPIN LISTNER -------------------#
+		$('#popin').on 'classChange', ->
+			console.log 'popin change '+($(this).hasClass 'hide')
+			if $(this).hasClass 'hide'
+				if window.playerYT
+					window.playerYT.stopVideo()
+					
+				if that.player
+					that.player.play()
+			else
+				if that.player
+					that.player.pause()
+			return
 		#------------------- FOCUS ---------------------------#
 		windowBlurred = ->
 			console.log 'blur'
@@ -79,6 +92,10 @@ class player_video
 			$('#sound').toggleClass 'actif'
 
 		#------------------- TWEEN ---------------------------#
+		updateInfo = (id)->
+			console.log 'update'+id
+			$('#play-video-btn').attr('href', $('#artists_info li:eq('+id+') a').attr('href')); $('#artists_info li a.selected').removeClass('selected'); $('#artists_info li:eq('+id+') a').addClass('selected');
+
 		duration =  160.49
 		@timelineKnob = new TimelineMax(paused: true)
 		@timelineKnob.to(['#knob'], duration, {rotation:360})
@@ -87,62 +104,92 @@ class player_video
 		# sequence = '+='+((duration / 28)-1)
 		sequence = '+=4.5'
 		console.log sequence
-		@timelineInfo.fromTo('#artists_info li:eq(0)', 0.5, {alpha: 0},{alpha: 1})
+		@timelineInfo
+			.add(-> updateInfo(0); )
+			.fromTo('#artists_info li:eq(0)', 0.5, {alpha: 0},{alpha: 1})
 			.to('#artists_info li:eq(0)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(1); )
 			.fromTo('#artists_info li:eq(1)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(1)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(2); )
 			.fromTo('#artists_info li:eq(2)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(2)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(3); )
 			.fromTo('#artists_info li:eq(3)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(3)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(4); )
 			.fromTo('#artists_info li:eq(4)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(4)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(5); )
 			.fromTo('#artists_info li:eq(5)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(5)', 0.5, { alpha: 0 }, sequence )
+			.add(-> updateInfo(6); )
 			.fromTo('#artists_info li:eq(6)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(6)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(7); )
 			.fromTo('#artists_info li:eq(7)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(7)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(8); )
 			.fromTo('#artists_info li:eq(8)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(8)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(9); )
 			.fromTo('#artists_info li:eq(9)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(9)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(10); )
 			.fromTo('#artists_info li:eq(10)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(10)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(11); )
 			.fromTo('#artists_info li:eq(11)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(11)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(12); )
 			.fromTo('#artists_info li:eq(12)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(12)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(13); )
 			.fromTo('#artists_info li:eq(13)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(13)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(14); )
 			.fromTo('#artists_info li:eq(14)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(14)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(15); )
 			.fromTo('#artists_info li:eq(15)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(15)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(16); )
 			.fromTo('#artists_info li:eq(16)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(16)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(17); )
 			.fromTo('#artists_info li:eq(17)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(17)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(18); )
 			.fromTo('#artists_info li:eq(18)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(18)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(19); )
 			.fromTo('#artists_info li:eq(19)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(19)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(20); )
 			.fromTo('#artists_info li:eq(20)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(20)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(21); )
 			.fromTo('#artists_info li:eq(21)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(21)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(22); )
 			.fromTo('#artists_info li:eq(22)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(22)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(23); )
 			.fromTo('#artists_info li:eq(23)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(23)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(24); )
 			.fromTo('#artists_info li:eq(24)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(24)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(25); )
 			.fromTo('#artists_info li:eq(25)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(25)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(26); )
 			.fromTo('#artists_info li:eq(26)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(26)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(27); )
 			.fromTo('#artists_info li:eq(27)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(27)', 0.5, { alpha: 0 }, sequence)
+			.add(-> updateInfo(28); )
 			.fromTo('#artists_info li:eq(28)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(28)', 0.5, { alpha: 0 }, sequence)
 
@@ -153,8 +200,8 @@ class player_video
 			
 			myPlayer.on 'play', ->
 				console.log 'play'
-				that.timelineInfo.play()
 				that.timelineKnob.play()
+				that.timelineInfo.play()
 			
 			myPlayer.on 'pause', ->
 				console.log 'pause'

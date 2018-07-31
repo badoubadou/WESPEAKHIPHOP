@@ -1,2 +1,23 @@
 #popin.absolute.layer_top.full_height.full_width.hide
-	#player_youtube
+	.video-container.layer_1
+		#player_youtube
+
+	#shareinfo.hide.layer_top
+		.block.centered.layer_top
+			.yellow
+				include ../../image/logo.svg
+				.name
+				span.contry
+				span.date
+				.sharevideo
+					| #{TRANSLATION.sharevideo[langage]}
+
+				.sharebtn
+			.white
+				.startvideo
+					| #{TRANSLATION.startvideo[langage]}
+
+
+	#close.layer_top.btn
+		include ../../image/close.svg
+	

@@ -69,7 +69,7 @@ gulp.task('css', function() {
 	return gulp.src('assets/style/style.styl')
 		.pipe(stylus({
 			use: nib(),
-			compress: true
+			compress: false
 		}))
 		.pipe(gulp.dest(dest+'css'))
 		.pipe(notify({ message: 'CSS task complete' }));

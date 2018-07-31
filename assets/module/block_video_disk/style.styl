@@ -8,9 +8,8 @@
 	@media $ipad
 		height (($size_disk_medium - $size_video_medium) / 2)
 		
-	@media $medium_large
-		height (($size_disk_large - $size_disk_large) / 2)
-	
+	@media $large_screen
+		height (($size_disk_large - $size_video_large) / 2)
 
 .circular_mask
 	overflow hidden
@@ -28,6 +27,10 @@
 		width $size_video_large
 		height $size_video_large
 		
+		.player-dimensions
+			width $size_video_large
+			height $size_video_large	
+		
 .size_disk
 	width $size_disk_small
 	height $size_disk_small
@@ -39,7 +42,6 @@
 		width $size_disk_large
 		height $size_disk_large
 	
-	
 #mask_video
 	border 8px solid #000
 	
@@ -50,3 +52,17 @@
 #disk_lign
 	background $yellow
 	
+#play-video-btn
+	text-transform uppercase
+	background $yellow
+	border-radius 10px
+	line-height 20px
+	height 20px
+	text-align center
+	center()
+	bottom 30px
+	font-size .6em
+	padding 0 15px
+	width auto
+	display block
+	margin-top 60px
