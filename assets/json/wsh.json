@@ -4,7 +4,7 @@
       "title": "wespeakhiphop",
       "link": "http://wespeakhiphop.romza.eu",
       "description": "Just another Romain Malauzat Illustration Sites site",
-      "pubDate": "Tue, 31 Jul 2018 16:50:13 +0000",
+      "pubDate": "Wed, 01 Aug 2018 14:45:23 +0000",
       "language": "en-US",
       "wxr_version": "1.2",
       "base_site_url": "http://romza.eu/",
@@ -80,6 +80,20 @@
             "term_slug": "cote-divoire",
             "term_parent": null,
             "term_name": "Côte d’Ivoire"
+         },
+         {
+            "term_id": "92",
+            "term_taxonomy": "pays",
+            "term_slug": "djibouti",
+            "term_parent": null,
+            "term_name": "djibouti"
+         },
+         {
+            "term_id": "110",
+            "term_taxonomy": "pays",
+            "term_slug": "djibouti",
+            "term_parent": null,
+            "term_name": "djibouti"
          },
          {
             "term_id": "17",
@@ -396,6 +410,14 @@
             "term_description": "a:2:{s:2:\"fr\";i:88;s:2:\"en\";i:90;}"
          },
          {
+            "term_id": "93",
+            "term_taxonomy": "term_translations",
+            "term_slug": "pll_5b61af341dc0f",
+            "term_parent": null,
+            "term_name": "pll_5b61af341dc0f",
+            "term_description": "a:2:{s:2:\"fr\";i:92;s:2:\"en\";i:110;}"
+         },
+         {
             "term_id": "42",
             "term_taxonomy": "pays",
             "term_slug": "senegal",
@@ -594,7 +616,7 @@
             "is_sticky": "0"
          },
          {
-            "title": "Cut killer",
+            "title": "Cut Killer",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/cut-killer/",
             "pubDate": "Thu, 12 Jul 2018 14:24:27 +0000",
             "creator": "romain",
@@ -634,7 +656,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -646,7 +668,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Cut killer des platines"
+                  "meta_value": "Cut Killer, un langage universel"
                },
                {
                   "meta_key": "_tag_line",
@@ -662,7 +684,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": "2005"
+                  "meta_value": "2017"
                },
                {
                   "meta_key": "_date",
@@ -711,7 +733,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -723,7 +745,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "La fin du jeu"
+                  "meta_value": "End of the game, pour l’amour de l’art"
                },
                {
                   "meta_key": "_tag_line",
@@ -731,7 +753,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": "No qui option expetenda ullamcorper. Ad electram conclusionemque ius. Ne vel tamquam definiebas."
+                  "meta_value": "Ouvrez vos oreilles, leur beatboxing puise aux origines, celles du rap sans thunes et sans platines. Leurs références sont aussi éclectiques que leurs beats sont riches : Biz Marquie, Rhazel et… Coluche !"
                },
                {
                   "meta_key": "_description",
@@ -739,7 +761,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2018"
                },
                {
                   "meta_key": "_date",
@@ -788,7 +810,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -800,7 +822,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Passi sous les pond"
+                  "meta_value": "Passi, « L’essence du hip-hop c’est le défi »"
                },
                {
                   "meta_key": "_tag_line",
@@ -816,7 +838,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2017"
                },
                {
                   "meta_key": "_date",
@@ -825,7 +847,7 @@
             ]
          },
          {
-            "title": "JeanJass",
+            "title": "JeanJass et Caballero",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/jeanjass/",
             "pubDate": "Thu, 12 Jul 2018 14:26:26 +0000",
             "creator": "romain",
@@ -865,7 +887,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -877,7 +899,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "JJ pour les intimes"
+                  "meta_value": "JeanJass et Caballero, belgotrip sous influences"
                },
                {
                   "meta_key": "_tag_line",
@@ -885,7 +907,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": "Ne vel tamquam definiebas.\nLorem ipsum dolor sit amet, his ea tempor ullamcorper, vis exerci discere an. No qui option expetenda ullamcorper. Ad electram conclusionemque ius."
+                  "meta_value": null
                },
                {
                   "meta_key": "_description",
@@ -893,7 +915,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2017"
                },
                {
                   "meta_key": "_date",
@@ -902,7 +924,7 @@
             ]
          },
          {
-            "title": "Ali gul pir",
+            "title": "Ali Gul Pir",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/ali-gul-pir/",
             "pubDate": "Thu, 12 Jul 2018 14:28:28 +0000",
             "creator": "romain",
@@ -935,14 +957,14 @@
                },
                {
                   "domain": "pays",
-                  "nicename": "israel",
-                  "#text": "Israel"
+                  "nicename": "pakistan",
+                  "#text": "Pakistan"
                }
             ],
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -954,7 +976,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "1er rapper Israelien"
+                  "meta_value": "Ali Gul Pir, satire à phases réelles"
                },
                {
                   "meta_key": "_tag_line",
@@ -962,7 +984,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": "Ad electram conclusionemque ius. Ne vel tamquam definiebas. Lorem ipsum dolor sit amet, his ea tempor ullamcorper, vis exerci discere an. No qui option expetenda ullamcorper."
+                  "meta_value": "Braqueur de micro, Ali Gul Pir ridiculise les puissants. Écoutez le flow caustique de ce fils de prisonnier politique, qui a fait de la liberté d’expression au Pakistan le combat de sa vie.\nL’esthétique contestataire du hip hop alliée à la satire et des lyrics en urdu, voici la recette du succès signée Pir. Dans son premier clip, diffusé sur Youtube en 2012, ce comédien de formation campe un oligarque véreux. La vidéo est vue plus d’un million de fois en moins d’un mois. Une première au Pakistan."
                },
                {
                   "meta_key": "_description",
@@ -970,7 +992,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2013"
                },
                {
                   "meta_key": "_date",
@@ -1019,7 +1041,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -1031,7 +1053,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Faris Shafi"
+                  "meta_value": "Faris, « islam is the new black »"
                },
                {
                   "meta_key": "_tag_line",
@@ -1039,7 +1061,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "Faris Shafi, fils et frère de star du petit écran, se fait connaître à 24 ans avec un clip loufoque, dans lequel il incarne un lambda pakistanais à la fois misérable et stupide. Si les images sont clownesques, les lyrics sont sans équivoque. Le natif de Lahore attaque la corruption sous le vernis religieux, la violence sociale et le terrorisme qui gangrènent son pays. Bilingue, nourri au rap américain depuis l’enfance, Faris a choisi l’urdu plutôt que l’anglais, pour toucher un plus large public chez lui. Et malgré la censure régulière, qui lui interdit Youtube, il ne lâche plus le micro."
                },
                {
                   "meta_key": "_description",
@@ -1047,7 +1069,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2013"
                },
                {
                   "meta_key": "_date",
@@ -1056,7 +1078,7 @@
             ]
          },
          {
-            "title": "D-coy",
+            "title": "D-Coy",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/d-coy/",
             "pubDate": "Thu, 12 Jul 2018 14:34:11 +0000",
             "creator": "romain",
@@ -1096,7 +1118,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -1108,7 +1130,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "D-Coy, les guerriers poètes de Manille"
                },
                {
                   "meta_key": "_tag_line",
@@ -1116,7 +1138,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "Nikusheen On alias D-coy reprend à son compte les valeurs du hip hop originel : refusez de verser le sang, transformez les énergies négatives en énergies positives. Faites du rap, pas la guerre ! Une morale qui prend tout sons sens, transposée du Bronx aux quartiers de Manille, où sévit la violence des gangs. Le rap underground et identitaire de D-Coy et ses Madd Poets, puise dans la culture ancestrale et s’exprime en dialecte philippin, le Tagalog."
                },
                {
                   "meta_key": "_description",
@@ -1124,7 +1146,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2009"
                },
                {
                   "meta_key": "_date",
@@ -1173,7 +1195,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -1185,7 +1207,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "Awadi, « Colonel de la génération consciente »"
                },
                {
                   "meta_key": "_tag_line",
@@ -1193,7 +1215,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "Suivez jusqu’à la scène celui par qui le hip hop arrive au Sénégal. Sur un titre de Tiken Jah Fakoly, scandez avec la foule les lyrics du rap africaniste au son de la kora : « Quitte le pouvoir ! » Didier Awadi est le co-fondateur de Positive Black Soul, collectif précurseur qui popularisa, dès les années 1990, le rap en Afrique de l’ouest. Partisan d’une Afrique apaisée, Awadi prêche l’espoir et l’unité. Joignant le geste à la parole, le rappeur sénégalais a pour habitude d’ouvrir son micro à de grands artistes du continent et au-delà. Parmi tant d’autres, Wyclef Jean, Ismaël Lo, Mary Ndiaye, Vieux Farka Touré et Alpha Blondy ont signé des featurings avec l’ambassadeur du hip hop 100% « made in Africa »."
                },
                {
                   "meta_key": "_description",
@@ -1201,7 +1223,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2007"
                },
                {
                   "meta_key": "_date",
@@ -1210,7 +1232,7 @@
             ]
          },
          {
-            "title": "Afraa",
+            "title": "Afra",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/afraa/",
             "pubDate": "Thu, 12 Jul 2018 14:38:11 +0000",
             "creator": "romain",
@@ -1250,7 +1272,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -1262,7 +1284,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "Afra, selfmade beatboxer"
                },
                {
                   "meta_key": "_tag_line",
@@ -1270,7 +1292,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "Fujioka Akira, le gamin d’Osaka, a forgé son nom en hommage à la culture noire. C’est aux États-Unis qu’il part chercher l’inspiration hip hop qui nourrira son art. Après un bref séjour à New York, de retour au Japon, il se forme en autodidacte. Il devient alors Afra, le beatboxer le plus renommé de l’archipel, premier de tous à sortir un album. Aussi loin que la planète Japon, de la scène aux mangas en passant par la pub, Afra impose ses beats venus d’Amérique du Nord et d’Afrique. Il érige le beatboxing en véritable mouvement musical."
                },
                {
                   "meta_key": "_description",
@@ -1278,7 +1300,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2005"
                },
                {
                   "meta_key": "_date",
@@ -1287,7 +1309,7 @@
             ]
          },
          {
-            "title": "Joe flizzow",
+            "title": "Joe Flizzow",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/joe-flizzow/",
             "pubDate": "Thu, 12 Jul 2018 14:41:41 +0000",
             "creator": "romain",
@@ -1327,7 +1349,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -1339,7 +1361,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "Joe Flizzow, une autocensure « positive »"
                },
                {
                   "meta_key": "_tag_line",
@@ -1347,7 +1369,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "Joe Flizzow est un business man. Pionnier du hip hop en Malaisie à la fin des années 1990, le MC a bâti sur les solides bases sa renommée un petit empire commercial baptisé… Kartel. Joe est à la fois producteur de musique et de show télé, propriétaire de label, recruteurs de talents, créateur d’une ligne de produits dérivés… Tout en restant rappeur et produisant ses propres hits. « Je ne suis pas attiré par la vie de gangsta, mais j’aime la mentalité du gangsta ! » C.Q.F.D."
                },
                {
                   "meta_key": "_description",
@@ -1355,7 +1377,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2011"
                },
                {
                   "meta_key": "_date",
@@ -1364,7 +1386,7 @@
             ]
          },
          {
-            "title": "Wu tang Clan",
+            "title": "Wu-Tang Clan",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/wu-tang-clan/",
             "pubDate": "Thu, 12 Jul 2018 14:42:32 +0000",
             "creator": "romain",
@@ -1397,14 +1419,14 @@
                },
                {
                   "domain": "pays",
-                  "nicename": "usa",
-                  "#text": "USA"
+                  "nicename": "france",
+                  "#text": "France"
                }
             ],
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -1416,7 +1438,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "DJ Mathematics, « on n’a pas appris la musique à l’école »"
                },
                {
                   "meta_key": "_tag_line",
@@ -1432,7 +1454,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2017"
                },
                {
                   "meta_key": "_date",
@@ -1476,12 +1498,17 @@
                   "domain": "pays",
                   "nicename": "israel",
                   "#text": "Israel"
+               },
+               {
+                  "domain": "pays",
+                  "nicename": "palestine",
+                  "#text": "Palestine"
                }
             ],
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -1493,7 +1520,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "Dam, le son d’une génération debout"
                },
                {
                   "meta_key": "_tag_line",
@@ -1501,7 +1528,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "Da Arabian MC’s, ou DAM, est l'un des premiers groupes de rap palestinien, formé à la fin des années 1990. En arabe comme en hébreu, le nom du crew signifie « sang ». Mahmoud Jrere, Tamer et Suhell Nafar chantent dans les deux langues et en anglais. Ils trouvent leur inspiration dans la littérature, la poésie et la musique traditionnelle arabe autant que dans le rap américain. Leurs lyrics ouvrent une brèche sur un monde à part. Le collectif évoque son vécu du conflit historique, mais parle aussi de féminisme ou du fléau de la drogue dans sa ville de Lod, non loin de Tel Aviv."
                },
                {
                   "meta_key": "_description",
@@ -1509,7 +1536,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2006"
                },
                {
                   "meta_key": "_date",
@@ -1558,7 +1585,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -1570,7 +1597,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "Degg J Force 3, « tuer le rap c’est tuer l’espoir »"
                },
                {
                   "meta_key": "_tag_line",
@@ -1578,7 +1605,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "À Conakry, le freestyle comme l’espoir fleurit entre les murs aveugles de la scène underground guinéenne. Degg, en woloff, signifie « vérité ». Moussa et Ablaye Mbaye, à l’origine de Degg J Force 3, résument avec ce mot leur lutte contre la misère quotidienne d’une jeunesse laissée pour compte. Devenu référence de la scène urbaine guinéenne, le duo a depuis créé le label Meurs libre Prod’, se produit en Europe, au Canada comme en Afrique de l’ouest et revendique un engagement humanitaire."
                },
                {
                   "meta_key": "_description",
@@ -1586,7 +1613,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2006"
                },
                {
                   "meta_key": "_date",
@@ -1595,7 +1622,7 @@
             ]
          },
          {
-            "title": "Admore",
+            "title": "Nigel Ha'Admor",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/admore/",
             "pubDate": "Thu, 12 Jul 2018 14:49:43 +0000",
             "creator": "romain",
@@ -1635,7 +1662,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -1647,7 +1674,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "Nigel Ha'Admor, pionnier mystique du rap israélien"
                },
                {
                   "meta_key": "_tag_line",
@@ -1655,7 +1682,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "Sa biographie officielle situe la naissance de Yehoshua Sofer en Jamaïque, d’où il tirerait ses influences ragga. Son installation en Israël succèderait à un séjour à Los Angeles, où il aurait pris goût à la culture hip hop et suivi des entraînements avec Chuck Norris. « Humus Makes you Stupid » (le houmous te rend stupide) sera-t-elle la punchline que retiendra l’histoire ? C’est en tous cas le titre phare qui consacra en 1993 le succès de Sofer alias Nigel Ha’Admor, en Israël. Le rappeur a depuis abandonné son nom de scène pour devenir l’unique professeur d’un art guerrier hébreu plurimillénaire qu’il a lui même popularisé - d’aucuns diraient inventé."
                },
                {
                   "meta_key": "_description",
@@ -1663,7 +1690,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2006"
                },
                {
                   "meta_key": "_date",
@@ -1672,7 +1699,7 @@
             ]
          },
          {
-            "title": "Masta g",
+            "title": "Masta G",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/masta-g/",
             "pubDate": "Thu, 12 Jul 2018 14:50:20 +0000",
             "creator": "romain",
@@ -1712,7 +1739,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -1724,7 +1751,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "Masta G, maître du trip démocratique"
                },
                {
                   "meta_key": "_tag_line",
@@ -1732,7 +1759,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "Rappeur depuis la fin des années 1990, Bakary Blaise Beavogui alias Masta G assume une parole 100% politique. Chaque titre est une tribune. À contresens d’un hip hop commercial, le guinéen revendique un gangstarap défenseur des droits de l’homme. Dès son premier album, Elections Bata ly (« Les élections approchent »), en 2003, Masta G dénonce le vide démocratique dans son pays dirigé par l’inamovible Lansana Conté. Ses paroles sans filtre lui valent un séjour en prison pour « incitation à la violence et atteinte à la sûreté de l’État »."
                },
                {
                   "meta_key": "_description",
@@ -1740,7 +1767,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2006"
                },
                {
                   "meta_key": "_date",
@@ -1793,19 +1820,19 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Dinamic duo rocks"
+                  "meta_value": "Dynamic Duo, les soupirs nihilistes du rap coréen"
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "Quand Choiza et Gaeko découvrent le rap, au début des année 1990, la culture hip hop filtre à peine à Séoul, où commence le règne de la toute puissante K-pop. Une dizaine d’années plus tard, en 2004, le duo sud-coréen bat le record des ventes d’un genre encore classé underground, avec leur premier album Taxi Driver. Dès 2006, sous l’oeil suspicieux de la censure d’État, Choiza et Gaeko endossent le rôle de passeurs, en créant leur propre label Amoeba Culture."
                },
                {
                   "meta_key": "date",
-                  "meta_value": "2001"
+                  "meta_value": "2006"
                },
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "_video",
@@ -1826,7 +1853,7 @@
             ]
          },
          {
-            "title": "Big",
+            "title": "Don Bigg / Fez City Clan / Hel Lmkan / Fnaïre",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/big/",
             "pubDate": "Fri, 27 Jul 2018 16:24:19 +0000",
             "creator": "romain",
@@ -1870,19 +1897,19 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Big Big Big, it's too big."
+                  "meta_value": "Hip Hop marocain, rap the kasbah !"
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "Aux quatre coins du royaume chérifien, le hip hop a fait sa place. Les rappeurs lèvent le voile sur l’envers du décor. Suivez dans les ruelles les fils révoltés du Maroc éternel. S’il vous faut un guide, pourquoi pas Taoufik Hazeb alias Don Bigg, star parmi les stars au firmament de la scène hip hop marocaine ? Issu de la classe moyenne, ce Casaoui de naissance ose attaquer à coups de punchlines l’intouchable police et la corruption dans son pays."
                },
                {
                   "meta_key": "date",
-                  "meta_value": "2012"
+                  "meta_value": "2006"
                },
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "_video",
@@ -1943,7 +1970,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -1955,7 +1982,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "Muki, « Le roi David pourrait me comprendre  »"
                },
                {
                   "meta_key": "_tag_line",
@@ -1963,7 +1990,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "À la fin des années 1990, le mouvement né dans le Bronx vingt ans plus tôt est encore peu connu au Moyen Orient. Pionniers du rap en hébreu, Shabak Shamech ouvre la jeune génération israélienne au hip hop. Leur rap satirique assume la fusion avec le rock et le heavy metal. Un style qui ne renie pas sa filiation avec celui des Beastie Boys, première référence de Shabak Samech, et plus tard celui de Rage Against The Machine."
                },
                {
                   "meta_key": "_description",
@@ -1971,7 +1998,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2006"
                },
                {
                   "meta_key": "_date",
@@ -1980,7 +2007,7 @@
             ]
          },
          {
-            "title": "Faso Combat",
+            "title": "Faso Kombat",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/faso-combat/",
             "pubDate": "Thu, 12 Jul 2018 14:51:19 +0000",
             "creator": "romain",
@@ -2020,7 +2047,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -2032,7 +2059,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "Faso Kombat, retour aux sources"
                },
                {
                   "meta_key": "_tag_line",
@@ -2040,7 +2067,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "Malk’hom l’ivoirien et David le burkinabé se sont rencontré en 2000 à Ouagadougou.\nLeur style Afro Hip Hop, un rap mâtiné de rythmes et d’instruments traditionnels africains, a bientôt conquis le pays. Et le duo Faso Kombat s’impose en langue mòoré ou en français sur la scène hip hop du Burkina. Fils spirituels revendiqués de Thomas Sankara, leader indépendantiste et tiers-mondiste assassiné, Malk’hom et David disent les maux d’une jeunesse dont on a volé l’avenir."
                },
                {
                   "meta_key": "_description",
@@ -2048,7 +2075,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2006"
                },
                {
                   "meta_key": "_date",
@@ -2097,7 +2124,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -2109,7 +2136,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "Saykoji, l’antigangsta de Jakarta"
                },
                {
                   "meta_key": "_tag_line",
@@ -2117,7 +2144,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "La star du rap indonésien vous reçoit juste avant son passage en plateau. Les médias l’adorent ! Le Hip hop est son mode de vie, mais dans ses titres pas de grosses voitures et tout ce qui brille. Ses valeurs : le bonheur et la famille."
                },
                {
                   "meta_key": "_description",
@@ -2125,7 +2152,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2009"
                },
                {
                   "meta_key": "_date",
@@ -2174,7 +2201,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -2186,7 +2213,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "Epik High, chercheurs de sommets"
                },
                {
                   "meta_key": "_tag_line",
@@ -2194,7 +2221,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "Tablo, Mithra Jin, and DJ Tukutz, les rappeurs d’Epic High commencent très bas. Au début des années 2000, le public sud-coréen snobe le hip-hop et ses lyrics engagés, lui préférant la très populaire K-pop. Il leur faut attendre 2005 pour connaître enfin le goût du succès après des efforts obstinés. Mais si leurs titres les moins polémiques deviennent des hits, ceux traitant de sujets plus graves sont censurés. Epik High se maintient pourtant au sommet des charts. Leur ascension semble sans limite."
                },
                {
                   "meta_key": "_description",
@@ -2202,7 +2229,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2009"
                },
                {
                   "meta_key": "_date",
@@ -2251,7 +2278,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -2263,7 +2290,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "Shazet, beatboxer en toute humilité"
                },
                {
                   "meta_key": "_tag_line",
@@ -2271,7 +2298,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "Ne vous fiez pas à ses allures d’étudiant réservé. Ce virtuose du beatboxing, graffeur à ses heures, est une véritable bête de concours. Shazet entame sa carrière à quinze ans, inspiré par les beats du japonais Afra, repérés dans un manga culte. Deux ans plus tard, en 2008, il est propulsé meilleur de sa discipline aux championnats de Melbourne puis sacré champion de Malaisie en 2010. Cette renommée précoce lui vaut le respect de ses pairs d’Indonésie en Europe en passant par l’Océanie."
                },
                {
                   "meta_key": "_description",
@@ -2279,7 +2306,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2011"
                },
                {
                   "meta_key": "_date",
@@ -2288,7 +2315,7 @@
             ]
          },
          {
-            "title": "Priska",
+            "title": "PrissK",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/priska/",
             "pubDate": "Fri, 13 Jul 2018 13:14:00 +0000",
             "creator": "romain",
@@ -2328,7 +2355,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -2340,7 +2367,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "Prissk, la voix fertile"
                },
                {
                   "meta_key": "_tag_line",
@@ -2348,7 +2375,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "Dès 1997, Prissk impose son hip hop féministe dans un milieu résolument masculin. Elle \nest repérée sur scène aux côtés de son frère, avec qui elle a fondé le groupe 6-stem d’alarme. La société ivoirienne donne encore peu la parole aux femmes, quand Prissk s’empare du micro pour dénoncer l’excision, les mariages forcés et les violences faites aux femmes. La rappeuse lance très vite sa carrière solo, soutenue par celui qu’elle appelle encore son mentor : Alpha Blondy. Celle qu’on appelait « la petite collégienne du rap » s’élève alors au rang de « reine du rap » en Côte d’Ivoire."
                },
                {
                   "meta_key": "_description",
@@ -2356,7 +2383,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2006"
                },
                {
                   "meta_key": "_date",
@@ -2405,7 +2432,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -2417,7 +2444,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "Thaitanium, le rap transfuge des Thaï New-Yorkais"
                },
                {
                   "meta_key": "_tag_line",
@@ -2433,7 +2460,7 @@
                },
                {
                   "meta_key": "date",
-                  "meta_value": null
+                  "meta_value": "2012"
                },
                {
                   "meta_key": "_date",
@@ -2469,14 +2496,14 @@
             "is_sticky": "0",
             "category": [
                {
+                  "domain": "pays",
+                  "nicename": "djibouti",
+                  "#text": "djibouti"
+               },
+               {
                   "domain": "language",
                   "nicename": "fr",
                   "#text": "Français"
-               },
-               {
-                  "domain": "pays",
-                  "nicename": "guinee-conakry",
-                  "#text": "guinée conakry"
                }
             ],
             "postmeta": [
@@ -2494,7 +2521,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "Racine J, né de la poussière"
                },
                {
                   "meta_key": "_tag_line",
@@ -2519,7 +2546,7 @@
             ]
          },
          {
-            "title": "Daara",
+            "title": "Daara J",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/daara/",
             "pubDate": "Fri, 13 Jul 2018 13:42:51 +0000",
             "creator": "romain",
@@ -2559,7 +2586,7 @@
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -2567,7 +2594,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": null
+                  "meta_value": "Daara J, griots conscients, citoyens du rap"
                },
                {
                   "meta_key": "description",
@@ -2623,20 +2650,20 @@
             "is_sticky": "0",
             "category": [
                {
+                  "domain": "pays",
+                  "nicename": "cambodge",
+                  "#text": "Cambodge"
+               },
+               {
                   "domain": "language",
                   "nicename": "fr",
                   "#text": "Français"
-               },
-               {
-                  "domain": "pays",
-                  "nicename": "japon",
-                  "#text": "japon"
                }
             ],
             "postmeta": [
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "video",
@@ -2644,15 +2671,15 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Klap Klap Klap, move yo hands moth'Fuker"
+                  "meta_value": "Label KlapYaHandz, semeurs de chance"
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "Années 1980, Seine-Saint-Denis. L’histoire est celle deux gosses réfugiés, fuyant avec leurs parents le Cambodge tombé aux mains de Pol Pot. Pouklaing et son frère Sok grandissent entre les barres de la cité des 3000, à Aulnay-sous-Bois. La culture hip hop en germe dans le 93, prend racine en eux. Pour les deux transfuges, le retour au pays natal est un choc. La musique reconstruit alors le lien rompu. Avec des rappeurs aussi passionnés qu’eux, ils créent KlapYaHandz, un collectif attaché à la culture ancestrale cambodgienne autant qu’au hip hop américain."
                },
                {
                   "meta_key": "date",
-                  "meta_value": "2010"
+                  "meta_value": "2008"
                },
                {
                   "meta_key": "_video",
@@ -2717,19 +2744,19 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "A Tooth For An Eye' from The Knife's album 'Shaking The Habitual', out now"
+                  "meta_value": "Casa crew, chroniqueurs de la colère"
                },
                {
                   "meta_key": "description",
-                  "meta_value": null
+                  "meta_value": "Certains journalistes portent la plume dans la plaie, les lyricistes de Casa Crew frappent là où ça fait mal. Formé en 2003, le crew compte parmi les pionniers du hip hop « vert et rouge », aux couleurs du drapeau chérifien. Avec leur rap en darija (arabe dialectal), Masta Flow, Chaht Man, Jocker et Caprice s’adressent en priorité au Maroc de la rue. Sur des beats incisifs, ils parlent de misère, de chômage et des maux indicibles du royaume."
                },
                {
                   "meta_key": "date",
-                  "meta_value": "2002"
+                  "meta_value": "2006"
                },
                {
                   "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_value": "2"
                },
                {
                   "meta_key": "_video",

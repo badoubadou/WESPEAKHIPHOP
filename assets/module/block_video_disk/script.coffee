@@ -3,6 +3,7 @@ class player_video
 		# @bindEvents() # bind event is now after video is loaded
 		@timelineKnob = new TimelineMax(paused: true)
 		@timelineInfo = new TimelineMax(paused: true)
+
 		@player = null
 		@loadVideo()
 
@@ -61,13 +62,11 @@ class player_video
 	createTween: (duration) ->
 
 		updateInfo= (id)->
-			console.log 'update'+id+'. href '+$('#list_artists li:eq('+id+') a').attr('href')
+			console.log 'update --- '+id+'. href '+$('#list_artists li:eq('+id+') a').attr('href')
 			$('#play-video-btn').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
 			$('#list_artists li a.selected').removeClass('selected')
 			$('#list_artists li:eq('+id+') a').addClass('selected')
 			TweenMax.to('#knob', duration_sequence, { ease: Power0.easeNone, rotation: ((id+1)*(360/28)) })
-
-		# @timelineKnob.to(['#knob'], duration, {rotation:360})
 
 		duration_sequence = duration / 28 
 		sequence = '+='+(duration_sequence - 1)
@@ -160,11 +159,20 @@ class player_video
 			.add(-> updateInfo(28); )
 			.fromTo('#artists_info li:eq(28)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(28)', 0.5, { alpha: 0 }, sequence)
-
-
-
+			# .to('#knob', duration,  {ease: Power0.easeNone, rotation: 360},('-='+(duration+sequence)))
+			# .to('.size_platine', duration,  {ease: Sine.easeIn, rotation: -360*100},('-='+(duration+(sequence*2))))
+			
 	bindEvents: ->
 		that = @
+		#------------------- FOOTER LISTNER -------------------#
+		$('#mode_switcher').on 'switch_to_face_pays', ->
+			if that.player
+				that.player.pause()
+
+		$('#mode_switcher').on 'switch_to_face_artist', ->
+			if that.player
+				that.player.play()
+
 		#------------------- POPIN LISTNER -------------------#
 		$('#popin').on 'classChange', ->
 			console.log 'popin change '+($(this).hasClass 'hide')

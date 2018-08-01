@@ -1,18 +1,37 @@
 #list_artists
-	on-circle(28, $size_name_circle_small, 250px)	
+	on-circle(28, $size_name_circle_small, 10px)	
 	@media $ipad	
-		on-circle(28, $size_name_circle_medium, 250px)
+		on-circle(28, $size_name_circle_medium, 125px)
+		> *:nth-of-type(2)
+		> *:nth-of-type(5)
+		> *:nth-of-type(7)
+		> *:nth-of-type(10)
+			padding-left 30px
+		> *:nth-of-type(28)
+		> *:nth-of-type(25)
+			margin-left -90px
+		> *:nth-of-type(21)
+		> *:nth-of-type(22)
+		> *:nth-of-type(23)
+			margin-left -75px
+		> *:nth-of-type(3)
+			width 200px
 	@media $large_screen
-		on-circle(28, $size_name_circle_large, 250px)
+		on-circle(28, $size_name_circle_large, 125px)
+	
 
 	li a
 		bottom 0
-		center()
+		// center()
 		font-size .75em
 		&.selected
 			font-weight 900
 		span.dot
 			display none
+		span.txt
+			display inline-block
+			line-height 1.1em
+			
 			
 		@media $mobile
 

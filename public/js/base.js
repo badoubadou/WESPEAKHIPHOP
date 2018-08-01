@@ -22,7 +22,7 @@
     }
 
     bindEvents() {
-      var that;
+      var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, that;
       that = this;
       $('#mode_switcher li a').on({
         'click': function(e) {
@@ -31,10 +31,53 @@
           $(this).addClass('selected');
           if ($(this).data('face') === 'face_pays') {
             console.log('play' + that.flip_tween);
+            $('#mode_switcher').trigger('switch_to_face_pays');
             return that.flip_tween.play();
           } else {
             console.log('back');
-            return that.flip_tween.reverse();
+            that.flip_tween.reverse();
+            return $('#mode_switcher').trigger('switch_to_face_artist');
+          }
+        }
+      });
+      GoInFullscreen = function(element) {
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+          element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) {
+          element.msRequestFullscreen();
+        }
+      };
+      GoOutFullscreen = function() {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      };
+      IsFullScreenCurrently = function() {
+        var full_screen_element;
+        full_screen_element = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
+        // If no element is in full-screen
+        if (full_screen_element === null) {
+          return false;
+        } else {
+          return true;
+        }
+      };
+      $('#fullscreen').on({
+        'click': function(e) {
+          if (!IsFullScreenCurrently()) {
+            return GoInFullscreen($('body').get(0));
+          } else {
+            return GoOutFullscreen();
           }
         }
       });
@@ -265,7 +308,7 @@
     createTween(duration) {
       var duration_sequence, sequence, updateInfo;
       updateInfo = function(id) {
-        console.log('update' + id + '. href ' + $('#list_artists li:eq(' + id + ') a').attr('href'));
+        console.log('update --- ' + id + '. href ' + $('#list_artists li:eq(' + id + ') a').attr('href'));
         $('#play-video-btn').attr('href', $('#list_artists li:eq(' + id + ') a').attr('href'));
         $('#list_artists li a.selected').removeClass('selected');
         $('#list_artists li:eq(' + id + ') a').addClass('selected');
@@ -274,7 +317,6 @@
           rotation: (id + 1) * (360 / 28)
         });
       };
-      // @timelineKnob.to(['#knob'], duration, {rotation:360})
       duration_sequence = duration / 28;
       sequence = '+=' + (duration_sequence - 1);
       console.log(duration + ' ' + sequence);
@@ -513,9 +555,22 @@
       }, sequence);
     }
 
+    // .to('#knob', duration,  {ease: Power0.easeNone, rotation: 360},('-='+(duration+sequence)))
+    // .to('.size_platine', duration,  {ease: Sine.easeIn, rotation: -360*100},('-='+(duration+(sequence*2))))
     bindEvents() {
       var options, rotationSnap, that, windowBlurred, windowFocused;
       that = this;
+      //------------------- FOOTER LISTNER -------------------#
+      $('#mode_switcher').on('switch_to_face_pays', function() {
+        if (that.player) {
+          return that.player.pause();
+        }
+      });
+      $('#mode_switcher').on('switch_to_face_artist', function() {
+        if (that.player) {
+          return that.player.play();
+        }
+      });
       //------------------- POPIN LISTNER -------------------#
       $('#popin').on('classChange', function() {
         console.log('popin change ' + ($(this).hasClass('hide')));

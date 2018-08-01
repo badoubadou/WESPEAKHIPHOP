@@ -39,11 +39,12 @@ var watch_coffee = jsfile;
 var src_coffee = jsfile;
 var vendor = [
 	'assets/coffee/vendor/jquery.min.js',
+    'assets/coffee/vendor/ThrowPropsPlugin.min.js',
 	'assets/coffee/vendor/modernizr-objectfit.js'
 ];
 
 gulp.task('makecoffee', function() {
-	gulp.src(src_coffee)
+	return gulp.src(src_coffee)
 		.pipe(coffee())
 		.pipe(concat('base.js'))
 		.pipe(gulp.dest(dest+'js/'));
@@ -61,11 +62,18 @@ gulp.task('clean:js', function () {
   ]);
 });
 
-gulp.task('coffee', ['clean:js'], function (cb) {
-    runSequence(['makecoffee', 'concatjs'], cb);
+
+gulp.task('clean:css', function () {
+  return del([
+    'public/css/*.css'
+  ]);
 });
 
-gulp.task('css', function() {
+gulp.task('coffee', ['clean:js', 'makecoffee'], function (cb) {
+    runSequence(['concatjs', 'uploadjs'], cb);
+});
+
+gulp.task('stylus', function() {
 	return gulp.src('assets/style/*.styl')
 		.pipe(stylus({
 			use: nib(),
@@ -73,6 +81,10 @@ gulp.task('css', function() {
 		}))
 		.pipe(gulp.dest(dest+'css'))
 		.pipe(notify({ message: 'CSS task complete' }));
+});
+
+gulp.task('css', ['stylus'], function (cb) {
+    runSequence(['uploadcss'], cb);
 });
 
 gulp.task('pug:data', function() {
@@ -120,6 +132,43 @@ gulp.task('watch', function() {
 	gulp.watch(jsfile, ['coffee']);
 	gulp.watch(stylfile, ['css']);
 	gulp.watch(['assets/pug/*.pug', 'assets/module/**/*.pug', 'assets/image/*.svg', 'json/*.json'], ['pug']);
+    gulp.watch(['assets/image/**'], ['uploadimage']);
+});
+
+gulp.task("uploadcss", function() {
+    gulp.src('public/css/style.css')
+        .pipe(s3({
+            Bucket: 'wespeakhiphop-assets', //  Required
+            ACL:    'public-read'       //  Needs to be user-defined
+        }, {
+            // S3 Constructor Options, ie:
+            maxRetries: 5
+        }))
+    ;
+});
+
+gulp.task("uploadjs", function() {
+    gulp.src('public/js/**')
+        .pipe(s3({
+            Bucket: 'wespeakhiphop-assets', //  Required
+            ACL:    'public-read'       //  Needs to be user-defined
+        }, {
+            // S3 Constructor Options, ie:
+            maxRetries: 5
+        }))
+    ;
+});
+
+gulp.task("uploadimage", function() {
+    gulp.src('assets/image/**')
+        .pipe(s3({
+            Bucket: 'wespeakhiphop-assets', //  Required
+            ACL:    'public-read'       //  Needs to be user-defined
+        }, {
+            // S3 Constructor Options, ie:
+            maxRetries: 5
+        }))
+    ;
 });
 
 gulp.task("upload", function() {

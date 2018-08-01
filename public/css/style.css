@@ -63,7 +63,10 @@ body {
   margin: 0 auto;
   padding: 0px;
   background-color: #f0f2da;
-  background: url("../image/bg.jpg") no-repeat center center fixed;
+}
+body #main {
+  background-color: #f0f2da;
+  background: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/bg.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -570,7 +573,7 @@ p:empty {
     height: calc(100% - 40px - 160px);
   }
 }
-@media screen and (min-width: 48em) {
+@media screen and (min-width: 62em) {
   .full_height_minus_footer_minus_header_mobile {
     top: 0;
     height: calc(100% - 40px);
@@ -697,6 +700,11 @@ p:empty {
 .footer #fullscreen.actif svg #lign {
   display: block;
 }
+@media screen and (max-width: 61.9em) {
+  .footer #fullscreen {
+    display: none;
+  }
+}
 .header #logo {
   left: 10px;
   top: 10px;
@@ -751,6 +759,7 @@ p:empty {
   list-style: none;
   margin: 0;
   padding: 0;
+  right: 10px;
 }
 #artists_info li {
   position: absolute;
@@ -850,7 +859,6 @@ p:empty {
     height: 200px;
     width: 200px;
     bottom: 40px;
-    right: 10px;
   }
 }
 #list_artists {
@@ -871,94 +879,122 @@ p:empty {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 250px;
+  width: 10px;
   height: 20px;
   margin-top: -10px;
-  margin-left: -125px;
+  margin-left: -5px;
 }
 #list_artists > *:nth-of-type(1) {
   transform: rotate(-90deg) translate(150px) rotate(90deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(2) {
   transform: rotate(-77.14285714285714deg) translate(150px) rotate(77.14285714285714deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(3) {
   transform: rotate(-64.28571428571428deg) translate(150px) rotate(64.28571428571428deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(4) {
   transform: rotate(-51.428571428571416deg) translate(150px) rotate(51.428571428571416deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(5) {
   transform: rotate(-38.571428571428555deg) translate(150px) rotate(38.571428571428555deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(6) {
   transform: rotate(-25.714285714285698deg) translate(150px) rotate(25.714285714285698deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(7) {
   transform: rotate(-12.85714285714284deg) translate(150px) rotate(12.85714285714284deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(8) {
   transform: rotate(1.8e-14deg) translate(150px) rotate(-1.8e-14deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(9) {
   transform: rotate(12.857142857142875deg) translate(150px) rotate(-12.857142857142875deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(10) {
   transform: rotate(25.714285714285733deg) translate(150px) rotate(-25.714285714285733deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(11) {
   transform: rotate(38.57142857142859deg) translate(150px) rotate(-38.57142857142859deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(12) {
   transform: rotate(51.428571428571445deg) translate(150px) rotate(-51.428571428571445deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(13) {
   transform: rotate(64.2857142857143deg) translate(150px) rotate(-64.2857142857143deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(14) {
   transform: rotate(77.14285714285717deg) translate(150px) rotate(-77.14285714285717deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(15) {
   transform: rotate(90.00000000000003deg) translate(150px) rotate(-90.00000000000003deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(16) {
   transform: rotate(102.85714285714289deg) translate(150px) rotate(-102.85714285714289deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(17) {
   transform: rotate(115.71428571428575deg) translate(150px) rotate(-115.71428571428575deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(18) {
   transform: rotate(128.5714285714286deg) translate(150px) rotate(-128.5714285714286deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(19) {
   transform: rotate(141.42857142857147deg) translate(150px) rotate(-141.42857142857147deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(20) {
   transform: rotate(154.28571428571433deg) translate(150px) rotate(-154.28571428571433deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(21) {
   transform: rotate(167.1428571428572deg) translate(150px) rotate(-167.1428571428572deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(22) {
   transform: rotate(180.00000000000006deg) translate(150px) rotate(-180.00000000000006deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(23) {
   transform: rotate(192.85714285714292deg) translate(150px) rotate(-192.85714285714292deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(24) {
   transform: rotate(205.71428571428578deg) translate(150px) rotate(-205.71428571428578deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(25) {
   transform: rotate(218.57142857142864deg) translate(150px) rotate(-218.57142857142864deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(26) {
   transform: rotate(231.4285714285715deg) translate(150px) rotate(-231.4285714285715deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(27) {
   transform: rotate(244.28571428571436deg) translate(150px) rotate(-244.28571428571436deg);
+  text-align: center;
 }
 #list_artists > *:nth-of-type(28) {
   transform: rotate(257.1428571428572deg) translate(150px) rotate(-257.1428571428572deg);
+  text-align: center;
 }
 @media screen and (min-width: 48em) {
   #list_artists {
@@ -979,94 +1015,140 @@ p:empty {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 250px;
+    width: 125px;
     height: 20px;
     margin-top: -10px;
-    margin-left: -125px;
+    margin-left: -62.5px;
   }
   #list_artists > *:nth-of-type(1) {
     transform: rotate(-90deg) translate(305px) rotate(90deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(2) {
     transform: rotate(-77.14285714285714deg) translate(305px) rotate(77.14285714285714deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(3) {
     transform: rotate(-64.28571428571428deg) translate(305px) rotate(64.28571428571428deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(4) {
     transform: rotate(-51.428571428571416deg) translate(305px) rotate(51.428571428571416deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(5) {
     transform: rotate(-38.571428571428555deg) translate(305px) rotate(38.571428571428555deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(6) {
     transform: rotate(-25.714285714285698deg) translate(305px) rotate(25.714285714285698deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(7) {
     transform: rotate(-12.85714285714284deg) translate(305px) rotate(12.85714285714284deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(8) {
     transform: rotate(1.8e-14deg) translate(305px) rotate(-1.8e-14deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(9) {
     transform: rotate(12.857142857142875deg) translate(305px) rotate(-12.857142857142875deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(10) {
     transform: rotate(25.714285714285733deg) translate(305px) rotate(-25.714285714285733deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(11) {
     transform: rotate(38.57142857142859deg) translate(305px) rotate(-38.57142857142859deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(12) {
     transform: rotate(51.428571428571445deg) translate(305px) rotate(-51.428571428571445deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(13) {
     transform: rotate(64.2857142857143deg) translate(305px) rotate(-64.2857142857143deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(14) {
     transform: rotate(77.14285714285717deg) translate(305px) rotate(-77.14285714285717deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(15) {
     transform: rotate(90.00000000000003deg) translate(305px) rotate(-90.00000000000003deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(16) {
     transform: rotate(102.85714285714289deg) translate(305px) rotate(-102.85714285714289deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(17) {
     transform: rotate(115.71428571428575deg) translate(305px) rotate(-115.71428571428575deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(18) {
     transform: rotate(128.5714285714286deg) translate(305px) rotate(-128.5714285714286deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(19) {
     transform: rotate(141.42857142857147deg) translate(305px) rotate(-141.42857142857147deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(20) {
     transform: rotate(154.28571428571433deg) translate(305px) rotate(-154.28571428571433deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(21) {
     transform: rotate(167.1428571428572deg) translate(305px) rotate(-167.1428571428572deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(22) {
     transform: rotate(180.00000000000006deg) translate(305px) rotate(-180.00000000000006deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(23) {
     transform: rotate(192.85714285714292deg) translate(305px) rotate(-192.85714285714292deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(24) {
     transform: rotate(205.71428571428578deg) translate(305px) rotate(-205.71428571428578deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(25) {
     transform: rotate(218.57142857142864deg) translate(305px) rotate(-218.57142857142864deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(26) {
     transform: rotate(231.4285714285715deg) translate(305px) rotate(-231.4285714285715deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(27) {
     transform: rotate(244.28571428571436deg) translate(305px) rotate(-244.28571428571436deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(28) {
     transform: rotate(257.1428571428572deg) translate(305px) rotate(-257.1428571428572deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(2),
+  #list_artists > *:nth-of-type(5),
+  #list_artists > *:nth-of-type(7),
+  #list_artists > *:nth-of-type(10) {
+    padding-left: 30px;
+  }
+  #list_artists > *:nth-of-type(28),
+  #list_artists > *:nth-of-type(25) {
+    margin-left: -90px;
+  }
+  #list_artists > *:nth-of-type(21),
+  #list_artists > *:nth-of-type(22),
+  #list_artists > *:nth-of-type(23) {
+    margin-left: -75px;
+  }
+  #list_artists > *:nth-of-type(3) {
+    width: 200px;
   }
 }
 @media screen and (min-width: 75em) and (min-height: 990px) {
@@ -1088,102 +1170,126 @@ p:empty {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 250px;
+    width: 125px;
     height: 20px;
     margin-top: -10px;
-    margin-left: -125px;
+    margin-left: -62.5px;
   }
   #list_artists > *:nth-of-type(1) {
     transform: rotate(-90deg) translate(470px) rotate(90deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(2) {
     transform: rotate(-77.14285714285714deg) translate(470px) rotate(77.14285714285714deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(3) {
     transform: rotate(-64.28571428571428deg) translate(470px) rotate(64.28571428571428deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(4) {
     transform: rotate(-51.428571428571416deg) translate(470px) rotate(51.428571428571416deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(5) {
     transform: rotate(-38.571428571428555deg) translate(470px) rotate(38.571428571428555deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(6) {
     transform: rotate(-25.714285714285698deg) translate(470px) rotate(25.714285714285698deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(7) {
     transform: rotate(-12.85714285714284deg) translate(470px) rotate(12.85714285714284deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(8) {
     transform: rotate(1.8e-14deg) translate(470px) rotate(-1.8e-14deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(9) {
     transform: rotate(12.857142857142875deg) translate(470px) rotate(-12.857142857142875deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(10) {
     transform: rotate(25.714285714285733deg) translate(470px) rotate(-25.714285714285733deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(11) {
     transform: rotate(38.57142857142859deg) translate(470px) rotate(-38.57142857142859deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(12) {
     transform: rotate(51.428571428571445deg) translate(470px) rotate(-51.428571428571445deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(13) {
     transform: rotate(64.2857142857143deg) translate(470px) rotate(-64.2857142857143deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(14) {
     transform: rotate(77.14285714285717deg) translate(470px) rotate(-77.14285714285717deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(15) {
     transform: rotate(90.00000000000003deg) translate(470px) rotate(-90.00000000000003deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(16) {
     transform: rotate(102.85714285714289deg) translate(470px) rotate(-102.85714285714289deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(17) {
     transform: rotate(115.71428571428575deg) translate(470px) rotate(-115.71428571428575deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(18) {
     transform: rotate(128.5714285714286deg) translate(470px) rotate(-128.5714285714286deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(19) {
     transform: rotate(141.42857142857147deg) translate(470px) rotate(-141.42857142857147deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(20) {
     transform: rotate(154.28571428571433deg) translate(470px) rotate(-154.28571428571433deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(21) {
     transform: rotate(167.1428571428572deg) translate(470px) rotate(-167.1428571428572deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(22) {
     transform: rotate(180.00000000000006deg) translate(470px) rotate(-180.00000000000006deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(23) {
     transform: rotate(192.85714285714292deg) translate(470px) rotate(-192.85714285714292deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(24) {
     transform: rotate(205.71428571428578deg) translate(470px) rotate(-205.71428571428578deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(25) {
     transform: rotate(218.57142857142864deg) translate(470px) rotate(-218.57142857142864deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(26) {
     transform: rotate(231.4285714285715deg) translate(470px) rotate(-231.4285714285715deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(27) {
     transform: rotate(244.28571428571436deg) translate(470px) rotate(-244.28571428571436deg);
+    text-align: center;
   }
   #list_artists > *:nth-of-type(28) {
     transform: rotate(257.1428571428572deg) translate(470px) rotate(-257.1428571428572deg);
+    text-align: center;
   }
 }
 #list_artists li a {
   bottom: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   font-size: 0.75em;
 }
 #list_artists li a.selected {
@@ -1191,6 +1297,10 @@ p:empty {
 }
 #list_artists li a span.dot {
   display: none;
+}
+#list_artists li a span.txt {
+  display: inline-block;
+  line-height: 1.1em;
 }
 @media screen and (max-width: 47.9em), screen and (max-height: 420px) {
   #list_artists li a span.txt {
@@ -1331,7 +1441,7 @@ p:empty {
 }
 #disk {
   border: 2px solid #000;
-  cursor: url("wespeakhiphop/images/hand.png"), auto;
+  cursor: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/hand.png"), auto;
 }
 #disk_lign {
   background: #ffce00;

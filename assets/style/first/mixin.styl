@@ -44,7 +44,24 @@ on-circle($item-count, $circle-size, $item-size)
 		margin-left -($item-size / 2)
 		$angle = (360 / $item-count)
 		$rot = -90
+		
 		for $i in (1)..($item-count)
 			&:nth-of-type({$i})
 				transform rotate($rot * 1deg) translate($circle-size / 2) rotate($rot * -1deg)
+				text-align center
+				// if( $i < ($item-count / 2))
+				// 	if $i > 1
+				// 		text-align right
+				// 	else
+				// 		text-align center
+				// else
+				// 	if $i > (($item-count / 2)+1)
+				// 		text-align left
+				// 	else
+				// 		text-align center
+						
+				
+				
 			$rot = $rot + $angle
+			
+
