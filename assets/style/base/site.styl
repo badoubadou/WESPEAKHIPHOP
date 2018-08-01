@@ -6,7 +6,7 @@ html
 	overflow hidden
 
 body
-	font-family Knockout
+	font-family $ft-family-primary
 	font-size 14px
 	margin 0 
 	width 100%
@@ -42,18 +42,11 @@ a
 html,
 body
 	height 100%
-
-body
-	display flex
-	flex-direction column
 			
 p
 	word-wrap break-word
 	&:empty
 		display none
-
-.largedevice
-	display none
 
 .hide
 	display none !important
@@ -69,12 +62,3 @@ p
 	
 .btn
 	cursor pointer
-	
-@media $bs-screen-md-min
-	.largedevice
-		display block 
-	span.largedevice
-		display inline-block
-	.smalldevice
-		display none
-

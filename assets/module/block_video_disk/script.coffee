@@ -1,6 +1,8 @@
 class player_video
 	constructor: (@$container) ->
 		# @bindEvents() # bind event is now after video is loaded
+		@timelineKnob = new TimelineMax(paused: true)
+		@timelineInfo = new TimelineMax(paused: true)
 		@player = null
 		@loadVideo()
 
@@ -54,56 +56,22 @@ class player_video
 			console.log 'secondtimeupdate '+player.currentTime()+' < '+timeToStop
 			
 		@$player.on 'timeupdate', checkEndTime
-		
-	bindEvents: ->
-		that = @
-		#------------------- POPIN LISTNER -------------------#
-		$('#popin').on 'classChange', ->
-			console.log 'popin change '+($(this).hasClass 'hide')
-			if $(this).hasClass 'hide'
-				if window.playerYT
-					window.playerYT.stopVideo()
-					
-				if that.player
-					that.player.play()
-			else
-				if that.player
-					that.player.pause()
-			return
-		#------------------- FOCUS ---------------------------#
-		windowBlurred = ->
-			console.log 'blur'
-			if that.player
-				that.player.pause()
-			return
+	
+	#------------------- TWEEN ---------------------------#
+	createTween: (duration) ->
 
-		windowFocused = ->
-			console.log 'focus'
-			if that.player
-				that.player.play()
-			return
+		updateInfo= (id)->
+			console.log 'update'+id+'. href '+$('#list_artists li:eq('+id+') a').attr('href')
+			$('#play-video-btn').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
+			$('#list_artists li a.selected').removeClass('selected')
+			$('#list_artists li:eq('+id+') a').addClass('selected')
+			TweenMax.to('#knob', duration_sequence, { ease: Power0.easeNone, rotation: ((id+1)*(360/28)) })
 
-		$(window).on 'pagehide blur', windowBlurred
-		$(window).on 'pageshow focus', windowFocused
+		# @timelineKnob.to(['#knob'], duration, {rotation:360})
 
-		#------------------- SOUND ---------------------------#
-		$('#sound').on 'click', ->
-			that.player.muted(!that.player.muted())
-			$('#sound').toggleClass 'actif'
-
-		#------------------- TWEEN ---------------------------#
-		updateInfo = (id)->
-			console.log 'update'+id
-			$('#play-video-btn').attr('href', $('#artists_info li:eq('+id+') a').attr('href')); $('#artists_info li a.selected').removeClass('selected'); $('#artists_info li:eq('+id+') a').addClass('selected');
-
-		duration =  160.49
-		@timelineKnob = new TimelineMax(paused: true)
-		@timelineKnob.to(['#knob'], duration, {rotation:360})
-
-		@timelineInfo = new TimelineMax(paused: true)
-		# sequence = '+='+((duration / 28)-1)
-		sequence = '+=4.5'
-		console.log sequence
+		duration_sequence = duration / 28 
+		sequence = '+='+(duration_sequence - 1)
+		console.log duration+' '+sequence
 		@timelineInfo
 			.add(-> updateInfo(0); )
 			.fromTo('#artists_info li:eq(0)', 0.5, {alpha: 0},{alpha: 1})
@@ -193,6 +161,45 @@ class player_video
 			.fromTo('#artists_info li:eq(28)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(28)', 0.5, { alpha: 0 }, sequence)
 
+
+
+	bindEvents: ->
+		that = @
+		#------------------- POPIN LISTNER -------------------#
+		$('#popin').on 'classChange', ->
+			console.log 'popin change '+($(this).hasClass 'hide')
+			if $(this).hasClass 'hide'
+				if window.playerYT
+					window.playerYT.stopVideo()
+					
+				if that.player
+					that.player.play()
+			else
+				if that.player
+					that.player.pause()
+			return
+		#------------------- FOCUS ---------------------------#
+		windowBlurred = ->
+			console.log 'blur'
+			if that.player
+				that.player.pause()
+			return
+
+		windowFocused = ->
+			console.log 'focus'
+			if that.player
+				that.player.play()
+			return
+
+		$(window).on 'pagehide blur', windowBlurred
+		$(window).on 'pageshow focus', windowFocused
+
+		#------------------- SOUND ---------------------------#
+		$('#sound').on 'click', ->
+			that.player.muted(!that.player.muted())
+			$('#sound').toggleClass 'actif'
+
+		
 		#------------------- PLAYER JS ---------------------------#
 		options = { autoplay: true, muted: true };
 		@player = videojs('player', options, ->
@@ -200,33 +207,18 @@ class player_video
 			
 			myPlayer.on 'play', ->
 				console.log 'play'
-				that.timelineKnob.play()
 				that.timelineInfo.play()
 			
 			myPlayer.on 'pause', ->
 				console.log 'pause'
 				that.timelineInfo.pause()
-				that.timelineKnob.pause()
-
+				
 			myPlayer.on 'seeked', ->
 				that.timelineInfo.time myPlayer.currentTime()
-				that.timelineKnob.time myPlayer.currentTime()
+				
+			myPlayer.on 'loadedmetadata', ->
+				that.createTween(myPlayer.duration())
 			
-			# myPlayer.on 'timeupdate', ->
-			# 	that.timelineInfo.time myPlayer.currentTime()
-
-			# 	if($('#knob').hasClass 'drag')
-			# 		return
-			# 	percentage = ( myPlayer.currentTime() / myPlayer.duration() ) * 100;
-			# 	whereYouAt = myPlayer.currentTime()
-			# 	deg = Math.round((360 * (percentage / 100)))
-			# 	if deg
-			# 		TweenMax.to(['#knob'], .5, {rotation:deg});
-			# 	else
-			# 		console.log 'yo'
-			# 		TweenMax.to [ '#knob' ], 0, rotation: deg
-			# 	return
-
 			return
 		)
 		

@@ -5,7 +5,6 @@
 		position relative
 			
 	@media $mobile_et_ipad
-		height $height_header_info_mobile
 		width 100%
 		position absolute 
 		background $yellow
@@ -13,9 +12,22 @@
 		#logo
 			vert_align_middle()
 			svg
-				width 100px
-				height auto
-	
+				width auto
+		
+	@media $mobile
+		height $height_header_info_mobile
+		#logo 
+			left 20px
+			svg
+				height $height_header_info_mobile * .5
+		
+	@media $ipad
+		height $height_header_info_ipad
+		#logo 
+			left 50px
+			svg
+				height $height_header_info_ipad * .5
+		
 	@media $desktop
 		#logo 
 			svg

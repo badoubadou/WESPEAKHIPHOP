@@ -4,14 +4,21 @@
 .full_height
 	height 100%
 
-.full_height_minus_footer
-	height calc(100% - 40px)
+// .full_height_minus_footer
+// 	height "calc(100% - %s)" % ($height_footer)
 	
 .full_height_minus_footer_minus_header_mobile
-	@media $bs-screen-sd-max	
-		top 80px
-		height calc(100% - 40px - 80px )
-	
+	@media $mobile	
+		top $height_header_info_mobile
+		height "calc(100% - %s - %s)" % ($height_footer $height_header_info_mobile)
+	@media $ipad	
+		top $height_header_info_ipad
+		height "calc(100% - %s - %s)" % ($height_footer $height_header_info_ipad)
+		
+	@media $ipad	
+		top 0
+		height "calc(100% - %s)" % ($height_footer)
+		
 
 .max_width
 	margin 0 $space-1

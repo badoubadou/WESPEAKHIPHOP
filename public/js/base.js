@@ -74,7 +74,7 @@
           $('.lds-dual-ring').addClass('done');
           window.playerYT.stopVideo();
         });
-        return $('#list_artists li a').on('click', function() {
+        return $('#list_artists li a, #play-video-btn').on('click', function() {
           var idyoutube;
           event.preventDefault();
           idyoutube = YouTubeGetID($(this).attr('href'));
@@ -188,6 +188,12 @@
     constructor($container) {
       this.$container = $container;
       // @bindEvents() # bind event is now after video is loaded
+      this.timelineKnob = new TimelineMax({
+        paused: true
+      });
+      this.timelineInfo = new TimelineMax({
+        paused: true
+      });
       this.player = null;
       this.loadVideo();
     }
@@ -254,66 +260,25 @@
       return this.$player.on('timeupdate', checkEndTime);
     }
 
-    bindEvents() {
-      var duration, options, rotationSnap, sequence, that, updateInfo, windowBlurred, windowFocused;
-      that = this;
-      //------------------- POPIN LISTNER -------------------#
-      $('#popin').on('classChange', function() {
-        console.log('popin change ' + ($(this).hasClass('hide')));
-        if ($(this).hasClass('hide')) {
-          if (window.playerYT) {
-            window.playerYT.stopVideo();
-          }
-          if (that.player) {
-            that.player.play();
-          }
-        } else {
-          if (that.player) {
-            that.player.pause();
-          }
-        }
-      });
-      //------------------- FOCUS ---------------------------#
-      windowBlurred = function() {
-        console.log('blur');
-        if (that.player) {
-          that.player.pause();
-        }
-      };
-      windowFocused = function() {
-        console.log('focus');
-        if (that.player) {
-          that.player.play();
-        }
-      };
-      $(window).on('pagehide blur', windowBlurred);
-      $(window).on('pageshow focus', windowFocused);
-      //------------------- SOUND ---------------------------#
-      $('#sound').on('click', function() {
-        that.player.muted(!that.player.muted());
-        return $('#sound').toggleClass('actif');
-      });
-      //------------------- TWEEN ---------------------------#
+    
+    //------------------- TWEEN ---------------------------#
+    createTween(duration) {
+      var duration_sequence, sequence, updateInfo;
       updateInfo = function(id) {
-        console.log('update' + id);
-        $('#play-video-btn').attr('href', $('#artists_info li:eq(' + id + ') a').attr('href'));
-        $('#artists_info li a.selected').removeClass('selected');
-        return $('#artists_info li:eq(' + id + ') a').addClass('selected');
+        console.log('update' + id + '. href ' + $('#list_artists li:eq(' + id + ') a').attr('href'));
+        $('#play-video-btn').attr('href', $('#list_artists li:eq(' + id + ') a').attr('href'));
+        $('#list_artists li a.selected').removeClass('selected');
+        $('#list_artists li:eq(' + id + ') a').addClass('selected');
+        return TweenMax.to('#knob', duration_sequence, {
+          ease: Power0.easeNone,
+          rotation: (id + 1) * (360 / 28)
+        });
       };
-      duration = 160.49;
-      this.timelineKnob = new TimelineMax({
-        paused: true
-      });
-      this.timelineKnob.to(['#knob'], duration, {
-        rotation: 360
-      });
-      this.timelineInfo = new TimelineMax({
-        paused: true
-      });
-      // sequence = '+='+((duration / 28)-1)
-      sequence = '+=4.5';
-      console.log(sequence);
-      this.timelineInfo.add(function() {
+      // @timelineKnob.to(['#knob'], duration, {rotation:360})
+      duration_sequence = duration / 28;
+      sequence = '+=' + (duration_sequence - 1);
+      console.log(duration + ' ' + sequence);
+      return this.timelineInfo.add(function() {
         return updateInfo(0);
       }).fromTo('#artists_info li:eq(0)', 0.5, {
         alpha: 0
@@ -546,6 +511,48 @@
       }).to('#artists_info li:eq(28)', 0.5, {
         alpha: 0
       }, sequence);
+    }
+
+    bindEvents() {
+      var options, rotationSnap, that, windowBlurred, windowFocused;
+      that = this;
+      //------------------- POPIN LISTNER -------------------#
+      $('#popin').on('classChange', function() {
+        console.log('popin change ' + ($(this).hasClass('hide')));
+        if ($(this).hasClass('hide')) {
+          if (window.playerYT) {
+            window.playerYT.stopVideo();
+          }
+          if (that.player) {
+            that.player.play();
+          }
+        } else {
+          if (that.player) {
+            that.player.pause();
+          }
+        }
+      });
+      //------------------- FOCUS ---------------------------#
+      windowBlurred = function() {
+        console.log('blur');
+        if (that.player) {
+          that.player.pause();
+        }
+      };
+      windowFocused = function() {
+        console.log('focus');
+        if (that.player) {
+          that.player.play();
+        }
+      };
+      $(window).on('pagehide blur', windowBlurred);
+      $(window).on('pageshow focus', windowFocused);
+      //------------------- SOUND ---------------------------#
+      $('#sound').on('click', function() {
+        that.player.muted(!that.player.muted());
+        return $('#sound').toggleClass('actif');
+      });
+      
       //------------------- PLAYER JS ---------------------------#
       options = {
         autoplay: true,
@@ -556,34 +563,19 @@
         myPlayer = this;
         myPlayer.on('play', function() {
           console.log('play');
-          that.timelineKnob.play();
           return that.timelineInfo.play();
         });
         myPlayer.on('pause', function() {
           console.log('pause');
-          that.timelineInfo.pause();
-          return that.timelineKnob.pause();
+          return that.timelineInfo.pause();
         });
         myPlayer.on('seeked', function() {
-          that.timelineInfo.time(myPlayer.currentTime());
-          return that.timelineKnob.time(myPlayer.currentTime());
+          return that.timelineInfo.time(myPlayer.currentTime());
+        });
+        myPlayer.on('loadedmetadata', function() {
+          return that.createTween(myPlayer.duration());
         });
       });
-      
-      // myPlayer.on 'timeupdate', ->
-      // 	that.timelineInfo.time myPlayer.currentTime()
-
-      // 	if($('#knob').hasClass 'drag')
-      // 		return
-      // 	percentage = ( myPlayer.currentTime() / myPlayer.duration() ) * 100;
-      // 	whereYouAt = myPlayer.currentTime()
-      // 	deg = Math.round((360 * (percentage / 100)))
-      // 	if deg
-      // 		TweenMax.to(['#knob'], .5, {rotation:deg});
-      // 	else
-      // 		console.log 'yo'
-      // 		TweenMax.to [ '#knob' ], 0, rotation: deg
-      // 	return
       rotationSnap = 360 / 28;
       Draggable.create('#knob', {
         type: 'rotation',

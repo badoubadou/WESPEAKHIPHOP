@@ -12,18 +12,12 @@ each video in all_videos
 			if cat.nicename == langage
 				- videos.push(video) 
 
-
 - videos.sort(function(a, b) {return a.menu_order - b.menu_order;})
-
-// - vidInOrder = []
-// while vidInOrder.length < videos.length
-	
-
 
 doctype html
 html(lang= langage) 
 	head
-		meta(name="viewport" content="width=device-width, initial-scale=1")
+		meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
 		meta(name="descrition" content="We speak Hiphop est un site etc.")
 		meta(name="author" content="David Boisseaux & Vina Hiridjee")
 		meta(property="og:title" content="We Speak Hiphop")
@@ -72,6 +66,9 @@ html(lang= langage)
 			#face_pays.absolute.centered.layer_2.full_height.full_width
 				include ../module/block_pays/index.pug
 
+			#platine.absolute.centered.layer_0.full_height.full_width
+				.size_platine.centered
+					include ../image/platine.svg
 		
 		include ../module/block_info_artists/index.pug
 		include ../module/block_footer/index.pug

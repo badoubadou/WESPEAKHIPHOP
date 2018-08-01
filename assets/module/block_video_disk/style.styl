@@ -41,6 +41,18 @@
 	@media $large_screen
 		width $size_disk_large
 		height $size_disk_large
+
+.size_platine
+	width $size_disk_small+$epaiseur_platine
+	height $size_disk_small+$epaiseur_platine
+	
+	@media $ipad
+		width $size_disk_medium+$epaiseur_platine
+		height $size_disk_medium+$epaiseur_platine
+	@media $large_screen
+		width $size_disk_large+$epaiseur_platine
+		height $size_disk_large+$epaiseur_platine
+
 	
 #mask_video
 	border 8px solid #000

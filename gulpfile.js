@@ -33,7 +33,7 @@ var stylfile = ['assets/style/**/*.styl', 'assets/module/**/*.styl'];
 var jsfile = ['assets/coffee/module.coffee', 'assets/module/**/*.coffee', 'assets/coffee/base.coffee'];
 var misc = ['assets/image/**'];
 var dest = 'public/';
-var toUpload = ['public/image/**', 'public/css/style.css', 'public/js/**'];
+var toUpload = ['public/image/**', 'public/css/style.css', 'public/js/**', 'public/font/**'];
 
 var watch_coffee = jsfile;
 var src_coffee = jsfile;

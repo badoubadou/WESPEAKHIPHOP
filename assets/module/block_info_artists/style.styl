@@ -1,19 +1,9 @@
 #artists_info
 	display block
 	position absolute
-	height 200px
-	width 200px
-	bottom 0px
-	right 10px
 	list-style none
 	margin 0
 	padding 0
-	
-	@media $mobile_et_ipad
-		top 5px
-		bottom auto
-		height $height_header_info_mobile
-		width calc( 100% - 150px )
 		
 	li
 		position absolute
@@ -26,17 +16,29 @@
 			width 100%
 		
 		.name
+		.date
+		.tagline
+		.contry
+			line-height .9em
+
+		.name
 			text-transform uppercase
 			font-family $ft-family-secondary
-			font-size 3em
+			font-size 4em
 			line-height .8em
 		
-		.tagline
+		.name
 		.date
 			color $yellow
 			
+		.name
+		.date
+		.contry
+			font-size 3em
+			
 		.tagline
 			font-weight 900
+			font-size 1.1em
 		
 		.date
 		.contry
@@ -44,8 +46,51 @@
 			font-family $ft-family-secondary
 			display inline-block
 			width auto
-			font-size 2.4em
 			
 			&.contry
 				padding-right 10px
+	
+	@media $mobile_et_ipad
+		top O
+		bottom auto
+		li
+			border-left 2px solid $light-yellow
+			padding-left 20px
+			vert_align_middle()
+			.name
+			.date
+				color $light-yellow
+		
 			
+	@media $mobile
+		height $height_header_info_mobile
+		width calc( 100% - 120px )
+		li
+			.tagline
+				font-size .6em
+				padding 5px 0
+			
+			.name
+			.contry
+			.date
+				font-size 1.6em
+			
+	@media $ipad
+		height $height_header_info_ipad
+		width calc( 100% - 300px )
+		li
+			.tagline
+				font-size 1.1em
+				padding 10px 0
+			
+			.name
+			.date
+			.contry
+				font-size 2.7em
+				
+	@media $desktop
+		height 200px
+		width 200px
+		bottom $height_footer
+		right 10px
+		
