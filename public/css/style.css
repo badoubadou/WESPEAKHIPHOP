@@ -497,6 +497,11 @@ p:empty {
 .btn {
   cursor: pointer;
 }
+.round_btn {
+  border-radius: 10px;
+  line-height: 20px;
+  height: 20px;
+}
 .lds-dual-ring {
   display: inline-block;
   width: 46px;
@@ -1350,6 +1355,10 @@ p:empty {
   width: 20%;
   height: 70%;
 }
+#popin .block.big {
+  width: 50%;
+  height: 70%;
+}
 #popin .yellow,
 #popin .white {
   width: 100%;
@@ -1359,6 +1368,59 @@ p:empty {
 }
 #popin .white {
   background: #fff;
+}
+#popin .name {
+  text-transform: uppercase;
+  font-family: Knockout, Helvetica, Arial, sans-serif;
+  font-size: 4em;
+  line-height: 0.8em;
+}
+#popin .name,
+#popin .date {
+  color: #ffce00;
+}
+#popin .contry {
+  color: #fff;
+}
+#popin .date,
+#popin .contry {
+  font-size: 4em;
+  font-family: Knockout, Helvetica, Arial, sans-serif;
+  font-weight: 100;
+}
+#popin .date {
+  padding-right: 20px;
+}
+#popin .bio {
+  text-transform: none;
+  color: #fff;
+  margin-bottom: 20px;
+}
+#popin #back {
+  background: #979797;
+}
+#popin .btn {
+  display: inline-block;
+  padding: 0 10px;
+  width: auto;
+  font-size: 0.8em;
+  margin-right: 20px;
+}
+#smallmap {
+  position: absolute;
+  bottom: 60px;
+  left: 20px;
+  display: none;
+  width: 210px;
+  height: auto;
+}
+@media screen and (min-width: 48em) {
+  #smallmap {
+    display: block;
+  }
+  #smallmap svg .small-map-st2 {
+    opacity: 0;
+  }
 }
 #marker {
   display: block;
@@ -1460,7 +1522,7 @@ p:empty {
   bottom: 30px;
   font-size: 0.6em;
   padding: 0 15px;
-  width: auto;
+  width: 100px;
   display: block;
   margin-top: 60px;
 }

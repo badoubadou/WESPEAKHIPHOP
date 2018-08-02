@@ -1,3 +1,14 @@
+isMobile = ->
+	if navigator.userAgent.match(/Mobi/)
+		return true
+	if 'screen' of window and window.screen.width < 1366
+		return true
+	connection = navigator.connection or navigator.mozConnection or navigator.webkitConnection
+	if connection and connection.type == 'cellular'
+		return true
+	false
+
+
 init = ->
 	$('body').addClass 'doc-ready'
 	$('.loader-bar').removeClass('show-progress')

@@ -8,6 +8,9 @@ var nib    = require('nib');
 var stylus = require('gulp-stylus');
 var pug    = require('gulp-pug');
 var runSequence = require('run-sequence');
+var replace = require('gulp-replace');
+
+var tap = require('gulp-tap');
 
 var data = require('gulp-data');
 fs = require('fs'),
@@ -19,6 +22,7 @@ var coffee       = require('gulp-coffee');
 var concat       = require('gulp-concat');
 var uglify       = require('gulp-uglify');
 var del = require('del');
+var gutil = require('gulp-util');
 
 var config = {
     accessKeyId: "AKIAJUYRDM6H3KW3O5FQ",
@@ -32,6 +36,7 @@ var pugfile = ['assets/pug/*.pug', '!assets/pug/layout.pug'];
 var stylfile = ['assets/style/**/*.styl', 'assets/module/**/*.styl'];
 var jsfile = ['assets/coffee/module.coffee', 'assets/module/**/*.coffee', 'assets/coffee/base.coffee'];
 var misc = ['assets/image/**'];
+var imageminussvg = ['assets/image/**', '!assets/image/*.svg'];
 var dest = 'public/';
 var toUpload = ['public/image/**', 'public/css/style.css', 'public/js/**', 'public/font/**'];
 
@@ -118,8 +123,8 @@ gulp.task('pug', ['pug:data'], function() {
         .pipe(gulp.dest(dest));
 });
 
-gulp.task('misc', function () {
-	gulp.src(misc)
+gulp.task('misc', ['cleansvgclass'], function () {
+	gulp.src(imageminussvg)
 	.pipe(gulp.dest(dest+'image/'));
 });
 
@@ -131,7 +136,8 @@ gulp.task('watch', function() {
 	gulp.watch(misc, ['misc']);
 	gulp.watch(jsfile, ['coffee']);
 	gulp.watch(stylfile, ['css']);
-	gulp.watch(['assets/pug/*.pug', 'assets/module/**/*.pug', 'assets/image/*.svg', 'json/*.json'], ['pug']);
+	gulp.watch(['assets/pug/*.pug', 'assets/module/**/*.pug', 'assets/image/*.svg', 'assets/json/*.json'], ['pug']);
+    gulp.watch(['assets/image/*.svg'], ['cleansvgclass']);
     gulp.watch(['assets/image/**'], ['uploadimage']);
 });
 
@@ -145,6 +151,36 @@ gulp.task("uploadcss", function() {
             maxRetries: 5
         }))
     ;
+});
+
+gulp.task('cleansvgclass', function() {
+  return gulp.src('assets/image/*.svg')
+    .pipe(tap(function(file) {
+      var fileName = path.basename(file.path, '.svg');
+      var st0 = fileName+'-st0';
+      var st1 = fileName+'-st1';
+      var st2 = fileName+'-st2';
+      var st3 = fileName+'-st3';
+      var st4 = fileName+'-st4';
+      var st5 = fileName+'-st5';
+      var st6 = fileName+'-st6';
+      var st7 = fileName+'-st7';
+      var st8 = fileName+'-st8';
+      var st9 = fileName+'-st9';
+      gutil.log('file name :', gutil.colors.magenta(fileName));
+      return gulp.src('assets/image/' + fileName+'.svg')
+        .pipe(replace(/st0/g, st0))
+        .pipe(replace(/st1/g, st1))
+        .pipe(replace(/st2/g, st2))
+        .pipe(replace(/st3/g, st3))
+        .pipe(replace(/st4/g, st4))
+        .pipe(replace(/st5/g, st5))
+        .pipe(replace(/st6/g, st6))
+        .pipe(replace(/st7/g, st7))
+        .pipe(replace(/st8/g, st8))
+        .pipe(replace(/st9/g, st9))
+        .pipe(gulp.dest('assets/cleansvg/'));
+    }));
 });
 
 gulp.task("uploadjs", function() {

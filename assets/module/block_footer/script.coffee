@@ -7,7 +7,7 @@ class flip_disk
 		@bindEvents()
 
 	bindEvents : ->
-		that = @
+		that = @			
 		$('#mode_switcher li a').on 'click':(e) ->
 			e.preventDefault()
 			$('.footer .selected').removeClass 'selected'

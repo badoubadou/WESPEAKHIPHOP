@@ -3,7 +3,6 @@ class player_youtube
 		@bindEvents()
 
 	bindEvents : ->
-
 		YouTubeGetID = (url) ->
 			ID = ''
 			url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/)
@@ -21,13 +20,14 @@ class player_youtube
 				window.playerYT.stopVideo()
 				return
 
-			$('#list_artists li a, #play-video-btn').on 'click', ->
+			$('#list_artists li a, #play-video-btn, #startvideo').on 'click', ->
 				event.preventDefault()
 				idyoutube = YouTubeGetID($(this).attr('href'))
-				console.log idyoutube
 
+				if !$('#artist_info').hasClass 'hide'
+					$('#artist_info').addClass 'hide'
+				
 				$('.lds-dual-ring').removeClass 'done'
-				console.log window.playerYT
 				if(!window.playerYT)
 					console.log 'not yet'
 					window.playerYT = new (YT.Player)('player_youtube',
@@ -41,7 +41,7 @@ class player_youtube
 							autohide: 1, 
 							disablekb: 1, 
 							enablejsapi: 1, 
-							fs: 0, 
+							fs: 1, 
 							modestbranding: true, 
 							rel: 0, 
 							hl: 'pt'
@@ -54,28 +54,25 @@ class player_youtube
 							'onStateChange': onPlayerStateChange)
 				else
 					window.playerYT.loadVideoById idyoutube
-					# $('#zone_youtube').addClass 'play'
-				
 				return
 		
-
 		window.onPlayerReady = (event) ->
 			console.log 'onPlayerReady'
 			event.target.playVideo()
 			return
 
 		window.onPlayerStateChange = (event) ->
-			# if event.data == YT.PlayerState.PLAYING and !done
-			# 	setTimeout stopVideo, 6000
-			# 	done = true
 			if event.data == YT.PlayerState.PLAYING and !done
 				$('#zone_youtube').addClass 'play'
 				$('#popin').removeClass('hide').trigger 'classChange'
 				$('.lds-dual-ring').addClass 'done'
+				$('#popin .video-container').removeClass 'hide'
 			return
 
 		window.stopVideo = ->
+			console.log 'stop video'
 			window.playerYT.stopVideo()
+			$('#popin .video-container').addClass 'hide'
 			return
 
 		tag.src = 'https://www.youtube.com/iframe_api'

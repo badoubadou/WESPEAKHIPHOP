@@ -117,13 +117,14 @@
           $('.lds-dual-ring').addClass('done');
           window.playerYT.stopVideo();
         });
-        return $('#list_artists li a, #play-video-btn').on('click', function() {
+        return $('#list_artists li a, #play-video-btn, #startvideo').on('click', function() {
           var idyoutube;
           event.preventDefault();
           idyoutube = YouTubeGetID($(this).attr('href'));
-          console.log(idyoutube);
+          if (!$('#artist_info').hasClass('hide')) {
+            $('#artist_info').addClass('hide');
+          }
           $('.lds-dual-ring').removeClass('done');
-          console.log(window.playerYT);
           if (!window.playerYT) {
             console.log('not yet');
             window.playerYT = new YT.Player('player_youtube', {
@@ -137,7 +138,7 @@
                 autohide: 1,
                 disablekb: 1,
                 enablejsapi: 1,
-                fs: 0,
+                fs: 1,
                 modestbranding: true,
                 rel: 0,
                 hl: 'pt',
@@ -155,23 +156,22 @@
           }
         });
       };
-      // $('#zone_youtube').addClass 'play'
       window.onPlayerReady = function(event) {
         console.log('onPlayerReady');
         event.target.playVideo();
       };
       window.onPlayerStateChange = function(event) {
-        // if event.data == YT.PlayerState.PLAYING and !done
-        // 	setTimeout stopVideo, 6000
-        // 	done = true
         if (event.data === YT.PlayerState.PLAYING && !done) {
           $('#zone_youtube').addClass('play');
           $('#popin').removeClass('hide').trigger('classChange');
           $('.lds-dual-ring').addClass('done');
+          $('#popin .video-container').removeClass('hide');
         }
       };
       window.stopVideo = function() {
+        console.log('stop video');
         window.playerYT.stopVideo();
+        $('#popin .video-container').addClass('hide');
       };
       tag.src = 'https://www.youtube.com/iframe_api';
       firstScriptTag = document.getElementsByTagName('script')[0];
@@ -197,23 +197,37 @@
     }
 
     bindEvents() {
-      $('#close').on('click', function() {
+      var showPopin;
+      showPopin = function($target) {
+        if ($('#popin').hasClass('hide')) {
+          $('#popin').removeClass('hide').trigger('classChange');
+        }
+        if ($($target).hasClass('hide')) {
+          return $($target).removeClass('hide');
+        } else {
+          $($target).addClass('hide');
+          return $('#popin').addClass('hide').trigger('classChange');
+        }
+      };
+      $('#apropos_btn').on({
+        'click': function(e) {
+          e.preventDefault();
+          return showPopin('#artist_info');
+        }
+      });
+      $('#share').on('click', function() {
+        return showPopin('#shareinfo');
+      });
+      return $('#close, #back').on('click', function() {
         if (!$('#popin').hasClass('hide')) {
           console.log('remove');
           $('#popin').addClass('hide').trigger('classChange');
         }
         if (!$('#shareinfo').hasClass('hide')) {
-          return $('#shareinfo').addClass('hide');
+          $('#shareinfo').addClass('hide');
         }
-      });
-      return $('#share').on('click', function() {
-        if ($('#popin').hasClass('hide')) {
-          $('#popin').removeClass('hide').trigger('classChange');
-        }
-        if ($('#shareinfo').hasClass('hide')) {
-          return $('#shareinfo').removeClass('hide');
-        } else {
-          return $('#shareinfo').addClass('hide');
+        if (!$('#artist_info').hasClass('hide')) {
+          return $('#artist_info').addClass('hide');
         }
       });
     }
@@ -244,8 +258,6 @@
     loadVideo() {
       var req, that, videoUrl;
       videoUrl = 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/5secondes.mp4';
-      // if location.hostname == 'localhost' or location.hostname == '127.0.0.1' or location.hostname == ''
-      // 	videoUrl = 'http://milkyweb.eu/video/5secondes.mp4'
       that = this;
       req = new XMLHttpRequest;
       req.open('GET', videoUrl, true);
@@ -308,15 +320,22 @@
     createTween(duration) {
       var duration_sequence, sequence, updateInfo;
       updateInfo = function(id) {
-        console.log('update --- ' + id + '. href ' + $('#list_artists li:eq(' + id + ') a').attr('href'));
-        $('#play-video-btn').attr('href', $('#list_artists li:eq(' + id + ') a').attr('href'));
+        var svgcontry;
+        $('#play-video-btn, #startvideo').attr('href', $('#list_artists li:eq(' + id + ') a').attr('href'));
         $('#list_artists li a.selected').removeClass('selected');
         $('#list_artists li:eq(' + id + ') a').addClass('selected');
-        return TweenMax.to('#knob', duration_sequence, {
-          ease: Power0.easeNone,
-          rotation: (id + 1) * (360 / 28)
+        $('#artist_info .info').addClass('hide');
+        $('#artist_info .info:eq(' + id + ')').removeClass('hide');
+        svgcontry = '#' + $('#artists_info li:eq(' + id + ') .contry').data('contrynicename');
+        console.log(svgcontry);
+        TweenMax.to(['#smallmap svg .smallmap-fr-st2', '#smallmap svg .smallmap-en-st2'], 0.5, {
+          alpha: 0
         });
+        return TweenMax.to(svgcontry, 0.5, {
+          alpha: 1
+        }, '+=.5');
       };
+      // TweenMax.to('#knob', duration_sequence, { ease: Power0.easeNone, rotation: ((id+1)*(360/28)) })
       duration_sequence = duration / 28;
       sequence = '+=' + (duration_sequence - 1);
       console.log(duration + ' ' + sequence);
@@ -552,11 +571,15 @@
         alpha: 1
       }).to('#artists_info li:eq(28)', 0.5, {
         alpha: 0
-      }, sequence);
+      }, sequence).to('.size_platine', duration, {
+        ease: Sine.easeIn,
+        rotation: -360 * 100
+      }, 0).to('#knob', duration, {
+        ease: Power0.easeNone,
+        rotation: 360
+      }, 0);
     }
 
-    // .to('#knob', duration,  {ease: Power0.easeNone, rotation: 360},('-='+(duration+sequence)))
-    // .to('.size_platine', duration,  {ease: Sine.easeIn, rotation: -360*100},('-='+(duration+(sequence*2))))
     bindEvents() {
       var options, rotationSnap, that, windowBlurred, windowFocused;
       that = this;
@@ -577,6 +600,7 @@
         if ($(this).hasClass('hide')) {
           if (window.playerYT) {
             window.playerYT.stopVideo();
+            $('#popin .video-container').addClass('hide');
           }
           if (that.player) {
             that.player.play();
@@ -596,6 +620,9 @@
       };
       windowFocused = function() {
         console.log('focus');
+        if (!$('#popin').hasClass('hide')) {
+          return;
+        }
         if (that.player) {
           that.player.play();
         }
@@ -667,7 +694,22 @@
 }).call(this);
 
 (function() {
-  var flip_disk, hasTouch, init, player_video, player_youtube, popin;
+  var flip_disk, hasTouch, init, isMobile, player_video, player_youtube, popin;
+
+  isMobile = function() {
+    var connection;
+    if (navigator.userAgent.match(/Mobi/)) {
+      return true;
+    }
+    if ('screen' in window && window.screen.width < 1366) {
+      return true;
+    }
+    connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (connection && connection.type === 'cellular') {
+      return true;
+    }
+    return false;
+  };
 
   init = function() {
     $('body').addClass('doc-ready');

@@ -3,15 +3,11 @@ class player_video
 		# @bindEvents() # bind event is now after video is loaded
 		@timelineKnob = new TimelineMax(paused: true)
 		@timelineInfo = new TimelineMax(paused: true)
-
 		@player = null
 		@loadVideo()
 
 	loadVideo: ->
 		videoUrl = 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/5secondes.mp4'
-		# if location.hostname == 'localhost' or location.hostname == '127.0.0.1' or location.hostname == ''
-		# 	videoUrl = 'http://milkyweb.eu/video/5secondes.mp4'
-		
 		that = @
 		req = new XMLHttpRequest
 		req.open 'GET', videoUrl , true
@@ -62,11 +58,16 @@ class player_video
 	createTween: (duration) ->
 
 		updateInfo= (id)->
-			console.log 'update --- '+id+'. href '+$('#list_artists li:eq('+id+') a').attr('href')
-			$('#play-video-btn').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
+			$('#play-video-btn, #startvideo').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
 			$('#list_artists li a.selected').removeClass('selected')
 			$('#list_artists li:eq('+id+') a').addClass('selected')
-			TweenMax.to('#knob', duration_sequence, { ease: Power0.easeNone, rotation: ((id+1)*(360/28)) })
+			$('#artist_info .info').addClass('hide')
+			$('#artist_info .info:eq('+id+')').removeClass('hide')
+			svgcontry = '#'+$('#artists_info li:eq('+id+') .contry').data 'contrynicename'
+			console.log svgcontry
+			TweenMax.to(['#smallmap svg .smallmap-fr-st2', '#smallmap svg .smallmap-en-st2'], 0.5, {alpha: 0})
+			TweenMax.to(svgcontry, 0.5, {alpha: 1}, '+=.5')
+			# TweenMax.to('#knob', duration_sequence, { ease: Power0.easeNone, rotation: ((id+1)*(360/28)) })
 
 		duration_sequence = duration / 28 
 		sequence = '+='+(duration_sequence - 1)
@@ -159,8 +160,8 @@ class player_video
 			.add(-> updateInfo(28); )
 			.fromTo('#artists_info li:eq(28)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(28)', 0.5, { alpha: 0 }, sequence)
-			# .to('#knob', duration,  {ease: Power0.easeNone, rotation: 360},('-='+(duration+sequence)))
-			# .to('.size_platine', duration,  {ease: Sine.easeIn, rotation: -360*100},('-='+(duration+(sequence*2))))
+			.to('.size_platine', duration,  {ease: Sine.easeIn, rotation: -360*100},0)
+			.to('#knob', duration,  {ease: Power0.easeNone, rotation: 360},0)
 			
 	bindEvents: ->
 		that = @
@@ -179,6 +180,7 @@ class player_video
 			if $(this).hasClass 'hide'
 				if window.playerYT
 					window.playerYT.stopVideo()
+					$('#popin .video-container').addClass 'hide'
 					
 				if that.player
 					that.player.play()
@@ -195,6 +197,9 @@ class player_video
 
 		windowFocused = ->
 			console.log 'focus'
+			if !$('#popin').hasClass 'hide'
+				return
+
 			if that.player
 				that.player.play()
 			return

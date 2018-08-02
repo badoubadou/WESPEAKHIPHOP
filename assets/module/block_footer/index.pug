@@ -10,18 +10,18 @@
 
 	ul#infos
 		li
-			a(href='#apropos')
+			a#apropos_btn(href='#apropos')
 				| #{TRANSLATION.a_propos[langage]}
 		li
 			a(href='#help') 
 				| #{TRANSLATION.aide[langage]}
 		li
 			span#sound
-				include ../../image/unmute.svg
+				include ../../cleansvg/unmute.svg
 		li
 			span#fullscreen
-				include ../../image/fullscreen.svg
+				include ../../cleansvg/fullscreen.svg
 		li
 			a#share(href='#shareinfo')
-				include ../../image/share.svg
+				include ../../cleansvg/share.svg
 				| #{TRANSLATION.partager[langage]}

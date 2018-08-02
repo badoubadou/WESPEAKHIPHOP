@@ -8,7 +8,7 @@ ul#artists_info.layer_0
 
 			each cat in video.category
 				if cat.domain == 'pays'
-					span.contry= cat['#text']
+					span.contry(data-contrynicename=cat['nicename'])= cat['#text']
 
 			each meta in video.postmeta
 				if meta.meta_key == 'date'

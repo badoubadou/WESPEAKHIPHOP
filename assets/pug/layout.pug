@@ -60,16 +60,18 @@ html(lang= langage)
 		#main.absolute.full_height_minus_footer.full_width.full_height_minus_footer_minus_header_mobile
 			include ../module/block_popin/index.pug
 			#bg
-			#face_artistes.absolute.centered.layer_2.full_height.full_width.overflow_hidden
+			.absolute.centered.layer_2.full_height.full_width.overflow_hidden
 				include ../module/block_list_artists/index.pug
+			#face_artistes.absolute.centered.layer_2.full_height.full_width.overflow_hidden
 				include ../module/block_video_disk/index.pug
 			#face_pays.absolute.centered.layer_2.full_height.full_width
 				include ../module/block_pays/index.pug
 
 			#platine.absolute.centered.layer_0.full_height.full_width
 				.size_platine.centered
-					include ../image/platine.svg
+					include ../cleansvg/platine.svg
 		
+		include ../module/block_small_map/index.pug
 		include ../module/block_info_artists/index.pug
 		include ../module/block_footer/index.pug
 

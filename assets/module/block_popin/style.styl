@@ -13,11 +13,14 @@
 	#shareinfo:after
 		pseudo_full( #000 , .7 )
 		
-		
 	.block
 		width 20%
 		height 70%
 		
+		&.big
+			width 50%
+			height 70%	
+
 	.yellow
 	.white
 		width 100%	
@@ -25,3 +28,41 @@
 		background $yellow
 	.white
 		background #FFF
+		
+	.name
+		text-transform uppercase
+		font-family $ft-family-secondary
+		font-size 4em
+		line-height .8em
+	
+	.name
+	.date
+		color $yellow
+	
+	.contry
+		color #fff
+
+	.date
+	.contry
+		font-size 4em
+		font-family $ft-family-secondary
+		font-weight 100
+	
+	.date
+		padding-right 20px
+	
+	.bio
+		text-transform none
+		color #fff
+		margin-bottom 20px
+
+	#back
+		background $grey
+		
+	.btn
+		display inline-block
+		padding 0 10px
+		width auto
+		font-size .8em
+		margin-right 20px
+		

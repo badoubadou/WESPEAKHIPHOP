@@ -28,7 +28,11 @@
         "fr": "Lancer la video"
     },
     "startvideo": {
-        "en": "Share the video",
-        "fr": "reprendre la lecture"
+        "en": "Start video",
+        "fr": "Lancer la video"
+    },
+    "back": {
+        "en": "back",
+        "fr": "retour"
     }
 }
