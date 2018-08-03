@@ -1,2 +1,48 @@
 .size_disk.centered
-	include ../../cleansvg/map.svg
+	ul#artists_info_map.layer_0
+		- var current_contry = ''
+		- var current_contry_array = []
+		each video, index  in videos_by_contry
+			if(current_contry == video.contry_nicename)
+				- current_contry_array.push(video)
+				- current_contry = video.contry_nicename
+			else
+				if current_contry_array.length
+					span.pastille.btn(data-nicename= current_contry_array[0].contry_nicename)
+					li.block_contry(class= current_contry_array[0].contry_nicename)
+						.contry= current_contry_array[0].contry_nicename
+						each vid in current_contry_array
+							.artist
+								.name= vid.title
+								a(href=vid.postmeta[1].meta_value).watch
+									span.triangle
+									span.text
+										| #{TRANSLATION.play[langage]}
+								.bio
+									span.plus
+									span.text
+										| #{TRANSLATION.bio[langage]}
+						
+				- current_contry_array = []
+				- current_contry_array.push(video)
+				- current_contry = video.contry_nicename
+				
+			if (index == videos_by_contry.length-1)
+				span.pastille.btn(data-nicename= current_contry_array[0].contry_nicename)
+				li.block_contry(class= current_contry_array[0].contry_nicename)
+					.contry= current_contry_array[0].contry_nicename
+					each vid in current_contry_array
+						.artist
+							.name= vid.title
+							a(href=vid.postmeta[1].meta_value).watch
+								span.triangle
+								span.text
+									| #{TRANSLATION.play[langage]}
+							.bio
+								span.plus
+								span.text
+									| #{TRANSLATION.bio[langage]}
+				
+			
+	#big_map
+		include ../../cleansvg/map.svg

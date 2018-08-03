@@ -1,9 +1,19 @@
 class flip_disk
 	constructor: () ->
 		console.log 'flip disk'
-		@flip_tween = ﻿new TimelineLite({paused:true});﻿
-		@flip_tween.to($('#face_artistes'), 1, {rotationY:90});
-		@flip_tween.from($('#face_pays'), 1, {rotationY:90})
+		duree_flip = 1.5
+		demi_flip = duree_flip/2
+		@flip_tween = ﻿new TimelineMax({paused:true});﻿
+		@flip_tween
+			.to($('#face_artistes'), .3, {ease: Power1.easeIn, scale:1.1})
+			.to($('#face_artistes'), (demi_flip-0.3), {ease: Power1.easeIn, rotationY:90})
+			.staggerTo($('#list_artists li'), .3, {alpha:0},duree_flip / 28,0)
+			.from($('#face_pays'), demi_flip, {ease: Power1.easeOut, rotationY:90, scale:1.3},(duree_flip / 2))
+		
+		@flip_tween.eventCallback 'onReverseComplete', ->
+			$('#mode_switcher').trigger 'switch_to_face_artist'
+			$('#smallmap, #artists_info').removeClass 'opacity_0'
+			return
 		@bindEvents()
 
 	bindEvents : ->
@@ -13,13 +23,12 @@ class flip_disk
 			$('.footer .selected').removeClass 'selected'
 			$(this).addClass 'selected'
 			if($(this).data('face')=='face_pays')
-				console.log 'play'+that.flip_tween
 				$('#mode_switcher').trigger 'switch_to_face_pays'
+				$('#smallmap, #artists_info').addClass 'opacity_0'
 				that.flip_tween.play()
 			else
-				console.log 'back'
+				$('.block_contry').removeClass 'opacity_1'
 				that.flip_tween.reverse()
-				$('#mode_switcher').trigger 'switch_to_face_artist'
 
 
 		GoInFullscreen = (element) ->

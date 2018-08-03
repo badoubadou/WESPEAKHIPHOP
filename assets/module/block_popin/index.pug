@@ -28,17 +28,27 @@
 	#shareinfo.hide.layer_top
 		.block.centered.layer_top
 			.yellow
-				include ../../cleansvg/logo.svg
-				.name
-				span.contry
-				span.date
-				.sharevideo
-					| #{TRANSLATION.sharevideo[langage]}
+				.contentpopin
+					.logo
+						include ../../cleansvg/logo.svg
+					.sharesite
+						| #{TRANSLATION.sharesite[langage]}
 
-				.sharebtn
 			.white
-				.startvideo
-					| #{TRANSLATION.startvideo[langage]}
+				.contentpopin 
+					ul.sharebtn
+						li
+							a(href="https://www.facebook.com/sharer/sharer.php?u="+pageurl+"&display=popup&ref=plugin&src=share_button" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=580')")
+								include ../../cleansvg/facebook.svg
+						li
+							a(href="http://twitter.com/share?text="+txttwitter+"&url="+pageurl+"&hashtags=wespeakhiphop,hiphop" onclick="return !window.open(this.href, 'Twitter', 'width=640,height=580')")
+								include ../../cleansvg/tweeter.svg
+						li
+							a(href="mailto:?subject="+mailbody)
+								include ../../cleansvg/mail.svg
+
+					//- .startvideo
+					//- 	| #{TRANSLATION.startvideo[langage]}
 
 	#close.layer_top.btn
 		include ../../cleansvg/close.svg

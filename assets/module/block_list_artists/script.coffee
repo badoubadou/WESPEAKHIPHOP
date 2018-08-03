@@ -20,7 +20,7 @@ class player_youtube
 				window.playerYT.stopVideo()
 				return
 
-			$('#list_artists li a, #play-video-btn, #startvideo').on 'click', ->
+			$('#list_artists li a, #play-video-btn, #startvideo, a.watch').on 'click', ->
 				event.preventDefault()
 				idyoutube = YouTubeGetID($(this).attr('href'))
 

@@ -24,9 +24,21 @@
 			"en": "Share the video",
 			"fr": "Partager la video"
 		},
+		"sharesite": {
+			"en": "Share the site",
+			"fr": "Partager le site"
+		},
 		"play_video": {
 			"en": "Play the video",
 			"fr": "Lancer la video"
+		},
+		"play": {
+			"en": "Play",
+			"fr": "Voir"
+		},
+		"bio": {
+			"en": "Bio",
+			"fr": "Bio"
 		},
 		"startvideo": {
 			"en": "Start video",
@@ -43,7 +55,7 @@
 			"title": "wespeakhiphop",
 			"link": "http://wespeakhiphop.romza.eu",
 			"description": "Just another Romain Malauzat Illustration Sites site",
-			"pubDate": "Wed, 01 Aug 2018 14:45:23 +0000",
+			"pubDate": "Fri, 03 Aug 2018 14:15:24 +0000",
 			"language": "en-US",
 			"wxr_version": "1.2",
 			"base_site_url": "http://romza.eu/",
@@ -221,6 +233,20 @@
 					"term_name": "Israel"
 				},
 				{
+					"term_id": "7",
+					"term_taxonomy": "pays",
+					"term_slug": "palestine",
+					"term_parent": null,
+					"term_name": "Israel / Palestine"
+				},
+				{
+					"term_id": "40",
+					"term_taxonomy": "pays",
+					"term_slug": "palestine",
+					"term_parent": null,
+					"term_name": "Israël / Palestine"
+				},
+				{
 					"term_id": "71",
 					"term_taxonomy": "pays",
 					"term_slug": "japan",
@@ -275,20 +301,6 @@
 					"term_slug": "pakistan",
 					"term_parent": null,
 					"term_name": "pakistan"
-				},
-				{
-					"term_id": "7",
-					"term_taxonomy": "pays",
-					"term_slug": "palestine",
-					"term_parent": null,
-					"term_name": "Palestine"
-				},
-				{
-					"term_id": "40",
-					"term_taxonomy": "pays",
-					"term_slug": "palestine",
-					"term_parent": null,
-					"term_name": "Palestine"
 				},
 				{
 					"term_id": "44",
@@ -455,6 +467,14 @@
 					"term_parent": null,
 					"term_name": "pll_5b61af341dc0f",
 					"term_description": "a:2:{s:2:\"fr\";i:92;s:2:\"en\";i:110;}"
+				},
+				{
+					"term_id": "112",
+					"term_taxonomy": "term_translations",
+					"term_slug": "pll_5b64631daea34",
+					"term_parent": null,
+					"term_name": "pll_5b64631daea34",
+					"term_description": "a:1:{s:2:\"en\";i:7;}"
 				},
 				{
 					"term_id": "42",
@@ -1535,19 +1555,14 @@
 						},
 						{
 							"domain": "pays",
-							"nicename": "israel",
-							"#text": "Israel"
-						},
-						{
-							"domain": "pays",
 							"nicename": "palestine",
-							"#text": "Palestine"
+							"#text": "Israël / Palestine"
 						}
 					],
 					"postmeta": [
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "2"
+							"meta_value": "1"
 						},
 						{
 							"meta_key": "video",

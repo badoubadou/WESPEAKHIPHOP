@@ -18,10 +18,16 @@
 .size_video
 	width $size_video_small
 	height $size_video_small
-	
+	.player-dimensions
+		width $size_video_small
+		height $size_video_small
+		
 	@media $ipad
 		width $size_video_medium
 		height $size_video_medium
+		.player-dimensions
+			width $size_video_medium
+			height $size_video_medium
 		
 	@media $large_screen
 		width $size_video_large

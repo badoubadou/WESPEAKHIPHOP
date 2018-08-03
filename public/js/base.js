@@ -8,15 +8,29 @@
 
   flip_disk = class flip_disk {
     constructor() {
+      var demi_flip, duree_flip;
       console.log('flip disk');
-      this.flip_tween = new TimelineLite({
+      duree_flip = 1.5;
+      demi_flip = duree_flip / 2;
+      this.flip_tween = new TimelineMax({
         paused: true
       });
-      this.flip_tween.to($('#face_artistes'), 1, {
+      this.flip_tween.to($('#face_artistes'), .3, {
+        ease: Power1.easeIn,
+        scale: 1.1
+      }).to($('#face_artistes'), demi_flip - 0.3, {
+        ease: Power1.easeIn,
         rotationY: 90
-      });
-      this.flip_tween.from($('#face_pays'), 1, {
-        rotationY: 90
+      }).staggerTo($('#list_artists li'), .3, {
+        alpha: 0
+      }, duree_flip / 28, 0).from($('#face_pays'), demi_flip, {
+        ease: Power1.easeOut,
+        rotationY: 90,
+        scale: 1.3
+      }, duree_flip / 2);
+      this.flip_tween.eventCallback('onReverseComplete', function() {
+        $('#mode_switcher').trigger('switch_to_face_artist');
+        $('#smallmap, #artists_info').removeClass('opacity_0');
       });
       this.bindEvents();
     }
@@ -30,13 +44,12 @@
           $('.footer .selected').removeClass('selected');
           $(this).addClass('selected');
           if ($(this).data('face') === 'face_pays') {
-            console.log('play' + that.flip_tween);
             $('#mode_switcher').trigger('switch_to_face_pays');
+            $('#smallmap, #artists_info').addClass('opacity_0');
             return that.flip_tween.play();
           } else {
-            console.log('back');
-            that.flip_tween.reverse();
-            return $('#mode_switcher').trigger('switch_to_face_artist');
+            $('.block_contry').removeClass('opacity_1');
+            return that.flip_tween.reverse();
           }
         }
       });
@@ -117,7 +130,7 @@
           $('.lds-dual-ring').addClass('done');
           window.playerYT.stopVideo();
         });
-        return $('#list_artists li a, #play-video-btn, #startvideo').on('click', function() {
+        return $('#list_artists li a, #play-video-btn, #startvideo, a.watch').on('click', function() {
           var idyoutube;
           event.preventDefault();
           idyoutube = YouTubeGetID($(this).attr('href'));
@@ -185,6 +198,40 @@
   module.player_youtube = player_youtube;
 
   tag = document.createElement('script');
+
+}).call(this);
+
+(function() {
+  var block_pays;
+
+  block_pays = class block_pays {
+    constructor() {
+      this.bindEvents();
+    }
+
+    bindEvents() {
+      var that;
+      that = this;
+      return $('.pastille').on({
+        'click': function(e) {
+          var place;
+          if ($(this).hasClass('big')) {
+            $('.pastille').removeClass('big');
+            return $('#artists_info_map .block_contry').removeClass('opacity_1');
+          } else {
+            $('.pastille').removeClass('big');
+            $('#artists_info_map .block_contry').removeClass('opacity_1');
+            place = '.' + $(this).data('nicename');
+            $(this).addClass('big');
+            return $('#artists_info_map ' + place).addClass('opacity_1');
+          }
+        }
+      });
+    }
+
+  };
+
+  module.block_pays = block_pays;
 
 }).call(this);
 
@@ -602,6 +649,9 @@
             window.playerYT.stopVideo();
             $('#popin .video-container').addClass('hide');
           }
+          if (!$('#contrys').hasClass('selected')) {
+            return;
+          }
           if (that.player) {
             that.player.play();
           }
@@ -621,6 +671,9 @@
       windowFocused = function() {
         console.log('focus');
         if (!$('#popin').hasClass('hide')) {
+          return;
+        }
+        if (!$('#contrys').hasClass('selected')) {
           return;
         }
         if (that.player) {
@@ -694,7 +747,7 @@
 }).call(this);
 
 (function() {
-  var flip_disk, hasTouch, init, isMobile, player_video, player_youtube, popin;
+  var block_pays, flip_disk, hasTouch, init, isMobile, player_video, player_youtube, popin;
 
   isMobile = function() {
     var connection;
@@ -733,5 +786,7 @@
   flip_disk = new module.flip_disk();
 
   popin = new module.popin();
+
+  block_pays = new module.block_pays();
 
 }).call(this);

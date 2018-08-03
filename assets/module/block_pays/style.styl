@@ -2,3 +2,71 @@
 	svg
 		width 100%
 		height 100%
+	
+#artists_info_map
+	position absolute
+	.pastille
+		display block
+		position absolute
+		width 40px
+		height 40px
+		border-radius 50%
+		bottom -30px
+		opacity 0
+		z-index 2
+		&.big
+			z-index 1
+			width 100%
+			height 100%
+			left 0
+			top 0
+			border-radius 50%
+	.block_contry
+		background #000
+		color #fff
+		font-size .8em
+		padding 5px
+		list-style-type none
+		// display none
+		width auto
+		position absolute
+		opacity 0
+		a.watch
+			color #fff
+			margin-left 20px
+			span
+				display inline-block
+			.triangle
+				width 30px
+				left -10px
+				triangle()
+				vert_align_middle()
+				
+		.bio
+			margin-left 20px
+			span
+				display inline-block
+			.plus
+				vert_align_middle()
+				left -10px
+				&:before
+					pseudo_full(#FFF, 1, 8px, 2px)
+					vert_align_middle()
+					left 3px
+				&:after
+					pseudo_full(#FFF, 1, 2px, 8px) 
+					vert_align_middle()
+		.name
+			color $yellow
+		
+		.artist
+		.name
+		a.watch
+		.bio
+		.contry
+			position relative
+			display inline-block
+			
+		.contry
+			width auto
+			display block

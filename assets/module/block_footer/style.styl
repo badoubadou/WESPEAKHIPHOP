@@ -17,7 +17,9 @@
 			line-height $height_footer
 			a
 				line-height $height_footer
-				padding 0 30px
+				padding 0 5px
+				@media $ipad
+					padding 0 30px
 				height 100%
 				display block
 				color #fff
@@ -40,9 +42,14 @@
 			position absolute
 			right 0 
 			li a
-				padding 0 10px
+				padding 0 3px
+				@media $ipad
+					padding 0 10px
 			li span 
-				padding 0 10px
+				padding 0 3px
+				@media $ipad
+					padding 0 10px
+				
 				
 	#share
 		svg

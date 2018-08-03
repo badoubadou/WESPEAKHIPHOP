@@ -23,9 +23,21 @@
         "en": "Share the video",
         "fr": "Partager la video"
     },
+    "sharesite": {
+        "en": "Share the site",
+        "fr": "Partager le site"
+    },
     "play_video": {
         "en": "Play the video",
         "fr": "Lancer la video"
+    },
+    "play": {
+        "en": "Play",
+        "fr": "Voir"
+    },
+    "bio": {
+        "en": "Bio",
+        "fr": "Bio"
     },
     "startvideo": {
         "en": "Start video",

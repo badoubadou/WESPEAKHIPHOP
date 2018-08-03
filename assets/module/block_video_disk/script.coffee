@@ -181,7 +181,9 @@ class player_video
 				if window.playerYT
 					window.playerYT.stopVideo()
 					$('#popin .video-container').addClass 'hide'
-					
+				
+				if !$('#contrys').hasClass 'selected'
+					return
 				if that.player
 					that.player.play()
 			else
@@ -198,6 +200,9 @@ class player_video
 		windowFocused = ->
 			console.log 'focus'
 			if !$('#popin').hasClass 'hide'
+				return
+				
+			if !$('#contrys').hasClass 'selected'
 				return
 
 			if that.player
