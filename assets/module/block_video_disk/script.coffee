@@ -213,10 +213,11 @@ class player_video
 		$(window).on 'pageshow focus', windowFocused
 
 		#------------------- SOUND ---------------------------#
-		$('#sound').on 'click', ->
-			that.player.muted(!that.player.muted())
-			$('#sound').toggleClass 'actif'
+		$('#sound').on 'sound_off', ->
+			that.player.muted(true)
 
+		$('#sound').on 'sound_on', ->
+			that.player.muted(false)
 		
 		#------------------- PLAYER JS ---------------------------#
 		options = { autoplay: true, muted: true };

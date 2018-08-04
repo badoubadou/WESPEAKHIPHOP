@@ -13,10 +13,11 @@ each video in all_videos
 				- videos.push(video) 
 
 - var videos_by_contry = []
-each video in videos
+each video, id in videos
 	each cat in video.category
 		if cat.domain == 'pays'
 			- video.contry_nicename = cat['nicename']
+			- video.sound_id = video.menu_order
 			- video.contry = cat['#text']
 			- videos_by_contry.push(video)
 
@@ -57,7 +58,7 @@ html(lang= langage)
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/utils/Draggable.min.js")
 		// script(src="https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/vendor/ThrowPropsPlugin.min.js")
 		script(src='https://vjs.zencdn.net/7.1.0/video.js')
-		script(src='https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/wad.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.14/howler.core.min.js')
 
 		script
 			| document.cookie='resolution='+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+'; path=/';

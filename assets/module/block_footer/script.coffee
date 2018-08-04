@@ -17,7 +17,17 @@ class flip_disk
 		@bindEvents()
 
 	bindEvents : ->
-		that = @			
+		that = @	
+		#------------------- SOUND ---------------------------#
+		$('#sound').on 'click', ->
+			event_name = 'sound_on'
+			if ($('#sound').hasClass('actif'))
+				event_name = 'sound_off'
+			$(this).trigger event_name
+			console.log event_name
+			$('#sound').toggleClass 'actif'
+
+		#------------------- SWITCH FACE ---------------------------#				
 		$('#mode_switcher li a').on 'click':(e) ->
 			e.preventDefault()
 			$('.footer .selected').removeClass 'selected'
@@ -31,6 +41,7 @@ class flip_disk
 				that.flip_tween.reverse()
 
 
+		#------------------- FULL SCREEN ---------------------------#				
 		GoInFullscreen = (element) ->
 			if element.requestFullscreen
 				element.requestFullscreen()

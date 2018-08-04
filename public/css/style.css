@@ -1655,6 +1655,7 @@ p:empty {
   bottom: -30px;
   opacity: 0;
   z-index: 2;
+  background: #f00;
 }
 #artists_info_map .pastille.big {
   z-index: 1;
@@ -1663,6 +1664,7 @@ p:empty {
   left: 0;
   top: 0;
   border-radius: 50%;
+  background: #008000;
 }
 #artists_info_map .block_contry {
   background: #000;
