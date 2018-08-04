@@ -45,7 +45,8 @@ var src_coffee = jsfile;
 var vendor = [
 	'assets/coffee/vendor/jquery.min.js',
     'assets/coffee/vendor/ThrowPropsPlugin.min.js',
-	'assets/coffee/vendor/modernizr-objectfit.js'
+	'assets/coffee/vendor/modernizr-objectfit.js',
+    // 'assets/coffee/vendor/wad.min.js'
 ];
 
 gulp.task('makecoffee', function() {

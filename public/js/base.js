@@ -210,8 +210,14 @@
     }
 
     bindEvents() {
-      var that;
+      var bell, that;
       that = this;
+      bell = new Wad({
+        source: 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/1.mp3'
+      });
+      bell.play();
+      // bell.stop()
+      // ------------ SHOW BTN ------------------ #
       return $('.pastille').on({
         'click': function(e) {
           var place;

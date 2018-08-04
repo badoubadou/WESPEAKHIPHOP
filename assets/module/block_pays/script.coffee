@@ -4,6 +4,10 @@ class block_pays
 
 	bindEvents : ->
 		that = @
+		bell = new Wad(source: 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/1.mp3')
+		bell.play()
+		# bell.stop()
+		# ------------ SHOW BTN ------------------ #
 		$('.pastille').on 'click':(e) ->
 			if $(this).hasClass 'big'
 				$('.pastille').removeClass 'big'
