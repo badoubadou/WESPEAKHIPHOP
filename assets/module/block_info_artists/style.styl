@@ -4,7 +4,7 @@
 	list-style none
 	margin 0
 	padding 0
-	right 10px
+	right 20px
 	transition opacity 1s
 
 	li
@@ -23,13 +23,18 @@
 		.contry
 			line-height .9em
 
-		.name
-			text-transform uppercase
+		.date
+		.contry
+		.tagline
 			font-family $ft-family-secondary
-			font-size 4em
-			line-height .8em
 		
 		.name
+			font-family $ft-family-primary
+			text-transform uppercase
+			line-height .8em
+			font-weight 900
+		
+		.tagline
 		.date
 			color $yellow
 			
@@ -39,13 +44,11 @@
 			font-size 3em
 			
 		.tagline
-			font-weight 900
-			font-size 1.1em
+			font-size 4em
 		
 		.date
 		.contry
 			font-weight 100
-			font-family $ft-family-secondary
 			display inline-block
 			width auto
 			
@@ -62,17 +65,20 @@
 			.name
 			.date
 				color $light-yellow
+			
+			.tagline
+				color #000
 		
 			
 	@media $mobile
 		height $height_header_info_mobile
 		width calc( 100% - 120px )
 		li
-			.tagline
+			.name
 				font-size .6em
 				padding 5px 0
 			
-			.name
+			.tagline
 			.contry
 			.date
 				font-size 1.6em
@@ -81,17 +87,17 @@
 		height $height_header_info_ipad
 		width calc( 100% - 300px )
 		li
-			.tagline
-				font-size 1.1em
+			.name
+				font-size 1.5em
 				padding 10px 0
 			
-			.name
+			.tagline
 			.date
 			.contry
 				font-size 2.7em
 				
 	@media $desktop
-		height 200px
-		width 200px
-		bottom $height_footer
+		height 250px
+		width 250px
+		bottom $height_footer*2
 		

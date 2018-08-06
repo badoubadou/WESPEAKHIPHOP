@@ -3,13 +3,20 @@
 	width 10px
 	height (($size_disk_small - $size_video_small) / 2)
 	top 0
-	background #000
 	align_middle()
+	svg
+		width auto
+		height (($size_disk_small - $size_video_small) / 2)
 	@media $ipad
 		height (($size_disk_medium - $size_video_medium) / 2)
-		
+		svg
+			width auto
+			height (($size_disk_medium - $size_video_medium) / 2)		
 	@media $large_screen
 		height (($size_disk_large - $size_video_large) / 2)
+		svg
+			width auto
+			height (($size_disk_large - $size_video_large) / 2)	
 
 .circular_mask
 	overflow hidden

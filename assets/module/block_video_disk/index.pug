@@ -1,15 +1,17 @@
-#mask_video.circular_mask.absolute.centered.layer_3.size_video
-	.lds-dual-ring
-	a(href="")#play-video-btn.layer_3.btn
-		| #{TRANSLATION.play_video[langage]}
-	video#player.video-js.absolute.centered(controls='none', preload='true', muted='true', loop='true', width='200', height='200')
-		source(src='', type='video/mp4')
+#block_video_disk.absolute.full_height.full_width.centered
+	#mask_video.circular_mask.absolute.centered.layer_3.size_video
+		.lds-dual-ring
+		a(href="")#play-video-btn.layer_3.btn
+			| #{TRANSLATION.play_video[langage]}
+		video#player.video-js.absolute.centered(controls='none', preload='true', muted='true', loop='true', width='200', height='200')
+			source(src='', type='video/mp4')
 
-#disk.absolute.centered.layer_2.circular_mask.size_disk
-	
-	#knob.absolute.align_middle.full_height.full_width.circular_mask
-		#marker.absolute.align_middle
-
+	#disk.absolute.centered.layer_2.circular_mask.size_disk
 		
-#disk_lign.absolute.centered.layer_0.circular_mask.size_disk
-	include ../../cleansvg/lign.svg
+		#knob.absolute.align_middle.full_height.full_width.circular_mask
+			#marker.absolute.align_middle
+				include ../../cleansvg/marker.svg
+
+			
+	#disk_lign.absolute.centered.layer_0.circular_mask.size_disk
+		include ../../cleansvg/lign.svg

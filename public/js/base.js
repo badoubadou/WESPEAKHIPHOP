@@ -8,37 +8,54 @@
 
   flip_disk = class flip_disk {
     constructor() {
-      var demi_flip, duree_flip;
       console.log('flip disk');
-      duree_flip = 1.5;
-      demi_flip = duree_flip / 2;
-      this.flip_tween = new TimelineMax({
-        paused: true
-      });
-      this.flip_tween.to($('#face_artistes'), .3, {
-        ease: Power1.easeIn,
-        scale: 1.1
-      }).to($('#face_artistes'), demi_flip - 0.3, {
-        ease: Power1.easeIn,
-        rotationY: 90
-      }).staggerTo($('#list_artists li'), .3, {
-        alpha: 0
-      }, duree_flip / 28, 0).from($('#face_pays'), demi_flip, {
-        ease: Power1.easeOut,
-        rotationY: 90,
-        scale: 1.3
-      }, duree_flip / 2);
-      this.flip_tween.eventCallback('onReverseComplete', function() {
-        $('#mode_switcher').trigger('switch_to_face_artist');
-        $('#smallmap, #artists_info').removeClass('opacity_0');
-      });
+      this.duree_flip = .6;
+      this.demi_flip = this.duree_flip / 2;
+      this.buildTween();
       this.bindEvents();
     }
 
+    buildTween(timeStamp) {
+      console.log(timeStamp);
+      this.flip_tween = new TimelineMax({
+        paused: true
+      });
+      this.flip_tween.staggerTo($('#list_artists li'), .3, {
+        alpha: 0
+      }, this.duree_flip / 28).to($('#block_video_disk'), .3, {
+        scale: 1.1
+      }, 0).to($('#block_video_disk'), .3, {
+        rotationY: 90
+      }).from($('#faceb'), .3, {
+        rotationY: 90,
+        scale: 1.3
+      });
+      
+      // @flip_tween
+      // 	.to($('#face_artistes'), .3, {ease: Power1.easeIn })
+      // 	.to($('#face_artistes'), (@demi_flip-0.3), {ease: Power1.easeIn, rotationY:90})
+      // 	.staggerTo($('#list_artists li'), .3, {alpha:0},@duree_flip / 28,0)
+      // 	.from($('#face_pays'), @demi_flip, {ease: Power1.easeOut, rotationY:90 },(@duree_flip / 2))
+      return this.flip_tween.eventCallback('onReverseComplete', function() {
+        $('#mode_switcher').trigger('switch_to_face_artist');
+        $('#smallmap, #artists_info').removeClass('opacity_0');
+      });
+    }
+
+    // if(timeStamp)
+    // 	@flip_tween.time(timeStamp)
     bindEvents() {
       var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, that;
       that = this;
       
+      //------------------- RESIZE --------------------------#
+      // $(window).resize ->
+      // 	console.log 'resize'
+      // 	timeStamp = that.flip_tween.time()
+      // 	that.flip_tween.kill()
+      // 	$('#face_artistes, #face_pays').css('transform', '')
+      // 	that.buildTween(timeStamp)
+      // 	return
       //------------------- SOUND ---------------------------#
       $('#sound').on('click', function() {
         var event_name;
@@ -220,26 +237,35 @@
 
   block_pays = class block_pays {
     constructor() {
+      this.soundInitiated = false;
       this.bindEvents();
     }
 
     bindEvents() {
+      var that;
+      that = this;
       //------------------- FOOTER LISTNER -------------------#
       $('#mode_switcher').on('switch_to_face_artist', function() {
-        return window.pauseSound();
+        if (window.pauseSound) {
+          window.pauseSound();
+        }
+        $('.pastille').removeClass('big');
+        $('#artists_info_map .block_contry').removeClass('opacity_1');
+        return console.log('switch_to_face_artist');
       });
       //------------------- SOUND ---------------------------#
       $('#sound').on('sound_off', function() {
-        if (window.howlerBank[window.pCount]) {
+        console.log('window.pCount =' + window.pCount);
+        console.log('window.howlerBank.length =' + window.pCount);
+        if (that.soundInitiated) {
           return window.howlerBank[window.pCount].volume(0);
         }
       });
       $('#sound').on('sound_on', function() {
-        if (window.howlerBank[window.pCount]) {
+        if (that.soundInitiated) {
           return window.howlerBank[window.pCount].volume(1);
         }
       });
-      
       //------------------- pastille -------------------#
       return $('.pastille').on({
         'click': function(e) {
@@ -253,6 +279,9 @@
             onEnd = function(e) {
               window.pCount = window.pCount + 1 !== window.howlerBank.length ? window.pCount + 1 : 0;
               console.log('howlerBank Play pCount = ' + window.pCount);
+              if (!$('#sound').hasClass('actif')) {
+                window.howlerBank[window.pCount].volume(0);
+              }
               window.howlerBank[window.pCount].play();
             };
             // build up howlerBank:     
@@ -264,8 +293,11 @@
                 buffer: true
               }));
             });
-            // initiate the whole :
-            return window.howlerBank[0].play();
+            if (!$('#sound').hasClass('actif')) {
+              window.howlerBank[0].volume(0);
+            }
+            window.howlerBank[0].play();
+            that.soundInitiated = true;
           };
           window.pauseSound = function() {
             if (window.howlerBank) {
@@ -273,9 +305,6 @@
               return window.howlerBank[window.pCount].stop();
             }
           };
-          // window.howlerBank[window.pCount].fade(1, 0, 1000);
-          // window.howlerBank[window.pCount].once 'fade', ->
-          // 	return
           closeContryBox = function() {
             $('.pastille').removeClass('big');
             $('#artists_info_map .block_contry').removeClass('opacity_1');
@@ -326,9 +355,18 @@
           return $('#popin').addClass('hide').trigger('classChange');
         }
       };
-      $('#apropos_btn').on({
+      $('#apropos_btn, .block_contry .bio').on({
         'click': function(e) {
+          var artistid;
           e.preventDefault();
+          if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
+            artistid = $(this).data('artistid') - 1;
+            console.log('artistid =' + artistid);
+            $('#popin #artist_info .info').addClass('hide');
+            $('#popin #artist_info .info:eq(' + artistid + ')').removeClass('hide');
+            showPopin('#artist_info');
+            return;
+          }
           return showPopin('#artist_info');
         }
       });
@@ -362,10 +400,14 @@
     constructor($container) {
       this.$container = $container;
       // @bindEvents() # bind event is now after video is loaded
+      this.duration = 0;
       this.timelineKnob = new TimelineMax({
         paused: true
       });
       this.timelineInfo = new TimelineMax({
+        paused: true
+      });
+      this.timelinePlatine = new TimelineMax({
         paused: true
       });
       this.player = null;
@@ -434,7 +476,7 @@
 
     
     //------------------- TWEEN ---------------------------#
-    createTween(duration) {
+    createTween() {
       var duration_sequence, sequence, updateInfo;
       updateInfo = function(id) {
         var svgcontry;
@@ -444,7 +486,6 @@
         $('#artist_info .info').addClass('hide');
         $('#artist_info .info:eq(' + id + ')').removeClass('hide');
         svgcontry = '#' + $('#artists_info li:eq(' + id + ') .contry').data('contrynicename');
-        console.log(svgcontry);
         TweenMax.to(['#smallmap svg .smallmap-fr-st2', '#smallmap svg .smallmap-en-st2'], 0.5, {
           alpha: 0
         });
@@ -452,10 +493,19 @@
           alpha: 1
         }, '+=.5');
       };
-      // TweenMax.to('#knob', duration_sequence, { ease: Power0.easeNone, rotation: ((id+1)*(360/28)) })
-      duration_sequence = duration / 28;
+      duration_sequence = this.duration / 28;
       sequence = '+=' + (duration_sequence - 1);
-      console.log(duration + ' ' + sequence);
+      console.log(this.duration + ' ' + sequence);
+      this.timelineKnob = TweenMax.to('#knob', this.duration, {
+        ease: Linear.easeNone,
+        rotation: 360,
+        repeat: -1
+      });
+      this.timelinePlatine = TweenMax.to('#platine', this.duration, {
+        ease: Linear.easeNone,
+        rotation: 360 * 100,
+        repeat: -1
+      });
       return this.timelineInfo.add(function() {
         return updateInfo(0);
       }).fromTo('#artists_info li:eq(0)', 0.5, {
@@ -688,15 +738,11 @@
         alpha: 1
       }).to('#artists_info li:eq(28)', 0.5, {
         alpha: 0
-      }, sequence).to('.size_platine', duration, {
-        ease: Sine.easeIn,
-        rotation: -360 * 100
-      }, 0).to('#knob', duration, {
-        ease: Power0.easeNone,
-        rotation: 360
-      }, 0);
+      }, sequence);
     }
 
+    // .to('.size_platine', duration,  {ease: Sine.easeIn, rotation: -360*100},0)
+    // .to('#knob', duration,  {ease: Power0.easeNone, rotation: 360},0)
     bindEvents() {
       var options, rotationSnap, that, windowBlurred, windowFocused;
       that = this;
@@ -719,7 +765,8 @@
             window.playerYT.stopVideo();
             $('#popin .video-container').addClass('hide');
           }
-          if (!$('#contrys').hasClass('selected')) {
+          console.log('contrys : ' + ($("#mode_switcher [data-face='face_pays']").hasClass('selected')));
+          if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
             return;
           }
           if (that.player) {
@@ -769,18 +816,27 @@
         var myPlayer;
         myPlayer = this;
         myPlayer.on('play', function() {
+          if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
+            myPlayer.pause();
+            return;
+          }
           console.log('play');
-          return that.timelineInfo.play();
+          that.timelineInfo.play();
+          that.timelineKnob.play();
+          return that.timelinePlatine.play();
         });
         myPlayer.on('pause', function() {
-          console.log('pause');
-          return that.timelineInfo.pause();
+          console.log('pause' + that.timelineKnob);
+          that.timelineInfo.pause();
+          that.timelineKnob.pause();
+          return that.timelinePlatine.pause();
         });
         myPlayer.on('seeked', function() {
           return that.timelineInfo.time(myPlayer.currentTime());
         });
         myPlayer.on('loadedmetadata', function() {
-          return that.createTween(myPlayer.duration());
+          that.duration = myPlayer.duration();
+          return that.createTween();
         });
       });
       rotationSnap = 360 / 28;
@@ -789,21 +845,24 @@
         throwProps: true,
         onDragStart: function() {
           $('#knob').addClass('drag');
-          if (that.player.muted()) {
-            that.player.muted(false);
-            return $('#sound').addClass('actif');
-          }
+          return that.timelineKnob.kill();
         },
+        // if(that.player.muted())
+        // 	that.player.muted(false)
+        // 	$('#sound').addClass 'actif'
         onDrag: function() {
           return that.changeCurrentTime(this.rotation % 360, that.player);
         },
-        onThrowUpdate: function() {
-          return that.changeCurrentTime(this.rotation % 360, that.player);
-        },
-        onThrowComplete: function() {
-          return $('#knob').removeClass('drag');
-        },
         onRelease: function() {
+          console.log('onRelease : ' + (this.rotation % 360) + 'that.duration : ' + that.duration);
+          $('#knob').removeClass('drag');
+          that.timelineKnob = TweenMax.fromTo('#knob', that.duration, {
+            rotation: this.rotation % 360
+          }, {
+            ease: Linear.easeNone,
+            rotation: (this.rotation % 360) + 360,
+            repeat: -1
+          });
           return that.player.play();
         },
         snap: function(endValue) {

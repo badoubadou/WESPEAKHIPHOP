@@ -1,23 +1,47 @@
 class flip_disk
 	constructor: () ->
 		console.log 'flip disk'
-		duree_flip = 1.5
-		demi_flip = duree_flip/2
+		@duree_flip = .6
+		@demi_flip = @duree_flip/2
+		@buildTween()
+		@bindEvents()
+
+	buildTween : (timeStamp)->
+		console.log timeStamp
 		@flip_tween = ﻿new TimelineMax({paused:true});﻿
+		
 		@flip_tween
-			.to($('#face_artistes'), .3, {ease: Power1.easeIn, scale:1.1})
-			.to($('#face_artistes'), (demi_flip-0.3), {ease: Power1.easeIn, rotationY:90})
-			.staggerTo($('#list_artists li'), .3, {alpha:0},duree_flip / 28,0)
-			.from($('#face_pays'), demi_flip, {ease: Power1.easeOut, rotationY:90, scale:1.3},(duree_flip / 2))
+			.staggerTo($('#list_artists li'), .3, {alpha:0},(@duree_flip / 28))
+			.to($('#block_video_disk'), .3, {scale:1.1},0)
+			.to($('#block_video_disk'), .3, {rotationY:90})
+			.from($('#faceb'), .3, { rotationY:90, scale:1.3 })
+		
+		
+
+		# @flip_tween
+		# 	.to($('#face_artistes'), .3, {ease: Power1.easeIn })
+		# 	.to($('#face_artistes'), (@demi_flip-0.3), {ease: Power1.easeIn, rotationY:90})
+		# 	.staggerTo($('#list_artists li'), .3, {alpha:0},@duree_flip / 28,0)
+		# 	.from($('#face_pays'), @demi_flip, {ease: Power1.easeOut, rotationY:90 },(@duree_flip / 2))
 		
 		@flip_tween.eventCallback 'onReverseComplete', ->
 			$('#mode_switcher').trigger 'switch_to_face_artist'
 			$('#smallmap, #artists_info').removeClass 'opacity_0'
 			return
-		@bindEvents()
+
+		# if(timeStamp)
+		# 	@flip_tween.time(timeStamp)
 
 	bindEvents : ->
 		that = @	
+		#------------------- RESIZE --------------------------#
+		# $(window).resize ->
+		# 	console.log 'resize'
+		# 	timeStamp = that.flip_tween.time()
+		# 	that.flip_tween.kill()
+		# 	$('#face_artistes, #face_pays').css('transform', '')
+		# 	that.buildTween(timeStamp)
+		# 	return
 		#------------------- SOUND ---------------------------#
 		$('#sound').on 'click', ->
 			event_name = 'sound_on'

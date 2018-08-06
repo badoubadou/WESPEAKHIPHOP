@@ -13,8 +13,15 @@ class popin
 				$($target).addClass('hide')
 				$('#popin').addClass('hide').trigger 'classChange'
 
-		$('#apropos_btn').on 'click':(e) ->
+		$('#apropos_btn, .block_contry .bio').on 'click':(e) ->
 			e.preventDefault()
+			if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
+				artistid = $(this).data('artistid') - 1
+				console.log('artistid ='+artistid)
+				$('#popin #artist_info .info').addClass 'hide'
+				$('#popin #artist_info .info:eq('+artistid+')').removeClass 'hide'
+				showPopin('#artist_info')
+				return
 			showPopin('#artist_info')
 			
 		$('#share').on 'click', ->

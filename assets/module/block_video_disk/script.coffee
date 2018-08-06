@@ -1,8 +1,10 @@
 class player_video
 	constructor: (@$container) ->
 		# @bindEvents() # bind event is now after video is loaded
+		@duration = 0
 		@timelineKnob = new TimelineMax(paused: true)
 		@timelineInfo = new TimelineMax(paused: true)
+		@timelinePlatine = new TimelineMax(paused: true)
 		@player = null
 		@loadVideo()
 
@@ -55,7 +57,7 @@ class player_video
 		@$player.on 'timeupdate', checkEndTime
 	
 	#------------------- TWEEN ---------------------------#
-	createTween: (duration) ->
+	createTween: () ->
 
 		updateInfo= (id)->
 			$('#play-video-btn, #startvideo').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
@@ -64,14 +66,15 @@ class player_video
 			$('#artist_info .info').addClass('hide')
 			$('#artist_info .info:eq('+id+')').removeClass('hide')
 			svgcontry = '#'+$('#artists_info li:eq('+id+') .contry').data 'contrynicename'
-			console.log svgcontry
 			TweenMax.to(['#smallmap svg .smallmap-fr-st2', '#smallmap svg .smallmap-en-st2'], 0.5, {alpha: 0})
 			TweenMax.to(svgcontry, 0.5, {alpha: 1}, '+=.5')
-			# TweenMax.to('#knob', duration_sequence, { ease: Power0.easeNone, rotation: ((id+1)*(360/28)) })
 
-		duration_sequence = duration / 28 
+		duration_sequence = @duration / 28 
 		sequence = '+='+(duration_sequence - 1)
-		console.log duration+' '+sequence
+		console.log @duration+' '+sequence
+		@timelineKnob =  TweenMax.to('#knob', @duration, {ease:Linear.easeNone, rotation: 360, repeat:-1 })
+		@timelinePlatine =  TweenMax.to('#platine', @duration, {ease:Linear.easeNone, rotation: 360*100, repeat:-1 })
+
 		@timelineInfo
 			.add(-> updateInfo(0); )
 			.fromTo('#artists_info li:eq(0)', 0.5, {alpha: 0},{alpha: 1})
@@ -160,8 +163,8 @@ class player_video
 			.add(-> updateInfo(28); )
 			.fromTo('#artists_info li:eq(28)', 0.5, { alpha: 0 },{alpha: 1})
 			.to('#artists_info li:eq(28)', 0.5, { alpha: 0 }, sequence)
-			.to('.size_platine', duration,  {ease: Sine.easeIn, rotation: -360*100},0)
-			.to('#knob', duration,  {ease: Power0.easeNone, rotation: 360},0)
+			# .to('.size_platine', duration,  {ease: Sine.easeIn, rotation: -360*100},0)
+			# .to('#knob', duration,  {ease: Power0.easeNone, rotation: 360},0)
 			
 	bindEvents: ->
 		that = @
@@ -182,7 +185,8 @@ class player_video
 					window.playerYT.stopVideo()
 					$('#popin .video-container').addClass 'hide'
 				
-				if !$('#contrys').hasClass 'selected'
+				console.log 'contrys : '+($("#mode_switcher [data-face='face_pays']").hasClass 'selected')
+				if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
 					return
 				if that.player
 					that.player.play()
@@ -225,18 +229,27 @@ class player_video
 			myPlayer = this
 			
 			myPlayer.on 'play', ->
+				if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
+					myPlayer.pause()
+					return
 				console.log 'play'
 				that.timelineInfo.play()
+				that.timelineKnob.play()
+				that.timelinePlatine.play()
+
 			
 			myPlayer.on 'pause', ->
-				console.log 'pause'
+				console.log 'pause'+that.timelineKnob
 				that.timelineInfo.pause()
+				that.timelineKnob.pause()
+				that.timelinePlatine.pause()
 				
 			myPlayer.on 'seeked', ->
 				that.timelineInfo.time myPlayer.currentTime()
 				
 			myPlayer.on 'loadedmetadata', ->
-				that.createTween(myPlayer.duration())
+				that.duration = myPlayer.duration()
+				that.createTween()
 			
 			return
 		)
@@ -247,16 +260,17 @@ class player_video
 			throwProps: true
 			onDragStart: ->
 				$('#knob').addClass 'drag'
-				if(that.player.muted())
-					that.player.muted(false)
-					$('#sound').addClass 'actif'
+				that.timelineKnob.kill()
+				# if(that.player.muted())
+				# 	that.player.muted(false)
+				# 	$('#sound').addClass 'actif'
 			onDrag: ->
 				that.changeCurrentTime(this.rotation % 360, that.player)
-			onThrowUpdate: ->
-				that.changeCurrentTime(this.rotation % 360, that.player)
-			onThrowComplete: ->
-				$('#knob').removeClass 'drag'
+			
 			onRelease: ->
+				console.log 'onRelease : '+(this.rotation % 360)+'that.duration : '+that.duration
+				$('#knob').removeClass 'drag'
+				that.timelineKnob =  TweenMax.fromTo('#knob', that.duration, {rotation:(this.rotation % 360)},{ease:Linear.easeNone, rotation: ((this.rotation % 360)+360), repeat:-1})
 				that.player.play()
 			snap: (endValue) ->
 				Math.round(endValue / rotationSnap) * rotationSnap
