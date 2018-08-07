@@ -61,13 +61,14 @@ html(lang= langage)
 
 		link(href= videojs_folder+"video-js.css" rel="stylesheet")
 
-		script(src= "https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js")
-		script(src= "https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/utils/Draggable.min.js")
-		script(src= "https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/DrawSVGPlugin.min.js")
-		script(src="https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/ThrowPropsPlugin.min.js")
-		script(src= videojs_folder+'video.js')
-		script(src= 'https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.14/howler.core.min.js')
+		// script(src= "https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js")
+		// script(src= "https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/utils/Draggable.min.js")
+		// script(src= "https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/DrawSVGPlugin.min.js")
+		// script(src="https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/ThrowPropsPlugin.min.js")
+		// script(src= 'https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.14/howler.core.min.js')
 
+		script(src= assets_adress+"vendor/vendor.js")
+		script(src= videojs_folder+'video.js')
 		script
 			| document.cookie='resolution='+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+'; path=/';
 
@@ -99,5 +100,5 @@ html(lang= langage)
 		include ../module/block_info_artists/index.pug
 		include ../module/block_footer/index.pug
 
-	script(src=js_adress+'vendor/vendor.js')
+	//- script(src=js_adress+'vendor/vendor.js')
 	script(src=js_adress+'base.js')

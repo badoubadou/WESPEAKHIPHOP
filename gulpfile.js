@@ -44,9 +44,12 @@ var watch_coffee = jsfile;
 var src_coffee = jsfile;
 var vendor = [
     'assets/coffee/vendor/jquery.min.js',
-    // 'assets/coffee/vendor/ThrowPropsPlugin.min.js',
+    'assets/coffee/vendor/TweenMax.min.js',
+    'assets/coffee/vendor/Draggable.min.js',
+    'assets/coffee/vendor/DrawSVGPlugin.min.js',
+    'assets/coffee/vendor/ThrowPropsPlugin.min.js',
     'assets/coffee/vendor/modernizr-objectfit.js',
-    // 'assets/coffee/vendor/DrawSVGPlugin.min.js',
+    'assets/coffee/vendor/howler.core.min.js',
     // 'assets/coffee/vendor/wad.min.js'
 ];
 
@@ -186,7 +189,7 @@ gulp.task('cleansvgclass', function() {
 });
 
 gulp.task("uploadjs", function() {
-    gulp.src(['public/js/**', 'assets/coffee/vendor/**'])
+    gulp.src(['public/js/**'])
         .pipe(s3({
             Bucket: 'wespeakhiphop-assets', //  Required
             ACL:    'public-read'       //  Needs to be user-defined

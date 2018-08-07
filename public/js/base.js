@@ -239,6 +239,65 @@
 }).call(this);
 
 (function() {
+  var popin;
+
+  popin = class popin {
+    constructor() {
+      this.bindEvents();
+    }
+
+    bindEvents() {
+      var showPopin;
+      showPopin = function($target) {
+        if ($('#popin').hasClass('hide')) {
+          $('#popin').removeClass('hide').trigger('classChange');
+        }
+        if ($($target).hasClass('hide')) {
+          return $($target).removeClass('hide');
+        } else {
+          $($target).addClass('hide');
+          return $('#popin').addClass('hide').trigger('classChange');
+        }
+      };
+      $('#apropos_btn, .block_contry .bio').on({
+        'click': function(e) {
+          var artistid;
+          e.preventDefault();
+          if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
+            artistid = $(this).data('artistid') - 1;
+            console.log('artistid =' + artistid);
+            $('#popin #artist_info .info').addClass('hide');
+            $('#popin #artist_info .info:eq(' + artistid + ')').removeClass('hide');
+            showPopin('#artist_info');
+            return;
+          }
+          return showPopin('#artist_info');
+        }
+      });
+      $('#share').on('click', function() {
+        return showPopin('#shareinfo');
+      });
+      return $('#close, #back').on('click', function() {
+        if (!$('#popin').hasClass('hide')) {
+          console.log('remove');
+          $('#popin').addClass('hide').trigger('classChange');
+        }
+        if (!$('#shareinfo').hasClass('hide')) {
+          $('#shareinfo').addClass('hide');
+        }
+        if (!$('#artist_info').hasClass('hide')) {
+          return $('#artist_info').addClass('hide');
+        }
+      });
+    }
+
+  };
+
+  module.popin = popin;
+
+}).call(this);
+
+(function() {
   var block_pays;
 
   block_pays = class block_pays {
@@ -341,65 +400,6 @@
 }).call(this);
 
 (function() {
-  var popin;
-
-  popin = class popin {
-    constructor() {
-      this.bindEvents();
-    }
-
-    bindEvents() {
-      var showPopin;
-      showPopin = function($target) {
-        if ($('#popin').hasClass('hide')) {
-          $('#popin').removeClass('hide').trigger('classChange');
-        }
-        if ($($target).hasClass('hide')) {
-          return $($target).removeClass('hide');
-        } else {
-          $($target).addClass('hide');
-          return $('#popin').addClass('hide').trigger('classChange');
-        }
-      };
-      $('#apropos_btn, .block_contry .bio').on({
-        'click': function(e) {
-          var artistid;
-          e.preventDefault();
-          if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
-            artistid = $(this).data('artistid') - 1;
-            console.log('artistid =' + artistid);
-            $('#popin #artist_info .info').addClass('hide');
-            $('#popin #artist_info .info:eq(' + artistid + ')').removeClass('hide');
-            showPopin('#artist_info');
-            return;
-          }
-          return showPopin('#artist_info');
-        }
-      });
-      $('#share').on('click', function() {
-        return showPopin('#shareinfo');
-      });
-      return $('#close, #back').on('click', function() {
-        if (!$('#popin').hasClass('hide')) {
-          console.log('remove');
-          $('#popin').addClass('hide').trigger('classChange');
-        }
-        if (!$('#shareinfo').hasClass('hide')) {
-          $('#shareinfo').addClass('hide');
-        }
-        if (!$('#artist_info').hasClass('hide')) {
-          return $('#artist_info').addClass('hide');
-        }
-      });
-    }
-
-  };
-
-  module.popin = popin;
-
-}).call(this);
-
-(function() {
   var player_video;
 
   player_video = class player_video {
@@ -466,6 +466,7 @@
           document.getElementById('player').src = vid;
           $('#player source').attr('src', vid);
           $('#player').addClass('ready');
+          that.timelineDisk.play();
           that.bindEvents();
         }
       };
@@ -484,8 +485,8 @@
         this.$deg = 360 + this.$deg;
       }
       percentage = this.$deg / 3.6;
-      player_new_CT = this.$myplayer.duration() * (percentage / 100);
-      return this.$myplayer.currentTime(player_new_CT);
+      player_new_CT = this.$myplayer.duration * (percentage / 100);
+      return this.$myplayer.currentTime = player_new_CT;
     }
 
     skipTo($player, $id) {
@@ -864,7 +865,7 @@
     }
 
     bindEvents() {
-      var options, rotationSnap, that, windowBlurred, windowFocused;
+      var rotationSnap, that, windowBlurred, windowFocused;
       that = this;
       //------------------- FOOTER LISTNER -------------------#
       $('#mode_switcher').on('switch_to_face_pays', function() {
@@ -928,39 +929,62 @@
       });
       
       //------------------- PLAYER JS ---------------------------#
-      options = {
-        autoplay: true,
-        muted: true
-      };
-      this.player = videojs('player', options, function() {
-        var myPlayer;
-        myPlayer = this;
-        myPlayer.on('play', function() {
-          if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
-            myPlayer.pause();
-            return;
-          }
-          console.log('play');
-          that.timelineInfo.play();
-          that.timelineKnob.play();
-          that.timelinePlatine.play();
-          that.timelineDisk.play();
-          return $('.lds-dual-ring').addClass('done');
-        });
-        myPlayer.on('pause', function() {
-          console.log('pause' + that.timelineKnob);
-          that.timelineInfo.pause();
-          that.timelineKnob.pause();
-          return that.timelinePlatine.pause();
-        });
-        myPlayer.on('seeked', function() {
-          return that.timelineInfo.time(myPlayer.currentTime());
-        });
-        myPlayer.on('loadedmetadata', function() {
-          that.duration = myPlayer.duration();
-          return that.createTween();
-        });
+      that.player = $('#player')[0];
+      $('#player').on('loadedmetadata', function(e) {
+        that.player.play();
+        that.duration = that.player.duration;
+        console.log(that.player.currentTime);
+        that.createTween();
       });
+      $('#player').on('play', function(e) {
+        if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
+          that.player.pause();
+          return;
+        }
+        console.log('play');
+        that.timelineInfo.play();
+        that.timelineKnob.play();
+        that.timelinePlatine.play();
+        return $('.lds-dual-ring').addClass('done');
+      });
+      $('#player').on('pause', function() {
+        console.log('pause' + that.timelineKnob);
+        that.timelineInfo.pause();
+        that.timelineKnob.pause();
+        return that.timelinePlatine.pause();
+      });
+      $('#player').on('seeked', function() {
+        return that.timelineInfo.time(that.player.currentTime);
+      });
+      // options = { autoplay: true, muted: true };
+      // @player = videojs('player', options, ->
+      // 	myPlayer = this
+
+      // 	myPlayer.on 'play', ->
+      // 		if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
+      // 			myPlayer.pause()
+      // 			return
+      // 		console.log 'play'
+      // 		that.timelineInfo.play()
+      // 		that.timelineKnob.play()
+      // 		that.timelinePlatine.play()
+      // 		$('.lds-dual-ring').addClass('done')
+
+      // 	myPlayer.on 'pause', ->
+      // 		console.log 'pause'+that.timelineKnob
+      // 		that.timelineInfo.pause()
+      // 		that.timelineKnob.pause()
+      // 		that.timelinePlatine.pause()
+
+      // 	myPlayer.on 'seeked', ->
+      // 		that.timelineInfo.time myPlayer.currentTime()
+
+      // 	myPlayer.on 'loadedmetadata', ->
+      // 		that.duration = myPlayer.duration()
+      // 		that.createTween()
+
+      // 	return
+      // )
       rotationSnap = 360 / 28;
       Draggable.create('#knob', {
         type: 'rotation',
@@ -969,15 +993,13 @@
           $('#knob').addClass('drag');
           return that.timelineKnob.kill();
         },
-        // if(that.player.muted())
-        // 	that.player.muted(false)
-        // 	$('#sound').addClass 'actif'
         onDrag: function() {
           return that.changeCurrentTime(this.rotation % 360, that.player);
         },
-        onRelease: function() {
-          console.log('onRelease : ' + (this.rotation % 360) + 'that.duration : ' + that.duration);
-          $('#knob').removeClass('drag');
+        onThrowUpdate: function() {
+          return that.changeCurrentTime(this.rotation % 360, that.player);
+        },
+        onThrowComplete: function() {
           that.timelineKnob = TweenMax.fromTo('#knob', that.duration, {
             rotation: this.rotation % 360
           }, {
@@ -985,8 +1007,13 @@
             rotation: (this.rotation % 360) + 360,
             repeat: -1
           });
-          return that.player.play();
+          that.player.play();
+          return $('#knob').removeClass('drag');
         },
+        
+        // onRelease: ->
+        // 	console.log 'onRelease : '+(this.rotation % 360)+'that.duration : '+that.duration
+        // 	$('#knob').removeClass 'drag'
         snap: function(endValue) {
           return Math.round(endValue / rotationSnap) * rotationSnap;
         }

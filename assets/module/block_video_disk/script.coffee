@@ -38,6 +38,7 @@ class player_video
 				document.getElementById('player').src = vid
 				$('#player source').attr('src',vid)
 				$('#player').addClass('ready')
+				that.timelineDisk.play()
 				that.bindEvents()
 			return
 
@@ -51,8 +52,8 @@ class player_video
 		if(@$deg<0)
 			@$deg = 360  + @$deg
 		percentage = @$deg / 3.6
-		player_new_CT = @$myplayer.duration() * (percentage/100)
-		@$myplayer.currentTime(player_new_CT)
+		player_new_CT = @$myplayer.duration * (percentage/100)
+		@$myplayer.currentTime = player_new_CT
 
 	skipTo: (@$player, @$id)->
 		nbVideo =  28
@@ -237,38 +238,67 @@ class player_video
 			that.player.muted(false)
 		
 		#------------------- PLAYER JS ---------------------------#
-		options = { autoplay: true, muted: true };
-		@player = videojs('player', options, ->
-			myPlayer = this
+		that.player = $('#player')[0]
+		
+		$('#player').on 'loadedmetadata', (e) ->
+			that.player.play()
+			that.duration = that.player.duration
+			console.log that.player.currentTime
+			that.createTween()
+			return
+
+		$('#player').on 'play', (e) ->
+			if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
+				that.player.pause()
+				return
+			console.log 'play'
+			that.timelineInfo.play()
+			that.timelineKnob.play()
+			that.timelinePlatine.play()
+			$('.lds-dual-ring').addClass('done')
+
+		$('#player').on 'pause', ->
+			console.log 'pause'+that.timelineKnob
+			that.timelineInfo.pause()
+			that.timelineKnob.pause()
+			that.timelinePlatine.pause()
+
+		$('#player').on 'seeked', ->
+			that.timelineInfo.time that.player.currentTime
+
+		# options = { autoplay: true, muted: true };
+		# @player = videojs('player', options, ->
+		# 	myPlayer = this
 			
-			myPlayer.on 'play', ->
-				if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
-					myPlayer.pause()
-					return
-				console.log 'play'
-				that.timelineInfo.play()
-				that.timelineKnob.play()
-				that.timelinePlatine.play()
-				that.timelineDisk.play()
-				$('.lds-dual-ring').addClass('done')
+		# 	myPlayer.on 'play', ->
+		# 		if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
+		# 			myPlayer.pause()
+		# 			return
+		# 		console.log 'play'
+		# 		that.timelineInfo.play()
+		# 		that.timelineKnob.play()
+		# 		that.timelinePlatine.play()
+		# 		$('.lds-dual-ring').addClass('done')
 				
 
 			
-			myPlayer.on 'pause', ->
-				console.log 'pause'+that.timelineKnob
-				that.timelineInfo.pause()
-				that.timelineKnob.pause()
-				that.timelinePlatine.pause()
+		# 	myPlayer.on 'pause', ->
+		# 		console.log 'pause'+that.timelineKnob
+		# 		that.timelineInfo.pause()
+		# 		that.timelineKnob.pause()
+		# 		that.timelinePlatine.pause()
 				
-			myPlayer.on 'seeked', ->
-				that.timelineInfo.time myPlayer.currentTime()
+		# 	myPlayer.on 'seeked', ->
+		# 		that.timelineInfo.time myPlayer.currentTime()
 				
-			myPlayer.on 'loadedmetadata', ->
-				that.duration = myPlayer.duration()
-				that.createTween()
+		# 	myPlayer.on 'loadedmetadata', ->
+		# 		that.duration = myPlayer.duration()
+		# 		that.createTween()
 			
-			return
-		)
+		# 	return
+		# )
+
+
 		
 		rotationSnap = 360 / 28
 		Draggable.create '#knob',
@@ -277,17 +307,20 @@ class player_video
 			onDragStart: ->
 				$('#knob').addClass 'drag'
 				that.timelineKnob.kill()
-				# if(that.player.muted())
-				# 	that.player.muted(false)
-				# 	$('#sound').addClass 'actif'
 			onDrag: ->
 				that.changeCurrentTime(this.rotation % 360, that.player)
 			
-			onRelease: ->
-				console.log 'onRelease : '+(this.rotation % 360)+'that.duration : '+that.duration
-				$('#knob').removeClass 'drag'
+			onThrowUpdate: ->
+				that.changeCurrentTime(this.rotation % 360, that.player)
+			
+			onThrowComplete: ->
 				that.timelineKnob =  TweenMax.fromTo('#knob', that.duration, {rotation:(this.rotation % 360)},{ease:Linear.easeNone, rotation: ((this.rotation % 360)+360), repeat:-1})
 				that.player.play()
+				$('#knob').removeClass 'drag'
+			
+			# onRelease: ->
+			# 	console.log 'onRelease : '+(this.rotation % 360)+'that.duration : '+that.duration
+			# 	$('#knob').removeClass 'drag'
 			snap: (endValue) ->
 				Math.round(endValue / rotationSnap) * rotationSnap
 

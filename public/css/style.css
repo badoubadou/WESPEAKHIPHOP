@@ -1204,10 +1204,12 @@ p:empty {
   #list_artists > *:nth-of-type(25) {
     margin-left: -90px;
   }
-  #list_artists > *:nth-of-type(21),
   #list_artists > *:nth-of-type(22),
   #list_artists > *:nth-of-type(23) {
     margin-left: -75px;
+  }
+  #list_artists > *:nth-of-type(21) {
+    margin-left: -100px;
   }
   #list_artists > *:nth-of-type(3) {
     width: 200px;
@@ -2235,7 +2237,8 @@ p:empty {
   width: 100px;
   height: 100px;
 }
-.size_video .player-dimensions {
+.size_video .player-dimensions,
+.size_video video {
   width: 100px;
   height: 100px;
 }
@@ -2244,7 +2247,8 @@ p:empty {
     width: 200px;
     height: 200px;
   }
-  .size_video .player-dimensions {
+  .size_video .player-dimensions,
+  .size_video video {
     width: 200px;
     height: 200px;
   }
@@ -2254,7 +2258,8 @@ p:empty {
     width: 400px;
     height: 400px;
   }
-  .size_video .player-dimensions {
+  .size_video .player-dimensions,
+  .size_video video {
     width: 400px;
     height: 400px;
   }
