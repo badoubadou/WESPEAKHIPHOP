@@ -922,10 +922,10 @@
       $(window).on('pageshow focus', windowFocused);
       //------------------- SOUND ---------------------------#
       $('#sound').on('sound_off', function() {
-        return that.player.muted(true);
+        return that.player.muted = true;
       });
       $('#sound').on('sound_on', function() {
-        return that.player.muted(false);
+        return that.player.muted = false;
       });
       
       //------------------- PLAYER JS ---------------------------#
@@ -1027,7 +1027,7 @@
 }).call(this);
 
 (function() {
-  var block_pays, flip_disk, hasTouch, init, isMobile, player_video, player_youtube, popin;
+  var init, isMobile;
 
   isMobile = function() {
     var connection;
@@ -1045,29 +1045,23 @@
   };
 
   init = function() {
+    var block_pays, flip_disk, player_video, player_youtube, popin;
     $('body').addClass('doc-ready');
-    return $('#mask_shield').addClass('hide');
+    $('#mask_shield').addClass('hide');
+    player_video = new module.player_video();
+    player_youtube = new module.player_youtube();
+    flip_disk = new module.flip_disk();
+    popin = new module.popin();
+    return block_pays = new module.block_pays();
   };
 
   // $('.loader-bar').removeClass('show-progress')
   $(window).load(init);
 
-  hasTouch = function() {
-    return 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
-  };
+  // hasTouch = ->
+// 	'ontouchstart' of document.documentElement or navigator.maxTouchPoints > 0 or navigator.msMaxTouchPoints > 0
 
-  if (!hasTouch()) {
-    document.body.className += ' hasHover';
-  }
-
-  player_video = new module.player_video();
-
-  player_youtube = new module.player_youtube();
-
-  flip_disk = new module.flip_disk();
-
-  popin = new module.popin();
-
-  block_pays = new module.block_pays();
+// if !hasTouch()
+// 	document.body.className += ' hasHover'
 
 }).call(this);

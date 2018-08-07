@@ -50,6 +50,7 @@ var vendor = [
     'assets/coffee/vendor/ThrowPropsPlugin.min.js',
     'assets/coffee/vendor/modernizr-objectfit.js',
     'assets/coffee/vendor/howler.core.min.js',
+    'public/js/base.js',
     // 'assets/coffee/vendor/wad.min.js'
 ];
 
@@ -62,7 +63,7 @@ gulp.task('makecoffee', function() {
 
 gulp.task('concatjs', function() {
     gulp.src(vendor)
-        .pipe(concat('vendor.js'))
+        .pipe(concat('all.js'))
         .pipe(gulp.dest(dest+'js/vendor/'));
 });
 

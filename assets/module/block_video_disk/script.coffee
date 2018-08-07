@@ -232,10 +232,10 @@ class player_video
 
 		#------------------- SOUND ---------------------------#
 		$('#sound').on 'sound_off', ->
-			that.player.muted(true)
+			that.player.muted = true
 
 		$('#sound').on 'sound_on', ->
-			that.player.muted(false)
+			that.player.muted = false
 		
 		#------------------- PLAYER JS ---------------------------#
 		that.player = $('#player')[0]
