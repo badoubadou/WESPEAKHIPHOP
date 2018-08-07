@@ -21,6 +21,7 @@ class player_video
 		@loadVideo()
 
 	loadVideo: ->
+		console.log 'loadVideo'
 		videoUrl = 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/5secondes.mp4'
 		# videoUrl = 'http://videotest:8888/5secondes.mp4'
 		that = @
