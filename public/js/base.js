@@ -449,7 +449,7 @@
     loadVideo() {
       var req, that, videoUrl;
       videoUrl = 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/5secondes.mp4';
-      videoUrl = 'http://videotest:8888/5secondes.mp4';
+      // videoUrl = 'http://videotest:8888/5secondes.mp4'
       that = this;
       req = new XMLHttpRequest;
       req.open('GET', videoUrl, true);
