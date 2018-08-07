@@ -28,6 +28,7 @@ class player_video
 		req.open 'GET', videoUrl , true
 		req.responseType = 'blob'
 		req.onload = ->
+			console.log 'onload video disk'
 			# Onload is triggered even on 404 so we need to check the status code
 			if @status == 200
 				videoBlob = @response
@@ -40,6 +41,7 @@ class player_video
 			return
 
 		req.onerror = ->
+			console.log 'error video'
 			# Error
 			return
 		req.send()	

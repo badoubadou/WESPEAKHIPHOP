@@ -456,6 +456,7 @@
       req.responseType = 'blob';
       req.onload = function() {
         var vid, videoBlob;
+        console.log('onload video disk');
         // Onload is triggered even on 404 so we need to check the status code
         if (this.status === 200) {
           videoBlob = this.response;
@@ -467,7 +468,9 @@
           that.bindEvents();
         }
       };
-      req.onerror = function() {};
+      req.onerror = function() {
+        console.log('error video');
+      };
       // Error
       return req.send();
     }
