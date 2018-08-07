@@ -43,23 +43,24 @@ var toUpload = ['public/image/**', 'public/css/style.css', 'public/js/**', 'publ
 var watch_coffee = jsfile;
 var src_coffee = jsfile;
 var vendor = [
-	'assets/coffee/vendor/jquery.min.js',
-    'assets/coffee/vendor/ThrowPropsPlugin.min.js',
-	'assets/coffee/vendor/modernizr-objectfit.js',
+    'assets/coffee/vendor/jquery.min.js',
+    // 'assets/coffee/vendor/ThrowPropsPlugin.min.js',
+    'assets/coffee/vendor/modernizr-objectfit.js',
+    // 'assets/coffee/vendor/DrawSVGPlugin.min.js',
     // 'assets/coffee/vendor/wad.min.js'
 ];
 
 gulp.task('makecoffee', function() {
-	return gulp.src(src_coffee)
-		.pipe(coffee())
-		.pipe(concat('base.js'))
-		.pipe(gulp.dest(dest+'js/'));
+    return gulp.src(src_coffee)
+        .pipe(coffee())
+        .pipe(concat('base.js'))
+        .pipe(gulp.dest(dest+'js/'));
 });
 
 gulp.task('concatjs', function() {
     gulp.src(vendor)
-	    .pipe(concat('vendor.js'))
-	    .pipe(gulp.dest(dest+'js/vendor/'));
+        .pipe(concat('vendor.js'))
+        .pipe(gulp.dest(dest+'js/vendor/'));
 });
 
 gulp.task('clean:js', function () {
@@ -80,13 +81,13 @@ gulp.task('coffee', ['clean:js', 'makecoffee'], function (cb) {
 });
 
 gulp.task('stylus', function() {
-	return gulp.src('assets/style/*.styl')
-		.pipe(stylus({
-			use: nib(),
-			compress: false
-		}))
-		.pipe(gulp.dest(dest+'css'))
-		.pipe(notify({ message: 'CSS task complete' }));
+    return gulp.src('assets/style/*.styl')
+        .pipe(stylus({
+            use: nib(),
+            compress: false
+        }))
+        .pipe(gulp.dest(dest+'css'))
+        .pipe(notify({ message: 'CSS task complete' }));
 });
 
 gulp.task('css', ['stylus'], function (cb) {
@@ -125,8 +126,8 @@ gulp.task('pug', ['pug:data'], function() {
 });
 
 gulp.task('misc', ['cleansvgclass'], function () {
-	gulp.src(imageminussvg)
-	.pipe(gulp.dest(dest+'image/'));
+    gulp.src(imageminussvg)
+    .pipe(gulp.dest(dest+'image/'));
 });
 
 gulp.task('default', ['misc'], function (cb) {
@@ -134,10 +135,10 @@ gulp.task('default', ['misc'], function (cb) {
 });
 
 gulp.task('watch', function() {
-	gulp.watch(misc, ['misc']);
-	gulp.watch(jsfile, ['coffee']);
-	gulp.watch(stylfile, ['css']);
-	gulp.watch(['assets/pug/*.pug', 'assets/module/**/*.pug', 'assets/image/*.svg', 'assets/json/*.json'], ['pug']);
+    gulp.watch(misc, ['misc']);
+    gulp.watch(jsfile, ['coffee']);
+    gulp.watch(stylfile, ['css']);
+    gulp.watch(['assets/pug/*.pug', 'assets/module/**/*.pug', 'assets/image/*.svg', 'assets/json/*.json'], ['pug']);
     gulp.watch(['assets/image/*.svg'], ['cleansvgclass']);
     gulp.watch(['assets/image/**'], ['uploadimage']);
 });
@@ -155,7 +156,7 @@ gulp.task("uploadcss", function() {
 });
 
 gulp.task('cleansvgclass', function() {
-  return gulp.src('assets/image/*.svg')
+  return gulp.src(['assets/image/*.svg', '!assets/image/lign.svg'])
     .pipe(tap(function(file) {
       var fileName = path.basename(file.path, '.svg');
       var st0 = fileName+'-st0';
@@ -185,7 +186,7 @@ gulp.task('cleansvgclass', function() {
 });
 
 gulp.task("uploadjs", function() {
-    gulp.src('public/js/**')
+    gulp.src(['public/js/**', 'assets/coffee/vendor/**'])
         .pipe(s3({
             Bucket: 'wespeakhiphop-assets', //  Required
             ACL:    'public-read'       //  Needs to be user-defined
@@ -195,6 +196,7 @@ gulp.task("uploadjs", function() {
         }))
     ;
 });
+
 
 gulp.task("uploadimage", function() {
     gulp.src('assets/image/**')

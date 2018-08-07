@@ -29,6 +29,11 @@
       }).from($('#faceb'), .3, {
         rotationY: 90,
         scale: 1.3
+      }).to($('#smallmap'), .3, {
+        ease: Power1.easeOut,
+        alpha: 0
+      }).add(function() {
+        return $('#apropos_btn').addClass('hide');
       });
       
       // @flip_tween
@@ -39,6 +44,7 @@
       return this.flip_tween.eventCallback('onReverseComplete', function() {
         $('#mode_switcher').trigger('switch_to_face_artist');
         $('#smallmap, #artists_info').removeClass('opacity_0');
+        $('#apropos_btn').removeClass('hide');
       });
     }
 
@@ -410,6 +416,32 @@
       this.timelinePlatine = new TimelineMax({
         paused: true
       });
+      this.timelineDisk = new TimelineMax({
+        paused: true
+      });
+      this.timelineDisk.from('#disk_hole', .6, {
+        scale: 0,
+        ease: Power3.easeOut
+      }).from('#mask_video', 3, {
+        scale: 0,
+        ease: Power3.easeOut
+      }, 0).staggerFromTo('#disk_lign svg path', 1, {
+        drawSVG: "60% 60%"
+      }, {
+        drawSVG: "100%"
+      }, -0.1, .5).from('#bg_disk', 2, {
+        opacity: 0,
+        scale: 0,
+        ease: Power1.easeOut
+      }, 1).from('#platine', 1, {
+        opacity: 0
+      }, 1).staggerFrom('#list_artists li', .3, {
+        opacity: 0
+      }, 0.05, 1.5).from('#main_footer', .3, {
+        y: 40
+      }, 2).from('#smallmap', .3, {
+        opacity: 0
+      }, 2);
       this.player = null;
       this.loadVideo();
     }
@@ -417,6 +449,7 @@
     loadVideo() {
       var req, that, videoUrl;
       videoUrl = 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/5secondes.mp4';
+      videoUrl = 'http://videotest:8888/5secondes.mp4';
       that = this;
       req = new XMLHttpRequest;
       req.open('GET', videoUrl, true);
@@ -431,7 +464,6 @@
           document.getElementById('player').src = vid;
           $('#player source').attr('src', vid);
           $('#player').addClass('ready');
-          $('.lds-dual-ring').addClass('done');
           that.bindEvents();
         }
       };
@@ -509,240 +541,324 @@
       return this.timelineInfo.add(function() {
         return updateInfo(0);
       }).fromTo('#artists_info li:eq(0)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(0)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(1);
       }).fromTo('#artists_info li:eq(1)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(1)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(2);
       }).fromTo('#artists_info li:eq(2)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(2)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(3);
       }).fromTo('#artists_info li:eq(3)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(3)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(4);
       }).fromTo('#artists_info li:eq(4)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(4)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(5);
       }).fromTo('#artists_info li:eq(5)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(5)', 0.5, {
         alpha: 0
       }, sequence).add(function() {
         return updateInfo(6);
       }).fromTo('#artists_info li:eq(6)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(6)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(7);
       }).fromTo('#artists_info li:eq(7)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(7)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(8);
       }).fromTo('#artists_info li:eq(8)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(8)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(9);
       }).fromTo('#artists_info li:eq(9)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(9)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(10);
       }).fromTo('#artists_info li:eq(10)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(10)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(11);
       }).fromTo('#artists_info li:eq(11)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(11)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(12);
       }).fromTo('#artists_info li:eq(12)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(12)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(13);
       }).fromTo('#artists_info li:eq(13)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(13)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(14);
       }).fromTo('#artists_info li:eq(14)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(14)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(15);
       }).fromTo('#artists_info li:eq(15)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(15)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(16);
       }).fromTo('#artists_info li:eq(16)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(16)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(17);
       }).fromTo('#artists_info li:eq(17)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(17)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(18);
       }).fromTo('#artists_info li:eq(18)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(18)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(19);
       }).fromTo('#artists_info li:eq(19)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(19)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(20);
       }).fromTo('#artists_info li:eq(20)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(20)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(21);
       }).fromTo('#artists_info li:eq(21)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(21)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(22);
       }).fromTo('#artists_info li:eq(22)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(22)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(23);
       }).fromTo('#artists_info li:eq(23)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(23)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(24);
       }).fromTo('#artists_info li:eq(24)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(24)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(25);
       }).fromTo('#artists_info li:eq(25)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(25)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(26);
       }).fromTo('#artists_info li:eq(26)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(26)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(27);
       }).fromTo('#artists_info li:eq(27)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(27)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence).add(function() {
         return updateInfo(28);
       }).fromTo('#artists_info li:eq(28)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: 30
       }, {
-        alpha: 1
+        alpha: 1,
+        y: 0
       }).to('#artists_info li:eq(28)', 0.5, {
-        alpha: 0
+        alpha: 0,
+        y: -30
       }, sequence);
     }
 
-    // .to('.size_platine', duration,  {ease: Sine.easeIn, rotation: -360*100},0)
-    // .to('#knob', duration,  {ease: Power0.easeNone, rotation: 360},0)
     bindEvents() {
       var options, rotationSnap, that, windowBlurred, windowFocused;
       that = this;
@@ -823,7 +939,9 @@
           console.log('play');
           that.timelineInfo.play();
           that.timelineKnob.play();
-          return that.timelinePlatine.play();
+          that.timelinePlatine.play();
+          that.timelineDisk.play();
+          return $('.lds-dual-ring').addClass('done');
         });
         myPlayer.on('pause', function() {
           console.log('pause' + that.timelineKnob);
@@ -897,9 +1015,10 @@
 
   init = function() {
     $('body').addClass('doc-ready');
-    return $('.loader-bar').removeClass('show-progress');
+    return $('#mask_shield').addClass('hide');
   };
 
+  // $('.loader-bar').removeClass('show-progress')
   $(window).load(init);
 
   hasTouch = function() {

@@ -65,6 +65,7 @@ body {
   background-color: #f0f2da;
 }
 body #main {
+  background: #f0f2da;
   background-color: #f0f2da;
   background: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/bg.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -509,7 +510,7 @@ p:empty {
   display: inline-block;
   width: 46px;
   height: 46px;
-  z-index: 2;
+  z-index: 200;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -523,7 +524,7 @@ p:empty {
   margin: 0;
   border-radius: 50%;
   border: 5px solid #000;
-  border-color: #000 transparent #000 transparent;
+  border-color: #000 #f0f2da #000 #f0f2da;
   animation-name: lds-dual-ring;
   animation-duration: 1.2s;
   animation-iteration-count: infinite;
@@ -622,6 +623,12 @@ p:empty {
   width: 100%;
   height: 100%;
 }
+#mask_shield {
+  background: #f0f2da;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
 @media screen and (max-width: 33.9em), screen and (max-height: 420px) {
   .max_width {
     margin: 0;
@@ -640,9 +647,6 @@ p:empty {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-}
-#faceb {
-  background: #008000;
 }
 .footer {
   background: #000;
@@ -2186,6 +2190,12 @@ p:empty {
     opacity: 0;
   }
 }
+#disk_hole {
+  width: 20px;
+  height: 20px;
+  background: #000;
+  border-radius: 50%;
+}
 #marker {
   display: block;
   width: 10px;
@@ -2285,11 +2295,15 @@ p:empty {
   border: 8px solid #000;
 }
 #disk {
-  border: 2px solid #000;
   cursor: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/hand.png"), auto;
 }
-#disk_lign {
+#bg_disk {
+  display: block;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
   background: #ffce00;
+  z-index: -1;
 }
 #play-video-btn {
   text-transform: uppercase;

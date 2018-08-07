@@ -1,6 +1,7 @@
 #block_video_disk.absolute.full_height.full_width.centered
+	#disk_hole.absolute.centered.layer_top
 	#mask_video.circular_mask.absolute.centered.layer_3.size_video
-		.lds-dual-ring
+		//- .lds-dual-ring
 		a(href="")#play-video-btn.layer_3.btn
 			| #{TRANSLATION.play_video[langage]}
 		video#player.video-js.absolute.centered(controls='none', preload='true', muted='true', loop='true', width='200', height='200')
@@ -15,3 +16,4 @@
 			
 	#disk_lign.absolute.centered.layer_0.circular_mask.size_disk
 		include ../../cleansvg/lign.svg
+		span#bg_disk.absolute.centered

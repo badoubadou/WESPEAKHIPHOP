@@ -11,7 +11,8 @@ isMobile = ->
 
 init = ->
 	$('body').addClass 'doc-ready'
-	$('.loader-bar').removeClass('show-progress')
+	$('#mask_shield').addClass 'hide'
+	# $('.loader-bar').removeClass('show-progress')
 
 	
 $(window).load( init )
@@ -28,3 +29,4 @@ player_youtube = new module.player_youtube()
 flip_disk = new module.flip_disk()
 popin = new module.popin()
 block_pays =  new module.block_pays()
+

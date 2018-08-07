@@ -25,6 +25,13 @@ each video, id in videos
 
 - videos_by_contry.sort(function(a, b){ if(a.contry_nicename < b.contry_nicename) return -1; if(a.contry_nicename > b.contry_nicename) return 1; return 0; })
 
+- assets_adress = 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/'
+// - assets_adress =  'http://videotest:8888/js/'
+- js_adress =  (assets_adress == 'http://videotest:8888/js/') ? 'js/' : assets_adress
+- videojs_folder =  (assets_adress == 'http://videotest:8888/js/') ? 'http://videotest:8888/js/' : 'https://vjs.zencdn.net/7.1.0/'
+
+
+
 doctype html
 html(lang= langage) 
 	head
@@ -50,15 +57,16 @@ html(lang= langage)
 		link(rel="apple-touch-icon-precomposed" sizes="72x72"   href="ico/images/favico/favicon-72.png")
 		link(rel="apple-touch-icon-precomposed"                 href="ico/images/favico/favicon-57.png")
 
-		link(type="text/css" rel="stylesheet" href="https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/style.css")
+		link(type="text/css" rel="stylesheet" href="css/style.css")
 
-		link(href="https://vjs.zencdn.net/7.0.5/video-js.css" rel="stylesheet")
+		link(href= videojs_folder+"video-js.css" rel="stylesheet")
 
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/utils/Draggable.min.js")
-		// script(src="https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/vendor/ThrowPropsPlugin.min.js")
-		script(src='https://vjs.zencdn.net/7.1.0/video.js')
-		script(src='https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.14/howler.core.min.js')
+		script(src= "https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js")
+		script(src= "https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/utils/Draggable.min.js")
+		script(src= "https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/DrawSVGPlugin.min.js")
+		script(src="https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/ThrowPropsPlugin.min.js")
+		script(src= videojs_folder+'video.js')
+		script(src= 'https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.14/howler.core.min.js')
 
 		script
 			| document.cookie='resolution='+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+'; path=/';
@@ -66,13 +74,16 @@ html(lang= langage)
 	body
 		include ../module/block_header/index.pug	
 
+		#mask_shield.absolute.layer_top.full_height.full_width
 		#main.absolute.full_height_minus_footer.full_width.full_height_minus_footer_minus_header_mobile
+			.lds-dual-ring
+		
 			include ../module/block_popin/index.pug
 			#facea.absolute.centered.layer_2.full_height.full_width.size_disk
 				include ../module/block_list_artists/index.pug
 				include ../module/block_video_disk/index.pug
 			#faceb.absolute.centered.layer_2.full_height.full_width.size_disk
-					include ../module/block_pays/index.pug
+				include ../module/block_pays/index.pug
 
 			#bg
 			//- #face_artistes.absolute.centered.layer_2.full_height.full_width.overflow_hidden
@@ -88,5 +99,5 @@ html(lang= langage)
 		include ../module/block_info_artists/index.pug
 		include ../module/block_footer/index.pug
 
-	script(src='https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/vendor/vendor.js')
-	script(src='https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/base.js')
+	script(src=js_adress+'vendor/vendor.js')
+	script(src=js_adress+'base.js')
