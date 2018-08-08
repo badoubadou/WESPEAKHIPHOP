@@ -80,8 +80,20 @@ gulp.task('clean:css', function () {
   ]);
 });
 
-gulp.task('coffee', ['clean:js', 'makecoffee'], function (cb) {
-    runSequence(['concatjs', 'uploadjs'], cb);
+// gulp.task('coffee', ['clean:js', 'makecoffee'], function (cb) {
+//     runSequence([ 'concatjs', 'uploadjs'], cb);
+// });
+
+gulp.task('coffee', function(done) {
+    runSequence('clean:js', 'makecoffee', function() {
+        gutil.log('clean:js & makecoffee finished ');
+        done();
+        // runSequence([ 'concatjs', 'uploadjs']);
+        runSequence('concatjs', function() {
+            console.log('concatjs finished');
+            runSequence(['uploadjs']);
+        });
+    });
 });
 
 gulp.task('stylus', function() {
@@ -190,7 +202,7 @@ gulp.task('cleansvgclass', function() {
 });
 
 gulp.task("uploadjs", function() {
-    gulp.src(['public/js/**'])
+    gulp.src(['public/js/vendor/all.js'])
         .pipe(s3({
             Bucket: 'wespeakhiphop-assets', //  Required
             ACL:    'public-read'       //  Needs to be user-defined

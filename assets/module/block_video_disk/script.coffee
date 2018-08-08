@@ -1,5 +1,6 @@
 class player_video
 	constructor: (@$container) ->
+		console.log 'loaded ----------------------'
 		# @bindEvents() # bind event is now after video is loaded
 		@duration = 0
 		@timelineKnob = new TimelineMax(paused: true)
@@ -7,46 +8,55 @@ class player_video
 		@timelinePlatine = new TimelineMax(paused: true)
 
 		@timelineDisk = new TimelineMax(paused: true)		
-		@timelineDisk.from('#disk_hole',.6,{scale: 0, ease:Power3.easeOut})
-			.from('#mask_video',3,{scale: 0, ease:Power3.easeOut}, 0 )
-			.staggerFromTo('#disk_lign svg path', 1, {drawSVG:"60% 60%"}, {drawSVG:"100%"}, -0.1, .5)
+		@timelineDisk.from('#disk_hole',.6,{scale: 0, ease:Power3.easeOut}, 0.5)
+			.from('#mask_video',3,{scale: 0, ease:Power3.easeOut}, 1 )
+			.staggerFromTo('#disk_lign svg path', 1, {drawSVG:"50% 50%"}, {drawSVG:"100%"}, -0.1, 1.2)
 			.from('#bg_disk',2,{opacity:0, scale: 0, ease:Power1.easeOut}, 1 )
 			.from('#platine',1,{opacity:0}, 1)
 			.staggerFrom('#list_artists li',.3,{opacity:0}, 0.05, 1.5)
 			.from('#main_footer',.3,{y:40}, 2 )
 			.from('#smallmap',.3,{opacity:0}, 2 )
-
 		
-		@player = null
-		@loadVideo()
+		@player = $('#player')[0]
 
-	loadVideo: ->
-		console.log 'loadVideo'
-		videoUrl = 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/5secondes.mp4'
-		# videoUrl = 'http://videotest:8888/5secondes.mp4'
-		that = @
-		req = new XMLHttpRequest
-		req.open 'GET', videoUrl , true
-		req.responseType = 'blob'
-		req.onload = ->
-			console.log 'onload video disk'
-			# Onload is triggered even on 404 so we need to check the status code
-			if @status == 200
-				videoBlob = @response
-				vid = URL.createObjectURL(videoBlob)
-				# Video is now downloaded and we can set it as source on the video element
-				document.getElementById('player').src = vid
-				$('#player source').attr('src',vid)
-				$('#player').addClass('ready')
-				that.timelineDisk.play()
-				that.bindEvents()
-			return
+		$('#player').addClass('ready')
+		@duration = @player.duration
+		@createTween()
+		@bindEvents()
+		
+		@player.play()
+		@timelineDisk.play()
+		
+	
+		# @loadVideo()
 
-		req.onerror = ->
-			console.log 'error video'
-			# Error
-			return
-		req.send()	
+	# loadVideo: ->
+	# 	console.log 'loadVideo'
+	# 	videoUrl = 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/5secondes.mp4'
+	# 	videoUrl = 'http://milkyweb.eu/video/5secondes.mp4'
+	# 	that = @
+	# 	req = new XMLHttpRequest
+	# 	req.open 'GET', videoUrl , true
+	# 	req.responseType = 'blob'
+	# 	req.onload = ->
+	# 		console.log 'onload video disk'
+	# 		# Onload is triggered even on 404 so we need to check the status code
+	# 		if @status == 200
+	# 			videoBlob = @response
+	# 			vid = URL.createObjectURL(videoBlob)
+	# 			# Video is now downloaded and we can set it as source on the video element
+	# 			document.getElementById('player').src = vid
+	# 			$('#player source').attr('src',vid)
+	# 			$('#player').addClass('ready')
+	# 			that.timelineDisk.play()
+	# 			that.bindEvents()
+	# 		return
+
+	# 	req.onerror = ->
+	# 		console.log 'error video'
+	# 		# Error
+	# 		return
+	# 	req.send()	
 
 	changeCurrentTime: (@$deg, @$myplayer)->
 		if(@$deg<0)
@@ -68,10 +78,8 @@ class player_video
 				PBR = 1.0
 				player.off 'timeupdate', checkEndTime
 			player.playbackRate(PBR)
-			console.log 'secondtimeupdate '+player.currentTime()+' < '+timeToStop
 			
 		@$player.on 'timeupdate', checkEndTime
-	
 	#------------------- TWEEN ---------------------------#
 	createTween: () ->
 
@@ -238,16 +246,19 @@ class player_video
 			that.player.muted = false
 		
 		#------------------- PLAYER JS ---------------------------#
-		that.player = $('#player')[0]
 		
-		$('#player').on 'loadedmetadata', (e) ->
-			that.player.play()
-			that.duration = that.player.duration
-			console.log that.player.currentTime
-			that.createTween()
-			return
-
+		# $('#player').on 'loadedmetadata', (e) ->
+		# $('#player').addClass('ready')
+		# that.timelineDisk.play()
+		
+		# that.player.play()
+		# console.log '--------- done ---------'
+		# that.duration = that.player.duration
+		# console.log that.player.currentTime
+		# that.createTween()
+		
 		$('#player').on 'play', (e) ->
+			console.log 'plays'
 			if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
 				that.player.pause()
 				return

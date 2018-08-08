@@ -239,6 +239,130 @@
 }).call(this);
 
 (function() {
+  var block_pays;
+
+  block_pays = (function() {
+    class block_pays {
+      constructor() {
+        this.soundInitiated = false;
+        this.bindEvents();
+        console.log('block_pays constructor');
+        this.buildContrySound();
+      }
+
+      bindEvents() {
+        var that;
+        that = this;
+        //------------------- FOOTER LISTNER -------------------#
+        $('#mode_switcher').on('switch_to_face_artist', function() {
+          if (window.pauseSound) {
+            window.pauseSound();
+          }
+          $('.pastille').removeClass('big');
+          $('#artists_info_map .block_contry').removeClass('opacity_1');
+          return console.log('switch_to_face_artist');
+        });
+        //------------------- SOUND - CONTROL ------------------#
+        $('#sound').on('sound_off', function() {
+          console.log('window.pCount =' + window.pCount);
+          console.log('window.howlerBank.length =' + window.pCount);
+          if (that.soundInitiated) {
+            return window.howlerBank[window.pCount].volume(0);
+          }
+        });
+        $('#sound').on('sound_on', function() {
+          if (that.soundInitiated) {
+            return window.howlerBank[window.pCount].volume(1);
+          }
+        });
+        //------------------- pastille -------------------------#
+        return $('.pastille').on({
+          'click': function(e) {
+            if ($(this).hasClass('big')) {
+              return that.closeContryBox();
+            } else {
+              return that.openContryBox($(this));
+            }
+          }
+        });
+      }
+
+      //------------------- SOUND - PLAYER -----------------------#
+      buildContrySound(pastille) {
+        var defaultPlaylist, onEnd, ordre_pays, playlistUrls, that;
+        that = this;
+        console.log('buildContrySound - ');
+        if (pastille) {
+          playlistUrls = pastille.data('sound');
+          defaultPlaylist = false;
+        } else {
+          console.log('no pastille');
+          playlistUrls = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
+          ordre_pays = $('#artists_info_map').data('ordre_pays');
+          defaultPlaylist = true;
+          console.log(ordre_pays[0]);
+        }
+        window.pauseSound();
+        window.pCount = 0;
+        window.howlerBank = [];
+        onEnd = function(e) {
+          window.pCount = window.pCount + 1 !== window.howlerBank.length ? window.pCount + 1 : 0;
+          console.log('howlerBank Play pCount = ' + window.pCount);
+          if (!$('#sound').hasClass('actif')) {
+            window.howlerBank[window.pCount].volume(0);
+          }
+          window.howlerBank[window.pCount].play();
+        };
+        // build up howlerBank:     
+        playlistUrls.forEach(function(current, i) {
+          console.log(playlistUrls[i]);
+          window.howlerBank.push(new Howl({
+            src: ['https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/' + playlistUrls[i] + '.mp3'],
+            onend: onEnd,
+            buffer: true
+          }));
+        });
+        if (!$('#sound').hasClass('actif')) {
+          window.howlerBank[0].volume(0);
+        }
+        window.howlerBank[0].play();
+        that.soundInitiated = true;
+      }
+
+      closeContryBox() {
+        $('.pastille').removeClass('big');
+        $('#artists_info_map .block_contry').removeClass('opacity_1');
+        return window.pauseSound();
+      }
+
+      openContryBox(pastille) {
+        var place;
+        $('.pastille').removeClass('big');
+        $('#artists_info_map .block_contry').removeClass('opacity_1');
+        place = '.' + pastille.data('nicename');
+        pastille.addClass('big');
+        $('#artists_info_map ' + place).addClass('opacity_1');
+        return buildContrySound(pastille);
+      }
+
+    };
+
+    window.pauseSound = function() {
+      if (window.howlerBank) {
+        console.log('fade');
+        return window.howlerBank[window.pCount].stop();
+      }
+    };
+
+    return block_pays;
+
+  }).call(this);
+
+  module.block_pays = block_pays;
+
+}).call(this);
+
+(function() {
   var popin;
 
   popin = class popin {
@@ -298,113 +422,12 @@
 }).call(this);
 
 (function() {
-  var block_pays;
-
-  block_pays = class block_pays {
-    constructor() {
-      this.soundInitiated = false;
-      this.bindEvents();
-    }
-
-    bindEvents() {
-      var that;
-      that = this;
-      //------------------- FOOTER LISTNER -------------------#
-      $('#mode_switcher').on('switch_to_face_artist', function() {
-        if (window.pauseSound) {
-          window.pauseSound();
-        }
-        $('.pastille').removeClass('big');
-        $('#artists_info_map .block_contry').removeClass('opacity_1');
-        return console.log('switch_to_face_artist');
-      });
-      //------------------- SOUND ---------------------------#
-      $('#sound').on('sound_off', function() {
-        console.log('window.pCount =' + window.pCount);
-        console.log('window.howlerBank.length =' + window.pCount);
-        if (that.soundInitiated) {
-          return window.howlerBank[window.pCount].volume(0);
-        }
-      });
-      $('#sound').on('sound_on', function() {
-        if (that.soundInitiated) {
-          return window.howlerBank[window.pCount].volume(1);
-        }
-      });
-      //------------------- pastille -------------------#
-      return $('.pastille').on({
-        'click': function(e) {
-          var buildContrySound, closeContryBox, openContryBox;
-          buildContrySound = function(pastille) {
-            var onEnd, playlistUrls;
-            window.pauseSound();
-            window.pCount = 0;
-            playlistUrls = pastille.data('sound');
-            window.howlerBank = [];
-            onEnd = function(e) {
-              window.pCount = window.pCount + 1 !== window.howlerBank.length ? window.pCount + 1 : 0;
-              console.log('howlerBank Play pCount = ' + window.pCount);
-              if (!$('#sound').hasClass('actif')) {
-                window.howlerBank[window.pCount].volume(0);
-              }
-              window.howlerBank[window.pCount].play();
-            };
-            // build up howlerBank:     
-            playlistUrls.forEach(function(current, i) {
-              console.log(playlistUrls[i]);
-              window.howlerBank.push(new Howl({
-                src: ['https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/' + playlistUrls[i] + '.mp3'],
-                onend: onEnd,
-                buffer: true
-              }));
-            });
-            if (!$('#sound').hasClass('actif')) {
-              window.howlerBank[0].volume(0);
-            }
-            window.howlerBank[0].play();
-            that.soundInitiated = true;
-          };
-          window.pauseSound = function() {
-            if (window.howlerBank) {
-              console.log('fade');
-              return window.howlerBank[window.pCount].stop();
-            }
-          };
-          closeContryBox = function() {
-            $('.pastille').removeClass('big');
-            $('#artists_info_map .block_contry').removeClass('opacity_1');
-            return window.pauseSound();
-          };
-          openContryBox = function(pastille) {
-            var place;
-            $('.pastille').removeClass('big');
-            $('#artists_info_map .block_contry').removeClass('opacity_1');
-            place = '.' + pastille.data('nicename');
-            pastille.addClass('big');
-            $('#artists_info_map ' + place).addClass('opacity_1');
-            return buildContrySound(pastille);
-          };
-          if ($(this).hasClass('big')) {
-            return closeContryBox();
-          } else {
-            return openContryBox($(this));
-          }
-        }
-      });
-    }
-
-  };
-
-  module.block_pays = block_pays;
-
-}).call(this);
-
-(function() {
   var player_video;
 
   player_video = class player_video {
     constructor($container) {
       this.$container = $container;
+      console.log('loaded ----------------------');
       // @bindEvents() # bind event is now after video is loaded
       this.duration = 0;
       this.timelineKnob = new TimelineMax({
@@ -422,14 +445,14 @@
       this.timelineDisk.from('#disk_hole', .6, {
         scale: 0,
         ease: Power3.easeOut
-      }).from('#mask_video', 3, {
+      }, 0.5).from('#mask_video', 3, {
         scale: 0,
         ease: Power3.easeOut
-      }, 0).staggerFromTo('#disk_lign svg path', 1, {
-        drawSVG: "60% 60%"
+      }, 1).staggerFromTo('#disk_lign svg path', 1, {
+        drawSVG: "50% 50%"
       }, {
         drawSVG: "100%"
-      }, -0.1, .5).from('#bg_disk', 2, {
+      }, -0.1, 1.2).from('#bg_disk', 2, {
         opacity: 0,
         scale: 0,
         ease: Power1.easeOut
@@ -442,41 +465,45 @@
       }, 2).from('#smallmap', .3, {
         opacity: 0
       }, 2);
-      this.player = null;
-      this.loadVideo();
+      this.player = $('#player')[0];
+      $('#player').addClass('ready');
+      this.duration = this.player.duration;
+      this.createTween();
+      this.bindEvents();
+      this.player.play();
+      this.timelineDisk.play();
     }
 
-    loadVideo() {
-      var req, that, videoUrl;
-      console.log('loadVideo');
-      videoUrl = 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/5secondes.mp4';
-      // videoUrl = 'http://videotest:8888/5secondes.mp4'
-      that = this;
-      req = new XMLHttpRequest;
-      req.open('GET', videoUrl, true);
-      req.responseType = 'blob';
-      req.onload = function() {
-        var vid, videoBlob;
-        console.log('onload video disk');
-        // Onload is triggered even on 404 so we need to check the status code
-        if (this.status === 200) {
-          videoBlob = this.response;
-          vid = URL.createObjectURL(videoBlob);
-          // Video is now downloaded and we can set it as source on the video element
-          document.getElementById('player').src = vid;
-          $('#player source').attr('src', vid);
-          $('#player').addClass('ready');
-          that.timelineDisk.play();
-          that.bindEvents();
-        }
-      };
-      req.onerror = function() {
-        console.log('error video');
-      };
-      // Error
-      return req.send();
-    }
+    
+    // @loadVideo()
 
+    // loadVideo: ->
+    // 	console.log 'loadVideo'
+    // 	videoUrl = 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/5secondes.mp4'
+    // 	videoUrl = 'http://milkyweb.eu/video/5secondes.mp4'
+    // 	that = @
+    // 	req = new XMLHttpRequest
+    // 	req.open 'GET', videoUrl , true
+    // 	req.responseType = 'blob'
+    // 	req.onload = ->
+    // 		console.log 'onload video disk'
+    // 		# Onload is triggered even on 404 so we need to check the status code
+    // 		if @status == 200
+    // 			videoBlob = @response
+    // 			vid = URL.createObjectURL(videoBlob)
+    // 			# Video is now downloaded and we can set it as source on the video element
+    // 			document.getElementById('player').src = vid
+    // 			$('#player source').attr('src',vid)
+    // 			$('#player').addClass('ready')
+    // 			that.timelineDisk.play()
+    // 			that.bindEvents()
+    // 		return
+
+    // 	req.onerror = ->
+    // 		console.log 'error video'
+    // 		# Error
+    // 		return
+    // 	req.send()	
     changeCurrentTime($deg, $myplayer) {
       var percentage, player_new_CT;
       this.$deg = $deg;
@@ -505,13 +532,11 @@
           PBR = 1.0;
           player.off('timeupdate', checkEndTime);
         }
-        player.playbackRate(PBR);
-        return console.log('secondtimeupdate ' + player.currentTime() + ' < ' + timeToStop);
+        return player.playbackRate(PBR);
       };
       return this.$player.on('timeupdate', checkEndTime);
     }
 
-    
     //------------------- TWEEN ---------------------------#
     createTween() {
       var duration_sequence, sequence, updateInfo;
@@ -929,14 +954,18 @@
       });
       
       //------------------- PLAYER JS ---------------------------#
-      that.player = $('#player')[0];
-      $('#player').on('loadedmetadata', function(e) {
-        that.player.play();
-        that.duration = that.player.duration;
-        console.log(that.player.currentTime);
-        that.createTween();
-      });
+
+      // $('#player').on 'loadedmetadata', (e) ->
+      // $('#player').addClass('ready')
+      // that.timelineDisk.play()
+
+      // that.player.play()
+      // console.log '--------- done ---------'
+      // that.duration = that.player.duration
+      // console.log that.player.currentTime
+      // that.createTween()
       $('#player').on('play', function(e) {
+        console.log('plays');
         if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
           that.player.pause();
           return;
@@ -1045,10 +1074,11 @@
   };
 
   init = function() {
-    var block_pays, flip_disk, player_video, player_youtube, popin;
+    var block_pays, flip_disk, player_youtube, popin;
+    console.log('init');
     $('body').addClass('doc-ready');
     $('#mask_shield').addClass('hide');
-    player_video = new module.player_video();
+    // player_video = new module.player_video()
     player_youtube = new module.player_youtube();
     flip_disk = new module.flip_disk();
     popin = new module.popin();
@@ -1056,6 +1086,8 @@
   };
 
   // $('.loader-bar').removeClass('show-progress')
+  console.log('start js');
+
   $(window).load(init);
 
   // hasTouch = ->

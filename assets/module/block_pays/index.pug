@@ -1,5 +1,5 @@
 .size_disk.centered
-	ul#artists_info_map.layer_0
+	ul#artists_info_map.layer_0(data-ordre_pays= list_pays)
 		- var current_contry = ''
 		- var current_contry_array = []
 		each video, index  in videos_by_contry

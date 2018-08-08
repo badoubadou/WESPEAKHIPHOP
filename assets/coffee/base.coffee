@@ -10,10 +10,11 @@ isMobile = ->
 
 
 init = ->
+	console.log 'init'
 	$('body').addClass 'doc-ready'
 	$('#mask_shield').addClass 'hide'
 
-	player_video = new module.player_video()
+	# player_video = new module.player_video()
 	player_youtube = new module.player_youtube()
 	flip_disk = new module.flip_disk()
 	popin = new module.popin()
@@ -21,6 +22,7 @@ init = ->
 
 	# $('.loader-bar').removeClass('show-progress')
 
+console.log 'start js'
 	
 $(window).load( init )
 
