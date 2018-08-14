@@ -647,7 +647,7 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
       };
       duration_sequence = this.duration / 28;
       sequence = '+=' + (duration_sequence - 1);
-      this.timelineKnob = TweenMax.to('#knob', this.duration, {
+      this.timelineKnob = TweenMax.to('#knob, #player', this.duration, {
         ease: Linear.easeNone,
         rotation: 360,
         repeat: -1,
@@ -1097,7 +1097,7 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
           return that.changeCurrentTime(this.rotation % 360, that.player);
         },
         onThrowComplete: function() {
-          that.timelineKnob = TweenMax.fromTo('#knob', that.duration, {
+          that.timelineKnob = TweenMax.fromTo('#knob, #player', that.duration, {
             rotation: this.rotation % 360
           }, {
             ease: Linear.easeNone,

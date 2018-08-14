@@ -85,7 +85,7 @@ class player_video
 		duration_sequence = @duration / 28 
 		sequence = '+='+(duration_sequence - 1)
 		
-		@timelineKnob =  TweenMax.to('#knob', @duration, {ease:Linear.easeNone, rotation: 360, repeat:-1, paused: true })
+		@timelineKnob =  TweenMax.to('#knob, #player', @duration, {ease:Linear.easeNone, rotation: 360, repeat:-1, paused: true })
 		@timelinePlatine =  TweenMax.to('#platine', @duration, {ease:Linear.easeNone, rotation: 360*100, repeat:-1, paused: true })
 
 		@timelineInfo
@@ -282,7 +282,7 @@ class player_video
 				that.changeCurrentTime(this.rotation % 360, that.player)
 			
 			onThrowComplete: ->
-				that.timelineKnob =  TweenMax.fromTo('#knob', that.duration, {rotation:(this.rotation % 360)},{ease:Linear.easeNone, rotation: ((this.rotation % 360)+360), repeat:-1})
+				that.timelineKnob =  TweenMax.fromTo('#knob, #player', that.duration, {rotation:(this.rotation % 360)},{ease:Linear.easeNone, rotation: ((this.rotation % 360)+360), repeat:-1})
 				that.player.play()
 				$('#knob').removeClass 'drag'
 
