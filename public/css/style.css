@@ -2150,16 +2150,6 @@ p:empty {
 body.hidefooter #popin #close {
   display: none;
 }
-#popin .skip_intro {
-  background: #ffce00;
-  display: none;
-  position: absolute;
-  bottom: 80px;
-  right: 40px;
-}
-body.hidefooter #popin .skip_intro {
-  display: block;
-}
 #popin:after {
   content: '';
   position: absolute;
@@ -2225,6 +2215,16 @@ body.hidefooter #popin .skip_intro {
   width: auto;
   font-size: 0.8em;
   margin-right: 20px;
+}
+#popin .skip_intro {
+  background: #ffce00;
+  display: none;
+  position: absolute;
+  bottom: 80px;
+  right: 40px;
+}
+body.hidefooter #popin .skip_intro {
+  display: block;
 }
 #smallmap {
   transition: opacity 1s;

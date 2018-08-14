@@ -486,7 +486,7 @@
       }, 0.05, 1.5).from('#main_footer', .3, {
         y: 40
       }, 2).add(function() {
-        $('#main_footer').removeClass('hidefooter');
+        $('body').removeClass('hidefooter');
         return console.log('remove hidefooter');
       }).from('#smallmap', .3, {
         opacity: 0

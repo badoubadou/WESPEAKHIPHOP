@@ -15,7 +15,7 @@ class player_video
 			.from('#platine',1,{opacity:0}, 1)
 			.staggerFrom('#list_artists li',.3,{opacity:0}, 0.05, 1.5)
 			.from('#main_footer',.3,{y:40}, 2 )
-			.add(-> $('#main_footer').removeClass('hidefooter');console.log 'remove hidefooter' )
+			.add(-> $('body').removeClass('hidefooter');console.log 'remove hidefooter' )
 			.from('#smallmap',.3,{opacity:0}, 2 )
 		
 		@player = $('#player')[0]
