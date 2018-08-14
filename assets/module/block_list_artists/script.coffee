@@ -1,12 +1,6 @@
 class player_youtube
 	constructor: () ->
-		@bildIntroYoutube()
 		@bindEvents()
-
-	bildIntroYoutube : ->
-		random = Math.floor(Math.random() * 4)
-		randomid = $('#idIntroYoutube input:eq('+random+')').val()
-		console.log 'bildIntroYoutube = '+randomid
 
 	bindEvents : ->
 		YouTubeGetID = (url) ->
@@ -21,7 +15,7 @@ class player_youtube
 
 		window.playYoutubeVideo = (idVideo)->
 			if(!window.playerYT)
-				console.log 'not yet'
+				console.log 'playerYT not yet created '
 				window.playerYT = new (YT.Player)('player_youtube',
 					height: '390'
 					width: '640'
@@ -48,6 +42,14 @@ class player_youtube
 				window.playerYT.loadVideoById idVideo
 
 		window.onYouTubeIframeAPIReady = ->
+			console.log 'onYouTubeIframeAPIReady'
+			$('body').addClass 'onYouTubeIframeAPIReady'
+
+			if $('body').hasClass 'waiting-for-youtube'
+				window.playYoutubeVideo($('#idIntroYoutube').data('introid'))
+				$('body').removeClass 'waiting-for-youtube'
+				# $('#mask_shield').addClass 'hide'
+
 			$('#zone_youtube .shield').on 'click', ->
 				$('#zone_youtube').removeClass 'play'
 				$('.lds-dual-ring').addClass 'done'
@@ -74,6 +76,12 @@ class player_youtube
 				$('#popin').removeClass('hide').trigger 'classChange'
 				$('.lds-dual-ring').addClass 'done'
 				$('#popin .video-container').removeClass 'hide'
+				$('#mask_shield').addClass 'hide'
+
+			else if event.data == YT.PlayerState.ENDED
+				window.closePopin()
+				console.log 'youtube is done'
+
 			return
 
 		window.stopVideo = ->

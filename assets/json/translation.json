@@ -50,5 +50,10 @@
     "back": {
         "en": "back",
         "fr": "retour"
+    },
+    "skip_intro": {
+        "en": "skip intro",
+        "fr": "zap l'intro"
     }
+    
 }

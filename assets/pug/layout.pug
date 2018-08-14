@@ -63,10 +63,10 @@ html(lang= langage)
 		link(type="text/css" rel="stylesheet" href="css/style.css")
 		script(src='js/vendor/all.js')
 
-	body
+	body.hidefooter
 		#idIntroYoutube
 			each videointro in VIDEOINTRO.video
-				input(type='hidden', value!= videointro.id)
+				input(type='hidden', value!= videointro[langage])
 
 		include ../module/block_header/index.pug	
 

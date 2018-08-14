@@ -1,6 +1,6 @@
 class player_video
 	constructor: (@$container) ->
-		console.log 'loaded ----------------------'
+		console.log 'loaded ---------------------- start player_video / isMobile : '+window.isMobile()
 		# @bindEvents() # bind event is now after video is loaded
 		@duration = 0
 		@timelineKnob = new TimelineMax(paused: true)
@@ -15,48 +15,37 @@ class player_video
 			.from('#platine',1,{opacity:0}, 1)
 			.staggerFrom('#list_artists li',.3,{opacity:0}, 0.05, 1.5)
 			.from('#main_footer',.3,{y:40}, 2 )
+			.add(-> $('#main_footer').removeClass('hidefooter');console.log 'remove hidefooter' )
 			.from('#smallmap',.3,{opacity:0}, 2 )
 		
 		@player = $('#player')[0]
-
 		$('#player').addClass('ready')
 		@duration = @player.duration
 		@createTween()
 		@bindEvents()
-		
+
+	bildIntroYoutube : ->
+		that = @
+		random = Math.floor(Math.random() * 4)
+		randomid = $('#idIntroYoutube input:eq('+random+')').val()
+		console.log 'bildIntroYoutube = '+randomid
+		if $('body').hasClass 'onYouTubeIframeAPIReady'
+			window.playYoutubeVideo(randomid)
+		else
+			$('body').addClass 'waiting-for-youtube'
+			$('#idIntroYoutube').data('introid', randomid)
+
+		$('#popin').on 'closePopin', ->
+			console.log 'close popin'
+			that.skipIntro()
+
+		$('.skip_intro').on 'click', ->
+			window.closePopin()
+
+	skipIntro : ->
 		@player.play()
 		@timelineDisk.play()
-		
-	
-		# @loadVideo()
-
-	# loadVideo: ->
-	# 	console.log 'loadVideo'
-	# 	videoUrl = 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/5secondes.mp4'
-	# 	videoUrl = 'http://milkyweb.eu/video/5secondes.mp4'
-	# 	that = @
-	# 	req = new XMLHttpRequest
-	# 	req.open 'GET', videoUrl , true
-	# 	req.responseType = 'blob'
-	# 	req.onload = ->
-	# 		console.log 'onload video disk'
-	# 		# Onload is triggered even on 404 so we need to check the status code
-	# 		if @status == 200
-	# 			videoBlob = @response
-	# 			vid = URL.createObjectURL(videoBlob)
-	# 			# Video is now downloaded and we can set it as source on the video element
-	# 			document.getElementById('player').src = vid
-	# 			$('#player source').attr('src',vid)
-	# 			$('#player').addClass('ready')
-	# 			that.timelineDisk.play()
-	# 			that.bindEvents()
-	# 		return
-
-	# 	req.onerror = ->
-	# 		console.log 'error video'
-	# 		# Error
-	# 		return
-	# 	req.send()	
+		$('#popin').off 'closePopin'
 
 	changeCurrentTime: (@$deg, @$myplayer)->
 		if(@$deg<0)
@@ -82,6 +71,7 @@ class player_video
 		@$player.on 'timeupdate', checkEndTime
 	#------------------- TWEEN ---------------------------#
 	createTween: () ->
+		console.log 'createTween'
 		updateInfo= (id)->
 			$('#play-video-btn, #startvideo').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
 			$('#list_artists li a.selected').removeClass('selected')
@@ -95,8 +85,8 @@ class player_video
 		duration_sequence = @duration / 28 
 		sequence = '+='+(duration_sequence - 1)
 		
-		@timelineKnob =  TweenMax.to('#knob', @duration, {ease:Linear.easeNone, rotation: 360, repeat:-1 })
-		@timelinePlatine =  TweenMax.to('#platine', @duration, {ease:Linear.easeNone, rotation: 360*100, repeat:-1 })
+		@timelineKnob =  TweenMax.to('#knob', @duration, {ease:Linear.easeNone, rotation: 360, repeat:-1, paused: true })
+		@timelinePlatine =  TweenMax.to('#platine', @duration, {ease:Linear.easeNone, rotation: 360*100, repeat:-1, paused: true })
 
 		@timelineInfo
 			.add(-> updateInfo(0); )
@@ -186,9 +176,21 @@ class player_video
 			.add(-> updateInfo(28); )
 			.fromTo('#artists_info li:eq(28)', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
 			.to('#artists_info li:eq(28)', 0.5, { alpha: 0 , y:-30}, sequence)
-			
+
+	startSite: (that)->
+		that.bildIntroYoutube()
+		
 	bindEvents: ->
 		that = @
+		#------------------- DOC READY ------------------------#
+		if !$('body').hasClass 'doc-ready'
+			$('body').on 'doc-ready', ->
+				console.log 'doc-ready'
+				that.startSite(that)
+		else
+			console.log 'doc already ready'
+			that.startSite(that)
+			
 		#------------------- FOOTER LISTNER -------------------#
 		$('#mode_switcher').on 'switch_to_face_pays', ->
 			if that.player
@@ -227,7 +229,6 @@ class player_video
 			if !$('#popin').hasClass 'hide'
 				return
 			
-			# console.log 'contrys : '+(!$('#contrys').hasClass 'selected')
 			if $('#contrys').hasClass 'selected'
 				return
 
@@ -237,7 +238,7 @@ class player_video
 			return
 
 		$(window).on 'pagehide blur', windowBlurred
-		$(window).on 'pageshow focus', windowFocused
+		# $(window).on 'pageshow focus', windowFocused
 
 		#------------------- SOUND ---------------------------#
 		$('#sound').on 'sound_off', ->
@@ -247,24 +248,12 @@ class player_video
 			console.log 'sound_on' + that.player.muted
 			that.player.muted = false
 		
-		#------------------- PLAYER JS ---------------------------#
-		
-		# $('#player').on 'loadedmetadata', (e) ->
-		# $('#player').addClass('ready')
-		# that.timelineDisk.play()
-		
-		# that.player.play()
-		# console.log '--------- done ---------'
-		# that.duration = that.player.duration
-		# console.log that.player.currentTime
-		# that.createTween()
-		
+		#------------------- PLAYER JS ---------------------------#		
 		$('#player').on 'play', (e) ->
-			console.log 'plays'
+			console.log 'play video disk'
 			if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
 				that.player.pause()
 				return
-			console.log 'play'
 			that.timelineInfo.play()
 			that.timelineKnob.play()
 			that.timelinePlatine.play()
@@ -278,40 +267,6 @@ class player_video
 
 		$('#player').on 'seeked', ->
 			that.timelineInfo.time that.player.currentTime
-
-		# options = { autoplay: true, muted: true };
-		# @player = videojs('player', options, ->
-		# 	myPlayer = this
-			
-		# 	myPlayer.on 'play', ->
-		# 		if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
-		# 			myPlayer.pause()
-		# 			return
-		# 		console.log 'play'
-		# 		that.timelineInfo.play()
-		# 		that.timelineKnob.play()
-		# 		that.timelinePlatine.play()
-		# 		$('.lds-dual-ring').addClass('done')
-				
-
-			
-		# 	myPlayer.on 'pause', ->
-		# 		console.log 'pause'+that.timelineKnob
-		# 		that.timelineInfo.pause()
-		# 		that.timelineKnob.pause()
-		# 		that.timelinePlatine.pause()
-				
-		# 	myPlayer.on 'seeked', ->
-		# 		that.timelineInfo.time myPlayer.currentTime()
-				
-		# 	myPlayer.on 'loadedmetadata', ->
-		# 		that.duration = myPlayer.duration()
-		# 		that.createTween()
-			
-		# 	return
-		# )
-
-
 		
 		rotationSnap = 360 / 28
 		Draggable.create '#knob',
@@ -330,13 +285,9 @@ class player_video
 				that.timelineKnob =  TweenMax.fromTo('#knob', that.duration, {rotation:(this.rotation % 360)},{ease:Linear.easeNone, rotation: ((this.rotation % 360)+360), repeat:-1})
 				that.player.play()
 				$('#knob').removeClass 'drag'
-			
-			# onRelease: ->
-			# 	console.log 'onRelease : '+(this.rotation % 360)+'that.duration : '+that.duration
-			# 	$('#knob').removeClass 'drag'
+
 			snap: (endValue) ->
 				Math.round(endValue / rotationSnap) * rotationSnap
-
 		return 
 
 module.player_video = player_video
