@@ -16,7 +16,7 @@ class flip_disk
 			.to($('#block_video_disk'), .3, {rotationY:90})
 			.from($('#faceb'), .3, { rotationY:90, scale:1.3 })
 			.to($('#smallmap'), .3, {ease: Power1.easeOut, alpha:0 } )
-			.add(-> $('#apropos_btn').addClass('hide') )
+			# .add(-> $('#apropos_btn').addClass('hide') )
 		
 		
 
@@ -29,7 +29,7 @@ class flip_disk
 		@flip_tween.eventCallback 'onReverseComplete', ->
 			$('#mode_switcher').trigger 'switch_to_face_artist'
 			$('#smallmap, #artists_info').removeClass 'opacity_0'
-			$('#apropos_btn').removeClass 'hide'
+			# $('#apropos_btn').removeClass 'hide'
 			return
 
 		# if(timeStamp)

@@ -39,6 +39,10 @@
         "en": "Bio",
         "fr": "Bio"
     },
+    "read_bio": {
+        "en": "Read bio",
+        "fr": "Voir Bio"
+    },
     "startvideo": {
         "en": "Start video",
         "fr": "Lancer la video"

@@ -1,6 +1,12 @@
 class player_youtube
 	constructor: () ->
+		@bildIntroYoutube()
 		@bindEvents()
+
+	bildIntroYoutube : ->
+		random = Math.floor(Math.random() * 4)
+		randomid = $('#idIntroYoutube input:eq('+random+')').val()
+		console.log 'bildIntroYoutube = '+randomid
 
 	bindEvents : ->
 		YouTubeGetID = (url) ->
@@ -13,6 +19,34 @@ class player_youtube
 				ID = url
 				ID
 
+		window.playYoutubeVideo = (idVideo)->
+			if(!window.playerYT)
+				console.log 'not yet'
+				window.playerYT = new (YT.Player)('player_youtube',
+					height: '390'
+					width: '640'
+					videoId: idVideo
+					fs: 0
+					playerVars: { 
+						autoplay: 1, 
+						showinfo: 0, 
+						autohide: 1, 
+						disablekb: 1, 
+						enablejsapi: 1, 
+						fs: 1, 
+						modestbranding: true, 
+						rel: 0, 
+						hl: 'pt'
+						cc_lang_pref: 'pt', 
+						cc_load_policy: 1, 
+						color: 'white', 
+					}
+					events:
+						'onReady': onPlayerReady
+						'onStateChange': onPlayerStateChange)
+			else
+				window.playerYT.loadVideoById idVideo
+
 		window.onYouTubeIframeAPIReady = ->
 			$('#zone_youtube .shield').on 'click', ->
 				$('#zone_youtube').removeClass 'play'
@@ -23,37 +57,10 @@ class player_youtube
 			$('#list_artists li a, #play-video-btn, #startvideo, a.watch').on 'click', ->
 				event.preventDefault()
 				idyoutube = YouTubeGetID($(this).attr('href'))
-
 				if !$('#artist_info').hasClass 'hide'
 					$('#artist_info').addClass 'hide'
-				
 				$('.lds-dual-ring').removeClass 'done'
-				if(!window.playerYT)
-					console.log 'not yet'
-					window.playerYT = new (YT.Player)('player_youtube',
-						height: '390'
-						width: '640'
-						videoId: idyoutube
-						fs: 0
-						playerVars: { 
-							autoplay: 1, 
-							showinfo: 0, 
-							autohide: 1, 
-							disablekb: 1, 
-							enablejsapi: 1, 
-							fs: 1, 
-							modestbranding: true, 
-							rel: 0, 
-							hl: 'pt'
-							cc_lang_pref: 'pt', 
-							cc_load_policy: 1, 
-							color: 'white', 
-						}
-						events:
-							'onReady': onPlayerReady
-							'onStateChange': onPlayerStateChange)
-				else
-					window.playerYT.loadVideoById idyoutube
+				window.playYoutubeVideo(idyoutube)
 				return
 		
 		window.onPlayerReady = (event) ->

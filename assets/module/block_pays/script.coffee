@@ -3,7 +3,7 @@ class block_pays
 		@soundInitiated = false
 		@bindEvents()
 		console.log 'block_pays constructor'
-		@buildContrySound()
+		# @buildContrySound()
 
 	bindEvents : ->
 		that = @

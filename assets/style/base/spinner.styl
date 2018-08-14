@@ -9,11 +9,11 @@
 
 .lds-dual-ring
     display inline-block
-    width 46px
-    height 46px
+    width 56px
+    height 56px
     z-index 200
     center()
-    &:after
+    &:not(.done):after
         content " "
         display block
         width 46px
@@ -26,6 +26,6 @@
         animation-duration 1.2s 
         animation-iteration-count infinite
     
-    &.done
-        display none
+    // &.done
+    //     display none
 

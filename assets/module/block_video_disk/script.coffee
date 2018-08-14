@@ -82,7 +82,6 @@ class player_video
 		@$player.on 'timeupdate', checkEndTime
 	#------------------- TWEEN ---------------------------#
 	createTween: () ->
-
 		updateInfo= (id)->
 			$('#play-video-btn, #startvideo').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
 			$('#list_artists li a.selected').removeClass('selected')
@@ -95,7 +94,7 @@ class player_video
 
 		duration_sequence = @duration / 28 
 		sequence = '+='+(duration_sequence - 1)
-		console.log @duration+' '+sequence
+		
 		@timelineKnob =  TweenMax.to('#knob', @duration, {ease:Linear.easeNone, rotation: 360, repeat:-1 })
 		@timelinePlatine =  TweenMax.to('#platine', @duration, {ease:Linear.easeNone, rotation: 360*100, repeat:-1 })
 
@@ -227,11 +226,13 @@ class player_video
 			console.log 'focus'
 			if !$('#popin').hasClass 'hide'
 				return
-				
-			if !$('#contrys').hasClass 'selected'
+			
+			# console.log 'contrys : '+(!$('#contrys').hasClass 'selected')
+			if $('#contrys').hasClass 'selected'
 				return
 
 			if that.player
+				console.log 'play video'
 				that.player.play()
 			return
 
@@ -243,6 +244,7 @@ class player_video
 			that.player.muted = true
 
 		$('#sound').on 'sound_on', ->
+			console.log 'sound_on' + that.player.muted
 			that.player.muted = false
 		
 		#------------------- PLAYER JS ---------------------------#

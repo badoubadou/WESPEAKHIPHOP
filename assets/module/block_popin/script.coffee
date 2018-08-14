@@ -13,7 +13,7 @@ class popin
 				$($target).addClass('hide')
 				$('#popin').addClass('hide').trigger 'classChange'
 
-		$('#apropos_btn, .block_contry .bio').on 'click':(e) ->
+		$('#about-btn, .block_contry .bio').on 'click':(e) ->
 			e.preventDefault()
 			if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
 				artistid = $(this).data('artistid') - 1

@@ -6,10 +6,11 @@
 
 #marker
 	display block
-	width 10px
+	width 25px
 	height (($size_disk_small - $size_video_small) / 2)
 	top 0
 	align_middle()
+	transform translateX(-100%)
 	svg
 		width auto
 		height (($size_disk_small - $size_video_small) / 2)
@@ -74,17 +75,13 @@
 	@media $large_screen
 		width $size_disk_large+$epaiseur_platine
 		height $size_disk_large+$epaiseur_platine
-
 	
 #mask_video
 	border 8px solid #000
 	
 #disk
-	// border 2px solid #000
-	cursor url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/hand.png"), auto;
+	cursor url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/hand-small.png"), auto;
 	
-// #disk_lign
-// 	background $yellow
 #bg_disk
 	display block
 	border-radius 50%
@@ -93,6 +90,7 @@
 	background $yellow
 	z-index -1
 	
+#about-btn
 #play-video-btn
 	text-transform uppercase
 	background $yellow
@@ -100,10 +98,29 @@
 	line-height 20px
 	height 20px
 	text-align center
-	center()
-	bottom 30px
+	align_middle()
 	font-size .6em
 	padding 0 15px
-	width 100px
-	display block
-	margin-top 60px
+	width 90px
+	bottom 40px
+	span
+		top 1px
+		position relative
+	.triangle
+		position absolute
+		vert_align_middle()
+		left 9px
+	
+	span.txt
+		position relative
+		left 5px
+	
+#about-btn
+	background #000
+	color #fff
+	bottom 10px
+	width 50px
+	
+
+	
+	

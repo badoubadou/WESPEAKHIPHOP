@@ -40,6 +40,10 @@
 			"en": "Bio",
 			"fr": "Bio"
 		},
+		"read_bio": {
+			"en": "Read bio",
+			"fr": "Voir Bio"
+		},
 		"startvideo": {
 			"en": "Start video",
 			"fr": "Lancer la video"
@@ -48,6 +52,22 @@
 			"en": "back",
 			"fr": "retour"
 		}
+	},
+	"VIDEOINTRO": {
+		"video": [
+			{
+				"id": "HNOtwC4Qq44"
+			},
+			{
+				"id": "HNOtwC4Qq44"
+			},
+			{
+				"id": "HNOtwC4Qq44"
+			},
+			{
+				"id": "HNOtwC4Qq44"
+			}
+		]
 	},
 	"WSH": {
 		"version": "2.0",

@@ -1,15 +1,16 @@
 ul#artists_info.layer_0
 	each video in videos
 		li
-			each meta in video.postmeta
-				if meta.meta_key == 'tag_line'
-					span.tagline= meta.meta_value
-			span.name= video.title
+			.warper
+				each meta in video.postmeta
+					if meta.meta_key == 'tag_line'
+						span.tagline= meta.meta_value
+				span.name= video.title
 
-			each cat in video.category
-				if cat.domain == 'pays'
-					span.contry(data-contrynicename=cat['nicename'])= cat['#text']
+				each cat in video.category
+					if cat.domain == 'pays'
+						span.contry(data-contrynicename=cat['nicename'])= cat['#text']
 
-			each meta in video.postmeta
-				if meta.meta_key == 'date'
-					span.date= meta.meta_value
+				each meta in video.postmeta
+					if meta.meta_key == 'date'
+						span.date= meta.meta_value
