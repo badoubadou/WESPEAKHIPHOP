@@ -236,7 +236,7 @@
         window.playerYT.stopVideo();
         $('#popin .video-container').addClass('hide');
       };
-      tag.src = 'https://www.youtube.com/iframe_api';
+      tag.src = 'http://www.youtube.com/iframe_api';
       firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
       player = void 0;
@@ -970,10 +970,16 @@
       };
       windowFocused = function() {
         console.log('focus');
+        if ($('body').hasClass('video-disk-waiting')) {
+          console.log('hasClass video-disk-waiting');
+          return;
+        }
         if (!$('#popin').hasClass('hide')) {
+          console.log('popin hasNotClass hide');
           return;
         }
         if ($('#contrys').hasClass('selected')) {
+          console.log('contrys hasClass selected');
           return;
         }
         if (that.player) {
@@ -982,8 +988,7 @@
         }
       };
       $(window).on('pagehide blur', windowBlurred);
-      // $(window).on 'pageshow focus', windowFocused
-
+      $(window).on('pageshow focus', windowFocused);
       //------------------- SOUND ---------------------------#
       $('#sound').on('sound_off', function() {
         return that.player.muted = true;
@@ -996,6 +1001,7 @@
       //------------------- PLAYER JS ---------------------------#		
       $('#player').on('play', function(e) {
         console.log('play video disk');
+        $('body').removeClass('video-disk-waiting');
         if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
           that.player.pause();
           return;

@@ -226,10 +226,16 @@ class player_video
 
 		windowFocused = ->
 			console.log 'focus'
+			if $('body').hasClass 'video-disk-waiting'
+				console.log 'hasClass video-disk-waiting'
+				return
+
 			if !$('#popin').hasClass 'hide'
+				console.log 'popin hasNotClass hide'
 				return
 			
 			if $('#contrys').hasClass 'selected'
+				console.log 'contrys hasClass selected'
 				return
 
 			if that.player
@@ -238,7 +244,7 @@ class player_video
 			return
 
 		$(window).on 'pagehide blur', windowBlurred
-		# $(window).on 'pageshow focus', windowFocused
+		$(window).on 'pageshow focus', windowFocused
 
 		#------------------- SOUND ---------------------------#
 		$('#sound').on 'sound_off', ->
@@ -251,6 +257,7 @@ class player_video
 		#------------------- PLAYER JS ---------------------------#		
 		$('#player').on 'play', (e) ->
 			console.log 'play video disk'
+			$('body').removeClass 'video-disk-waiting'
 			if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
 				that.player.pause()
 				return
