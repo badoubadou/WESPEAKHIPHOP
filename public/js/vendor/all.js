@@ -607,6 +607,10 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
         opacity: 0,
         left: '-100%',
         ease: Power3.easeOut
+      }, 2.1).from('#play-video-btn', .6, {
+        opacity: 0
+      }, 2).from('#about-btn', .6, {
+        opacity: 0
       }, 2.1);
       this.player = $('#player')[0];
       this.duration = this.player.duration;

@@ -2304,6 +2304,7 @@ body.hidefooter #popin .skip_intro {
   left: 50%;
   transform: translateX(-50%);
   transform: translateX(-100%);
+  opacity: 0.97;
 }
 #marker svg {
   width: auto;

@@ -8,17 +8,20 @@ class player_video
 		@timelinePlatine = new TimelineMax(paused: true)
 
 		@timelineDisk = new TimelineMax(paused: true)		
-		@timelineDisk.from('#disk_hole',.6,{scale: 0, ease:Power3.easeOut}, 0.5)
-			.from('#mask_video',3,{scale: 0, ease:Power3.easeOut}, 1 )
+		@timelineDisk.from('#disk_hole', .6 ,{scale: 0, ease:Power3.easeOut}, 0.5)
+			.from('#mask_video', 3 ,{scale: 0, ease:Power3.easeOut}, 1 )
 			.staggerFromTo('#disk_lign svg path', 1, {drawSVG:"50% 50%"}, {drawSVG:"100%"}, -0.1, 1.2)
-			.from('#bg_disk',2,{opacity:0, scale: 0, ease:Power1.easeOut}, 1 )
-			.from('#platine',1,{opacity:0}, 1)
-			.staggerFrom('#list_artists li',.3,{opacity:0}, 0.05, 1.5)
-			.from('#main_footer',.3,{y:40}, 2 )
+			.from('#bg_disk', 2 ,{opacity:0, scale: 0, ease:Power1.easeOut}, 1 )
+			.from('#platine', 1 ,{opacity:0}, 1)
+			.staggerFrom('#list_artists li', .3 ,{opacity:0}, 0.05, 1.5)
+			.from('#main_footer', .3 ,{y:40}, 2 )
 			.add( @showFooter, 2 )
-			.from('#smallmap',.3,{opacity:0}, 2 )
-			.from('#ico',.6,{opacity:0}, 2 )
-			.from('#txt_help_disk',.8,{opacity:0, left: '-100%', ease:Power3.easeOut}, 2.1 )
+			.from('#smallmap', .3 ,{opacity:0}, 2 )
+			.from('#ico', .6 ,{opacity:0}, 2 )
+			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut}, 2.1 )
+			.from('#play-video-btn', .6 ,{opacity:0}, 2 )
+			.from('#about-btn', .6 ,{opacity:0}, 2.1 )
+
 		
 		@player = $('#player')[0]
 		@duration = @player.duration
