@@ -61,6 +61,13 @@
 .overflow_hidden
 	overflow hidden
 
+.short_text
+	@media $ipad
+		display none !important
+.long_text
+	@media $mobile
+		display none !important
+
 .site
 	position relative
 	width 100%
@@ -71,15 +78,6 @@
 	top 0
 	left 0
 	z-index 100
-	
-@media $mobile-layout
-	.max_width
-		margin 0		
-
-@media $desktop-layout
-	.site-main
-		position relative
-		z-index 1
 		
 #facea
 #faceb

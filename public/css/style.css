@@ -688,6 +688,16 @@ p:empty {
 .overflow_hidden {
   overflow: hidden;
 }
+@media screen and (min-width: 48em) {
+  .short_text {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 47.9em), screen and (max-height: 420px) {
+  .long_text {
+    display: none !important;
+  }
+}
 .site {
   position: relative;
   width: 100%;
@@ -698,17 +708,6 @@ p:empty {
   top: 0;
   left: 0;
   z-index: 100;
-}
-@media screen and (max-width: 33.9em), screen and (max-height: 420px) {
-  .max_width {
-    margin: 0;
-  }
-}
-@media screen and (min-width: 34em) and (min-height: 420px) {
-  .site-main {
-    position: relative;
-    z-index: 1;
-  }
 }
 #facea,
 #faceb {

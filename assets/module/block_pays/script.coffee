@@ -46,12 +46,16 @@ class block_pays
 				window.howlerBank[window.pCount].volume(1)
 
 		#------------------- pastille -------------------------#
+		$('.pastille').on 'mouseover':(e) ->
+			if $(this).hasClass 'big'
+				return 
+			that.buildContrySound($(this))
+
 		$('.pastille').on 'click':(e) ->
 			if $(this).hasClass 'big'
 				that.buildContrySound()
 			else
 				that.buildContrySound($(this))
-				# that.openContryBox($(this))
 
 	#------------------- SOUND - PLAYER -----------------------#
 	buildContrySound : (pastille)->
@@ -111,6 +115,7 @@ class block_pays
 	closeContryBox : ()->
 		$('.pastille').removeClass 'big'
 		$('#artists_info_map .block_contry').removeClass 'opacity_1'
+		$('.big').off 'mouseleave'
 		# window.pauseSound()
 
 	openContryBox : (pastille)->
@@ -120,6 +125,10 @@ class block_pays
 		$('#artists_info_map '+place).addClass 'opacity_1'
 		if @playlistUrls.length < 27
 			pastille.addClass 'big'
+			that = @
+			$('.big').on 'mouseleave':(e) ->
+				console.log 'mouseleave'
+				that.buildContrySound()
 		# @buildContrySound(pastille)
 			
 module.block_pays = block_pays

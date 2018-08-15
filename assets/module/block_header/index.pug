@@ -1,3 +1,7 @@
 .header
-	#logo
-		include ../../cleansvg/logo.svg
+	if langage == 'fr'
+		a(href='http://wespeakhiphop.fr')#logo
+			include ../../cleansvg/logo.svg
+	else
+		a(href='http://wespeakhiphop.com')#logo
+			include ../../cleansvg/logo.svg

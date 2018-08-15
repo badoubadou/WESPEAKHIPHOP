@@ -25,3 +25,18 @@
 			a#share(href='#shareinfo')
 				include ../../cleansvg/share.svg
 				| #{TRANSLATION.partager[langage]}
+
+		li
+			if langage == 'en'
+				a(href='http://wespeakhiphop.fr')
+					span.short_text
+						| #{TRANSLATION.language_name_short[langage]}
+					span.long_text
+						| #{TRANSLATION.language_name[langage]}
+			else
+				a(href='http://wespeakhiphop.com')
+					span.short_text
+						| #{TRANSLATION.language_name_short[langage]}
+					span.long_text
+						| #{TRANSLATION.language_name[langage]}
+				

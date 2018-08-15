@@ -54,6 +54,14 @@
     "skip_intro": {
         "en": "skip intro",
         "fr": "zap l'intro"
+    },
+    "language_name": {
+        "en": "Français",
+        "fr": "English"
+    },
+    "language_name_short": {
+        "en": "Fr",
+        "fr": "En"
     }
     
 }

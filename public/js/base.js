@@ -242,164 +242,6 @@
 }).call(this);
 
 (function() {
-  var block_pays;
-
-  block_pays = (function() {
-    class block_pays {
-      constructor() {
-        this.soundInitiated = false;
-        this.loadMap();
-        this.allSound = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
-        this.playlistUrls = this.allSound;
-        this.ordre_pays = $('#artists_info_map').data('ordre_pays');
-        this.bindEvents();
-        console.log('block_pays constructor');
-      }
-
-      // @buildContrySound()
-      loadMap() {
-        var that;
-        console.log('---> load big map');
-        that = this;
-        return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/map.svg', function(data) {
-          var div;
-          console.log('---> big map loaded');
-          div = document.createElement('div');
-          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
-          $("#big_map").append(div.innerHTML);
-        });
-      }
-
-      bindEvents() {
-        var that;
-        that = this;
-        //------------------- FOOTER LISTNER -------------------#
-        $('#mode_switcher').on('switch_to_face_pays', function() {
-          return that.buildContrySound();
-        });
-        $('#mode_switcher').on('switch_to_face_artist', function() {
-          console.log('switch_to_face_artist');
-          if (window.pauseSound) {
-            window.pauseSound();
-          }
-          $('.pastille').removeClass('big');
-          $('#artists_info_map .block_contry').removeClass('opacity_1');
-          return console.log('switch_to_face_artist');
-        });
-        //------------------- SOUND - CONTROL ------------------#
-        $('#sound').on('sound_off', function() {
-          console.log('window.pCount =' + window.pCount);
-          console.log('window.howlerBank.length =' + window.pCount);
-          if (that.soundInitiated) {
-            return window.howlerBank[window.pCount].volume(0);
-          }
-        });
-        $('#sound').on('sound_on', function() {
-          if (that.soundInitiated) {
-            return window.howlerBank[window.pCount].volume(1);
-          }
-        });
-        //------------------- pastille -------------------------#
-        return $('.pastille').on({
-          'click': function(e) {
-            if ($(this).hasClass('big')) {
-              return that.buildContrySound();
-            } else {
-              return that.buildContrySound($(this));
-            }
-          }
-        });
-      }
-
-      // that.openContryBox($(this))
-
-      //------------------- SOUND - PLAYER -----------------------#
-      buildContrySound(pastille) {
-        var defaultPlaylist, onEnd, onPlay, that;
-        that = this;
-        console.log('buildContrySound - ' + pastille);
-        if (pastille) {
-          that.playlistUrls = pastille.data('sound');
-          defaultPlaylist = false;
-        } else {
-          console.log('no pastille');
-          that.playlistUrls = that.allSound;
-          defaultPlaylist = true;
-          console.log('??? ------------->' + that.ordre_pays[0]);
-        }
-        window.pauseSound();
-        window.pCount = 0;
-        window.howlerBank = [];
-        onPlay = function(e) {
-          var nicename;
-          if (pastille) {
-            nicename = $(pastille).data('nicename');
-          } else {
-            nicename = that.ordre_pays[window.pCount];
-          }
-          that.openContryBox($('.pastille[data-nicename="' + nicename + '"]'));
-          console.log('start ' + window.pCount + '; contry : ' + nicename);
-        };
-        onEnd = function(e) {
-          window.pCount = window.pCount + 1 !== window.howlerBank.length ? window.pCount + 1 : 0;
-          console.log('howlerBank Play pCount = ' + window.pCount);
-          if (!$('#sound').hasClass('actif')) {
-            window.howlerBank[window.pCount].volume(0);
-          }
-          window.howlerBank[window.pCount].play();
-        };
-        // build up howlerBank:     
-        that.playlistUrls.forEach(function(current, i) {
-          window.howlerBank.push(new Howl({
-            src: ['https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/' + that.playlistUrls[i] + '.mp3'],
-            onend: onEnd,
-            onplay: onPlay,
-            buffer: true
-          }));
-        });
-        if (!$('#sound').hasClass('actif')) {
-          window.howlerBank[0].volume(0);
-        }
-        window.howlerBank[0].play();
-        that.soundInitiated = true;
-      }
-
-      closeContryBox() {
-        $('.pastille').removeClass('big');
-        return $('#artists_info_map .block_contry').removeClass('opacity_1');
-      }
-
-      // window.pauseSound()
-      openContryBox(pastille) {
-        var place;
-        $('.pastille').removeClass('big');
-        $('#artists_info_map .block_contry').removeClass('opacity_1');
-        place = '.' + pastille.data('nicename');
-        $('#artists_info_map ' + place).addClass('opacity_1');
-        if (this.playlistUrls.length < 27) {
-          return pastille.addClass('big');
-        }
-      }
-
-    };
-
-    window.pauseSound = function() {
-      if (window.howlerBank) {
-        console.log('fade');
-        return window.howlerBank[window.pCount].stop();
-      }
-    };
-
-    return block_pays;
-
-  }).call(this);
-
-  // @buildContrySound(pastille)
-  module.block_pays = block_pays;
-
-}).call(this);
-
-(function() {
   var popin;
 
   popin = (function() {
@@ -1094,6 +936,178 @@
   };
 
   module.player_video = player_video;
+
+}).call(this);
+
+(function() {
+  var block_pays;
+
+  block_pays = (function() {
+    class block_pays {
+      constructor() {
+        this.soundInitiated = false;
+        this.loadMap();
+        this.allSound = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
+        this.playlistUrls = this.allSound;
+        this.ordre_pays = $('#artists_info_map').data('ordre_pays');
+        this.bindEvents();
+        console.log('block_pays constructor');
+      }
+
+      // @buildContrySound()
+      loadMap() {
+        var that;
+        console.log('---> load big map');
+        that = this;
+        return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/map.svg', function(data) {
+          var div;
+          console.log('---> big map loaded');
+          div = document.createElement('div');
+          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
+          $("#big_map").append(div.innerHTML);
+        });
+      }
+
+      bindEvents() {
+        var that;
+        that = this;
+        //------------------- FOOTER LISTNER -------------------#
+        $('#mode_switcher').on('switch_to_face_pays', function() {
+          return that.buildContrySound();
+        });
+        $('#mode_switcher').on('switch_to_face_artist', function() {
+          console.log('switch_to_face_artist');
+          if (window.pauseSound) {
+            window.pauseSound();
+          }
+          $('.pastille').removeClass('big');
+          $('#artists_info_map .block_contry').removeClass('opacity_1');
+          return console.log('switch_to_face_artist');
+        });
+        //------------------- SOUND - CONTROL ------------------#
+        $('#sound').on('sound_off', function() {
+          console.log('window.pCount =' + window.pCount);
+          console.log('window.howlerBank.length =' + window.pCount);
+          if (that.soundInitiated) {
+            return window.howlerBank[window.pCount].volume(0);
+          }
+        });
+        $('#sound').on('sound_on', function() {
+          if (that.soundInitiated) {
+            return window.howlerBank[window.pCount].volume(1);
+          }
+        });
+        //------------------- pastille -------------------------#
+        $('.pastille').on({
+          'mouseover': function(e) {
+            if ($(this).hasClass('big')) {
+              return;
+            }
+            return that.buildContrySound($(this));
+          }
+        });
+        return $('.pastille').on({
+          'click': function(e) {
+            if ($(this).hasClass('big')) {
+              return that.buildContrySound();
+            } else {
+              return that.buildContrySound($(this));
+            }
+          }
+        });
+      }
+
+      //------------------- SOUND - PLAYER -----------------------#
+      buildContrySound(pastille) {
+        var defaultPlaylist, onEnd, onPlay, that;
+        that = this;
+        console.log('buildContrySound - ' + pastille);
+        if (pastille) {
+          that.playlistUrls = pastille.data('sound');
+          defaultPlaylist = false;
+        } else {
+          console.log('no pastille');
+          that.playlistUrls = that.allSound;
+          defaultPlaylist = true;
+          console.log('??? ------------->' + that.ordre_pays[0]);
+        }
+        window.pauseSound();
+        window.pCount = 0;
+        window.howlerBank = [];
+        onPlay = function(e) {
+          var nicename;
+          if (pastille) {
+            nicename = $(pastille).data('nicename');
+          } else {
+            nicename = that.ordre_pays[window.pCount];
+          }
+          that.openContryBox($('.pastille[data-nicename="' + nicename + '"]'));
+          console.log('start ' + window.pCount + '; contry : ' + nicename);
+        };
+        onEnd = function(e) {
+          window.pCount = window.pCount + 1 !== window.howlerBank.length ? window.pCount + 1 : 0;
+          console.log('howlerBank Play pCount = ' + window.pCount);
+          if (!$('#sound').hasClass('actif')) {
+            window.howlerBank[window.pCount].volume(0);
+          }
+          window.howlerBank[window.pCount].play();
+        };
+        // build up howlerBank:     
+        that.playlistUrls.forEach(function(current, i) {
+          window.howlerBank.push(new Howl({
+            src: ['https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/' + that.playlistUrls[i] + '.mp3'],
+            onend: onEnd,
+            onplay: onPlay,
+            buffer: true
+          }));
+        });
+        if (!$('#sound').hasClass('actif')) {
+          window.howlerBank[0].volume(0);
+        }
+        window.howlerBank[0].play();
+        that.soundInitiated = true;
+      }
+
+      closeContryBox() {
+        $('.pastille').removeClass('big');
+        $('#artists_info_map .block_contry').removeClass('opacity_1');
+        return $('.big').off('mouseleave');
+      }
+
+      // window.pauseSound()
+      openContryBox(pastille) {
+        var place, that;
+        $('.pastille').removeClass('big');
+        $('#artists_info_map .block_contry').removeClass('opacity_1');
+        place = '.' + pastille.data('nicename');
+        $('#artists_info_map ' + place).addClass('opacity_1');
+        if (this.playlistUrls.length < 27) {
+          pastille.addClass('big');
+          that = this;
+          return $('.big').on({
+            'mouseleave': function(e) {
+              console.log('mouseleave');
+              return that.buildContrySound();
+            }
+          });
+        }
+      }
+
+    };
+
+    window.pauseSound = function() {
+      if (window.howlerBank) {
+        console.log('fade');
+        return window.howlerBank[window.pCount].stop();
+      }
+    };
+
+    return block_pays;
+
+  }).call(this);
+
+  // @buildContrySound(pastille)
+  module.block_pays = block_pays;
 
 }).call(this);
 
