@@ -567,7 +567,7 @@ p:empty {
   height: 20px;
 }
 .lds-dual-ring {
-  display: inline-block;
+  display: none;
   width: 56px;
   height: 56px;
   z-index: 200;
@@ -575,6 +575,9 @@ p:empty {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.lds-dual-ring:not(.done) {
+  display: block;
 }
 .lds-dual-ring:not(.done):after {
   content: " ";
@@ -2244,12 +2247,17 @@ p:empty {
   background: #008000;
 }
 #artists_info_map .contry_name {
-  display: block;
-  position: absolute;
-  font-size: 0.6em;
-  font-weight: 900;
-  margin-top: 16px;
-  margin-left: 32px;
+  display: none;
+}
+@media screen and (min-width: 62em) {
+  #artists_info_map .contry_name {
+    display: block;
+    position: absolute;
+    font-size: 0.6em;
+    font-weight: 900;
+    margin-top: 16px;
+    margin-left: 32px;
+  }
 }
 #artists_info_map .block_contry {
   background: #000;
