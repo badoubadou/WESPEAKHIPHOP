@@ -5,7 +5,6 @@ class block_pays
 		@allSound = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28]
 		@playlistUrls = @allSound
 		@ordre_pays = $('#artists_info_map').data 'ordre_pays'
-			
 		@bindEvents()
 		console.log 'block_pays constructor'
 		# @buildContrySound()
@@ -47,7 +46,8 @@ class block_pays
 
 		#------------------- pastille -------------------------#
 		$('#mouse_over_bg').on 'mouseover':(e) ->
-			that.buildContrySound()
+			if @playlistUrls.length < 27
+				that.buildContrySound()
 
 		$('.pastille').on 'mouseover':(e) ->
 			if $(this).hasClass 'big'

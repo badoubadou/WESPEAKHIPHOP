@@ -77,6 +77,8 @@ class player_youtube
 				$('.lds-dual-ring').addClass 'done'
 				$('#popin .video-container').removeClass 'hide'
 				$('#mask_shield').addClass 'hide'
+				if window.pauseSound
+					window.pauseSound()
 
 			else if event.data == YT.PlayerState.ENDED
 				window.closePopin()
