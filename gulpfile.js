@@ -156,7 +156,7 @@ gulp.task('watch', function() {
     gulp.watch(stylfile, ['css']);
     gulp.watch(['assets/pug/*.pug', 'assets/module/**/*.pug', 'assets/image/*.svg', 'assets/json/*.json'], ['pug']);
     gulp.watch(['assets/image/*.svg'], ['cleansvgclass']);
-    gulp.watch(['assets/image/**'], ['uploadimage']);
+    gulp.watch(['assets/image/**', 'public/image/**'], ['uploadimage']);
 });
 
 gulp.task("uploadcss", function() {
@@ -197,7 +197,7 @@ gulp.task('cleansvgclass', function() {
         .pipe(replace(/st7/g, st7))
         .pipe(replace(/st8/g, st8))
         .pipe(replace(/st9/g, st9))
-        .pipe(gulp.dest('assets/cleansvg/'));
+        .pipe(gulp.dest('public/image/'));
     }));
 });
 
@@ -215,7 +215,20 @@ gulp.task("uploadjs", function() {
 
 
 gulp.task("uploadimage", function() {
-    gulp.src('assets/image/**')
+    gulp.src(['public/image/**/*'])
+        .pipe(s3({
+            Bucket: 'wespeakhiphop-assets', //  Required
+            ACL:    'public-read'       //  Needs to be user-defined
+        }, {
+            // S3 Constructor Options, ie:
+            maxRetries: 5
+        }))
+    ;
+});
+
+
+gulp.task("uploadcleansvg", function() {
+    gulp.src('public/cleansvg/*')
         .pipe(s3({
             Bucket: 'wespeakhiphop-assets', //  Required
             ACL:    'public-read'       //  Needs to be user-defined

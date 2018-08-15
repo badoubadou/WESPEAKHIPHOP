@@ -1,6 +1,6 @@
 class flip_disk
 	constructor: () ->
-		console.log 'flip disk'
+		console.log 'build flip disk'
 		@duree_flip = .6
 		@demi_flip = @duree_flip/2
 		@buildTween()
@@ -16,24 +16,11 @@ class flip_disk
 			.to($('#block_video_disk'), .3, {rotationY:90})
 			.from($('#faceb'), .3, { rotationY:90, scale:1.3 })
 			.to($('#smallmap'), .3, {ease: Power1.easeOut, alpha:0 } )
-			# .add(-> $('#apropos_btn').addClass('hide') )
-		
-		
 
-		# @flip_tween
-		# 	.to($('#face_artistes'), .3, {ease: Power1.easeIn })
-		# 	.to($('#face_artistes'), (@demi_flip-0.3), {ease: Power1.easeIn, rotationY:90})
-		# 	.staggerTo($('#list_artists li'), .3, {alpha:0},@duree_flip / 28,0)
-		# 	.from($('#face_pays'), @demi_flip, {ease: Power1.easeOut, rotationY:90 },(@duree_flip / 2))
-		
 		@flip_tween.eventCallback 'onReverseComplete', ->
 			$('#mode_switcher').trigger 'switch_to_face_artist'
 			$('#smallmap, #artists_info').removeClass 'opacity_0'
-			# $('#apropos_btn').removeClass 'hide'
 			return
-
-		# if(timeStamp)
-		# 	@flip_tween.time(timeStamp)
 
 	bindEvents : ->
 		that = @	

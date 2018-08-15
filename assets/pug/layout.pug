@@ -68,6 +68,9 @@ html(lang= langage)
 			each videointro in VIDEOINTRO.video
 				input(type='hidden', value!= videointro[langage])
 
+		input#langage_short(type='hidden', value!= langage)
+
+
 		include ../module/block_header/index.pug	
 
 		#mask_shield.absolute.layer_top.full_height.full_width

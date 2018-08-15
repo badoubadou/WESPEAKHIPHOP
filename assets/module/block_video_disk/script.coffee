@@ -1,6 +1,6 @@
 class player_video
 	constructor: (@$container) ->
-		console.log 'loaded ---------------------- start player_video / isMobile : '+window.isMobile()
+		console.log 'metadata video loaded ---------------------- start player_video ' 
 		# @bindEvents() # bind event is now after video is loaded
 		@duration = 0
 		@timelineKnob = new TimelineMax(paused: true)
@@ -15,14 +15,29 @@ class player_video
 			.from('#platine',1,{opacity:0}, 1)
 			.staggerFrom('#list_artists li',.3,{opacity:0}, 0.05, 1.5)
 			.from('#main_footer',.3,{y:40}, 2 )
-			.add(-> $('body').removeClass('hidefooter');console.log 'remove hidefooter' )
+			.add( @showFooter, 2 )
 			.from('#smallmap',.3,{opacity:0}, 2 )
 		
 		@player = $('#player')[0]
-		$('#player').addClass('ready')
 		@duration = @player.duration
+		
+		$('#player').addClass('ready')
+		@loadMap()
 		@createTween()
 		@bindEvents()
+
+	showFooter : ->
+		$('body').removeClass('hidefooter')
+
+	loadMap : ->
+		console.log '---> load small map'
+		that = @
+		$.get 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/smallmap-'+$('#langage_short').val()+'.svg', (data) ->
+			console.log '---> small map loaded'
+			div = document.createElement('div')
+			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
+			$( "#smallmap" ).append( div.innerHTML )
+			return
 
 	bildIntroYoutube : ->
 		that = @
@@ -78,8 +93,8 @@ class player_video
 			$('#list_artists li:eq('+id+') a').addClass('selected')
 			$('#artist_info .info').addClass('hide')
 			$('#artist_info .info:eq('+id+')').removeClass('hide')
-			svgcontry = '#'+$('#artists_info li:eq('+id+') .contry').data 'contrynicename'
-			TweenMax.to(['#smallmap svg .smallmap-fr-st2', '#smallmap svg .smallmap-en-st2'], 0.5, {alpha: 0})
+			svgcontry = '#smallmap svg #'+$('#artists_info li:eq('+id+') .contry').data 'contrynicename'
+			TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {alpha: 0})
 			TweenMax.to(svgcontry, 0.5, {alpha: 1}, '+=.5')
 
 		duration_sequence = @duration / 28 

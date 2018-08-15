@@ -2,7 +2,7 @@ window.isMobile = ->
 	typeof window.orientation != 'undefined' or navigator.userAgent.indexOf('IEMobile') != -1
 
 init = ->
-	console.log 'init'
+	console.log 'window load -> init'
 	player_youtube = new module.player_youtube()
 	flip_disk = new module.flip_disk()
 	popin = new module.popin()

@@ -619,6 +619,9 @@ p:empty {
 .full_height {
   height: 100%;
 }
+.full_height_minus_footer_minus_header_mobile {
+  transition: height 0.5s ease-in-out;
+}
 @media screen and (max-width: 47.9em), screen and (max-height: 420px) {
   .full_height_minus_footer_minus_header_mobile {
     top: 80px;
@@ -2060,7 +2063,7 @@ p:empty {
   height: 40px;
   border-radius: 50%;
   bottom: -30px;
-  opacity: 0;
+  opacity: 0.5;
   z-index: 2;
   background: #f00;
 }

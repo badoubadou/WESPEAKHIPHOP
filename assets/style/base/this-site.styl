@@ -8,6 +8,7 @@
 // 	height "calc(100% - %s)" % ($height_footer)
 	
 .full_height_minus_footer_minus_header_mobile
+	transition height 0.5s ease-in-out 
 	@media $mobile	
 		top $height_header_info_mobile
 		height "calc(100% - %s - %s)" % ($height_footer $height_header_info_mobile)

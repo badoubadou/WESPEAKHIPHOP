@@ -1,14 +1,33 @@
 class block_pays
 	constructor: () ->
 		@soundInitiated = false
+		@loadMap()
+		@allSound = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28]
+		@playlistUrls = @allSound
+		@ordre_pays = $('#artists_info_map').data 'ordre_pays'
+			
 		@bindEvents()
 		console.log 'block_pays constructor'
 		# @buildContrySound()
 
+	loadMap : ->
+		console.log '---> load big map'
+		that = @
+		$.get 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/map.svg', (data) ->
+			console.log '---> big map loaded'
+			div = document.createElement('div')
+			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
+			$( "#big_map" ).append( div.innerHTML )
+			return
+
 	bindEvents : ->
 		that = @
 		#------------------- FOOTER LISTNER -------------------#
+		$('#mode_switcher').on 'switch_to_face_pays', ->
+			that.buildContrySound()
+
 		$('#mode_switcher').on 'switch_to_face_artist', ->
+			console.log 'switch_to_face_artist'
 			if window.pauseSound
 				window.pauseSound()
 			$('.pastille').removeClass 'big'
@@ -29,27 +48,37 @@ class block_pays
 		#------------------- pastille -------------------------#
 		$('.pastille').on 'click':(e) ->
 			if $(this).hasClass 'big'
-				that.closeContryBox()
+				that.buildContrySound()
 			else
-				that.openContryBox($(this))
+				that.buildContrySound($(this))
+				# that.openContryBox($(this))
 
 	#------------------- SOUND - PLAYER -----------------------#
 	buildContrySound : (pastille)->
 		that = @
-		console.log 'buildContrySound - '
+		console.log 'buildContrySound - '+pastille
 		if pastille
-			playlistUrls = pastille.data 'sound'
+			that.playlistUrls = pastille.data 'sound'
 			defaultPlaylist = false
 		else
 			console.log 'no pastille'
-			playlistUrls = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28]
-			ordre_pays = $('#artists_info_map').data 'ordre_pays'
+			that.playlistUrls = that.allSound 
 			defaultPlaylist = true
-			console.log ordre_pays[0]
+			console.log '??? ------------->'+that.ordre_pays[0]
 
 		window.pauseSound()
 		window.pCount = 0
 		window.howlerBank = []
+
+		onPlay = (e) ->
+			if pastille
+				nicename = $(pastille).data 'nicename'
+			else
+				nicename = that.ordre_pays[window.pCount]
+
+			that.openContryBox($('.pastille[data-nicename="'+nicename+'"]'))
+			console.log 'start '+window.pCount+'; contry : '+ nicename
+			return
 
 		onEnd = (e) ->
 			window.pCount = if window.pCount + 1 != window.howlerBank.length then window.pCount + 1 else 0
@@ -60,11 +89,11 @@ class block_pays
 			return
 
 		# build up howlerBank:     
-		playlistUrls.forEach (current, i) ->
-			console.log playlistUrls[i]
+		that.playlistUrls.forEach (current, i) ->
 			window.howlerBank.push new Howl(
-				src: [ 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/'+playlistUrls[i]+'.mp3' ]
+				src: [ 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/'+that.playlistUrls[i]+'.mp3' ]
 				onend: onEnd
+				onplay: onPlay
 				buffer: true)
 			return
 		# initiate the whole :
@@ -82,14 +111,15 @@ class block_pays
 	closeContryBox : ()->
 		$('.pastille').removeClass 'big'
 		$('#artists_info_map .block_contry').removeClass 'opacity_1'
-		window.pauseSound()
+		# window.pauseSound()
 
 	openContryBox : (pastille)->
 		$('.pastille').removeClass 'big'
 		$('#artists_info_map .block_contry').removeClass 'opacity_1'
 		place = '.'+pastille.data 'nicename'
-		pastille.addClass 'big'
 		$('#artists_info_map '+place).addClass 'opacity_1'
-		buildContrySound(pastille)
+		if @playlistUrls.length < 27
+			pastille.addClass 'big'
+		# @buildContrySound(pastille)
 			
 module.block_pays = block_pays
