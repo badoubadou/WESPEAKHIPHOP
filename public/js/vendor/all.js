@@ -294,7 +294,7 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
         window.playerYT.stopVideo();
         $('#popin .video-container').addClass('hide');
       };
-      tag.src = 'http://www.youtube.com/iframe_api';
+      tag.src = 'https://www.youtube.com/iframe_api';
       firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
       player = void 0;
