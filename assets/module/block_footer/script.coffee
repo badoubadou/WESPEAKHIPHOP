@@ -16,10 +16,17 @@ class flip_disk
 			.to($('#block_video_disk'), .3, {rotationY:90})
 			.from($('#faceb'), .3, { rotationY:90, scale:1.3 })
 			.to($('#smallmap'), .3, {ease: Power1.easeOut, alpha:0 } )
+			.to('#txt_help_disk',.5,{rotationX: 90}, '-=.5' )
+			.from('#txt_help_map',.5,{rotationX: 90} )
 
 		@flip_tween.eventCallback 'onReverseComplete', ->
 			$('#mode_switcher').trigger 'switch_to_face_artist'
 			$('#smallmap, #artists_info').removeClass 'opacity_0'
+			$('#mouse_over_bg').addClass 'hide'
+			return
+
+		@flip_tween.eventCallback 'onComplete', ->
+			$('#mouse_over_bg').removeClass 'hide'
 			return
 
 	bindEvents : ->

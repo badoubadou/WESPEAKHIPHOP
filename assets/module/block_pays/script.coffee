@@ -46,10 +46,13 @@ class block_pays
 				window.howlerBank[window.pCount].volume(1)
 
 		#------------------- pastille -------------------------#
+		$('#mouse_over_bg').on 'mouseover':(e) ->
+			that.buildContrySound()
+
 		$('.pastille').on 'mouseover':(e) ->
 			if $(this).hasClass 'big'
 				return 
-			that.buildContrySound($(this))
+			that.buildContrySound($(this),true)
 
 		$('.pastille').on 'click':(e) ->
 			if $(this).hasClass 'big'
@@ -58,7 +61,7 @@ class block_pays
 				that.buildContrySound($(this))
 
 	#------------------- SOUND - PLAYER -----------------------#
-	buildContrySound : (pastille)->
+	buildContrySound : (pastille, ismouseover)->
 		that = @
 		console.log 'buildContrySound - '+pastille
 		if pastille
@@ -80,7 +83,7 @@ class block_pays
 			else
 				nicename = that.ordre_pays[window.pCount]
 
-			that.openContryBox($('.pastille[data-nicename="'+nicename+'"]'))
+			that.openContryBox($('.pastille[data-nicename="'+nicename+'"]'), ismouseover)
 			console.log 'start '+window.pCount+'; contry : '+ nicename
 			return
 
@@ -118,17 +121,14 @@ class block_pays
 		$('.big').off 'mouseleave'
 		# window.pauseSound()
 
-	openContryBox : (pastille)->
+	openContryBox : (pastille, ismouseover)->
 		$('.pastille').removeClass 'big'
 		$('#artists_info_map .block_contry').removeClass 'opacity_1'
 		place = '.'+pastille.data 'nicename'
 		$('#artists_info_map '+place).addClass 'opacity_1'
-		if @playlistUrls.length < 27
+		if @playlistUrls.length < 27 && !ismouseover
 			pastille.addClass 'big'
-			that = @
-			$('.big').on 'mouseleave':(e) ->
-				console.log 'mouseleave'
-				that.buildContrySound()
+			
 		# @buildContrySound(pastille)
 			
 module.block_pays = block_pays

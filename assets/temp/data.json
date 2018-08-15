@@ -63,6 +63,14 @@
 		"language_name_short": {
 			"en": "Fr",
 			"fr": "En"
+		},
+		"help_disk": {
+			"en": "Scratchez le vinyle et découvrez 28 documentaires en voyageant a travers le monde.",
+			"fr": "Scratchez le vinyle et découvrez 28 documentaires en voyageant a travers le monde."
+		},
+		"help_map": {
+			"en": "Choisissez votre destination, et embarquez pour un tour du monde.",
+			"fr": "Choisissez votre destination, et embarquez pour un tour du monde."
 		}
 	},
 	"VIDEOINTRO": {

@@ -17,6 +17,8 @@ class player_video
 			.from('#main_footer',.3,{y:40}, 2 )
 			.add( @showFooter, 2 )
 			.from('#smallmap',.3,{opacity:0}, 2 )
+			.from('#ico',.6,{opacity:0}, 2 )
+			.from('#txt_help_disk',.8,{opacity:0, left: '-100%', ease:Power3.easeOut}, 2.1 )
 		
 		@player = $('#player')[0]
 		@duration = @player.duration

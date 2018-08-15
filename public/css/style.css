@@ -717,6 +717,12 @@ p:empty {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+#mouse_over_bg {
+  opacity: 0;
+  top: 0;
+  left: 0;
+  background: #f00;
+}
 .footer {
   background: #000;
   height: 40px;
@@ -867,6 +873,44 @@ p:empty {
     width: 215px;
     height: auto;
   }
+}
+#block_help,
+#ico,
+#warp_txt_help,
+#txt_help_disk,
+#txt_help_map {
+  position: absolute;
+}
+#block_help {
+  bottom: 60px;
+  left: 20px;
+  height: 30px;
+  width: 300px;
+}
+#block_help #ico {
+  left: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+}
+#block_help #warp_txt_help {
+  left: 40px;
+  height: 100%;
+  font-size: 0.62em;
+  font-weight: 900;
+  overflow: hidden;
+}
+#block_help #warp_txt_help,
+#block_help #txt_help_disk,
+#block_help #txt_help_map {
+  width: 260px;
+}
+#block_help #txt_help_disk,
+#block_help #txt_help_map {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
 }
 #artists_info {
   display: block;
@@ -1905,15 +1949,15 @@ p:empty {
   }
   #artists_info_map .block_contry.burkina-faso {
     left: 0%;
-    top: 39%;
+    top: 37%;
   }
   #artists_info_map .block_contry.burkina-faso:after {
-    left: 38.5%;
+    left: 38%;
   }
   #artists_info_map .block_contry.cambodge,
   #artists_info_map .block_contry.cambodia {
-    left: 53%;
-    top: 40%;
+    left: 51.5%;
+    top: 38.5%;
   }
   #artists_info_map .block_contry.cambodge:after,
   #artists_info_map .block_contry.cambodia:after {
@@ -1921,8 +1965,8 @@ p:empty {
   }
   #artists_info_map .block_contry.coree-du-sud,
   #artists_info_map .block_contry.south-korea {
-    left: 62%;
-    top: 16%;
+    left: 60%;
+    top: 14%;
   }
   #artists_info_map .block_contry.coree-du-sud:after,
   #artists_info_map .block_contry.south-korea:after {
@@ -1931,15 +1975,15 @@ p:empty {
   #artists_info_map .block_contry.cote-divoire,
   #artists_info_map .block_contry.ivory-coast {
     left: 0%;
-    top: 42%;
+    top: 40%;
   }
   #artists_info_map .block_contry.cote-divoire:after,
   #artists_info_map .block_contry.ivory-coast:after {
-    left: 38.5%;
+    left: 38%;
   }
   #artists_info_map .block_contry.djibouti {
-    left: 30.6%;
-    top: 40%;
+    left: 30%;
+    top: 38%;
   }
   #artists_info_map .block_contry.djibouti:after {
     left: 34%;
@@ -1954,7 +1998,7 @@ p:empty {
   }
   #artists_info_map .block_contry.guinee-conakry {
     left: 0;
-    top: 35%;
+    top: 33%;
     width: 187px;
   }
   #artists_info_map .block_contry.guinee-conakry:after {
@@ -1962,8 +2006,8 @@ p:empty {
   }
   #artists_info_map .block_contry.indonesia,
   #artists_info_map .block_contry.indonesie {
-    left: 69%;
-    top: 48%;
+    left: 67.5%;
+    top: 46%;
   }
   #artists_info_map .block_contry.indonesia:after,
   #artists_info_map .block_contry.indonesie:after {
@@ -1971,15 +2015,15 @@ p:empty {
   }
   #artists_info_map .block_contry.israel {
     left: 20%;
-    top: 20%;
+    top: 18%;
     width: 195px;
   }
   #artists_info_map .block_contry.israel:after {
     left: 36%;
   }
   #artists_info_map .block_contry.japon {
-    left: 72%;
-    top: 23%;
+    left: 70%;
+    top: 21%;
   }
   #artists_info_map .block_contry.japon:after {
     right: 10px;
@@ -1987,7 +2031,7 @@ p:empty {
   #artists_info_map .block_contry.malaisie,
   #artists_info_map .block_contry.malaysia {
     left: 67%;
-    top: 41%;
+    top: 39%;
     width: 172px;
   }
   #artists_info_map .block_contry.malaisie:after,
@@ -1997,7 +2041,7 @@ p:empty {
   #artists_info_map .block_contry.maroc,
   #artists_info_map .block_contry.morocco {
     left: 0;
-    top: 21%;
+    top: 19%;
     width: 390px;
   }
   #artists_info_map .block_contry.maroc:after,
@@ -2006,22 +2050,22 @@ p:empty {
   }
   #artists_info_map .block_contry.pakistan {
     left: 48%;
-    top: 27%;
+    top: 25%;
     width: 160px;
   }
   #artists_info_map .block_contry.pakistan:after {
     left: 32%;
   }
   #artists_info_map .block_contry.palestine {
-    left: 28%;
-    top: 25%;
+    left: 27%;
+    top: 23%;
   }
   #artists_info_map .block_contry.palestine:after {
     left: 34%;
   }
   #artists_info_map .block_contry.philippines {
-    left: 70%;
-    top: 36%;
+    left: 68.5%;
+    top: 34%;
   }
   #artists_info_map .block_contry.philippines .pastille {
     left: 65%;
@@ -2031,7 +2075,7 @@ p:empty {
   }
   #artists_info_map .block_contry.senegal {
     left: 0;
-    top: 31%;
+    top: 29%;
     width: 187px;
   }
   #artists_info_map .block_contry.senegal .pastille {
@@ -2041,8 +2085,8 @@ p:empty {
     left: 11%;
   }
   #artists_info_map .block_contry.thailande {
-    left: 49%;
-    top: 39%;
+    left: 23.5%;
+    top: 37%;
   }
   #artists_info_map .block_contry.thailande:after {
     right: 8%;
@@ -2079,7 +2123,7 @@ p:empty {
   background: #000;
   color: #fff;
   font-size: 0.8em;
-  padding: 5px;
+  padding: 10px;
   list-style-type: none;
   width: auto;
   position: absolute;
@@ -2231,7 +2275,7 @@ body.hidefooter #popin .skip_intro {
 #smallmap {
   transition: opacity 1s;
   position: absolute;
-  bottom: 60px;
+  bottom: 100px;
   left: 20px;
   display: none;
   width: 300px;
