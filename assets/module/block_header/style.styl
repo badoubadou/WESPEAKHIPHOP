@@ -1,33 +1,14 @@
 .header
-	#logo
-		left 10px
-		top 10px
-		position relative
-			
 	@media $mobile_et_ipad
 		width 100%
 		position absolute 
 		background $yellow
-
-		#logo
-			vert_align_middle()
-			svg
-				width auto
 		
 	@media $mobile
 		height $height_header_info_mobile
-		#logo 
-			left 20px
-			svg
-				height $height_header_info_mobile * .5
-		
+			
 	@media $ipad
 		height $height_header_info_ipad
-		#logo 
-			left 30px
-			top 30px
-			svg
-				height $height_header_info_ipad * .5
 		
 	@media $desktop
 		z-index 1
@@ -35,8 +16,29 @@
 		display block
 		position relative
 		width 215px
-		#logo 
-			svg
-				width 215px
-				height auto		
 		
+.logoWSH
+	left 10px
+	top 10px
+	position relative
+	
+	@media $mobile_et_ipad
+		vert_align_middle()
+			svg
+				width auto
+	
+	@media $mobile
+		left 20px
+		svg
+			height $height_header_info_mobile * .5
+
+	@media $ipad
+		left 30px
+		top 30px
+		svg
+			height $height_header_info_ipad * .5
+	
+	@media $desktop
+		svg
+			width 215px
+			height auto		

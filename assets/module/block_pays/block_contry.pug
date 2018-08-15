@@ -2,7 +2,7 @@
 each vid in current_contry_array
 	- current_contry_sound.push(vid.sound_id)
 
-
+span.contry_name(data-nicename= current_contry_array[0].contry_nicename)= current_contry_array[0].contry_nicename
 span.pastille.btn(data-nicename= current_contry_array[0].contry_nicename, data-sound= current_contry_sound)
 li.block_contry(class= current_contry_array[0].contry_nicename)
 	.contry= current_contry_array[0].contry_nicename
@@ -10,7 +10,7 @@ li.block_contry(class= current_contry_array[0].contry_nicename)
 		.artist(data-sound_id= vid.sound_id)
 			.name.btn= vid.title
 			a(href=vid.postmeta[1].meta_value).watch
-				span.triangle
+				span.triangle.small
 				span.text
 					| #{TRANSLATION.play[langage]}
 			.bio.btn(data-artistid= vid.sound_id)

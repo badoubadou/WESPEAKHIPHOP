@@ -1,59 +1,88 @@
 @media $ipad
 	#artists_info_map .pastille
+	#artists_info_map .contry_name
 		&[data-nicename="djibouti"]
 			left 38%
 			top 47%
 		&[data-nicename="france"]
-			left 13%
-			top 20%
+			left 12%
+			top 21%
 		&[data-nicename="coree-du-sud"]
 		&[data-nicename="south-korea"]
 			left 88%
 			top 25%
 			border-bottom-right-radius 0
 			border-bottom-left-radius 0
-			transform rotate(-30deg)
+			&.pastille
+				transform rotate(-30deg)
+			&.contry_name
+				margin-left -55px
+				margin-top 25px
+
 		&[data-nicename="japon"]
 		&[data-nicename="japan"]
 			left 92%
 			top 32%
 			border-top-left-radius 0
 			border-top-right-radius 0
-			transform rotate(-30deg)
+			&.pastille
+				transform rotate(-30deg)
+			&.contry_name
+				margin-left -25px
+				margin-top 5px
+				
 		&[data-nicename="cambodge"]
 		&[data-nicename="cambodia"]
 			left 81%
 			top 46%
 			border-bottom-left-radius 0
 			border-top-left-radius 0
-			transform rotate(30deg)
+			&.pastille
+				transform rotate(30deg)
+			&.contry_name
+				margin-left 6px
+				margin-top 19px
 
 		&[data-nicename="thailande"]
 			left 73.5%
 			top 43%
 			border-bottom-right-radius 0
 			border-top-right-radius 0
-			transform rotate(30deg)
+			&.pastille
+				transform rotate(30deg)
+			&.contry_name
+				margin-left -26px
+				margin-top 26px
 			
 		&[data-nicename="israel"]
 			left 29%
 			top 31%
 			border-bottom-right-radius 0
 			border-top-right-radius 0
+			&.contry_name
+				margin-left -7px
 
 		&[data-nicename="palestine"]
 			left 37%
 			top 31%
 			border-bottom-left-radius 0
 			border-top-left-radius 0
+			&.contry_name
+				margin-left 11px
 			
 		&[data-nicename="malaisie"]
 			left 76%
 			top 52%
+			&.contry_name
+				margin-left -32px
+				margin-top 10px
 		
 		&[data-nicename="pakistan"]
 			left 56%
 			top 38%
+			
+			&.contry_name
+				margin-top 14px
 		
 		&[data-nicename="maroc"]
 			left 7%
@@ -62,10 +91,16 @@
 		&[data-nicename="philippines"]
 			left 88%
 			top 43%	
+			&.contry_name
+				margin-left -47px
+				margin-top 15px
 				
 		&[data-nicename="indonesie"]
 			left 83%
 			top 54.5%
+			
+			&.contry_name
+				margin-left 28px
 			
 		&[data-nicename="guinee-conakry"]
 			left 1%
@@ -73,25 +108,42 @@
 			border-top-left-radius 0
 			border-top-right-radius 0
 			
+			&.contry_name
+				margin-left 0
+				width 50px
+				margin-top 15px
+			
 		&[data-nicename="senegal"]
 			left 1%
 			top 40%
 			border-bottom-left-radius 0
 			border-bottom-right-radius 0
+			&.contry_name
+				margin-top 25px
 			
 		&[data-nicename="cote-divoire"]
 			left 7%
 			top 50.5%
 			border-top-left-radius 0
 			border-top-right-radius 0
-			transform rotate(36deg)
+			&.pastille
+				transform rotate(36deg)
+			
+			&.contry_name
+				margin-top 6px
+				margin-left 30px
 			
 		&[data-nicename="burkina-faso"]
 			left 12%
 			top 44%
 			border-bottom-left-radius 0
 			border-bottom-right-radius 0
-			transform rotate(36deg)
+			&.pastille
+				transform rotate(36deg)
+				
+			&.contry_name
+				margin-top 21px
+				margin-left 24px
 			
 		
 	#artists_info_map 

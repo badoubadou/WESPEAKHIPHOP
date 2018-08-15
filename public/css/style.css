@@ -520,6 +520,14 @@ p:empty {
   top: 50%;
   transform: translateY(-50%);
 }
+.triangle.small {
+  width: 0;
+  height: 0;
+  background: 0;
+  border-style: solid;
+  border-width: 3px 0 3px 6px;
+  border-color: transparent transparent transparent #fff;
+}
 .plus {
   left: -10px;
   position: absolute;
@@ -818,47 +826,21 @@ p:empty {
     display: none;
   }
 }
-.header #logo {
-  left: 10px;
-  top: 10px;
-  position: relative;
-}
 @media screen and (max-width: 61.9em) {
   .header {
     width: 100%;
     position: absolute;
     background: #ffce00;
   }
-  .header #logo {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .header #logo svg {
-    width: auto;
-  }
 }
 @media screen and (max-width: 47.9em), screen and (max-height: 420px) {
   .header {
     height: 80px;
   }
-  .header #logo {
-    left: 20px;
-  }
-  .header #logo svg {
-    height: 40px;
-  }
 }
 @media screen and (min-width: 48em) {
   .header {
     height: 160px;
-  }
-  .header #logo {
-    left: 30px;
-    top: 30px;
-  }
-  .header #logo svg {
-    height: 80px;
   }
 }
 @media screen and (min-width: 62em) {
@@ -869,7 +851,33 @@ p:empty {
     position: relative;
     width: 215px;
   }
-  .header #logo svg {
+}
+.logoWSH {
+  left: 10px;
+  top: 10px;
+  position: relative;
+}
+@media screen and (max-width: 61.9em) {
+}
+@media screen and (max-width: 47.9em), screen and (max-height: 420px) {
+  .logoWSH {
+    left: 20px;
+  }
+  .logoWSH svg {
+    height: 40px;
+  }
+}
+@media screen and (min-width: 48em) {
+  .logoWSH {
+    left: 30px;
+    top: 30px;
+  }
+  .logoWSH svg {
+    height: 80px;
+  }
+}
+@media screen and (min-width: 62em) {
+  .logoWSH svg {
     width: 215px;
     height: auto;
   }
@@ -1823,102 +1831,218 @@ p:empty {
   }
 }
 @media screen and (min-width: 48em) {
-  #artists_info_map .pastille[data-nicename="djibouti"] {
+  #artists_info_map .pastille[data-nicename="djibouti"],
+  #artists_info_map .contry_name[data-nicename="djibouti"] {
     left: 38%;
     top: 47%;
   }
-  #artists_info_map .pastille[data-nicename="france"] {
-    left: 13%;
-    top: 20%;
+  #artists_info_map .pastille[data-nicename="france"],
+  #artists_info_map .contry_name[data-nicename="france"] {
+    left: 12%;
+    top: 21%;
   }
   #artists_info_map .pastille[data-nicename="coree-du-sud"],
-  #artists_info_map .pastille[data-nicename="south-korea"] {
+  #artists_info_map .contry_name[data-nicename="coree-du-sud"],
+  #artists_info_map .pastille[data-nicename="south-korea"],
+  #artists_info_map .contry_name[data-nicename="south-korea"] {
     left: 88%;
     top: 25%;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+  }
+  #artists_info_map .pastille[data-nicename="coree-du-sud"].pastille,
+  #artists_info_map .contry_name[data-nicename="coree-du-sud"].pastille,
+  #artists_info_map .pastille[data-nicename="south-korea"].pastille,
+  #artists_info_map .contry_name[data-nicename="south-korea"].pastille {
     transform: rotate(-30deg);
   }
+  #artists_info_map .pastille[data-nicename="coree-du-sud"].contry_name,
+  #artists_info_map .contry_name[data-nicename="coree-du-sud"].contry_name,
+  #artists_info_map .pastille[data-nicename="south-korea"].contry_name,
+  #artists_info_map .contry_name[data-nicename="south-korea"].contry_name {
+    margin-left: -55px;
+    margin-top: 25px;
+  }
   #artists_info_map .pastille[data-nicename="japon"],
-  #artists_info_map .pastille[data-nicename="japan"] {
+  #artists_info_map .contry_name[data-nicename="japon"],
+  #artists_info_map .pastille[data-nicename="japan"],
+  #artists_info_map .contry_name[data-nicename="japan"] {
     left: 92%;
     top: 32%;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+  }
+  #artists_info_map .pastille[data-nicename="japon"].pastille,
+  #artists_info_map .contry_name[data-nicename="japon"].pastille,
+  #artists_info_map .pastille[data-nicename="japan"].pastille,
+  #artists_info_map .contry_name[data-nicename="japan"].pastille {
     transform: rotate(-30deg);
   }
+  #artists_info_map .pastille[data-nicename="japon"].contry_name,
+  #artists_info_map .contry_name[data-nicename="japon"].contry_name,
+  #artists_info_map .pastille[data-nicename="japan"].contry_name,
+  #artists_info_map .contry_name[data-nicename="japan"].contry_name {
+    margin-left: -25px;
+    margin-top: 5px;
+  }
   #artists_info_map .pastille[data-nicename="cambodge"],
-  #artists_info_map .pastille[data-nicename="cambodia"] {
+  #artists_info_map .contry_name[data-nicename="cambodge"],
+  #artists_info_map .pastille[data-nicename="cambodia"],
+  #artists_info_map .contry_name[data-nicename="cambodia"] {
     left: 81%;
     top: 46%;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
+  }
+  #artists_info_map .pastille[data-nicename="cambodge"].pastille,
+  #artists_info_map .contry_name[data-nicename="cambodge"].pastille,
+  #artists_info_map .pastille[data-nicename="cambodia"].pastille,
+  #artists_info_map .contry_name[data-nicename="cambodia"].pastille {
     transform: rotate(30deg);
   }
-  #artists_info_map .pastille[data-nicename="thailande"] {
+  #artists_info_map .pastille[data-nicename="cambodge"].contry_name,
+  #artists_info_map .contry_name[data-nicename="cambodge"].contry_name,
+  #artists_info_map .pastille[data-nicename="cambodia"].contry_name,
+  #artists_info_map .contry_name[data-nicename="cambodia"].contry_name {
+    margin-left: 6px;
+    margin-top: 19px;
+  }
+  #artists_info_map .pastille[data-nicename="thailande"],
+  #artists_info_map .contry_name[data-nicename="thailande"] {
     left: 73.5%;
     top: 43%;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
+  }
+  #artists_info_map .pastille[data-nicename="thailande"].pastille,
+  #artists_info_map .contry_name[data-nicename="thailande"].pastille {
     transform: rotate(30deg);
   }
-  #artists_info_map .pastille[data-nicename="israel"] {
+  #artists_info_map .pastille[data-nicename="thailande"].contry_name,
+  #artists_info_map .contry_name[data-nicename="thailande"].contry_name {
+    margin-left: -26px;
+    margin-top: 26px;
+  }
+  #artists_info_map .pastille[data-nicename="israel"],
+  #artists_info_map .contry_name[data-nicename="israel"] {
     left: 29%;
     top: 31%;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
   }
-  #artists_info_map .pastille[data-nicename="palestine"] {
+  #artists_info_map .pastille[data-nicename="israel"].contry_name,
+  #artists_info_map .contry_name[data-nicename="israel"].contry_name {
+    margin-left: -7px;
+  }
+  #artists_info_map .pastille[data-nicename="palestine"],
+  #artists_info_map .contry_name[data-nicename="palestine"] {
     left: 37%;
     top: 31%;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
   }
-  #artists_info_map .pastille[data-nicename="malaisie"] {
+  #artists_info_map .pastille[data-nicename="palestine"].contry_name,
+  #artists_info_map .contry_name[data-nicename="palestine"].contry_name {
+    margin-left: 11px;
+  }
+  #artists_info_map .pastille[data-nicename="malaisie"],
+  #artists_info_map .contry_name[data-nicename="malaisie"] {
     left: 76%;
     top: 52%;
   }
-  #artists_info_map .pastille[data-nicename="pakistan"] {
+  #artists_info_map .pastille[data-nicename="malaisie"].contry_name,
+  #artists_info_map .contry_name[data-nicename="malaisie"].contry_name {
+    margin-left: -32px;
+    margin-top: 10px;
+  }
+  #artists_info_map .pastille[data-nicename="pakistan"],
+  #artists_info_map .contry_name[data-nicename="pakistan"] {
     left: 56%;
     top: 38%;
   }
-  #artists_info_map .pastille[data-nicename="maroc"] {
+  #artists_info_map .pastille[data-nicename="pakistan"].contry_name,
+  #artists_info_map .contry_name[data-nicename="pakistan"].contry_name {
+    margin-top: 14px;
+  }
+  #artists_info_map .pastille[data-nicename="maroc"],
+  #artists_info_map .contry_name[data-nicename="maroc"] {
     left: 7%;
     top: 31%;
   }
-  #artists_info_map .pastille[data-nicename="philippines"] {
+  #artists_info_map .pastille[data-nicename="philippines"],
+  #artists_info_map .contry_name[data-nicename="philippines"] {
     left: 88%;
     top: 43%;
   }
-  #artists_info_map .pastille[data-nicename="indonesie"] {
+  #artists_info_map .pastille[data-nicename="philippines"].contry_name,
+  #artists_info_map .contry_name[data-nicename="philippines"].contry_name {
+    margin-left: -47px;
+    margin-top: 15px;
+  }
+  #artists_info_map .pastille[data-nicename="indonesie"],
+  #artists_info_map .contry_name[data-nicename="indonesie"] {
     left: 83%;
     top: 54.5%;
   }
-  #artists_info_map .pastille[data-nicename="guinee-conakry"] {
+  #artists_info_map .pastille[data-nicename="indonesie"].contry_name,
+  #artists_info_map .contry_name[data-nicename="indonesie"].contry_name {
+    margin-left: 28px;
+  }
+  #artists_info_map .pastille[data-nicename="guinee-conakry"],
+  #artists_info_map .contry_name[data-nicename="guinee-conakry"] {
     left: 1%;
     top: 48%;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-  #artists_info_map .pastille[data-nicename="senegal"] {
+  #artists_info_map .pastille[data-nicename="guinee-conakry"].contry_name,
+  #artists_info_map .contry_name[data-nicename="guinee-conakry"].contry_name {
+    margin-left: 0;
+    width: 50px;
+    margin-top: 15px;
+  }
+  #artists_info_map .pastille[data-nicename="senegal"],
+  #artists_info_map .contry_name[data-nicename="senegal"] {
     left: 1%;
     top: 40%;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
-  #artists_info_map .pastille[data-nicename="cote-divoire"] {
+  #artists_info_map .pastille[data-nicename="senegal"].contry_name,
+  #artists_info_map .contry_name[data-nicename="senegal"].contry_name {
+    margin-top: 25px;
+  }
+  #artists_info_map .pastille[data-nicename="cote-divoire"],
+  #artists_info_map .contry_name[data-nicename="cote-divoire"] {
     left: 7%;
     top: 50.5%;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+  }
+  #artists_info_map .pastille[data-nicename="cote-divoire"].pastille,
+  #artists_info_map .contry_name[data-nicename="cote-divoire"].pastille {
     transform: rotate(36deg);
   }
-  #artists_info_map .pastille[data-nicename="burkina-faso"] {
+  #artists_info_map .pastille[data-nicename="cote-divoire"].contry_name,
+  #artists_info_map .contry_name[data-nicename="cote-divoire"].contry_name {
+    margin-top: 6px;
+    margin-left: 30px;
+  }
+  #artists_info_map .pastille[data-nicename="burkina-faso"],
+  #artists_info_map .contry_name[data-nicename="burkina-faso"] {
     left: 12%;
     top: 44%;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+  }
+  #artists_info_map .pastille[data-nicename="burkina-faso"].pastille,
+  #artists_info_map .contry_name[data-nicename="burkina-faso"].pastille {
     transform: rotate(36deg);
+  }
+  #artists_info_map .pastille[data-nicename="burkina-faso"].contry_name,
+  #artists_info_map .contry_name[data-nicename="burkina-faso"].contry_name {
+    margin-top: 21px;
+    margin-left: 24px;
   }
   #artists_info_map {
     width: 100%;
@@ -2119,6 +2243,14 @@ p:empty {
   border-radius: 50%;
   background: #008000;
 }
+#artists_info_map .contry_name {
+  display: block;
+  position: absolute;
+  font-size: 0.6em;
+  font-weight: 900;
+  margin-top: 16px;
+  margin-left: 32px;
+}
 #artists_info_map .block_contry {
   background: #000;
   color: #fff;
@@ -2303,7 +2435,6 @@ body.hidefooter #popin .skip_intro {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  transform: translateX(-100%);
   opacity: 0.97;
 }
 #marker svg {

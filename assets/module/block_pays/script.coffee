@@ -46,7 +46,7 @@ class block_pays
 
 		#------------------- pastille -------------------------#
 		$('#mouse_over_bg').on 'mouseover':(e) ->
-			if @playlistUrls.length < 27
+			if that.playlistUrls.length < 27
 				that.buildContrySound()
 
 		$('.pastille').on 'mouseover':(e) ->
