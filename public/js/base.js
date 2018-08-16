@@ -140,6 +140,120 @@
 }).call(this);
 
 (function() {
+  var player_youtube, tag;
+
+  player_youtube = class player_youtube {
+    constructor() {
+      this.bindEvents();
+    }
+
+    bindEvents() {
+      var YouTubeGetID, done, firstScriptTag, player;
+      YouTubeGetID = function(url) {
+        var ID;
+        ID = '';
+        url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+        if (url[2] !== void 0) {
+          ID = url[2].split(/[^0-9a-z_\-]/i);
+          return ID = ID[0];
+        } else {
+          ID = url;
+          return ID;
+        }
+      };
+      window.playYoutubeVideo = function(idVideo) {
+        if (!window.playerYT) {
+          console.log('playerYT not yet created ');
+          return window.playerYT = new YT.Player('player_youtube', {
+            height: '390',
+            width: '640',
+            videoId: idVideo,
+            fs: 0,
+            playerVars: {
+              autoplay: 1,
+              modestbranding: 1,
+              autohide: 1,
+              disablekb: 1,
+              enablejsapi: 1,
+              fs: 1,
+              rel: 0,
+              hl: $('#langage_short').val(),
+              cc_lang_pref: $('#langage_short').val(),
+              cc_load_policy: 1
+            },
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+          });
+        } else {
+          return window.playerYT.loadVideoById(idVideo);
+        }
+      };
+      window.onYouTubeIframeAPIReady = function() {
+        console.log('onYouTubeIframeAPIReady');
+        $('body').addClass('onYouTubeIframeAPIReady');
+        if ($('body').hasClass('waiting-for-youtube')) {
+          window.playYoutubeVideo($('#idIntroYoutube').data('introid'));
+          $('body').removeClass('waiting-for-youtube');
+        }
+        // $('#mask_shield').addClass 'hide'
+        $('#zone_youtube .shield').on('click', function() {
+          $('#zone_youtube').removeClass('play');
+          $('.lds-dual-ring').addClass('done');
+          window.playerYT.stopVideo();
+        });
+        return $('#list_artists li a, #play-video-btn, #startvideo, a.watch').on('click', function() {
+          var idyoutube;
+          event.preventDefault();
+          idyoutube = YouTubeGetID($(this).attr('href'));
+          if (!$('#artist_info').hasClass('hide')) {
+            $('#artist_info').addClass('hide');
+          }
+          $('.lds-dual-ring').removeClass('done');
+          window.playYoutubeVideo(idyoutube);
+        });
+      };
+      window.onPlayerReady = function(event) {
+        console.log('onPlayerReady');
+        event.target.playVideo();
+      };
+      window.onPlayerStateChange = function(event) {
+        if (event.data === YT.PlayerState.PLAYING && !done) {
+          $('#zone_youtube').addClass('play');
+          $('#popin').removeClass('hide').trigger('classChange');
+          $('.lds-dual-ring').addClass('done');
+          $('#popin .video-container').removeClass('hide');
+          // $('#mask_shield').addClass 'hide'
+          if (window.pauseSound) {
+            window.pauseSound();
+          }
+        } else if (event.data === YT.PlayerState.ENDED) {
+          window.closePopin();
+          console.log('youtube is done');
+        }
+      };
+      window.stopVideo = function() {
+        console.log('stop video');
+        window.playerYT.stopVideo();
+        $('#popin .video-container').addClass('hide');
+      };
+      tag.src = 'https://www.youtube.com/iframe_api';
+      firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      player = void 0;
+      return done = false;
+    }
+
+  };
+
+  module.player_youtube = player_youtube;
+
+  tag = document.createElement('script');
+
+}).call(this);
+
+(function() {
   var block_pays;
 
   block_pays = (function() {
@@ -236,34 +350,28 @@
           that.playlistUrls = that.allSound;
           defaultPlaylist = true;
         }
-        // tl = new TimelineLite()
-        // tl.to('#artists_info li .warper', 0.5, { alpha: 0 , y:-30})
-        // tl.fromTo('#artists_info li:eq('++') .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
         window.pauseSound();
         window.pCount = 0;
         window.howlerBank = [];
         onPlay = function(e) {
           var nicename;
-          console.log('------------> ' + that.playlistUrls[window.pCount]);
-          TweenMax.to('#artists_info li:eq(' + that.playlistUrls[window.pCount - 1] + ') .warper', 0.5, {
+          TweenMax.to('#artists_info li .warper', 0.5, {
+            alpha: 0,
+            y: -30
+          });
+          TweenMax.to('#artists_info li:eq(' + (that.playlistUrls[window.pCount] - 1) + ') .warper', 0.5, {
             alpha: 1,
             y: 0
-          });
+          }, 0.5);
           if (pastille) {
             nicename = $(pastille).data('nicename');
           } else {
             nicename = that.ordre_pays[window.pCount];
           }
           that.openContryBox($('.pastille[data-nicename="' + nicename + '"]'), ismouseover);
-          console.log('start ' + window.pCount + '; contry : ' + nicename);
         };
         onEnd = function(e) {
-          TweenMax.to('#artists_info li .warper', 0.5, {
-            alpha: 0,
-            y: -30
-          });
           window.pCount = window.pCount + 1 !== window.howlerBank.length ? window.pCount + 1 : 0;
-          console.log('howlerBank Play pCount = ' + window.pCount);
           if (!$('#sound').hasClass('actif')) {
             window.howlerBank[window.pCount].volume(0);
           }
@@ -388,122 +496,6 @@
   }).call(this);
 
   module.popin = popin;
-
-}).call(this);
-
-(function() {
-  var player_youtube, tag;
-
-  player_youtube = class player_youtube {
-    constructor() {
-      this.bindEvents();
-    }
-
-    bindEvents() {
-      var YouTubeGetID, done, firstScriptTag, player;
-      YouTubeGetID = function(url) {
-        var ID;
-        ID = '';
-        url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
-        if (url[2] !== void 0) {
-          ID = url[2].split(/[^0-9a-z_\-]/i);
-          return ID = ID[0];
-        } else {
-          ID = url;
-          return ID;
-        }
-      };
-      window.playYoutubeVideo = function(idVideo) {
-        if (!window.playerYT) {
-          console.log('playerYT not yet created ');
-          return window.playerYT = new YT.Player('player_youtube', {
-            height: '390',
-            width: '640',
-            videoId: idVideo,
-            fs: 0,
-            playerVars: {
-              autoplay: 1,
-              showinfo: 0,
-              autohide: 1,
-              disablekb: 1,
-              enablejsapi: 1,
-              fs: 1,
-              modestbranding: true,
-              rel: 0,
-              hl: 'pt',
-              cc_lang_pref: 'pt',
-              cc_load_policy: 1,
-              color: 'white'
-            },
-            events: {
-              'onReady': onPlayerReady,
-              'onStateChange': onPlayerStateChange
-            }
-          });
-        } else {
-          return window.playerYT.loadVideoById(idVideo);
-        }
-      };
-      window.onYouTubeIframeAPIReady = function() {
-        console.log('onYouTubeIframeAPIReady');
-        $('body').addClass('onYouTubeIframeAPIReady');
-        if ($('body').hasClass('waiting-for-youtube')) {
-          window.playYoutubeVideo($('#idIntroYoutube').data('introid'));
-          $('body').removeClass('waiting-for-youtube');
-        }
-        // $('#mask_shield').addClass 'hide'
-        $('#zone_youtube .shield').on('click', function() {
-          $('#zone_youtube').removeClass('play');
-          $('.lds-dual-ring').addClass('done');
-          window.playerYT.stopVideo();
-        });
-        return $('#list_artists li a, #play-video-btn, #startvideo, a.watch').on('click', function() {
-          var idyoutube;
-          event.preventDefault();
-          idyoutube = YouTubeGetID($(this).attr('href'));
-          if (!$('#artist_info').hasClass('hide')) {
-            $('#artist_info').addClass('hide');
-          }
-          $('.lds-dual-ring').removeClass('done');
-          window.playYoutubeVideo(idyoutube);
-        });
-      };
-      window.onPlayerReady = function(event) {
-        console.log('onPlayerReady');
-        event.target.playVideo();
-      };
-      window.onPlayerStateChange = function(event) {
-        if (event.data === YT.PlayerState.PLAYING && !done) {
-          $('#zone_youtube').addClass('play');
-          $('#popin').removeClass('hide').trigger('classChange');
-          $('.lds-dual-ring').addClass('done');
-          $('#popin .video-container').removeClass('hide');
-          // $('#mask_shield').addClass 'hide'
-          if (window.pauseSound) {
-            window.pauseSound();
-          }
-        } else if (event.data === YT.PlayerState.ENDED) {
-          window.closePopin();
-          console.log('youtube is done');
-        }
-      };
-      window.stopVideo = function() {
-        console.log('stop video');
-        window.playerYT.stopVideo();
-        $('#popin .video-container').addClass('hide');
-      };
-      tag.src = 'https://www.youtube.com/iframe_api';
-      firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-      player = void 0;
-      return done = false;
-    }
-
-  };
-
-  module.player_youtube = player_youtube;
-
-  tag = document.createElement('script');
 
 }).call(this);
 

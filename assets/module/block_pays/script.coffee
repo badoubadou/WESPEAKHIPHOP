@@ -71,31 +71,23 @@ class block_pays
 			that.playlistUrls = that.allSound 
 			defaultPlaylist = true
 
-		# tl = new TimelineLite()
-		# tl.to('#artists_info li .warper', 0.5, { alpha: 0 , y:-30})
-		# tl.fromTo('#artists_info li:eq('++') .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-
-
 		window.pauseSound()
 		window.pCount = 0
 		window.howlerBank = []
 
 		onPlay = (e) ->
-			console.log '------------> '+that.playlistUrls[window.pCount]
-			TweenMax.to('#artists_info li:eq('+that.playlistUrls[window.pCount-1]+') .warper', 0.5, { alpha: 1 , y:0})
+			TweenMax.to('#artists_info li .warper', 0.5, { alpha: 0 , y:-30})
+			TweenMax.to('#artists_info li:eq('+((that.playlistUrls[window.pCount])-1)+') .warper', 0.5, { alpha: 1 , y:0}, 0.5)
 			if pastille
 				nicename = $(pastille).data 'nicename'
 			else
 				nicename = that.ordre_pays[window.pCount]
 
 			that.openContryBox($('.pastille[data-nicename="'+nicename+'"]'), ismouseover)
-			console.log 'start '+window.pCount+'; contry : '+ nicename
 			return
 
 		onEnd = (e) ->
-			TweenMax.to('#artists_info li .warper', 0.5, { alpha: 0 , y:-30})
 			window.pCount = if window.pCount + 1 != window.howlerBank.length then window.pCount + 1 else 0
-			console.log 'howlerBank Play pCount = '+window.pCount
 			if !$('#sound').hasClass 'actif'
 				window.howlerBank[window.pCount].volume(0)
 			window.howlerBank[window.pCount].play()

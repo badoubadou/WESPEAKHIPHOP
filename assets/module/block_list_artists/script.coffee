@@ -23,17 +23,15 @@ class player_youtube
 					fs: 0
 					playerVars: { 
 						autoplay: 1, 
-						showinfo: 0, 
+						modestbranding: 1, 
 						autohide: 1, 
-						disablekb: 1, 
-						enablejsapi: 1, 
+						disablekb: 1,
+						enablejsapi: 1,
 						fs: 1, 
-						modestbranding: true, 
 						rel: 0, 
-						hl: 'pt'
-						cc_lang_pref: 'pt', 
+						hl: $('#langage_short').val(),
+						cc_lang_pref: $('#langage_short').val(), 
 						cc_load_policy: 1, 
-						color: 'white', 
 					}
 					events:
 						'onReady': onPlayerReady
