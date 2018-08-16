@@ -76,7 +76,7 @@ class player_youtube
 				$('#popin').removeClass('hide').trigger 'classChange'
 				$('.lds-dual-ring').addClass 'done'
 				$('#popin .video-container').removeClass 'hide'
-				$('#mask_shield').addClass 'hide'
+				# $('#mask_shield').addClass 'hide'
 				if window.pauseSound
 					window.pauseSound()
 

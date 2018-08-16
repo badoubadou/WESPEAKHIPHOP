@@ -63,7 +63,6 @@ class block_pays
 	#------------------- SOUND - PLAYER -----------------------#
 	buildContrySound : (pastille, ismouseover)->
 		that = @
-		console.log 'buildContrySound - '+pastille
 		if pastille
 			that.playlistUrls = pastille.data 'sound'
 			defaultPlaylist = false
@@ -71,13 +70,19 @@ class block_pays
 			console.log 'no pastille'
 			that.playlistUrls = that.allSound 
 			defaultPlaylist = true
-			console.log '??? ------------->'+that.ordre_pays[0]
+
+		# tl = new TimelineLite()
+		# tl.to('#artists_info li .warper', 0.5, { alpha: 0 , y:-30})
+		# tl.fromTo('#artists_info li:eq('++') .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
+
 
 		window.pauseSound()
 		window.pCount = 0
 		window.howlerBank = []
 
 		onPlay = (e) ->
+			console.log '------------> '+that.playlistUrls[window.pCount]
+			TweenMax.to('#artists_info li:eq('+that.playlistUrls[window.pCount-1]+') .warper', 0.5, { alpha: 1 , y:0})
 			if pastille
 				nicename = $(pastille).data 'nicename'
 			else
@@ -88,6 +93,7 @@ class block_pays
 			return
 
 		onEnd = (e) ->
+			TweenMax.to('#artists_info li .warper', 0.5, { alpha: 0 , y:-30})
 			window.pCount = if window.pCount + 1 != window.howlerBank.length then window.pCount + 1 else 0
 			console.log 'howlerBank Play pCount = '+window.pCount
 			if !$('#sound').hasClass 'actif'
@@ -125,7 +131,7 @@ class block_pays
 		$('.pastille').removeClass 'big'
 		$('#artists_info_map .block_contry').removeClass 'opacity_1'
 		place = '.'+pastille.data 'nicename'
-		$('#artists_info_map '+place).addClass 'opacity_1'
+		$('#artists_info_map '+place).addClass 'opacity_1'	
 		if @playlistUrls.length < 27 && !ismouseover
 			pastille.addClass 'big'
 			

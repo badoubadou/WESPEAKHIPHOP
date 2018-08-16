@@ -6,12 +6,16 @@
 	padding 0
 	right 20px
 	transition opacity 1s
+	overflow hidden
 
 	li
 		position absolute
 		top 0
 		left 0
-		opacity 0
+		overflow hidden
+		
+		.warper
+			opacity 0
 		
 		span
 			display block
@@ -78,7 +82,7 @@
 		li
 			.name
 				font-size .6em
-				padding 5px 0
+				padding 3px 0
 			
 			.tagline
 			.contry
@@ -87,7 +91,7 @@
 			
 	@media $ipad
 		height $height_header_info_ipad
-		width calc( 100% - 300px )
+		width calc( 100% - 204px )
 		li
 			.name
 				font-size 1.5em
