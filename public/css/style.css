@@ -2305,6 +2305,9 @@ body.hidefooter .footer {
 #artists_info_map .block_contry .name {
   color: #ffce00;
 }
+#artists_info_map .block_contry .artist:hover .name {
+  color: #fff;
+}
 #artists_info_map .block_contry .artist,
 #artists_info_map .block_contry .name,
 #artists_info_map .block_contry a.watch,
