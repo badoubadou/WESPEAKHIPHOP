@@ -29,9 +29,6 @@
       }).from($('#faceb'), .3, {
         rotationY: 90,
         scale: 1.3
-      }).to('#artists_info li .warper', 0.5, {
-        alpha: 0,
-        y: -30
       }).to($('#smallmap'), .3, {
         ease: Power1.easeOut,
         alpha: 0
