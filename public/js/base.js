@@ -694,6 +694,7 @@
         $('#artist_info .info').addClass('hide');
         $('#artist_info .info:eq(' + id + ')').removeClass('hide');
         svgcontry = '#smallmap svg #' + $('#artists_info li:eq(' + id + ') .contry').data('contrynicename');
+        console.log(svgcontry);
         TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {
           alpha: 0
         });

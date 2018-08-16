@@ -1,6 +1,9 @@
 - var current_contry_sound = []
 each vid in current_contry_array
-	- current_contry_sound.push(vid.sound_id)
+	- vid_sound_id = vid.sound_id
+	if vid_sound_id > 28
+		- vid_sound_id -= 28
+	- current_contry_sound.push(vid_sound_id)
 
 span.contry_name(data-nicename= current_contry_array[0].contry_nicename)= current_contry_array[0].contry_nicename
 span.pastille.btn(data-nicename= current_contry_array[0].contry_nicename, data-sound= current_contry_sound)

@@ -2630,21 +2630,21 @@
 		<path class="smallmap-en-st0" d="M451,233.6c0,0.2-0.1,0.2-0.2,0.2C450.8,233.7,450.8,233.6,451,233.6z"/>
 	</g>
 </g>
-<circle id="maroc" class="smallmap-en-st1" cx="216.4" cy="125" r="3.5"/>
+<circle id="morocco" class="smallmap-en-st1" cx="216.4" cy="125" r="3.5"/>
 <circle id="france" class="smallmap-en-st1" cx="225.2" cy="102.4" r="3.5"/>
 <circle id="burkina-faso" class="smallmap-en-st1" cx="227.6" cy="153.7" r="3.5"/>
 <circle id="cote-divoire" class="smallmap-en-st1" cx="221.5" cy="160.7" r="3.5"/>
-<circle id="guinee-conakry" class="smallmap-en-st1" cx="203.5" cy="153.9" r="3.5"/>
+<circle id="guinea" class="smallmap-en-st1" cx="203.5" cy="153.9" r="3.5"/>
 <circle id="senegal" class="smallmap-en-st1" cx="203.6" cy="150.5" r="3.5"/>
 <circle id="djibouti" class="smallmap-en-st1" cx="278.8" cy="157.3" r="3.5"/>
 <circle id="pakistan" class="smallmap-en-st1" cx="316.6" cy="128.3" r="3.5"/>
 <circle id="israel" class="smallmap-en-st1" cx="268.8" cy="125.2" r="3.5"/>
 <circle id="palestine" class="smallmap-en-st1" cx="271.3" cy="124.7" r="3.5"/>
-<circle id="cambodge" class="smallmap-en-st1" cx="362.9" cy="153" r="3.5"/>
-<circle id="thailande" class="smallmap-en-st1" cx="360.4" cy="151.2" r="3.5"/>
+<circle id="cambodia" class="smallmap-en-st1" cx="362.9" cy="153" r="3.5"/>
+<circle id="thailand" class="smallmap-en-st1" cx="360.4" cy="151.2" r="3.5"/>
 <circle id="philippines" class="smallmap-en-st1" cx="387.9" cy="154.5" r="3.5"/>
-<circle id="malaisie" class="smallmap-en-st1" cx="361.5" cy="164.3" r="3.5"/>
-<circle id="indonesie" class="smallmap-en-st1" cx="377.9" cy="173" r="3.5"/>
-<circle id="coree-du-sud" class="smallmap-en-st1" cx="388.5" cy="115.6" r="3.5"/>
-<circle id="japon" class="smallmap-en-st1" cx="402.8" cy="112.1" r="3.5"/>
+<circle id="malaysia" class="smallmap-en-st1" cx="361.5" cy="164.3" r="3.5"/>
+<circle id="indonesia" class="smallmap-en-st1" cx="377.9" cy="173" r="3.5"/>
+<circle id="south-korea" class="smallmap-en-st1" cx="388.5" cy="115.6" r="3.5"/>
+<circle id="japan" class="smallmap-en-st1" cx="402.8" cy="112.1" r="3.5"/>
 </svg>

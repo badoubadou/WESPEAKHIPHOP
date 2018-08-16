@@ -1931,18 +1931,24 @@ body.hidefooter .footer {
     margin-top: 19px;
   }
   #artists_info_map .pastille[data-nicename="thailande"],
-  #artists_info_map .contry_name[data-nicename="thailande"] {
+  #artists_info_map .contry_name[data-nicename="thailande"],
+  #artists_info_map .pastille[data-nicename="thailand"],
+  #artists_info_map .contry_name[data-nicename="thailand"] {
     left: 73.5%;
     top: 43%;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
   }
   #artists_info_map .pastille[data-nicename="thailande"].pastille,
-  #artists_info_map .contry_name[data-nicename="thailande"].pastille {
+  #artists_info_map .contry_name[data-nicename="thailande"].pastille,
+  #artists_info_map .pastille[data-nicename="thailand"].pastille,
+  #artists_info_map .contry_name[data-nicename="thailand"].pastille {
     transform: rotate(30deg);
   }
   #artists_info_map .pastille[data-nicename="thailande"].contry_name,
-  #artists_info_map .contry_name[data-nicename="thailande"].contry_name {
+  #artists_info_map .contry_name[data-nicename="thailande"].contry_name,
+  #artists_info_map .pastille[data-nicename="thailand"].contry_name,
+  #artists_info_map .contry_name[data-nicename="thailand"].contry_name {
     margin-left: -26px;
     margin-top: 26px;
   }
@@ -1969,12 +1975,16 @@ body.hidefooter .footer {
     margin-left: 11px;
   }
   #artists_info_map .pastille[data-nicename="malaisie"],
-  #artists_info_map .contry_name[data-nicename="malaisie"] {
+  #artists_info_map .contry_name[data-nicename="malaisie"],
+  #artists_info_map .pastille[data-nicename="malaysia"],
+  #artists_info_map .contry_name[data-nicename="malaysia"] {
     left: 76%;
     top: 52%;
   }
   #artists_info_map .pastille[data-nicename="malaisie"].contry_name,
-  #artists_info_map .contry_name[data-nicename="malaisie"].contry_name {
+  #artists_info_map .contry_name[data-nicename="malaisie"].contry_name,
+  #artists_info_map .pastille[data-nicename="malaysia"].contry_name,
+  #artists_info_map .contry_name[data-nicename="malaysia"].contry_name {
     margin-left: -32px;
     margin-top: 10px;
   }
@@ -1988,7 +1998,9 @@ body.hidefooter .footer {
     margin-top: 14px;
   }
   #artists_info_map .pastille[data-nicename="maroc"],
-  #artists_info_map .contry_name[data-nicename="maroc"] {
+  #artists_info_map .contry_name[data-nicename="maroc"],
+  #artists_info_map .pastille[data-nicename="morocco"],
+  #artists_info_map .contry_name[data-nicename="morocco"] {
     left: 7%;
     top: 31%;
   }
@@ -2003,23 +2015,31 @@ body.hidefooter .footer {
     margin-top: 15px;
   }
   #artists_info_map .pastille[data-nicename="indonesie"],
-  #artists_info_map .contry_name[data-nicename="indonesie"] {
+  #artists_info_map .contry_name[data-nicename="indonesie"],
+  #artists_info_map .pastille[data-nicename="indonesia"],
+  #artists_info_map .contry_name[data-nicename="indonesia"] {
     left: 83%;
     top: 54.5%;
   }
   #artists_info_map .pastille[data-nicename="indonesie"].contry_name,
-  #artists_info_map .contry_name[data-nicename="indonesie"].contry_name {
+  #artists_info_map .contry_name[data-nicename="indonesie"].contry_name,
+  #artists_info_map .pastille[data-nicename="indonesia"].contry_name,
+  #artists_info_map .contry_name[data-nicename="indonesia"].contry_name {
     margin-left: 28px;
   }
   #artists_info_map .pastille[data-nicename="guinee-conakry"],
-  #artists_info_map .contry_name[data-nicename="guinee-conakry"] {
+  #artists_info_map .contry_name[data-nicename="guinee-conakry"],
+  #artists_info_map .pastille[data-nicename="guinea"],
+  #artists_info_map .contry_name[data-nicename="guinea"] {
     left: 1%;
     top: 48%;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
   #artists_info_map .pastille[data-nicename="guinee-conakry"].contry_name,
-  #artists_info_map .contry_name[data-nicename="guinee-conakry"].contry_name {
+  #artists_info_map .contry_name[data-nicename="guinee-conakry"].contry_name,
+  #artists_info_map .pastille[data-nicename="guinea"].contry_name,
+  #artists_info_map .contry_name[data-nicename="guinea"].contry_name {
     margin-left: 0;
     width: 50px;
     margin-top: 15px;
@@ -2143,12 +2163,14 @@ body.hidefooter .footer {
   #artists_info_map .block_contry.france:after {
     left: 31%;
   }
-  #artists_info_map .block_contry.guinee-conakry {
+  #artists_info_map .block_contry.guinee-conakry,
+  #artists_info_map .block_contry.guinea {
     left: 0;
     top: 33%;
     width: 187px;
   }
-  #artists_info_map .block_contry.guinee-conakry:after {
+  #artists_info_map .block_contry.guinee-conakry:after,
+  #artists_info_map .block_contry.guinea:after {
     left: 12%;
   }
   #artists_info_map .block_contry.indonesia,
@@ -2168,11 +2190,13 @@ body.hidefooter .footer {
   #artists_info_map .block_contry.israel:after {
     left: 36%;
   }
-  #artists_info_map .block_contry.japon {
+  #artists_info_map .block_contry.japon,
+  #artists_info_map .block_contry.japan {
     left: 70%;
     top: 21%;
   }
-  #artists_info_map .block_contry.japon:after {
+  #artists_info_map .block_contry.japon:after,
+  #artists_info_map .block_contry.japan:after {
     right: 10px;
   }
   #artists_info_map .block_contry.malaisie,
@@ -2231,11 +2255,13 @@ body.hidefooter .footer {
   #artists_info_map .block_contry.senegal:after {
     left: 11%;
   }
-  #artists_info_map .block_contry.thailande {
+  #artists_info_map .block_contry.thailande,
+  #artists_info_map .block_contry.thailand {
     left: 23.5%;
     top: 37%;
   }
-  #artists_info_map .block_contry.thailande:after {
+  #artists_info_map .block_contry.thailande:after,
+  #artists_info_map .block_contry.thailand:after {
     right: 8%;
   }
 }
