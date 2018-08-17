@@ -9,6 +9,8 @@ var pug    = require('gulp-pug');
 var runSequence = require('run-sequence');
 var replace = require('gulp-replace');
 
+var cleanCSS = require('gulp-clean-css');
+
 var tap = require('gulp-tap');
 
 var data = require('gulp-data');
@@ -83,6 +85,15 @@ gulp.task('uglify', function () {
         .pipe(gulp.dest('public/js/base-clean'));
 });
 
+ 
+gulp.task('minifycss', function () {
+    return gulp.src('public/css/style.css')
+        .pipe(rename('style.min.css'))
+        .pipe(cleanCSS())
+        .pipe(gulp.dest('public/css/'));
+});
+
+
 gulp.task('concatjs', function() {
     gulp.src(vendor)
         .pipe(concat('all.js'))
@@ -124,8 +135,13 @@ gulp.task('stylus', function() {
         .pipe(notify({ message: 'CSS task complete' }));
 });
 
-gulp.task('css', ['stylus'], function (cb) {
-    runSequence(['uploadcss'], cb);
+gulp.task('css', ['stylus'], function (done) {
+    gutil.log('stylus finished ');
+    done();
+    runSequence('minifycss', function() {
+        console.log('minifycss finished');
+        runSequence(['uploadcss']);
+    });
 });
 
 gulp.task('pug:data', function() {
@@ -178,7 +194,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task("uploadcss", function() {
-    gulp.src('public/css/style.css')
+    gulp.src('public/css/*.css')
         .pipe(s3({
             Bucket: 'wespeakhiphop-assets', //  Required
             ACL:    'public-read'       //  Needs to be user-defined

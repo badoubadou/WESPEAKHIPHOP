@@ -728,6 +728,9 @@ p:empty {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+#block_video_disk {
+  border-radius: 50%;
+}
 #mouse_over_bg {
   opacity: 0;
   top: 0;
@@ -1094,6 +1097,7 @@ body.hidefooter .footer {
   left: 50%;
   width: 10px;
   height: 10px;
+  margin-top: -5px;
   margin-left: -5px;
 }
 @media screen and (max-width: 47.9em), screen and (max-height: 420px) {
@@ -1104,8 +1108,7 @@ body.hidefooter .footer {
 }
 @media screen and (min-width: 48em) {
   #list_artists > * {
-    height: 20px;
-    margin-top: -10px;
+    height: 10px;
   }
 }
 #list_artists > *:nth-of-type(1) {
@@ -1241,6 +1244,7 @@ body.hidefooter .footer {
     left: 50%;
     width: 230px;
     height: 10px;
+    margin-top: -5px;
     margin-left: -115px;
   }
   #list_artists > *:nth-of-type(1) {
@@ -1356,13 +1360,16 @@ body.hidefooter .footer {
     text-align: center;
   }
   #list_artists > *:nth-of-type(3) {
-    padding-left: 100px;
+    padding-left: 175px;
   }
   #list_artists > *:nth-of-type(2),
   #list_artists > *:nth-of-type(5),
   #list_artists > *:nth-of-type(7),
   #list_artists > *:nth-of-type(10) {
-    padding-left: 30px;
+    padding-left: 50px;
+  }
+  #list_artists > *:nth-of-type(15) {
+    margin-top: 5px;
   }
   #list_artists > *:nth-of-type(25) {
     margin-left: -140px;
@@ -1398,6 +1405,7 @@ body.hidefooter .footer {
     left: 50%;
     width: 230px;
     height: 10px;
+    margin-top: -5px;
     margin-left: -115px;
   }
   #list_artists > *:nth-of-type(1) {
@@ -1517,6 +1525,12 @@ body.hidefooter .footer {
   bottom: 0;
   font-size: 0.6em;
   color: #979797;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 #list_artists li a:hover,
 #list_artists li a.selected {
@@ -1550,8 +1564,7 @@ body.hidefooter .footer {
 }
 @media screen and (min-width: 48em) and (min-width: 48em) {
   #list_artists > * {
-    height: 20px;
-    margin-top: -10px;
+    height: 10px;
   }
 }
 @media screen and (min-width: 75em) and (min-height: 990px) and (max-width: 47.9em), screen and (min-width: 75em) and (min-height: 990px) and (max-height: 420px) {
@@ -1562,8 +1575,7 @@ body.hidefooter .footer {
 }
 @media screen and (min-width: 75em) and (min-height: 990px) and (min-width: 48em) {
   #list_artists > * {
-    height: 20px;
-    margin-top: -10px;
+    height: 10px;
   }
 }
 @media screen and (max-width: 47.9em), screen and (max-height: 420px) {

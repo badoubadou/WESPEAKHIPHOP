@@ -115,7 +115,7 @@ class player_video
 		
 		PBR = speed / @disk_speep
 
-		PBR = Math.min(Math.max((speed / @disk_speep), 0.9), 2)
+		PBR = Math.min(Math.max((speed / @disk_speep), 0.9), 1.5)
 		roundedPBR = Number(PBR.toFixed(4))
 				
 		# console.log dir + '  @sounddirection  : '+@sounddirection  + '  // opositeDirection  : '+opositeDirection+'. speed : '+speed + '  PBR : '+roundedPBR
