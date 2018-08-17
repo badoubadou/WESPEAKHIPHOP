@@ -162,7 +162,7 @@ class player_video
 		sequence = '+='+(duration_sequence - 1)
 		
 		@timelineKnob =  TweenMax.to('#knob, #player', @duration, {ease:Linear.easeNone, rotation: 360, repeat:-1, paused: true })
-		@timelinePlatine =  TweenMax.to('#platine', @duration, {ease:Linear.easeNone, rotation: 360*100, repeat:-1, paused: true })
+		@timelinePlatine =  TweenMax.to('#platine', @duration, {ease:Linear.easeNone, rotation: 360, repeat:-1, paused: true })
 
 		@timelineInfo
 			.add(-> updateInfo(0); )
