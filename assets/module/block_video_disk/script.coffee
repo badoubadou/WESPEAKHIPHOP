@@ -22,9 +22,24 @@ class player_video
 			.from('#play-video-btn', .6 ,{opacity:0}, 2 )
 			.from('#about-btn', .6 ,{opacity:0}, 2.1 )
 
-		
 		@player = $('#player')[0]
 		@duration = @player.duration
+		
+		@disk_speep = 0.39
+
+		@sounddirection = 0
+		@scratchBank = []
+		@scratchBank.push new Howl(
+				src: [ 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/video.mp3' ]
+				buffer: true)
+		@scratchBank.push new Howl(
+				src: [ 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/video_reverse.mp3' ]
+				buffer: true)
+
+		# @id_forward = @scratchBank[0].play()
+		# @scratchBank[0].stop()
+		# @id_reverse = @scratchBank[1].play()
+		# @scratchBank[1].stop()
 		
 		$('#player').addClass('ready')
 		@loadMap()
@@ -87,12 +102,32 @@ class player_video
 		@timelineDisk.play()
 		$('#popin').off 'closePopin'
 
-	changeCurrentTime: (@$deg, @$myplayer)->
+	changeCurrentTime: (@$deg, @$myplayer, dir, speed)->
 		if(@$deg<0)
 			@$deg = 360  + @$deg
 		percentage = @$deg / 3.6
 		player_new_CT = @$myplayer.duration * (percentage/100)
+		# console.log 'player_new_CT : '+player_new_CT
 		@$myplayer.currentTime = player_new_CT
+
+		@sounddirection = if dir == 'clockwise' then 0 else 1
+		opositeDirection =  if dir == 'clockwise' then 1 else 0
+		
+		PBR = speed / @disk_speep
+
+		PBR = Math.min(Math.max((speed / @disk_speep), 0.9), 2)
+		roundedPBR = Number(PBR.toFixed(4))
+				
+		# console.log dir + '  @sounddirection  : '+@sounddirection  + '  // opositeDirection  : '+opositeDirection+'. speed : '+speed + '  PBR : '+roundedPBR
+		@scratchBank[@sounddirection].rate(roundedPBR)
+
+		sound_new_CT = if dir == 'clockwise' then player_new_CT else (@$myplayer.duration - player_new_CT)
+
+		if @scratchBank[opositeDirection].playing()
+			@scratchBank[opositeDirection].stop()
+		if !@scratchBank[@sounddirection].playing()
+			@scratchBank[@sounddirection].seek(sound_new_CT)
+			@scratchBank[@sounddirection].play()
 
 	skipTo: (@$player, @$id)->
 		nbVideo =  28
@@ -106,12 +141,12 @@ class player_video
 			else
 				PBR = 1.0
 				player.off 'timeupdate', checkEndTime
-			player.playbackRate(PBR)
+			# player.playbackRate(PBR)
 			
 		@$player.on 'timeupdate', checkEndTime
 	#------------------- TWEEN ---------------------------#
 	createTween: () ->
-		console.log 'createTween'
+		# console.log 'createTween'
 		updateInfo= (id)->
 			$('#play-video-btn, #startvideo').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
 			$('#list_artists li a.selected').removeClass('selected')
@@ -318,6 +353,7 @@ class player_video
 			that.timelineInfo.time that.player.currentTime
 		
 		rotationSnap = 360 / 28
+		previousRotation = 0
 		Draggable.create '#knob',
 			type: 'rotation'
 			throwProps: true
@@ -325,14 +361,22 @@ class player_video
 				$('#knob').addClass 'drag'
 				that.timelineKnob.kill()
 			onDrag: ->
-				that.changeCurrentTime(this.rotation % 360, that.player)
+				yourDraggable = Draggable.get('#knob')
+				dir = if yourDraggable.rotation - previousRotation > 0 then 'clockwise' else 'counter-clockwise'
+				speed = Number(Math.abs(yourDraggable.rotation - previousRotation))
+				roundedSpeed = Number(speed.toFixed(4))
+				# console.log ' dir : '+dir + ' speed : '+ roundedSpeed
+				previousRotation = yourDraggable.rotation
+				that.changeCurrentTime(this.rotation % 360, that.player, dir, roundedSpeed)
 			
 			onThrowUpdate: ->
-				that.changeCurrentTime(this.rotation % 360, that.player)
+				that.changeCurrentTime(this.rotation % 360, that.player, 'clockwise', that.disk_speep)
 			
 			onThrowComplete: ->
 				that.timelineKnob =  TweenMax.fromTo('#knob, #player', that.duration, {rotation:(this.rotation % 360)},{ease:Linear.easeNone, rotation: ((this.rotation % 360)+360), repeat:-1})
 				that.player.play()
+				that.scratchBank[0].stop()
+				that.scratchBank[1].stop()
 				$('#knob').removeClass 'drag'
 
 			snap: (endValue) ->

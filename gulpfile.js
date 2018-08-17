@@ -1,6 +1,5 @@
 var gulp   = require('gulp');
 var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
 var notify = require('gulp-notify');
 var rename = require('gulp-rename');
 var wrap   = require('gulp-wrap');
@@ -19,18 +18,21 @@ merge = require('gulp-merge-json');
 
 var gutil        = require('gulp-util');
 var coffee       = require('gulp-coffee');
-var concat       = require('gulp-concat');
-var uglify       = require('gulp-uglify');
 var del = require('del');
 var gutil = require('gulp-util');
+
+var rename = require("gulp-rename");
+var uglify = require('gulp-uglify-es').default;
 
 var config = {
     accessKeyId: "AKIAJUYRDM6H3KW3O5FQ",
     secretAccessKey: "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"
 }
 
-var gulp = require('gulp');
 var s3 = require('gulp-s3-upload')(config);
+
+const stripDebug = require('gulp-strip-debug');
+
 
 var pugfile = ['assets/pug/*.pug', '!assets/pug/layout.pug'];
 var stylfile = ['assets/style/**/*.styl', 'assets/module/**/*.styl'];
@@ -50,7 +52,7 @@ var vendor = [
     'assets/coffee/vendor/MorphSVGPlugin.min.js',
     'assets/coffee/vendor/ThrowPropsPlugin.min.js',
     'assets/coffee/vendor/howler.core.min.js',
-    'public/js/base.js',
+    'public/js/base.min.js',
     // 'assets/coffee/vendor/wad.min.js'
 ];
 
@@ -58,7 +60,27 @@ gulp.task('makecoffee', function() {
     return gulp.src(src_coffee)
         .pipe(coffee())
         .pipe(concat('base.js'))
+        .pipe(stripDebug())
+        .pipe(rename('base.min.js'))
+        .pipe(uglify(/* options */))
         .pipe(gulp.dest(dest+'js/'));
+});
+
+
+gulp.task('removelog', () =>
+    gulp.src('public/js/base.js')
+        .pipe(stripDebug())
+        .pipe(gulp.dest('public/js/base-clean'))
+);
+
+
+ 
+gulp.task('uglify', function () {
+    return gulp.src('public/js/base.js')
+        .pipe(stripDebug())
+        .pipe(rename('base.min.js'))
+        .pipe(uglify(/* options */))
+        .pipe(gulp.dest('public/js/base-clean'));
 });
 
 gulp.task('concatjs', function() {
@@ -80,15 +102,11 @@ gulp.task('clean:css', function () {
   ]);
 });
 
-// gulp.task('coffee', ['clean:js', 'makecoffee'], function (cb) {
-//     runSequence([ 'concatjs', 'uploadjs'], cb);
-// });
 
 gulp.task('coffee', function(done) {
     runSequence('clean:js', 'makecoffee', function() {
         gutil.log('clean:js & makecoffee finished ');
         done();
-        // runSequence([ 'concatjs', 'uploadjs']);
         runSequence('concatjs', function() {
             console.log('concatjs finished');
             runSequence(['uploadjs']);
