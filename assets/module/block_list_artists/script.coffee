@@ -54,7 +54,7 @@ class player_youtube
 				window.playerYT.stopVideo()
 				return
 
-			$('#list_artists li a, #play-video-btn, #startvideo, a.watch').on 'click', ->
+			$('#list_artists li a, #play-video-btn, #startvideo, a.watch').on 'click', (event) ->
 				event.preventDefault()
 				idyoutube = YouTubeGetID($(this).attr('href'))
 				if !$('#artist_info').hasClass 'hide'

@@ -60,8 +60,11 @@ class block_pays
 			else
 				that.buildContrySound($(this))
 
+		$('li.block_contry .artist').on 'mouseover':(e) ->
+			that.buildContrySound($(this), false, true)
+
 	#------------------- SOUND - PLAYER -----------------------#
-	buildContrySound : (pastille, ismouseover)->
+	buildContrySound : (pastille, ismouseover, preventOpenWindow)->
 		that = @
 		if pastille
 			that.playlistUrls = pastille.data 'sound'
@@ -83,7 +86,8 @@ class block_pays
 			else
 				nicename = that.ordre_pays[window.pCount]
 
-			that.openContryBox($('.pastille[data-nicename="'+nicename+'"]'), ismouseover)
+			if !preventOpenWindow
+				that.openContryBox($('.pastille[data-nicename="'+nicename+'"]'), ismouseover)
 			return
 
 		onEnd = (e) ->

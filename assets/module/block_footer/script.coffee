@@ -94,7 +94,7 @@ class flip_disk
 			else
 				true
 
-		$('#fullscreen').on 'click':(e) ->
+		$('#fullscreen').on 'click': ->
 			if !IsFullScreenCurrently()
 				GoInFullscreen($('body').get(0))
 			else

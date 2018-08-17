@@ -47,8 +47,8 @@ var vendor = [
     'assets/coffee/vendor/TweenMax.min.js',
     'assets/coffee/vendor/Draggable.min.js',
     'assets/coffee/vendor/DrawSVGPlugin.min.js',
+    'assets/coffee/vendor/MorphSVGPlugin.min.js',
     'assets/coffee/vendor/ThrowPropsPlugin.min.js',
-    'assets/coffee/vendor/modernizr-objectfit.js',
     'assets/coffee/vendor/howler.core.min.js',
     'public/js/base.js',
     // 'assets/coffee/vendor/wad.min.js'

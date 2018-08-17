@@ -45,7 +45,8 @@ class player_video
 			return
 
 	logoWhite : ->
-		$('#logowhite').removeClass 'hide'
+		TweenLite.set 'svg', visibility: 'visible'
+		MorphSVGPlugin.convertToPath 'line'
 		drawLogo = new TimelineMax({});
 		drawLogo.from("#logowhite #mask1_2_", 1, {drawSVG:0, ease:Power1.easeInOut} )
 			.from("#logowhite #mask2", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.1 )
@@ -220,7 +221,7 @@ class player_video
 	startSite: (that)->
 		that.logoWhite()
 		that.bildIntroYoutube()
-		
+
 	bindEvents: ->
 		that = @
 		#------------------- DOC READY ------------------------#
@@ -245,7 +246,7 @@ class player_video
 		$('#popin').on 'classChange', ->
 			console.log 'popin change '+($(this).hasClass 'hide')
 			if $(this).hasClass 'hide'
-				if window.playerYT
+				if window.playerYT.stopVideo
 					window.playerYT.stopVideo()
 					$('#popin .video-container').addClass 'hide'
 				

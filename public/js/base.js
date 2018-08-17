@@ -120,7 +120,7 @@
         }
       };
       $('#fullscreen').on({
-        'click': function(e) {
+        'click': function() {
           if (!IsFullScreenCurrently()) {
             return GoInFullscreen($('body').get(0));
           } else {
@@ -200,7 +200,7 @@
           $('.lds-dual-ring').addClass('done');
           window.playerYT.stopVideo();
         });
-        return $('#list_artists li a, #play-video-btn, #startvideo, a.watch').on('click', function() {
+        return $('#list_artists li a, #play-video-btn, #startvideo, a.watch').on('click', function(event) {
           var idyoutube;
           event.preventDefault();
           idyoutube = YouTubeGetID($(this).attr('href'));
@@ -324,7 +324,7 @@
             return that.buildContrySound($(this), true);
           }
         });
-        return $('.pastille').on({
+        $('.pastille').on({
           'click': function(e) {
             if ($(this).hasClass('big')) {
               return that.buildContrySound();
@@ -333,10 +333,15 @@
             }
           }
         });
+        return $('li.block_contry .artist').on({
+          'mouseover': function(e) {
+            return that.buildContrySound($(this), false, true);
+          }
+        });
       }
 
       //------------------- SOUND - PLAYER -----------------------#
-      buildContrySound(pastille, ismouseover) {
+      buildContrySound(pastille, ismouseover, preventOpenWindow) {
         var defaultPlaylist, onEnd, onPlay, that;
         that = this;
         if (pastille) {
@@ -365,7 +370,9 @@
           } else {
             nicename = that.ordre_pays[window.pCount];
           }
-          that.openContryBox($('.pastille[data-nicename="' + nicename + '"]'), ismouseover);
+          if (!preventOpenWindow) {
+            that.openContryBox($('.pastille[data-nicename="' + nicename + '"]'), ismouseover);
+          }
         };
         onEnd = function(e) {
           window.pCount = window.pCount + 1 !== window.howlerBank.length ? window.pCount + 1 : 0;
@@ -578,7 +585,10 @@
 
     logoWhite() {
       var drawLogo;
-      $('#logowhite').removeClass('hide');
+      TweenLite.set('svg', {
+        visibility: 'visible'
+      });
+      MorphSVGPlugin.convertToPath('line');
       drawLogo = new TimelineMax({});
       return drawLogo.from("#logowhite #mask1_2_", 1, {
         drawSVG: 0,
@@ -1070,7 +1080,7 @@
       $('#popin').on('classChange', function() {
         console.log('popin change ' + ($(this).hasClass('hide')));
         if ($(this).hasClass('hide')) {
-          if (window.playerYT) {
+          if (window.playerYT.stopVideo) {
             window.playerYT.stopVideo();
             $('#popin .video-container').addClass('hide');
           }

@@ -734,6 +734,9 @@ p:empty {
   left: 0;
   background: #f00;
 }
+.hidden {
+  visibility: hidden;
+}
 .footer {
   background: #000;
   height: 40px;
@@ -926,6 +929,7 @@ body.hidefooter .footer {
   font-size: 0.62em;
   font-weight: 900;
   overflow: hidden;
+  line-height: 1em;
 }
 #block_help #warp_txt_help,
 #block_help #txt_help_disk,
