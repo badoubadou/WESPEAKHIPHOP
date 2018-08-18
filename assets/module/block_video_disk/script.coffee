@@ -83,10 +83,12 @@ class player_video
 		random = Math.floor(Math.random() * 4)
 		randomid = $('#idIntroYoutube input:eq('+random+')').val()
 
-		console.log 'bildIntroYoutube = '+randomid
+		console.log 'bildIntroYoutube = '+randomid+'. body hasClass onYouTubeIframeAPIReady : '+onYouTubeIframeAPIReady
 		if $('body').hasClass 'onYouTubeIframeAPIReady'
+			console.log 'playYoutubeVideo'
 			window.playYoutubeVideo(randomid)
 		else
+			console.log 'addClass waiting-for-youtube'
 			$('body').addClass 'waiting-for-youtube'
 			$('#idIntroYoutube').data('introid', randomid)
 
