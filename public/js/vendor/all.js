@@ -237,6 +237,7 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
         }
       };
       window.playYoutubeVideo = function(idVideo) {
+        console.log('playYoutubeVideo : id. : ' + idVideo);
         if (!window.playerYT) {
           console.log('playerYT not yet created ');
           return window.playerYT = new YT.Player('player_youtube', {
@@ -744,6 +745,7 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
         return that.skipIntro();
       });
       return $('.skip_intro').on('click', function() {
+        console.log('skip_intro');
         return window.closePopin();
       });
     }

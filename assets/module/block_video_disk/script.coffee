@@ -97,6 +97,7 @@ class player_video
 			that.skipIntro()
 
 		$('.skip_intro').on 'click', ->
+			console.log 'skip_intro'
 			window.closePopin()
 
 	skipIntro : ->

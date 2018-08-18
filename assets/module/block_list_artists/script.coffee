@@ -14,6 +14,7 @@ class player_youtube
 				ID
 
 		window.playYoutubeVideo = (idVideo)->
+			console.log 'playYoutubeVideo : id. : '+idVideo
 			if(!window.playerYT)
 				console.log 'playerYT not yet created '
 				window.playerYT = new (YT.Player)('player_youtube',
