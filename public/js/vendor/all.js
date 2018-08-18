@@ -267,9 +267,10 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
         }
       };
       window.onYouTubeIframeAPIReady = function() {
-        console.log('onYouTubeIframeAPIReady');
+        console.log('onYouTubeIframeAPIReady = ' + $('body').hasClass('waiting-for-youtube'));
         $('body').addClass('onYouTubeIframeAPIReady');
         if ($('body').hasClass('waiting-for-youtube')) {
+          console.log('should playYoutubeVideo');
           window.playYoutubeVideo($('#idIntroYoutube').data('introid'));
           $('body').removeClass('waiting-for-youtube');
         }

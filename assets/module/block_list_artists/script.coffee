@@ -41,10 +41,11 @@ class player_youtube
 				window.playerYT.loadVideoById idVideo
 
 		window.onYouTubeIframeAPIReady = ->
-			console.log 'onYouTubeIframeAPIReady'
+			console.log 'onYouTubeIframeAPIReady = '+$('body').hasClass 'waiting-for-youtube'
 			$('body').addClass 'onYouTubeIframeAPIReady'
 
 			if $('body').hasClass 'waiting-for-youtube'
+				console.log 'should playYoutubeVideo'
 				window.playYoutubeVideo($('#idIntroYoutube').data('introid'))
 				$('body').removeClass 'waiting-for-youtube'
 				# $('#mask_shield').addClass 'hide'
