@@ -1163,6 +1163,7 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
     }
 
     startSite(that) {
+      console.log('startSite');
       that.logoWhite();
       return that.bildIntroYoutube();
     }
@@ -1170,6 +1171,7 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
     bindEvents() {
       var previousRotation, rotationSnap, that, windowBlurred, windowFocused;
       that = this;
+      console.log('bindEvents player_video');
       if (!$('body').hasClass('doc-ready')) {
         $('body').on('doc-ready', function() {
           console.log('doc-ready');

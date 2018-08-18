@@ -257,11 +257,13 @@ class player_video
 			.to('#artists_info li:eq(28) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
 
 	startSite: (that)->
+		console.log 'startSite'
 		that.logoWhite()
 		that.bildIntroYoutube()
 
 	bindEvents: ->
 		that = @
+		console.log 'bindEvents player_video'
 		#------------------- DOC READY ------------------------#
 		if !$('body').hasClass 'doc-ready'
 			$('body').on 'doc-ready', ->
