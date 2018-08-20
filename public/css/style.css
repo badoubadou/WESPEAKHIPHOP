@@ -576,6 +576,9 @@ p:empty {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+body.onYouTubeIframeAPIReady.hidefooter .lds-dual-ring {
+  display: none;
+}
 .lds-dual-ring:not(.done) {
   display: block;
 }
