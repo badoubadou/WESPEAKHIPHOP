@@ -9,6 +9,8 @@ init = ->
 	block_pays =  new module.block_pays()
 	$('body').addClass 'doc-ready'
 	$('body').trigger 'doc-ready'
+	if window.isMobile()
+		player_video = new module.player_video()
 
 console.log 'start js'
 	

@@ -23,8 +23,6 @@ each video in videos
 	each cat in video.category
 		if cat.domain == 'pays'
 			- video.contry_nicename = cat['nicename']
-			// - video.sound_id = video.menu_order
-			// - console.log(cat['nicename']+' --- '+video.sound_id)
 			- video.contry = cat['#text']
 			- videos_by_contry.push(video)
 
@@ -76,10 +74,8 @@ html(lang= langage)
 
 		input#langage_short(type='hidden', value!= langage)
 
-
 		include ../module/block_header/index.pug	
 
-		// #mask_shield.absolute.layer_top.full_height.full_width
 		#main.absolute.full_height_minus_footer.full_width.full_height_minus_footer_minus_header_mobile
 			.lds-dual-ring
 			#mouse_over_bg.absolute.layer_2.full_height.full_width.hide

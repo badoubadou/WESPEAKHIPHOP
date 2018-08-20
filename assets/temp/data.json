@@ -1,4 +1,8 @@
 {
+	"ABOUT": {
+		"en": "Peace, Love, Unity and Having fun* !",
+		"fr": "Peace, Love, Unity and Having fun* ! Le message du pionnier Afrika Bambaataa, fondateur du mouvement pacifiste New Yorkais Zulu Nation, colonise le Bronx des années 1970, à contre courant de la violence des gangs. Une nouvelle culture est née. Son manifeste artistique et son mode d’expression : le hip hop.\n\nQuarante cinq ans plus tard, le rap – sa dimension musicale – a pris la planète d’assaut en devenant la musique la plus écoutée au monde. C’est vers l’Afrique, l’Europe, en Moyen-Orient et l’Asie qu’il faut à présent tendre l’oreille pour retrouver l’âme originelle du mouvement. \nVina Hiridjee et David Boisseaux-Chical ont tourné pendant dix ans, sur cinq continents et dans quinze langues, avant de réunir pour « We Speak Hip Hop » les voix de trente-quatre rappeurs engagés. Leur projet WESHH fait résonner par-delà les frontières les différences comme les valeurs communes de ces maîtres du beat et poètes virtuoses.\n« Transformer ses énergies négatives en énergies positives, réveiller les consciences. » Les ambassadeurs du hip-hop mondial ont repris à leur compte les idéaux originels du mouvement : oeuvrer pour une société solidaire, équitable, et non-violente où les sans-grades sortiraient des ghettos pour inventer un monde nouveau, plus ouvert, où leurs voix pourraient se faire entendre.\n Pour clôturer en beauté leur tournée planétaire, les réalisateurs de WESHH se sont associés avec La Place, centre culturel hop hop parisien unique. Au coeur de la capitale française, ils ont rencontré des acteurs emblématiques de la scène européenne et US. Artistes de la nouvelle génération, MC’s et DJ’s historiques ont confié à Vina Hiridjee et David Boisseaux-Chical leur rapport la mémoire du mouvement, leurs doutes et leurs espoirs pour l’avenir d’une culture bien vivante.\nWe speak hip hop !"
+	},
 	"TRANSLATION": {
 		"face_pays": {
 			"en": "Side : countries",
@@ -54,7 +58,7 @@
 		},
 		"skip_intro": {
 			"en": "skip intro",
-			"fr": "zapper l'intro"
+			"fr": "Passer l'intro"
 		},
 		"language_name": {
 			"en": "Français",
@@ -76,19 +80,19 @@
 	"VIDEOINTRO": {
 		"video": [
 			{
-				"fr": "HNOtwC4Qq44",
+				"fr": "f1yaEstJvhE",
 				"en": "HNOtwC4Qq44"
 			},
 			{
-				"fr": "HNOtwC4Qq44",
+				"fr": "ypiBHkJsXLw",
 				"en": "HNOtwC4Qq44"
 			},
 			{
-				"fr": "HNOtwC4Qq44",
+				"fr": "x-39wfwPjW8",
 				"en": "HNOtwC4Qq44"
 			},
 			{
-				"fr": "HNOtwC4Qq44",
+				"fr": "CMGLD8qsATs",
 				"en": "HNOtwC4Qq44"
 			}
 		]
@@ -99,7 +103,7 @@
 			"title": "wespeakhiphop",
 			"link": "http://wespeakhiphop.romza.eu",
 			"description": "Just another Romain Malauzat Illustration Sites site",
-			"pubDate": "Thu, 16 Aug 2018 14:29:32 +0000",
+			"pubDate": "Mon, 20 Aug 2018 10:03:06 +0000",
 			"language": "en-US",
 			"wxr_version": "1.2",
 			"base_site_url": "http://romza.eu/",
@@ -2435,7 +2439,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=sj20Aopq0qM"
+							"meta_value": "https://youtu.be/ZR3RLTH0RFM"
 						},
 						{
 							"meta_key": "description",
@@ -2447,7 +2451,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -2517,7 +2521,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=J1uxplLKS9M"
+							"meta_value": "https://youtu.be/J8OIK6yQXTQ"
 						},
 						{
 							"meta_key": "description",
@@ -2529,7 +2533,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -3025,11 +3029,11 @@
 					"postmeta": [
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=G3GaXP4IXCk"
+							"meta_value": "https://youtu.be/CZaVjbrX2os"
 						},
 						{
 							"meta_key": "tag_line",
-							"meta_value": "«&nbsp;tuer le rap c’est tuer l’espoir&nbsp;»"
+							"meta_value": "« tuer le rap c’est tuer l’espoir »"
 						},
 						{
 							"meta_key": "description",
@@ -3041,7 +3045,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -3107,7 +3111,7 @@
 					"postmeta": [
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=QgHOTrTipek"
+							"meta_value": "https://youtu.be/F_roPmENMT0"
 						},
 						{
 							"meta_key": "tag_line",
@@ -3123,7 +3127,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -3709,7 +3713,7 @@
 					"postmeta": [
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=a8UcZW0b5-w"
+							"meta_value": "https://www.youtube.com/watch?v=zXjg7kNldo4&ab_channel=WESPEAKHIPHOP"
 						},
 						{
 							"meta_key": "tag_line",
@@ -3725,7 +3729,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -3795,7 +3799,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://youtu.be/bW9mMOqARCY"
+							"meta_value": "https://youtu.be/3BgJEQ-qvcs"
 						},
 						{
 							"meta_key": "description",
@@ -3807,7 +3811,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -3877,7 +3881,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=uQAGoT60lDY"
+							"meta_value": "https://youtu.be/XIEGsmBy3sA"
 						},
 						{
 							"meta_key": "description",
@@ -3889,7 +3893,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -3959,7 +3963,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=ZYFfc9KW-ow"
+							"meta_value": "https://youtu.be/s_RH3Gg7isk"
 						},
 						{
 							"meta_key": "description",
@@ -3971,7 +3975,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -4041,7 +4045,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=XHcGBsmx9GM"
+							"meta_value": "https://youtu.be/RVW92_gTxn8"
 						},
 						{
 							"meta_key": "description",
@@ -4053,7 +4057,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -4451,7 +4455,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=LjXgbgP3G6Y"
+							"meta_value": "https://youtu.be/qRhikla2DWc"
 						},
 						{
 							"meta_key": "description",
@@ -4463,7 +4467,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -4611,7 +4615,7 @@
 					"postmeta": [
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=AWU-IHFYgfE"
+							"meta_value": "https://youtu.be/PS1Os5ebVHg"
 						},
 						{
 							"meta_key": "tag_line",
@@ -4627,7 +4631,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -4779,7 +4783,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=PYli3-sdRas"
+							"meta_value": "https://youtu.be/3zc7oF89gdg"
 						},
 						{
 							"meta_key": "description",
@@ -4791,7 +4795,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -4857,11 +4861,11 @@
 					"postmeta": [
 						{
 							"meta_key": "tag_line",
-							"meta_value": "«&nbsp;Colonel de la génération consciente&nbsp;»"
+							"meta_value": "« Colonel de la génération consciente »"
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=jzUVfBsgtSQ"
+							"meta_value": "https://youtu.be/DrIfD7Nayj8"
 						},
 						{
 							"meta_key": "description",
@@ -4873,7 +4877,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -4943,7 +4947,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=HyDQ9oZYxIc"
+							"meta_value": "https://youtu.be/9YPSSZpdkPw"
 						},
 						{
 							"meta_key": "description",
@@ -4955,7 +4959,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -5025,7 +5029,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=QXp5cYPUUYM"
+							"meta_value": "https://youtu.be/OTWR4h5KvaA"
 						},
 						{
 							"meta_key": "description",
@@ -5037,7 +5041,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -5107,7 +5111,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=hPDUVpBkZLs"
+							"meta_value": "https://youtu.be/cO5Ct5Td48g"
 						},
 						{
 							"meta_key": "description",
@@ -5119,7 +5123,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -5189,7 +5193,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=EQGu07aLjys"
+							"meta_value": "https://youtu.be/pL8Z1gqUL8o"
 						},
 						{
 							"meta_key": "description",
@@ -5201,7 +5205,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -5271,7 +5275,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=z240KTpmMFo"
+							"meta_value": "https://youtu.be/z240KTpmMFo"
 						},
 						{
 							"meta_key": "description",
@@ -5283,7 +5287,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -5353,7 +5357,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=Zmb4nX5bYEk"
+							"meta_value": "https://youtu.be/wf7uBHOkNKk"
 						},
 						{
 							"meta_key": "description",
@@ -5365,7 +5369,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -5435,7 +5439,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=1L4Zm1NYuK8"
+							"meta_value": "https://youtu.be/BR1U65GQs0A"
 						},
 						{
 							"meta_key": "description",
@@ -5447,7 +5451,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -5517,7 +5521,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=421pio73uDg"
+							"meta_value": "https://youtu.be/h8_iKYFNiy8"
 						},
 						{
 							"meta_key": "description",
@@ -5529,7 +5533,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",
@@ -5599,7 +5603,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": null
+							"meta_value": "https://youtu.be/d9JTP78gJI8"
 						},
 						{
 							"meta_key": "description",
@@ -5611,7 +5615,7 @@
 						},
 						{
 							"meta_key": "_edit_last",
-							"meta_value": "1"
+							"meta_value": "2"
 						},
 						{
 							"meta_key": "_video",

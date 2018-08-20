@@ -26,6 +26,12 @@ class popin
 				$($target).addClass('hide')
 				$('#popin').addClass('hide').trigger 'classChange'
 
+		#------------------- ABOUT  --------------------------#
+		$('#apropos_btn').on 'click': (e) ->
+			e.preventDefault()
+			showPopin('#popin #abouttxt')
+			
+
 		$('#about-btn, .block_contry .bio').on 'click':(e) ->
 			e.preventDefault()
 			if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
@@ -37,7 +43,8 @@ class popin
 				return
 			showPopin('#artist_info')
 			
-		$('#share').on 'click', ->
+		$('#share').on 'click': (e) ->
+			e.preventDefault()
 			showPopin('#shareinfo')
 
 		$('#close, #back').on 'click', ->

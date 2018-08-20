@@ -536,6 +536,13 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
             return $('#popin').addClass('hide').trigger('classChange');
           }
         };
+        //------------------- ABOUT  --------------------------#
+        $('#apropos_btn').on({
+          'click': function(e) {
+            e.preventDefault();
+            return showPopin('#popin #abouttxt');
+          }
+        });
         $('#about-btn, .block_contry .bio').on({
           'click': function(e) {
             var artistid;
@@ -551,8 +558,11 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
             return showPopin('#artist_info');
           }
         });
-        $('#share').on('click', function() {
-          return showPopin('#shareinfo');
+        $('#share').on({
+          'click': function(e) {
+            e.preventDefault();
+            return showPopin('#shareinfo');
+          }
         });
         return $('#close, #back').on('click', function() {
           return window.closePopin();
@@ -1328,14 +1338,17 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
   };
 
   init = function() {
-    var block_pays, flip_disk, player_youtube, popin;
+    var block_pays, flip_disk, player_video, player_youtube, popin;
     console.log('window load -> init');
     player_youtube = new module.player_youtube();
     flip_disk = new module.flip_disk();
     popin = new module.popin();
     block_pays = new module.block_pays();
     $('body').addClass('doc-ready');
-    return $('body').trigger('doc-ready');
+    $('body').trigger('doc-ready');
+    if (window.isMobile()) {
+      return player_video = new module.player_video();
+    }
   };
 
   console.log('start js');
