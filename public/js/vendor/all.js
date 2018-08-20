@@ -331,6 +331,85 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
 }).call(this);
 
 (function() {
+  var popin;
+
+  popin = (function() {
+    class popin {
+      constructor() {
+        this.bindEvents();
+      }
+
+      bindEvents() {
+        var showPopin;
+        showPopin = function($target) {
+          if ($('#popin').hasClass('hide')) {
+            $('#popin').removeClass('hide').trigger('classChange');
+          }
+          if ($($target).hasClass('hide')) {
+            return $($target).removeClass('hide');
+          } else {
+            $($target).addClass('hide');
+            return $('#popin').addClass('hide').trigger('classChange');
+          }
+        };
+        //------------------- ABOUT  --------------------------#
+        $('#apropos_btn').on({
+          'click': function(e) {
+            e.preventDefault();
+            return showPopin('#popin #abouttxt');
+          }
+        });
+        $('#about-btn, .block_contry .bio').on({
+          'click': function(e) {
+            var artistid;
+            e.preventDefault();
+            if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
+              artistid = $(this).data('artistid') - 1;
+              console.log('artistid =' + artistid);
+              $('#popin #artist_info .info').addClass('hide');
+              $('#popin #artist_info .info:eq(' + artistid + ')').removeClass('hide');
+              showPopin('#artist_info');
+              return;
+            }
+            return showPopin('#artist_info');
+          }
+        });
+        $('#share').on({
+          'click': function(e) {
+            e.preventDefault();
+            return showPopin('#shareinfo');
+          }
+        });
+        return $('#close, #back').on('click', function() {
+          return window.closePopin();
+        });
+      }
+
+    };
+
+    window.closePopin = function() {
+      if (!$('#popin').hasClass('hide')) {
+        console.log('remove');
+        $('#popin').addClass('hide').trigger('classChange');
+      }
+      if (!$('#shareinfo').hasClass('hide')) {
+        $('#shareinfo').addClass('hide');
+      }
+      if (!$('#artist_info').hasClass('hide')) {
+        $('#artist_info').addClass('hide');
+      }
+      return $('#popin').trigger('closePopin');
+    };
+
+    return popin;
+
+  }).call(this);
+
+  module.popin = popin;
+
+}).call(this);
+
+(function() {
   var block_pays;
 
   block_pays = (function() {
@@ -515,85 +594,6 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
 }).call(this);
 
 (function() {
-  var popin;
-
-  popin = (function() {
-    class popin {
-      constructor() {
-        this.bindEvents();
-      }
-
-      bindEvents() {
-        var showPopin;
-        showPopin = function($target) {
-          if ($('#popin').hasClass('hide')) {
-            $('#popin').removeClass('hide').trigger('classChange');
-          }
-          if ($($target).hasClass('hide')) {
-            return $($target).removeClass('hide');
-          } else {
-            $($target).addClass('hide');
-            return $('#popin').addClass('hide').trigger('classChange');
-          }
-        };
-        //------------------- ABOUT  --------------------------#
-        $('#apropos_btn').on({
-          'click': function(e) {
-            e.preventDefault();
-            return showPopin('#popin #abouttxt');
-          }
-        });
-        $('#about-btn, .block_contry .bio').on({
-          'click': function(e) {
-            var artistid;
-            e.preventDefault();
-            if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
-              artistid = $(this).data('artistid') - 1;
-              console.log('artistid =' + artistid);
-              $('#popin #artist_info .info').addClass('hide');
-              $('#popin #artist_info .info:eq(' + artistid + ')').removeClass('hide');
-              showPopin('#artist_info');
-              return;
-            }
-            return showPopin('#artist_info');
-          }
-        });
-        $('#share').on({
-          'click': function(e) {
-            e.preventDefault();
-            return showPopin('#shareinfo');
-          }
-        });
-        return $('#close, #back').on('click', function() {
-          return window.closePopin();
-        });
-      }
-
-    };
-
-    window.closePopin = function() {
-      if (!$('#popin').hasClass('hide')) {
-        console.log('remove');
-        $('#popin').addClass('hide').trigger('classChange');
-      }
-      if (!$('#shareinfo').hasClass('hide')) {
-        $('#shareinfo').addClass('hide');
-      }
-      if (!$('#artist_info').hasClass('hide')) {
-        $('#artist_info').addClass('hide');
-      }
-      return $('#popin').trigger('closePopin');
-    };
-
-    return popin;
-
-  }).call(this);
-
-  module.popin = popin;
-
-}).call(this);
-
-(function() {
   var player_video;
 
   player_video = class player_video {
@@ -649,6 +649,10 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
       }, 2.1);
       this.player = $('#player')[0];
       this.duration = 168.182;
+      if (this.player.duration && this.player.duration > 1) {
+        console.log('correct duration');
+        this.duration = this.player.duration;
+      }
       this.disk_speep = 0.39;
       this.sounddirection = 0;
       this.scratchBank = [];
@@ -741,7 +745,6 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
       that = this;
       random = Math.floor(Math.random() * 4);
       randomid = $('#idIntroYoutube input:eq(' + random + ')').val();
-      console.log('bildIntroYoutube = ' + randomid + '. body hasClass onYouTubeIframeAPIReady : ' + onYouTubeIframeAPIReady);
       if ($('body').hasClass('onYouTubeIframeAPIReady')) {
         console.log('playYoutubeVideo');
         window.playYoutubeVideo(randomid);

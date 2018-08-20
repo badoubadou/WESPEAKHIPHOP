@@ -20,11 +20,12 @@
 			line-height $height_footer
 			position relative
 			
-			&.seperateur:after
-				pseudo_full(#FFFFFF, 1, 50%, 1px)
-				vert_align_middle()
-				left auto
-				right 1px
+			@media $ipad
+				&.seperateur:after
+					pseudo_full(#FFFFFF, 1, 50%, 1px)
+					vert_align_middle()
+					left auto
+					right 1px
 
 			a
 				line-height $height_footer

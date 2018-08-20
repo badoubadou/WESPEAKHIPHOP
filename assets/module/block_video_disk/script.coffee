@@ -23,7 +23,9 @@ class player_video
 
 		@player = $('#player')[0]
 		@duration = 168.182
-		
+		if @player.duration && @player.duration > 1
+			console.log 'correct duration'
+			@duration = @player.duration
 		
 		@disk_speep = 0.39
 
@@ -83,7 +85,6 @@ class player_video
 		random = Math.floor(Math.random() * 4)
 		randomid = $('#idIntroYoutube input:eq('+random+')').val()
 
-		console.log 'bildIntroYoutube = '+randomid+'. body hasClass onYouTubeIframeAPIReady : '+onYouTubeIframeAPIReady
 		if $('body').hasClass 'onYouTubeIframeAPIReady'
 			console.log 'playYoutubeVideo'
 			window.playYoutubeVideo(randomid)

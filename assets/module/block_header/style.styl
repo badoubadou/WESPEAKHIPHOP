@@ -1,8 +1,12 @@
 .header
 	@media $mobile_et_ipad
+		transition background-color 2s 
 		width 100%
 		position absolute 
 		background $yellow
+		
+		.hidefooter &
+			background-color #000000
 		
 	@media $mobile
 		height $height_header_info_mobile
@@ -30,12 +34,33 @@
 	@media $mobile
 		left 20px
 		vert_align_middle()
+		&#logowhite
+			top 0
+			left 0
+			width 100%
+			height $height_header_info_mobile
+			position fixed
+			transform none
+			svg
+				vert_align_middle()
+				left 20px
+		
 		svg
 			height $height_header_info_mobile * .5
 
 	@media $ipad
 		left 30px
-		top 30px
+		vert_align_middle()
+		&#logowhite
+			top 0
+			left 0
+			width 100%
+			height $height_header_info_ipad
+			position fixed
+			transform none
+			svg
+				vert_align_middle()
+				left 30px
 		svg
 			height $height_header_info_ipad * .5
 	

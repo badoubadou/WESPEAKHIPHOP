@@ -67,6 +67,11 @@
 		li
 			border-left 2px solid $light-yellow
 			padding-left 20px
+			transition opacity 1s
+			.hidefooter &
+				border-left none
+				opacity 0
+				
 			vert_align_middle()
 			.name
 			.date
