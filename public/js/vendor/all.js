@@ -602,7 +602,6 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
       console.log('metadata video loaded ---------------------- start player_video ');
       
       // @bindEvents() # bind event is now after video is loaded
-      this.duration = 0;
       this.timelineKnob = new TimelineMax({
         paused: true
       });
@@ -649,7 +648,7 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
         opacity: 0
       }, 2.1);
       this.player = $('#player')[0];
-      this.duration = this.player.duration;
+      this.duration = 168.182;
       this.disk_speep = 0.39;
       this.sounddirection = 0;
       this.scratchBank = [];

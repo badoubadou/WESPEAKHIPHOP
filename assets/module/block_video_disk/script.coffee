@@ -2,7 +2,6 @@ class player_video
 	constructor: (@$container) ->
 		console.log 'metadata video loaded ---------------------- start player_video ' 
 		# @bindEvents() # bind event is now after video is loaded
-		@duration = 0
 		@timelineKnob = new TimelineMax(paused: true)
 		@timelineInfo = new TimelineMax(paused: true)
 		@timelinePlatine = new TimelineMax(paused: true)
@@ -23,7 +22,8 @@ class player_video
 			.from('#about-btn', .6 ,{opacity:0}, 2.1 )
 
 		@player = $('#player')[0]
-		@duration = @player.duration
+		@duration = 168.182
+		
 		
 		@disk_speep = 0.39
 
