@@ -31,7 +31,6 @@ class popin
 			e.preventDefault()
 			showPopin('#popin #abouttxt')
 			
-
 		$('#about-btn, .block_contry .bio').on 'click':(e) ->
 			e.preventDefault()
 			if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'

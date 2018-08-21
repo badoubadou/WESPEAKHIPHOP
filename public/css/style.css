@@ -78,7 +78,7 @@ body #main {
 .video-container embed {
   width: 100vw;
   height: 56.25vw;
-  background: #ffc0cb;
+  background: #000;
   max-height: calc(100vh - 40px);
   max-width: 160vh;
   margin: auto;
@@ -894,7 +894,22 @@ body.hidefooter .footer {
   top: 10px;
   position: relative;
 }
+.logoWSH#logowhite {
+  display: none;
+}
 @media screen and (max-width: 61.9em) {
+  .logoWSH {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    visibility: hidden;
+  }
+  .hidefooter .logoWSH {
+    visibility: visible;
+  }
+  .hidefooter .logoWSH svg {
+    width: auto;
+  }
 }
 @media screen and (max-width: 47.9em), screen and (max-height: 420px) {
   .logoWSH {
@@ -2466,6 +2481,8 @@ body.hidefooter .footer {
   position: absolute;
   top: 10px;
   right: 10px;
+  margin-right: 0;
+  padding-right: 0;
 }
 body.hidefooter #popin #close {
   display: none;

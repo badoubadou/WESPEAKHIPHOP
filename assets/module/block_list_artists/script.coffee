@@ -3,6 +3,7 @@ class player_youtube
 		@bindEvents()
 
 	bindEvents : ->
+		that = @
 		YouTubeGetID = (url) ->
 			ID = ''
 			url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/)
@@ -62,6 +63,8 @@ class player_youtube
 				if !$('#artist_info').hasClass 'hide'
 					$('#artist_info').addClass 'hide'
 				$('.lds-dual-ring').removeClass 'done'
+				window.currentArtist = $('#artist_info .info:not(.hide)').index()
+			
 				window.playYoutubeVideo(idyoutube)
 				return
 		
@@ -70,17 +73,26 @@ class player_youtube
 			event.target.playVideo()
 			return
 
+		window.updateTxtInfoMobile = (id) ->
+			# --------- video start playing
+			TweenMax.to('#artists_info li .warper', 0.5, { alpha: 0 , y:-30})
+			TweenMax.to('#artists_info li:eq('+window.currentArtist+') .warper', 0.5, { alpha: 1 , y:0}, 0.5)
+
+
 		window.onPlayerStateChange = (event) ->
-			if event.data == YT.PlayerState.PLAYING and !done
+			if event.data == YT.PlayerState.PLAYING and !done # --------- video start playing
 				$('#zone_youtube').addClass 'play'
 				$('#popin').removeClass('hide').trigger 'classChange'
 				$('.lds-dual-ring').addClass 'done'
 				$('#popin .video-container').removeClass 'hide'
-				# $('#mask_shield').addClass 'hide'
+
 				if window.pauseSound
 					window.pauseSound()
 
-			else if event.data == YT.PlayerState.ENDED
+				if window.isMobile()
+					window.updateTxtInfoMobile($('#artist_info info:not(.hide)').index())
+			
+			else if event.data == YT.PlayerState.ENDED # --------- video start playing
 				window.closePopin()
 				console.log 'youtube is done'
 

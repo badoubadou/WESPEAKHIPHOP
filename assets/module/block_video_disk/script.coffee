@@ -259,7 +259,7 @@ class player_video
 
 	startSite: (that)->
 		console.log 'startSite'
-		that.logoWhite()
+		# that.logoWhite()
 		that.bildIntroYoutube()
 
 	bindEvents: ->
