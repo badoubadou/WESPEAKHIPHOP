@@ -856,7 +856,7 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
       };
       duration_sequence = this.duration / 28;
       sequence = '+=' + (duration_sequence - 1);
-      this.timelineKnob = TweenMax.to('#knob, #player', this.duration, {
+      this.timelineKnob = TweenMax.to('#knob', this.duration, {
         ease: Linear.easeNone,
         rotation: 360,
         repeat: -1,
@@ -1307,7 +1307,8 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
         throwProps: true,
         onDragStart: function() {
           $('#knob').addClass('drag');
-          return that.timelineKnob.kill();
+          that.timelineKnob.kill();
+          return console.log('onDragStart');
         },
         onDrag: function() {
           var dir, roundedSpeed, speed, yourDraggable;
@@ -1317,13 +1318,15 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
           roundedSpeed = Number(speed.toFixed(4));
           // console.log ' dir : '+dir + ' speed : '+ roundedSpeed
           previousRotation = yourDraggable.rotation;
-          return that.changeCurrentTime(this.rotation % 360, that.player, dir, roundedSpeed);
+          that.changeCurrentTime(this.rotation % 360, that.player, dir, roundedSpeed);
+          return console.log('onDrag');
         },
         onThrowUpdate: function() {
-          return that.changeCurrentTime(this.rotation % 360, that.player, 'clockwise', that.disk_speep);
+          that.changeCurrentTime(this.rotation % 360, that.player, 'clockwise', that.disk_speep);
+          return console.log('onThrowUpdate');
         },
         onThrowComplete: function() {
-          that.timelineKnob = TweenMax.fromTo('#knob, #player', that.duration, {
+          that.timelineKnob = TweenMax.fromTo('#knob', that.duration, {
             rotation: this.rotation % 360
           }, {
             ease: Linear.easeNone,
@@ -1333,7 +1336,8 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
           that.player.play();
           that.scratchBank[0].stop();
           that.scratchBank[1].stop();
-          return $('#knob').removeClass('drag');
+          $('#knob').removeClass('drag');
+          return console.log('onThrowComplete');
         },
         snap: function(endValue) {
           return Math.round(endValue / rotationSnap) * rotationSnap;
