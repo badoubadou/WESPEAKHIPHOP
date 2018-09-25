@@ -346,6 +346,85 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
 }).call(this);
 
 (function() {
+  var popin;
+
+  popin = (function() {
+    class popin {
+      constructor() {
+        this.bindEvents();
+      }
+
+      bindEvents() {
+        var showPopin;
+        showPopin = function($target) {
+          if ($('#popin').hasClass('hide')) {
+            $('#popin').removeClass('hide').trigger('classChange');
+          }
+          if ($($target).hasClass('hide')) {
+            return $($target).removeClass('hide');
+          } else {
+            $($target).addClass('hide');
+            return $('#popin').addClass('hide').trigger('classChange');
+          }
+        };
+        //------------------- ABOUT  --------------------------#
+        $('#apropos_btn').on({
+          'click': function(e) {
+            e.preventDefault();
+            return showPopin('#popin #abouttxt');
+          }
+        });
+        $('#about-btn, .block_contry .bio').on({
+          'click': function(e) {
+            var artistid;
+            e.preventDefault();
+            if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
+              artistid = $(this).data('artistid') - 1;
+              console.log('artistid =' + artistid);
+              $('#popin #artist_info .info').addClass('hide');
+              $('#popin #artist_info .info:eq(' + artistid + ')').removeClass('hide');
+              showPopin('#artist_info');
+              return;
+            }
+            return showPopin('#artist_info');
+          }
+        });
+        $('#share').on({
+          'click': function(e) {
+            e.preventDefault();
+            return showPopin('#shareinfo');
+          }
+        });
+        return $('#close, #back').on('click', function() {
+          return window.closePopin();
+        });
+      }
+
+    };
+
+    window.closePopin = function() {
+      if (!$('#popin').hasClass('hide')) {
+        console.log('remove');
+        $('#popin').addClass('hide').trigger('classChange');
+      }
+      if (!$('#shareinfo').hasClass('hide')) {
+        $('#shareinfo').addClass('hide');
+      }
+      if (!$('#artist_info').hasClass('hide')) {
+        $('#artist_info').addClass('hide');
+      }
+      return $('#popin').trigger('closePopin');
+    };
+
+    return popin;
+
+  }).call(this);
+
+  module.popin = popin;
+
+}).call(this);
+
+(function() {
   var block_pays;
 
   block_pays = (function() {
@@ -526,85 +605,6 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
   
   // @buildContrySound(pastille)
   module.block_pays = block_pays;
-
-}).call(this);
-
-(function() {
-  var popin;
-
-  popin = (function() {
-    class popin {
-      constructor() {
-        this.bindEvents();
-      }
-
-      bindEvents() {
-        var showPopin;
-        showPopin = function($target) {
-          if ($('#popin').hasClass('hide')) {
-            $('#popin').removeClass('hide').trigger('classChange');
-          }
-          if ($($target).hasClass('hide')) {
-            return $($target).removeClass('hide');
-          } else {
-            $($target).addClass('hide');
-            return $('#popin').addClass('hide').trigger('classChange');
-          }
-        };
-        //------------------- ABOUT  --------------------------#
-        $('#apropos_btn').on({
-          'click': function(e) {
-            e.preventDefault();
-            return showPopin('#popin #abouttxt');
-          }
-        });
-        $('#about-btn, .block_contry .bio').on({
-          'click': function(e) {
-            var artistid;
-            e.preventDefault();
-            if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
-              artistid = $(this).data('artistid') - 1;
-              console.log('artistid =' + artistid);
-              $('#popin #artist_info .info').addClass('hide');
-              $('#popin #artist_info .info:eq(' + artistid + ')').removeClass('hide');
-              showPopin('#artist_info');
-              return;
-            }
-            return showPopin('#artist_info');
-          }
-        });
-        $('#share').on({
-          'click': function(e) {
-            e.preventDefault();
-            return showPopin('#shareinfo');
-          }
-        });
-        return $('#close, #back').on('click', function() {
-          return window.closePopin();
-        });
-      }
-
-    };
-
-    window.closePopin = function() {
-      if (!$('#popin').hasClass('hide')) {
-        console.log('remove');
-        $('#popin').addClass('hide').trigger('classChange');
-      }
-      if (!$('#shareinfo').hasClass('hide')) {
-        $('#shareinfo').addClass('hide');
-      }
-      if (!$('#artist_info').hasClass('hide')) {
-        $('#artist_info').addClass('hide');
-      }
-      return $('#popin').trigger('closePopin');
-    };
-
-    return popin;
-
-  }).call(this);
-
-  module.popin = popin;
 
 }).call(this);
 
@@ -1305,26 +1305,41 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
       Draggable.create('#knob', {
         type: 'rotation',
         throwProps: true,
-        onDragStart: function() {
-          $('#knob').addClass('drag');
-          that.timelineKnob.kill();
-          return console.log('onDragStart');
+        // onDragStart: ->
+        // 	$('#knob').addClass 'drag'
+        // 	that.timelineKnob.kill()
+        // 	console.log 'onDragStart'
+        // onPress: ->
+        // 	console.log 'onPress'
+        // 	$('#knob').addClass 'drag'
+        onRelease: function() {
+          if (!$('#knob').hasClass('drag')) {
+            that.timelineKnob = TweenMax.fromTo('#knob', that.duration, {
+              rotation: this.rotation % 360
+            }, {
+              ease: Linear.easeNone,
+              rotation: (this.rotation % 360) + 360,
+              repeat: -1
+            });
+            return $('#knob').removeClass('drag');
+          }
         },
         onDrag: function() {
           var dir, roundedSpeed, speed, yourDraggable;
+          $('#knob').addClass('drag');
           yourDraggable = Draggable.get('#knob');
           dir = yourDraggable.rotation - previousRotation > 0 ? 'clockwise' : 'counter-clockwise';
           speed = Number(Math.abs(yourDraggable.rotation - previousRotation));
           roundedSpeed = Number(speed.toFixed(4));
           // console.log ' dir : '+dir + ' speed : '+ roundedSpeed
           previousRotation = yourDraggable.rotation;
-          that.changeCurrentTime(this.rotation % 360, that.player, dir, roundedSpeed);
-          return console.log('onDrag');
+          return that.changeCurrentTime(this.rotation % 360, that.player, dir, roundedSpeed);
         },
+        // console.log 'onDrag'
         onThrowUpdate: function() {
-          that.changeCurrentTime(this.rotation % 360, that.player, 'clockwise', that.disk_speep);
-          return console.log('onThrowUpdate');
+          return that.changeCurrentTime(this.rotation % 360, that.player, 'clockwise', that.disk_speep);
         },
+        // console.log 'onThrowUpdate'
         onThrowComplete: function() {
           that.timelineKnob = TweenMax.fromTo('#knob', that.duration, {
             rotation: this.rotation % 360
@@ -1336,9 +1351,9 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
           that.player.play();
           that.scratchBank[0].stop();
           that.scratchBank[1].stop();
-          $('#knob').removeClass('drag');
-          return console.log('onThrowComplete');
+          return $('#knob').removeClass('drag');
         },
+        // console.log 'onThrowComplete'
         snap: function(endValue) {
           return Math.round(endValue / rotationSnap) * rotationSnap;
         }

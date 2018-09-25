@@ -363,11 +363,21 @@ class player_video
 		Draggable.create '#knob',
 			type: 'rotation'
 			throwProps: true
-			onDragStart: ->
-				$('#knob').addClass 'drag'
-				that.timelineKnob.kill()
-				console.log 'onDragStart'
+			# onDragStart: ->
+			# 	$('#knob').addClass 'drag'
+			# 	that.timelineKnob.kill()
+			# 	console.log 'onDragStart'
+			# onPress: ->
+			# 	console.log 'onPress'
+			# 	$('#knob').addClass 'drag'
+			
+			onRelease: ->
+				if(!$('#knob').hasClass 'drag')
+					that.timelineKnob =  TweenMax.fromTo('#knob', that.duration, {rotation:(this.rotation % 360)},{ease:Linear.easeNone, rotation: ((this.rotation % 360)+360), repeat:-1})
+					$('#knob').removeClass 'drag'
+
 			onDrag: ->
+				$('#knob').addClass 'drag'
 				yourDraggable = Draggable.get('#knob')
 				dir = if yourDraggable.rotation - previousRotation > 0 then 'clockwise' else 'counter-clockwise'
 				speed = Number(Math.abs(yourDraggable.rotation - previousRotation))
@@ -375,11 +385,11 @@ class player_video
 				# console.log ' dir : '+dir + ' speed : '+ roundedSpeed
 				previousRotation = yourDraggable.rotation
 				that.changeCurrentTime(this.rotation % 360, that.player, dir, roundedSpeed)
-				console.log 'onDrag'
+				# console.log 'onDrag'
 			
 			onThrowUpdate: ->
 				that.changeCurrentTime(this.rotation % 360, that.player, 'clockwise', that.disk_speep)
-				console.log 'onThrowUpdate'
+				# console.log 'onThrowUpdate'
 			
 			onThrowComplete: ->
 				that.timelineKnob =  TweenMax.fromTo('#knob', that.duration, {rotation:(this.rotation % 360)},{ease:Linear.easeNone, rotation: ((this.rotation % 360)+360), repeat:-1})
@@ -387,9 +397,8 @@ class player_video
 				that.scratchBank[0].stop()
 				that.scratchBank[1].stop()
 				$('#knob').removeClass 'drag'
-				console.log 'onThrowComplete'
+				# console.log 'onThrowComplete'
 				
-
 			snap: (endValue) ->
 				Math.round(endValue / rotationSnap) * rotationSnap
 		return 
