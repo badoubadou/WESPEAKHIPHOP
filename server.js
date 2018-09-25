@@ -1,24 +1,23 @@
-// var http = require("http"),
-//     port = process.env.PORT || 1881;  
-// var server = http.createServer(function(request,response){  
-//     response.writeHeader(200, {"Content-Type": "text/plain"});  
-//     response.write("Hello HTTP!");  
-//     response.end();  
-// }); 
-// server.listen(port);  
-// console.log("Server Running on "+port+".\nLaunch http://localhost:"+port);
-
 var http = require('http');
 var fs = require('fs');
 var path = require('path');
+var url = require('url');
 var port = process.env.PORT || 1881; 
 
 http.createServer(function (request, response) {
-    console.log('request starting...');
-    // var filePath = '.' + request.url;
-    // if (filePath == './')
-    //     filePath = './public/index.html';
-    var filePath = './public/' + request.url;
+    var q = url.parse(request.url, true);
+    console.log('request starting...'+q);
+    var urlStr = 'http://' + request.headers.host + request.url,
+    parsedURL = url.parse( urlStr ,true );
+
+    console.log(request.headers.host+'  ????');
+    var filePath = '.' + request.url;
+    if (filePath == './')
+        if (request.headers.host == 'wespeakhiphop.com')
+            filePath = './public/index_en.html';
+        else
+            filePath = './public/index.html';
+    // var filePath = './public/' + request.url;
 
     var extname = path.extname(filePath);
     var contentType = 'text/html';

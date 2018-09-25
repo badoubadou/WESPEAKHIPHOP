@@ -25,6 +25,7 @@
     "gulp-s3-upload": "^1.7.0",
     "gulp-tap": "^1.0.1",
     "gulp-util": "^3.0.8",
+    "i18n": "^0.8.3",
     "run-sequence": "^2.2.1",
     "xmlpug": "^3.0.0"
   },
