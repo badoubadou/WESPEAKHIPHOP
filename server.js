@@ -13,7 +13,7 @@ http.createServer(function (request, response) {
     console.log(request.headers.host+'  ????');
     var filePath = '.' + request.url;
     if (filePath == './')
-        if ((request.headers.host == 'www.wespeakhiphop.com') || (request.headers.host == 'wespeakhiphop.com') || (request.headers.host == 'wespeakhiphop') )
+        if ((request.headers.host == 'www.wespeakhiphop.com') || (request.headers.host == 'wespeakhiphop.com'))
             filePath = './public/index_en.html';
         else
             filePath = './public/index.html';
