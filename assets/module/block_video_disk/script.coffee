@@ -13,13 +13,13 @@ class player_video
 			.from('#bg_disk', 2 ,{opacity:0, scale: 0, ease:Power1.easeOut}, 1 )
 			.from('#platine', 1 ,{opacity:0}, 1)
 			.staggerFrom('#list_artists li', .3 ,{opacity:0}, 0.05, 1.5)
-			.from('#main_footer', .3 ,{y:40}, 2 )
-			.add( @showFooter, 2 )
 			.from('#smallmap', .3 ,{opacity:0}, 2 )
 			.from('#ico', .6 ,{opacity:0}, 2 )
 			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut}, 2.1 )
 			.from('#play-video-btn', .6 ,{opacity:0}, 2 )
 			.from('#about-btn', .6 ,{opacity:0}, 2.1 )
+			.from('#main_footer', .3 ,{y:40}, 2.5 )
+			.add( @showFooter, 2.5 )
 
 		@player = $('#player')[0]
 		@duration = 168.182
@@ -37,11 +37,6 @@ class player_video
 		@scratchBank.push new Howl(
 				src: [ 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/video_reverse.mp3' ]
 				buffer: true)
-
-		# @id_forward = @scratchBank[0].play()
-		# @scratchBank[0].stop()
-		# @id_reverse = @scratchBank[1].play()
-		# @scratchBank[1].stop()
 		
 		$('#player').addClass('ready')
 		@loadMap()
@@ -61,50 +56,10 @@ class player_video
 			$( "#smallmap" ).append( div.innerHTML )
 			return
 
-	logoWhite : ->
-		TweenLite.set 'svg', visibility: 'visible'
-		MorphSVGPlugin.convertToPath 'line'
-		drawLogo = new TimelineMax({});
-		drawLogo.from("#logowhite #mask1_2_", 1, {drawSVG:0, ease:Power1.easeInOut} )
-			.from("#logowhite #mask2", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.1 )
-			.from("#logowhite #mask3", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.2 )
-			.from("#logowhite #mask4", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.3 )
-			.from("#logowhite #mask5", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.4 )
-			.from("#logowhite #mask6", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.5 )
-			.from("#logowhite #mask7", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.6 )
-			.from("#logowhite #mask8", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.7 )
-			.from("#logowhite #mask9", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.8 )
-			.from("#logowhite #mask10", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.9 )
-			.from("#logowhite #mask11", 1.3, {drawSVG:0, ease:Power1.easeInOut},1 )
-			.from("#logowhite #mask12", 1.3, {drawSVG:0, ease:Power1.easeInOut},1.1 )
-			.from("#logowhite #mask13", 1.3, {drawSVG:0, ease:Power1.easeInOut},1.2 )
-			
-
-	bildIntroYoutube : ->
-		that = @
-		random = Math.floor(Math.random() * 4)
-		randomid = $('#idIntroYoutube input:eq('+random+')').val()
-
-		if $('body').hasClass 'onYouTubeIframeAPIReady'
-			console.log 'playYoutubeVideo'
-			window.playYoutubeVideo(randomid)
-		else
-			console.log 'addClass waiting-for-youtube'
-			$('body').addClass 'waiting-for-youtube'
-			$('#idIntroYoutube').data('introid', randomid)
-
-		$('#popin').on 'closePopin', ->
-			console.log 'close popin'
-			that.skipIntro()
-
-		$('.skip_intro').on 'click', ->
-			console.log 'skip_intro'
-			window.closePopin()
-
 	skipIntro : ->
 		@player.play()
 		@timelineDisk.play()
-		$('#popin').off 'closePopin'
+		$('#popin').off 'endIntro'
 
 	changeCurrentTime: (@$deg, @$myplayer, dir, speed)->
 		if(@$deg<0)
@@ -257,23 +212,15 @@ class player_video
 			.fromTo('#artists_info li:eq(28) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
 			.to('#artists_info li:eq(28) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
 
-	startSite: (that)->
-		console.log 'startSite'
-		# that.logoWhite()
-		that.bildIntroYoutube()
-
 	bindEvents: ->
 		that = @
 		console.log 'bindEvents player_video'
-		#------------------- DOC READY ------------------------#
-		if !$('body').hasClass 'doc-ready'
-			$('body').on 'doc-ready', ->
-				console.log 'doc-ready'
-				that.startSite(that)
-		else
-			console.log 'doc already ready'
-			that.startSite(that)
-			
+
+		#------------------- ENDINTRO -------------------#
+		$('#popin').on 'endIntro', ->
+			console.log 'end intro'
+			that.skipIntro()
+
 		#------------------- FOOTER LISTNER -------------------#
 		$('#mode_switcher').on 'switch_to_face_pays', ->
 			if that.player
@@ -363,14 +310,6 @@ class player_video
 		Draggable.create '#knob',
 			type: 'rotation'
 			throwProps: true
-			# onDragStart: ->
-			# 	$('#knob').addClass 'drag'
-			# 	that.timelineKnob.kill()
-			# 	console.log 'onDragStart'
-			# onPress: ->
-			# 	console.log 'onPress'
-			# 	$('#knob').addClass 'drag'
-			
 			onRelease: ->
 				if(!$('#knob').hasClass 'drag')
 					that.timelineKnob =  TweenMax.fromTo('#knob', that.duration, {rotation:(this.rotation % 360)},{ease:Linear.easeNone, rotation: ((this.rotation % 360)+360), repeat:-1})
@@ -382,14 +321,11 @@ class player_video
 				dir = if yourDraggable.rotation - previousRotation > 0 then 'clockwise' else 'counter-clockwise'
 				speed = Number(Math.abs(yourDraggable.rotation - previousRotation))
 				roundedSpeed = Number(speed.toFixed(4))
-				# console.log ' dir : '+dir + ' speed : '+ roundedSpeed
 				previousRotation = yourDraggable.rotation
 				that.changeCurrentTime(this.rotation % 360, that.player, dir, roundedSpeed)
-				# console.log 'onDrag'
 			
 			onThrowUpdate: ->
 				that.changeCurrentTime(this.rotation % 360, that.player, 'clockwise', that.disk_speep)
-				# console.log 'onThrowUpdate'
 			
 			onThrowComplete: ->
 				that.timelineKnob =  TweenMax.fromTo('#knob', that.duration, {rotation:(this.rotation % 360)},{ease:Linear.easeNone, rotation: ((this.rotation % 360)+360), repeat:-1})
@@ -397,7 +333,6 @@ class player_video
 				that.scratchBank[0].stop()
 				that.scratchBank[1].stop()
 				$('#knob').removeClass 'drag'
-				# console.log 'onThrowComplete'
 				
 			snap: (endValue) ->
 				Math.round(endValue / rotationSnap) * rotationSnap

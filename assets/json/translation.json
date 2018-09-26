@@ -59,6 +59,14 @@
         "en": "Français",
         "fr": "English"
     },
+    "language_btn_fr": {
+        "en": "Français",
+        "fr": "French"
+    },
+    "language_btn_en": {
+        "en": "English",
+        "fr": "Anglais"
+    },
     "language_name_short": {
         "en": "Fr",
         "fr": "En"
@@ -70,6 +78,9 @@
     "help_map": {
         "en": "Choose your destination and go on a trip around the world",
         "fr": "Choisissez votre destination, et embarquez pour un tour du monde."
+    },
+    "txt_intro": {
+        "en": "Choose your language",
+        "fr": "Choisissez votre langue"
     }
-    
 }

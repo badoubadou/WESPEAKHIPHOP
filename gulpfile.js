@@ -54,6 +54,7 @@ var vendor = [
     'assets/coffee/vendor/MorphSVGPlugin.min.js',
     'assets/coffee/vendor/ThrowPropsPlugin.min.js',
     'assets/coffee/vendor/howler.core.min.js',
+    'assets/coffee/vendor/plyr.min.js',
     'public/js/base.min.js',
     // 'assets/coffee/vendor/wad.min.js'
 ];
