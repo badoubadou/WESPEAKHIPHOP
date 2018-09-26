@@ -5,6 +5,7 @@ var rename = require('gulp-rename');
 var wrap   = require('gulp-wrap');
 var nib    = require('nib');
 var stylus = require('gulp-stylus');
+var sass = require('gulp-sass');
 var pug    = require('gulp-pug');
 var runSequence = require('run-sequence');
 var replace = require('gulp-replace');
@@ -38,6 +39,7 @@ const stripDebug = require('gulp-strip-debug');
 
 var pugfile = ['assets/pug/*.pug', '!assets/pug/layout.pug'];
 var stylfile = ['assets/style/**/*.styl', 'assets/module/**/*.styl'];
+var cssfile = ['assets/vendor/*.css', 'public/css/style.css'];
 var jsfile = ['assets/coffee/module.coffee', 'assets/module/**/*.coffee', 'assets/coffee/base.coffee'];
 var misc = ['assets/image/**'];
 var imageminussvg = ['assets/image/**', '!assets/image/*.svg'];
@@ -76,8 +78,6 @@ gulp.task('removelog', () =>
         .pipe(gulp.dest('public/js/base-clean'))
 );
 
-
- 
 gulp.task('uglify', function () {
     return gulp.src('public/js/base.js')
         .pipe(stripDebug())
@@ -85,15 +85,6 @@ gulp.task('uglify', function () {
         .pipe(uglify(/* options */))
         .pipe(gulp.dest('public/js/base-clean'));
 });
-
- 
-gulp.task('minifycss', function () {
-    return gulp.src('public/css/style.css')
-        .pipe(rename('style.min.css'))
-        .pipe(cleanCSS())
-        .pipe(gulp.dest('public/css/'));
-});
-
 
 gulp.task('concatjs', function() {
     gulp.src(vendor)
@@ -107,14 +98,6 @@ gulp.task('clean:js', function () {
   ]);
 });
 
-
-gulp.task('clean:css', function () {
-  return del([
-    'public/css/*.css'
-  ]);
-});
-
-
 gulp.task('coffee', function(done) {
     runSequence('clean:js', 'makecoffee', function() {
         gutil.log('clean:js & makecoffee finished ');
@@ -126,6 +109,27 @@ gulp.task('coffee', function(done) {
     });
 });
 
+ 
+gulp.task('minifycss', ['concatcss'], function () {
+    return gulp.src('public/css/all.css')
+        .pipe(rename('style.min.css'))
+        .pipe(cleanCSS())
+        .pipe(gulp.dest('public/css/'));
+});
+
+gulp.task('concatcss', function() {
+    gutil.log('start concatcss');
+    gulp.src(cssfile)
+        .pipe(concat('all.css'))
+        .pipe(gulp.dest(dest+'css/'));
+});
+
+gulp.task('clean:css', function () {
+  return del([
+    'public/css/*.css'
+  ]);
+});
+
 gulp.task('stylus', function() {
     return gulp.src('assets/style/*.styl')
         .pipe(stylus({
@@ -135,6 +139,7 @@ gulp.task('stylus', function() {
         .pipe(gulp.dest(dest+'css'))
         .pipe(notify({ message: 'CSS task complete' }));
 });
+
 
 gulp.task('css', ['stylus'], function (done) {
     gutil.log('stylus finished ');

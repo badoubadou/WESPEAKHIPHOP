@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "gulp-replace": "^1.0.0",
+    "gulp-sass": "^4.0.1",
     "gulp-strip-debug": "^3.0.0",
     "gulp-uglify-es": "^1.0.4"
   }

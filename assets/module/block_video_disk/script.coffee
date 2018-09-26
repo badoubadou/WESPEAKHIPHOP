@@ -234,10 +234,6 @@ class player_video
 		$('#popin').on 'classChange', ->
 			console.log 'popin change '+($(this).hasClass 'hide')
 			if $(this).hasClass 'hide'
-				if window.playerYT.stopVideo
-					window.playerYT.stopVideo()
-					$('#popin .video-container').addClass 'hide'
-				
 				console.log 'contrys : '+($("#mode_switcher [data-face='face_pays']").hasClass 'selected')
 				if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
 					return

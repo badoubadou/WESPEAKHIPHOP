@@ -4,7 +4,6 @@ class popin
 
 	window.closePopin= ->
 		if(!$('#popin').hasClass('hide'))
-			console.log 'remove'
 			$('#popin').addClass('hide').trigger 'classChange'
 		
 		if(!$('#shareinfo').hasClass('hide'))
@@ -14,6 +13,7 @@ class popin
 			$('#artist_info').addClass('hide')
 
 		$('#popin').trigger 'closePopin'
+		console.log 'close popin'
 
 	bindEvents : ->
 		showPopin = ($target)->

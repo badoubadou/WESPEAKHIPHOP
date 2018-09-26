@@ -534,7 +534,8 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
 
     playYTisReady() {
       $('.lds-dual-ring').addClass('done');
-      return $('.intro_page .hidden').removeClass('hidden');
+      $('.intro_page .hidden').removeClass('hidden');
+      return this.playerYT.play();
     }
 
     bildIntroYoutube() {
@@ -600,8 +601,21 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
       return that.logoWhite();
     }
 
+    YouTubeGetID(url) {
+      var ID;
+      ID = '';
+      url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+      if (url[2] !== void 0) {
+        ID = url[2].split(/[^0-9a-z_\-]/i);
+        return ID = ID[0];
+      } else {
+        ID = url;
+        return ID;
+      }
+    }
+
     bindEvents() {
-      var that;
+      var controls, that;
       that = this;
       if (!$('body').hasClass('doc-ready')) {
         $('body').on('doc-ready', function() {
@@ -621,25 +635,54 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
       });
       
       //------------------- PLAYER YOUTUBE -------------------#
-      this.playerYT = new Plyr('#playerYT');
+      controls = '<div class="plyr__controls"> <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play"> <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-pause"></use></svg> <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-play"></use></svg> <span class="label--pressed plyr__tooltip" role="tooltip">Pause</span> <span class="label--not-pressed plyr__tooltip" role="tooltip">Play</span> </button> <div class="plyr__progress"> <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek"> <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress> <span role="tooltip" class="plyr__tooltip">00:00</span> </div> <button type="button" class="plyr__control" aria-label="Mute" data-plyr="mute"> <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-muted"></use></svg> <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-volume"></use></svg> <span class="label--pressed plyr__tooltip" role="tooltip">Unmute</span> <span class="label--not-pressed plyr__tooltip" role="tooltip">Mute</span> </button> </div>';
+      this.playerYT = new Plyr('#playerYT', {controls});
       console.log('yo : ------' + this.playerYT);
+      
+      //------------------- PLAYER YOUTUBE IS READY -------------------#
       this.playerYT.on('ready', function(event) {
         console.log('playYTisReady');
         that.playYTisReady();
       });
-      //------------------- INTRO FINISHED -------------------#
-      // $(this).addClass 'plyr--init-hide-controls'
-      $('.skip_intro').on('click', function() {
-        return $('#popin').addClass('hide').trigger('endIntro');
+      //------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
+      $('#popin').on('closePopin', function() {
+        console.log('------------ > closePopin');
+        return that.playerYT.stop();
       });
-      return this.playerYT.on('ended', function(event) {
-        $('#popin').addClass('hide').trigger('endIntro');
+      //------------------- INTRO FINISHED -------------------#
+      $('.skip_intro').on('click', function() {
+        return $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin');
+      });
+      this.playerYT.on('ended', function(event) {
+        $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin');
         console.log('ended');
+      });
+      //------------------- CLICK LIST ARTIST -------------------#
+      return $('#list_artists li a, #play-video-btn, #startvideo, a.watch').on('click', function(event) {
+        var idyoutube;
+        event.preventDefault();
+        idyoutube = that.YouTubeGetID($(this).attr('href'));
+        if (!$('#artist_info').hasClass('hide')) {
+          $('#artist_info').addClass('hide');
+        }
+        $('.lds-dual-ring').removeClass('done');
+        window.currentArtist = $('#artist_info .info:not(.hide)').index();
+        that.playerYT.source = {
+          type: 'video',
+          sources: [
+            {
+              src: idyoutube,
+              provider: 'youtube'
+            }
+          ]
+        };
+        $('#popin').removeClass('hide').trigger('classChange');
       });
     }
 
   };
 
+  // window.playYoutubeVideo(idyoutube)
   module.player_video_youtube = player_video_youtube;
 
 }).call(this);
@@ -703,7 +746,6 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
 
     window.closePopin = function() {
       if (!$('#popin').hasClass('hide')) {
-        console.log('remove');
         $('#popin').addClass('hide').trigger('classChange');
       }
       if (!$('#shareinfo').hasClass('hide')) {
@@ -712,7 +754,8 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
       if (!$('#artist_info').hasClass('hide')) {
         $('#artist_info').addClass('hide');
       }
-      return $('#popin').trigger('closePopin');
+      $('#popin').trigger('closePopin');
+      return console.log('close popin');
     };
 
     return popin;
@@ -1252,10 +1295,6 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
       $('#popin').on('classChange', function() {
         console.log('popin change ' + ($(this).hasClass('hide')));
         if ($(this).hasClass('hide')) {
-          if (window.playerYT.stopVideo) {
-            window.playerYT.stopVideo();
-            $('#popin .video-container').addClass('hide');
-          }
           console.log('contrys : ' + ($("#mode_switcher [data-face='face_pays']").hasClass('selected')));
           if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
             return;

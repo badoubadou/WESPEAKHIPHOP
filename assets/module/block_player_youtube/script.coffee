@@ -1,5 +1,4 @@
 class player_video_youtube
-
 	constructor: (@$container) ->
 		@playerYT = null
 		@drawLogo = null
@@ -9,6 +8,7 @@ class player_video_youtube
 	playYTisReady : ->
 		$('.lds-dual-ring').addClass 'done'
 		$('.intro_page .hidden').removeClass 'hidden'
+		@playerYT.play()
 
 	bildIntroYoutube : ->
 		that = @
@@ -39,6 +39,16 @@ class player_video_youtube
 		console.log 'startSite'
 		that.logoWhite()
 
+	YouTubeGetID: (url) ->
+		ID = ''
+		url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/)
+		if url[2] != undefined
+			ID = url[2].split(/[^0-9a-z_\-]/i)
+			ID = ID[0]
+		else
+			ID = url
+			ID
+
 	bindEvents: ->
 		that = @
 		#------------------- DOC READY ------------------------#
@@ -59,21 +69,68 @@ class player_video_youtube
 			return
 		
 		#------------------- PLAYER YOUTUBE -------------------#
-		@playerYT = new Plyr('#playerYT')
+		controls = '<div class="plyr__controls">
+		    <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play">
+		        <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-pause"></use></svg>
+		        <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-play"></use></svg>
+		        <span class="label--pressed plyr__tooltip" role="tooltip">Pause</span>
+		        <span class="label--not-pressed plyr__tooltip" role="tooltip">Play</span>
+		    </button>
+		    <div class="plyr__progress">
+		        <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek">
+		        <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress>
+		        <span role="tooltip" class="plyr__tooltip">00:00</span>
+		    </div>
+		    <button type="button" class="plyr__control" aria-label="Mute" data-plyr="mute">
+		        <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-muted"></use></svg>
+		        <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-volume"></use></svg>
+		        <span class="label--pressed plyr__tooltip" role="tooltip">Unmute</span>
+		        <span class="label--not-pressed plyr__tooltip" role="tooltip">Mute</span>
+		    </button>
+		</div>'
+
+		@playerYT = new Plyr('#playerYT', { controls })
 		console.log 'yo : ------'+@playerYT
+		
+		#------------------- PLAYER YOUTUBE IS READY -------------------#
 		@playerYT.on 'ready', (event) ->
 			console.log 'playYTisReady'
 			that.playYTisReady()
-			# $(this).addClass 'plyr--init-hide-controls'
 			return
+
+		#------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
+		$('#popin').on 'closePopin', ->
+			console.log '------------ > closePopin'
+			that.playerYT.stop()
 
 		#------------------- INTRO FINISHED -------------------#
 		$('.skip_intro').on 'click', ->
-			$('#popin').addClass('hide').trigger 'endIntro'
+			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin')
 			
 		@playerYT.on 'ended', (event) ->
-			$('#popin').addClass('hide').trigger 'endIntro'
+			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin')
 			console.log 'ended'
+			return
+
+		#------------------- CLICK LIST ARTIST -------------------#
+		$('#list_artists li a, #play-video-btn, #startvideo, a.watch').on 'click', (event) ->
+			event.preventDefault()
+			idyoutube = that.YouTubeGetID($(this).attr('href'))
+			if !$('#artist_info').hasClass 'hide'
+				$('#artist_info').addClass 'hide'
+			$('.lds-dual-ring').removeClass 'done'
+			window.currentArtist = $('#artist_info .info:not(.hide)').index()
+			that.playerYT.source = {
+				type: 'video',
+				sources: [
+					{
+						src: idyoutube,
+						provider: 'youtube',
+					},
+				],
+			};
+			$('#popin').removeClass('hide').trigger 'classChange'
+			# window.playYoutubeVideo(idyoutube)
 			return
 	
 module.player_video_youtube = player_video_youtube
