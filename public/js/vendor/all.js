@@ -652,11 +652,12 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
       });
       //------------------- INTRO FINISHED -------------------#
       $('.skip_intro').on('click', function() {
-        return $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin');
+        $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin');
+        $('.lds-dual-ring').removeClass('not_center');
       });
       this.playerYT.on('ended', function(event) {
         $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin');
-        console.log('ended');
+        $('.lds-dual-ring').removeClass('not_center');
       });
       //------------------- CLICK LIST ARTIST -------------------#
       return $('#list_artists li a, #play-video-btn, #startvideo, a.watch').on('click', function(event) {

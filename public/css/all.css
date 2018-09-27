@@ -3746,9 +3746,13 @@ body.hidefooter .footer {
 }
 .video-container {
   height: 100%;
+  width: 100%;
   max-width: 178vh;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
-.video-container .plyr {
+.plyr {
   height: 100%;
   max-height: 100%;
 }
@@ -3960,7 +3964,11 @@ body.hidefooter #popin .skip_intro {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  margin-bottom: 300px;
   display: block;
+}
+.lds-dual-ring.not_center {
+  top: 25%;
 }
 .lds-dual-ring .ring_1 {
   width: 100px;

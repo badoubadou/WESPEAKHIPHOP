@@ -107,10 +107,12 @@ class player_video_youtube
 		#------------------- INTRO FINISHED -------------------#
 		$('.skip_intro').on 'click', ->
 			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin')
+			$('.lds-dual-ring').removeClass('not_center')
+			return
 			
 		@playerYT.on 'ended', (event) ->
 			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin')
-			console.log 'ended'
+			$('.lds-dual-ring').removeClass('not_center')
 			return
 
 		#------------------- CLICK LIST ARTIST -------------------#
