@@ -1,0 +1,82 @@
+@keyframes lds-dual-ring{
+    0%{
+        transform rotate(0deg)
+    }
+    100%{
+        transform rotate(360deg)
+    }
+}
+@keyframes lds-dual-ring-1{
+    0%{
+        transform rotate(360deg)
+    }
+    100%{
+        transform rotate(0deg)
+    }
+}
+
+@keyframes lds-dual-ring-2{
+    0%{
+        transform rotate(180deg)
+    }
+    100%{
+        transform rotate(540deg)
+    }
+}
+
+.demi_cercle
+    content " "
+    display block
+    width 100%
+    height 100%
+    margin 0
+    border-radius 50%
+    border 10px solid #000
+    border-color transparent transparent  #ffce00  #ffce00
+    animation-name lds-dual-ring 
+    animation-duration 1.2s 
+    animation-iteration-count infinite
+    position absolute
+
+.ring
+    position absolute
+    &:before
+        @extend .demi_cercle
+        top 0
+        left 0
+    
+    &:after
+        @extend .demi_cercle
+        width calc( 100% - 20px)
+        height calc( 100% - 20px)
+        top 10px
+        left 10px
+        animation-name lds-dual-ring-1 
+
+.lds-dual-ring
+    width 100px
+    height 100px
+    z-index 200
+    display none
+    center()
+    
+    display block
+    .ring_1
+        width 100px
+        height 100px
+        top -20px
+        left -20px
+    .ring_2
+        width 80px
+        height 80px
+        top -10px
+        left -10px
+        &:before
+            animation-name lds-dual-ring-2
+            animation-timing-function linear
+    .ring_3
+        width 60px
+        height 60px
+        &:after
+            animation-name lds-dual-ring-2
+            animation-timing-function linear

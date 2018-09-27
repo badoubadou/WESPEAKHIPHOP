@@ -4,6 +4,7 @@ window.isMobile = ->
 init = ->
 	console.log 'window load -> init'
 	player_video_youtube = new module.player_video_youtube()
+	spiner = new module.spiner($('.lds-dual-ring'))
 	popin = new module.popin()
 	# player_video = new module.player_video()
 	# flip_disk = new module.flip_disk()

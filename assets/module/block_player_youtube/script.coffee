@@ -6,7 +6,8 @@ class player_video_youtube
 		@bindEvents()
 
 	playYTisReady : ->
-		$('.lds-dual-ring').addClass 'done'
+		# $('.lds-dual-ring').addClass 'done'
+		$('.lds-dual-ring').trigger 'hide'
 		$('.intro_page .hidden').removeClass 'hidden'
 		@playerYT.play()
 
@@ -118,7 +119,9 @@ class player_video_youtube
 			idyoutube = that.YouTubeGetID($(this).attr('href'))
 			if !$('#artist_info').hasClass 'hide'
 				$('#artist_info').addClass 'hide'
-			$('.lds-dual-ring').removeClass 'done'
+			# $('.lds-dual-ring').removeClass 'done'
+			$('.lds-dual-ring').trigger 'show'
+			console.log 'trigger show'
 			window.currentArtist = $('#artist_info .info:not(.hide)').index()
 			that.playerYT.source = {
 				type: 'video',

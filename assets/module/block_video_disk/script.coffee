@@ -290,7 +290,8 @@ class player_video
 			that.timelineInfo.play()
 			that.timelineKnob.play()
 			that.timelinePlatine.play()
-			$('.lds-dual-ring').addClass('done')
+			# $('.lds-dual-ring').addClass('done')
+			$('.lds-dual-ring').trigger 'hide'
 
 		$('#player').on 'pause', ->
 			console.log 'pause'+that.timelineKnob

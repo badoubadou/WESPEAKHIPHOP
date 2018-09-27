@@ -533,7 +533,8 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
     }
 
     playYTisReady() {
-      $('.lds-dual-ring').addClass('done');
+      // $('.lds-dual-ring').addClass 'done'
+      $('.lds-dual-ring').trigger('hide');
       $('.intro_page .hidden').removeClass('hidden');
       return this.playerYT.play();
     }
@@ -665,7 +666,9 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
         if (!$('#artist_info').hasClass('hide')) {
           $('#artist_info').addClass('hide');
         }
-        $('.lds-dual-ring').removeClass('done');
+        // $('.lds-dual-ring').removeClass 'done'
+        $('.lds-dual-ring').trigger('show');
+        console.log('trigger show');
         window.currentArtist = $('#artist_info .info:not(.hide)').index();
         that.playerYT.source = {
           type: 'video',
@@ -763,6 +766,65 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
   }).call(this);
 
   module.popin = popin;
+
+}).call(this);
+
+(function() {
+  var spiner;
+
+  spiner = class spiner {
+    constructor(spiner1) {
+      this.spiner = spiner1;
+      this.timelineSpiner = new TimelineMax({
+        onReverseComplete: this.maskSpiner,
+        onStart: this.unmaskSpiner
+      });
+      this.timelineSpiner.add(this.showSpiner).from('.lds-dual-ring', .6, {
+        scale: 0,
+        transformOrigin: "50px 50px",
+        ease: Power3.easeOut
+      });
+      this.bindEvents();
+    }
+
+    maskSpiner() {
+      return $('.lds-dual-ring').hide();
+    }
+
+    unmaskSpiner() {
+      return $('.lds-dual-ring').show();
+    }
+
+    showSpiner() {
+      var that;
+      that = this;
+      that.timelineSpiner.play();
+      return console.log('showSpiner');
+    }
+
+    hideSpiner() {
+      var that;
+      that = this;
+      that.timelineSpiner.reverse();
+      return console.log('hideSpiner');
+    }
+
+    bindEvents() {
+      var that;
+      that = this;
+      that.spiner.on('hide', function() {
+        console.log('got hide');
+        return that.hideSpiner();
+      });
+      return that.spiner.on('show', function() {
+        console.log('got show');
+        return that.showSpiner();
+      });
+    }
+
+  };
+
+  module.spiner = spiner;
 
 }).call(this);
 
@@ -1356,7 +1418,8 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
         that.timelineInfo.play();
         that.timelineKnob.play();
         that.timelinePlatine.play();
-        return $('.lds-dual-ring').addClass('done');
+        // $('.lds-dual-ring').addClass('done')
+        return $('.lds-dual-ring').trigger('hide');
       });
       $('#player').on('pause', function() {
         console.log('pause' + that.timelineKnob);
@@ -1430,9 +1493,10 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
   };
 
   init = function() {
-    var player_video_youtube, popin;
+    var player_video_youtube, popin, spiner;
     console.log('window load -> init');
     player_video_youtube = new module.player_video_youtube();
+    spiner = new module.spiner($('.lds-dual-ring'));
     popin = new module.popin();
     // player_video = new module.player_video()
     // flip_disk = new module.flip_disk()
