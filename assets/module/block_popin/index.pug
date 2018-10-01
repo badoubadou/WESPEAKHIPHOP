@@ -1,5 +1,5 @@
 #popin.absolute.layer_top_plus.full_height.full_width
-	.intro_page.centered.layer_top
+	.intro_page.centered.layer_top_plus
 		.layer_1#logowhite.hidden
 			include ../../../public/image/logo-white.svg
 
@@ -18,6 +18,9 @@
 				a(href='')#enter_site.btn.round_btn.yellow_btn
 					| #{TRANSLATION.language_btn_fr[langage]}
 		
+	
+	include ../block_spiner/index.pug
+	
 	include ../block_player_youtube/index.pug
 
 	#abouttxt.hide.block.big.centered.layer_top

@@ -13,6 +13,7 @@
 		top 0
 		left 0
 		overflow hidden
+		color #ffffff
 		
 		.warper
 			opacity 0
@@ -109,13 +110,17 @@
 				
 	@media $desktop
 		height 250px
-		width 250px
-		bottom $height_footer*2
+		width 100%
+		bottom 0
+		right 0
+		left 0px
+		background #010101
 		li
 			bottom 0
 			width 100%
 			.warper
 				height auto
-				position absolute
-				bottom 0
-				width 100%
+				center()
+				width calc(100% - 100px)
+				
+				

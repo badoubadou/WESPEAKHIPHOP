@@ -76,28 +76,25 @@ html(lang= langage)
 
 		input#langage_short(type='hidden', value!= langage)
 
-		include ../module/block_header/index.pug	
-
 		include ../module/block_popin/index.pug
+		
+		#left_col.layer_3
+			include ../module/block_header/index.pug	
+			include ../module/block_small_map/index.pug
+			include ../module/block_info_artists/index.pug
+
 		#main.absolute.full_height_minus_footer.full_width.full_height_minus_footer_minus_header_mobile
-			include ../module/block_spiner/index.pug
 			#mouse_over_bg.absolute.layer_2.full_height.full_width.hide
 			#facea.absolute.centered.layer_2.full_height.full_width.size_disk
 				include ../module/block_list_artists/index.pug
 				include ../module/block_video_disk/index.pug
-			// #faceb.absolute.centered.layer_2.full_height.full_width.size_disk
-			// 	include ../module/block_pays/index.pug
-
+	
 			#bg
 			#platine.absolute.centered.layer_0.full_height.full_width.size_platine
 				include ../cleansvg/platine.svg
 		
-		include ../module/block_small_map/index.pug
-		include ../module/block_help/index.pug
-		include ../module/block_info_artists/index.pug
 		include ../module/block_footer/index.pug
-
-
+	
 		// Google Analytics
 		script.
 			window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;

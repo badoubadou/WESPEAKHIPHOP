@@ -7,7 +7,8 @@ class player_video_youtube
 
 	playYTisReady : ->
 		# $('.lds-dual-ring').addClass 'done'
-		$('.lds-dual-ring').trigger 'hide'
+		$('.lds-dual-ring').trigger 'hidespiner'
+		console.log 'trigger hide player YT ready '
 		$('.intro_page .hidden').removeClass 'hidden'
 		@playerYT.play()
 
@@ -122,7 +123,8 @@ class player_video_youtube
 			if !$('#artist_info').hasClass 'hide'
 				$('#artist_info').addClass 'hide'
 			# $('.lds-dual-ring').removeClass 'done'
-			$('.lds-dual-ring').trigger 'show'
+			console.log 'trigger show on click'
+			$('.lds-dual-ring').trigger 'showspiner'
 			console.log 'trigger show'
 			window.currentArtist = $('#artist_info .info:not(.hide)').index()
 			that.playerYT.source = {
@@ -135,6 +137,7 @@ class player_video_youtube
 				],
 			};
 			$('#popin').removeClass('hide').trigger 'classChange'
+			$('.video-container').removeClass('hide')
 			# window.playYoutubeVideo(idyoutube)
 			return
 	

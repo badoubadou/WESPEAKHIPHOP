@@ -1,9 +1,9 @@
 class spiner
 	constructor: (@spiner) ->
-		@timelineSpiner = new TimelineMax(onReverseComplete:@maskSpiner, onStart: @unmaskSpiner)		
-		@timelineSpiner.add(@showSpiner)
-			.from('.lds-dual-ring', .6 ,{scale: 0, transformOrigin: "50px 50px", ease:Power3.easeOut})
+		@timelineSpiner = new TimelineMax(paused:true, onReverseComplete:@maskSpiner, onStart: @unmaskSpiner)		
+			.from('.lds-dual-ring', .6 ,{borderWidth: 0, transformOrigin: "50px 50px", ease:Power3.easeOut})
 		@bindEvents()
+		@showSpiner()
 
 	maskSpiner : ->
 		$('.lds-dual-ring').hide()
@@ -13,22 +13,23 @@ class spiner
 	
 	showSpiner : ->
 		that = @
-		that.timelineSpiner.play()
-		console.log 'showSpiner'
+		console.log 'Show Spiner = '+@timelineSpiner
+		@timelineSpiner.play()
 
 	hideSpiner : ->
 		that = @
+		console.log 'Hide Spiner = '+@timelineSpiner
 		that.timelineSpiner.reverse()
-		console.log 'hideSpiner'
-
+		
 	bindEvents : ->
 		that = @
-		that.spiner.on 'hide', ->
-			console.log 'got hide'
+
+		that.spiner.on 'hidespiner', ->
+			console.log '-------- catch hide '
 			that.hideSpiner()
 
-		that.spiner.on 'show', ->
-			console.log 'got show'
+		that.spiner.on 'showspiner', ->
+			console.log '-------- catch show'
 			that.showSpiner()
 
 module.spiner = spiner

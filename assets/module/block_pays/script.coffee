@@ -80,7 +80,7 @@ class block_pays
 
 		onPlay = (e) ->
 			TweenMax.to('#artists_info li .warper', 0.5, { alpha: 0 , y:-30})
-			TweenMax.to('#artists_info li:eq('+((that.playlistUrls[window.pCount])-1)+') .warper', 0.5, { alpha: 1 , y:0}, 0.5)
+			TweenMax.from('#artists_info li:eq('+((that.playlistUrls[window.pCount])-1)+') .warper', 0.5, { alpha: 0 , y:0}, 0.5)
 			if pastille
 				nicename = $(pastille).data 'nicename'
 			else

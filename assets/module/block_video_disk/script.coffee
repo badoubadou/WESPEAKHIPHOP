@@ -1,5 +1,6 @@
 class player_video
 	constructor: (@$container) ->
+		@buildLignmask()
 		console.log 'metadata video loaded ---------------------- start player_video ' 
 		# @bindEvents() # bind event is now after video is loaded
 		@timelineKnob = new TimelineMax(paused: true)
@@ -7,19 +8,21 @@ class player_video
 		@timelinePlatine = new TimelineMax(paused: true)
 
 		@timelineDisk = new TimelineMax(paused: true)		
-		@timelineDisk.from('#disk_hole', .6 ,{scale: 0, ease:Power3.easeOut}, 0.5)
-			.from('#mask_video', 3 ,{scale: 0, ease:Power3.easeOut}, 1 )
-			.staggerFromTo('#disk_lign svg path', 1, {drawSVG:"50% 50%"}, {drawSVG:"100%"}, -0.1, 1.2)
-			.from('#bg_disk', 2 ,{opacity:0, scale: 0, ease:Power1.easeOut}, 1 )
-			.from('#platine', 1 ,{opacity:0}, 1)
-			.staggerFrom('#list_artists li', .3 ,{opacity:0}, 0.05, 1.5)
-			.from('#smallmap', .3 ,{opacity:0}, 2 )
-			.from('#ico', .6 ,{opacity:0}, 2 )
-			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut}, 2.1 )
-			.from('#play-video-btn', .6 ,{opacity:0}, 2 )
-			.from('#about-btn', .6 ,{opacity:0}, 2.1 )
-			.from('#main_footer', .3 ,{y:40}, 2.5 )
-			.add( @showFooter, 2.5 )
+		@timelineDisk.from('#disk_hole', .6 ,{scale: 0, ease:Power3.easeOut})
+			.from('#mask_video', 3 ,{scale: 0, ease:Power3.easeOut}, 0.3 )
+			.staggerFrom('#disk_lign svg #testmask circle', 2, { drawSVG: 0 }, 0.05, 0.5)
+			.to('#disk_lign', 4 ,{ rotation: 60, ease:Power1.easeOut}, .5 )
+			.from('#bg_disk', 2 ,{ scale: 0, ease:Power1.easeOut}, 1 )
+			.from('#platine', 1 ,{opacity:0}, 3)
+			.staggerFrom('#list_artists li', .3 ,{opacity:0}, 0.05, 3.5)
+			.from('#play-video-btn', .6 ,{opacity:0}, 5 )
+			.from('#about-btn', .6 ,{opacity:0}, 5)
+			.from('#main_footer', .3 ,{y:40}, 5 )
+			.from('#left_col', .3 ,{x:-300}, 5 )
+			.from('#smallmap', .3 ,{opacity:0}, 5 )
+			.from('#ico', .6 ,{opacity:0}, 5 )
+			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut}, 6 )
+			.add( @showFooter_header, 5 )
 
 		@player = $('#player')[0]
 		@duration = 168.182
@@ -43,8 +46,29 @@ class player_video
 		@createTween()
 		@bindEvents()
 
-	showFooter : ->
+	buildLignmask : ->
+		paths = document.querySelector('#disk_lign svg').querySelectorAll('path')
+		mask = document.querySelector('#testmask')
+		svgns = 'http://www.w3.org/2000/svg'
+		i = 0
+		while i < paths.length
+			console.log 'build mask'
+			circle = document.createElementNS(svgns, 'circle')
+			rd = 237 + i * 3.27
+			circle.setAttributeNS null, 'cx', 525
+			circle.setAttributeNS null, 'cy', 525
+			circle.setAttributeNS null, 'r', rd
+			mask.appendChild circle
+			TweenLite.set circle,
+				fill: 'none'
+				stroke: 'white'
+				strokeWidth: 3
+			i++
+
+
+	showFooter_header : ->
 		$('body').removeClass('hidefooter')
+		$('body').removeClass('hide_left_col')
 
 	loadMap : ->
 		console.log '---> load small map'
@@ -125,92 +149,92 @@ class player_video
 
 		@timelineInfo
 			.add(-> updateInfo(0); )
-			.fromTo('#artists_info li:eq(0) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(0) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(0) .warper', 0.5, {alpha: 0, marginTop:30},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(0) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(1); )
-			.fromTo('#artists_info li:eq(1) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(1) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(1) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(1) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(2); )
-			.fromTo('#artists_info li:eq(2) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(2) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(2) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(2) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(3); )
-			.fromTo('#artists_info li:eq(3) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(3) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(3) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(3) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(4); )
-			.fromTo('#artists_info li:eq(4) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(4) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(4) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(4) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(5); )
-			.fromTo('#artists_info li:eq(5) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
+			.fromTo('#artists_info li:eq(5) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
 			.to('#artists_info li:eq(5) .warper', 0.5, { alpha: 0 }, sequence )
 			.add(-> updateInfo(6); )
-			.fromTo('#artists_info li:eq(6) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(6) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(6) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(6) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(7); )
-			.fromTo('#artists_info li:eq(7) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(7) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(7) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(7) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(8); )
-			.fromTo('#artists_info li:eq(8) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(8) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(8) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(8) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(9); )
-			.fromTo('#artists_info li:eq(9) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(9) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(9) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(9) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(10); )
-			.fromTo('#artists_info li:eq(10) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(10) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(10) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(10) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(11); )
-			.fromTo('#artists_info li:eq(11) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(11) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(11) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(11) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(12); )
-			.fromTo('#artists_info li:eq(12) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(12) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(12) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(12) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(13); )
-			.fromTo('#artists_info li:eq(13) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(13) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(13) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(13) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(14); )
-			.fromTo('#artists_info li:eq(14) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(14) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(14) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(14) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(15); )
-			.fromTo('#artists_info li:eq(15) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(15) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(15) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(15) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(16); )
-			.fromTo('#artists_info li:eq(16) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(16) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(16) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(16) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(17); )
-			.fromTo('#artists_info li:eq(17) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(17) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(17) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(17) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(18); )
-			.fromTo('#artists_info li:eq(18) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(18) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(18) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(18) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(19); )
-			.fromTo('#artists_info li:eq(19) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(19) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(19) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(19) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(20); )
-			.fromTo('#artists_info li:eq(20) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(20) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(20) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(20) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(21); )
-			.fromTo('#artists_info li:eq(21) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(21) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(21) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(21) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(22); )
-			.fromTo('#artists_info li:eq(22) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(22) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(22) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(22) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(23); )
-			.fromTo('#artists_info li:eq(23) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(23) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(23) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(23) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(24); )
-			.fromTo('#artists_info li:eq(24) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(24) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(24) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(24) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(25); )
-			.fromTo('#artists_info li:eq(25) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(25) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(25) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(25) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(26); )
-			.fromTo('#artists_info li:eq(26) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(26) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(26) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(26) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(27); )
-			.fromTo('#artists_info li:eq(27) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(27) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(27) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(27) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 			.add(-> updateInfo(28); )
-			.fromTo('#artists_info li:eq(28) .warper', 0.5, {alpha: 0, y:30},{alpha: 1, y:0})
-			.to('#artists_info li:eq(28) .warper', 0.5, { alpha: 0 , y:-30}, sequence)
+			.fromTo('#artists_info li:eq(28) .warper', 0.5, {alpha: 0, marginTop:0},{alpha: 1, marginTop:0})
+			.to('#artists_info li:eq(28) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 
 	bindEvents: ->
 		that = @
@@ -291,7 +315,8 @@ class player_video
 			that.timelineKnob.play()
 			that.timelinePlatine.play()
 			# $('.lds-dual-ring').addClass('done')
-			$('.lds-dual-ring').trigger 'hide'
+			console.log 'trigger hide on player Js play '
+			$('.lds-dual-ring').trigger 'hidespiner'
 
 		$('#player').on 'pause', ->
 			console.log 'pause'+that.timelineKnob

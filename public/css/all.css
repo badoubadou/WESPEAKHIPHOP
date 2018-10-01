@@ -1472,11 +1472,12 @@ body {
 body #main {
   background: #f0f2da;
   background-color: #f0f2da;
-  background: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/bg.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+}
+@media screen and (min-width: 62em) {
+  body #main {
+    width: calc(100% - 300px);
+    margin-left: 300px;
+  }
 }
 @font-face {
   font-family: Gotham;
@@ -1830,17 +1831,6 @@ body {
   height: 100%;
   text-transform: uppercase;
 }
-body.admin-bar {
-  padding-top: 32px;
-}
-@media screen and (max-width: 47.9em), screen and (max-height: 420px) {
-  body {
-    font-size: 12px;
-  }
-  body.admin-bar {
-    padding-top: 46px;
-  }
-}
 a {
   color: #000;
   text-decoration: none;
@@ -2078,11 +2068,22 @@ p:empty {
 .hidden {
   visibility: hidden;
 }
+body.hidefooter #left_col {
+  display: none;
+}
+@media screen and (min-width: 62em) {
+  #left_col {
+    width: 300px;
+    height: calc(100% - 40px);
+    background: #ffce00;
+    position: absolute;
+  }
+}
 .ytp-title {
   display: none !important;
 }
 .footer {
-  background: #000;
+  background: #191919;
   height: 40px;
   width: 100%;
   bottom: 0;
@@ -2224,7 +2225,7 @@ body.hidefooter .footer {
     width: auto;
     display: block;
     position: relative;
-    width: 215px;
+    width: 100%;
   }
 }
 .logoWSH {
@@ -2263,8 +2264,14 @@ body.hidefooter .footer {
   }
 }
 @media screen and (min-width: 62em) {
+  .logoWSH {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   .logoWSH svg {
-    width: 215px;
+    width: 200px;
     height: auto;
   }
 }
@@ -2276,10 +2283,9 @@ body.hidefooter .footer {
   position: absolute;
 }
 #block_help {
-  bottom: 60px;
   left: 59%;
   height: 30px;
-  width: 300px;
+  color: #ffce00;
 }
 @media screen and (max-width: 47.9em), screen and (max-height: 420px) {
   #block_help {
@@ -2306,8 +2312,6 @@ body.hidefooter .footer {
 #block_help #warp_txt_help {
   left: 40px;
   height: 100%;
-  font-size: 0.62em;
-  font-weight: 900;
   overflow: hidden;
   line-height: 1em;
 }
@@ -2316,12 +2320,22 @@ body.hidefooter .footer {
 #block_help #txt_help_map {
   width: 260px;
 }
+@media screen and (min-width: 62em) {
+  #block_help #warp_txt_help,
+  #block_help #txt_help_disk,
+  #block_help #txt_help_map {
+    width: 700px;
+    height: 40px;
+    left: 30px;
+  }
+}
 #block_help #txt_help_disk,
 #block_help #txt_help_map {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   left: 0;
+  height: auto;
 }
 #artists_info {
   display: block;
@@ -2338,6 +2352,7 @@ body.hidefooter .footer {
   top: 0;
   left: 0;
   overflow: hidden;
+  color: #fff;
 }
 #artists_info li .warper {
   opacity: 0;
@@ -2445,8 +2460,11 @@ body.hidefooter .footer {
 @media screen and (min-width: 62em) {
   #artists_info {
     height: 250px;
-    width: 250px;
-    bottom: 80px;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    left: 0px;
+    background: #010101;
   }
   #artists_info li {
     bottom: 0;
@@ -2455,8 +2473,10 @@ body.hidefooter .footer {
   #artists_info li .warper {
     height: auto;
     position: absolute;
-    bottom: 0;
-    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 100px);
   }
 }
 #list_artists {
@@ -3904,10 +3924,10 @@ body.hidefooter #popin .skip_intro {
 #smallmap {
   transition: opacity 1s;
   position: absolute;
-  bottom: 100px;
-  left: 20px;
+  top: 270px;
+  left: 45px;
   display: none;
-  width: 300px;
+  width: 200px;
   height: auto;
 }
 @media screen and (max-width: 61.9em) {
@@ -3930,65 +3950,63 @@ body.hidefooter #popin .skip_intro {
 .ring:after {
   content: " ";
   display: block;
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 200px);
+  height: calc(100% - 200px);
   margin: 0;
   border-radius: 50%;
-  border: 10px solid #000;
+  border: 100px solid #000;
   border-color: transparent transparent #ffce00 #ffce00;
   animation-name: lds-dual-ring;
   animation-duration: 1.2s;
   animation-iteration-count: infinite;
   position: absolute;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .ring {
   position: absolute;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .ring:before {
   top: 0;
   left: 0;
 }
 .ring:after {
-  width: calc(100% - 20px);
-  height: calc(100% - 20px);
-  top: 10px;
-  left: 10px;
+  top: 0;
+  left: 0;
+  border-color: transparent transparent #fff #fff;
   animation-name: lds-dual-ring-1;
 }
 .lds-dual-ring {
-  width: 100px;
-  height: 100px;
-  z-index: 200;
+  width: 100vw;
+  height: 100vw;
   display: none;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   margin-bottom: 300px;
-  display: block;
-}
-.lds-dual-ring.not_center {
-  top: 25%;
 }
 .lds-dual-ring .ring_1 {
-  width: 100px;
-  height: 100px;
-  top: -20px;
-  left: -20px;
+  width: 100%;
+  height: 100%;
 }
 .lds-dual-ring .ring_2 {
-  width: 80px;
-  height: 80px;
-  top: -10px;
-  left: -10px;
+  width: 80%;
+  height: 80%;
 }
 .lds-dual-ring .ring_2:before {
   animation-name: lds-dual-ring-2;
   animation-timing-function: linear;
 }
 .lds-dual-ring .ring_3 {
-  width: 60px;
-  height: 60px;
+  width: 60%;
+  height: 60%;
 }
 .lds-dual-ring .ring_3:after {
   animation-name: lds-dual-ring-2;
