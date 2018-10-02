@@ -35,6 +35,7 @@
 		list-style-type none
 		margin 0
 		padding 10px 0
+		text-align center
 		li
 			display inline-block
 		li
@@ -62,17 +63,22 @@
 	&:after
 		pseudo_full( #000 , 1 )
 		z-index -1
-	
-	// #shareinfo:after
-	// 	pseudo_full( #000 , .7 )
 		
 	.block
 		width 20%
 		height 70%
 		
 		&.big
-			width 50%
-			height 70%	
+			overflow-y scroll
+			@media $mobile
+				width 90%
+				height 80%
+			@media $ipad
+				width 80%
+				height 70%
+			@media $desktop
+				width 50%
+				height 70%	
 
 	.yellow
 	.white

@@ -83,8 +83,13 @@ html(lang= langage)
 			include ../module/block_small_map/index.pug
 			include ../module/block_info_artists/index.pug
 
+
 		#main.absolute.full_height_minus_footer.full_width.full_height_minus_footer_minus_header_mobile
 			#mouse_over_bg.absolute.layer_2.full_height.full_width.hide
+			a(href="")#play-video-btn-mobile.layer_3.btn
+				span.triangle
+				span.txt
+					| #{TRANSLATION.play_video[langage]}
 			#facea.absolute.centered.layer_2.full_height.full_width.size_disk
 				include ../module/block_list_artists/index.pug
 				include ../module/block_video_disk/index.pug

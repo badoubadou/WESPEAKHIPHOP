@@ -17,9 +17,9 @@ class player_video
 			.add( @showFooter_header,1 )
 			.from('#platine', 1 ,{opacity:0}, 3)
 			.staggerFrom('#list_artists li', .3 ,{opacity:0}, 0.04, 3)
-			.from('#play-video-btn', .6 ,{opacity:0}, 5 )
+			.from(['#play-video-btn', '#play-video-btn-mobile'], .6 ,{opacity:0}, 5 )
 			.from('#main_footer', .5 ,{y:40, ease:Power3.easeOut}, 3 )
-			.from('#left_col', .5 ,{x:-300, ease:Power3.easeOut}, 3 )
+			.from('#left_col', .6 ,{x:'-100%', ease:Power3.easeOut}, 3 )
 			.from('#smallmap', .6 ,{opacity:0, y:150, ease:Power3.easeOut}, 3.5 )
 			.from('#ico', .6 ,{opacity:0}, 5 )
 			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut}, 6 )
@@ -132,7 +132,7 @@ class player_video
 	createTween: () ->
 		# console.log 'createTween'
 		updateInfo= (id)->
-			$('#play-video-btn, #startvideo').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
+			$('#play-video-btn, #play-video-btn-mobile, #startvideo').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
 			$('#list_artists li a.selected').removeClass('selected')
 			$('#list_artists li:eq('+id+') a').addClass('selected')
 			$('#artist_info .info').addClass('hide')

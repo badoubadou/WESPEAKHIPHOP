@@ -3,7 +3,7 @@ class popin
 		@bindEvents()
 
 	window.closePopin= ->
-		$('.video-container, #abouttxt, #artist_info, #shareinfo').addClass 'hide'
+		$('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
 		
 		if(!$('#popin').hasClass('hide'))
 			$('#popin').addClass('hide').trigger 'classChange'
@@ -14,7 +14,7 @@ class popin
 	bindEvents : ->
 		showPopin = ($target)->
 			console.log $target + '$target$target$target'
-			$('.video-container, #abouttxt, #artist_info, #shareinfo').addClass 'hide'
+			$('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
 			$('#popin').toggleClass('hide').trigger 'classChange'
 			$($target).removeClass('hide')
 

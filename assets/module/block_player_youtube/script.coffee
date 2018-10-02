@@ -66,9 +66,10 @@ class player_video_youtube
 		#------------------- ENTER SITE -------------------#
 		$('#enter_site').on 'click', (e)->
 			e.preventDefault()
+			that.intro_is_done = true
 			console.log 'enter site --------------------------------'
 			$('.intro_page').addClass 'hidden'
-			$('.video-container').removeClass 'hidden'
+			$('.video-container').removeClass 'hidden hide'
 			TweenMax.delayedCall 4, ->
 				that.drawLogo.reverse()
 				return
@@ -106,7 +107,9 @@ class player_video_youtube
 			return
 
 		@playerYT.on 'play', (event) ->
-			console.log '######################    play YOUTUBE'
+			console.log '######################    play YOUTUBE @intro_is_done = '+that.intro_is_done
+			if that.intro_is_done
+				$('.video-container').removeClass 'hidden hide'
 			return
 
 		@playerYT.on 'pause', (event) ->
@@ -124,7 +127,7 @@ class player_video_youtube
 
 		vid_intro_finished = ->
 			console.log 'vid_intro_finished ----- trigger end Intro trigger close  Popin'
-			$('#popin').addClass('hide').trigger('endIntro')
+			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin')
 			$('.lds-dual-ring').removeClass('not_center')
 			return
 
@@ -137,7 +140,7 @@ class player_video_youtube
 			return
 
 		#------------------- CLICK LIST ARTIST -------------------#
-		$('#list_artists li a, #play-video-btn, #startvideo, a.watch').on 'click', (event) ->
+		$('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on 'click', (event) ->
 			event.preventDefault()
 			idyoutube = that.YouTubeGetID($(this).attr('href'))
 			if !$('#artist_info').hasClass 'hide'
@@ -157,8 +160,6 @@ class player_video_youtube
 				],
 			};
 			$('#popin').removeClass('hide').trigger 'classChange'
-			$('.video-container').removeClass('hide')
-			# window.playYoutubeVideo(idyoutube)
 			return
 	
 module.player_video_youtube = player_video_youtube
