@@ -8,18 +8,16 @@
 #block_help
 	left 59%
 	height 30px
-	color $yellow
-	// width 300px
+	color #333333
 	
 	@media $mobile
-		bottom $height_footer + 5px
-		left 20px
+		bottom 45px
+		left 10px
 	
 	@media $ipad
-		left 59%
-		
-	@media $desktop
+		bottom 5px
 		left 20px
+		color $yellow
 	
 	#ico
 		left 0
@@ -28,19 +26,20 @@
 		height 30px
 
 	#warp_txt_help
-		left 40px
 		height 100%
 		overflow hidden
 		line-height 1em
-	
+		
 	#warp_txt_help
 	#txt_help_disk
 	#txt_help_map
-		width 260px
+		width 300px
+		@media $ipad
+			width 260px
 		@media $desktop
 			width 700px
 			height 40px
-			left 30px
+			left 0px
 		
 	#txt_help_disk
 	#txt_help_map

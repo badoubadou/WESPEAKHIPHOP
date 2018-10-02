@@ -15,6 +15,10 @@
 		//- 	a(href='#help') 
 		//- 		| #{TRANSLATION.aide[langage]}
 		li.seperateur
+			a#apropos_btn(href='#apropos')
+				| #{TRANSLATION.a_propos[langage]}
+		
+		li.seperateur
 			if langage == 'en'
 				a(href='http://wespeakhiphop.fr')
 					span.short_text
@@ -34,9 +38,6 @@
 			span#fullscreen
 				include ../../../public/image/fullscreen.svg
 		
-		li.seperateur
-			a#apropos_btn(href='#apropos')
-				| #{TRANSLATION.a_propos[langage]}
 		li
 			a#share(href='#shareinfo')
 				include ../../../public/image/share.svg

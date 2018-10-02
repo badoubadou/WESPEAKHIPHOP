@@ -14,3 +14,6 @@ ul#artists_info.layer_0
 				each meta in video.postmeta
 					if meta.meta_key == 'date'
 						span.date= meta.meta_value
+
+				a(href="")#about-btn.layer_3.btn.round_btn.grey_btn.btn
+					| #{TRANSLATION.read_bio[langage]}

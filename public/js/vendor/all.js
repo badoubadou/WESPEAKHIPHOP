@@ -350,180 +350,6 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
 }).call(this);
 
 (function() {
-  var player_video_youtube;
-
-  player_video_youtube = class player_video_youtube {
-    constructor($container) {
-      this.$container = $container;
-      this.playerYT = null;
-      this.drawLogo = null;
-      this.bildIntroYoutube();
-      this.bindEvents();
-    }
-
-    playYTisReady() {
-      // $('.lds-dual-ring').addClass 'done'
-      $('.lds-dual-ring').trigger('hidespiner');
-      console.log('trigger hide player YT ready ');
-      $('.intro_page .hidden').removeClass('hidden');
-      return this.playerYT.play();
-    }
-
-    bildIntroYoutube() {
-      var random, randomid, that;
-      that = this;
-      random = Math.floor(Math.random() * 4);
-      randomid = $('#idIntroYoutube input:eq(' + random + ')').val();
-      return $('#playerYT').attr('data-plyr-embed-id', randomid);
-    }
-
-    logoWhite() {
-      var that;
-      that = this;
-      TweenLite.set('svg', {
-        visibility: 'visible'
-      });
-      MorphSVGPlugin.convertToPath('line');
-      that.drawLogo = new TimelineMax({});
-      return that.drawLogo.from("#logowhite #mask1_2_", 1, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }).from("#logowhite #mask2", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.1).from("#logowhite #mask3", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.2).from("#logowhite #mask4", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.3).from("#logowhite #mask5", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.4).from("#logowhite #mask6", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.5).from("#logowhite #mask7", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.6).from("#logowhite #mask8", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.7).from("#logowhite #mask9", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.8).from("#logowhite #mask10", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.9).from("#logowhite #mask11", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 1).from("#logowhite #mask12", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 1.1).from("#logowhite #mask13", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 1.2);
-    }
-
-    startSite(that) {
-      console.log('startSite');
-      return that.logoWhite();
-    }
-
-    YouTubeGetID(url) {
-      var ID;
-      ID = '';
-      url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
-      if (url[2] !== void 0) {
-        ID = url[2].split(/[^0-9a-z_\-]/i);
-        return ID = ID[0];
-      } else {
-        ID = url;
-        return ID;
-      }
-    }
-
-    bindEvents() {
-      var controls, that;
-      that = this;
-      if (!$('body').hasClass('doc-ready')) {
-        $('body').on('doc-ready', function() {
-          console.log('doc-ready');
-          return that.startSite(that);
-        });
-      } else {
-        console.log('doc already ready');
-        that.startSite(that);
-      }
-      //------------------- ENTER SITE -------------------#
-      $('#enter_site').on('click', function() {
-        $('.intro_page').addClass('hidden');
-        $('.video-container').removeClass('hidden');
-        that.playerYT.play();
-        that.drawLogo.reverse();
-      });
-      
-      //------------------- PLAYER YOUTUBE -------------------#
-      controls = '<div class="plyr__controls"> <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play"> <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-pause"></use></svg> <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-play"></use></svg> <span class="label--pressed plyr__tooltip" role="tooltip">Pause</span> <span class="label--not-pressed plyr__tooltip" role="tooltip">Play</span> </button> <div class="plyr__progress"> <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek"> <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress> <span role="tooltip" class="plyr__tooltip">00:00</span> </div> <button type="button" class="plyr__control" aria-label="Mute" data-plyr="mute"> <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-muted"></use></svg> <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-volume"></use></svg> <span class="label--pressed plyr__tooltip" role="tooltip">Unmute</span> <span class="label--not-pressed plyr__tooltip" role="tooltip">Mute</span> </button> </div>';
-      this.playerYT = new Plyr('#playerYT', {controls});
-      console.log('yo : ------' + this.playerYT);
-      
-      //------------------- PLAYER YOUTUBE IS READY -------------------#
-      this.playerYT.on('ready', function(event) {
-        console.log('playYTisReady');
-        that.playYTisReady();
-      });
-      //------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
-      $('#popin').on('closePopin', function() {
-        console.log('------------ > closePopin');
-        return that.playerYT.stop();
-      });
-      //------------------- INTRO FINISHED -------------------#
-      $('.skip_intro').on('click', function() {
-        $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin');
-        $('.lds-dual-ring').removeClass('not_center');
-      });
-      this.playerYT.on('ended', function(event) {
-        $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin');
-        $('.lds-dual-ring').removeClass('not_center');
-      });
-      //------------------- CLICK LIST ARTIST -------------------#
-      return $('#list_artists li a, #play-video-btn, #startvideo, a.watch').on('click', function(event) {
-        var idyoutube;
-        event.preventDefault();
-        idyoutube = that.YouTubeGetID($(this).attr('href'));
-        if (!$('#artist_info').hasClass('hide')) {
-          $('#artist_info').addClass('hide');
-        }
-        // $('.lds-dual-ring').removeClass 'done'
-        console.log('trigger show on click');
-        $('.lds-dual-ring').trigger('showspiner');
-        console.log('trigger show');
-        window.currentArtist = $('#artist_info .info:not(.hide)').index();
-        that.playerYT.source = {
-          type: 'video',
-          sources: [
-            {
-              src: idyoutube,
-              provider: 'youtube'
-            }
-          ]
-        };
-        $('#popin').removeClass('hide').trigger('classChange');
-        $('.video-container').removeClass('hide');
-      });
-    }
-
-  };
-
-  // window.playYoutubeVideo(idyoutube)
-  module.player_video_youtube = player_video_youtube;
-
-}).call(this);
-
-(function() {
   var block_pays;
 
   block_pays = (function() {
@@ -708,6 +534,198 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
 }).call(this);
 
 (function() {
+  var player_video_youtube;
+
+  player_video_youtube = class player_video_youtube {
+    constructor($container) {
+      this.$container = $container;
+      this.playerYT = null;
+      this.drawLogo = null;
+      this.intro_is_done = false;
+      this.bildIntroYoutube();
+      this.bindEvents();
+    }
+
+    playYTisReady() {
+      // $('.lds-dual-ring').addClass 'done'
+      $('.lds-dual-ring').trigger('hidespiner');
+      console.log('trigger hide player YT ready ');
+      $('.intro_page .hidden').removeClass('hidden');
+      return this.playerYT.play();
+    }
+
+    bildIntroYoutube() {
+      var random, randomid, that;
+      that = this;
+      random = Math.floor(Math.random() * 4);
+      randomid = $('#idIntroYoutube input:eq(' + random + ')').val();
+      return $('#playerYT').attr('data-plyr-embed-id', randomid);
+    }
+
+    logoWhite() {
+      var that;
+      that = this;
+      TweenLite.set('svg', {
+        visibility: 'visible'
+      });
+      MorphSVGPlugin.convertToPath('line');
+      that.drawLogo = new TimelineMax({
+        delay: 1
+      });
+      return that.drawLogo.from("#logowhite #mask1_2_", 1, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }).from("#logowhite #mask2", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.1).from("#logowhite #mask3", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.2).from("#logowhite #mask4", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.3).from("#logowhite #mask5", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.4).from("#logowhite #mask6", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.5).from("#logowhite #mask7", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.6).from("#logowhite #mask8", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.7).from("#logowhite #mask9", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.8).from("#logowhite #mask10", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.9).from("#logowhite #mask11", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 1).from("#logowhite #mask12", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 1.1).from("#logowhite #mask13", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 1.2);
+    }
+
+    startSite(that) {
+      console.log('startSite');
+      return that.logoWhite();
+    }
+
+    YouTubeGetID(url) {
+      var ID;
+      ID = '';
+      url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+      if (url[2] !== void 0) {
+        ID = url[2].split(/[^0-9a-z_\-]/i);
+        return ID = ID[0];
+      } else {
+        ID = url;
+        return ID;
+      }
+    }
+
+    bindEvents() {
+      var controls, that, vid_intro_finished;
+      that = this;
+      if (!$('body').hasClass('doc-ready')) {
+        $('body').on('doc-ready', function() {
+          console.log('doc-ready');
+          return that.startSite(that);
+        });
+      } else {
+        console.log('doc already ready');
+        that.startSite(that);
+      }
+      //------------------- ENTER SITE -------------------#
+      $('#enter_site').on('click', function(e) {
+        e.preventDefault();
+        console.log('enter site --------------------------------');
+        $('.intro_page').addClass('hidden');
+        $('.video-container').removeClass('hidden');
+        TweenMax.delayedCall(4, function() {
+          that.drawLogo.reverse();
+        });
+        that.playerYT.play();
+      });
+      
+      //------------------- PLAYER YOUTUBE -------------------#
+      controls = '<div class="plyr__controls"> <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play"> <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-pause"></use></svg> <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-play"></use></svg> <span class="label--pressed plyr__tooltip" role="tooltip">Pause</span> <span class="label--not-pressed plyr__tooltip" role="tooltip">Play</span> </button> <div class="plyr__progress"> <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek"> <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress> <span role="tooltip" class="plyr__tooltip">00:00</span> </div> <button type="button" class="plyr__control" aria-label="Mute" data-plyr="mute"> <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-muted"></use></svg> <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-volume"></use></svg> <span class="label--pressed plyr__tooltip" role="tooltip">Unmute</span> <span class="label--not-pressed plyr__tooltip" role="tooltip">Mute</span> </button> </div>';
+      this.playerYT = new Plyr('#playerYT', {controls});
+      console.log('yo : ------' + this.playerYT);
+      
+      //------------------- PLAYER YOUTUBE IS READY -------------------#
+      this.playerYT.on('ready', function(event) {
+        console.log('playYTisReady');
+        that.playYTisReady();
+      });
+      this.playerYT.on('play', function(event) {
+        console.log('######################    play YOUTUBE');
+      });
+      this.playerYT.on('pause', function(event) {
+        console.log('pause YOUTUBE');
+        that.drawLogo.pause();
+      });
+      
+      //------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
+      $('#popin').on('closePopin', function() {
+        console.log('------------ > closePopin');
+        return that.playerYT.stop();
+      });
+      //------------------- INTRO FINISHED -------------------#
+      vid_intro_finished = function() {
+        console.log('vid_intro_finished ----- trigger end Intro trigger close  Popin');
+        $('#popin').addClass('hide').trigger('endIntro');
+        $('.lds-dual-ring').removeClass('not_center');
+      };
+      $('.skip_intro').on('click', function() {
+        vid_intro_finished();
+      });
+      this.playerYT.on('ended', function(event) {
+        vid_intro_finished();
+      });
+      //------------------- CLICK LIST ARTIST -------------------#
+      return $('#list_artists li a, #play-video-btn, #startvideo, a.watch').on('click', function(event) {
+        var idyoutube;
+        event.preventDefault();
+        idyoutube = that.YouTubeGetID($(this).attr('href'));
+        if (!$('#artist_info').hasClass('hide')) {
+          $('#artist_info').addClass('hide');
+        }
+        // $('.lds-dual-ring').removeClass 'done'
+        console.log('trigger show on click');
+        $('.lds-dual-ring').trigger('showspiner');
+        console.log('trigger show');
+        window.currentArtist = $('#artist_info .info:not(.hide)').index();
+        that.playerYT.source = {
+          type: 'video',
+          sources: [
+            {
+              src: idyoutube,
+              provider: 'youtube'
+            }
+          ]
+        };
+        $('#popin').removeClass('hide').trigger('classChange');
+        $('.video-container').removeClass('hide');
+      });
+    }
+
+  };
+
+  // window.playYoutubeVideo(idyoutube)
+  module.player_video_youtube = player_video_youtube;
+
+}).call(this);
+
+(function() {
   var popin;
 
   popin = (function() {
@@ -786,9 +804,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         paused: true,
         onReverseComplete: this.maskSpiner,
         onStart: this.unmaskSpiner
-      }).from('.lds-dual-ring', .6, {
-        borderWidth: 0,
-        transformOrigin: "50px 50px",
+      }).to('.lds-dual-ring .ring_black', 2, {
+        scale: 0,
         ease: Power3.easeOut
       });
       this.bindEvents();
@@ -864,35 +881,41 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       }).from('#mask_video', 3, {
         scale: 0,
         ease: Power3.easeOut
-      }, 0.3).staggerFrom('#disk_lign svg #testmask circle', 2, {
+      }, 0.3).staggerFrom('#disk_lign svg #testmask circle', .5, {
         drawSVG: 0
-      }, 0.05, 0.5).to('#disk_lign', 4, {
+      }, 0.05, 0.5).from('#main', 5, {
+        width: '100%',
+        marginLeft: 0,
+        ease: Power3.easeInOut
+      }, 1).to('#disk_lign', 4, {
         rotation: 60,
         ease: Power1.easeOut
       }, .5).from('#bg_disk', 2, {
         scale: 0,
         ease: Power1.easeOut
-      }, 1).from('#platine', 1, {
+      }, 1).add(this.showFooter_header, 1).from('#platine', 1, {
         opacity: 0
       }, 3).staggerFrom('#list_artists li', .3, {
         opacity: 0
-      }, 0.05, 3.5).from('#play-video-btn', .6, {
+      }, 0.04, 3).from('#play-video-btn', .6, {
         opacity: 0
-      }, 5).from('#about-btn', .6, {
-        opacity: 0
-      }, 5).from('#main_footer', .3, {
-        y: 40
-      }, 5).from('#left_col', .3, {
-        x: -300
-      }, 5).from('#smallmap', .3, {
-        opacity: 0
-      }, 5).from('#ico', .6, {
+      }, 5).from('#main_footer', .5, {
+        y: 40,
+        ease: Power3.easeOut
+      }, 3).from('#left_col', .5, {
+        x: -300,
+        ease: Power3.easeOut
+      }, 3).from('#smallmap', .6, {
+        opacity: 0,
+        y: 150,
+        ease: Power3.easeOut
+      }, 3.5).from('#ico', .6, {
         opacity: 0
       }, 5).from('#txt_help_disk', .8, {
         opacity: 0,
         left: '-100%',
         ease: Power3.easeOut
-      }, 6).add(this.showFooter_header, 5);
+      }, 6);
       this.player = $('#player')[0];
       this.duration = 168.182;
       if (this.player.duration && this.player.duration > 1) {
@@ -960,6 +983,7 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
     }
 
     skipIntro() {
+      console.log('skipIntro : player play ------------------------------');
       this.player.play();
       this.timelineDisk.play();
       return $('#popin').off('endIntro');
@@ -1053,7 +1077,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(0);
       }).fromTo('#artists_info li:eq(0) .warper', 0.5, {
         alpha: 0,
-        marginTop: 30
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1064,7 +1089,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(1);
       }).fromTo('#artists_info li:eq(1) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1075,7 +1101,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(2);
       }).fromTo('#artists_info li:eq(2) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1086,7 +1113,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(3);
       }).fromTo('#artists_info li:eq(3) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1097,7 +1125,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(4);
       }).fromTo('#artists_info li:eq(4) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1108,7 +1137,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(5);
       }).fromTo('#artists_info li:eq(5) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1118,7 +1148,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(6);
       }).fromTo('#artists_info li:eq(6) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1129,7 +1160,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(7);
       }).fromTo('#artists_info li:eq(7) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1140,7 +1172,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(8);
       }).fromTo('#artists_info li:eq(8) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1151,7 +1184,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(9);
       }).fromTo('#artists_info li:eq(9) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1162,7 +1196,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(10);
       }).fromTo('#artists_info li:eq(10) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1173,7 +1208,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(11);
       }).fromTo('#artists_info li:eq(11) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1184,7 +1220,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(12);
       }).fromTo('#artists_info li:eq(12) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1195,7 +1232,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(13);
       }).fromTo('#artists_info li:eq(13) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1206,7 +1244,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(14);
       }).fromTo('#artists_info li:eq(14) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1217,7 +1256,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(15);
       }).fromTo('#artists_info li:eq(15) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1228,7 +1268,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(16);
       }).fromTo('#artists_info li:eq(16) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1239,7 +1280,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(17);
       }).fromTo('#artists_info li:eq(17) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1250,7 +1292,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(18);
       }).fromTo('#artists_info li:eq(18) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1261,7 +1304,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(19);
       }).fromTo('#artists_info li:eq(19) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1272,7 +1316,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(20);
       }).fromTo('#artists_info li:eq(20) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1283,7 +1328,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(21);
       }).fromTo('#artists_info li:eq(21) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1294,7 +1340,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(22);
       }).fromTo('#artists_info li:eq(22) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1305,7 +1352,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(23);
       }).fromTo('#artists_info li:eq(23) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1316,7 +1364,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(24);
       }).fromTo('#artists_info li:eq(24) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1327,7 +1376,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(25);
       }).fromTo('#artists_info li:eq(25) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1338,7 +1388,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(26);
       }).fromTo('#artists_info li:eq(26) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1349,7 +1400,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(27);
       }).fromTo('#artists_info li:eq(27) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1360,7 +1412,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return updateInfo(28);
       }).fromTo('#artists_info li:eq(28) .warper', 0.5, {
         alpha: 0,
-        marginTop: 0
+        marginTop: 30,
+        ease: Power1.easeInOut
       }, {
         alpha: 1,
         marginTop: 0
@@ -1375,8 +1428,9 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       that = this;
       console.log('bindEvents player_video');
       //------------------- ENDINTRO -------------------#
+      console.log('bindEvents ############################################');
       $('#popin').on('endIntro', function() {
-        console.log('end intro');
+        console.log('--------------------------- end intro');
         return that.skipIntro();
       });
       //------------------- FOOTER LISTNER -------------------#
@@ -1531,7 +1585,7 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
   };
 
   init = function() {
-    var player_video_youtube, popin, spiner;
+    var player_video, player_video_youtube, popin, spiner;
     console.log('window load -> init');
     player_video_youtube = new module.player_video_youtube();
     spiner = new module.spiner($('.lds-dual-ring'));
@@ -1540,7 +1594,10 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
     // flip_disk = new module.flip_disk()
     // block_pays =  new module.block_pays()
     $('body').addClass('doc-ready');
-    return $('body').trigger('doc-ready');
+    $('body').trigger('doc-ready');
+    if (window.isMobile()) {
+      return player_video = new module.player_video();
+    }
   };
 
   console.log('start js');

@@ -36,10 +36,8 @@
     animation-name lds-dual-ring 
     animation-duration 1.2s 
     animation-iteration-count infinite
-    position absolute
     center()
     
-
 .ring
     position absolute
     center()
@@ -83,3 +81,11 @@
         &:after
             animation-name lds-dual-ring-2
             animation-timing-function linear
+            
+    .ring_black
+        background #000
+        border-radius 50%
+        width 100vw
+        height 100vw
+        center()
+        z-index 10

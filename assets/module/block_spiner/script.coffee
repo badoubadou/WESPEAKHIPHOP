@@ -1,7 +1,7 @@
 class spiner
 	constructor: (@spiner) ->
 		@timelineSpiner = new TimelineMax(paused:true, onReverseComplete:@maskSpiner, onStart: @unmaskSpiner)		
-			.from('.lds-dual-ring', .6 ,{borderWidth: 0, transformOrigin: "50px 50px", ease:Power3.easeOut})
+			.to('.lds-dual-ring .ring_black', 2 ,{scale: 0, ease:Power3.easeOut})
 		@bindEvents()
 		@showSpiner()
 

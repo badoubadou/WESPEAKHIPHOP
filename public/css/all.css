@@ -858,7 +858,9 @@
     border-radius: inherit;
     overflow: hidden;
     position: relative;
-    z-index: 0
+    z-index: 0;
+    top: 50%;
+    transform: translateY(-50%)
 }
 
 .plyr__progress {
@@ -1949,6 +1951,10 @@ p:empty {
   color: #000;
   background: #fff;
 }
+.grey_btn {
+  color: #fff;
+  background: #333;
+}
 .full_width {
   width: 100%;
 }
@@ -2058,6 +2064,14 @@ p:empty {
 }
 #block_video_disk {
   border-radius: 50%;
+}
+#block_video_disk #play-video-btn {
+  display: none;
+}
+@media screen and (min-width: 48em) {
+  #block_video_disk #play-video-btn {
+    display: block;
+  }
 }
 #mouse_over_bg {
   opacity: 0;
@@ -2285,22 +2299,19 @@ body.hidefooter .footer {
 #block_help {
   left: 59%;
   height: 30px;
-  color: #ffce00;
+  color: #333;
 }
 @media screen and (max-width: 47.9em), screen and (max-height: 420px) {
   #block_help {
     bottom: 45px;
-    left: 20px;
+    left: 10px;
   }
 }
 @media screen and (min-width: 48em) {
   #block_help {
-    left: 59%;
-  }
-}
-@media screen and (min-width: 62em) {
-  #block_help {
+    bottom: 5px;
     left: 20px;
+    color: #ffce00;
   }
 }
 #block_help #ico {
@@ -2310,7 +2321,6 @@ body.hidefooter .footer {
   height: 30px;
 }
 #block_help #warp_txt_help {
-  left: 40px;
   height: 100%;
   overflow: hidden;
   line-height: 1em;
@@ -2318,7 +2328,14 @@ body.hidefooter .footer {
 #block_help #warp_txt_help,
 #block_help #txt_help_disk,
 #block_help #txt_help_map {
-  width: 260px;
+  width: 300px;
+}
+@media screen and (min-width: 48em) {
+  #block_help #warp_txt_help,
+  #block_help #txt_help_disk,
+  #block_help #txt_help_map {
+    width: 260px;
+  }
 }
 @media screen and (min-width: 62em) {
   #block_help #warp_txt_help,
@@ -2326,7 +2343,7 @@ body.hidefooter .footer {
   #block_help #txt_help_map {
     width: 700px;
     height: 40px;
-    left: 30px;
+    left: 0px;
   }
 }
 #block_help #txt_help_disk,
@@ -2343,7 +2360,7 @@ body.hidefooter .footer {
   list-style: none;
   margin: 0;
   padding: 0;
-  right: 20px;
+  right: 0px;
   transition: opacity 1s;
   overflow: hidden;
 }
@@ -2402,6 +2419,30 @@ body.hidefooter .footer {
 #artists_info li .contry.contry {
   padding-right: 10px;
 }
+#artists_info li #about-btn {
+  background: #333;
+  color: #fff;
+  font-size: 0.5em;
+  margin: 0px 6px;
+  padding: 0 15px;
+  display: inline-block;
+  top: -2px;
+  position: relative;
+}
+@media screen and (min-width: 48em) {
+  #artists_info li #about-btn {
+    font-size: 0.9em;
+    margin: 0px 20px;
+  }
+}
+@media screen and (min-width: 62em) {
+  #artists_info li #about-btn {
+    font-size: 0.75em;
+    margin: 10px 0;
+    padding: 0 15px;
+    display: block;
+  }
+}
 @media screen and (max-width: 61.9em) {
   #artists_info {
     top: O;
@@ -2409,7 +2450,7 @@ body.hidefooter .footer {
   }
   #artists_info li {
     border-left: 2px solid #f0f2da;
-    padding-left: 20px;
+    padding: 0 10px;
     transition: opacity 1s;
     position: absolute;
     top: 50%;
@@ -2421,7 +2462,7 @@ body.hidefooter .footer {
   }
   #artists_info li .name,
   #artists_info li .date {
-    color: #f0f2da;
+    color: #fff;
   }
   #artists_info li .tagline {
     color: #000;
@@ -2430,22 +2471,22 @@ body.hidefooter .footer {
 @media screen and (max-width: 47.9em), screen and (max-height: 420px) {
   #artists_info {
     height: 80px;
-    width: calc(100% - 120px);
+    width: calc(100% - 95px);
   }
   #artists_info li .name {
-    font-size: 0.6em;
+    font-size: 0.95em;
     padding: 3px 0;
   }
   #artists_info li .tagline,
   #artists_info li .contry,
   #artists_info li .date {
-    font-size: 1.6em;
+    font-size: 1em;
   }
 }
 @media screen and (min-width: 48em) {
   #artists_info {
     height: 160px;
-    width: calc(100% - 204px);
+    width: calc(100% - 180px);
   }
   #artists_info li .name {
     font-size: 1.5em;
@@ -2459,10 +2500,9 @@ body.hidefooter .footer {
 }
 @media screen and (min-width: 62em) {
   #artists_info {
-    height: 250px;
+    height: 300px;
     width: 100%;
     bottom: 0;
-    right: 0;
     left: 0px;
     background: #010101;
   }
@@ -2476,7 +2516,15 @@ body.hidefooter .footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: calc(100% - 100px);
+    width: calc(100% - 50px);
+  }
+  #artists_info li .warper .tagline,
+  #artists_info li .warper .contry {
+    color: #ffce00;
+  }
+  #artists_info li .warper .date,
+  #artists_info li .warper .name {
+    color: #fff;
   }
 }
 #list_artists {
@@ -3924,7 +3972,7 @@ body.hidefooter #popin .skip_intro {
 #smallmap {
   transition: opacity 1s;
   position: absolute;
-  top: 270px;
+  top: 230px;
   left: 45px;
   display: none;
   width: 200px;
@@ -3959,7 +4007,6 @@ body.hidefooter #popin .skip_intro {
   animation-name: lds-dual-ring;
   animation-duration: 1.2s;
   animation-iteration-count: infinite;
-  position: absolute;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -4011,6 +4058,17 @@ body.hidefooter #popin .skip_intro {
 .lds-dual-ring .ring_3:after {
   animation-name: lds-dual-ring-2;
   animation-timing-function: linear;
+}
+.lds-dual-ring .ring_black {
+  background: #000;
+  border-radius: 50%;
+  width: 100vw;
+  height: 100vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
 }
 @-moz-keyframes lds-dual-ring {
   0% {
@@ -4198,19 +4256,19 @@ body.hidefooter #popin .skip_intro {
   }
 }
 .size_platine {
-  width: 270px;
-  height: 270px;
+  width: 265px;
+  height: 265px;
 }
 @media screen and (min-width: 48em) {
   .size_platine {
-    width: 540px;
-    height: 540px;
+    width: 535px;
+    height: 535px;
   }
 }
 @media screen and (min-width: 75em) and (min-height: 990px) {
   .size_platine {
-    width: 840px;
-    height: 840px;
+    width: 835px;
+    height: 835px;
   }
 }
 #mask_video {
@@ -4227,7 +4285,6 @@ body.hidefooter #popin .skip_intro {
   background: #ffce00;
   z-index: -1;
 }
-#about-btn,
 #play-video-btn {
   text-transform: uppercase;
   background: #ffce00;
@@ -4243,12 +4300,10 @@ body.hidefooter #popin .skip_intro {
   width: 90px;
   bottom: 40px;
 }
-#about-btn span,
 #play-video-btn span {
   top: 1px;
   position: relative;
 }
-#about-btn .triangle,
 #play-video-btn .triangle {
   position: absolute;
   position: absolute;
@@ -4256,14 +4311,7 @@ body.hidefooter #popin .skip_intro {
   transform: translateY(-50%);
   left: 9px;
 }
-#about-btn span.txt,
 #play-video-btn span.txt {
   position: relative;
   left: 5px;
-}
-#about-btn {
-  background: #000;
-  color: #fff;
-  bottom: 10px;
-  width: 50px;
 }

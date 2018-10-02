@@ -2,6 +2,7 @@ class player_video_youtube
 	constructor: (@$container) ->
 		@playerYT = null
 		@drawLogo = null
+		@intro_is_done = false
 		@bildIntroYoutube()
 		@bindEvents()
 
@@ -22,7 +23,7 @@ class player_video_youtube
 		that = @
 		TweenLite.set 'svg', visibility: 'visible'
 		MorphSVGPlugin.convertToPath 'line'
-		that.drawLogo = new TimelineMax({});
+		that.drawLogo = new TimelineMax({delay:1});
 		that.drawLogo.from("#logowhite #mask1_2_", 1, {drawSVG:0, ease:Power1.easeInOut} )
 			.from("#logowhite #mask2", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.1 )
 			.from("#logowhite #mask3", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.2 )
@@ -63,11 +64,15 @@ class player_video_youtube
 			that.startSite(that)
 
 		#------------------- ENTER SITE -------------------#
-		$('#enter_site').on 'click', ->
+		$('#enter_site').on 'click', (e)->
+			e.preventDefault()
+			console.log 'enter site --------------------------------'
 			$('.intro_page').addClass 'hidden'
 			$('.video-container').removeClass 'hidden'
+			TweenMax.delayedCall 4, ->
+				that.drawLogo.reverse()
+				return
 			that.playerYT.play()
-			that.drawLogo.reverse()
 			return
 		
 		#------------------- PLAYER YOUTUBE -------------------#
@@ -100,20 +105,35 @@ class player_video_youtube
 			that.playYTisReady()
 			return
 
+		@playerYT.on 'play', (event) ->
+			console.log '######################    play YOUTUBE'
+			return
+
+		@playerYT.on 'pause', (event) ->
+			console.log 'pause YOUTUBE'
+			that.drawLogo.pause()
+			return
+			
+
 		#------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
 		$('#popin').on 'closePopin', ->
 			console.log '------------ > closePopin'
 			that.playerYT.stop()
 
 		#------------------- INTRO FINISHED -------------------#
-		$('.skip_intro').on 'click', ->
-			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin')
+
+		vid_intro_finished = ->
+			console.log 'vid_intro_finished ----- trigger end Intro trigger close  Popin'
+			$('#popin').addClass('hide').trigger('endIntro')
 			$('.lds-dual-ring').removeClass('not_center')
+			return
+
+		$('.skip_intro').on 'click', ->
+			vid_intro_finished()
 			return
 			
 		@playerYT.on 'ended', (event) ->
-			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin')
-			$('.lds-dual-ring').removeClass('not_center')
+			vid_intro_finished()
 			return
 
 		#------------------- CLICK LIST ARTIST -------------------#

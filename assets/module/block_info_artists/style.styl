@@ -4,7 +4,7 @@
 	list-style none
 	margin 0
 	padding 0
-	right 20px
+	right 0px
 	transition opacity 1s
 	overflow hidden
 
@@ -61,13 +61,33 @@
 			
 			&.contry
 				padding-right 10px
+				
+		#about-btn
+			background #333333
+			color #fff
+			font-size .5em
+			margin 0px 6px
+			padding 0 15px
+			display inline-block
+			top -2px
+			position relative
+			
+			@media $ipad
+				font-size .9em
+				margin 0px 20px
+			
+			@media $desktop
+				font-size .75em
+				margin 10px 0
+				padding 0 15px
+				display block
 	
 	@media $mobile_et_ipad
 		top O
 		bottom auto
 		li
 			border-left 2px solid $light-yellow
-			padding-left 20px
+			padding 0 10px
 			transition opacity 1s
 			.hidefooter &
 				border-left none
@@ -76,7 +96,7 @@
 			vert_align_middle()
 			.name
 			.date
-				color $light-yellow
+				color #ffffff
 			
 			.tagline
 				color #000
@@ -84,20 +104,20 @@
 			
 	@media $mobile
 		height $height_header_info_mobile
-		width calc( 100% - 120px )
+		width calc( 100% - 95px )
 		li
 			.name
-				font-size .6em
+				font-size .95em
 				padding 3px 0
 			
 			.tagline
 			.contry
 			.date
-				font-size 1.6em
+				font-size 1em
 			
 	@media $ipad
 		height $height_header_info_ipad
-		width calc( 100% - 204px )
+		width calc( 100% - 180px )
 		li
 			.name
 				font-size 1.5em
@@ -109,10 +129,9 @@
 				font-size 2.7em
 				
 	@media $desktop
-		height 250px
+		height 300px
 		width 100%
 		bottom 0
-		right 0
 		left 0px
 		background #010101
 		li
@@ -121,6 +140,13 @@
 			.warper
 				height auto
 				center()
-				width calc(100% - 100px)
+				width calc(100% - 50px)
 				
+				.tagline
+				.contry
+					color $yellow
+				.date
+				.name
+					color #ffffff
+
 				
