@@ -46,7 +46,7 @@
 		},
 		"read_bio": {
 			"en": "Read bio",
-			"fr": "Voir Bio"
+			"fr": "Voir la Bio"
 		},
 		"startvideo": {
 			"en": "Start video",
@@ -87,6 +87,14 @@
 		"txt_intro": {
 			"en": "Choose your language",
 			"fr": "Choisissez votre langue"
+		},
+		"txt_pause_video": {
+			"en": "Pause",
+			"fr": "Pause"
+		},
+		"txt_play_video": {
+			"en": "Play",
+			"fr": "Play"
 		}
 	},
 	"VIDEOINTRO": {

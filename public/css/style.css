@@ -536,6 +536,13 @@ p:empty {
   line-height: 20px;
   height: 20px;
 }
+@media screen and (min-width: 62em) {
+  .round_btn {
+    border-radius: 15px;
+    line-height: 30px;
+    height: 30px;
+  }
+}
 .yellow_btn {
   color: #000;
   background: #ffce00;
@@ -573,24 +580,6 @@ p:empty {
   .full_height_minus_footer_minus_header_mobile {
     top: 0;
     height: calc(100% - 40px);
-  }
-}
-@media screen and (max-width: 47.9em), screen and (max-height: 420px) {
-  body.hidefooter .full_height_minus_footer_minus_header_mobile {
-    top: 80px;
-    height: calc(100% - 80px);
-  }
-}
-@media screen and (min-width: 48em) {
-  body.hidefooter .full_height_minus_footer_minus_header_mobile {
-    top: 160px;
-    height: calc(100% - 160px);
-  }
-}
-@media screen and (min-width: 62em) {
-  body.hidefooter .full_height_minus_footer_minus_header_mobile {
-    top: 0;
-    height: 100%;
   }
 }
 .max_width {
@@ -695,7 +684,7 @@ body.hidefooter #left_col {
   width: 100%;
   bottom: 0;
   position: absolute;
-  color: #fff;
+  color: #989898;
   font-size: 0.7em;
 }
 body.hidefooter .footer {
@@ -710,6 +699,8 @@ body.hidefooter .footer {
   display: inline-block;
   line-height: 40px;
   position: relative;
+  font-weight: 100;
+  color: #989898;
 }
 @media screen and (min-width: 48em) {
   .footer ul li.seperateur:after {
@@ -733,7 +724,7 @@ body.hidefooter .footer {
   padding: 0 5px;
   height: 100%;
   display: block;
-  color: #fff;
+  color: #989898;
 }
 @media screen and (min-width: 48em) {
   .footer ul li a {
@@ -752,7 +743,7 @@ body.hidefooter .footer {
 }
 .footer ul#mode_switcher li a.selected,
 .footer ul#mode_switcher li a:hover {
-  color: #000;
+  color: #989898;
   background: #ffce00;
 }
 .footer ul#infos {
@@ -926,6 +917,7 @@ body.hidefooter .footer {
   font-size: 1em;
   margin: 0;
   padding: 0;
+  font-weight: 100;
 }
 @media screen and (min-width: 48em) {
   #block_help #warp_txt_help,
@@ -977,7 +969,7 @@ body.hidefooter .footer {
 }
 #artists_info li h3.name {
   padding: 0;
-  margin: 0;
+  margin: 7px 0;
 }
 #artists_info li .name,
 #artists_info li .date,
@@ -1133,6 +1125,16 @@ body.hidefooter .footer {
   }
   #artists_info li .warper #about-btn {
     display: inline-block;
+  }
+  #artists_info li .warper .name {
+    font-size: 1.32em;
+  }
+  #artists_info li .warper .tagline {
+    font-size: 2.6em;
+  }
+  #artists_info li .warper .date,
+  #artists_info li .warper .contry {
+    font-size: 3.18em;
   }
 }
 #list_artists {
@@ -2953,4 +2955,26 @@ body.hidefooter #popin .skip_intro {
   #play-video-btn-mobile {
     display: none;
   }
+}
+#pause-video-btn {
+  bottom: 40px;
+  width: auto;
+  display: block;
+  right: 30px;
+  position: absolute;
+  padding: 0px 20px;
+  font-size: 0.7em;
+}
+#pause-video-btn span:last-child {
+  display: none;
+}
+#pause-video-btn.paused {
+  color: #333;
+  background: #ffce00;
+}
+#pause-video-btn.paused span:first-child {
+  display: none;
+}
+#pause-video-btn.paused span:last-child {
+  display: inline-block;
 }

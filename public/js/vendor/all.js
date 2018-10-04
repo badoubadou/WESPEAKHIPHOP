@@ -783,9 +783,7 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
     constructor($container) {
       this.$container = $container;
       this.buildLignmask();
-      console.log('metadata video loaded ---------------------- start player_video ');
-      
-      // @bindEvents() # bind event is now after video is loaded
+      // console.log 'metadata video loaded ---------------------- start player_video ' 
       this.timelineKnob = new TimelineMax({
         paused: true
       });
@@ -806,11 +804,7 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         ease: Power3.easeOut
       }, 0.3).staggerFrom('#disk_lign svg #testmask circle', .5, {
         drawSVG: 0
-      }, 0.05, 0.5).from('#main', 5, {
-        width: '100%',
-        marginLeft: 0,
-        ease: Power3.easeInOut
-      }, 1).to('#disk_lign', 4, {
+      }, 0.05, 0.5).to('#disk_lign', 4, {
         rotation: 60,
         ease: Power1.easeOut
       }, .5).from('#bg_disk', 2, {
@@ -822,10 +816,15 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         opacity: 0
       }, 0.04, 3).from(['#play-video-btn', '#play-video-btn-mobile'], .6, {
         opacity: 0
-      }, 5).from('#main_footer', .5, {
+      }, 5).from('#main_footer', .8, {
         y: 40,
         ease: Power3.easeOut
-      }, 3).from('#left_col', .6, {
+      }, 3).from('#main', .8, {
+        width: '100%',
+        height: '100%',
+        marginLeft: 0,
+        ease: Power3.easeOut
+      }, 3).from('#left_col', .8, {
         x: '-100%',
         ease: Power3.easeOut
       }, 3).from('#smallmap', .6, {
@@ -1360,16 +1359,14 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return that.skipIntro();
       });
       //------------------- FOOTER LISTNER -------------------#
-      $('#mode_switcher').on('switch_to_face_pays', function() {
-        if (that.player) {
-          return that.player.pause();
-        }
-      });
-      $('#mode_switcher').on('switch_to_face_artist', function() {
-        if (that.player) {
-          return that.player.play();
-        }
-      });
+      // $('#mode_switcher').on 'switch_to_face_pays', ->
+      // 	if that.player
+      // 		that.player.pause()
+
+      // $('#mode_switcher').on 'switch_to_face_artist', ->
+      // 	if that.player
+      // 		that.player.play()
+
       //------------------- POPIN LISTNER -------------------#
       $('#popin').on('classChange', function() {
         console.log('popin change ' + ($(this).hasClass('hide')));
@@ -1410,6 +1407,9 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         }
         if (that.player) {
           console.log('play video');
+          if ($('#pause-video-btn').hasClass('paused')) {
+            return;
+          }
           that.player.play();
         }
       };
@@ -1422,6 +1422,16 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       $('#sound').on('sound_on', function() {
         console.log('sound_on' + that.player.muted);
         return that.player.muted = false;
+      });
+      //------------------- SOUND ---------------------------#
+      $('#pause-video-btn').on('click', function() {
+        if ($(this).hasClass('paused')) {
+          that.player.play();
+          return $(this).removeClass('paused');
+        } else {
+          that.player.pause();
+          return $(this).addClass('paused');
+        }
       });
       
       //------------------- PLAYER JS ---------------------------#		

@@ -1,8 +1,8 @@
 class player_video
 	constructor: (@$container) ->
 		@buildLignmask()
-		console.log 'metadata video loaded ---------------------- start player_video ' 
-		# @bindEvents() # bind event is now after video is loaded
+		# console.log 'metadata video loaded ---------------------- start player_video ' 
+		
 		@timelineKnob = new TimelineMax(paused: true)
 		@timelineInfo = new TimelineMax(paused: true)
 		@timelinePlatine = new TimelineMax(paused: true)
@@ -11,15 +11,15 @@ class player_video
 		@timelineDisk.from('#disk_hole', .6 ,{scale: 0, ease:Power3.easeOut})
 			.from('#mask_video', 3 ,{scale: 0, ease:Power3.easeOut}, 0.3 )
 			.staggerFrom('#disk_lign svg #testmask circle', .5, { drawSVG: 0 }, 0.05, 0.5)
-			.from('#main', 5 ,{width:'100%',marginLeft:0, ease:Power3.easeInOut}, 1 )
 			.to('#disk_lign', 4 ,{ rotation: 60, ease:Power1.easeOut}, .5 )
 			.from('#bg_disk', 2 ,{ scale: 0, ease:Power1.easeOut}, 1 )
 			.add( @showFooter_header,1 )
 			.from('#platine', 1 ,{opacity:0}, 3)
 			.staggerFrom('#list_artists li', .3 ,{opacity:0}, 0.04, 3)
 			.from(['#play-video-btn', '#play-video-btn-mobile'], .6 ,{opacity:0}, 5 )
-			.from('#main_footer', .5 ,{y:40, ease:Power3.easeOut}, 3 )
-			.from('#left_col', .6 ,{x:'-100%', ease:Power3.easeOut}, 3 )
+			.from('#main_footer', .8 ,{y:40, ease:Power3.easeOut}, 3 )
+			.from('#main', .8 ,{width:'100%', height:'100%', marginLeft:0, ease:Power3.easeOut}, 3 )
+			.from('#left_col', .8 ,{x:'-100%', ease:Power3.easeOut}, 3 )
 			.from('#smallmap', .6 ,{opacity:0, y:150, ease:Power3.easeOut}, 3.5 )
 			.from('#ico', .6 ,{opacity:0}, 5 )
 			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut}, 6 )
@@ -252,13 +252,13 @@ class player_video
 			that.skipIntro()
 
 		#------------------- FOOTER LISTNER -------------------#
-		$('#mode_switcher').on 'switch_to_face_pays', ->
-			if that.player
-				that.player.pause()
+		# $('#mode_switcher').on 'switch_to_face_pays', ->
+		# 	if that.player
+		# 		that.player.pause()
 
-		$('#mode_switcher').on 'switch_to_face_artist', ->
-			if that.player
-				that.player.play()
+		# $('#mode_switcher').on 'switch_to_face_artist', ->
+		# 	if that.player
+		# 		that.player.play()
 
 		#------------------- POPIN LISTNER -------------------#
 		$('#popin').on 'classChange', ->
@@ -296,6 +296,8 @@ class player_video
 
 			if that.player
 				console.log 'play video'
+				if $('#pause-video-btn').hasClass 'paused'
+					return
 				that.player.play()
 			return
 
@@ -309,6 +311,16 @@ class player_video
 		$('#sound').on 'sound_on', ->
 			console.log 'sound_on' + that.player.muted
 			that.player.muted = false
+
+		#------------------- SOUND ---------------------------#
+		$('#pause-video-btn').on 'click', ->
+			if $(this).hasClass 'paused'
+				that.player.play()
+				$(this).removeClass 'paused'
+			else
+				that.player.pause()
+				$(this).addClass 'paused'
+
 		
 		#------------------- PLAYER JS ---------------------------#		
 		$('#player').on 'play', (e) ->

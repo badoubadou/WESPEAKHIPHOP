@@ -123,5 +123,24 @@
 	@media $ipad
 		display none
 
+
+#pause-video-btn
+	bottom 40px
+	width auto
+	display block
+	right 30px
+	position absolute
+	padding 0px 20px
+	font-size .7em
+	span:last-child
+		display none
+	
+	&.paused
+		color #333333
+		background $yellow
+		span:first-child
+			display none	
+		span:last-child
+			display inline-block
 	
 	

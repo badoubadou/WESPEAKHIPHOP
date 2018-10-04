@@ -1,24 +1,12 @@
 #main_footer.footer.layer_top
 	include ../block_help/index.pug
 
-	//- ul#mode_switcher
-	//- 	li
-	//- 		a(href='#contrys' data-face='face_pays')
-	//- 			| #{TRANSLATION.face_pays[langage]}
-	//- 	li
-	//- 		a.selected(href='#artists' data-face='face_artistes')
-	//- 			| #{TRANSLATION.face_artistes[langage]}
-
-
 	ul#infos
-		//- li
-		//- 	a(href='#help') 
-		//- 		| #{TRANSLATION.aide[langage]}
-		li.seperateur
+		li
 			a#apropos_btn(href='#apropos')
 				| #{TRANSLATION.a_propos[langage]}
 		
-		li.seperateur
+		li
 			if langage == 'en'
 				a(href='http://wespeakhiphop.fr')
 					span.short_text
