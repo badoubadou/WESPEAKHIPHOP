@@ -1,7 +1,8 @@
 .header
-	if langage == 'fr'
-		a(href='http://wespeakhiphop.fr').logoWSH
-			include ../../../public/image/logo.svg
-	else
-		a(href='http://wespeakhiphop.com').logoWSH
-			include ../../../public/image/logo.svg
+	h1
+		if langage == 'fr'
+			a(href='http://wespeakhiphop.fr').logoWSH
+				include ../../../public/image/logo.svg
+		else
+			a(href='http://wespeakhiphop.com').logoWSH
+				include ../../../public/image/logo.svg

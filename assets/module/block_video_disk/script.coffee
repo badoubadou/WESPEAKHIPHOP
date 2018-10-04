@@ -135,12 +135,16 @@ class player_video
 			$('#play-video-btn, #play-video-btn-mobile, #startvideo').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
 			$('#list_artists li a.selected').removeClass('selected')
 			$('#list_artists li:eq('+id+') a').addClass('selected')
-			$('#artist_info .info').addClass('hide')
-			$('#artist_info .info:eq('+id+')').removeClass('hide')
+			console.log 'update info eq : '+id
+			
 			svgcontry = '#smallmap svg #'+$('#artists_info li:eq('+id+') .contry').data 'contrynicename'
 			console.log svgcontry
 			TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {alpha: 0})
 			TweenMax.to(svgcontry, 0.5, {alpha: 1}, '+=.5')
+			$('#artists_info li').addClass('hide')
+			$('#artists_info li:eq('+id+')').removeClass('hide')
+			$('#popin #artist_info .info').addClass('hide')
+			$('#popin #artist_info .info:eq('+id+')').removeClass('hide')
 
 		duration_sequence = @duration / 28 
 		sequence = '+='+(duration_sequence - 1)

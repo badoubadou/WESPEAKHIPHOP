@@ -98,139 +98,6 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
 }).call(this);
 
 (function() {
-  var flip_disk;
-
-  flip_disk = class flip_disk {
-    constructor() {
-      console.log('build flip disk');
-      this.duree_flip = .6;
-      this.demi_flip = this.duree_flip / 2;
-      this.buildTween();
-      this.bindEvents();
-    }
-
-    buildTween(timeStamp) {
-      console.log(timeStamp);
-      this.flip_tween = new TimelineMax({
-        paused: true
-      });
-      this.flip_tween.staggerTo($('#list_artists li'), .3, {
-        alpha: 0
-      }, this.duree_flip / 28).to($('#block_video_disk'), .3, {
-        scale: 1.1
-      }, 0).to($('#block_video_disk'), .3, {
-        rotationY: 90
-      }).from($('#faceb'), .3, {
-        rotationY: 90,
-        scale: 1.3
-      }).to($('#smallmap'), .3, {
-        ease: Power1.easeOut,
-        alpha: 0
-      }).to('#txt_help_disk', .5, {
-        rotationX: 90
-      }, '-=.5').from('#txt_help_map', .5, {
-        rotationX: 90
-      });
-      this.flip_tween.eventCallback('onReverseComplete', function() {
-        $('#mode_switcher').trigger('switch_to_face_artist');
-        $('#smallmap').removeClass('opacity_0');
-        $('#mouse_over_bg').addClass('hide');
-      });
-      return this.flip_tween.eventCallback('onComplete', function() {
-        $('#mouse_over_bg').removeClass('hide');
-      });
-    }
-
-    bindEvents() {
-      var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, that;
-      that = this;
-      
-      //------------------- RESIZE --------------------------#
-      // $(window).resize ->
-      // 	console.log 'resize'
-      // 	timeStamp = that.flip_tween.time()
-      // 	that.flip_tween.kill()
-      // 	$('#face_artistes, #face_pays').css('transform', '')
-      // 	that.buildTween(timeStamp)
-      // 	return
-      //------------------- SOUND ---------------------------#
-      $('#sound').on('click', function() {
-        var event_name;
-        event_name = 'sound_on';
-        if ($('#sound').hasClass('actif')) {
-          event_name = 'sound_off';
-        }
-        $(this).trigger(event_name);
-        console.log(event_name);
-        return $('#sound').toggleClass('actif');
-      });
-      //------------------- SWITCH FACE ---------------------------#				
-      $('#mode_switcher li a').on({
-        'click': function(e) {
-          e.preventDefault();
-          $('.footer .selected').removeClass('selected');
-          $(this).addClass('selected');
-          if ($(this).data('face') === 'face_pays') {
-            $('#mode_switcher').trigger('switch_to_face_pays');
-            $('#smallmap').addClass('opacity_0');
-            return that.flip_tween.play();
-          } else {
-            $('.block_contry').removeClass('opacity_1');
-            return that.flip_tween.reverse();
-          }
-        }
-      });
-      //------------------- FULL SCREEN ---------------------------#				
-      GoInFullscreen = function(element) {
-        if (element.requestFullscreen) {
-          element.requestFullscreen();
-        } else if (element.mozRequestFullScreen) {
-          element.mozRequestFullScreen();
-        } else if (element.webkitRequestFullscreen) {
-          element.webkitRequestFullscreen();
-        } else if (element.msRequestFullscreen) {
-          element.msRequestFullscreen();
-        }
-      };
-      GoOutFullscreen = function() {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-          document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) {
-          document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen();
-        }
-      };
-      IsFullScreenCurrently = function() {
-        var full_screen_element;
-        full_screen_element = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
-        // If no element is in full-screen
-        if (full_screen_element === null) {
-          return false;
-        } else {
-          return true;
-        }
-      };
-      $('#fullscreen').on({
-        'click': function() {
-          if (!IsFullScreenCurrently()) {
-            return GoInFullscreen($('body').get(0));
-          } else {
-            return GoOutFullscreen();
-          }
-        }
-      });
-    }
-
-  };
-
-  module.flip_disk = flip_disk;
-
-}).call(this);
-
-(function() {
   // class player_youtube
 // 	constructor: () ->
 // 		@bindEvents()
@@ -346,200 +213,6 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
 
 // tag = document.createElement('script')
 
-
-}).call(this);
-
-(function() {
-  var player_video_youtube;
-
-  player_video_youtube = class player_video_youtube {
-    constructor($container) {
-      this.$container = $container;
-      this.playerYT = null;
-      this.drawLogo = null;
-      this.intro_is_done = false;
-      this.bildIntroYoutube();
-      this.bindEvents();
-    }
-
-    playYTisReady() {
-      // $('.lds-dual-ring').addClass 'done'
-      $('.lds-dual-ring').trigger('hidespiner');
-      console.log('trigger hide player YT ready ');
-      $('.intro_page .hidden').removeClass('hidden');
-      return this.playerYT.play();
-    }
-
-    bildIntroYoutube() {
-      var random, randomid, that;
-      that = this;
-      random = Math.floor(Math.random() * 4);
-      randomid = $('#idIntroYoutube input:eq(' + random + ')').val();
-      return $('#playerYT').attr('data-plyr-embed-id', randomid);
-    }
-
-    logoWhite() {
-      var that;
-      that = this;
-      TweenLite.set('svg', {
-        visibility: 'visible'
-      });
-      MorphSVGPlugin.convertToPath('line');
-      that.drawLogo = new TimelineMax({
-        delay: 1
-      });
-      return that.drawLogo.from("#logowhite #mask1_2_", 1, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }).from("#logowhite #mask2", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.1).from("#logowhite #mask3", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.2).from("#logowhite #mask4", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.3).from("#logowhite #mask5", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.4).from("#logowhite #mask6", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.5).from("#logowhite #mask7", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.6).from("#logowhite #mask8", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.7).from("#logowhite #mask9", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.8).from("#logowhite #mask10", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 0.9).from("#logowhite #mask11", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 1).from("#logowhite #mask12", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 1.1).from("#logowhite #mask13", 1.3, {
-        drawSVG: 0,
-        ease: Power1.easeInOut
-      }, 1.2);
-    }
-
-    startSite(that) {
-      console.log('startSite');
-      return that.logoWhite();
-    }
-
-    YouTubeGetID(url) {
-      var ID;
-      ID = '';
-      url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
-      if (url[2] !== void 0) {
-        ID = url[2].split(/[^0-9a-z_\-]/i);
-        return ID = ID[0];
-      } else {
-        ID = url;
-        return ID;
-      }
-    }
-
-    bindEvents() {
-      var controls, that, vid_intro_finished;
-      that = this;
-      if (!$('body').hasClass('doc-ready')) {
-        $('body').on('doc-ready', function() {
-          console.log('doc-ready');
-          return that.startSite(that);
-        });
-      } else {
-        console.log('doc already ready');
-        that.startSite(that);
-      }
-      //------------------- ENTER SITE -------------------#
-      $('#enter_site').on('click', function(e) {
-        e.preventDefault();
-        that.intro_is_done = true;
-        console.log('enter site --------------------------------');
-        $('.intro_page').addClass('hidden');
-        $('.video-container').removeClass('hidden hide');
-        TweenMax.delayedCall(4, function() {
-          that.drawLogo.reverse();
-        });
-        that.playerYT.play();
-      });
-      
-      //------------------- PLAYER YOUTUBE -------------------#
-      controls = '<div class="plyr__controls"> <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play"> <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-pause"></use></svg> <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-play"></use></svg> <span class="label--pressed plyr__tooltip" role="tooltip">Pause</span> <span class="label--not-pressed plyr__tooltip" role="tooltip">Play</span> </button> <div class="plyr__progress"> <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek"> <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress> <span role="tooltip" class="plyr__tooltip">00:00</span> </div> <button type="button" class="plyr__control" aria-label="Mute" data-plyr="mute"> <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-muted"></use></svg> <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-volume"></use></svg> <span class="label--pressed plyr__tooltip" role="tooltip">Unmute</span> <span class="label--not-pressed plyr__tooltip" role="tooltip">Mute</span> </button> </div>';
-      this.playerYT = new Plyr('#playerYT', {controls});
-      console.log('yo : ------' + this.playerYT);
-      
-      //------------------- PLAYER YOUTUBE IS READY -------------------#
-      this.playerYT.on('ready', function(event) {
-        console.log('playYTisReady');
-        that.playYTisReady();
-      });
-      this.playerYT.on('play', function(event) {
-        console.log('######################    play YOUTUBE @intro_is_done = ' + that.intro_is_done);
-        if (that.intro_is_done) {
-          $('.video-container').removeClass('hidden hide');
-        }
-      });
-      this.playerYT.on('pause', function(event) {
-        console.log('pause YOUTUBE');
-        that.drawLogo.pause();
-      });
-      
-      //------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
-      $('#popin').on('closePopin', function() {
-        console.log('------------ > closePopin');
-        return that.playerYT.stop();
-      });
-      //------------------- INTRO FINISHED -------------------#
-      vid_intro_finished = function() {
-        console.log('vid_intro_finished ----- trigger end Intro trigger close  Popin');
-        $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin');
-        $('.lds-dual-ring').removeClass('not_center');
-      };
-      $('.skip_intro').on('click', function() {
-        vid_intro_finished();
-      });
-      this.playerYT.on('ended', function(event) {
-        vid_intro_finished();
-      });
-      //------------------- CLICK LIST ARTIST -------------------#
-      return $('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on('click', function(event) {
-        var idyoutube;
-        event.preventDefault();
-        idyoutube = that.YouTubeGetID($(this).attr('href'));
-        if (!$('#artist_info').hasClass('hide')) {
-          $('#artist_info').addClass('hide');
-        }
-        // $('.lds-dual-ring').removeClass 'done'
-        console.log('trigger show on click');
-        $('.lds-dual-ring').trigger('showspiner');
-        console.log('trigger show');
-        window.currentArtist = $('#artist_info .info:not(.hide)').index();
-        that.playerYT.source = {
-          type: 'video',
-          sources: [
-            {
-              src: idyoutube,
-              provider: 'youtube'
-            }
-          ]
-        };
-        $('#popin').removeClass('hide').trigger('classChange');
-      });
-    }
-
-  };
-
-  module.player_video_youtube = player_video_youtube;
 
 }).call(this);
 
@@ -724,6 +397,254 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
   
   // @buildContrySound(pastille)
   module.block_pays = block_pays;
+
+}).call(this);
+
+(function() {
+  var player_video_youtube;
+
+  player_video_youtube = class player_video_youtube {
+    constructor($container) {
+      this.$container = $container;
+      this.playerYT = null;
+      this.drawLogo = null;
+      this.intro_is_done = false;
+      this.bildIntroYoutube();
+      this.bindEvents();
+    }
+
+    playYTisReady() {
+      // $('.lds-dual-ring').addClass 'done'
+      $('.lds-dual-ring').trigger('hidespiner');
+      console.log('trigger hide player YT ready ');
+      $('.intro_page .hidden').removeClass('hidden');
+      return this.playerYT.play();
+    }
+
+    bildIntroYoutube() {
+      var random, randomid, that;
+      that = this;
+      random = Math.floor(Math.random() * 4);
+      randomid = $('#idIntroYoutube input:eq(' + random + ')').val();
+      return $('#playerYT').attr('data-plyr-embed-id', randomid);
+    }
+
+    logoWhite() {
+      var that;
+      that = this;
+      TweenLite.set('svg', {
+        visibility: 'visible'
+      });
+      MorphSVGPlugin.convertToPath('line');
+      that.drawLogo = new TimelineMax({
+        delay: 1
+      });
+      return that.drawLogo.from("#logowhite #mask1_2_", 1, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }).from("#logowhite #mask2", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.1).from("#logowhite #mask3", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.2).from("#logowhite #mask4", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.3).from("#logowhite #mask5", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.4).from("#logowhite #mask6", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.5).from("#logowhite #mask7", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.6).from("#logowhite #mask8", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.7).from("#logowhite #mask9", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.8).from("#logowhite #mask10", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 0.9).from("#logowhite #mask11", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 1).from("#logowhite #mask12", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 1.1).from("#logowhite #mask13", 1.3, {
+        drawSVG: 0,
+        ease: Power1.easeInOut
+      }, 1.2);
+    }
+
+    startSite(that) {
+      console.log('startSite');
+      return that.logoWhite();
+    }
+
+    YouTubeGetID(url) {
+      var ID;
+      ID = '';
+      url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+      if (url[2] !== void 0) {
+        ID = url[2].split(/[^0-9a-z_\-]/i);
+        return ID = ID[0];
+      } else {
+        ID = url;
+        return ID;
+      }
+    }
+
+    bindEvents() {
+      var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, controls, that, vid_intro_finished;
+      that = this;
+      if (!$('body').hasClass('doc-ready')) {
+        $('body').on('doc-ready', function() {
+          console.log('doc-ready');
+          return that.startSite(that);
+        });
+      } else {
+        console.log('doc already ready');
+        that.startSite(that);
+      }
+      //------------------- ENTER SITE -------------------#
+      $('#enter_site').on('click', function(e) {
+        e.preventDefault();
+        that.intro_is_done = true;
+        console.log('enter site --------------------------------');
+        $('.intro_page').addClass('hidden');
+        $('.video-container').removeClass('hidden hide');
+        // GoInFullscreen($('body').get(0))
+        TweenMax.delayedCall(4, function() {
+          that.drawLogo.reverse();
+        });
+        that.playerYT.play();
+      });
+      //------------------- SOUND ---------------------------#
+      $('#sound').on('click', function() {
+        var event_name;
+        console.log('click sound');
+        event_name = 'sound_on';
+        if ($('#sound').hasClass('actif')) {
+          event_name = 'sound_off';
+        }
+        $(this).trigger(event_name);
+        console.log(event_name);
+        return $('#sound').toggleClass('actif');
+      });
+      //------------------- FULL SCREEN ---------------------------#				
+      GoInFullscreen = function(element) {
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+          element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) {
+          element.msRequestFullscreen();
+        }
+      };
+      GoOutFullscreen = function() {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      };
+      IsFullScreenCurrently = function() {
+        var full_screen_element;
+        full_screen_element = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
+        // If no element is in full-screen
+        if (full_screen_element === null) {
+          return false;
+        } else {
+          return true;
+        }
+      };
+      $('#fullscreen').on({
+        'click': function() {
+          if (!IsFullScreenCurrently()) {
+            return GoInFullscreen($('body').get(0));
+          } else {
+            return GoOutFullscreen();
+          }
+        }
+      });
+      //------------------- PLAYER YOUTUBE -------------------#
+      controls = '<div class="plyr__controls"> <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play"> <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-pause"></use></svg> <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-play"></use></svg> <span class="label--pressed plyr__tooltip" role="tooltip">Pause</span> <span class="label--not-pressed plyr__tooltip" role="tooltip">Play</span> </button> <div class="plyr__progress"> <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek"> <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress> <span role="tooltip" class="plyr__tooltip">00:00</span> </div> <button type="button" class="plyr__control" aria-label="Mute" data-plyr="mute"> <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-muted"></use></svg> <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-volume"></use></svg> <span class="label--pressed plyr__tooltip" role="tooltip">Unmute</span> <span class="label--not-pressed plyr__tooltip" role="tooltip">Mute</span> </button> </div>';
+      this.playerYT = new Plyr('#playerYT', {controls});
+      console.log('yo : ------' + this.playerYT);
+      
+      //------------------- PLAYER YOUTUBE IS READY -------------------#
+      this.playerYT.on('ready', function(event) {
+        console.log('playYTisReady');
+        that.playYTisReady();
+      });
+      this.playerYT.on('play', function(event) {
+        console.log('######################    play YOUTUBE @intro_is_done = ' + that.intro_is_done);
+        if (that.intro_is_done) {
+          $('.video-container').removeClass('hidden hide');
+        }
+      });
+      this.playerYT.on('pause', function(event) {
+        console.log('pause YOUTUBE');
+        that.drawLogo.pause();
+      });
+      
+      //------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
+      $('#popin').on('closePopin', function() {
+        console.log('------------ > closePopin');
+        return that.playerYT.stop();
+      });
+      //------------------- INTRO FINISHED -------------------#
+      vid_intro_finished = function() {
+        console.log('vid_intro_finished ----- trigger end Intro trigger close  Popin');
+        $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin');
+        $('.lds-dual-ring').removeClass('not_center');
+      };
+      $('.skip_intro').on('click', function() {
+        vid_intro_finished();
+      });
+      this.playerYT.on('ended', function(event) {
+        vid_intro_finished();
+      });
+      //------------------- CLICK LIST ARTIST -------------------#
+      return $('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on('click', function(event) {
+        var idyoutube;
+        event.preventDefault();
+        idyoutube = that.YouTubeGetID($(this).attr('href'));
+        if (!$('#artist_info').hasClass('hide')) {
+          $('#artist_info').addClass('hide');
+        }
+        // $('.lds-dual-ring').removeClass 'done'
+        console.log('trigger show on click');
+        $('.lds-dual-ring').trigger('showspiner');
+        console.log('trigger show');
+        window.currentArtist = $('#artist_info .info:not(.hide)').index();
+        that.playerYT.source = {
+          type: 'video',
+          sources: [
+            {
+              src: idyoutube,
+              provider: 'youtube'
+            }
+          ]
+        };
+        $('#popin').removeClass('hide').trigger('classChange');
+      });
+    }
+
+  };
+
+  module.player_video_youtube = player_video_youtube;
 
 }).call(this);
 
@@ -1050,16 +971,19 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         $('#play-video-btn, #play-video-btn-mobile, #startvideo').attr('href', $('#list_artists li:eq(' + id + ') a').attr('href'));
         $('#list_artists li a.selected').removeClass('selected');
         $('#list_artists li:eq(' + id + ') a').addClass('selected');
-        $('#artist_info .info').addClass('hide');
-        $('#artist_info .info:eq(' + id + ')').removeClass('hide');
+        console.log('update info eq : ' + id);
         svgcontry = '#smallmap svg #' + $('#artists_info li:eq(' + id + ') .contry').data('contrynicename');
         console.log(svgcontry);
         TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {
           alpha: 0
         });
-        return TweenMax.to(svgcontry, 0.5, {
+        TweenMax.to(svgcontry, 0.5, {
           alpha: 1
         }, '+=.5');
+        $('#artists_info li').addClass('hide');
+        $('#artists_info li:eq(' + id + ')').removeClass('hide');
+        $('#popin #artist_info .info').addClass('hide');
+        return $('#popin #artist_info .info:eq(' + id + ')').removeClass('hide');
       };
       duration_sequence = this.duration / 28;
       sequence = '+=' + (duration_sequence - 1);

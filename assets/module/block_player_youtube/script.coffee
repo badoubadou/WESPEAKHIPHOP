@@ -70,12 +70,60 @@ class player_video_youtube
 			console.log 'enter site --------------------------------'
 			$('.intro_page').addClass 'hidden'
 			$('.video-container').removeClass 'hidden hide'
+			# GoInFullscreen($('body').get(0))
 			TweenMax.delayedCall 4, ->
 				that.drawLogo.reverse()
 				return
 			that.playerYT.play()
 			return
-		
+		#------------------- SOUND ---------------------------#
+		$('#sound').on 'click', ->
+			console.log 'click sound'
+			event_name = 'sound_on'
+			if ($('#sound').hasClass('actif'))
+				event_name = 'sound_off'
+			$(this).trigger event_name
+			console.log event_name
+			$('#sound').toggleClass 'actif'
+
+		#------------------- FULL SCREEN ---------------------------#				
+		GoInFullscreen = (element) ->
+			if element.requestFullscreen
+				element.requestFullscreen()
+			else if element.mozRequestFullScreen
+				element.mozRequestFullScreen()
+			else if element.webkitRequestFullscreen
+				element.webkitRequestFullscreen()
+			else if element.msRequestFullscreen
+				element.msRequestFullscreen()
+			return
+
+		GoOutFullscreen = ->
+			if document.exitFullscreen
+				document.exitFullscreen()
+			else if document.mozCancelFullScreen
+				document.mozCancelFullScreen()
+			else if document.webkitExitFullscreen
+				document.webkitExitFullscreen()
+			else if document.msExitFullscreen
+				document.msExitFullscreen()
+			return
+
+		IsFullScreenCurrently = ->
+			full_screen_element = document.fullscreenElement or document.webkitFullscreenElement or document.mozFullScreenElement or document.msFullscreenElement or null
+			# If no element is in full-screen
+			if full_screen_element == null
+				false
+			else
+				true
+
+		$('#fullscreen').on 'click': ->
+			if !IsFullScreenCurrently()
+				GoInFullscreen($('body').get(0))
+			else
+				GoOutFullscreen()
+
+
 		#------------------- PLAYER YOUTUBE -------------------#
 		controls = '<div class="plyr__controls">
 		    <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play">

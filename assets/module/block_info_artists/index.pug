@@ -5,15 +5,16 @@ ul#artists_info.layer_0
 				each meta in video.postmeta
 					if meta.meta_key == 'tag_line'
 						span.tagline= meta.meta_value
-				span.name= video.title
+				h3.name= video.title
 
-				each cat in video.category
-					if cat.domain == 'pays'
-						span.contry(data-contrynicename=cat['nicename'])= cat['#text']
+				.warp_contry_date
+					each cat in video.category
+						if cat.domain == 'pays'
+							span.contry(data-contrynicename=cat['nicename'])= cat['#text']
 
-				each meta in video.postmeta
-					if meta.meta_key == 'date'
-						span.date= meta.meta_value
+					each meta in video.postmeta
+						if meta.meta_key == 'date'
+							span.date= meta.meta_value
 
-				a(href="")#about-btn.layer_3.btn.round_btn.grey_btn.btn
+				#about-btn.layer_3.btn.round_btn.grey_btn.btn
 					| #{TRANSLATION.read_bio[langage]}

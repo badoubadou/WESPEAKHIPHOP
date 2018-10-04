@@ -893,6 +893,7 @@ body.hidefooter .footer {
   left: 59%;
   height: 30px;
   color: #333;
+  font-size: 1em;
 }
 @media screen and (max-width: 47.9em), screen and (max-height: 420px) {
   #block_help {
@@ -922,6 +923,9 @@ body.hidefooter .footer {
 #block_help #txt_help_disk,
 #block_help #txt_help_map {
   width: 300px;
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
 }
 @media screen and (min-width: 48em) {
   #block_help #warp_txt_help,
@@ -970,6 +974,10 @@ body.hidefooter .footer {
 #artists_info li span {
   display: block;
   width: 100%;
+}
+#artists_info li h3.name {
+  padding: 0;
+  margin: 0;
 }
 #artists_info li .name,
 #artists_info li .date,
@@ -1118,6 +1126,13 @@ body.hidefooter .footer {
   #artists_info li .warper .date,
   #artists_info li .warper .name {
     color: #fff;
+  }
+  #artists_info li .warper .warp_contry_date {
+    display: inline-block;
+    width: 100%;
+  }
+  #artists_info li .warper #about-btn {
+    display: inline-block;
   }
 }
 #list_artists {
@@ -2933,4 +2948,9 @@ body.hidefooter #popin .skip_intro {
 #play-video-btn-mobile {
   bottom: auto;
   top: 10px;
+}
+@media screen and (min-width: 48em) {
+  #play-video-btn-mobile {
+    display: none;
+  }
 }
