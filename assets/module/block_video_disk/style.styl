@@ -78,7 +78,7 @@
 		height $size_disk_large+$epaiseur_platine
 	
 #mask_video
-	border 8px solid #000
+	border 3px solid #000
 	
 #disk
 	cursor url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/hand-small.png"), auto;
@@ -90,6 +90,18 @@
 	height 100%
 	background $yellow
 	z-index -1
+	
+.lign_svg
+	center()
+	width $size_disk_small - 10px
+	height $size_disk_small - 10px
+	
+	@media $ipad
+		width $size_disk_medium - 20px
+		height $size_disk_medium - 20px
+	@media $large_screen
+		width $size_disk_large - 20px
+		height $size_disk_large  - 20px
 	
 #play-video-btn
 #play-video-btn-mobile

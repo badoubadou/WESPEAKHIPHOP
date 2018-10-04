@@ -9,8 +9,14 @@
 		> *:nth-of-type(7)
 		> *:nth-of-type(10)
 			padding-left 50px
+		> *:nth-of-type(14)
+		> *:nth-of-type(16)
+			margin-left -40px
+			width 80px
 		> *:nth-of-type(15)
-			margin-top 5px
+			margin-top -2px
+			margin-left -40px
+			width 80px
 		> *:nth-of-type(25)
 			margin-left -140px
 		> *:nth-of-type(22)
@@ -18,20 +24,24 @@
 		> *:nth-of-type(23)
 			margin-left -160px
 		> *:nth-of-type(21)
-			margin-left -175px
+			margin-left -80px
+			width 96px
+			text-align right
+		> *:nth-of-type(28)
+			margin-left -133px
 			
 	@media $large_screen
 		on-circle(28, $size_name_circle_large, 230px)
 	
 	li a
 		bottom 0
-		font-size .6em
-		color $grey
+		font-size .65em
+		color #000
 		position absolute
 		top 0
 		width 100%
 		align_middle()
-		
+		font-weight 700
 		&:hover
 		&.selected
 			font-weight 900

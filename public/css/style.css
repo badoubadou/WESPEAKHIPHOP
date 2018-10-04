@@ -1428,8 +1428,15 @@ body.hidefooter .footer {
   #list_artists > *:nth-of-type(10) {
     padding-left: 50px;
   }
+  #list_artists > *:nth-of-type(14),
+  #list_artists > *:nth-of-type(16) {
+    margin-left: -40px;
+    width: 80px;
+  }
   #list_artists > *:nth-of-type(15) {
-    margin-top: 5px;
+    margin-top: -2px;
+    margin-left: -40px;
+    width: 80px;
   }
   #list_artists > *:nth-of-type(25) {
     margin-left: -140px;
@@ -1441,7 +1448,12 @@ body.hidefooter .footer {
     margin-left: -160px;
   }
   #list_artists > *:nth-of-type(21) {
-    margin-left: -175px;
+    margin-left: -80px;
+    width: 96px;
+    text-align: right;
+  }
+  #list_artists > *:nth-of-type(28) {
+    margin-left: -133px;
   }
 }
 @media screen and (min-width: 75em) and (min-height: 990px) {
@@ -1583,14 +1595,15 @@ body.hidefooter .footer {
 }
 #list_artists li a {
   bottom: 0;
-  font-size: 0.6em;
-  color: #979797;
+  font-size: 0.65em;
+  color: #000;
   position: absolute;
   top: 0;
   width: 100%;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  font-weight: 700;
 }
 #list_artists li a:hover,
 #list_artists li a.selected {
@@ -2816,11 +2829,11 @@ body.hidefooter #popin .skip_intro {
 }
 @media screen and (min-width: 48em) {
   #marker {
-    height: 150px;
+    height: 140px;
   }
   #marker svg {
     width: auto;
-    height: 150px;
+    height: 140px;
   }
 }
 @media screen and (min-width: 75em) and (min-height: 990px) {
@@ -2847,13 +2860,13 @@ body.hidefooter #popin .skip_intro {
 }
 @media screen and (min-width: 48em) {
   .size_video {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
   }
   .size_video .player-dimensions,
   .size_video video {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
   }
 }
 @media screen and (min-width: 75em) and (min-height: 990px) {
@@ -2900,7 +2913,7 @@ body.hidefooter #popin .skip_intro {
   }
 }
 #mask_video {
-  border: 8px solid #000;
+  border: 3px solid #000;
 }
 #disk {
   cursor: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/hand-small.png"), auto;
@@ -2912,6 +2925,26 @@ body.hidefooter #popin .skip_intro {
   height: 100%;
   background: #ffce00;
   z-index: -1;
+}
+.lign_svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 240px;
+  height: 240px;
+}
+@media screen and (min-width: 48em) {
+  .lign_svg {
+    width: 480px;
+    height: 480px;
+  }
+}
+@media screen and (min-width: 75em) and (min-height: 990px) {
+  .lign_svg {
+    width: 780px;
+    height: 780px;
+  }
 }
 #play-video-btn,
 #play-video-btn-mobile {
