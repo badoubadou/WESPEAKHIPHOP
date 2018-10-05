@@ -1,23 +1,34 @@
 class popin
 	constructor: () ->
+		@timelinePopin = null
 		@bindEvents()
 
-	window.closePopin= ->
-		$('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
-		
-		if(!$('#popin').hasClass('hide'))
-			$('#popin').addClass('hide').trigger 'classChange'
-		
+	afterclose: ->
+		console.log 'afterclose'
+		$('#popin').addClass('hide').trigger 'classChange'
+		$('#popin').removeAttr('style')
+		$('#popin').find('*').removeAttr('style')
+		$('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'		
 		$('#popin').trigger 'closePopin'
 		console.log 'close popin'
 
+	closePopin: ->
+		if(@timelinePopin)
+			@timelinePopin.reverse()
+		else		
+			$('#popin').addClass('hide').trigger 'classChange'
+		
 	bindEvents : ->
+		that = @
 		showPopin = ($target)->
 			console.log $target + '$target$target$target'
 			$('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
 			$('#popin').toggleClass('hide').trigger 'classChange'
 			$($target).removeClass('hide')
-
+			that.timelinePopin = new TimelineMax({onReverseComplete:that.afterclose})
+			that.timelinePopin.from('#popin', .6 ,{opacity: 0, ease:Power3.easeOut})
+				.fromTo($target, 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
+		
 		#------------------- ABOUT  --------------------------#
 		$('#apropos_btn').on 'click': (e) ->
 			e.preventDefault()
@@ -39,6 +50,6 @@ class popin
 			showPopin('#shareinfo')
 
 		$('#close, #back').on 'click', ->
-			window.closePopin()
+			that.closePopin()
 
 module.popin = popin

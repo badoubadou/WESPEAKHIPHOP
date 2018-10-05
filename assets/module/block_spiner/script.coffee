@@ -13,23 +13,19 @@ class spiner
 	
 	showSpiner : ->
 		that = @
-		console.log 'Show Spiner = '+@timelineSpiner
 		@timelineSpiner.play()
 
 	hideSpiner : ->
 		that = @
-		console.log 'Hide Spiner = '+@timelineSpiner
 		that.timelineSpiner.reverse()
 		
 	bindEvents : ->
 		that = @
 
 		that.spiner.on 'hidespiner', ->
-			console.log '-------- catch hide '
 			that.hideSpiner()
 
 		that.spiner.on 'showspiner', ->
-			console.log '-------- catch show'
 			that.showSpiner()
 
 module.spiner = spiner

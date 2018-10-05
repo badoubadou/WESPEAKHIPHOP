@@ -1,7 +1,7 @@
 {
 	"ABOUT": {
 		"en": "Peace, Love, Unity and Having fun* !",
-		"fr": "Peace, Love, Unity and Having fun* ! Le message du pionnier Afrika Bambaataa, fondateur du mouvement pacifiste New Yorkais Zulu Nation, colonise le Bronx des années 1970, à contre courant de la violence des gangs. Une nouvelle culture est née. Son manifeste artistique et son mode d’expression : le hip hop.\n\nQuarante cinq ans plus tard, le rap – sa dimension musicale – a pris la planète d’assaut en devenant la musique la plus écoutée au monde. C’est vers l’Afrique, l’Europe, en Moyen-Orient et l’Asie qu’il faut à présent tendre l’oreille pour retrouver l’âme originelle du mouvement. \nVina Hiridjee et David Boisseaux-Chical ont tourné pendant dix ans, sur cinq continents et dans quinze langues, avant de réunir pour « We Speak Hip Hop » les voix de trente-quatre rappeurs engagés. Leur projet WESHH fait résonner par-delà les frontières les différences comme les valeurs communes de ces maîtres du beat et poètes virtuoses.\n« Transformer ses énergies négatives en énergies positives, réveiller les consciences. » Les ambassadeurs du hip-hop mondial ont repris à leur compte les idéaux originels du mouvement : oeuvrer pour une société solidaire, équitable, et non-violente où les sans-grades sortiraient des ghettos pour inventer un monde nouveau, plus ouvert, où leurs voix pourraient se faire entendre.\n Pour clôturer en beauté leur tournée planétaire, les réalisateurs de WESHH se sont associés avec La Place, centre culturel hop hop parisien unique. Au coeur de la capitale française, ils ont rencontré des acteurs emblématiques de la scène européenne et US. Artistes de la nouvelle génération, MC’s et DJ’s historiques ont confié à Vina Hiridjee et David Boisseaux-Chical leur rapport la mémoire du mouvement, leurs doutes et leurs espoirs pour l’avenir d’une culture bien vivante.\nWe speak hip hop !"
+		"fr": "Ecriture et Réalisation\n. \\n Vina Hiridjee et David Boisseaux-Chical\n\nDirection artistique et Graphisme\nNicolas Dali\n\nConception et Développement\nRomain Malauzat  Production\nKomet Prod\nwww.kometprod.com\n  Tournage Images : David Boisseaux-Chical\nJournaliste : Vina Hiridjee\n\nTournage La Place\nImages : David Boisseaux-Chical\nJournaliste : Ismaël Mereghetti\nImages Interview Dj Mathematics : Hicham Rami\nImages Interview End of the Game: Hashka\n\nRédaction Webdocumentaire\nZoé Lamazou\nMontage Monteurs : David Boisseaux-Chical, Mathilde Babo\n\nEtalonnage\nJérémie Pujau\n Montage son et mixage\nMarcel Dadalto \nMusique Laurent Bardainne\n\nSous-titrage\nLuana Santos\nTraduction\nTraducteur Anglais – Français : Sasha Lagrange Mentz, Hendrik Mentz, Balthazar Jungnell\n\nTraducteur Corée du Sud : Soy Kim\nTraducteur Indonésie/ Malaisie: Wee Chyn\nTraducteur Philippines : Kriztel Lorbes\n\nTraducteur Maroc : Abdellatif Bachar et Jihane Kéjairi Schott\n\nTraducteur Sénégal : Djibril Marone\n\nTraducteur Cambodge : Hiep Chan Vicheth\n\nTraducteur Thaïlande : Pongsatorn Dechanupav\n\nTraducteur Guinée-Conakry : Master G\n\n\n\nRemerciements\nAris Koukoulis, Magalie Loony, Sarah Leduc, Jessica Nay, Palmyre Badinier, Sabrina Hiridjee, François Langella, Benjamin Fernandez, Armel Parisot, Igor Ochronowicz, Régis Cazanave, Martine Chicalski, Sylvain Dumaine, Dimitri Chabrol, Karoline Hoeppner, Sarah Chiang, Jules Salters, Loubna Fahmi.\nUn Big Up à\n Betino’s record shop, 32 Rue Saint-Sébastien, 75011 Paris\nhttp://www.betinos.com/\n\nAvec la participation du Centre National de la Cinématographie et de l'image animée - Nouveaux média\nAvec le soutien de La Place Jean-Marc Mougeot Marina Gentle\nEt de Sennheiser\nMagdalena Bojanowski\n\nMOUV’\nBruno Laforestrie\n\nCOURRIER INTERNATIONAL Claire Carrard Carolin Lohrenz 2018 © KOMET "
 	},
 	"TRANSLATION": {
 		"face_pays": {
@@ -95,6 +95,14 @@
 		"txt_play_video": {
 			"en": "Play",
 			"fr": "Play"
+		},
+		"txt_tuto": {
+			"en": "Scratchez le vinyle avec votre souris en déplaçant le repère blanc et découvrez 28 artistes de la planète hip hop",
+			"fr": "Scratchez le vinyle avec votre souris en déplaçant le repère blanc et découvrez 28 artistes de la planète hip hop"
+		},
+		"btn_tuto": {
+			"en": "I get it",
+			"fr": "J’ai compris"
 		}
 	},
 	"VIDEOINTRO": {

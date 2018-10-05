@@ -15,7 +15,5 @@ init = ->
 	if window.isMobile()
 		player_video = new module.player_video()
 
-console.log 'start js'
-	
 $(window).load( init )
 

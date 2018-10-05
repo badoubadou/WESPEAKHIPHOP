@@ -1,28 +1,21 @@
 class player_video
 	constructor: (@$container) ->
-		@buildLignmask()
-		# console.log 'metadata video loaded ---------------------- start player_video ' 
 		
 		@timelineKnob = new TimelineMax(paused: true)
 		@timelineInfo = new TimelineMax(paused: true)
 		@timelinePlatine = new TimelineMax(paused: true)
 
 		@timelineDisk = new TimelineMax(paused: true)		
-		@timelineDisk.from('#disk_hole', .6 ,{scale: 0, ease:Power3.easeOut})
-			.from('#mask_video', 3 ,{scale: 0, ease:Power3.easeOut}, 0.3 )
-			.staggerFrom('#disk_lign svg #testmask circle', .5, { drawSVG: 0 }, 0.05, 0.5)
-			.to('#disk_lign', 4 ,{ rotation: 60, ease:Power1.easeOut}, .5 )
-			.from('#bg_disk', 2 ,{ scale: 0, ease:Power1.easeOut}, 1 )
-			.add( @showFooter_header,1 )
-			.from('#platine', 1 ,{opacity:0}, 3)
-			.staggerFrom('#list_artists li', .3 ,{opacity:0}, 0.04, 3)
-			.from(['#play-video-btn', '#play-video-btn-mobile'], .6 ,{opacity:0}, 5 )
-			.from('#main_footer', .8 ,{y:40, ease:Power3.easeOut}, 3 )
-			.from('#main', .8 ,{width:'100%', height:'100%', marginLeft:0, ease:Power3.easeOut}, 3 )
-			.from('#left_col', .8 ,{x:'-100%', ease:Power3.easeOut}, 3 )
-			.from('#smallmap', .6 ,{opacity:0, y:150, ease:Power3.easeOut}, 3.5 )
-			.from('#ico', .6 ,{opacity:0}, 5 )
-			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut}, 6 )
+		@timelineDisk.from('#block_video_disk', 1.5 ,{ rotation: 270, opacity:0, scale:2, ease:Power1.easeOut} )
+			.from('#platine', 1 ,{opacity:0, scale:.8}, '-=.5')
+			.staggerFrom('#list_artists li', .3 ,{opacity:0}, 0.04 )
+			.from(['#play-video-btn', '#play-video-btn-mobile', '#pause-video-btn'], .6 ,{opacity:0}  )
+			.from('#main_footer', .8 ,{y:40, ease:Power3.easeOut})
+			.from('#left_col', .8 ,{x:'-100%', ease:Power3.easeOut} , '-=.8')
+			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut}, '-=1' )
+			.from('#smallmap', .6 ,{opacity:0, y:150, ease:Power3.easeOut} )
+			.add(@show_tuto)
+			.from('.tuto', .6 ,{opacity:0, ease:Power3.easeOut} )
 
 		@player = $('#player')[0]
 		@duration = 168.182
@@ -46,29 +39,12 @@ class player_video
 		@createTween()
 		@bindEvents()
 
-	buildLignmask : ->
-		paths = document.querySelector('#disk_lign svg').querySelectorAll('path')
-		mask = document.querySelector('#testmask')
-		svgns = 'http://www.w3.org/2000/svg'
-		i = 0
-		while i < paths.length
-			console.log 'build mask'
-			circle = document.createElementNS(svgns, 'circle')
-			rd = 237 + i * 3.27
-			circle.setAttributeNS null, 'cx', 525
-			circle.setAttributeNS null, 'cy', 525
-			circle.setAttributeNS null, 'r', rd
-			mask.appendChild circle
-			TweenLite.set circle,
-				fill: 'none'
-				stroke: 'white'
-				strokeWidth: 3
-			i++
-
-
 	showFooter_header : ->
 		$('body').removeClass('hidefooter')
 		$('body').removeClass('hide_left_col')
+
+	show_tuto : ->
+		$('.tuto').removeClass('hide')
 
 	loadMap : ->
 		console.log '---> load small map'
@@ -245,26 +221,20 @@ class player_video
 		that = @
 		console.log 'bindEvents player_video'
 
+
+		
+		#------------------- END TUTO -------------------#
+		$('.btn_get_it').on 'click', ->
+			$('.tuto').remove()
 		#------------------- ENDINTRO -------------------#
-		console.log 'bindEvents ############################################'
 		$('#popin').on 'endIntro', ->
 			console.log '--------------------------- end intro'
 			that.skipIntro()
 
-		#------------------- FOOTER LISTNER -------------------#
-		# $('#mode_switcher').on 'switch_to_face_pays', ->
-		# 	if that.player
-		# 		that.player.pause()
-
-		# $('#mode_switcher').on 'switch_to_face_artist', ->
-		# 	if that.player
-		# 		that.player.play()
-
 		#------------------- POPIN LISTNER -------------------#
 		$('#popin').on 'classChange', ->
-			console.log 'popin change '+($(this).hasClass 'hide')
+			console.log '->>>>>>>>>>>>>>>>>>>>>>> popin change '+($(this).hasClass 'hide')
 			if $(this).hasClass 'hide'
-				console.log 'contrys : '+($("#mode_switcher [data-face='face_pays']").hasClass 'selected')
 				if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
 					return
 				if that.player

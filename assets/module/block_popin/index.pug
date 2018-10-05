@@ -24,9 +24,13 @@
 	include ../block_player_youtube/index.pug
 
 	#abouttxt.hide.block.big.centered.layer_top
-			| #{ABOUT[langage]}
+		if langage == 'en'
+			include about.pug
+		else
+			include apropos.pug
+			
 
-	#artist_info.hide.block.centered.layer_top.big
+	#artist_info.hide.centered.layer_top
 		each video in videos
 			.info.hide
 				.name= video.title
@@ -74,6 +78,6 @@
 					//- .startvideo
 					//- 	| #{TRANSLATION.startvideo[langage]}
 
-	#close.layer_top.btn
+	#close.layer_top.btn.hide
 		include ../../../public/image/close.svg
 	

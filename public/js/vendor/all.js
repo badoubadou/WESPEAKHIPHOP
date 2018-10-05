@@ -98,309 +98,6 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
 }).call(this);
 
 (function() {
-  // class player_youtube
-// 	constructor: () ->
-// 		@bindEvents()
-
-// 	bindEvents : ->
-// 		that = @
-// 		YouTubeGetID = (url) ->
-// 			ID = ''
-// 			url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/)
-// 			if url[2] != undefined
-// 				ID = url[2].split(/[^0-9a-z_\-]/i)
-// 				ID = ID[0]
-// 			else
-// 				ID = url
-// 				ID
-
-// 		window.playYoutubeVideo = (idVideo)->
-// 			console.log 'playYoutubeVideo : id. : '+idVideo
-// 			if(!window.playerYT)
-// 				console.log 'playerYT not yet created '
-// 				window.playerYT = new (YT.Player)('player_youtube',
-// 					height: '390'
-// 					width: '640'
-// 					videoId: idVideo
-// 					fs: 0
-// 					playerVars: { 
-// 						autoplay: 1, 
-// 						modestbranding: 1, 
-// 						autohide: 1, 
-// 						disablekb: 1,
-// 						enablejsapi: 1,
-// 						fs: 1, 
-// 						rel: 0, 
-// 						hl: $('#langage_short').val(),
-// 						cc_lang_pref: $('#langage_short').val(), 
-// 						cc_load_policy: 1, 
-// 					}
-// 					events:
-// 						'onReady': onPlayerReady
-// 						'onStateChange': onPlayerStateChange)
-// 			else
-// 				window.playerYT.loadVideoById idVideo
-
-// 		window.onYouTubeIframeAPIReady = ->
-// 			console.log 'onYouTubeIframeAPIReady = '+$('body').hasClass 'waiting-for-youtube'
-// 			$('body').addClass 'onYouTubeIframeAPIReady'
-
-// 			if $('body').hasClass 'waiting-for-youtube'
-// 				console.log 'should playYoutubeVideo'
-// 				window.playYoutubeVideo($('#idIntroYoutube').data('introid'))
-// 				$('body').removeClass 'waiting-for-youtube'
-// 				# $('#mask_shield').addClass 'hide'
-
-// 			$('#zone_youtube .shield').on 'click', ->
-// 				$('#zone_youtube').removeClass 'play'
-// 				$('.lds-dual-ring').addClass 'done'
-// 				window.playerYT.stopVideo()
-// 				return
-
-// 			$('#list_artists li a, #play-video-btn, #startvideo, a.watch').on 'click', (event) ->
-// 				event.preventDefault()
-// 				idyoutube = YouTubeGetID($(this).attr('href'))
-// 				if !$('#artist_info').hasClass 'hide'
-// 					$('#artist_info').addClass 'hide'
-// 				$('.lds-dual-ring').removeClass 'done'
-// 				window.currentArtist = $('#artist_info .info:not(.hide)').index()
-
-// 				window.playYoutubeVideo(idyoutube)
-// 				return
-
-// 		window.onPlayerReady = (event) ->
-// 			console.log 'onPlayerReady'
-// 			event.target.playVideo()
-// 			return
-
-// 		window.updateTxtInfoMobile = (id) ->
-// 			# --------- video start playing
-// 			TweenMax.to('#artists_info li .warper', 0.5, { alpha: 0 , y:-30})
-// 			TweenMax.to('#artists_info li:eq('+window.currentArtist+') .warper', 0.5, { alpha: 1 , y:0}, 0.5)
-
-// 		window.onPlayerStateChange = (event) ->
-// 			if event.data == YT.PlayerState.PLAYING and !done # --------- video start playing
-// 				$('#zone_youtube').addClass 'play'
-// 				$('#popin').removeClass('hide').trigger 'classChange'
-// 				$('.lds-dual-ring').addClass 'done'
-// 				$('#popin .video-container').removeClass 'hide'
-
-// 				if window.pauseSound
-// 					window.pauseSound()
-
-// 				if window.isMobile()
-// 					window.updateTxtInfoMobile($('#artist_info info:not(.hide)').index())
-
-// 			else if event.data == YT.PlayerState.ENDED # --------- video start playing
-// 				window.closePopin()
-// 				console.log 'youtube is done'
-
-// 			return
-
-// 		window.stopVideo = ->
-// 			console.log 'stop video'
-// 			window.playerYT.stopVideo()
-// 			$('#popin .video-container').addClass 'hide'
-// 			return
-
-// 		# tag.src = 'https://www.youtube.com/iframe_api'
-// 		# firstScriptTag = document.getElementsByTagName('script')[0]
-// 		# firstScriptTag.parentNode.insertBefore tag, firstScriptTag
-// 		# player = undefined
-// 		# done = false
-
-// module.player_youtube = player_youtube
-
-// tag = document.createElement('script')
-
-
-}).call(this);
-
-(function() {
-  var block_pays;
-
-  block_pays = (function() {
-    class block_pays {
-      constructor() {
-        this.soundInitiated = false;
-        this.loadMap();
-        this.allSound = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
-        this.playlistUrls = this.allSound;
-        this.ordre_pays = $('#artists_info_map').data('ordre_pays');
-        this.bindEvents();
-        console.log('block_pays constructor');
-      }
-
-      // @buildContrySound()
-      loadMap() {
-        var that;
-        console.log('---> load big map');
-        that = this;
-        return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/map.svg', function(data) {
-          var div;
-          console.log('---> big map loaded');
-          div = document.createElement('div');
-          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
-          $("#big_map").append(div.innerHTML);
-        });
-      }
-
-      bindEvents() {
-        var that;
-        that = this;
-        //------------------- FOOTER LISTNER -------------------#
-        $('#mode_switcher').on('switch_to_face_pays', function() {
-          return that.buildContrySound();
-        });
-        $('#mode_switcher').on('switch_to_face_artist', function() {
-          console.log('switch_to_face_artist');
-          if (window.pauseSound) {
-            window.pauseSound();
-          }
-          $('.pastille').removeClass('big');
-          $('#artists_info_map .block_contry').removeClass('opacity_1');
-          return console.log('switch_to_face_artist');
-        });
-        //------------------- SOUND - CONTROL ------------------#
-        $('#sound').on('sound_off', function() {
-          console.log('window.pCount =' + window.pCount);
-          console.log('window.howlerBank.length =' + window.pCount);
-          if (that.soundInitiated) {
-            return window.howlerBank[window.pCount].volume(0);
-          }
-        });
-        $('#sound').on('sound_on', function() {
-          if (that.soundInitiated) {
-            return window.howlerBank[window.pCount].volume(1);
-          }
-        });
-        //------------------- pastille -------------------------#
-        $('#mouse_over_bg').on({
-          'mouseover': function(e) {
-            if (that.playlistUrls.length < 27) {
-              return that.buildContrySound();
-            }
-          }
-        });
-        $('.pastille').on({
-          'mouseover': function(e) {
-            if ($(this).hasClass('big')) {
-              return;
-            }
-            return that.buildContrySound($(this), true);
-          }
-        });
-        $('.pastille').on({
-          'click': function(e) {
-            if ($(this).hasClass('big')) {
-              return that.buildContrySound();
-            } else {
-              return that.buildContrySound($(this));
-            }
-          }
-        });
-        return $('li.block_contry .artist').on({
-          'mouseover': function(e) {
-            return that.buildContrySound($(this), false, true);
-          }
-        });
-      }
-
-      //------------------- SOUND - PLAYER -----------------------#
-      buildContrySound(pastille, ismouseover, preventOpenWindow) {
-        var defaultPlaylist, onEnd, onPlay, that;
-        that = this;
-        if (pastille) {
-          that.playlistUrls = pastille.data('sound');
-          defaultPlaylist = false;
-        } else {
-          console.log('no pastille');
-          that.playlistUrls = that.allSound;
-          defaultPlaylist = true;
-        }
-        window.pauseSound();
-        window.pCount = 0;
-        window.howlerBank = [];
-        onPlay = function(e) {
-          var nicename;
-          TweenMax.to('#artists_info li .warper', 0.5, {
-            alpha: 0,
-            y: -30
-          });
-          TweenMax.from('#artists_info li:eq(' + (that.playlistUrls[window.pCount] - 1) + ') .warper', 0.5, {
-            alpha: 0,
-            y: 0
-          }, 0.5);
-          if (pastille) {
-            nicename = $(pastille).data('nicename');
-          } else {
-            nicename = that.ordre_pays[window.pCount];
-          }
-          if (!preventOpenWindow) {
-            that.openContryBox($('.pastille[data-nicename="' + nicename + '"]'), ismouseover);
-          }
-        };
-        onEnd = function(e) {
-          window.pCount = window.pCount + 1 !== window.howlerBank.length ? window.pCount + 1 : 0;
-          if (!$('#sound').hasClass('actif')) {
-            window.howlerBank[window.pCount].volume(0);
-          }
-          window.howlerBank[window.pCount].play();
-        };
-        // build up howlerBank:     
-        that.playlistUrls.forEach(function(current, i) {
-          window.howlerBank.push(new Howl({
-            src: ['https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/' + that.playlistUrls[i] + '.mp3'],
-            onend: onEnd,
-            onplay: onPlay,
-            buffer: true
-          }));
-        });
-        if (!$('#sound').hasClass('actif')) {
-          window.howlerBank[0].volume(0);
-        }
-        window.howlerBank[0].play();
-        that.soundInitiated = true;
-      }
-
-      closeContryBox() {
-        $('.pastille').removeClass('big');
-        $('#artists_info_map .block_contry').removeClass('opacity_1');
-        return $('.big').off('mouseleave');
-      }
-
-      // window.pauseSound()
-      openContryBox(pastille, ismouseover) {
-        var place;
-        $('.pastille').removeClass('big');
-        $('#artists_info_map .block_contry').removeClass('opacity_1');
-        place = '.' + pastille.data('nicename');
-        $('#artists_info_map ' + place).addClass('opacity_1');
-        if (this.playlistUrls.length < 27 && !ismouseover) {
-          return pastille.addClass('big');
-        }
-      }
-
-    };
-
-    window.pauseSound = function() {
-      if (window.howlerBank) {
-        console.log('fade');
-        return window.howlerBank[window.pCount].stop();
-      }
-    };
-
-    return block_pays;
-
-  }).call(this);
-
-  
-  // @buildContrySound(pastille)
-  module.block_pays = block_pays;
-
-}).call(this);
-
-(function() {
   var player_video_youtube;
 
   player_video_youtube = class player_video_youtube {
@@ -414,7 +111,6 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
     }
 
     playYTisReady() {
-      // $('.lds-dual-ring').addClass 'done'
       $('.lds-dual-ring').trigger('hidespiner');
       console.log('trigger hide player YT ready ');
       $('.intro_page .hidden').removeClass('hidden');
@@ -581,7 +277,6 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       //------------------- PLAYER YOUTUBE -------------------#
       controls = '<div class="plyr__controls"> <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play"> <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-pause"></use></svg> <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-play"></use></svg> <span class="label--pressed plyr__tooltip" role="tooltip">Pause</span> <span class="label--not-pressed plyr__tooltip" role="tooltip">Play</span> </button> <div class="plyr__progress"> <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek"> <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress> <span role="tooltip" class="plyr__tooltip">00:00</span> </div> <button type="button" class="plyr__control" aria-label="Mute" data-plyr="mute"> <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-muted"></use></svg> <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-volume"></use></svg> <span class="label--pressed plyr__tooltip" role="tooltip">Unmute</span> <span class="label--not-pressed plyr__tooltip" role="tooltip">Mute</span> </button> </div>';
       this.playerYT = new Plyr('#playerYT', {controls});
-      console.log('yo : ------' + this.playerYT);
       
       //------------------- PLAYER YOUTUBE IS READY -------------------#
       this.playerYT.on('ready', function(event) {
@@ -589,7 +284,7 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         that.playYTisReady();
       });
       this.playerYT.on('play', function(event) {
-        console.log('######################    play YOUTUBE @intro_is_done = ' + that.intro_is_done);
+        console.log('on play YOUTUBE etat de l intro : ' + that.intro_is_done);
         if (that.intro_is_done) {
           $('.video-container').removeClass('hidden hide');
         }
@@ -601,14 +296,15 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       
       //------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
       $('#popin').on('closePopin', function() {
-        console.log('------------ > closePopin');
+        console.log('------------ > closePopin stop player YOUTUBE');
         return that.playerYT.stop();
       });
       //------------------- INTRO FINISHED -------------------#
       vid_intro_finished = function() {
         console.log('vid_intro_finished ----- trigger end Intro trigger close  Popin');
-        $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin');
-        $('.lds-dual-ring').removeClass('not_center');
+        $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange');
+        $('.skip_intro').remove();
+        $('#close').removeClass('hide');
       };
       $('.skip_intro').on('click', function() {
         vid_intro_finished();
@@ -651,67 +347,88 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
 (function() {
   var popin;
 
-  popin = (function() {
-    class popin {
-      constructor() {
-        this.bindEvents();
-      }
+  popin = class popin {
+    constructor() {
+      this.timelinePopin = null;
+      this.bindEvents();
+    }
 
-      bindEvents() {
-        var showPopin;
-        showPopin = function($target) {
-          console.log($target + '$target$target$target');
-          $('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
-          $('#popin').toggleClass('hide').trigger('classChange');
-          return $($target).removeClass('hide');
-        };
-        //------------------- ABOUT  --------------------------#
-        $('#apropos_btn').on({
-          'click': function(e) {
-            e.preventDefault();
-            return showPopin('#popin #abouttxt');
-          }
-        });
-        $('#about-btn, .block_contry .bio').on({
-          'click': function(e) {
-            var artistid;
-            e.preventDefault();
-            if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
-              artistid = $(this).data('artistid') - 1;
-              console.log('artistid =' + artistid);
-              $('#popin #artist_info .info').addClass('hide');
-              $('#popin #artist_info .info:eq(' + artistid + ')').removeClass('hide');
-              showPopin('#artist_info');
-              return;
-            }
-            return showPopin('#artist_info');
-          }
-        });
-        $('#share').on({
-          'click': function(e) {
-            e.preventDefault();
-            return showPopin('#shareinfo');
-          }
-        });
-        return $('#close, #back').on('click', function() {
-          return window.closePopin();
-        });
-      }
-
-    };
-
-    window.closePopin = function() {
+    afterclose() {
+      console.log('afterclose');
+      $('#popin').addClass('hide').trigger('classChange');
+      $('#popin').removeAttr('style');
+      $('#popin').find('*').removeAttr('style');
       $('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
-      if (!$('#popin').hasClass('hide')) {
-        $('#popin').addClass('hide').trigger('classChange');
-      }
       $('#popin').trigger('closePopin');
       return console.log('close popin');
-    };
+    }
 
-    return popin;
+    closePopin() {
+      if (this.timelinePopin) {
+        return this.timelinePopin.reverse();
+      } else {
+        return $('#popin').addClass('hide').trigger('classChange');
+      }
+    }
 
-  }).call(this);
+    bindEvents() {
+      var showPopin, that;
+      that = this;
+      showPopin = function($target) {
+        console.log($target + '$target$target$target');
+        $('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
+        $('#popin').toggleClass('hide').trigger('classChange');
+        $($target).removeClass('hide');
+        that.timelinePopin = new TimelineMax({
+          onReverseComplete: that.afterclose
+        });
+        return that.timelinePopin.from('#popin', .6, {
+          opacity: 0,
+          ease: Power3.easeOut
+        }).fromTo($target, 0.5, {
+          alpha: 0,
+          marginTop: 30,
+          ease: Power1.easeInOut
+        }, {
+          alpha: 1,
+          marginTop: 0
+        });
+      };
+      
+      //------------------- ABOUT  --------------------------#
+      $('#apropos_btn').on({
+        'click': function(e) {
+          e.preventDefault();
+          return showPopin('#popin #abouttxt');
+        }
+      });
+      $('#about-btn, .block_contry .bio').on({
+        'click': function(e) {
+          var artistid;
+          e.preventDefault();
+          if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
+            artistid = $(this).data('artistid') - 1;
+            console.log('artistid =' + artistid);
+            $('#popin #artist_info .info').addClass('hide');
+            $('#popin #artist_info .info:eq(' + artistid + ')').removeClass('hide');
+            showPopin('#artist_info');
+            return;
+          }
+          return showPopin('#artist_info');
+        }
+      });
+      $('#share').on({
+        'click': function(e) {
+          e.preventDefault();
+          return showPopin('#shareinfo');
+        }
+      });
+      return $('#close, #back').on('click', function() {
+        return that.closePopin();
+      });
+    }
+
+  };
 
   module.popin = popin;
 
@@ -746,14 +463,12 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
     showSpiner() {
       var that;
       that = this;
-      console.log('Show Spiner = ' + this.timelineSpiner);
       return this.timelineSpiner.play();
     }
 
     hideSpiner() {
       var that;
       that = this;
-      console.log('Hide Spiner = ' + this.timelineSpiner);
       return that.timelineSpiner.reverse();
     }
 
@@ -761,11 +476,9 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       var that;
       that = this;
       that.spiner.on('hidespiner', function() {
-        console.log('-------- catch hide ');
         return that.hideSpiner();
       });
       return that.spiner.on('showspiner', function() {
-        console.log('-------- catch show');
         return that.showSpiner();
       });
     }
@@ -782,8 +495,6 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
   player_video = class player_video {
     constructor($container) {
       this.$container = $container;
-      this.buildLignmask();
-      // console.log 'metadata video loaded ---------------------- start player_video ' 
       this.timelineKnob = new TimelineMax({
         paused: true
       });
@@ -796,48 +507,36 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       this.timelineDisk = new TimelineMax({
         paused: true
       });
-      this.timelineDisk.from('#disk_hole', .6, {
-        scale: 0,
-        ease: Power3.easeOut
-      }).from('#mask_video', 3, {
-        scale: 0,
-        ease: Power3.easeOut
-      }, 0.3).staggerFrom('#disk_lign svg #testmask circle', .5, {
-        drawSVG: 0
-      }, 0.05, 0.5).to('#disk_lign', 4, {
-        rotation: 60,
+      this.timelineDisk.from('#block_video_disk', 1.5, {
+        rotation: 270,
+        opacity: 0,
+        scale: 2,
         ease: Power1.easeOut
-      }, .5).from('#bg_disk', 2, {
-        scale: 0,
-        ease: Power1.easeOut
-      }, 1).add(this.showFooter_header, 1).from('#platine', 1, {
+      }).from('#platine', 1, {
+        opacity: 0,
+        scale: .8
+      }, '-=.5').staggerFrom('#list_artists li', .3, {
         opacity: 0
-      }, 3).staggerFrom('#list_artists li', .3, {
+      }, 0.04).from(['#play-video-btn', '#play-video-btn-mobile', '#pause-video-btn'], .6, {
         opacity: 0
-      }, 0.04, 3).from(['#play-video-btn', '#play-video-btn-mobile'], .6, {
-        opacity: 0
-      }, 5).from('#main_footer', .8, {
+      }).from('#main_footer', .8, {
         y: 40,
         ease: Power3.easeOut
-      }, 3).from('#main', .8, {
-        width: '100%',
-        height: '100%',
-        marginLeft: 0,
-        ease: Power3.easeOut
-      }, 3).from('#left_col', .8, {
+      }).from('#left_col', .8, {
         x: '-100%',
         ease: Power3.easeOut
-      }, 3).from('#smallmap', .6, {
-        opacity: 0,
-        y: 150,
-        ease: Power3.easeOut
-      }, 3.5).from('#ico', .6, {
-        opacity: 0
-      }, 5).from('#txt_help_disk', .8, {
+      }, '-=.8').from('#txt_help_disk', .8, {
         opacity: 0,
         left: '-100%',
         ease: Power3.easeOut
-      }, 6);
+      }, '-=1').from('#smallmap', .6, {
+        opacity: 0,
+        y: 150,
+        ease: Power3.easeOut
+      }).add(this.show_tuto).from('.tuto', .6, {
+        opacity: 0,
+        ease: Power3.easeOut
+      });
       this.player = $('#player')[0];
       this.duration = 168.182;
       if (this.player.duration && this.player.duration > 1) {
@@ -861,34 +560,13 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       this.bindEvents();
     }
 
-    buildLignmask() {
-      var circle, i, mask, paths, rd, results, svgns;
-      paths = document.querySelector('#disk_lign svg').querySelectorAll('path');
-      mask = document.querySelector('#testmask');
-      svgns = 'http://www.w3.org/2000/svg';
-      i = 0;
-      results = [];
-      while (i < paths.length) {
-        console.log('build mask');
-        circle = document.createElementNS(svgns, 'circle');
-        rd = 237 + i * 3.27;
-        circle.setAttributeNS(null, 'cx', 525);
-        circle.setAttributeNS(null, 'cy', 525);
-        circle.setAttributeNS(null, 'r', rd);
-        mask.appendChild(circle);
-        TweenLite.set(circle, {
-          fill: 'none',
-          stroke: 'white',
-          strokeWidth: 3
-        });
-        results.push(i++);
-      }
-      return results;
-    }
-
     showFooter_header() {
       $('body').removeClass('hidefooter');
       return $('body').removeClass('hide_left_col');
+    }
+
+    show_tuto() {
+      return $('.tuto').removeClass('hide');
     }
 
     loadMap() {
@@ -1352,26 +1030,20 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       var previousRotation, rotationSnap, that, windowBlurred, windowFocused;
       that = this;
       console.log('bindEvents player_video');
+      
+      //------------------- END TUTO -------------------#
+      $('.btn_get_it').on('click', function() {
+        return $('.tuto').remove();
+      });
       //------------------- ENDINTRO -------------------#
-      console.log('bindEvents ############################################');
       $('#popin').on('endIntro', function() {
         console.log('--------------------------- end intro');
         return that.skipIntro();
       });
-      //------------------- FOOTER LISTNER -------------------#
-      // $('#mode_switcher').on 'switch_to_face_pays', ->
-      // 	if that.player
-      // 		that.player.pause()
-
-      // $('#mode_switcher').on 'switch_to_face_artist', ->
-      // 	if that.player
-      // 		that.player.play()
-
       //------------------- POPIN LISTNER -------------------#
       $('#popin').on('classChange', function() {
-        console.log('popin change ' + ($(this).hasClass('hide')));
+        console.log('->>>>>>>>>>>>>>>>>>>>>>> popin change ' + ($(this).hasClass('hide')));
         if ($(this).hasClass('hide')) {
-          console.log('contrys : ' + ($("#mode_switcher [data-face='face_pays']").hasClass('selected')));
           if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
             return;
           }
@@ -1535,8 +1207,6 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       return player_video = new module.player_video();
     }
   };
-
-  console.log('start js');
 
   $(window).load(init);
 

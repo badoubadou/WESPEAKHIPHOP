@@ -7,7 +7,6 @@ class player_video_youtube
 		@bindEvents()
 
 	playYTisReady : ->
-		# $('.lds-dual-ring').addClass 'done'
 		$('.lds-dual-ring').trigger 'hidespiner'
 		console.log 'trigger hide player YT ready '
 		$('.intro_page .hidden').removeClass 'hidden'
@@ -123,7 +122,6 @@ class player_video_youtube
 			else
 				GoOutFullscreen()
 
-
 		#------------------- PLAYER YOUTUBE -------------------#
 		controls = '<div class="plyr__controls">
 		    <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play">
@@ -146,7 +144,6 @@ class player_video_youtube
 		</div>'
 
 		@playerYT = new Plyr('#playerYT', { controls })
-		console.log 'yo : ------'+@playerYT
 		
 		#------------------- PLAYER YOUTUBE IS READY -------------------#
 		@playerYT.on 'ready', (event) ->
@@ -155,7 +152,7 @@ class player_video_youtube
 			return
 
 		@playerYT.on 'play', (event) ->
-			console.log '######################    play YOUTUBE @intro_is_done = '+that.intro_is_done
+			console.log 'on play YOUTUBE etat de l intro : '+that.intro_is_done
 			if that.intro_is_done
 				$('.video-container').removeClass 'hidden hide'
 			return
@@ -165,18 +162,17 @@ class player_video_youtube
 			that.drawLogo.pause()
 			return
 			
-
 		#------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
 		$('#popin').on 'closePopin', ->
-			console.log '------------ > closePopin'
+			console.log '------------ > closePopin stop player YOUTUBE'
 			that.playerYT.stop()
 
 		#------------------- INTRO FINISHED -------------------#
-
 		vid_intro_finished = ->
 			console.log 'vid_intro_finished ----- trigger end Intro trigger close  Popin'
-			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin')
-			$('.lds-dual-ring').removeClass('not_center')
+			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange')
+			$('.skip_intro').remove()
+			$('#close').removeClass('hide')
 			return
 
 		$('.skip_intro').on 'click', ->
