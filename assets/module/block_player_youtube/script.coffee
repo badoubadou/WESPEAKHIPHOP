@@ -18,28 +18,9 @@ class player_video_youtube
 		randomid = $('#idIntroYoutube input:eq('+random+')').val()
 		$('#playerYT').attr('data-plyr-embed-id',randomid)
 
-	logoWhite : ->
-		that = @
-		TweenLite.set 'svg', visibility: 'visible'
-		MorphSVGPlugin.convertToPath 'line'
-		that.drawLogo = new TimelineMax({delay:1});
-		that.drawLogo.from("#logowhite #mask1_2_", 1, {drawSVG:0, ease:Power1.easeInOut} )
-			.from("#logowhite #mask2", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.1 )
-			.from("#logowhite #mask3", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.2 )
-			.from("#logowhite #mask4", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.3 )
-			.from("#logowhite #mask5", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.4 )
-			.from("#logowhite #mask6", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.5 )
-			.from("#logowhite #mask7", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.6 )
-			.from("#logowhite #mask8", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.7 )
-			.from("#logowhite #mask9", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.8 )
-			.from("#logowhite #mask10", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.9 )
-			.from("#logowhite #mask11", 1.3, {drawSVG:0, ease:Power1.easeInOut},1 )
-			.from("#logowhite #mask12", 1.3, {drawSVG:0, ease:Power1.easeInOut},1.1 )
-			.from("#logowhite #mask13", 1.3, {drawSVG:0, ease:Power1.easeInOut},1.2 )
-
 	startSite: (that)->
 		console.log 'startSite'
-		that.logoWhite()
+		$('#logowhite').trigger 'showLogo'
 
 	YouTubeGetID: (url) ->
 		ID = ''
@@ -71,7 +52,7 @@ class player_video_youtube
 			$('.video-container').removeClass 'hidden hide'
 			# GoInFullscreen($('body').get(0))
 			TweenMax.delayedCall 4, ->
-				that.drawLogo.reverse()
+				$('#logowhite').trigger 'hideLogo'
 				return
 			that.playerYT.play()
 			return
@@ -87,6 +68,7 @@ class player_video_youtube
 
 		#------------------- FULL SCREEN ---------------------------#				
 		GoInFullscreen = (element) ->
+			$('#fullscreen').addClass 'actiffullscreen'
 			if element.requestFullscreen
 				element.requestFullscreen()
 			else if element.mozRequestFullScreen
@@ -98,6 +80,7 @@ class player_video_youtube
 			return
 
 		GoOutFullscreen = ->
+			$('#fullscreen').removeClass 'actiffullscreen'
 			if document.exitFullscreen
 				document.exitFullscreen()
 			else if document.mozCancelFullScreen
@@ -135,11 +118,11 @@ class player_video_youtube
 		        <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress>
 		        <span role="tooltip" class="plyr__tooltip">00:00</span>
 		    </div>
-		    <button type="button" class="plyr__control" aria-label="Mute" data-plyr="mute">
-		        <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-muted"></use></svg>
-		        <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-volume"></use></svg>
-		        <span class="label--pressed plyr__tooltip" role="tooltip">Unmute</span>
-		        <span class="label--not-pressed plyr__tooltip" role="tooltip">Mute</span>
+		    <button type="button" class="plyr__control" data-plyr="fullscreen">
+		        <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-exit-fullscreen"></use></svg>
+		        <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-enter-fullscreen"></use></svg>
+		        <span class="label--pressed plyr__tooltip" role="tooltip">Exit fullscreen</span>
+		        <span class="label--not-pressed plyr__tooltip" role="tooltip">Enter fullscreen</span>
 		    </button>
 		</div>'
 
@@ -149,22 +132,24 @@ class player_video_youtube
 		@playerYT.on 'ready', (event) ->
 			console.log 'playYTisReady'
 			that.playYTisReady()
+			# $('.video-container').addClass 'hidden hide'
 			return
 
-		@playerYT.on 'play', (event) ->
-			console.log 'on play YOUTUBE etat de l intro : '+that.intro_is_done
-			if that.intro_is_done
-				$('.video-container').removeClass 'hidden hide'
-			return
-
-		@playerYT.on 'pause', (event) ->
-			console.log 'pause YOUTUBE'
-			that.drawLogo.pause()
+		@playerYT.on 'statechange', (event) ->
+			console.log 'on play YOUTUBE etat de l intro event : '+event.detail.code
+			if event.detail.code == 1
+				$('.video-container').removeClass 'trans'
+			else
+				$('.video-container').addClass 'trans'
+				
+			# if that.intro_is_done
+			# 	$('.video-container').removeClass 'hidden hide'
 			return
 			
 		#------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
 		$('#popin').on 'closePopin', ->
 			console.log '------------ > closePopin stop player YOUTUBE'
+			$('.video-container').addClass 'trans'
 			that.playerYT.stop()
 
 		#------------------- INTRO FINISHED -------------------#

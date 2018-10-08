@@ -5,17 +5,10 @@ class player_video
 		@timelineInfo = new TimelineMax(paused: true)
 		@timelinePlatine = new TimelineMax(paused: true)
 
-		@timelineDisk = new TimelineMax(paused: true)		
-		@timelineDisk.from('#block_video_disk', 1.5 ,{ rotation: 270, opacity:0, scale:2, ease:Power1.easeOut} )
-			.from('#platine', 1 ,{opacity:0, scale:.8}, '-=.5')
-			.staggerFrom('#list_artists li', .3 ,{opacity:0}, 0.04 )
-			.from(['#play-video-btn', '#play-video-btn-mobile', '#pause-video-btn'], .6 ,{opacity:0}  )
-			.from('#main_footer', .8 ,{y:40, ease:Power3.easeOut})
-			.from('#left_col', .8 ,{x:'-100%', ease:Power3.easeOut} , '-=.8')
-			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut}, '-=1' )
-			.from('#smallmap', .6 ,{opacity:0, y:150, ease:Power3.easeOut} )
-			.add(@show_tuto)
-			.from('.tuto', .6 ,{opacity:0, ease:Power3.easeOut} )
+		@timelineDisk = new TimelineMax(paused: true)
+		
+
+		@setTimeLine()
 
 		@player = $('#player')[0]
 		@duration = 168.182
@@ -39,9 +32,27 @@ class player_video
 		@createTween()
 		@bindEvents()
 
+	setTimeLine : (curentTime) ->
+		console.log 'curentTime : '+curentTime
+		@timelineDisk.from('#block_video_disk', 1.5 ,{ rotation: 270, opacity:0, scale:2, ease:Power1.easeOut} )
+			.from('#platine', 1 ,{opacity:0, scale:.8}, '-=.5')
+			.staggerFrom('#list_artists li', .3 ,{opacity:0}, 0.04 )
+			.from(['#play-video-btn', '#play-video-btn-mobile', '#pause-video-btn'], .6 ,{opacity:0}  )
+			.from('#main_footer', .8 ,{y:40, ease:Power3.easeOut})
+			.from('#left_col', .8 ,{x:'-100%', ease:Power3.easeOut} , '-=.8')
+			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut}, '-=1' )
+			.from('#smallmap', .6 ,{opacity:0, y:150, ease:Power3.easeOut} )
+			.add(@show_tuto)
+			.from('.tuto', .6 ,{opacity:0, ease:Power3.easeOut} )
+			.add(@show_logo)
+			# .totalProgress(curentTime || 0)
+
 	showFooter_header : ->
 		$('body').removeClass('hidefooter')
 		$('body').removeClass('hide_left_col')
+	
+	show_logo : ->
+		$('.logoWSH').trigger 'showLogo'
 
 	show_tuto : ->
 		$('.tuto').removeClass('hide')
@@ -106,16 +117,18 @@ class player_video
 		@$player.on 'timeupdate', checkEndTime
 	#------------------- TWEEN ---------------------------#
 	createTween: () ->
-		# console.log 'createTween'
+		that = @
 		updateInfo= (id)->
 			$('#play-video-btn, #play-video-btn-mobile, #startvideo').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
 			$('#list_artists li a.selected').removeClass('selected')
 			$('#list_artists li:eq('+id+') a').addClass('selected')
-			console.log 'update info eq : '+id
 			
 			svgcontry = '#smallmap svg #'+$('#artists_info li:eq('+id+') .contry').data 'contrynicename'
-			console.log svgcontry
 			TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {alpha: 0})
+
+			TweenMax.to(svgcontry, 0.5, {scale: 3, transformOrigin:'50% 50%', repeat:-1, yoyo:true})
+
+			
 			TweenMax.to(svgcontry, 0.5, {alpha: 1}, '+=.5')
 			$('#artists_info li').addClass('hide')
 			$('#artists_info li:eq('+id+')').removeClass('hide')
@@ -220,6 +233,16 @@ class player_video
 	bindEvents: ->
 		that = @
 		console.log 'bindEvents player_video'
+
+		$(window).on 'resizeEnd', ->
+			# if !that.timelineDisk
+			# 	return 
+			# curentTime = that.timelineDisk.totalProgress()
+			# console.log 'resized  = '+curentTime
+			# that.timelineDisk.clear()
+			# # that.setTimeLine(curentTime)
+			# that.timelineDisk.play(0)
+			return
 
 
 		

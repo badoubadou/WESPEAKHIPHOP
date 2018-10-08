@@ -1973,8 +1973,8 @@ p:empty {
 }
 @media screen and (max-width: 47.9em), screen and (max-height: 420px) {
   .full_height_minus_footer_minus_header_mobile {
-    top: 80px;
-    height: calc(100% - 40px - 80px);
+    top: 20vh;
+    height: calc(100% - 40px - 20vh);
   }
 }
 @media screen and (min-width: 48em) {
@@ -2071,6 +2071,9 @@ p:empty {
 .hidden {
   visibility: hidden;
 }
+.trans {
+  opacity: 0;
+}
 @media screen and (min-width: 62em) {
   #left_col {
     width: 300px;
@@ -2149,13 +2152,15 @@ p:empty {
 }
 .footer ul#infos {
   position: absolute;
-  right: 0;
+  left: 5px;
 }
 .footer ul#infos li a {
-  padding: 0 3px;
+  padding: 0 5px;
 }
 @media screen and (min-width: 48em) {
-  .footer ul#infos li a {
+  .footer ul#infos {
+    right: 0;
+    left: auto;
     padding: 0 10px;
   }
 }
@@ -2192,6 +2197,15 @@ p:empty {
 .footer #fullscreen.actif svg #lign {
   display: block;
 }
+.footer #fullscreen #fsactif {
+  display: none;
+}
+.footer #fullscreen.actiffullscreen #fs {
+  display: none;
+}
+.footer #fullscreen.actiffullscreen #fsactif {
+  display: block;
+}
 @media screen and (max-width: 61.9em) {
   .footer #fullscreen {
     display: none;
@@ -2204,13 +2218,10 @@ p:empty {
     position: absolute;
     background: #ffce00;
   }
-  .hidefooter .header {
-    background-color: #000;
-  }
 }
 @media screen and (max-width: 47.9em), screen and (max-height: 420px) {
   .header {
-    height: 80px;
+    height: 20vh;
   }
 }
 @media screen and (min-width: 48em) {
@@ -2227,51 +2238,55 @@ p:empty {
     width: 100%;
   }
 }
-.logoWSH {
-  left: 10px;
-  top: 10px;
+h1 {
+  display: block;
+  width: 30%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
   position: relative;
+}
+@media screen and (min-width: 62em) {
+  h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 25px;
+    width: calc(100% - 50px);
+  }
+}
+.logoWSH {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
 }
 @media screen and (max-width: 61.9em) {
   .logoWSH {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     visibility: hidden;
   }
   .hidefooter .logoWSH {
     visibility: visible;
   }
-  .hidefooter .logoWSH svg {
-    width: auto;
+  .logoWSH svg {
+    width: 100%;
   }
 }
-@media screen and (max-width: 47.9em), screen and (max-height: 420px) {
-  .logoWSH {
-    left: 20px;
-  }
-  .logoWSH svg {
-    height: 40px;
-  }
-}
-@media screen and (min-width: 48em) {
-  .logoWSH {
-    left: 30px;
-  }
-  .logoWSH svg {
-    height: 80px;
-  }
+span.lign_header {
+  display: block;
+  width: 1px;
+  height: 80px;
+  background: #f0f2da;
+  position: absolute;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 30%;
 }
 @media screen and (min-width: 62em) {
-  .logoWSH {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .logoWSH svg {
-    width: 200px;
-    height: auto;
+  span.lign_header {
+    display: none;
   }
 }
 #block_help,
@@ -2289,14 +2304,14 @@ p:empty {
 }
 @media screen and (max-width: 47.9em), screen and (max-height: 420px) {
   #block_help {
-    bottom: 45px;
+    bottom: 40px;
     left: 10px;
   }
 }
 @media screen and (min-width: 48em) {
   #block_help {
-    bottom: 5px;
     left: 20px;
+    height: 100%;
     color: #ffce00;
   }
 }
@@ -2324,7 +2339,7 @@ p:empty {
   #block_help #warp_txt_help,
   #block_help #txt_help_disk,
   #block_help #txt_help_map {
-    width: 260px;
+    width: 300px;
   }
 }
 @media screen and (min-width: 62em) {
@@ -2389,6 +2404,9 @@ p:empty {
   line-height: 1em;
   font-weight: 900;
 }
+#artists_info li .contry {
+  color: #232323;
+}
 #artists_info li .name,
 #artists_info li .date {
   color: #ffce00;
@@ -2403,6 +2421,16 @@ p:empty {
 #artists_info li .tagline {
   font-size: 4em;
 }
+#artists_info li .tagline q {
+  font-style: italic;
+}
+#artists_info li .tagline q:after,
+#artists_info li .tagline q:before {
+  font-family: Gotham, Helvetica, Arial, sans-serif;
+}
+#artists_info li .warp_contry_date {
+  display: inline-block;
+}
 #artists_info li .date,
 #artists_info li .contry {
   font-weight: 100;
@@ -2411,16 +2439,16 @@ p:empty {
 }
 #artists_info li .date.contry,
 #artists_info li .contry.contry {
-  padding-right: 10px;
+  padding-right: 5px;
 }
 #artists_info li #about-btn {
   background: #333;
   color: #fff;
   font-size: 0.5em;
-  margin: 0px 6px;
-  padding: 0 15px;
+  margin: 0 0 0 5px;
+  padding: 0 10px;
   display: inline-block;
-  top: -2px;
+  top: -5px;
   position: relative;
 }
 @media screen and (min-width: 48em) {
@@ -2443,16 +2471,11 @@ p:empty {
     bottom: auto;
   }
   #artists_info li {
-    border-left: 2px solid #f0f2da;
     padding: 0 10px;
     transition: opacity 1s;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-  }
-  .hidefooter #artists_info li {
-    border-left: none;
-    opacity: 0;
   }
   #artists_info li .name,
   #artists_info li .date {
@@ -2464,8 +2487,8 @@ p:empty {
 }
 @media screen and (max-width: 47.9em), screen and (max-height: 420px) {
   #artists_info {
-    height: 80px;
-    width: calc(100% - 95px);
+    height: 20vh;
+    width: 70%;
   }
   #artists_info li .name {
     font-size: 0.95em;
@@ -2474,13 +2497,17 @@ p:empty {
   #artists_info li .tagline,
   #artists_info li .contry,
   #artists_info li .date {
-    font-size: 1em;
+    font-size: 1.5em;
+  }
+  #artists_info li .contry,
+  #artists_info li .date {
+    letter-spacing: -1px;
   }
 }
 @media screen and (min-width: 48em) {
   #artists_info {
     height: 160px;
-    width: calc(100% - 180px);
+    width: 70%;
   }
   #artists_info li .name {
     font-size: 1.5em;
@@ -2544,8 +2571,8 @@ p:empty {
   left: 50%;
   transform: translate(-50%, -50%);
   position: relative;
-  width: 290px;
-  height: 290px;
+  width: 90vw;
+  height: 90vw;
   padding: 0;
   border-radius: 50%;
   list-style: none;
@@ -2573,115 +2600,115 @@ p:empty {
   }
 }
 #list_artists > *:nth-of-type(1) {
-  transform: rotate(-90deg) translate(145px) rotate(90deg);
+  transform: rotate(-90deg) translate(45vw) rotate(90deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(2) {
-  transform: rotate(-77.14285714285714deg) translate(145px) rotate(77.14285714285714deg);
+  transform: rotate(-77.14285714285714deg) translate(45vw) rotate(77.14285714285714deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(3) {
-  transform: rotate(-64.28571428571428deg) translate(145px) rotate(64.28571428571428deg);
+  transform: rotate(-64.28571428571428deg) translate(45vw) rotate(64.28571428571428deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(4) {
-  transform: rotate(-51.428571428571416deg) translate(145px) rotate(51.428571428571416deg);
+  transform: rotate(-51.428571428571416deg) translate(45vw) rotate(51.428571428571416deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(5) {
-  transform: rotate(-38.571428571428555deg) translate(145px) rotate(38.571428571428555deg);
+  transform: rotate(-38.571428571428555deg) translate(45vw) rotate(38.571428571428555deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(6) {
-  transform: rotate(-25.714285714285698deg) translate(145px) rotate(25.714285714285698deg);
+  transform: rotate(-25.714285714285698deg) translate(45vw) rotate(25.714285714285698deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(7) {
-  transform: rotate(-12.85714285714284deg) translate(145px) rotate(12.85714285714284deg);
+  transform: rotate(-12.85714285714284deg) translate(45vw) rotate(12.85714285714284deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(8) {
-  transform: rotate(1.8e-14deg) translate(145px) rotate(-1.8e-14deg);
+  transform: rotate(1.8e-14deg) translate(45vw) rotate(-1.8e-14deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(9) {
-  transform: rotate(12.857142857142875deg) translate(145px) rotate(-12.857142857142875deg);
+  transform: rotate(12.857142857142875deg) translate(45vw) rotate(-12.857142857142875deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(10) {
-  transform: rotate(25.714285714285733deg) translate(145px) rotate(-25.714285714285733deg);
+  transform: rotate(25.714285714285733deg) translate(45vw) rotate(-25.714285714285733deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(11) {
-  transform: rotate(38.57142857142859deg) translate(145px) rotate(-38.57142857142859deg);
+  transform: rotate(38.57142857142859deg) translate(45vw) rotate(-38.57142857142859deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(12) {
-  transform: rotate(51.428571428571445deg) translate(145px) rotate(-51.428571428571445deg);
+  transform: rotate(51.428571428571445deg) translate(45vw) rotate(-51.428571428571445deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(13) {
-  transform: rotate(64.2857142857143deg) translate(145px) rotate(-64.2857142857143deg);
+  transform: rotate(64.2857142857143deg) translate(45vw) rotate(-64.2857142857143deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(14) {
-  transform: rotate(77.14285714285717deg) translate(145px) rotate(-77.14285714285717deg);
+  transform: rotate(77.14285714285717deg) translate(45vw) rotate(-77.14285714285717deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(15) {
-  transform: rotate(90.00000000000003deg) translate(145px) rotate(-90.00000000000003deg);
+  transform: rotate(90.00000000000003deg) translate(45vw) rotate(-90.00000000000003deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(16) {
-  transform: rotate(102.85714285714289deg) translate(145px) rotate(-102.85714285714289deg);
+  transform: rotate(102.85714285714289deg) translate(45vw) rotate(-102.85714285714289deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(17) {
-  transform: rotate(115.71428571428575deg) translate(145px) rotate(-115.71428571428575deg);
+  transform: rotate(115.71428571428575deg) translate(45vw) rotate(-115.71428571428575deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(18) {
-  transform: rotate(128.5714285714286deg) translate(145px) rotate(-128.5714285714286deg);
+  transform: rotate(128.5714285714286deg) translate(45vw) rotate(-128.5714285714286deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(19) {
-  transform: rotate(141.42857142857147deg) translate(145px) rotate(-141.42857142857147deg);
+  transform: rotate(141.42857142857147deg) translate(45vw) rotate(-141.42857142857147deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(20) {
-  transform: rotate(154.28571428571433deg) translate(145px) rotate(-154.28571428571433deg);
+  transform: rotate(154.28571428571433deg) translate(45vw) rotate(-154.28571428571433deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(21) {
-  transform: rotate(167.1428571428572deg) translate(145px) rotate(-167.1428571428572deg);
+  transform: rotate(167.1428571428572deg) translate(45vw) rotate(-167.1428571428572deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(22) {
-  transform: rotate(180.00000000000006deg) translate(145px) rotate(-180.00000000000006deg);
+  transform: rotate(180.00000000000006deg) translate(45vw) rotate(-180.00000000000006deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(23) {
-  transform: rotate(192.85714285714292deg) translate(145px) rotate(-192.85714285714292deg);
+  transform: rotate(192.85714285714292deg) translate(45vw) rotate(-192.85714285714292deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(24) {
-  transform: rotate(205.71428571428578deg) translate(145px) rotate(-205.71428571428578deg);
+  transform: rotate(205.71428571428578deg) translate(45vw) rotate(-205.71428571428578deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(25) {
-  transform: rotate(218.57142857142864deg) translate(145px) rotate(-218.57142857142864deg);
+  transform: rotate(218.57142857142864deg) translate(45vw) rotate(-218.57142857142864deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(26) {
-  transform: rotate(231.4285714285715deg) translate(145px) rotate(-231.4285714285715deg);
+  transform: rotate(231.4285714285715deg) translate(45vw) rotate(-231.4285714285715deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(27) {
-  transform: rotate(244.28571428571436deg) translate(145px) rotate(-244.28571428571436deg);
+  transform: rotate(244.28571428571436deg) translate(45vw) rotate(-244.28571428571436deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(28) {
-  transform: rotate(257.1428571428572deg) translate(145px) rotate(-257.1428571428572deg);
+  transform: rotate(257.1428571428572deg) translate(45vw) rotate(-257.1428571428572deg);
   text-align: center;
 }
 @media screen and (min-width: 48em) {
@@ -3069,15 +3096,6 @@ p:empty {
   top: 0;
   left: 0;
 }
-#popin #logowhite {
-  position: relative;
-  text-align: center;
-  padding: 20px;
-}
-#popin #logowhite svg {
-  width: 215px;
-  height: auto;
-}
 #popin .intro_page {
   color: #fff;
   text-align: center;
@@ -3088,6 +3106,7 @@ p:empty {
 #popin .intro_page .txt_intro {
   width: 100%;
   display: block;
+  padding-bottom: 10px;
 }
 #popin .contentpopin {
   width: 60%;
@@ -3228,6 +3247,32 @@ p:empty {
 }
 body.hidefooter #popin .skip_intro {
   display: block;
+}
+#checklayout .mobile,
+#checklayout .ipad,
+#checklayout .desktop {
+  display: block;
+}
+@media screen and (max-width: 47.9em), screen and (max-height: 420px) {
+  #checklayout .mobile {
+    display: block;
+  }
+}
+@media screen and (min-width: 48em) {
+  #checklayout .mobile {
+    display: none;
+  }
+  #checklayout .ipad {
+    display: block;
+  }
+}
+@media screen and (min-width: 62em) {
+  #checklayout .ipad {
+    display: none;
+  }
+  #checklayout .desktop {
+    display: block;
+  }
 }
 #smallmap {
   transition: opacity 1s;
@@ -3473,7 +3518,7 @@ body.hidefooter #popin .skip_intro {
 #marker {
   display: block;
   width: 25px;
-  height: 75px;
+  height: 15vw;
   top: 0;
   position: absolute;
   left: 50%;
@@ -3482,7 +3527,7 @@ body.hidefooter #popin .skip_intro {
 }
 #marker svg {
   width: auto;
-  height: 75px;
+  height: 15vw;
 }
 @media screen and (min-width: 48em) {
   #marker {
@@ -3507,13 +3552,13 @@ body.hidefooter #popin .skip_intro {
   border-radius: 50%;
 }
 .size_video {
-  width: 100px;
-  height: 100px;
+  width: 50vw;
+  height: 50vw;
 }
 .size_video .player-dimensions,
 .size_video video {
-  width: 100px;
-  height: 100px;
+  width: 50vw;
+  height: 50vw;
 }
 @media screen and (min-width: 48em) {
   .size_video {
@@ -3538,8 +3583,8 @@ body.hidefooter #popin .skip_intro {
   }
 }
 .size_disk {
-  width: 250px;
-  height: 250px;
+  width: 80vw;
+  height: 80vw;
 }
 @media screen and (min-width: 48em) {
   .size_disk {
@@ -3554,8 +3599,8 @@ body.hidefooter #popin .skip_intro {
   }
 }
 .size_platine {
-  width: 265px;
-  height: 265px;
+  width: 85vw;
+  height: 85vw;
 }
 @media screen and (min-width: 48em) {
   .size_platine {
@@ -3588,8 +3633,8 @@ body.hidefooter #popin .skip_intro {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 240px;
-  height: 240px;
+  width: 80vw;
+  height: 80vw;
 }
 @media screen and (min-width: 48em) {
   .lign_svg {
@@ -3639,7 +3684,7 @@ body.hidefooter #popin .skip_intro {
 }
 #play-video-btn-mobile {
   bottom: auto;
-  top: 10px;
+  top: 5px;
 }
 @media screen and (min-width: 48em) {
   #play-video-btn-mobile {
@@ -3650,7 +3695,7 @@ body.hidefooter #popin .skip_intro {
   bottom: 40px;
   width: auto;
   display: block;
-  right: 30px;
+  right: 10px;
   position: absolute;
   padding: 0px 20px;
   font-size: 0.7em;
@@ -3667,4 +3712,9 @@ body.hidefooter #popin .skip_intro {
 }
 #pause-video-btn.paused span:last-child {
   display: inline-block;
+}
+@media screen and (min-width: 48em) {
+  #pause-video-btn {
+    right: 30px;
+  }
 }

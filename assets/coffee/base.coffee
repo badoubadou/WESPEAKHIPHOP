@@ -6,14 +6,39 @@ init = ->
 	player_video_youtube = new module.player_video_youtube()
 	spiner = new module.spiner($('.lds-dual-ring'))
 	popin = new module.popin()
-	# player_video = new module.player_video()
-	# flip_disk = new module.flip_disk()
-	# block_pays =  new module.block_pays()
+	logo = new module.logo()
+	
 	$('body').addClass 'doc-ready'
 	$('body').trigger 'doc-ready'
+
+	window.layout = window.currentLayout()
+	console.log 'layout : '+layout
 
 	if window.isMobile()
 		player_video = new module.player_video()
 
 $(window).load( init )
 
+
+window.currentLayout = ->
+	console.log '--------------- > '+ $('#checklayout .desktop').css('display')
+	if ($('#checklayout .mobile').css('display') == 'block')
+		return 'mobile'
+	if ($('#checklayout .ipad').css('display') == 'block')
+		return 'ipad'
+	if ($('#checklayout .desktop').css('display') == 'block')
+		return 'desktop'
+
+
+
+$(window).on 'resize', ->
+	if @resizeTO
+		clearTimeout @resizeTO
+	@resizeTO = setTimeout((->
+		console.log window.layout+'!='+window.currentLayout()
+		if (layout != currentLayout())
+			layout = currentLayout()
+			$(this).trigger 'resizeEnd'
+		return
+	), 500)
+	return

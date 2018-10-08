@@ -1,7 +1,7 @@
 {
 	"ABOUT": {
 		"en": "Peace, Love, Unity and Having fun* !",
-		"fr": "Ecriture et Réalisation\n. \\n Vina Hiridjee et David Boisseaux-Chical\n\nDirection artistique et Graphisme\nNicolas Dali\n\nConception et Développement\nRomain Malauzat  Production\nKomet Prod\nwww.kometprod.com\n  Tournage Images : David Boisseaux-Chical\nJournaliste : Vina Hiridjee\n\nTournage La Place\nImages : David Boisseaux-Chical\nJournaliste : Ismaël Mereghetti\nImages Interview Dj Mathematics : Hicham Rami\nImages Interview End of the Game: Hashka\n\nRédaction Webdocumentaire\nZoé Lamazou\nMontage Monteurs : David Boisseaux-Chical, Mathilde Babo\n\nEtalonnage\nJérémie Pujau\n Montage son et mixage\nMarcel Dadalto \nMusique Laurent Bardainne\n\nSous-titrage\nLuana Santos\nTraduction\nTraducteur Anglais – Français : Sasha Lagrange Mentz, Hendrik Mentz, Balthazar Jungnell\n\nTraducteur Corée du Sud : Soy Kim\nTraducteur Indonésie/ Malaisie: Wee Chyn\nTraducteur Philippines : Kriztel Lorbes\n\nTraducteur Maroc : Abdellatif Bachar et Jihane Kéjairi Schott\n\nTraducteur Sénégal : Djibril Marone\n\nTraducteur Cambodge : Hiep Chan Vicheth\n\nTraducteur Thaïlande : Pongsatorn Dechanupav\n\nTraducteur Guinée-Conakry : Master G\n\n\n\nRemerciements\nAris Koukoulis, Magalie Loony, Sarah Leduc, Jessica Nay, Palmyre Badinier, Sabrina Hiridjee, François Langella, Benjamin Fernandez, Armel Parisot, Igor Ochronowicz, Régis Cazanave, Martine Chicalski, Sylvain Dumaine, Dimitri Chabrol, Karoline Hoeppner, Sarah Chiang, Jules Salters, Loubna Fahmi.\nUn Big Up à\n Betino’s record shop, 32 Rue Saint-Sébastien, 75011 Paris\nhttp://www.betinos.com/\n\nAvec la participation du Centre National de la Cinématographie et de l'image animée - Nouveaux média\nAvec le soutien de La Place Jean-Marc Mougeot Marina Gentle\nEt de Sennheiser\nMagdalena Bojanowski\n\nMOUV’\nBruno Laforestrie\n\nCOURRIER INTERNATIONAL Claire Carrard Carolin Lohrenz 2018 © KOMET "
+		"fr": "<div class=\"ad_box\"><img class=\"banner\" src=\"some_ad.png\" alt=\"\" /><h3>&quot;Hot&quot; Items </h3> <br /> <ul id=\"items\" /></div>Ecriture et Réalisation Vina Hiridjee et David Boisseaux-Chical\n\nDirection artistique et Graphisme\nNicolas Dali\n\nConception et Développement\nRomain Malauzat  Production\nKomet Prod\nwww.kometprod.com\n  Tournage Images : David Boisseaux-Chical\nJournaliste : Vina Hiridjee\n\nTournage La Place\nImages : David Boisseaux-Chical\nJournaliste : Ismaël Mereghetti\nImages Interview Dj Mathematics : Hicham Rami\nImages Interview End of the Game: Hashka\n\nRédaction Webdocumentaire\nZoé Lamazou\nMontage Monteurs : David Boisseaux-Chical, Mathilde Babo\n\nEtalonnage\nJérémie Pujau\n Montage son et mixage\nMarcel Dadalto \nMusique Laurent Bardainne\n\nSous-titrage\nLuana Santos\nTraduction\nTraducteur Anglais – Français : Sasha Lagrange Mentz, Hendrik Mentz, Balthazar Jungnell\n\nTraducteur Corée du Sud : Soy Kim\nTraducteur Indonésie/ Malaisie: Wee Chyn\nTraducteur Philippines : Kriztel Lorbes\n\nTraducteur Maroc : Abdellatif Bachar et Jihane Kéjairi Schott\n\nTraducteur Sénégal : Djibril Marone\n\nTraducteur Cambodge : Hiep Chan Vicheth\n\nTraducteur Thaïlande : Pongsatorn Dechanupav\n\nTraducteur Guinée-Conakry : Master G\n\n\n\nRemerciements\nAris Koukoulis, Magalie Loony, Sarah Leduc, Jessica Nay, Palmyre Badinier, Sabrina Hiridjee, François Langella, Benjamin Fernandez, Armel Parisot, Igor Ochronowicz, Régis Cazanave, Martine Chicalski, Sylvain Dumaine, Dimitri Chabrol, Karoline Hoeppner, Sarah Chiang, Jules Salters, Loubna Fahmi.\nUn Big Up à\n Betino’s record shop, 32 Rue Saint-Sébastien, 75011 Paris\nhttp://www.betinos.com/\n\nAvec la participation du Centre National de la Cinématographie et de l'image animée - Nouveaux média\nAvec le soutien de La Place Jean-Marc Mougeot Marina Gentle\nEt de Sennheiser\nMagdalena Bojanowski\n\nMOUV’\nBruno Laforestrie\n\nCOURRIER INTERNATIONAL Claire Carrard Carolin Lohrenz 2018 © KOMET "
 	},
 	"TRANSLATION": {
 		"face_pays": {
@@ -96,13 +96,13 @@
 			"en": "Play",
 			"fr": "Play"
 		},
-		"txt_tuto": {
-			"en": "Scratchez le vinyle avec votre souris en déplaçant le repère blanc et découvrez 28 artistes de la planète hip hop",
-			"fr": "Scratchez le vinyle avec votre souris en déplaçant le repère blanc et découvrez 28 artistes de la planète hip hop"
-		},
 		"btn_tuto": {
 			"en": "I get it",
 			"fr": "J’ai compris"
+		},
+		"txt_tuto": {
+			"en": "Scratch the vinyl<br />and discover 28 documentaries<br />as you travel around the world",
+			"fr": "Scratchez le vinyle<br />et découvrez 28 documentaires<br />en voyageant a travers le monde."
 		}
 	},
 	"VIDEOINTRO": {
@@ -1185,7 +1185,7 @@
 						},
 						{
 							"meta_key": "tag_line",
-							"meta_value": "« L’essence du hip-hop c’est le défi »"
+							"meta_value": "<q>L’essence du hip-hop c’est le défi</q>"
 						},
 						{
 							"meta_key": "description",
@@ -1443,7 +1443,7 @@
 						},
 						{
 							"meta_key": "tag_line",
-							"meta_value": "« islam is the new black »"
+							"meta_value": "<q>islam is the new black</q>"
 						},
 						{
 							"meta_key": "description",
@@ -1615,11 +1615,11 @@
 						},
 						{
 							"meta_key": "tag_line",
-							"meta_value": "« Colonel de la génération consciente »"
+							"meta_value": "<q>Colonel de la génération consciente</q>"
 						},
 						{
 							"meta_key": "description",
-							"meta_value": "Suivez jusqu’à la scène celui par qui le hip hop arrive au Sénégal. Sur un titre de Tiken Jah Fakoly, scandez avec la foule les lyrics du rap africaniste au son de la kora : « Quitte le pouvoir ! » Didier Awadi est le co-fondateur de Positive Black Soul, collectif précurseur qui popularisa, dès les années 1990, le rap en Afrique de l’ouest. Partisan d’une Afrique apaisée, Awadi prêche l’espoir et l’unité. Joignant le geste à la parole, le rappeur sénégalais a pour habitude d’ouvrir son micro à de grands artistes du continent et au-delà. Parmi tant d’autres, Wyclef Jean, Ismaël Lo, Mary Ndiaye, Vieux Farka Touré et Alpha Blondy ont signé des featurings avec l’ambassadeur du hip hop 100% « made in Africa »."
+							"meta_value": "Suivez jusqu’à la scène celui par qui le hip hop arrive au Sénégal. Sur un titre de Tiken Jah Fakoly, scandez avec la foule les lyrics du rap africaniste au son de la kora : <q>Quitte le pouvoir !</q> Didier Awadi est le co-fondateur de Positive Black Soul, collectif précurseur qui popularisa, dès les années 1990, le rap en Afrique de l’ouest. Partisan d’une Afrique apaisée, Awadi prêche l’espoir et l’unité. Joignant le geste à la parole, le rappeur sénégalais a pour habitude d’ouvrir son micro à de grands artistes du continent et au-delà. Parmi tant d’autres, Wyclef Jean, Ismaël Lo, Mary Ndiaye, Vieux Farka Touré et Alpha Blondy ont signé des featurings avec l’ambassadeur du hip hop 100% <q>made in Africa</q>."
 						},
 						{
 							"meta_key": "date",
@@ -1787,11 +1787,11 @@
 						},
 						{
 							"meta_key": "tag_line",
-							"meta_value": "Une autocensure « positive »"
+							"meta_value": "Une&nbsp;autocensure <q>positive</q>"
 						},
 						{
 							"meta_key": "description",
-							"meta_value": "Joe Flizzow est un business man. Pionnier du hip hop en Malaisie à la fin des années 1990, le MC a bâti sur les solides bases sa renommée un petit empire commercial baptisé… Kartel. Joe est à la fois producteur de musique et de show télé, propriétaire de label, recruteurs de talents, créateur d’une ligne de produits dérivés… Tout en restant rappeur et produisant ses propres hits. « Je ne suis pas attiré par la vie de gangsta, mais j’aime la mentalité du gangsta ! » C.Q.F.D."
+							"meta_value": "Joe Flizzow est un business man. Pionnier du hip hop en Malaisie à la fin des années 1990, le MC a bâti sur les solides bases sa renommée un petit empire commercial baptisé… Kartel. Joe est à la fois producteur de musique et de show télé, propriétaire de label, recruteurs de talents, créateur d’une ligne de produits dérivés… Tout en restant rappeur et produisant ses propres hits. <q>Je ne suis pas attiré par la vie de gangsta, mais j’aime la mentalité du gangsta !</q> C.Q.F.D."
 						},
 						{
 							"meta_key": "date",
@@ -1869,7 +1869,7 @@
 						},
 						{
 							"meta_key": "tag_line",
-							"meta_value": "DJ Mathematics, « on n’a pas appris la musique à l’école »"
+							"meta_value": "DJ Mathematics, <q>on n’a pas appris la musique à l’école</q>"
 						},
 						{
 							"meta_key": "description",
@@ -1959,7 +1959,7 @@
 						},
 						{
 							"meta_key": "description",
-							"meta_value": "Da Arabian MC’s, ou DAM, est l'un des premiers groupes de rap palestinien, formé à la fin des années 1990. En arabe comme en hébreu, le nom du crew signifie « sang ». Mahmoud Jrere, Tamer et Suhell Nafar chantent dans les deux langues et en anglais. Ils trouvent leur inspiration dans la littérature, la poésie et la musique traditionnelle arabe autant que dans le rap américain. Leurs lyrics ouvrent une brèche sur un monde à part. Le collectif évoque son vécu du conflit historique, mais parle aussi de féminisme ou du fléau de la drogue dans sa ville de Lod, non loin de Tel Aviv."
+							"meta_value": "Da Arabian MC’s, ou DAM, est l'un des premiers groupes de rap palestinien, formé à la fin des années 1990. En arabe comme en hébreu, le nom du crew signifie <q>sang</q>. Mahmoud Jrere, Tamer et Suhell Nafar chantent dans les deux langues et en anglais. Ils trouvent leur inspiration dans la littérature, la poésie et la musique traditionnelle arabe autant que dans le rap américain. Leurs lyrics ouvrent une brèche sur un monde à part. Le collectif évoque son vécu du conflit historique, mais parle aussi de féminisme ou du fléau de la drogue dans sa ville de Lod, non loin de Tel Aviv."
 						},
 						{
 							"meta_key": "date",
@@ -2041,11 +2041,11 @@
 						},
 						{
 							"meta_key": "tag_line",
-							"meta_value": "« tuer le rap c’est tuer l’espoir »"
+							"meta_value": "<q>tuer le rap c’est tuer l’espoir</q>"
 						},
 						{
 							"meta_key": "description",
-							"meta_value": "À Conakry, le freestyle comme l’espoir fleurit entre les murs aveugles de la scène underground guinéenne. Degg, en woloff, signifie « vérité ». Moussa et Ablaye Mbaye, à l’origine de Degg J Force 3, résument avec ce mot leur lutte contre la misère quotidienne d’une jeunesse laissée pour compte. Devenu référence de la scène urbaine guinéenne, le duo a depuis créé le label Meurs libre Prod’, se produit en Europe, au Canada comme en Afrique de l’ouest et revendique un engagement humanitaire."
+							"meta_value": "À Conakry, le freestyle comme l’espoir fleurit entre les murs aveugles de la scène underground guinéenne. Degg, en woloff, signifie <q>vérité</q>. Moussa et Ablaye Mbaye, à l’origine de Degg J Force 3, résument avec ce mot leur lutte contre la misère quotidienne d’une jeunesse laissée pour compte. Devenu référence de la scène urbaine guinéenne, le duo a depuis créé le label Meurs libre Prod’, se produit en Europe, au Canada comme en Afrique de l’ouest et revendique un engagement humanitaire."
 						},
 						{
 							"meta_key": "date",
@@ -2131,7 +2131,7 @@
 						},
 						{
 							"meta_key": "description",
-							"meta_value": "Sa biographie officielle situe la naissance de Yehoshua Sofer en Jamaïque, d’où il tirerait ses influences ragga. Son installation en Israël succèderait à un séjour à Los Angeles, où il aurait pris goût à la culture hip hop et suivi des entraînements avec Chuck Norris. « Humus Makes you Stupid » (le houmous te rend stupide) sera-t-elle la punchline que retiendra l’histoire ? C’est en tous cas le titre phare qui consacra en 1993 le succès de Sofer alias Nigel Ha’Admor, en Israël. Le rappeur a depuis abandonné son nom de scène pour devenir l’unique professeur d’un art guerrier hébreu plurimillénaire qu’il a lui même popularisé - d’aucuns diraient inventé."
+							"meta_value": "Sa biographie officielle situe la naissance de Yehoshua Sofer en Jamaïque, d’où il tirerait ses influences ragga. Son installation en Israël succèderait à un séjour à Los Angeles, où il aurait pris goût à la culture hip hop et suivi des entraînements avec Chuck Norris. <q>Humus Makes you Stupid</q> (le houmous te rend stupide) sera-t-elle la punchline que retiendra l’histoire ? C’est en tous cas le titre phare qui consacra en 1993 le succès de Sofer alias Nigel Ha’Admor, en Israël. Le rappeur a depuis abandonné son nom de scène pour devenir l’unique professeur d’un art guerrier hébreu plurimillénaire qu’il a lui même popularisé - d’aucuns diraient inventé."
 						},
 						{
 							"meta_key": "date",
@@ -2217,7 +2217,7 @@
 						},
 						{
 							"meta_key": "description",
-							"meta_value": "Rappeur depuis la fin des années 1990, Bakary Blaise Beavogui alias Masta G assume une parole 100% politique. Chaque titre est une tribune. À contresens d’un hip hop commercial, le guinéen revendique un gangstarap défenseur des droits de l’homme. Dès son premier album, Elections Bata ly (« Les élections approchent »), en 2003, Masta G dénonce le vide démocratique dans son pays dirigé par l’inamovible Lansana Conté. Ses paroles sans filtre lui valent un séjour en prison pour « incitation à la violence et atteinte à la sûreté de l’État »."
+							"meta_value": "Rappeur depuis la fin des années 1990, Bakary Blaise Beavogui alias Masta G assume une parole 100% politique. Chaque titre est une tribune. À contresens d’un hip hop commercial, le guinéen revendique un gangstarap défenseur des droits de l’homme. Dès son premier album, Elections Bata ly (<q>Les élections approchent</q>), en 2003, Masta G dénonce le vide démocratique dans son pays dirigé par l’inamovible Lansana Conté. Ses paroles sans filtre lui valent un séjour en prison pour <q>incitation à la violence et atteinte à la sûreté de l’État</q>."
 						},
 						{
 							"meta_key": "date",
@@ -2471,7 +2471,7 @@
 						},
 						{
 							"meta_key": "description",
-							"meta_value": "Da Arabian MC’s, ou DAM, est l'un des premiers groupes de rap palestinien, formé à la fin des années 1990. En arabe comme en hébreu, le nom du crew signifie « sang ». Mahmoud Jrere, Tamer et Suhell Nafar chantent dans les deux langues et en anglais. Ils trouvent leur inspiration dans la littérature, la poésie et la musique traditionnelle arabe autant que dans le rap américain. Leurs lyrics ouvrent une brèche sur un monde à part. Le collectif évoque son vécu du conflit historique, mais parle aussi de féminisme ou du fléau de la drogue dans sa ville de Lod, non loin de Tel Aviv."
+							"meta_value": "Da Arabian MC’s, ou DAM, est l'un des premiers groupes de rap palestinien, formé à la fin des années 1990. En arabe comme en hébreu, le nom du crew signifie <q>sang</q>. Mahmoud Jrere, Tamer et Suhell Nafar chantent dans les deux langues et en anglais. Ils trouvent leur inspiration dans la littérature, la poésie et la musique traditionnelle arabe autant que dans le rap américain. Leurs lyrics ouvrent une brèche sur un monde à part. Le collectif évoque son vécu du conflit historique, mais parle aussi de féminisme ou du fléau de la drogue dans sa ville de Lod, non loin de Tel Aviv."
 						},
 						{
 							"meta_key": "date",
@@ -2635,7 +2635,7 @@
 						},
 						{
 							"meta_key": "tag_line",
-							"meta_value": "« Le roi David pourrait me comprendre »"
+							"meta_value": "<q>Le roi David pourrait me comprendre</q>"
 						},
 						{
 							"meta_key": "description",
@@ -3061,11 +3061,11 @@
 						},
 						{
 							"meta_key": "tag_line",
-							"meta_value": "« tuer le rap c’est tuer l’espoir »"
+							"meta_value": "<q>tuer le rap c’est tuer l’espoir</q>"
 						},
 						{
 							"meta_key": "description",
-							"meta_value": "À Conakry, le freestyle comme l’espoir fleurit entre les murs aveugles de la scène underground guinéenne. Degg, en woloff, signifie « vérité ». Moussa et Ablaye Mbaye, à l’origine de Degg J Force 3, résument avec ce mot leur lutte contre la misère quotidienne d’une jeunesse laissée pour compte. Devenu référence de la scène urbaine guinéenne, le duo a depuis créé le label Meurs libre Prod’, se produit en Europe, au Canada comme en Afrique de l’ouest et revendique un engagement humanitaire."
+							"meta_value": "À Conakry, le freestyle comme l’espoir fleurit entre les murs aveugles de la scène underground guinéenne. Degg, en woloff, signifie <q>vérité</q>. Moussa et Ablaye Mbaye, à l’origine de Degg J Force 3, résument avec ce mot leur lutte contre la misère quotidienne d’une jeunesse laissée pour compte. Devenu référence de la scène urbaine guinéenne, le duo a depuis créé le label Meurs libre Prod’, se produit en Europe, au Canada comme en Afrique de l’ouest et revendique un engagement humanitaire."
 						},
 						{
 							"meta_key": "date",
@@ -3233,7 +3233,7 @@
 						},
 						{
 							"meta_key": "description",
-							"meta_value": "Dès 1997, Prissk impose son hip hop féministe dans un milieu résolument masculin. Elle \nest repérée sur scène aux côtés de son frère, avec qui elle a fondé le groupe 6-stem d’alarme. La société ivoirienne donne encore peu la parole aux femmes, quand Prissk s’empare du micro pour dénoncer l’excision, les mariages forcés et les violences faites aux femmes. La rappeuse lance très vite sa carrière solo, soutenue par celui qu’elle appelle encore son mentor : Alpha Blondy. Celle qu’on appelait « la petite collégienne du rap » s’élève alors au rang de « reine du rap » en Côte d’Ivoire."
+							"meta_value": "Dès 1997, Prissk impose son hip hop féministe dans un milieu résolument masculin. Elle \nest repérée sur scène aux côtés de son frère, avec qui elle a fondé le groupe 6-stem d’alarme. La société ivoirienne donne encore peu la parole aux femmes, quand Prissk s’empare du micro pour dénoncer l’excision, les mariages forcés et les violences faites aux femmes. La rappeuse lance très vite sa carrière solo, soutenue par celui qu’elle appelle encore son mentor : Alpha Blondy. Celle qu’on appelait <q>la petite collégienne du rap</q> s’élève alors au rang de <q>reine du rap</q> en Côte d’Ivoire."
 						},
 						{
 							"meta_key": "date",
@@ -3663,7 +3663,7 @@
 						},
 						{
 							"meta_key": "description",
-							"meta_value": "Certains journalistes portent la plume dans la plaie, les lyricistes de Casa Crew frappent là où ça fait mal. Formé en 2003, le crew compte parmi les pionniers du hip hop « vert et rouge », aux couleurs du drapeau chérifien. Avec leur rap en darija (arabe dialectal), Masta Flow, Chaht Man, Jocker et Caprice s’adressent en priorité au Maroc de la rue. Sur des beats incisifs, ils parlent de misère, de chômage et des maux indicibles du royaume."
+							"meta_value": "Certains journalistes portent la plume dans la plaie, les lyricistes de Casa Crew frappent là où ça fait mal. Formé en 2003, le crew compte parmi les pionniers du hip hop <q>vert et rouge</q>, aux couleurs du drapeau chérifien. Avec leur rap en darija (arabe dialectal), Masta Flow, Chaht Man, Jocker et Caprice s’adressent en priorité au Maroc de la rue. Sur des beats incisifs, ils parlent de misère, de chômage et des maux indicibles du royaume."
 						},
 						{
 							"meta_key": "date",
@@ -3749,7 +3749,7 @@
 						},
 						{
 							"meta_key": "description",
-							"meta_value": "Certains journalistes portent la plume dans la plaie, les lyricistes de Casa Crew frappent là où ça fait mal. Formé en 2003, le crew compte parmi les pionniers du hip hop « vert et rouge », aux couleurs du drapeau chérifien. Avec leur rap en darija (arabe dialectal), Masta Flow, Chaht Man, Jocker et Caprice s’adressent en priorité au Maroc de la rue. Sur des beats incisifs, ils parlent de misère, de chômage et des maux indicibles du royaume."
+							"meta_value": "Certains journalistes portent la plume dans la plaie, les lyricistes de Casa Crew frappent là où ça fait mal. Formé en 2003, le crew compte parmi les pionniers du hip hop <q>vert et rouge</q>, aux couleurs du drapeau chérifien. Avec leur rap en darija (arabe dialectal), Masta Flow, Chaht Man, Jocker et Caprice s’adressent en priorité au Maroc de la rue. Sur des beats incisifs, ils parlent de misère, de chômage et des maux indicibles du royaume."
 						},
 						{
 							"meta_key": "date",
@@ -4159,7 +4159,7 @@
 						},
 						{
 							"meta_key": "description",
-							"meta_value": "Rappeur depuis la fin des années 1990, Bakary Blaise Beavogui alias Masta G assume une parole 100% politique. Chaque titre est une tribune. À contresens d’un hip hop commercial, le guinéen revendique un gangstarap défenseur des droits de l’homme. Dès son premier album, Elections Bata ly (« Les élections approchent »), en 2003, Masta G dénonce le vide démocratique dans son pays dirigé par l’inamovible Lansana Conté. Ses paroles sans filtre lui valent un séjour en prison pour « incitation à la violence et atteinte à la sûreté de l’État »."
+							"meta_value": "Rappeur depuis la fin des années 1990, Bakary Blaise Beavogui alias Masta G assume une parole 100% politique. Chaque titre est une tribune. À contresens d’un hip hop commercial, le guinéen revendique un gangstarap défenseur des droits de l’homme. Dès son premier album, Elections Bata ly (<q>Les élections approchent</q>), en 2003, Masta G dénonce le vide démocratique dans son pays dirigé par l’inamovible Lansana Conté. Ses paroles sans filtre lui valent un séjour en prison pour <q>incitation à la violence et atteinte à la sûreté de l’État</q>."
 						},
 						{
 							"meta_key": "date",
@@ -4647,7 +4647,7 @@
 						},
 						{
 							"meta_key": "tag_line",
-							"meta_value": "« L’essence du hip-hop c’est le défi »"
+							"meta_value": "<q>L’essence du hip-hop c’est le défi</q>"
 						},
 						{
 							"meta_key": "description",
@@ -4889,7 +4889,7 @@
 					"postmeta": [
 						{
 							"meta_key": "tag_line",
-							"meta_value": "« Colonel de la génération consciente »"
+							"meta_value": "<q>Colonel de la génération consciente</q>"
 						},
 						{
 							"meta_key": "video",
@@ -4897,7 +4897,7 @@
 						},
 						{
 							"meta_key": "description",
-							"meta_value": "Suivez jusqu’à la scène celui par qui le hip hop arrive au Sénégal. Sur un titre de Tiken Jah Fakoly, scandez avec la foule les lyrics du rap africaniste au son de la kora : « Quitte le pouvoir ! » Didier Awadi est le co-fondateur de Positive Black Soul, collectif précurseur qui popularisa, dès les années 1990, le rap en Afrique de l’ouest. Partisan d’une Afrique apaisée, Awadi prêche l’espoir et l’unité. Joignant le geste à la parole, le rappeur sénégalais a pour habitude d’ouvrir son micro à de grands artistes du continent et au-delà. Parmi tant d’autres, Wyclef Jean, Ismaël Lo, Mary Ndiaye, Vieux Farka Touré et Alpha Blondy ont signé des featurings avec l’ambassadeur du hip hop 100% « made in Africa »."
+							"meta_value": "Suivez jusqu’à la scène celui par qui le hip hop arrive au Sénégal. Sur un titre de Tiken Jah Fakoly, scandez avec la foule les lyrics du rap africaniste au son de la kora : <q>Quitte le pouvoir !</q> Didier Awadi est le co-fondateur de Positive Black Soul, collectif précurseur qui popularisa, dès les années 1990, le rap en Afrique de l’ouest. Partisan d’une Afrique apaisée, Awadi prêche l’espoir et l’unité. Joignant le geste à la parole, le rappeur sénégalais a pour habitude d’ouvrir son micro à de grands artistes du continent et au-delà. Parmi tant d’autres, Wyclef Jean, Ismaël Lo, Mary Ndiaye, Vieux Farka Touré et Alpha Blondy ont signé des featurings avec l’ambassadeur du hip hop 100% <q>made in Africa</q>."
 						},
 						{
 							"meta_key": "date",
@@ -4979,7 +4979,7 @@
 						},
 						{
 							"meta_key": "description",
-							"meta_value": "Sa biographie officielle situe la naissance de Yehoshua Sofer en Jamaïque, d’où il tirerait ses influences ragga. Son installation en Israël succèderait à un séjour à Los Angeles, où il aurait pris goût à la culture hip hop et suivi des entraînements avec Chuck Norris. « Humus Makes you Stupid » (le houmous te rend stupide) sera-t-elle la punchline que retiendra l’histoire ? C’est en tous cas le titre phare qui consacra en 1993 le succès de Sofer alias Nigel Ha’Admor, en Israël. Le rappeur a depuis abandonné son nom de scène pour devenir l’unique professeur d’un art guerrier hébreu plurimillénaire qu’il a lui même popularisé - d’aucuns diraient inventé."
+							"meta_value": "Sa biographie officielle situe la naissance de Yehoshua Sofer en Jamaïque, d’où il tirerait ses influences ragga. Son installation en Israël succèderait à un séjour à Los Angeles, où il aurait pris goût à la culture hip hop et suivi des entraînements avec Chuck Norris. <q>Humus Makes you Stupid</q> (le houmous te rend stupide) sera-t-elle la punchline que retiendra l’histoire ? C’est en tous cas le titre phare qui consacra en 1993 le succès de Sofer alias Nigel Ha’Admor, en Israël. Le rappeur a depuis abandonné son nom de scène pour devenir l’unique professeur d’un art guerrier hébreu plurimillénaire qu’il a lui même popularisé - d’aucuns diraient inventé."
 						},
 						{
 							"meta_key": "date",
@@ -5061,7 +5061,7 @@
 						},
 						{
 							"meta_key": "description",
-							"meta_value": "Dès 1997, Prissk impose son hip hop féministe dans un milieu résolument masculin. Elle \nest repérée sur scène aux côtés de son frère, avec qui elle a fondé le groupe 6-stem d’alarme. La société ivoirienne donne encore peu la parole aux femmes, quand Prissk s’empare du micro pour dénoncer l’excision, les mariages forcés et les violences faites aux femmes. La rappeuse lance très vite sa carrière solo, soutenue par celui qu’elle appelle encore son mentor : Alpha Blondy. Celle qu’on appelait « la petite collégienne du rap » s’élève alors au rang de « reine du rap » en Côte d’Ivoire."
+							"meta_value": "Dès 1997, Prissk impose son hip hop féministe dans un milieu résolument masculin. Elle \nest repérée sur scène aux côtés de son frère, avec qui elle a fondé le groupe 6-stem d’alarme. La société ivoirienne donne encore peu la parole aux femmes, quand Prissk s’empare du micro pour dénoncer l’excision, les mariages forcés et les violences faites aux femmes. La rappeuse lance très vite sa carrière solo, soutenue par celui qu’elle appelle encore son mentor : Alpha Blondy. Celle qu’on appelait <q>la petite collégienne du rap</q> s’élève alors au rang de <q>reine du rap</q> en Côte d’Ivoire."
 						},
 						{
 							"meta_key": "date",
@@ -5545,7 +5545,7 @@
 					"postmeta": [
 						{
 							"meta_key": "tag_line",
-							"meta_value": "DJ Mathematics, « on n’a pas appris la musique à l’école »"
+							"meta_value": "DJ Mathematics, <q>on n’a pas appris la musique à l’école</q>"
 						},
 						{
 							"meta_key": "video",
@@ -5627,7 +5627,7 @@
 					"postmeta": [
 						{
 							"meta_key": "tag_line",
-							"meta_value": "Une autocensure « positive »"
+							"meta_value": "Une autocensure <q>positive</q>"
 						},
 						{
 							"meta_key": "video",
@@ -5635,7 +5635,7 @@
 						},
 						{
 							"meta_key": "description",
-							"meta_value": "Joe Flizzow est un business man. Pionnier du hip hop en Malaisie à la fin des années 1990, le MC a bâti sur les solides bases sa renommée un petit empire commercial baptisé… Kartel. Joe est à la fois producteur de musique et de show télé, propriétaire de label, recruteurs de talents, créateur d’une ligne de produits dérivés… Tout en restant rappeur et produisant ses propres hits. « Je ne suis pas attiré par la vie de gangsta, mais j’aime la mentalité du gangsta ! » C.Q.F.D."
+							"meta_value": "Joe Flizzow est un business man. Pionnier du hip hop en Malaisie à la fin des années 1990, le MC a bâti sur les solides bases sa renommée un petit empire commercial baptisé… Kartel. Joe est à la fois producteur de musique et de show télé, propriétaire de label, recruteurs de talents, créateur d’une ligne de produits dérivés… Tout en restant rappeur et produisant ses propres hits. <q>Je ne suis pas attiré par la vie de gangsta, mais j’aime la mentalité du gangsta !</q> C.Q.F.D."
 						},
 						{
 							"meta_key": "date",

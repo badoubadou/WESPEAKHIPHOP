@@ -1,7 +1,8 @@
 #popin.absolute.layer_top_plus.full_height.full_width
 	.intro_page.centered.layer_top_plus
-		.layer_1#logowhite.hidden
+		.layer_1#logowhite.hidden.logo
 			include ../../../public/image/logo-white.svg
+			//- include ../../../public/image/logo.svg
 
 		.txt_intro.hidden
 			| #{TRANSLATION.txt_intro[langage]}
@@ -24,10 +25,11 @@
 	include ../block_player_youtube/index.pug
 
 	#abouttxt.hide.block.big.centered.layer_top
-		if langage == 'en'
-			include about.pug
-		else
-			include apropos.pug
+		| !{ABOUT[langage]}
+		//- if langage == 'en'
+		//- 	include about.pug
+		//- else
+		//- 	include apropos.pug
 			
 
 	#artist_info.hide.centered.layer_top
@@ -58,7 +60,7 @@
 			.yellow
 				.contentpopin
 					.logo
-						include ../../../public/image/logo.svg
+						include ../../../public/image/logo-share.svg
 					.sharesite
 						| #{TRANSLATION.sharesite[langage]}
 

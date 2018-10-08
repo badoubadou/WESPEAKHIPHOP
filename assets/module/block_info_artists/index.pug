@@ -4,9 +4,11 @@ ul#artists_info.layer_0
 			.warper
 				each meta in video.postmeta
 					if meta.meta_key == 'tag_line'
-						span.tagline= meta.meta_value
+						span.tagline
+							- tagline = meta.meta_value
+							| !{tagline}
+				
 				h3.name= video.title
-
 				.warp_contry_date
 					each cat in video.category
 						if cat.domain == 'pays'

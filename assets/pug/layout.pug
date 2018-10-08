@@ -61,6 +61,8 @@ html(lang= langage)
 		script(src='public/js/vendor/all.js')
 
 	body.hidefooter.hide_left_col.video-disk-waiting
+
+
 		#idIntroYoutube
 			each videointro in VIDEOINTRO.video
 				input(type='hidden', value!= videointro[langage])
@@ -75,7 +77,6 @@ html(lang= langage)
 			include ../module/block_header/index.pug	
 			include ../module/block_small_map/index.pug
 			include ../module/block_info_artists/index.pug
-
 
 		#main.absolute.full_height_minus_footer.full_width.full_height_minus_footer_minus_header_mobile
 			#mouse_over_bg.absolute.layer_2.full_height.full_width.hide
@@ -98,6 +99,8 @@ html(lang= langage)
 				include ../cleansvg/platine.svg
 		
 		include ../module/block_footer/index.pug
+		
+		include ../module/block_resize/index.pug
 	
 		// Google Analytics
 		script.

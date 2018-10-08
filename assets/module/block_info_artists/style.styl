@@ -41,6 +41,9 @@
 			text-transform uppercase
 			line-height 1em
 			font-weight 900
+			
+		.contry
+			color $dark-grey
 		
 		.name
 		.date
@@ -55,6 +58,15 @@
 		
 		.tagline
 			font-size 4em
+			
+			q
+				font-style italic
+				&:after
+				&:before
+					font-family $ft-family-primary
+					
+		.warp_contry_date
+			display inline-block		
 		
 		.date
 		.contry
@@ -63,16 +75,16 @@
 			width auto
 			
 			&.contry
-				padding-right 10px
+				padding-right 5px
 				
 		#about-btn
 			background #333333
 			color #fff
 			font-size .5em
-			margin 0px 6px
-			padding 0 15px
+			margin 0 0 0 5px
+			padding 0 10px
 			display inline-block
-			top -2px
+			top -5px
 			position relative
 			
 			@media $ipad
@@ -89,13 +101,8 @@
 		top O
 		bottom auto
 		li
-			border-left 2px solid $light-yellow
 			padding 0 10px
 			transition opacity 1s
-			.hidefooter &
-				border-left none
-				opacity 0
-				
 			vert_align_middle()
 			.name
 			.date
@@ -107,7 +114,7 @@
 			
 	@media $mobile
 		height $height_header_info_mobile
-		width calc( 100% - 95px )
+		width 70%
 		li
 			.name
 				font-size .95em
@@ -116,11 +123,15 @@
 			.tagline
 			.contry
 			.date
-				font-size 1em
+				font-size 1.5em
+				
+			.contry
+			.date
+				letter-spacing -1px
 			
 	@media $ipad
 		height $height_header_info_ipad
-		width calc( 100% - 180px )
+		width 70%
 		li
 			.name
 				font-size 1.5em

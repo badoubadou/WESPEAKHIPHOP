@@ -5,9 +5,6 @@
 		position absolute 
 		background $yellow
 		
-		.hidefooter &
-			background-color #000000
-		
 	@media $mobile
 		height $height_header_info_mobile
 			
@@ -21,52 +18,38 @@
 		position relative
 		width 100%
 		
-.logoWSH
-	left 10px
-	top 10px
+h1
+	display block
+	width 30%
+	height 100%
+	padding 0
+	margin 0
 	position relative
-	
+	@media $desktop
+		align_middle()
+		top 25px
+		width calc( 100% - 50px)
+		
+
+.logoWSH
+	center()
+	width 90%
 	@media $mobile_et_ipad
-		vert_align_middle()
 		visibility hidden
 		.hidefooter & 
 			visibility visible
-			svg
-				width auto
-	
-	@media $mobile
-		left 20px
-		vert_align_middle()
-			top 0
-			left 0
-			width 100%
-			height $height_header_info_mobile
-			position fixed
-			transform none
-			svg
-				vert_align_middle()
-				left 20px
-		
-		svg
-			height $height_header_info_mobile * .5
 
-	@media $ipad
-		left 30px
-		vert_align_middle()
-			top 0
-			left 0
+		svg
 			width 100%
-			height $height_header_info_ipad
-			position fixed
-			transform none
-			svg
-				vert_align_middle()
-				left 30px
-		svg
-			height $height_header_info_ipad * .5
 	
+
+span.lign_header
+	display block
+	width 1px
+	height 80px 
+	background $light-yellow 
+	position absolute
+	vert_align_middle()
+	left 30%
 	@media $desktop
-		center()
-		svg
-			width 200px
-			height auto		
+		display none

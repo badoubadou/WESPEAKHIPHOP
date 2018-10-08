@@ -29,6 +29,7 @@
 .circular_mask
 	overflow hidden
 	border-radius 50%
+	
 
 .size_video
 	width $size_video_small
@@ -67,8 +68,8 @@
 		height $size_disk_large
 
 .size_platine
-	width $size_disk_small+$epaiseur_platine - 20px
-	height $size_disk_small+$epaiseur_platine - 20px
+	width $size_platine_small
+	height $size_platine_small
 	
 	@media $ipad
 		width $size_disk_medium+$epaiseur_platine
@@ -93,8 +94,8 @@
 	
 .lign_svg
 	center()
-	width $size_disk_small - 10px
-	height $size_disk_small - 10px
+	width $size_disk_small
+	height $size_disk_small
 	
 	@media $ipad
 		width $size_disk_medium - 10px
@@ -130,7 +131,7 @@
 
 #play-video-btn-mobile
 	bottom auto
-	top 10px
+	top 5px
 	
 	@media $ipad
 		display none
@@ -140,7 +141,7 @@
 	bottom 40px
 	width auto
 	display block
-	right 30px
+	right 10px
 	position absolute
 	padding 0px 20px
 	font-size .7em
@@ -154,5 +155,8 @@
 			display none	
 		span:last-child
 			display inline-block
+	
+	@media $ipad
+		right 30px
 	
 	

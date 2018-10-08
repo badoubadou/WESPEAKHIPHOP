@@ -1,0 +1,19 @@
+#checklayout
+	.mobile
+	.ipad
+	.desktop
+		display block 
+
+	@media $mobile
+		.mobile	
+			display block
+	@media $ipad
+		.mobile		
+			display none
+		.ipad		
+			display block
+	@media $desktop
+		.ipad		
+			display none
+		.desktop		
+			display block

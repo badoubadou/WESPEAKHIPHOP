@@ -51,17 +51,18 @@
 		
 		&#infos
 			position absolute
-			right 0 
+			left 5px
 			li a
-				padding 0 3px
-				@media $ipad
-					padding 0 10px
+				padding 0 5px
+			@media $ipad
+				right 0 
+				left auto 
+				padding 0 10px
 			li span 
 				padding 0 3px
 				@media $ipad
 					padding 0 10px
-				
-				
+						
 	#share
 		svg
 			width 13px
@@ -83,7 +84,14 @@
 			svg #lign
 				display block
 				
-
 	#fullscreen
+		#fsactif
+			display none
+		&.actiffullscreen
+			#fs
+				display none
+			#fsactif
+				display block
+			
 		@media $mobile_et_ipad
 			display none

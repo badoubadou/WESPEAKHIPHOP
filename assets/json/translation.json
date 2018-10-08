@@ -91,12 +91,12 @@
         "en": "Play",
         "fr": "Play"
     },
-    "txt_tuto": {
-        "en": "Scratchez le vinyle avec votre souris en déplaçant le repère blanc et découvrez 28 artistes de la planète hip hop",
-        "fr": "Scratchez le vinyle avec votre souris en déplaçant le repère blanc et découvrez 28 artistes de la planète hip hop"
-    },
     "btn_tuto": {
         "en": "I get it",
         "fr": "J’ai compris"
+    },
+    "txt_tuto": {
+        "en": "Scratch the vinyl<br \/>and discover 28 documentaries<br \/>as you travel around the world",
+        "fr": "Scratchez le vinyle<br \/>et découvrez 28 documentaires<br \/>en voyageant a travers le monde."
     }
 }
