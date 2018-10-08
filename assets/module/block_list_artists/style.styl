@@ -1,38 +1,59 @@
 #list_artists
-	on-circle(28, $size_name_circle_small, 10px)	
+	on-circle(28, $size_name_circle_small, 10px)
+	width 0
+	height 0	
 	@media $ipad	
-		on-circle(28, $size_name_circle_medium, 230px)
+		on-circle(28, $size_name_circle_medium, 80px)
+		width 0
+		height 0
 		> *:nth-of-type(3)
-			padding-left 175px
-		> *:nth-of-type(2)
+			padding-left 80px
 		> *:nth-of-type(5)
+			padding-left 60px
 		> *:nth-of-type(7)
-		> *:nth-of-type(10)
-			padding-left 50px
-		> *:nth-of-type(14)
-		> *:nth-of-type(16)
-			margin-left -40px
-			width 80px
-		> *:nth-of-type(15)
-			margin-top -2px
-			margin-left -40px
-			width 80px
-		> *:nth-of-type(25)
-			margin-left -140px
-		> *:nth-of-type(22)
-			margin-left -125px
-		> *:nth-of-type(23)
-			margin-left -160px
+			padding-left 38px
 		> *:nth-of-type(21)
-			margin-left -80px
-			width 96px
-			text-align right
-		> *:nth-of-type(28)
-			margin-left -133px
+			margin-left -60px
+		> *:nth-of-type(22)
+			margin-left -55px
+		> *:nth-of-type(23)
+			margin-left -60px
+		> *:nth-of-type(25)
+			margin-left -52px
+			
+		// > *:nth-of-type(3)
+		// 	// padding-left 175px
+		// > *:nth-of-type(2)
+		// > *:nth-of-type(5)
+		// > *:nth-of-type(7)
+		// > *:nth-of-type(10)
+		// 	// padding-left 50px
+		// > *:nth-of-type(14)
+		// > *:nth-of-type(16)
+		// 	// margin-left -40px
+		// 	width 80px
+		// > *:nth-of-type(15)
+		// 	margin-top -2px
+		// 	// margin-left -40px
+		// 	width 80px
+		// > *:nth-of-type(25)
+		// 	// margin-left -140px
+		// > *:nth-of-type(22)
+		// 	// margin-left -125px
+		// > *:nth-of-type(23)
+		// 	// margin-left -160px
+		// > *:nth-of-type(21)
+		// 	// margin-left -80px
+		// 	width 96px
+		// 	text-align right
+		// > *:nth-of-type(28)
+		// 	// margin-left -133px
 			
 	@media $large_screen
-		on-circle(28, $size_name_circle_large, 230px)
-	
+		on-circle(28, $size_name_circle_large, 80px)
+		width 0
+		height 0
+
 	li a
 		bottom 0
 		font-size .65em
@@ -46,12 +67,27 @@
 		&.selected
 			font-weight 900
 			color #000
+			
 		span.dot
 			display none
 		span.txt
 			display inline-block
 			line-height 1.1em
 			
+		.warp_contry
+			display none	
+			font-size 1em
+			font-weight 500
+			opacity 0
+			transition opacity .5s ease
+			@media $ipad
+				display block
+	
+		&:hover
+		&.selected	
+			.warp_contry
+				opacity 1
+
 		@media $mobile
 			span.txt
 				display none

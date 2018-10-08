@@ -36,19 +36,16 @@ doctype html
 html(lang= langage) 
 	head
 		meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
-		meta(name="descrition" content="We speak Hiphop est un site etc.")
-		meta(name="author" content="David Boisseaux & Vina Hiridjee")
+		meta(name="descrition" content=TRANSLATION.og_descritption[langage])
+		meta(name="author" content="Vina Hiridjee & David Boisseaux")
 		meta(property="og:title" content="We Speak Hiphop")
-		meta(property="og:description" content="We speak Hiphop est un site etc.")
+		meta(property="og:description" content=TRANSLATION.og_descritption[langage])
 		meta(property="og:type" content="website")
 		meta(property="og:site_name" content="We Speak Hiphop")
 		meta(charset='utf-8')
-		//- meta(property="og:url" content="<?php echo \"http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]\"; ?>")
-		//- meta(name="og:image" property="og:image" content="<?php echo $og_img; ?>")
-		//- meta( property="device_type" content="<?php echo get_device_type(); ?>")
-
+		meta(property="og:url" content=TRANSLATION.og_url[langage])
+		meta(name="og:image" property="og:image" content="https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/WSH_fb.jpg")
 		title We Speak Hiphop
-
 		link(rel="shortcut icon" href="ico/favicon.ico" type="image/x-icon" )
 		link(rel="apple-touch-icon-precomposed" sizes="152x152" href="ico/images/favico/favicon-152.png")
 		link(rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/images/favico/favicon-144.png")
@@ -56,12 +53,10 @@ html(lang= langage)
 		link(rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/images/favico/favicon-114.png")
 		link(rel="apple-touch-icon-precomposed" sizes="72x72"   href="ico/images/favico/favicon-72.png")
 		link(rel="apple-touch-icon-precomposed"                 href="ico/images/favico/favicon-57.png")
-
 		link(type="text/css" rel="stylesheet" href="public/css/style.min.css")
 		script(src='public/js/vendor/all.js')
 
 	body.hidefooter.hide_left_col.video-disk-waiting
-
 
 		#idIntroYoutube
 			each videointro in VIDEOINTRO.video
@@ -99,7 +94,6 @@ html(lang= langage)
 				include ../cleansvg/platine.svg
 		
 		include ../module/block_footer/index.pug
-		
 		include ../module/block_resize/index.pug
 	
 		// Google Analytics

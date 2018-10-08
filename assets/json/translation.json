@@ -8,8 +8,16 @@
         "fr": "Face artistes"
     },
     "a_propos": {
-        "en": "About - Credits - Contact",
-        "fr": "à propos -  Crédits - Contact"
+        "en": "About",
+        "fr": "à propos"
+    },
+    "credit": {
+        "en": "Credits",
+        "fr": "Crédits"
+    },
+    "contact": {
+        "en": "Contact",
+        "fr": "Contact"
     },
     "aide": {
         "en": "Help",
@@ -97,6 +105,14 @@
     },
     "txt_tuto": {
         "en": "Scratch the vinyl<br \/>and discover 28 documentaries<br \/>as you travel around the world",
-        "fr": "Scratchez le vinyle<br \/>et découvrez 28 documentaires<br \/>en voyageant a travers le monde."
+        "fr": "Scratchez le vinyle avec votre<br \/>souris en déplaçant le repère blanc<br \/>et découvrez 28 artistes de la planète Hip Hop."
+    },
+    "og_url": {
+        "en": "http://www.wespeakhiphop.com",
+        "fr": "http://www.wespeakhiphop.fr"
+    },
+    "og_descritption": {
+        "en": "We speak Hiphop est un site etc.",
+        "fr": "We speak Hiphop est un site etc."
     }
 }

@@ -5,24 +5,22 @@ class popin
 
 	afterclose: ->
 		console.log 'afterclose'
-		$('#popin').addClass('hide').trigger 'classChange'
+		$('#popin').addClass('hide').trigger 'classChange closePopin'
 		$('#popin').removeAttr('style')
 		$('#popin').find('*').removeAttr('style')
 		$('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'		
-		$('#popin').trigger 'closePopin'
-		console.log 'close popin'
-
+		
 	closePopin: ->
 		if(@timelinePopin)
 			@timelinePopin.reverse()
 		else		
-			$('#popin').addClass('hide').trigger 'classChange'
+			$('#popin').addClass('hide').trigger 'classChange closePopin'
 		
 	bindEvents : ->
 		that = @
 		showPopin = ($target)->
 			console.log $target + '$target$target$target'
-			$('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
+			$('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
 			$('#popin').toggleClass('hide').trigger 'classChange'
 			$($target).removeClass('hide')
 			that.timelinePopin = new TimelineMax({onReverseComplete:that.afterclose})
@@ -33,7 +31,11 @@ class popin
 		$('#apropos_btn').on 'click': (e) ->
 			e.preventDefault()
 			showPopin('#popin #abouttxt')
-			
+		#------------------- CREDIT  --------------------------#
+		$('#credit_btn').on 'click': (e) ->
+			e.preventDefault()
+			showPopin('#popin #credittxt')
+		#------------------- CREDIT  --------------------------#
 		$('#about-btn, .block_contry .bio').on 'click':(e) ->
 			e.preventDefault()
 			if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'

@@ -20,11 +20,13 @@
 			color #989898
 			
 			@media $ipad
-				&.seperateur:after
-					pseudo_full(#FFFFFF, 1, 50%, 1px)
-					vert_align_middle()
-					left auto
-					right 1px
+				&.seperateur
+					padding-right 11px
+					&:after
+						pseudo_full(#989898, 1, 1px, 6px)
+						vert_align_middle()
+						left auto
+						right 1px
 
 			a
 				line-height $height_footer

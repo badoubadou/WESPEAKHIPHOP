@@ -294,7 +294,7 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         console.log('enter site --------------------------------');
         $('.intro_page').addClass('hidden');
         $('.video-container').removeClass('hidden hide');
-        GoInFullscreen($('body').get(0));
+        // GoInFullscreen($('body').get(0))
         TweenMax.delayedCall(4, function() {
           $('#logowhite').trigger('hideLogo');
         });
@@ -440,19 +440,17 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
 
     afterclose() {
       console.log('afterclose');
-      $('#popin').addClass('hide').trigger('classChange');
+      $('#popin').addClass('hide').trigger('classChange closePopin');
       $('#popin').removeAttr('style');
       $('#popin').find('*').removeAttr('style');
-      $('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
-      $('#popin').trigger('closePopin');
-      return console.log('close popin');
+      return $('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
     }
 
     closePopin() {
       if (this.timelinePopin) {
         return this.timelinePopin.reverse();
       } else {
-        return $('#popin').addClass('hide').trigger('classChange');
+        return $('#popin').addClass('hide').trigger('classChange closePopin');
       }
     }
 
@@ -461,7 +459,7 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       that = this;
       showPopin = function($target) {
         console.log($target + '$target$target$target');
-        $('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
+        $('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
         $('#popin').toggleClass('hide').trigger('classChange');
         $($target).removeClass('hide');
         that.timelinePopin = new TimelineMax({
@@ -487,6 +485,14 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
           return showPopin('#popin #abouttxt');
         }
       });
+      //------------------- CREDIT  --------------------------#
+      $('#credit_btn').on({
+        'click': function(e) {
+          e.preventDefault();
+          return showPopin('#popin #credittxt');
+        }
+      });
+      //------------------- CREDIT  --------------------------#
       $('#about-btn, .block_contry .bio').on({
         'click': function(e) {
           var artistid;
@@ -516,6 +522,61 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
   };
 
   module.popin = popin;
+
+}).call(this);
+
+(function() {
+  var spiner;
+
+  spiner = class spiner {
+    constructor(spiner1) {
+      this.spiner = spiner1;
+      this.timelineSpiner = new TimelineMax({
+        paused: true,
+        onReverseComplete: this.maskSpiner,
+        onStart: this.unmaskSpiner
+      }).to('.lds-dual-ring .ring_black', 2, {
+        scale: 0,
+        ease: Power3.easeOut
+      });
+      this.bindEvents();
+      this.showSpiner();
+    }
+
+    maskSpiner() {
+      return $('.lds-dual-ring').hide();
+    }
+
+    unmaskSpiner() {
+      return $('.lds-dual-ring').show();
+    }
+
+    showSpiner() {
+      var that;
+      that = this;
+      return this.timelineSpiner.play();
+    }
+
+    hideSpiner() {
+      var that;
+      that = this;
+      return that.timelineSpiner.reverse();
+    }
+
+    bindEvents() {
+      var that;
+      that = this;
+      that.spiner.on('hidespiner', function() {
+        return that.hideSpiner();
+      });
+      return that.spiner.on('showspiner', function() {
+        return that.showSpiner();
+      });
+    }
+
+  };
+
+  module.spiner = spiner;
 
 }).call(this);
 
@@ -1237,61 +1298,6 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
   };
 
   module.player_video = player_video;
-
-}).call(this);
-
-(function() {
-  var spiner;
-
-  spiner = class spiner {
-    constructor(spiner1) {
-      this.spiner = spiner1;
-      this.timelineSpiner = new TimelineMax({
-        paused: true,
-        onReverseComplete: this.maskSpiner,
-        onStart: this.unmaskSpiner
-      }).to('.lds-dual-ring .ring_black', 2, {
-        scale: 0,
-        ease: Power3.easeOut
-      });
-      this.bindEvents();
-      this.showSpiner();
-    }
-
-    maskSpiner() {
-      return $('.lds-dual-ring').hide();
-    }
-
-    unmaskSpiner() {
-      return $('.lds-dual-ring').show();
-    }
-
-    showSpiner() {
-      var that;
-      that = this;
-      return this.timelineSpiner.play();
-    }
-
-    hideSpiner() {
-      var that;
-      that = this;
-      return that.timelineSpiner.reverse();
-    }
-
-    bindEvents() {
-      var that;
-      that = this;
-      that.spiner.on('hidespiner', function() {
-        return that.hideSpiner();
-      });
-      return that.spiner.on('showspiner', function() {
-        return that.showSpiner();
-      });
-    }
-
-  };
-
-  module.spiner = spiner;
 
 }).call(this);
 

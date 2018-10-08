@@ -1,4 +1,4 @@
-ul#list_artists.layer_0
+ul#list_artists.layer_top
 	each video in videos
 		each meta in video.postmeta
 			if meta.meta_key == 'video'
@@ -7,4 +7,8 @@ ul#list_artists.layer_0
 					a(href=youtube_link)
 						span.dot
 						span.txt= video.title
-				
+						.warp_contry
+							each cat in video.category
+								if cat.domain == 'pays'
+									span.contry(data-contrynicename=cat['nicename'])= cat['#text']
+						

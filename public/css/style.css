@@ -700,14 +700,17 @@ p:empty {
   color: #989898;
 }
 @media screen and (min-width: 48em) {
+  .footer ul li.seperateur {
+    padding-right: 11px;
+  }
   .footer ul li.seperateur:after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 1px;
-    height: 50%;
-    background: #fff;
+    width: 6px;
+    height: 1px;
+    background: #989898;
     opacity: 1;
     position: absolute;
     top: 50%;
@@ -839,7 +842,7 @@ h1 {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 25px;
+    top: 10px;
     width: calc(100% - 50px);
   }
 }
@@ -1051,6 +1054,8 @@ span.lign_header {
     margin: 10px 0;
     padding: 0 15px;
     display: block;
+    background: #ffce00;
+    color: #333;
   }
 }
 @media screen and (max-width: 61.9em) {
@@ -1165,6 +1170,8 @@ span.lign_header {
   border-radius: 50%;
   list-style: none;
   margin: 0;
+  width: 0;
+  height: 0;
 }
 #list_artists > * {
   display: block;
@@ -1312,16 +1319,18 @@ span.lign_header {
     border-radius: 50%;
     list-style: none;
     margin: 0;
+    width: 0;
+    height: 0;
   }
   #list_artists > * {
     display: block;
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 230px;
+    width: 80px;
     height: 10px;
     margin-top: -5px;
-    margin-left: -115px;
+    margin-left: -40px;
   }
   #list_artists > *:nth-of-type(1) {
     transform: rotate(-90deg) translate(295px) rotate(90deg);
@@ -1436,40 +1445,25 @@ span.lign_header {
     text-align: center;
   }
   #list_artists > *:nth-of-type(3) {
-    padding-left: 175px;
+    padding-left: 80px;
   }
-  #list_artists > *:nth-of-type(2),
-  #list_artists > *:nth-of-type(5),
-  #list_artists > *:nth-of-type(7),
-  #list_artists > *:nth-of-type(10) {
-    padding-left: 50px;
+  #list_artists > *:nth-of-type(5) {
+    padding-left: 60px;
   }
-  #list_artists > *:nth-of-type(14),
-  #list_artists > *:nth-of-type(16) {
-    margin-left: -40px;
-    width: 80px;
-  }
-  #list_artists > *:nth-of-type(15) {
-    margin-top: -2px;
-    margin-left: -40px;
-    width: 80px;
-  }
-  #list_artists > *:nth-of-type(25) {
-    margin-left: -140px;
-  }
-  #list_artists > *:nth-of-type(22) {
-    margin-left: -125px;
-  }
-  #list_artists > *:nth-of-type(23) {
-    margin-left: -160px;
+  #list_artists > *:nth-of-type(7) {
+    padding-left: 38px;
   }
   #list_artists > *:nth-of-type(21) {
-    margin-left: -80px;
-    width: 96px;
-    text-align: right;
+    margin-left: -60px;
   }
-  #list_artists > *:nth-of-type(28) {
-    margin-left: -133px;
+  #list_artists > *:nth-of-type(22) {
+    margin-left: -55px;
+  }
+  #list_artists > *:nth-of-type(23) {
+    margin-left: -60px;
+  }
+  #list_artists > *:nth-of-type(25) {
+    margin-left: -52px;
   }
 }
 @media screen and (min-width: 75em) and (min-height: 990px) {
@@ -1485,16 +1479,18 @@ span.lign_header {
     border-radius: 50%;
     list-style: none;
     margin: 0;
+    width: 0;
+    height: 0;
   }
   #list_artists > * {
     display: block;
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 230px;
+    width: 80px;
     height: 10px;
     margin-top: -5px;
-    margin-left: -115px;
+    margin-left: -40px;
   }
   #list_artists > *:nth-of-type(1) {
     transform: rotate(-90deg) translate(470px) rotate(90deg);
@@ -1633,6 +1629,22 @@ span.lign_header {
   display: inline-block;
   line-height: 1.1em;
 }
+#list_artists li a .warp_contry {
+  display: none;
+  font-size: 1em;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+@media screen and (min-width: 48em) {
+  #list_artists li a .warp_contry {
+    display: block;
+  }
+}
+#list_artists li a:hover .warp_contry,
+#list_artists li a.selected .warp_contry {
+  opacity: 1;
+}
 @media screen and (max-width: 47.9em), screen and (max-height: 420px) {
   #list_artists li a span.txt {
     display: none;
@@ -1684,6 +1696,10 @@ span.lign_header {
   top: 0;
   left: 0;
 }
+#popin .logo_komet {
+  width: 100px;
+  height: auto;
+}
 #popin .intro_page {
   color: #fff;
   text-align: center;
@@ -1694,7 +1710,7 @@ span.lign_header {
 #popin .intro_page .txt_intro {
   width: 100%;
   display: block;
-  padding-bottom: 10px;
+  padding: 10px 0;
 }
 #popin .contentpopin {
   width: 60%;
@@ -1707,10 +1723,12 @@ span.lign_header {
   width: 100%;
   height: auto;
 }
+#popin #credittxt,
 #popin #abouttxt {
   color: #fff;
   text-transform: none;
 }
+#popin #credittxt .title,
 #popin #abouttxt .title {
   font-weight: 900;
   color: #ffce00;
@@ -1760,6 +1778,7 @@ span.lign_header {
 }
 #popin .block.big {
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 @media screen and (max-width: 47.9em), screen and (max-height: 420px) {
   #popin .block.big {
@@ -1865,10 +1884,12 @@ body.hidefooter #popin .skip_intro {
 #smallmap {
   transition: opacity 1s;
   position: absolute;
-  top: 230px;
-  left: 45px;
+  top: 185px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: none;
-  width: 200px;
+  width: 95%;
   height: auto;
 }
 @media screen and (max-width: 61.9em) {
@@ -2094,7 +2115,7 @@ body.hidefooter #popin .skip_intro {
 }
 .tuto .hand {
   position: absolute;
-  left: 80px;
+  left: 30px;
   top: 130px;
 }
 #disk_hole {

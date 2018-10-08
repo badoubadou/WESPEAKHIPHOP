@@ -2,9 +2,15 @@
 	include ../block_help/index.pug
 
 	ul#infos
-		li
-			a#apropos_btn(href='#apropos')
+		li.seperateur
+			a#apropos_btn(href='#abouttxt')
 				| #{TRANSLATION.a_propos[langage]}
+		li.seperateur
+			a#credit_btn(href='#credittxt')
+				| #{TRANSLATION.credit[langage]}
+		li
+			a#mail_btn(href='mailto:contact@komet.com', target='_self')
+				| #{TRANSLATION.contact[langage]}
 		
 		li
 			if langage == 'en'
