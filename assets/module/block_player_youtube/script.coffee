@@ -50,7 +50,7 @@ class player_video_youtube
 			console.log 'enter site --------------------------------'
 			$('.intro_page').addClass 'hidden'
 			$('.video-container').removeClass 'hidden hide'
-			# GoInFullscreen($('body').get(0))
+			GoInFullscreen($('body').get(0))
 			TweenMax.delayedCall 4, ->
 				$('#logowhite').trigger 'hideLogo'
 				return
