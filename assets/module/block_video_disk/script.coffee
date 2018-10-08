@@ -40,11 +40,12 @@ class player_video
 			.from(['#play-video-btn', '#play-video-btn-mobile', '#pause-video-btn'], .6 ,{opacity:0}  )
 			.from('#main_footer', .8 ,{y:40, ease:Power3.easeOut})
 			.from('#left_col', .8 ,{x:'-100%', ease:Power3.easeOut} , '-=.8')
-			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut}, '-=1' )
-			.from('#smallmap', .6 ,{opacity:0, y:150, ease:Power3.easeOut} )
-			.add(@show_tuto)
-			.from('.tuto', .6 ,{opacity:0, ease:Power3.easeOut} )
 			.add(@show_logo)
+			.from('#artists_info', .5 ,{opacity:0, ease:Power3.easeOut}, '+=2')
+			.from('#smallmap', .6 ,{opacity:0, y:150, ease:Power3.easeOut} )
+			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut})
+			.add(@show_tuto, '+=2')
+			.from('.tuto', .6 ,{opacity:0, ease:Power3.easeOut}, '+=2' )
 			# .totalProgress(curentTime || 0)
 
 	showFooter_header : ->
