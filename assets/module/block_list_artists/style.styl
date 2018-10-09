@@ -15,6 +15,8 @@
 			padding-left 60px
 		> *:nth-of-type(7)
 			padding-left 38px
+		> *:nth-of-type(12)
+			width 100px
 		> *:nth-of-type(21)
 			margin-left -60px
 		> *:nth-of-type(22)
@@ -22,8 +24,23 @@
 		> *:nth-of-type(23)
 			margin-left -60px
 		> *:nth-of-type(25)
-			margin-left -52px
+			margin-left -80px
+			width 100px
+		
+	@media $desktop_only
+		> *:nth-of-type(3)
+			width 180px
+		> *:nth-of-type(10)
+			width 110px
+			padding-left 20px
+		> *:nth-of-type(21)
+			width 200px
+			margin-left -165px
+		> *:nth-of-type(23)
+			width 130px
+			margin-left -108px
 			
+
 	@media $large_screen
 		on-circle(28, $size_name_circle_large, 80px)
 		width 0

@@ -53,6 +53,7 @@ $break-xlarg = 75em
 $bs-screen-md-min = unquote('screen and (min-width: '+$break-med+')')
 // Large devices (desktops, 62em and up)
 $bs-screen-ld-min = unquote('screen and (min-width: '+$break-larg+') , screen and (max-width: '+($break-med - 0.1em)+') and (orientation: landscape), screen and (max-height:420px) and (orientation: landscape) ')
+
 // Extra large devices (large desktops, 75em and up)
 $bs-screen-xld-min = unquote('screen and (min-width: '+$break-xlarg+') and (min-height:990px)')
 
@@ -72,6 +73,7 @@ $bs-screen-md-max = unquote('screen and (max-width: '+($break-larg - 0.1em)+')')
 $mobile = $bs-screen-sd-max /// mobile
 $ipad = $bs-screen-md-min /// ipad
 $desktop = $bs-screen-ld-min /// desktop
+$desktop_only = unquote('screen and (min-width: '+70em+')') /// desktop
 $large_screen = $bs-screen-xld-min ///// mega big
 $mobile_et_ipad = $bs-screen-md-max /// mobile et ipad
 $mobile_landscape = $bs-screen-sd-max_landscape /// mobile et ipad

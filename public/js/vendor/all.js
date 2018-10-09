@@ -488,8 +488,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         if (!$('#artist_info').hasClass('hide')) {
           $('#artist_info').addClass('hide');
         }
-        // $('.lds-dual-ring').removeClass 'done'
-        console.log('trigger show on click');
+        $('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
+        $('.video-container').removeClass('hide');
         $('.lds-dual-ring').trigger('showspiner');
         console.log('trigger show');
         window.currentArtist = $('#artist_info .info:not(.hide)').index();
@@ -523,7 +523,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
 
     afterclose() {
       console.log('afterclose');
-      $('#popin').addClass('hide').trigger('classChange closePopin');
+      $('#popin').addClass('hide').trigger('classChange');
+      $('#popin').addClass('hide').trigger('closePopin');
       $('#popin').removeAttr('style');
       $('#popin').find('*').removeAttr('style');
       return $('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
@@ -545,7 +546,6 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       var showPopin, that;
       that = this;
       showPopin = function($target) {
-        console.log($target + '$target$target$target');
         $('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
         $('#popin').toggleClass('hide').trigger('classChange');
         $($target).removeClass('hide');
@@ -857,8 +857,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         TweenMax.to(svgcontry, 0.5, {
           alpha: 1
         }, '+=.5');
-        $('#artists_info li').addClass('hide');
-        $('#artists_info li:eq(' + id + ')').removeClass('hide');
+        $('#artists_info li').removeClass('ontop');
+        $('#artists_info li:eq(' + id + ')').addClass('ontop');
         $('#popin #artist_info .info').addClass('hide');
         return $('#popin #artist_info .info:eq(' + id + ')').removeClass('hide');
       };
@@ -1332,12 +1332,15 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         that.timelinePlatine.pause();
         return $('#pause-video-btn').addClass('paused');
       });
-      $('#player').on('waiting', function() {
-        return $('#pause-video-btn').addClass('paused');
-      });
-      $('#player').on('stalled', function() {
-        return $('#pause-video-btn').addClass('paused');
-      });
+      // $('#player').on 'waiting', ->
+      // 	console.log 'waiting'
+      // 	that.timelineInfo.pause()
+      // 	$('#pause-video-btn').addClass 'paused'
+
+      // $('#player').on 'stalled', ->
+      // 	console.log 'stalled'
+      // 	that.timelineInfo.pause()
+      // 	$('#pause-video-btn').addClass 'paused'
       $('#player').on('seeked', function() {
         return that.timelineInfo.time(that.player.currentTime);
       });

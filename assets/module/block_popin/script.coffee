@@ -5,7 +5,8 @@ class popin
 
 	afterclose: ->
 		console.log 'afterclose'
-		$('#popin').addClass('hide').trigger 'classChange closePopin'
+		$('#popin').addClass('hide').trigger('classChange')
+		$('#popin').addClass('hide').trigger('closePopin')
 		$('#popin').removeAttr('style')
 		$('#popin').find('*').removeAttr('style')
 		$('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'		
@@ -23,7 +24,6 @@ class popin
 	bindEvents : ->
 		that = @
 		showPopin = ($target)->
-			console.log $target + '$target$target$target'
 			$('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
 			$('#popin').toggleClass('hide').trigger 'classChange'
 			$($target).removeClass('hide')

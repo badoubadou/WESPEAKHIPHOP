@@ -108,10 +108,17 @@
 
 #left_col
 	height 20vh
-	
-	@media $desktop	
+	@media $ipad	
 		width 30%
 		max-width 300px
 		height "calc(100% - %s)" % ($height_footer)
 		background $yellow
 		position absolute
+	
+	@media $desktop_only	
+		width 35%
+		max-width 370px
+		height "calc(100% - %s)" % ($height_footer)
+		background $yellow
+		position absolute
+		

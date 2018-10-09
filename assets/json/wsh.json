@@ -1722,8 +1722,8 @@
                },
                {
                   "domain": "pays",
-                  "nicename": "france",
-                  "#text": "France"
+                  "nicename": "usa",
+                  "#text": "USA"
                },
                {
                   "domain": "post_translations",
@@ -5406,8 +5406,8 @@
                },
                {
                   "domain": "pays",
-                  "nicename": "france",
-                  "#text": "France"
+                  "nicename": "usa",
+                  "#text": "USA"
                },
                {
                   "domain": "post_translations",

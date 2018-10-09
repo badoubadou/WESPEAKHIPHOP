@@ -1,11 +1,15 @@
 .tuto
-	@media $desktop
+	@media $ipad
 		width calc(100% - 300px)
 		margin-left 300px
+		
+	@media $desktop_only
+		width calc(100% - 370px)
+		margin-left 370px
 	
 	.warp_tuto
 		text-align center
-		@media $desktop
+		@media $ipad
 			width 100%
 			
 		.txt
@@ -14,7 +18,7 @@
 			
 		.content
 			width 90%
-			@media $desktop
+			@media $ipad
 				width auto
 		
 	.shield

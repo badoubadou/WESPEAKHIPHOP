@@ -18,7 +18,11 @@
 		left 0
 		overflow hidden
 		color #ffffff
+		z-index -1
 		
+		&.ontop
+			z-index 2
+			
 		.warper
 			opacity 0
 		
@@ -154,11 +158,13 @@
 				font-size 2.7em
 				
 	@media $desktop
-		height 300px
+		height 285px
 		width 100%
 		bottom 0
 		left 0px
 		background #010101
+		
+
 		li
 			bottom 0
 			width 100%

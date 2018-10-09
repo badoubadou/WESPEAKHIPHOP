@@ -123,16 +123,12 @@ class player_video
 			$('#play-video-btn, #play-video-btn-mobile, #startvideo').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
 			$('#list_artists li a.selected').removeClass('selected')
 			$('#list_artists li:eq('+id+') a').addClass('selected')
-			
 			svgcontry = '#smallmap svg #'+$('#artists_info li:eq('+id+') .contry').data 'contrynicename'
 			TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {alpha: 0})
-
 			TweenMax.to(svgcontry, 0.5, {scale: 3, transformOrigin:'50% 50%', repeat:-1, yoyo:true})
-
-			
 			TweenMax.to(svgcontry, 0.5, {alpha: 1}, '+=.5')
-			$('#artists_info li').addClass('hide')
-			$('#artists_info li:eq('+id+')').removeClass('hide')
+			$('#artists_info li').removeClass('ontop')
+			$('#artists_info li:eq('+id+')').addClass('ontop')
 			$('#popin #artist_info .info').addClass('hide')
 			$('#popin #artist_info .info:eq('+id+')').removeClass('hide')
 
@@ -333,11 +329,15 @@ class player_video
 			that.timelinePlatine.pause()
 			$('#pause-video-btn').addClass 'paused'
 
-		$('#player').on 'waiting', ->
-			$('#pause-video-btn').addClass 'paused'
+		# $('#player').on 'waiting', ->
+		# 	console.log 'waiting'
+		# 	that.timelineInfo.pause()
+		# 	$('#pause-video-btn').addClass 'paused'
 
-		$('#player').on 'stalled', ->
-			$('#pause-video-btn').addClass 'paused'
+		# $('#player').on 'stalled', ->
+		# 	console.log 'stalled'
+		# 	that.timelineInfo.pause()
+		# 	$('#pause-video-btn').addClass 'paused'
 
 		$('#player').on 'seeked', ->
 			that.timelineInfo.time that.player.currentTime

@@ -4,7 +4,7 @@
 	 viewBox="0 0 455 270" style="enable-background:new 0 0 455 270;" xml:space="preserve">
 <style type="text/css">
 	.smallmap-en-st0{fill:#333333;}
-	.smallmap-en-st1{fill:#ffffff;}
+	.smallmap-en-st1{fill:#FFFFFF;}
 </style>
 <g>
 	<g>
@@ -2633,6 +2633,7 @@
 <circle id="morocco" class="smallmap-en-st1" cx="216.4" cy="125" r="3.5"/>
 <circle id="france" class="smallmap-en-st1" cx="225.2" cy="102.4" r="3.5"/>
 <circle id="burkina-faso" class="smallmap-en-st1" cx="227.6" cy="153.7" r="3.5"/>
+<circle id="usa" class="smallmap-en-st1" cx="122" cy="111.5" r="3.5"/>
 <circle id="cote-divoire" class="smallmap-en-st1" cx="221.5" cy="160.7" r="3.5"/>
 <circle id="guinea" class="smallmap-en-st1" cx="203.5" cy="153.9" r="3.5"/>
 <circle id="senegal" class="smallmap-en-st1" cx="203.6" cy="150.5" r="3.5"/>

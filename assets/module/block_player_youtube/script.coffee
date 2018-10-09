@@ -198,8 +198,9 @@ class player_video_youtube
 			idyoutube = that.YouTubeGetID($(this).attr('href'))
 			if !$('#artist_info').hasClass 'hide'
 				$('#artist_info').addClass 'hide'
-			# $('.lds-dual-ring').removeClass 'done'
-			console.log 'trigger show on click'
+			$('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
+			$('.video-container').removeClass 'hide'
+			
 			$('.lds-dual-ring').trigger 'showspiner'
 			console.log 'trigger show'
 			window.currentArtist = $('#artist_info .info:not(.hide)').index()
