@@ -1471,10 +1471,16 @@ body #main {
   background: #f0f2da;
   background-color: #f0f2da;
 }
-@media screen and (min-width: 62em), screen and (max-width: 47.9em) and (orientation: landscape), screen and (max-height: 420px) and (orientation: landscape) {
+@media screen and (min-width: 48em) {
   body #main {
-    width: 70%;
-    margin-left: 30%;
+    width: calc(100% - 300px);
+    margin-left: 300px;
+  }
+}
+@media screen and (min-width: 70em) {
+  body #main {
+    width: calc(100% - 370px);
+    margin-left: 370px;
   }
 }
 @font-face {
