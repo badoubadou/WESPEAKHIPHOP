@@ -7,6 +7,10 @@ class player_video
 		@setTimeLine()
 
 		@player = $('#player')[0]
+
+		if window.isMobile()
+			$('#player').attr('src', 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/black_white_2.mp4')
+
 		@duration = 168.182
 		if @player.duration && @player.duration > 1
 			console.log 'correct duration'

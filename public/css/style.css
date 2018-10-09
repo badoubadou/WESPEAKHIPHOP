@@ -1939,15 +1939,15 @@ input[type=range]::-ms-fill-upper {
   -o-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  padding-bottom: 56%;
+  padding-bottom: 53.5%;
+  max-height: 100vh;
 }
 .video-container .myfullscreen {
   right: 10px;
   bottom: 0;
   position: absolute;
   width: 25px;
-}
-.video-container .myfullscreen z-index 2 {
+  z-index: 2;
   -webkit-transition: 0.5s bottom ease;
   -moz-transition: 0.5s bottom ease;
   -o-transition: 0.5s bottom ease;
@@ -1962,19 +1962,29 @@ input[type=range]::-ms-fill-upper {
   bottom: -150%;
 }
 .video-container .plyr {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  top: 50%;
   height: 100%;
-  max-height: 100%;
+  max-height: 100vh;
   position: absolute;
   width: 100%;
 }
 .video-container .plyr__controls {
-  margin-right: 40px;
+  padding-right: 40px;
+  background: #000;
+  margin-right: 0;
 }
 .video-container.with_btn_skip .myfullscreen {
   right: 150px;
 }
 .video-container.with_btn_skip .plyr__controls {
-  margin-right: 180px;
+  padding: 10px 180px 10px;
 }
 .video-container .plyr__video-wrapper {
   top: 0;
@@ -1993,6 +2003,7 @@ input[type=range]::-ms-fill-upper {
   width: 200px;
   height: 60px;
   z-index: 1;
+  display: none;
   background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 1%, #000 38%, #000 100%);
   background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 1%, #000 38%, #000 100%);
   background: -o-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 1%, #000 38%, #000 100%);
