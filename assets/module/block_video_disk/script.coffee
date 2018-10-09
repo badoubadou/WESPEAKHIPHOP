@@ -5,12 +5,15 @@ class player_video
 		@timelinePlatine = new TimelineMax(paused: true)
 		@timelineDisk = new TimelineMax(paused: true)
 		@setTimeLine()
-
+		@disk_on_hold = true
 		@player = $('#player')[0]
 
-		if window.isMobile()
-			$('#player').attr('src', 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/black_white_2.mp4')
+		scale_disk = 2
 
+		if window.isMobile()
+			$('#player').attr('src', 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/black_white_1.mp4')
+			scale_disk = 1.1
+		
 		@duration = 168.182
 		if @player.duration && @player.duration > 1
 			console.log 'correct duration'
@@ -33,7 +36,9 @@ class player_video
 		@bindEvents()
 
 	setTimeLine : (curentTime) ->
+		that = @
 		@timelineDisk.from('#block_video_disk', 1.5 ,{ rotation: 270, opacity:0, scale:2, ease:Power1.easeOut} )
+			.add(@play_video_disk)
 			.from('#platine', 1 ,{opacity:0, scale:.8}, '-=.5')
 			.staggerFrom('#list_artists li', .3 ,{opacity:0}, 0.04 )
 			.from(['#play-video-btn', '#play-video-btn-mobile', '#pause-video-btn'], .6 ,{opacity:0}  )
@@ -61,6 +66,10 @@ class player_video
 	show_tuto : ->
 		$('.tuto').removeClass('hide')
 
+	play_video_disk : ->
+		$('#player')[0].play()
+		@disk_on_hold = false
+
 	loadMap : ->
 		console.log '---> load small map'
 		that = @
@@ -73,7 +82,7 @@ class player_video
 
 	skipIntro : ->
 		console.log 'skipIntro : player play ------------------------------'
-		@player.play()
+		@player.pause()
 		@timelineDisk.play()
 		$('#popin').off 'endIntro'
 
@@ -256,6 +265,8 @@ class player_video
 		#------------------- POPIN LISTNER -------------------#
 		$('#popin').on 'classChange', ->
 			console.log '->>>>>>>>>>>>>>>>>>>>>>> popin change '+($(this).hasClass 'hide')
+			if (that.disk_on_hold == true)
+				return
 			if $(this).hasClass 'hide'
 				if that.player
 					that.player.play()
