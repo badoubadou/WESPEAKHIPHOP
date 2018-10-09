@@ -620,7 +620,6 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
     }
 
     setTimeLine(curentTime) {
-      console.log('curentTime : ' + curentTime);
       return this.timelineDisk.from('#block_video_disk', 1.5, {
         rotation: 270,
         opacity: 0,
@@ -646,7 +645,7 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         opacity: 0,
         y: 150,
         ease: Power3.easeOut
-      }).from('#txt_help_disk', .8, {
+      }).add(this.reset_small_map_css).from('#txt_help_disk', .8, {
         opacity: 0,
         left: '-100%',
         ease: Power3.easeOut
@@ -660,6 +659,10 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
     showFooter_header() {
       $('body').removeClass('hidefooter');
       return $('body').removeClass('hide_left_col');
+    }
+
+    reset_small_map_css() {
+      return $('#smallmap').removeAttr('style');
     }
 
     show_logo() {

@@ -1,13 +1,9 @@
 class player_video
 	constructor: (@$container) ->
-		
 		@timelineKnob = new TimelineMax(paused: true)
 		@timelineInfo = new TimelineMax(paused: true)
 		@timelinePlatine = new TimelineMax(paused: true)
-
 		@timelineDisk = new TimelineMax(paused: true)
-		
-
 		@setTimeLine()
 
 		@player = $('#player')[0]
@@ -33,7 +29,6 @@ class player_video
 		@bindEvents()
 
 	setTimeLine : (curentTime) ->
-		console.log 'curentTime : '+curentTime
 		@timelineDisk.from('#block_video_disk', 1.5 ,{ rotation: 270, opacity:0, scale:2, ease:Power1.easeOut} )
 			.from('#platine', 1 ,{opacity:0, scale:.8}, '-=.5')
 			.staggerFrom('#list_artists li', .3 ,{opacity:0}, 0.04 )
@@ -43,6 +38,7 @@ class player_video
 			.add(@show_logo)
 			.from('#artists_info', .5 ,{opacity:0, ease:Power3.easeOut}, '+=2')
 			.from('#smallmap', .6 ,{opacity:0, y:150, ease:Power3.easeOut} )
+			.add(@reset_small_map_css)
 			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut})
 			.add(@show_tuto, '+=2')
 			.from('.tuto', .6 ,{opacity:0, ease:Power3.easeOut}, '+=2' )
@@ -52,6 +48,9 @@ class player_video
 		$('body').removeClass('hidefooter')
 		$('body').removeClass('hide_left_col')
 	
+	reset_small_map_css : ->
+		$('#smallmap').removeAttr('style')
+
 	show_logo : ->
 		$('.logoWSH').trigger 'showLogo'
 
@@ -244,8 +243,6 @@ class player_video
 			# # that.setTimeLine(curentTime)
 			# that.timelineDisk.play(0)
 			return
-
-
 		
 		#------------------- END TUTO -------------------#
 		$('.btn_get_it').on 'click', ->

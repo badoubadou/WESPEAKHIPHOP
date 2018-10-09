@@ -1,41 +1,44 @@
 #main_footer.footer.layer_top
 	include ../block_help/index.pug
 
-	ul#infos
-		li.seperateur
-			a#apropos_btn(href='#abouttxt')
-				| #{TRANSLATION.a_propos[langage]}
-		li.seperateur
-			a#credit_btn(href='#credittxt')
-				| #{TRANSLATION.credit[langage]}
-		li
-			a#mail_btn(href='mailto:office@kometprod.com', target='_self')
-				| #{TRANSLATION.contact[langage]}
+	.warp_ul_footer
+		ul#left-ul
+			li.seperateur
+				a#apropos_btn(href='#abouttxt')
+					| #{TRANSLATION.a_propos[langage]}
+			li.seperateur
+				a#credit_btn(href='#credittxt')
+					| #{TRANSLATION.credit[langage]}
+			li
+				a#mail_btn(href='mailto:office@kometprod.com', target='_self')
+					| #{TRANSLATION.contact[langage]}
 		
-		li
-			if langage == 'en'
-				a(href='http://wespeakhiphop.fr')
-					span.short_text
-						| #{TRANSLATION.language_name_short[langage]}
-					span.long_text
-						| #{TRANSLATION.language_name[langage]}
-			else
-				a(href='http://wespeakhiphop.com')
-					span.short_text
-						| #{TRANSLATION.language_name_short[langage]}
-					span.long_text
-						| #{TRANSLATION.language_name[langage]}
-		li
-			span#sound.actif
-				include ../../../public/image/unmute.svg
-		li
-			span.myfullscreen
-				#fs
-					include ../../../public/image/fullscreen.svg
-				#fsactif
-					include ../../../public/image/fullscreen_actif.svg
-		
-		li
-			a#share(href='#shareinfo')
-				include ../../../public/image/share.svg
-				| #{TRANSLATION.partager[langage]}
+		ul#right-ul
+			li
+				if langage == 'en'
+					a(href='http://wespeakhiphop.fr')
+						span.short_text
+							| #{TRANSLATION.language_name_short[langage]}
+						span.long_text
+							| #{TRANSLATION.language_name[langage]}
+				else
+					a(href='http://wespeakhiphop.com')
+						span.short_text
+							| #{TRANSLATION.language_name_short[langage]}
+						span.long_text
+							| #{TRANSLATION.language_name[langage]}
+			li
+				span#sound.actif
+					include ../../../public/image/unmute.svg
+			li
+				span.myfullscreen
+					#fs
+						include ../../../public/image/fullscreen.svg
+					#fsactif
+						include ../../../public/image/fullscreen_actif.svg
+			
+			li
+				a#share(href='#shareinfo')
+					include ../../../public/image/share.svg
+					span.txt
+						| #{TRANSLATION.partager[langage]}

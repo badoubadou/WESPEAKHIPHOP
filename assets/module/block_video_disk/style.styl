@@ -34,6 +34,9 @@
 .size_video
 	width $size_video_small
 	height $size_video_small
+	max-width 50vh
+	max-height 50vh
+
 	.player-dimensions
 	video
 		width $size_video_small
@@ -59,17 +62,26 @@
 .size_disk
 	width $size_disk_small
 	height $size_disk_small
+	max-width 73vh
+	max-height 73vh
 	
 	@media $ipad
 		width $size_disk_medium
 		height $size_disk_medium
+		max-width 90vh
+		max-height 90vh
+
 	@media $large_screen
 		width $size_disk_large
 		height $size_disk_large
+		max-width 90vh
+		max-height 90vh
 
 .size_platine
 	width $size_platine_small
 	height $size_platine_small
+	max-width 78vh
+	max-height 78vh
 	
 	@media $ipad
 		width $size_disk_medium+$epaiseur_platine
@@ -96,6 +108,8 @@
 	center()
 	width $size_disk_small
 	height $size_disk_small
+	max-width 74vh
+	max-height 74vh
 	
 	@media $ipad
 		width $size_disk_medium - 10px
@@ -132,7 +146,11 @@
 #play-video-btn-mobile
 	bottom auto
 	top 5px
-	
+	@media $mobile_landscape
+		left auto
+		right 5px
+		transform none
+		
 	@media $ipad
 		display none
 
@@ -159,4 +177,7 @@
 	@media $ipad
 		right 30px
 	
+	@media $mobile_landscape
+		bottom 5px
+		right 5px
 	

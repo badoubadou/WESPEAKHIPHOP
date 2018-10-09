@@ -2,6 +2,9 @@
 	on-circle(28, $size_name_circle_small, 10px)
 	width 0
 	height 0	
+	@media $mobile_landscape
+		on-circle(28, 80vh, 10px)
+		
 	@media $ipad	
 		on-circle(28, $size_name_circle_medium, 80px)
 		width 0
@@ -20,34 +23,6 @@
 			margin-left -60px
 		> *:nth-of-type(25)
 			margin-left -52px
-			
-		// > *:nth-of-type(3)
-		// 	// padding-left 175px
-		// > *:nth-of-type(2)
-		// > *:nth-of-type(5)
-		// > *:nth-of-type(7)
-		// > *:nth-of-type(10)
-		// 	// padding-left 50px
-		// > *:nth-of-type(14)
-		// > *:nth-of-type(16)
-		// 	// margin-left -40px
-		// 	width 80px
-		// > *:nth-of-type(15)
-		// 	margin-top -2px
-		// 	// margin-left -40px
-		// 	width 80px
-		// > *:nth-of-type(25)
-		// 	// margin-left -140px
-		// > *:nth-of-type(22)
-		// 	// margin-left -125px
-		// > *:nth-of-type(23)
-		// 	// margin-left -160px
-		// > *:nth-of-type(21)
-		// 	// margin-left -80px
-		// 	width 96px
-		// 	text-align right
-		// > *:nth-of-type(28)
-		// 	// margin-left -133px
 			
 	@media $large_screen
 		on-circle(28, $size_name_circle_large, 80px)

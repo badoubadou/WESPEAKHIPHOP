@@ -7,6 +7,10 @@
 	right 0px
 	transition opacity 1s
 	overflow hidden
+	height 100%
+	
+	@media $mobile_landscape
+		max-height 70%
 
 	li
 		position absolute
@@ -98,13 +102,18 @@
 				display block
 				background $yellow
 				color #333333
-			
+	
+	@media $mobile_landscape
+		li
+			font-size .6em
+			height 100%
+
 	@media $mobile_et_ipad
 		top O
 		bottom auto
 		li
-			padding 0 10px
 			transition opacity 1s
+			padding 0 10px
 			vert_align_middle()
 			.name
 			.date

@@ -30,9 +30,6 @@
 	// 		top 0
 	// 		height 100%
 		
-
-.max_width
-	margin 0 $space-1
 	
 .layer_bottom
 	z-index -1
@@ -110,8 +107,11 @@
 	opacity 0
 
 #left_col
+	height 20vh
+	
 	@media $desktop	
-		width 300px
+		width 30%
+		max-width 300px
 		height "calc(100% - %s)" % ($height_footer)
 		background $yellow
 		position absolute

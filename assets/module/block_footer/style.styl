@@ -7,11 +7,41 @@
 	color #989898
 	font-size .7em
 
+	.warp_ul_footer
+		@media $ipad
+			width auto
+			position absolute
+			display inline-block
+			right 0
 	ul 
 		margin 0
 		padding 0
 		display inline-block
 		
+
+		&#right-ul
+			right 0
+			text-align right
+			position absolute
+			
+			@media $ipad
+				right auto
+				position relative
+		
+		&#left-ul
+			position absolute
+			left 5px
+			li a
+				padding 0 5px
+			@media $ipad
+				left auto 
+				padding 0 10px
+				position relative
+			li span 
+				padding 0 3px
+				@media $ipad
+					padding 0 10px
+
 		li
 			display inline-block
 			line-height $height_footer
@@ -32,7 +62,7 @@
 				line-height $height_footer
 				padding 0 5px
 				@media $ipad
-					padding 0 30px
+					padding 0 15px
 				height 100%
 				display block
 				color #989898
@@ -41,7 +71,12 @@
 			
 			span
 				display block
-				padding 0 30px
+				padding 0 5px
+				
+			#sound
+			.myfullscreen
+				@media $ipad
+					padding 0 15px
 				
 		
 		&#mode_switcher li a		
@@ -51,24 +86,18 @@
 				color #989898
 				background $yellow
 		
-		&#infos
-			position absolute
-			left 5px
-			li a
-				padding 0 5px
-			@media $ipad
-				right 0 
-				left auto 
-				padding 0 10px
-			li span 
-				padding 0 3px
-				@media $ipad
-					padding 0 10px
+		
 						
 	#share
 		svg
 			width 13px
 			height 13px
+			display inline-block
+		
+		.txt
+			display none
+			@media $ipad
+				display inline-block
 
 #sound
 .myfullscreen
@@ -85,7 +114,9 @@
 	&.actif
 		svg #lign
 			display block
-			
+	
+
+
 .myfullscreen
 	#fsactif
 		display none
