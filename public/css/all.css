@@ -3382,6 +3382,8 @@ input[type=range]::-ms-fill-upper {
 #popin .intro_page {
   color: #fff;
   text-align: center;
+  width: 80%;
+  max-width: 240px;
 }
 #popin .intro_page .btn {
   margin-left: 20px;
@@ -3946,7 +3948,7 @@ body.hidefooter #popin .skip_intro {
 }
 .tuto .fleche {
   width: 130px;
-  left: 25%;
+  left: 12%;
   position: absolute;
   margin-bottom: 30px;
 }
@@ -3957,7 +3959,7 @@ body.hidefooter #popin .skip_intro {
 }
 .tuto .hand {
   position: absolute;
-  left: 30px;
+  left: 0px;
   top: 130px;
 }
 #disk_hole {

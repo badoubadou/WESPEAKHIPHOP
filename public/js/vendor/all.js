@@ -284,7 +284,19 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
     playYTisReady() {
       $('.lds-dual-ring').trigger('hidespiner');
       console.log('trigger hide player YT ready ');
-      $('.intro_page .hidden').removeClass('hidden');
+      TweenMax.set(['.txt_intro', '.btn_intro'], {
+        autoAlpha: 0,
+        display: "none"
+      });
+      TweenMax.staggerFromTo(['.txt_intro', '.btn_intro'], .8, {
+        autoAlpha: 0,
+        display: "block",
+        y: -10
+      }, {
+        autoAlpha: 1,
+        y: 0,
+        ease: Power1.easeOut
+      }, 0.5);
       return this.playerYT.play();
     }
 
@@ -434,6 +446,19 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         }
       });
       
+      //------------------- FOCUS -------------------#
+      $(window).on('pageshow focus', function() {
+        console.log('on focus : ' + that.playerYT.paused);
+        if (that.playerYT.paused) {
+          return that.playerYT.play();
+        }
+      });
+      $(window).on('pagehide blur', function() {
+        console.log('on blur : ' + that.playerYT.playing);
+        if (that.playerYT.playing) {
+          return that.playerYT.pause();
+        }
+      });
       //------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
       $('#popin').on('closePopin', function() {
         console.log('------------ > closePopin stop player YOUTUBE');
@@ -1242,9 +1267,11 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         if (that.player) {
           that.player.pause();
         }
+        $('body').trigger('blur');
       };
       windowFocused = function() {
         console.log('focus');
+        $('body').trigger('focus');
         if ($('body').hasClass('video-disk-waiting')) {
           console.log('hasClass video-disk-waiting');
           return;

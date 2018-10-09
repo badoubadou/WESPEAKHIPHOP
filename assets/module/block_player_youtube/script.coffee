@@ -9,7 +9,9 @@ class player_video_youtube
 	playYTisReady : ->
 		$('.lds-dual-ring').trigger 'hidespiner'
 		console.log 'trigger hide player YT ready '
-		$('.intro_page .hidden').removeClass 'hidden'
+		TweenMax.set(['.txt_intro', '.btn_intro'],{autoAlpha:0,display:"none"});
+		TweenMax.staggerFromTo(['.txt_intro', '.btn_intro'],.8, {autoAlpha:0, display:"block", y:-10},{autoAlpha:1, y:0, ease:Power1.easeOut}, 0.5);
+
 		@playerYT.play()
 
 	bildIntroYoutube : ->
@@ -154,7 +156,19 @@ class player_video_youtube
 					$('#logowhite').trigger 'pausehideLogo'
 			return
 			
+		#------------------- FOCUS -------------------#
+		$(window).on 'pageshow focus', ->
+			console.log 'on focus : '+that.playerYT.paused
+			if that.playerYT.paused
+				that.playerYT.play()
+
+		$(window).on 'pagehide blur', ->
+			console.log 'on blur : '+that.playerYT.playing
+			if that.playerYT.playing
+				that.playerYT.pause()
+
 		#------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
+		
 		$('#popin').on 'closePopin', ->
 			console.log '------------ > closePopin stop player YOUTUBE'
 			$('.video-container').addClass 'trans'

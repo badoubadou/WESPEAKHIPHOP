@@ -268,10 +268,13 @@ class player_video
 			console.log 'blur'
 			if that.player
 				that.player.pause()
+
+			$('body').trigger 'blur'
 			return
 
 		windowFocused = ->
 			console.log 'focus'
+			$('body').trigger 'focus'
 			if $('body').hasClass 'video-disk-waiting'
 				console.log 'hasClass video-disk-waiting'
 				return
