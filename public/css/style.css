@@ -766,7 +766,7 @@ p:empty {
 }
 @media screen and (min-width: 48em) {
   .footer ul li a {
-    padding: 0 15px;
+    padding: 0 10px;
   }
 }
 .footer ul li a:hover {
@@ -779,7 +779,7 @@ p:empty {
 @media screen and (min-width: 48em) {
   .footer ul li #sound,
   .footer ul li .myfullscreen {
-    padding: 0 15px;
+    padding: 0 10px;
   }
 }
 .footer ul#mode_switcher li a {
@@ -1900,15 +1900,20 @@ input[type=range]::-ms-fill-upper {
   bottom: 0;
   position: absolute;
   width: 25px;
-  z-index: 2;
+}
+.video-container .myfullscreen z-index 2 {
+  -webkit-transition: 0.5s bottom ease;
+  -moz-transition: 0.5s bottom ease;
+  -o-transition: 0.5s bottom ease;
+  -ms-transition: 0.5s bottom ease;
+  transition: 0.5s bottom ease;
 }
 .video-container .myfullscreen svg {
   width: 25px;
   height: 25px;
 }
-.video-container .plyr--hide-controls ~ .myfullscreen,
-.video-container .plyr--hide-controls ~ .hider_logo {
-  display: none;
+.video-container .plyr--hide-controls ~ .myfullscreen {
+  bottom: -150%;
 }
 .video-container .plyr {
   height: 100%;
@@ -1939,7 +1944,7 @@ input[type=range]::-ms-fill-upper {
   right: 0px;
   bottom: 0;
   position: absolute;
-  width: 260px;
+  width: 200px;
   height: 60px;
   z-index: 1;
   background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 1%, #000 38%, #000 100%);
@@ -1947,6 +1952,16 @@ input[type=range]::-ms-fill-upper {
   background: -o-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 1%, #000 38%, #000 100%);
   background: -ms-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 1%, #000 38%, #000 100%);
   background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 1%, #000 38%, #000 100%);
+}
+.video-container .hider_logo.hide_hider {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -webkit-transition: 0.5s opacity ease 3s;
+  -moz-transition: 0.5s opacity ease 3s;
+  -o-transition: 0.5s opacity ease 3s;
+  -ms-transition: 0.5s opacity ease 3s;
+  transition: 0.5s opacity ease 3s;
 }
 #popin {
   position: absolute;

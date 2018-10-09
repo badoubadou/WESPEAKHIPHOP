@@ -51,9 +51,6 @@ class player_video_youtube
 			$('.intro_page').addClass 'hidden'
 			$('.video-container').removeClass 'hidden hide'
 			# GoInFullscreen($('body').get(0))
-			TweenMax.delayedCall 4, ->
-				$('#logowhite').trigger 'hideLogo'
-				return
 			that.playerYT.play()
 			return
 		#------------------- SOUND ---------------------------#
@@ -132,8 +129,31 @@ class player_video_youtube
 
 		@playerYT.on 'statechange', (event) ->
 			console.log 'on statechange YOUTUBE  event code : '+event.detail.code
-			if event.detail.code == 1
+			if event.detail.code == 1 #-------------------------  PLAY 
 				$('.video-container').removeClass 'trans'
+				$('.video-container .myfullscreen').removeClass 'hide'
+				$('.hider_logo').addClass 'hide_hider'
+				if ($('#logowhite').data('animstatus') == 'done')
+					return
+				
+				if ($('#logowhite').data('animstatus') == 'waiting')
+					console.log 'trigger hide'
+					$('#logowhite').trigger 'hideLogo'
+				
+				if ($('#logowhite').data('animstatus') == 'paused')
+					$('#logowhite').trigger 'resumehideLogo'
+			
+			if event.detail.code == 2 #-------------------------  PAUSE
+				$('.hider_logo').removeClass 'hide_hider'
+				if ($('#logowhite').data('animstatus') == 'playing')
+					$('#logowhite').trigger 'pausehideLogo'
+			
+			if event.detail.code == 3 #-------------------------  BUFFER
+				$('.hider_logo').removeClass 'hide_hider'
+				if ($('#logowhite').data('animstatus') == 'playing')
+					$('#logowhite').trigger 'pausehideLogo'
+				
+			
 			return
 			
 		#------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#

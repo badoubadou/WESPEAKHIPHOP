@@ -108,7 +108,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       });
       MorphSVGPlugin.convertToPath('line');
       this.drawLogoWhite = new TimelineMax({
-        paused: true
+        paused: true,
+        onReverseComplete: this.finishedHideLogo
       });
       this.drawLogoWhite.from("#logowhite #mask1_2_", 1, {
         drawSVG: 0,
@@ -193,7 +194,12 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         drawSVG: 0,
         ease: Power1.easeInOut
       }, 1.2);
+      this.reverse_delay = null;
       this.bindEvents();
+    }
+
+    finishedHideLogo() {
+      return $('#logowhite').data('animstatus', 'done');
     }
 
     showLogoBlack() {
@@ -205,7 +211,24 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
     }
 
     hideLogoWhite() {
-      return this.drawLogoWhite.reverse();
+      var that;
+      that = this;
+      $('#logowhite').data('animstatus', 'playing');
+      console.log('catch hideLogo  data = ' + $('#logowhite').data('animstatus'));
+      return this.reverse_delay = TweenMax.delayedCall(4, function() {
+        return that.drawLogoWhite.reverse();
+      });
+    }
+
+    pausehideLogo() {
+      console.log('pausehideLogo data = ' + $('#logowhite').data('animstatus'));
+      $('#logowhite').data('animstatus', 'paused');
+      return this.reverse_delay.pause();
+    }
+
+    resumehideLogo() {
+      $('#logowhite').data('animstatus', 'playing');
+      return this.reverse_delay.resume();
     }
 
     bindEvents() {
@@ -215,7 +238,16 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         return that.showLogoWhite();
       });
       $('#logowhite').on('hideLogo', function() {
+        console.log('catch hideLogo');
         return that.hideLogoWhite();
+      });
+      $('#logowhite').on('pausehideLogo', function() {
+        console.log('catch pausehideLogo');
+        return that.pausehideLogo();
+      });
+      $('#logowhite').on('resumehideLogo', function() {
+        console.log('catch resumehideLogo');
+        return that.resumehideLogo();
       });
       return $('.logoWSH').on('showLogo', function() {
         console.log('show logo');
@@ -295,9 +327,6 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         $('.intro_page').addClass('hidden');
         $('.video-container').removeClass('hidden hide');
         // GoInFullscreen($('body').get(0))
-        TweenMax.delayedCall(4, function() {
-          $('#logowhite').trigger('hideLogo');
-        });
         that.playerYT.play();
       });
       //------------------- SOUND ---------------------------#
@@ -369,8 +398,32 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       // $('.video-container').addClass 'hidden hide'
       this.playerYT.on('statechange', function(event) {
         console.log('on statechange YOUTUBE  event code : ' + event.detail.code);
-        if (event.detail.code === 1) {
+        if (event.detail.code === 1) { //-------------------------  PLAY 
           $('.video-container').removeClass('trans');
+          $('.video-container .myfullscreen').removeClass('hide');
+          $('.hider_logo').addClass('hide_hider');
+          if ($('#logowhite').data('animstatus') === 'done') {
+            return;
+          }
+          if ($('#logowhite').data('animstatus') === 'waiting') {
+            console.log('trigger hide');
+            $('#logowhite').trigger('hideLogo');
+          }
+          if ($('#logowhite').data('animstatus') === 'paused') {
+            $('#logowhite').trigger('resumehideLogo');
+          }
+        }
+        if (event.detail.code === 2) { //-------------------------  PAUSE
+          $('.hider_logo').removeClass('hide_hider');
+          if ($('#logowhite').data('animstatus') === 'playing') {
+            $('#logowhite').trigger('pausehideLogo');
+          }
+        }
+        if (event.detail.code === 3) { //-------------------------  BUFFER
+          $('.hider_logo').removeClass('hide_hider');
+          if ($('#logowhite').data('animstatus') === 'playing') {
+            $('#logowhite').trigger('pausehideLogo');
+          }
         }
       });
       

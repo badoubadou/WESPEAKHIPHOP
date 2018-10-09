@@ -2,7 +2,7 @@ class logo
 	constructor: (@spiner) ->
 		TweenLite.set 'svg', visibility: 'visible'
 		MorphSVGPlugin.convertToPath 'line'
-		@drawLogoWhite = new TimelineMax({paused:true});
+		@drawLogoWhite = new TimelineMax({paused:true, onReverseComplete:@finishedHideLogo});
 		@drawLogoWhite.from("#logowhite #mask1_2_", 1, {drawSVG:0, ease:Power1.easeInOut} )
 			.from("#logowhite #mask2", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.1 )
 			.from("#logowhite #mask3", 1.3, {drawSVG:0, ease:Power1.easeInOut},0.2 )
@@ -16,8 +16,6 @@ class logo
 			.from("#logowhite #mask11", 1.3, {drawSVG:0, ease:Power1.easeInOut},1 )
 			.from("#logowhite #mask12", 1.3, {drawSVG:0, ease:Power1.easeInOut},1.1 )
 			.from("#logowhite #mask13", 1.3, {drawSVG:0, ease:Power1.easeInOut},1.2 )
-
-
 		@dLB = new TimelineMax({paused:true});
 		@dLB.from("#mask1_2_black", 1, {drawSVG: 0,ease: Power1.easeInOut})
 			.from("#mask2_black", 1.3, {drawSVG: 0,ease: Power1.easeInOut}, 0.1)
@@ -32,9 +30,12 @@ class logo
 			.from("#mask11_black", 1.3, {drawSVG: 0,ease: Power1.easeInOut}, 1)
 			.from("#mask12_black", 1.3, {drawSVG: 0,ease: Power1.easeInOut}, 1.1)
 			.from("#mask13_black", 1.3, {drawSVG: 0,ease: Power1.easeInOut}, 1.2)
-
+		@reverse_delay = null
 		@bindEvents()
 	
+	finishedHideLogo : ->
+		$('#logowhite').data('animstatus', 'done')
+
 	showLogoBlack : ->
 		@dLB.play()
 	
@@ -42,14 +43,38 @@ class logo
 		@drawLogoWhite.play()
 	
 	hideLogoWhite : ->
-		@drawLogoWhite.reverse()
-	
+		that = @
+		$('#logowhite').data('animstatus', 'playing')
+		console.log 'catch hideLogo  data = '+$('#logowhite').data('animstatus')
+		@reverse_delay = TweenMax.delayedCall 4, ->
+			that.drawLogoWhite.reverse()	
+		
+	pausehideLogo : ->
+		console.log 'pausehideLogo data = '+$('#logowhite').data('animstatus')
+		$('#logowhite').data('animstatus', 'paused')
+		@reverse_delay.pause()	
+		
+	resumehideLogo : ->
+		$('#logowhite').data('animstatus', 'playing')
+		@reverse_delay.resume()	
+
 	bindEvents : ->
 		that = @
 		$('#logowhite').on 'showLogo', ->
 			that.showLogoWhite()
+
 		$('#logowhite').on 'hideLogo', ->
+			console.log 'catch hideLogo'
 			that.hideLogoWhite()
+
+		$('#logowhite').on 'pausehideLogo', ->
+			console.log 'catch pausehideLogo'
+			that.pausehideLogo()
+
+		$('#logowhite').on 'resumehideLogo', ->
+			console.log 'catch resumehideLogo'
+			that.resumehideLogo()
+
 		$('.logoWSH').on 'showLogo', ->
 			console.log 'show logo'
 			that.showLogoBlack()
