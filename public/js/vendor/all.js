@@ -314,7 +314,7 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       });
       //------------------- FULL SCREEN ---------------------------#				
       GoInFullscreen = function(element) {
-        $('#fullscreen').addClass('actiffullscreen');
+        $('.myfullscreen').addClass('actiffullscreen');
         if (element.requestFullscreen) {
           element.requestFullscreen();
         } else if (element.mozRequestFullScreen) {
@@ -326,7 +326,7 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         }
       };
       GoOutFullscreen = function() {
-        $('#fullscreen').removeClass('actiffullscreen');
+        $('.myfullscreen').removeClass('actiffullscreen');
         if (document.exitFullscreen) {
           document.exitFullscreen();
         } else if (document.mozCancelFullScreen) {
@@ -347,8 +347,9 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
           return true;
         }
       };
-      $('#fullscreen').on({
+      $('.myfullscreen').on({
         'click': function() {
+          console.log('click ');
           if (!IsFullScreenCurrently()) {
             return GoInFullscreen($('body').get(0));
           } else {
@@ -357,7 +358,7 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         }
       });
       //------------------- PLAYER YOUTUBE -------------------#
-      controls = '<div class="plyr__controls"> <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play"> <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-pause"></use></svg> <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-play"></use></svg> <span class="label--pressed plyr__tooltip" role="tooltip">Pause</span> <span class="label--not-pressed plyr__tooltip" role="tooltip">Play</span> </button> <div class="plyr__progress"> <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek"> <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress> <span role="tooltip" class="plyr__tooltip">00:00</span> </div> <button type="button" class="plyr__control" data-plyr="fullscreen"> <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-exit-fullscreen"></use></svg> <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-enter-fullscreen"></use></svg> <span class="label--pressed plyr__tooltip" role="tooltip">Exit fullscreen</span> <span class="label--not-pressed plyr__tooltip" role="tooltip">Enter fullscreen</span> </button> </div>';
+      controls = '<div class="plyr__controls"> <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play"> <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-pause"></use></svg> <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-play"></use></svg> <span class="label--pressed plyr__tooltip" role="tooltip">Pause</span> <span class="label--not-pressed plyr__tooltip" role="tooltip">Play</span> </button> <div class="plyr__progress"> <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek"> <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress> <span role="tooltip" class="plyr__tooltip">00:00</span> </div> </div>';
       this.playerYT = new Plyr('#playerYT', {controls});
       
       //------------------- PLAYER YOUTUBE IS READY -------------------#
@@ -367,18 +368,13 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       });
       // $('.video-container').addClass 'hidden hide'
       this.playerYT.on('statechange', function(event) {
-        console.log('on play YOUTUBE etat de l intro event : ' + event.detail.code);
+        console.log('on statechange YOUTUBE  event code : ' + event.detail.code);
         if (event.detail.code === 1) {
           $('.video-container').removeClass('trans');
-        } else {
-          $('.video-container').addClass('trans');
         }
       });
       
       //------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
-
-      // if that.intro_is_done
-      // 	$('.video-container').removeClass 'hidden hide'
       $('#popin').on('closePopin', function() {
         console.log('------------ > closePopin stop player YOUTUBE');
         $('.video-container').addClass('trans');
@@ -390,6 +386,7 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange');
         $('.skip_intro').remove();
         $('#close').removeClass('hide');
+        $('.video-container').removeClass('with_btn_skip');
       };
       $('.skip_intro').on('click', function() {
         vid_intro_finished();

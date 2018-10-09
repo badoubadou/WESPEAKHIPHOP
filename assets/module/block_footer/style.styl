@@ -70,30 +70,30 @@
 			width 13px
 			height 13px
 
-	#sound
-	#fullscreen
+#sound
+.myfullscreen
+	width 15px
+	height 40px
+	display block
+	margin 0
+	cursor pointer
+	svg
 		width 15px
-		height 40px
-		display block
-		margin 0
-		cursor pointer
-		svg
-			width 15px
-			height 15px			
-			#lign
-				display none
-		&.actif
-			svg #lign
-				display block
-				
-	#fullscreen
-		#fsactif
+		height 15px			
+		#lign
 			display none
-		&.actiffullscreen
-			#fs
-				display none
-			#fsactif
-				display block
+	&.actif
+		svg #lign
+			display block
 			
+.myfullscreen
+	#fsactif
+		display none
+	&.actiffullscreen
+		#fs
+			display none
+		#fsactif
+			display block
+		
 		// @media $mobile_et_ipad
 		// 	display none

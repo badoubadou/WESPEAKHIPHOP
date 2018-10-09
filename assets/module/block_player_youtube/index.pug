@@ -1,5 +1,14 @@
-.video-container.layer_1.hidden
+.video-container.layer_1.hidden.with_btn_skip
 	.skip_intro.layer_2.btn.round_btn
 		| #{TRANSLATION.skip_intro[langage]}
 	
 	#playerYT(data-plyr-provider="youtube" data-plyr-embed-id="hvZJI8rerWA" data-plyr-config='{ "volume": 1 }')
+	
+	.myfullscreen
+		#fs
+			include ../../../public/image/fullscreen.svg
+		#fsactif
+			include ../../../public/image/fullscreen_actif.svg
+	
+	.hider_logo
+		

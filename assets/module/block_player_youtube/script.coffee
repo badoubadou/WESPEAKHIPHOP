@@ -68,7 +68,7 @@ class player_video_youtube
 
 		#------------------- FULL SCREEN ---------------------------#				
 		GoInFullscreen = (element) ->
-			$('#fullscreen').addClass 'actiffullscreen'
+			$('.myfullscreen').addClass 'actiffullscreen'
 			if element.requestFullscreen
 				element.requestFullscreen()
 			else if element.mozRequestFullScreen
@@ -80,7 +80,7 @@ class player_video_youtube
 			return
 
 		GoOutFullscreen = ->
-			$('#fullscreen').removeClass 'actiffullscreen'
+			$('.myfullscreen').removeClass 'actiffullscreen'
 			if document.exitFullscreen
 				document.exitFullscreen()
 			else if document.mozCancelFullScreen
@@ -99,7 +99,8 @@ class player_video_youtube
 			else
 				true
 
-		$('#fullscreen').on 'click': ->
+		$('.myfullscreen').on 'click': ->
+			console.log 'click '
 			if !IsFullScreenCurrently()
 				GoInFullscreen($('body').get(0))
 			else
@@ -118,12 +119,6 @@ class player_video_youtube
 		        <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress>
 		        <span role="tooltip" class="plyr__tooltip">00:00</span>
 		    </div>
-		    <button type="button" class="plyr__control" data-plyr="fullscreen">
-		        <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-exit-fullscreen"></use></svg>
-		        <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-enter-fullscreen"></use></svg>
-		        <span class="label--pressed plyr__tooltip" role="tooltip">Exit fullscreen</span>
-		        <span class="label--not-pressed plyr__tooltip" role="tooltip">Enter fullscreen</span>
-		    </button>
 		</div>'
 
 		@playerYT = new Plyr('#playerYT', { controls })
@@ -136,14 +131,9 @@ class player_video_youtube
 			return
 
 		@playerYT.on 'statechange', (event) ->
-			console.log 'on play YOUTUBE etat de l intro event : '+event.detail.code
+			console.log 'on statechange YOUTUBE  event code : '+event.detail.code
 			if event.detail.code == 1
 				$('.video-container').removeClass 'trans'
-			else
-				$('.video-container').addClass 'trans'
-				
-			# if that.intro_is_done
-			# 	$('.video-container').removeClass 'hidden hide'
 			return
 			
 		#------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
@@ -158,6 +148,7 @@ class player_video_youtube
 			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange')
 			$('.skip_intro').remove()
 			$('#close').removeClass('hide')
+			$('.video-container').removeClass 'with_btn_skip'
 			return
 
 		$('.skip_intro').on 'click', ->
