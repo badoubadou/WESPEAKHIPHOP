@@ -10,7 +10,12 @@
 			
 		.txt
 			color $yellow
-			text-transform none		
+			text-transform none	
+			
+		.content
+			width 90%
+			@media $desktop
+				width auto
 		
 	.shield
 		opacity .8
@@ -22,10 +27,13 @@
 		z-index -1
 	
 	.fleche
-		width 130px
-		left 12%
+		width 80px
+		left 32%
 		position absolute
 		margin-bottom 30px
+		@media $ipad
+			left 12%
+			width 130px
 		
 	.btn_get_it
 		display inline-block
@@ -34,5 +42,8 @@
 		
 	.hand
 		position absolute
-		left 0px
+		left 15%
 		top 130px
+		@media $ipad
+			left 0px
+			

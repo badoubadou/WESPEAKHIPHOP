@@ -3935,6 +3935,14 @@ body.hidefooter #popin .skip_intro {
   color: #ffce00;
   text-transform: none;
 }
+.tuto .warp_tuto .content {
+  width: 90%;
+}
+@media screen and (min-width: 62em), screen and (max-width: 47.9em) and (orientation: landscape), screen and (max-height: 420px) and (orientation: landscape) {
+  .tuto .warp_tuto .content {
+    width: auto;
+  }
+}
 .tuto .shield {
   opacity: 0.8;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
@@ -3947,10 +3955,16 @@ body.hidefooter #popin .skip_intro {
   z-index: -1;
 }
 .tuto .fleche {
-  width: 130px;
-  left: 12%;
+  width: 80px;
+  left: 32%;
   position: absolute;
   margin-bottom: 30px;
+}
+@media screen and (min-width: 48em) {
+  .tuto .fleche {
+    left: 12%;
+    width: 130px;
+  }
 }
 .tuto .btn_get_it {
   display: inline-block;
@@ -3959,8 +3973,13 @@ body.hidefooter #popin .skip_intro {
 }
 .tuto .hand {
   position: absolute;
-  left: 0px;
+  left: 15%;
   top: 130px;
+}
+@media screen and (min-width: 48em) {
+  .tuto .hand {
+    left: 0px;
+  }
 }
 #disk_hole {
   width: 10px;
