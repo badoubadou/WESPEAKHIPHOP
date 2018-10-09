@@ -1,7 +1,7 @@
 class player_video
 	constructor: (@$container) ->
 		@timelineKnob = new TimelineMax(paused: true)
-		@timelineInfo = new TimelineMax(paused: true)
+		@timelineInfo = new TimelineMax(paused: true, reapeat : -1)
 		@timelinePlatine = new TimelineMax(paused: true)
 		@timelineDisk = new TimelineMax(paused: true)
 		@setTimeLine()
@@ -119,6 +119,7 @@ class player_video
 	createTween: () ->
 		that = @
 		updateInfo= (id)->
+			console.log ' ---------- id updateInfo : '+id
 			$('#play-video-btn, #play-video-btn-mobile, #startvideo').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
 			$('#list_artists li a.selected').removeClass('selected')
 			$('#list_artists li:eq('+id+') a').addClass('selected')
@@ -256,8 +257,6 @@ class player_video
 		$('#popin').on 'classChange', ->
 			console.log '->>>>>>>>>>>>>>>>>>>>>>> popin change '+($(this).hasClass 'hide')
 			if $(this).hasClass 'hide'
-				if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
-					return
 				if that.player
 					that.player.play()
 			else
@@ -287,9 +286,8 @@ class player_video
 
 			if that.player
 				console.log 'play video'
-				if $('#pause-video-btn').hasClass 'paused'
-					return
-				that.player.play()
+				if that.player.paused
+					that.player.play()
 			return
 
 		$(window).on 'pagehide blur', windowBlurred
@@ -307,12 +305,9 @@ class player_video
 		$('#pause-video-btn').on 'click', ->
 			if $(this).hasClass 'paused'
 				that.player.play()
-				$(this).removeClass 'paused'
 			else
 				that.player.pause()
-				$(this).addClass 'paused'
 
-		
 		#------------------- PLAYER JS ---------------------------#		
 		$('#player').on 'play', (e) ->
 			console.log 'play video disk'
@@ -326,12 +321,20 @@ class player_video
 			# $('.lds-dual-ring').addClass('done')
 			console.log 'trigger hide on player Js play '
 			$('.lds-dual-ring').trigger 'hidespiner'
+			$('#pause-video-btn').removeClass 'paused'
 
 		$('#player').on 'pause', ->
 			console.log 'pause'+that.timelineKnob
 			that.timelineInfo.pause()
 			that.timelineKnob.pause()
 			that.timelinePlatine.pause()
+			$('#pause-video-btn').addClass 'paused'
+
+		$('#player').on 'waiting', ->
+			$('#pause-video-btn').addClass 'paused'
+
+		$('#player').on 'stalled', ->
+			$('#pause-video-btn').addClass 'paused'
 
 		$('#player').on 'seeked', ->
 			that.timelineInfo.time that.player.currentTime

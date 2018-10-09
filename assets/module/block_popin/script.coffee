@@ -11,10 +11,14 @@ class popin
 		$('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'		
 		
 	closePopin: ->
+		console.log 'closePopin @timelinePopin : '+@timelinePopin
 		if(@timelinePopin)
 			@timelinePopin.reverse()
 		else		
-			$('#popin').addClass('hide').trigger 'classChange closePopin'
+			console.log 'trigger : classChange closePopin'
+			$('#popin').addClass('hide')
+			$('#popin').trigger 'classChange'
+			$('#popin').trigger 'closePopin'
 		
 	bindEvents : ->
 		that = @

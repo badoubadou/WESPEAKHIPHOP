@@ -58,8 +58,14 @@ class logo
 		$('#logowhite').data('animstatus', 'playing')
 		@reverse_delay.resume()	
 
+	destroyLogo : ->
+		$('#logowhite').data('animstatus', 'done').addClass('hide')
+
 	bindEvents : ->
 		that = @
+		$('#logowhite').on 'destroyLogo', ->
+			that.destroyLogo()
+
 		$('#logowhite').on 'showLogo', ->
 			that.showLogoWhite()
 

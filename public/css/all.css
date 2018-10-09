@@ -3917,8 +3917,8 @@ body.hidefooter #popin .skip_intro {
 }
 @media screen and (min-width: 62em), screen and (max-width: 47.9em) and (orientation: landscape), screen and (max-height: 420px) and (orientation: landscape) {
   .tuto {
-    width: 70%;
-    margin-left: 30%;
+    width: calc(100% - 300px);
+    margin-left: 300px;
   }
 }
 .tuto .warp_tuto {

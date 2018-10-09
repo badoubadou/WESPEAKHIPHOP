@@ -231,9 +231,16 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       return this.reverse_delay.resume();
     }
 
+    destroyLogo() {
+      return $('#logowhite').data('animstatus', 'done').addClass('hide');
+    }
+
     bindEvents() {
       var that;
       that = this;
+      $('#logowhite').on('destroyLogo', function() {
+        return that.destroyLogo();
+      });
       $('#logowhite').on('showLogo', function() {
         return that.showLogoWhite();
       });
@@ -440,6 +447,7 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         $('.skip_intro').remove();
         $('#close').removeClass('hide');
         $('.video-container').removeClass('with_btn_skip');
+        $('#logowhite').trigger('destroyLogo');
       };
       $('.skip_intro').on('click', function() {
         vid_intro_finished();
@@ -497,10 +505,14 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
     }
 
     closePopin() {
+      console.log('closePopin @timelinePopin : ' + this.timelinePopin);
       if (this.timelinePopin) {
         return this.timelinePopin.reverse();
       } else {
-        return $('#popin').addClass('hide').trigger('classChange closePopin');
+        console.log('trigger : classChange closePopin');
+        $('#popin').addClass('hide');
+        $('#popin').trigger('classChange');
+        return $('#popin').trigger('closePopin');
       }
     }
 
@@ -640,7 +652,8 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         paused: true
       });
       this.timelineInfo = new TimelineMax({
-        paused: true
+        paused: true,
+        reapeat: -1
       });
       this.timelinePlatine = new TimelineMax({
         paused: true
@@ -802,6 +815,7 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       that = this;
       updateInfo = function(id) {
         var svgcontry;
+        console.log(' ---------- id updateInfo : ' + id);
         $('#play-video-btn, #play-video-btn-mobile, #startvideo').attr('href', $('#list_artists li:eq(' + id + ') a').attr('href'));
         $('#list_artists li a.selected').removeClass('selected');
         $('#list_artists li:eq(' + id + ') a').addClass('selected');
@@ -1213,9 +1227,6 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       $('#popin').on('classChange', function() {
         console.log('->>>>>>>>>>>>>>>>>>>>>>> popin change ' + ($(this).hasClass('hide')));
         if ($(this).hasClass('hide')) {
-          if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
-            return;
-          }
           if (that.player) {
             that.player.play();
           }
@@ -1248,10 +1259,9 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         }
         if (that.player) {
           console.log('play video');
-          if ($('#pause-video-btn').hasClass('paused')) {
-            return;
+          if (that.player.paused) {
+            that.player.play();
           }
-          that.player.play();
         }
       };
       $(window).on('pagehide blur', windowBlurred);
@@ -1267,14 +1277,11 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       //------------------- SOUND ---------------------------#
       $('#pause-video-btn').on('click', function() {
         if ($(this).hasClass('paused')) {
-          that.player.play();
-          return $(this).removeClass('paused');
+          return that.player.play();
         } else {
-          that.player.pause();
-          return $(this).addClass('paused');
+          return that.player.pause();
         }
       });
-      
       //------------------- PLAYER JS ---------------------------#		
       $('#player').on('play', function(e) {
         console.log('play video disk');
@@ -1288,13 +1295,21 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         that.timelinePlatine.play();
         // $('.lds-dual-ring').addClass('done')
         console.log('trigger hide on player Js play ');
-        return $('.lds-dual-ring').trigger('hidespiner');
+        $('.lds-dual-ring').trigger('hidespiner');
+        return $('#pause-video-btn').removeClass('paused');
       });
       $('#player').on('pause', function() {
         console.log('pause' + that.timelineKnob);
         that.timelineInfo.pause();
         that.timelineKnob.pause();
-        return that.timelinePlatine.pause();
+        that.timelinePlatine.pause();
+        return $('#pause-video-btn').addClass('paused');
+      });
+      $('#player').on('waiting', function() {
+        return $('#pause-video-btn').addClass('paused');
+      });
+      $('#player').on('stalled', function() {
+        return $('#pause-video-btn').addClass('paused');
       });
       $('#player').on('seeked', function() {
         return that.timelineInfo.time(that.player.currentTime);

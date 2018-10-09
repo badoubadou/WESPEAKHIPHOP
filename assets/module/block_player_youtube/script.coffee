@@ -152,8 +152,6 @@ class player_video_youtube
 				$('.hider_logo').removeClass 'hide_hider'
 				if ($('#logowhite').data('animstatus') == 'playing')
 					$('#logowhite').trigger 'pausehideLogo'
-				
-			
 			return
 			
 		#------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
@@ -169,6 +167,7 @@ class player_video_youtube
 			$('.skip_intro').remove()
 			$('#close').removeClass('hide')
 			$('.video-container').removeClass 'with_btn_skip'
+			$('#logowhite').trigger 'destroyLogo'
 			return
 
 		$('.skip_intro').on 'click', ->
