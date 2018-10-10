@@ -2297,6 +2297,7 @@ h1 {
     transform: translateX(-50%);
     top: 40px;
     width: calc(100% - 50px);
+    margin: 0;
   }
 }
 .logoWSH {
@@ -3086,6 +3087,42 @@ span.lign_header {
     margin-left: -80px;
     width: 100px;
   }
+  #list_artists > *:nth-of-type(1) {
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(2),
+  #list_artists > *:nth-of-type(3),
+  #list_artists > *:nth-of-type(4),
+  #list_artists > *:nth-of-type(5),
+  #list_artists > *:nth-of-type(6),
+  #list_artists > *:nth-of-type(7),
+  #list_artists > *:nth-of-type(8),
+  #list_artists > *:nth-of-type(9),
+  #list_artists > *:nth-of-type(10),
+  #list_artists > *:nth-of-type(11),
+  #list_artists > *:nth-of-type(12),
+  #list_artists > *:nth-of-type(13),
+  #list_artists > *:nth-of-type(14) {
+    text-align: right;
+  }
+  #list_artists > *:nth-of-type(15) {
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(16),
+  #list_artists > *:nth-of-type(17),
+  #list_artists > *:nth-of-type(18),
+  #list_artists > *:nth-of-type(19),
+  #list_artists > *:nth-of-type(20),
+  #list_artists > *:nth-of-type(21),
+  #list_artists > *:nth-of-type(22),
+  #list_artists > *:nth-of-type(23),
+  #list_artists > *:nth-of-type(24),
+  #list_artists > *:nth-of-type(25),
+  #list_artists > *:nth-of-type(26),
+  #list_artists > *:nth-of-type(27),
+  #list_artists > *:nth-of-type(28) {
+    text-align: left;
+  }
 }
 @media screen and (min-width: 70em) {
   #list_artists > *:nth-of-type(3) {
@@ -3096,12 +3133,12 @@ span.lign_header {
     padding-left: 20px;
   }
   #list_artists > *:nth-of-type(21) {
-    width: 200px;
-    margin-left: -165px;
+    width: 170px;
+    margin-left: -152px;
   }
   #list_artists > *:nth-of-type(23) {
     width: 130px;
-    margin-left: -108px;
+    margin-left: -126px;
   }
 }
 @media screen and (min-width: 75em) and (min-height: 990px) {
