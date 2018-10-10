@@ -5,7 +5,6 @@ class player_video
 		@timelinePlatine = new TimelineMax(paused: true)
 		@timelineDisk = new TimelineMax(paused: true)
 		@setTimeLine()
-		@disk_on_hold = true
 		@player = $('#player')[0]
 
 		scale_disk = 2
@@ -68,7 +67,7 @@ class player_video
 
 	play_video_disk : ->
 		$('#player')[0].play()
-		@disk_on_hold = false
+		$('body').removeClass 'disk_on_hold'
 
 	loadMap : ->
 		console.log '---> load small map'
@@ -244,15 +243,15 @@ class player_video
 		that = @
 		console.log 'bindEvents player_video'
 
-		$(window).on 'resizeEnd', ->
-			# if !that.timelineDisk
-			# 	return 
-			# curentTime = that.timelineDisk.totalProgress()
-			# console.log 'resized  = '+curentTime
-			# that.timelineDisk.clear()
-			# # that.setTimeLine(curentTime)
-			# that.timelineDisk.play(0)
-			return
+		# $(window).on 'resizeEnd', ->
+		# 	# if !that.timelineDisk
+		# 	# 	return 
+		# 	# curentTime = that.timelineDisk.totalProgress()
+		# 	# console.log 'resized  = '+curentTime
+		# 	# that.timelineDisk.clear()
+		# 	# # that.setTimeLine(curentTime)
+		# 	# that.timelineDisk.play(0)
+		# 	return
 		
 		#------------------- END TUTO -------------------#
 		$('.btn_get_it').on 'click', ->
@@ -265,12 +264,15 @@ class player_video
 		#------------------- POPIN LISTNER -------------------#
 		$('#popin').on 'classChange', ->
 			console.log '->>>>>>>>>>>>>>>>>>>>>>> popin change '+($(this).hasClass 'hide')
-			if (that.disk_on_hold == true)
+			if ($('body').hasClass('disk_on_hold'))
+				console.log 'disk on hold'
 				return
 			if $(this).hasClass 'hide'
+				console.log 'player play '
 				if that.player
 					that.player.play()
 			else
+				console.log 'player pause '
 				if that.player
 					that.player.pause()
 			return

@@ -3,6 +3,8 @@ class player_video_youtube
 		@playerYT = null
 		@drawLogo = null
 		@intro_is_done = false
+		@blankVideo = 'https://cdn.plyr.io/static/blank.mp4'
+		
 		@bildIntroYoutube()
 		@bindEvents()
 
@@ -126,7 +128,6 @@ class player_video_youtube
 		@playerYT.on 'ready', (event) ->
 			console.log 'playYTisReady'
 			that.playYTisReady()
-			# $('.video-container').addClass 'hidden hide'
 			return
 
 		@playerYT.on 'statechange', (event) ->
@@ -171,8 +172,17 @@ class player_video_youtube
 		
 		$('#popin').on 'closePopin', ->
 			console.log '------------ > closePopin stop player YOUTUBE'
-			$('.video-container').addClass 'trans'
-			that.playerYT.stop()
+			$('.video-container').addClass 'trans blankVideo'
+			that.playerYT.source = {
+				type: 'video',
+				sources: [
+					{
+						src: that.blankVideo,
+						type: 'video/mp4',
+					},
+				],
+			};
+			# that.playerYT.stop()
 
 		#------------------- INTRO FINISHED -------------------#
 		vid_intro_finished = ->
@@ -189,6 +199,8 @@ class player_video_youtube
 			return
 			
 		@playerYT.on 'ended', (event) ->
+			if ($('.video-container').hasClass('blankVideo'))
+				return
 			vid_intro_finished()
 			return
 
@@ -200,10 +212,10 @@ class player_video_youtube
 				$('#artist_info').addClass 'hide'
 			$('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
 			$('.video-container').removeClass 'hide'
-			
 			$('.lds-dual-ring').trigger 'showspiner'
 			console.log 'trigger show'
 			window.currentArtist = $('#artist_info .info:not(.hide)').index()
+			$('.video-container').removeClass 'blankVideo'
 			that.playerYT.source = {
 				type: 'video',
 				sources: [
