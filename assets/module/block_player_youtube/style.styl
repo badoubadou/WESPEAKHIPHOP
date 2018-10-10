@@ -4,8 +4,11 @@
 	width 100%
 	max-width 178vh
 	center()
-	padding-bottom 56%
+	padding-bottom 56.25%
 	
+	&.quatre_tier
+		padding-bottom 75%
+
 	.myfullscreen
 		z-index 10
 		right 10px
@@ -17,14 +20,16 @@
 			width 25px
 			height 25px
 		
-	.plyr--hide-controls ~ .myfullscreen
-		bottom -150%
+	.plyr--hide-controls .myfullscreen
+		bottom -60px
 		
 	.plyr
+		vert_align_middle()
 		height 100%
-		max-height 100%
+		max-height 100vh
 		position absolute
 		width 100%
+		
 	
 	.plyr__controls
 		padding 10px 40px 10px

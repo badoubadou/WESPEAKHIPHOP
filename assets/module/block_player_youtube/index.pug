@@ -1,14 +1,15 @@
-.video-container.layer_1.hidden.with_btn_skip
-	.skip_intro.layer_2.btn.round_btn
-		| #{TRANSLATION.skip_intro[langage]}
+.video-container.layer_1.hidden.with_btn_skip.quatre_tier
 	
 	#playerYT(data-plyr-provider="youtube" data-plyr-embed-id="hvZJI8rerWA" data-plyr-config='{ "volume": 1 }')
 	
-	.myfullscreen.hide
-		#fs
-			include ../../../public/image/fullscreen.svg
-		#fsactif
-			include ../../../public/image/fullscreen_actif.svg
-	
-	.hider_logo
+	#warp_custom_btn
+		.skip_intro.layer_2.btn.round_btn
+			| #{TRANSLATION.skip_intro[langage]}
+		.myfullscreen.hide
+			#fs
+				include ../../../public/image/fullscreen.svg
+			#fsactif
+				include ../../../public/image/fullscreen_actif.svg
+		
+		.hider_logo
 		

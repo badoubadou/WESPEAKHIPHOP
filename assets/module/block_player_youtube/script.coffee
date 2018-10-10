@@ -9,12 +9,19 @@ class player_video_youtube
 		@bindEvents()
 
 	playYTisReady : ->
+		console.log  '----------------------- playYTisReady -------------------------------------------'
+		if(!$('.video-container').hasClass('customised'))
+			@customizePlayerYT()
 		$('.lds-dual-ring').trigger 'hidespiner'
-		console.log 'trigger hide player YT ready '
 		TweenMax.set(['.txt_intro', '.btn_intro'],{autoAlpha:0,display:"none"});
 		TweenMax.staggerFromTo(['.txt_intro', '.btn_intro'],.8, {autoAlpha:0, display:"block", y:-10},{autoAlpha:1, y:0, ease:Power1.easeOut}, 0.5);
-
 		@playerYT.play()
+
+	customizePlayerYT : ->
+		custom_btn = $('#warp_custom_btn').detach()
+		$('.video-container .plyr').append custom_btn
+		$('.video-container').addClass 'customised'
+			
 
 	bildIntroYoutube : ->
 		that = @
@@ -126,7 +133,6 @@ class player_video_youtube
 		
 		#------------------- PLAYER YOUTUBE IS READY -------------------#
 		@playerYT.on 'ready', (event) ->
-			console.log 'playYTisReady'
 			that.playYTisReady()
 			return
 
@@ -208,6 +214,12 @@ class player_video_youtube
 		$('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on 'click', (event) ->
 			event.preventDefault()
 			idyoutube = that.YouTubeGetID($(this).attr('href'))
+			ratiovideo = $(this).data('ratiovideo')
+			if(ratiovideo==4)
+				$('.video-container').addClass 'quatre_tier'
+			else
+				$('.video-container').removeClass 'quatre_tier'
+				
 			if !$('#artist_info').hasClass 'hide'
 				$('#artist_info').addClass 'hide'
 			$('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'

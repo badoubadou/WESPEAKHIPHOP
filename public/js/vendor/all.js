@@ -283,8 +283,11 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
     }
 
     playYTisReady() {
+      console.log('----------------------- playYTisReady -------------------------------------------');
+      if (!$('.video-container').hasClass('customised')) {
+        this.customizePlayerYT();
+      }
       $('.lds-dual-ring').trigger('hidespiner');
-      console.log('trigger hide player YT ready ');
       TweenMax.set(['.txt_intro', '.btn_intro'], {
         autoAlpha: 0,
         display: "none"
@@ -299,6 +302,13 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
         ease: Power1.easeOut
       }, 0.5);
       return this.playerYT.play();
+    }
+
+    customizePlayerYT() {
+      var custom_btn;
+      custom_btn = $('#warp_custom_btn').detach();
+      $('.video-container .plyr').append(custom_btn);
+      return $('.video-container').addClass('customised');
     }
 
     bildIntroYoutube() {
@@ -412,7 +422,6 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       
       //------------------- PLAYER YOUTUBE IS READY -------------------#
       this.playerYT.on('ready', function(event) {
-        console.log('playYTisReady');
         that.playYTisReady();
       });
       this.playerYT.on('statechange', function(event) {
@@ -492,9 +501,15 @@ k=-1!==q.indexOf("%"),k!==(-1!==i[j].indexOf("%"))&&(l=0===j?a.offsetWidth-R.wid
       });
       //------------------- CLICK LIST ARTIST -------------------#
       return $('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on('click', function(event) {
-        var idyoutube;
+        var idyoutube, ratiovideo;
         event.preventDefault();
         idyoutube = that.YouTubeGetID($(this).attr('href'));
+        ratiovideo = $(this).data('ratiovideo');
+        if (ratiovideo === 4) {
+          $('.video-container').addClass('quatre_tier');
+        } else {
+          $('.video-container').removeClass('quatre_tier');
+        }
         if (!$('#artist_info').hasClass('hide')) {
           $('#artist_info').addClass('hide');
         }

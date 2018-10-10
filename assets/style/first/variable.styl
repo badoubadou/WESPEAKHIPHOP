@@ -50,7 +50,7 @@ $break-xlarg = 75em
 // // Small devices (landscape phones, 34em and up)
 // $bs-screen-sd-min = unquote('screen and (min-width: '+$break-min+') and (min-height:420px)')
 // Medium devices (tablets, 48em and up)
-$bs-screen-md-min = unquote('screen and (min-width: '+$break-med+')')
+$bs-screen-md-min = unquote('screen and (min-width: '+$break-med+') and (orientation: landscape)')
 // Large devices (desktops, 62em and up)
 $bs-screen-ld-min = unquote('screen and (min-width: '+$break-larg+') , screen and (max-width: '+($break-med - 0.1em)+') and (orientation: landscape), screen and (max-height:420px) and (orientation: landscape) ')
 
@@ -60,7 +60,7 @@ $bs-screen-xld-min = unquote('screen and (min-width: '+$break-xlarg+') and (min-
 // // Extra small devices (portrait phones, less than 34em)
 // $bs-screen-xsd-max = unquote('screen and (max-width: '+($break-min - 0.1em)+'), screen and (max-height:420px) ')
 // Small devices (landscape phones, less than 48em)
-$bs-screen-sd-max = unquote('screen and (max-width: '+($break-med - 0.1em)+'), screen and (max-height:420px) ')
+$bs-screen-sd-max = unquote('screen and (max-width: '+($break-med - 0.1em)+'), screen and (max-height:420px), screen and (min-width: '+$break-med+') and (orientation: portrait) ')
 // Small devices (landscape phones, less than 48em)
 $bs-screen-sd-max_landscape = unquote('screen and (max-width: '+($break-med - 0.1em)+') and (max-height:420px) and (orientation: landscape)')
 // Medium devices (tablets, less than 62em)

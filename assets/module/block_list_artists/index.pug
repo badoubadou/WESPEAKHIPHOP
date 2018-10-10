@@ -1,10 +1,12 @@
 ul#list_artists.layer_top
 	each video in videos
 		each meta in video.postmeta
+			if meta.meta_key == '_ratio_video'
+				- var youtube_ratio = meta.meta_value
 			if meta.meta_key == 'video'
 				- var youtube_link = meta.meta_value
 				li
-					a(href=youtube_link)
+					a(href=youtube_link, data-ratiovideo=youtube_ratio )
 						span.dot
 						span.txt= video.title
 						.warp_contry
