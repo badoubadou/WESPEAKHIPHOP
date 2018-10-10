@@ -66,9 +66,9 @@ gulp.task('makecoffee', function() {
     return gulp.src(src_coffee)
         .pipe(coffee())
         .pipe(concat('base.js'))
-        // .pipe(stripDebug())
+        .pipe(stripDebug())
         .pipe(rename('base.min.js'))
-        // .pipe(uglify(/* options */))
+        .pipe(uglify(/* options */))
         .pipe(gulp.dest(dest+'js/'));
 });
 
