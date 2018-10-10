@@ -888,7 +888,7 @@ h1 {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 10px;
+    top: 40px;
     width: calc(100% - 50px);
   }
 }
@@ -2231,7 +2231,7 @@ body.hidefooter #popin .skip_intro {
   -ms-transition: opacity 1s;
   transition: opacity 1s;
   position: absolute;
-  top: 185px;
+  bottom: 300px;
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -2652,6 +2652,10 @@ body.hidefooter #popin .skip_intro {
     left: 0px;
   }
 }
+.tuto .hand img {
+  width: 30px;
+  height: 40px;
+}
 #disk_hole {
   width: 10px;
   height: 10px;
@@ -2777,7 +2781,8 @@ body.hidefooter #popin .skip_intro {
   border: 3px solid #000;
 }
 #disk {
-  cursor: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/hand-small.png"), auto;
+  cursor: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/hand-small.png") 30 40, auto;
+  cursor: -webkit-image-set(url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/hand-small.png") 1x, url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/hand.png") 2x) 30 40, auto;
 }
 #bg_disk {
   display: block;
