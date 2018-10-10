@@ -2066,6 +2066,13 @@ input[type=range]::-ms-fill-upper {
   font-weight: 900;
   color: #ffce00;
 }
+#popin #credittxt a,
+#popin #abouttxt a,
+#popin #credittxt a:hover,
+#popin #abouttxt a:hover {
+  text-decoration: none;
+  color: #fff;
+}
 #popin .sharebtn {
   list-style-type: none;
   margin: 0;
