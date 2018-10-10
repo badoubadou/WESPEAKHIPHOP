@@ -213,7 +213,7 @@ gulp.task("uploadcss", function() {
 });
 
 gulp.task('cleansvgclass', function() {
-  return gulp.src(['assets/image/*.svg', '!assets/image/logo-white.svg', '!assets/image/logo.svg'])
+  return gulp.src(['assets/image/*.svg', '!assets/image/logo-white.svg', '!assets/image/logo.svg', '!assets/image/logo-en.svg'])
     .pipe(tap(function(file) {
       var fileName = path.basename(file.path, '.svg');
       var st0 = fileName+'-st0';
