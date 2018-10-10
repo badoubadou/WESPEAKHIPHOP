@@ -2295,7 +2295,7 @@ h1 {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 40px;
+    top: 20px;
     width: calc(100% - 50px);
     margin: 0;
   }
