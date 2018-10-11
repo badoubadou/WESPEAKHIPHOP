@@ -27,6 +27,8 @@ var gutil = require('gulp-util');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify-es').default;
 
+var gzip = require("gulp-gzip");
+
 var config = {
     accessKeyId: "AKIAJUYRDM6H3KW3O5FQ",
     secretAccessKey: "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"
@@ -58,7 +60,7 @@ var vendor = [
     'assets/coffee/vendor/CSSPlugin.min.js',
     'assets/coffee/vendor/howler.core.min.js',
     'assets/coffee/vendor/plyr.min.js',
-    'public/js/base.min.js',
+    'public/js/myscript/base.min.js',
     // 'assets/coffee/vendor/wad.min.js'
 ];
 
@@ -66,31 +68,22 @@ gulp.task('makecoffee', function() {
     return gulp.src(src_coffee)
         .pipe(coffee())
         .pipe(concat('base.js'))
+        .pipe(gulp.dest(dest+'js/myscript/'));
+});
+
+gulp.task('uglifymyjs', function () {
+    return gulp.src('public/js/myscript/base.js')
         .pipe(stripDebug())
         .pipe(rename('base.min.js'))
+        .pipe(uglify(/* options */))
+        .pipe(gulp.dest(dest+'js/myscript/'));
+});
+
+gulp.task('concatalljs', function() {
+    return gulp.src(vendor)
+        .pipe(concat('script.min.js'))
         .pipe(uglify(/* options */))
         .pipe(gulp.dest(dest+'js/'));
-});
-
-
-gulp.task('removelog', () =>
-    gulp.src('public/js/base.js')
-        .pipe(stripDebug())
-        .pipe(gulp.dest('public/js/base-clean'))
-);
-
-gulp.task('uglify', function () {
-    return gulp.src('public/js/base.js')
-        .pipe(stripDebug())
-        .pipe(rename('base.min.js'))
-        .pipe(uglify(/* options */))
-        .pipe(gulp.dest('public/js/base-clean'));
-});
-
-gulp.task('concatjs', function() {
-    gulp.src(vendor)
-        .pipe(concat('all.js'))
-        .pipe(gulp.dest(dest+'js/vendor/'));
 });
 
 gulp.task('clean:js', function () {
@@ -99,35 +92,52 @@ gulp.task('clean:js', function () {
   ]);
 });
 
+gulp.task('gzipjs', function() {
+    return gulp.src('public/js/script.min.js')
+    .pipe(gzip({append: false}))
+    .pipe(gulp.dest('public/js/comp/'));
+});
+
+gulp.task('uploadjs', function() {
+    gulp.src(['public/js/comp/script.min.js'])
+        .pipe(s3({
+            Bucket: 'wespeakhiphop-assets', //  Required
+            ACL:    'public-read',       //  Needs to be user-defined
+            manualContentEncoding: 'gzip'
+        }, {
+            // S3 Constructor Options, ie:
+            maxRetries: 5
+        }))
+    ;
+});
+
 gulp.task('coffee', function(done) {
-    runSequence('clean:js', 'makecoffee', function() {
-        gutil.log('clean:js & makecoffee finished ');
-        done();
-        runSequence('concatjs', function() {
-            console.log('concatjs finished');
-            runSequence(['uploadjs']);
-        });
+    runSequence('clean:js', 'makecoffee', 'uglifymyjs','concatalljs', 'gzipjs', 'uploadjs', function() {
+        gutil.log('clean:js, makecoffee, uglifymyjs, concatalljs & gzipjs finished ');
     });
 });
 
- 
-gulp.task('minifycss', ['concatcss'], function () {
+
+/*------------------ CSS ----------------*/
+gulp.task('minifycss', function () {
     return gulp.src('public/css/all.css')
         .pipe(rename('style.min.css'))
         .pipe(cleanCSS())
-        .pipe(gulp.dest('public/css/'));
+        .pipe(gulp.dest('public/css/'))
+        .pipe(notify({ message: 'minifycss  complete' }));
 });
 
 gulp.task('concatcss', function() {
-    gutil.log('start concatcss');
-    gulp.src(cssfile)
+    return gulp.src(cssfile)
         .pipe(concat('all.css'))
-        .pipe(gulp.dest(dest+'css/'));
+        .pipe(gulp.dest(dest+'css/'))
+        .pipe(notify({ message: 'concatcss  complete' }));
 });
 
 gulp.task('clean:css', function () {
   return del([
-    'public/css/*.css'
+    'public/css/*',
+    'public/css/comp/*'
   ]);
 });
 
@@ -141,15 +151,32 @@ gulp.task('stylus', function() {
         .pipe(notify({ message: 'CSS task complete' }));
 });
 
+/******** GZIP CSS *******/
+gulp.task('gzipcss', function() {
+    return gulp.src('public/css/*.css')
+    .pipe(gzip({append: false}))
+    .pipe(gulp.dest('public/css/comp/'));
+});
 
-gulp.task('css', ['stylus'], function (done) {
-    gutil.log('stylus finished ');
+gulp.task('css', function (done) {
+    gutil.log('start css ');
     done();
     runSequence('minifycss', function() {
         console.log('minifycss finished');
-        runSequence(['uploadcss']);
+        runSequence('clean:css','stylus','concatcss','minifycss','gzipcss', 'uploadcsscomp' );
     });
 });
+
+gulp.task('uploadcsscomp', function() {
+    gulp.src('public/css/comp/*.css')
+    .pipe(s3({
+        Bucket: 'wespeakhiphop-assets',
+        ACL: 'public-read',
+        manualContentEncoding: 'gzip'
+    }));
+});
+
+
 
 gulp.task('pug:data', function() {
     return gulp.src('assets/json/**/*.json')
@@ -200,18 +227,6 @@ gulp.task('watch', function() {
     gulp.watch(['assets/image/**', 'public/image/**'], ['uploadimage']);
 });
 
-gulp.task("uploadcss", function() {
-    gulp.src('public/css/*.css')
-        .pipe(s3({
-            Bucket: 'wespeakhiphop-assets', //  Required
-            ACL:    'public-read'       //  Needs to be user-defined
-        }, {
-            // S3 Constructor Options, ie:
-            maxRetries: 5
-        }))
-    ;
-});
-
 gulp.task('cleansvgclass', function() {
   return gulp.src(['assets/image/*.svg', '!assets/image/logo-white.svg', '!assets/image/logo.svg', '!assets/image/logo-en.svg'])
     .pipe(tap(function(file) {
@@ -242,19 +257,6 @@ gulp.task('cleansvgclass', function() {
     }));
 });
 
-gulp.task("uploadjs", function() {
-    gulp.src(['public/js/vendor/all.js'])
-        .pipe(s3({
-            Bucket: 'wespeakhiphop-assets', //  Required
-            ACL:    'public-read'       //  Needs to be user-defined
-        }, {
-            // S3 Constructor Options, ie:
-            maxRetries: 5
-        }))
-    ;
-});
-
-
 gulp.task("uploadimage", function() {
     gulp.src(['public/image/**/*'])
         .pipe(s3({
@@ -266,7 +268,6 @@ gulp.task("uploadimage", function() {
         }))
     ;
 });
-
 
 gulp.task("uploadcleansvg", function() {
     gulp.src('public/cleansvg/*')

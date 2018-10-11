@@ -30,7 +30,9 @@
     "xmlpug": "^3.0.0"
   },
   "devDependencies": {
+    "gulp-gzip": "^1.4.2",
     "gulp-replace": "^1.0.0",
+    "gulp-s3-gzip": "^0.3.2",
     "gulp-sass": "^4.0.1",
     "gulp-strip-debug": "^3.0.0",
     "gulp-uglify-es": "^1.0.4"

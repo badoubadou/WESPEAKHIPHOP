@@ -3804,8 +3804,8 @@ body.hidefooter #popin .skip_intro {
   animation-timing-function: linear;
 }
 .lds-dual-ring .ring_3 {
-  width: 60%;
-  height: 60%;
+  width: 70%;
+  height: 70%;
 }
 .lds-dual-ring .ring_3:after {
   -webkit-animation-name: lds-dual-ring-2;
