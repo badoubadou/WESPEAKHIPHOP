@@ -20,25 +20,6 @@ http.createServer(function (request, response) {
             filePath = './public/index.html';
 
 
-    // var raw = fs.createReadStream(filePath);
-    // var acceptEncoding = request.headers['accept-encoding'];
-    // if (!acceptEncoding) {
-    //     acceptEncoding = '';
-    // }
-
-    // Note: this is not a conformant accept-encoding parser.
-    // See http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3
-    // if (acceptEncoding.match(/\bdeflate\b/)) {
-    //     response.writeHead(200, { 'content-encoding': 'deflate' });
-    //     raw.pipe(zlib.createDeflate()).pipe(response);
-    // } else if (acceptEncoding.match(/\bgzip\b/)) {
-    //     response.writeHead(200, { 'content-encoding': 'gzip' });
-    //     raw.pipe(zlib.createGzip()).pipe(response);
-    // } else {
-    //     response.writeHead(200, {});
-    //     raw.pipe(response);
-    // }
-    
     var extname = path.extname(filePath);
     var contentType = 'text/html';
     switch (extname) {
@@ -82,8 +63,26 @@ http.createServer(function (request, response) {
             }
         }
         else {
-            response.writeHead(200, { 'Content-Type': contentType });
-            response.end(content, 'utf-8');
+            var raw = fs.createReadStream(filePath);
+            var acceptEncoding = request.headers['accept-encoding'];
+            if (!acceptEncoding) {
+                acceptEncoding = '';
+            }
+
+            // Note: this is not a conformant accept-encoding parser.
+            // See http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3
+            if (acceptEncoding.match(/\bdeflate\b/)) {
+                response.writeHead(200, { 'content-encoding': 'deflate' });
+                raw.pipe(zlib.createDeflate()).pipe(response);
+            } else if (acceptEncoding.match(/\bgzip\b/)) {
+                response.writeHead(200, { 'content-encoding': 'gzip' });
+                raw.pipe(zlib.createGzip()).pipe(response);
+            } else {
+                response.writeHead(200, {});
+                raw.pipe(response);
+            }
+            // response.writeHead(200, { 'Content-Type': contentType });
+            // response.end(content, 'utf-8');
         }
     });
 }).listen(port);
