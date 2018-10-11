@@ -16,13 +16,13 @@
 		ul#right-ul
 			li
 				if langage == 'en'
-					a(href='http://wespeakhiphop.fr')
+					a(href='http://wespeakhiphop.fr' title='version française')
 						span.short_text
 							| #{TRANSLATION.language_name_short[langage]}
 						span.long_text
 							| #{TRANSLATION.language_name[langage]}
 				else
-					a(href='http://wespeakhiphop.com')
+					a(href='http://wespeakhiphop.com' title='english version')
 						span.short_text
 							| #{TRANSLATION.language_name_short[langage]}
 						span.long_text

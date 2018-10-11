@@ -11,10 +11,10 @@
 			if langage == 'en'
 				a(href='')#enter_site.btn.round_btn.yellow_btn
 					| #{TRANSLATION.language_btn_en[langage]}
-				a(href='http://www.wespeakhiphop.fr').btn.round_btn.white_btn
+				a(href='http://www.wespeakhiphop.fr' title='version française').btn.round_btn.white_btn
 					| #{TRANSLATION.language_btn_fr[langage]}
 			else
-				a(href='http://www.wespeakhiphop.com').btn.round_btn.white_btn
+				a(href='http://www.wespeakhiphop.com' title='english version').btn.round_btn.white_btn
 					| #{TRANSLATION.language_btn_en[langage]}
 				a(href='')#enter_site.btn.round_btn.yellow_btn
 					| #{TRANSLATION.language_btn_fr[langage]}
@@ -66,13 +66,13 @@
 				.contentpopin 
 					ul.sharebtn
 						li
-							a(href="https://www.facebook.com/sharer/sharer.php?u="+pageurl+"&display=popup&ref=plugin&src=share_button" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=580')")
+							a(href="https://www.facebook.com/sharer/sharer.php?u="+pageurl+"&display=popup&ref=plugin&src=share_button" title="facebook share" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=580')")
 								include ../../../public/image/facebook.svg
 						li
-							a(href="http://twitter.com/share?text="+txttwitter+"&url="+pageurl+"&hashtags=wespeakhiphop,hiphop" onclick="return !window.open(this.href, 'Twitter', 'width=640,height=580')")
+							a(href="http://twitter.com/share?text="+txttwitter+"&url="+pageurl+"&hashtags=wespeakhiphop,hiphop" title="twitter share"  onclick="return !window.open(this.href, 'Twitter', 'width=640,height=580')")
 								include ../../../public/image/tweeter.svg
 						li
-							a(href="mailto:?subject="+mailbody)
+							a(href="mailto:?subject="+mailbody title="mail" )
 								include ../../../public/image/mail.svg
 
 					//- .startvideo
