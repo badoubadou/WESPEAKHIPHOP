@@ -6,7 +6,7 @@ ul#list_artists.layer_top
 			if meta.meta_key == 'video'
 				- var youtube_link = meta.meta_value
 				li
-					a(href=youtube_link, data-ratiovideo=youtube_ratio )
+					a(href=youtube_link, data-ratiovideo=youtube_ratio, title=video.title )
 						span.dot
 						span.txt= video.title
 						.warp_contry
