@@ -61,7 +61,7 @@ class player_video_youtube
 			console.log 'enter site --------------------------------'
 			$('.intro_page').addClass 'hidden'
 			$('.video-container').removeClass 'hidden hide'
-			GoInFullscreen($('body').get(0))
+			# GoInFullscreen($('body').get(0))
 			that.playerYT.play()
 			return
 		#------------------- SOUND ---------------------------#
@@ -224,6 +224,7 @@ class player_video_youtube
 				$('#artist_info').addClass 'hide'
 			$('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
 			$('.video-container').removeClass 'hide'
+			console.log 'trigger showspiner'
 			$('.lds-dual-ring').trigger 'showspiner'
 			console.log 'trigger show'
 			window.currentArtist = $('#artist_info .info:not(.hide)').index()

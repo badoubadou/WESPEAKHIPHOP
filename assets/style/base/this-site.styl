@@ -106,18 +106,41 @@
 .trans
 	opacity 0
 
+
+body
+html
+	background $light-yellow
+	background-color $light-yellow
+
+
+#main
+	@media $ipad
+		width calc(100% - 300px)
+		margin-left 300px
+	
+	@media $desktop
+		width calc(100% - 300px)
+		margin-left 300px
+	
+	@media $desktop_only
+		width calc(100% - 370px)
+		margin-left 370px
+		
 #left_col
 	height 20vh
+	@media $desktop
+		width 300px
+		height "calc(100% - %s)" % ($height_footer)
+		background $yellow
+		position absolute
 	@media $ipad	
-		width 30%
-		max-width 300px
+		width 300px
 		height "calc(100% - %s)" % ($height_footer)
 		background $yellow
 		position absolute
 	
 	@media $desktop_only	
-		width 35%
-		max-width 370px
+		width 370px
 		height "calc(100% - %s)" % ($height_footer)
 		background $yellow
 		position absolute

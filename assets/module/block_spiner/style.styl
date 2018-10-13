@@ -38,6 +38,10 @@
     animation-iteration-count infinite
     center()
     
+    .no_spinner &
+        animation none
+        display none    
+    
 .ring
     position absolute
     center()
@@ -53,6 +57,9 @@
         @extend .demi_cercle
         border-color transparent transparent  #fff  #fff
         animation-name lds-dual-ring-1 
+        .no_spinner &
+            animation none
+            display none  
     
 .lds-dual-ring
     width 100vw
@@ -61,9 +68,6 @@
     center()
     margin-bottom 300px
     
-    // &.not_center
-    //     top 25%
-
     .ring_1
         width 100%
         height 100%
@@ -71,16 +75,22 @@
     .ring_2
         width 80%
         height 80%
-        
         &:before
             animation-name lds-dual-ring-2
-            animation-timing-function linear
+            animation-timing-function linear 
+            .no_spinner &
+                animation none
+                display none  
     .ring_3
         width 70%
         height 70%
         &:after
             animation-name lds-dual-ring-2
-            animation-timing-function linear
+            animation-timing-function linear 
+            .no_spinner &
+                animation none
+                display none  
+                
             
     .ring_black
         background #000

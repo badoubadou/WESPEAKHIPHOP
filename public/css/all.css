@@ -1471,18 +1471,6 @@ body #main {
   background: #f0f2da;
   background-color: #f0f2da;
 }
-@media screen and (min-width: 48em) and (orientation: landscape) {
-  body #main {
-    width: calc(100% - 300px);
-    margin-left: 300px;
-  }
-}
-@media screen and (min-width: 70em) {
-  body #main {
-    width: calc(100% - 370px);
-    margin-left: 370px;
-  }
-}
 @font-face {
   font-family: Gotham;
   font-style: normal;
@@ -2073,13 +2061,43 @@ p:empty {
 .trans {
   opacity: 0;
 }
+body,
+html {
+  background: #f0f2da;
+  background-color: #f0f2da;
+}
+@media screen and (min-width: 48em) and (orientation: landscape) {
+  #main {
+    width: calc(100% - 300px);
+    margin-left: 300px;
+  }
+}
+@media screen and (min-width: 62em), screen and (max-width: 47.9em) and (orientation: landscape), screen and (max-height: 420px) and (orientation: landscape) {
+  #main {
+    width: calc(100% - 300px);
+    margin-left: 300px;
+  }
+}
+@media screen and (min-width: 70em) {
+  #main {
+    width: calc(100% - 370px);
+    margin-left: 370px;
+  }
+}
 #left_col {
   height: 20vh;
 }
+@media screen and (min-width: 62em), screen and (max-width: 47.9em) and (orientation: landscape), screen and (max-height: 420px) and (orientation: landscape) {
+  #left_col {
+    width: 300px;
+    height: calc(100% - 40px);
+    background: #ffce00;
+    position: absolute;
+  }
+}
 @media screen and (min-width: 48em) and (orientation: landscape) {
   #left_col {
-    width: 30%;
-    max-width: 300px;
+    width: 300px;
     height: calc(100% - 40px);
     background: #ffce00;
     position: absolute;
@@ -2087,8 +2105,7 @@ p:empty {
 }
 @media screen and (min-width: 70em) {
   #left_col {
-    width: 35%;
-    max-width: 370px;
+    width: 370px;
     height: calc(100% - 40px);
     background: #ffce00;
     position: absolute;
@@ -2645,8 +2662,8 @@ span.lign_header {
   left: 50%;
   transform: translate(-50%, -50%);
   position: relative;
-  width: 90vw;
-  height: 90vw;
+  width: 310px;
+  height: 310px;
   padding: 0;
   border-radius: 50%;
   list-style: none;
@@ -2676,115 +2693,115 @@ span.lign_header {
   }
 }
 #list_artists > *:nth-of-type(1) {
-  transform: rotate(-90deg) translate(45vw) rotate(90deg);
+  transform: rotate(-90deg) translate(155px) rotate(90deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(2) {
-  transform: rotate(-77.14285714285714deg) translate(45vw) rotate(77.14285714285714deg);
+  transform: rotate(-77.14285714285714deg) translate(155px) rotate(77.14285714285714deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(3) {
-  transform: rotate(-64.28571428571428deg) translate(45vw) rotate(64.28571428571428deg);
+  transform: rotate(-64.28571428571428deg) translate(155px) rotate(64.28571428571428deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(4) {
-  transform: rotate(-51.428571428571416deg) translate(45vw) rotate(51.428571428571416deg);
+  transform: rotate(-51.428571428571416deg) translate(155px) rotate(51.428571428571416deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(5) {
-  transform: rotate(-38.571428571428555deg) translate(45vw) rotate(38.571428571428555deg);
+  transform: rotate(-38.571428571428555deg) translate(155px) rotate(38.571428571428555deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(6) {
-  transform: rotate(-25.714285714285698deg) translate(45vw) rotate(25.714285714285698deg);
+  transform: rotate(-25.714285714285698deg) translate(155px) rotate(25.714285714285698deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(7) {
-  transform: rotate(-12.85714285714284deg) translate(45vw) rotate(12.85714285714284deg);
+  transform: rotate(-12.85714285714284deg) translate(155px) rotate(12.85714285714284deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(8) {
-  transform: rotate(1.8e-14deg) translate(45vw) rotate(-1.8e-14deg);
+  transform: rotate(1.8e-14deg) translate(155px) rotate(-1.8e-14deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(9) {
-  transform: rotate(12.857142857142875deg) translate(45vw) rotate(-12.857142857142875deg);
+  transform: rotate(12.857142857142875deg) translate(155px) rotate(-12.857142857142875deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(10) {
-  transform: rotate(25.714285714285733deg) translate(45vw) rotate(-25.714285714285733deg);
+  transform: rotate(25.714285714285733deg) translate(155px) rotate(-25.714285714285733deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(11) {
-  transform: rotate(38.57142857142859deg) translate(45vw) rotate(-38.57142857142859deg);
+  transform: rotate(38.57142857142859deg) translate(155px) rotate(-38.57142857142859deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(12) {
-  transform: rotate(51.428571428571445deg) translate(45vw) rotate(-51.428571428571445deg);
+  transform: rotate(51.428571428571445deg) translate(155px) rotate(-51.428571428571445deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(13) {
-  transform: rotate(64.2857142857143deg) translate(45vw) rotate(-64.2857142857143deg);
+  transform: rotate(64.2857142857143deg) translate(155px) rotate(-64.2857142857143deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(14) {
-  transform: rotate(77.14285714285717deg) translate(45vw) rotate(-77.14285714285717deg);
+  transform: rotate(77.14285714285717deg) translate(155px) rotate(-77.14285714285717deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(15) {
-  transform: rotate(90.00000000000003deg) translate(45vw) rotate(-90.00000000000003deg);
+  transform: rotate(90.00000000000003deg) translate(155px) rotate(-90.00000000000003deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(16) {
-  transform: rotate(102.85714285714289deg) translate(45vw) rotate(-102.85714285714289deg);
+  transform: rotate(102.85714285714289deg) translate(155px) rotate(-102.85714285714289deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(17) {
-  transform: rotate(115.71428571428575deg) translate(45vw) rotate(-115.71428571428575deg);
+  transform: rotate(115.71428571428575deg) translate(155px) rotate(-115.71428571428575deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(18) {
-  transform: rotate(128.5714285714286deg) translate(45vw) rotate(-128.5714285714286deg);
+  transform: rotate(128.5714285714286deg) translate(155px) rotate(-128.5714285714286deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(19) {
-  transform: rotate(141.42857142857147deg) translate(45vw) rotate(-141.42857142857147deg);
+  transform: rotate(141.42857142857147deg) translate(155px) rotate(-141.42857142857147deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(20) {
-  transform: rotate(154.28571428571433deg) translate(45vw) rotate(-154.28571428571433deg);
+  transform: rotate(154.28571428571433deg) translate(155px) rotate(-154.28571428571433deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(21) {
-  transform: rotate(167.1428571428572deg) translate(45vw) rotate(-167.1428571428572deg);
+  transform: rotate(167.1428571428572deg) translate(155px) rotate(-167.1428571428572deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(22) {
-  transform: rotate(180.00000000000006deg) translate(45vw) rotate(-180.00000000000006deg);
+  transform: rotate(180.00000000000006deg) translate(155px) rotate(-180.00000000000006deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(23) {
-  transform: rotate(192.85714285714292deg) translate(45vw) rotate(-192.85714285714292deg);
+  transform: rotate(192.85714285714292deg) translate(155px) rotate(-192.85714285714292deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(24) {
-  transform: rotate(205.71428571428578deg) translate(45vw) rotate(-205.71428571428578deg);
+  transform: rotate(205.71428571428578deg) translate(155px) rotate(-205.71428571428578deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(25) {
-  transform: rotate(218.57142857142864deg) translate(45vw) rotate(-218.57142857142864deg);
+  transform: rotate(218.57142857142864deg) translate(155px) rotate(-218.57142857142864deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(26) {
-  transform: rotate(231.4285714285715deg) translate(45vw) rotate(-231.4285714285715deg);
+  transform: rotate(231.4285714285715deg) translate(155px) rotate(-231.4285714285715deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(27) {
-  transform: rotate(244.28571428571436deg) translate(45vw) rotate(-244.28571428571436deg);
+  transform: rotate(244.28571428571436deg) translate(155px) rotate(-244.28571428571436deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(28) {
-  transform: rotate(257.1428571428572deg) translate(45vw) rotate(-257.1428571428572deg);
+  transform: rotate(257.1428571428572deg) translate(155px) rotate(-257.1428571428572deg);
   text-align: center;
 }
 @media screen and (max-width: 47.9em) and (max-height: 420px) and (orientation: landscape) {
@@ -3490,15 +3507,21 @@ input[type=range]::-ms-fill-upper {
   padding: 10px 0;
 }
 #popin .contentpopin {
-  width: 60%;
+  width: 61%;
   margin: auto;
+  color: #fff;
 }
 #popin .contentpopin .logo {
-  padding: 10px 0;
+  padding: 15px 0;
 }
 #popin .contentpopin .logo svg {
   width: 100%;
   height: auto;
+}
+#popin .contentpopin .logo svg path,
+#popin .contentpopin .logo svg polygon,
+#popin .contentpopin .logo svg rect {
+  fill: #fff;
 }
 #popin #credittxt,
 #popin #abouttxt {
@@ -3523,17 +3546,31 @@ input[type=range]::-ms-fill-upper {
   padding: 10px 0;
   text-align: center;
 }
+#popin .sharebtn .txt {
+  width: 100%;
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: 1.15em;
+}
 #popin .sharebtn li {
   display: inline-block;
+  width: 33%;
 }
-#popin .sharebtn li,
+#popin .sharebtn li:first-child {
+  text-align: left;
+}
+#popin .sharebtn li:last-child {
+  text-align: right;
+}
 #popin .sharebtn a,
 #popin .sharebtn svg {
   width: 50px;
   height: 50px;
 }
 #popin .sharesite {
-  border-top: 1px solid #000;
+  text-align: center;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
   padding: 10px 0;
 }
 #popin #close {
@@ -3744,6 +3781,16 @@ body.hidefooter #popin .skip_intro {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+.no_spinner .demi_cercle,
+.no_spinner .ring:before,
+.no_spinner .ring:after {
+  -webkit-animation: none;
+  -moz-animation: none;
+  -o-animation: none;
+  -ms-animation: none;
+  animation: none;
+  display: none;
+}
 .ring {
   position: absolute;
   position: absolute;
@@ -3768,6 +3815,14 @@ body.hidefooter #popin .skip_intro {
   -o-animation-name: lds-dual-ring-1;
   -ms-animation-name: lds-dual-ring-1;
   animation-name: lds-dual-ring-1;
+}
+.no_spinner .ring:after {
+  -webkit-animation: none;
+  -moz-animation: none;
+  -o-animation: none;
+  -ms-animation: none;
+  animation: none;
+  display: none;
 }
 .lds-dual-ring {
   width: 100vw;
@@ -3803,6 +3858,14 @@ body.hidefooter #popin .skip_intro {
   -ms-animation-timing-function: linear;
   animation-timing-function: linear;
 }
+.no_spinner .lds-dual-ring .ring_2:before {
+  -webkit-animation: none;
+  -moz-animation: none;
+  -o-animation: none;
+  -ms-animation: none;
+  animation: none;
+  display: none;
+}
 .lds-dual-ring .ring_3 {
   width: 70%;
   height: 70%;
@@ -3818,6 +3881,14 @@ body.hidefooter #popin .skip_intro {
   -o-animation-timing-function: linear;
   -ms-animation-timing-function: linear;
   animation-timing-function: linear;
+}
+.no_spinner .lds-dual-ring .ring_3:after {
+  -webkit-animation: none;
+  -moz-animation: none;
+  -o-animation: none;
+  -ms-animation: none;
+  animation: none;
+  display: none;
 }
 .lds-dual-ring .ring_black {
   background: #000;
@@ -4109,7 +4180,7 @@ body.hidefooter #popin .skip_intro {
 #marker {
   display: block;
   width: 25px;
-  height: 15vw;
+  height: 55px;
   top: 0;
   position: absolute;
   left: 50%;
@@ -4124,7 +4195,7 @@ body.hidefooter #popin .skip_intro {
 }
 #marker svg {
   width: auto;
-  height: 15vw;
+  height: 55px;
 }
 @media screen and (min-width: 48em) and (orientation: landscape) {
   #marker {
@@ -4149,15 +4220,15 @@ body.hidefooter #popin .skip_intro {
   border-radius: 50%;
 }
 .size_video {
-  width: 50vw;
-  height: 50vw;
+  width: 190px;
+  height: 190px;
   max-width: 50vh;
   max-height: 50vh;
 }
 .size_video .player-dimensions,
 .size_video video {
-  width: 50vw;
-  height: 50vw;
+  width: 190px;
+  height: 190px;
 }
 @media screen and (min-width: 48em) and (orientation: landscape) {
   .size_video {
@@ -4182,8 +4253,8 @@ body.hidefooter #popin .skip_intro {
   }
 }
 .size_disk {
-  width: 80vw;
-  height: 80vw;
+  width: 300px;
+  height: 300px;
   max-width: 73vh;
   max-height: 73vh;
 }
@@ -4204,8 +4275,8 @@ body.hidefooter #popin .skip_intro {
   }
 }
 .size_platine {
-  width: 85vw;
-  height: 85vw;
+  width: 310px;
+  height: 310px;
   max-width: 78vh;
   max-height: 78vh;
 }
@@ -4245,8 +4316,8 @@ body.hidefooter #popin .skip_intro {
   -o-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  width: 80vw;
-  height: 80vw;
+  width: 300px;
+  height: 300px;
   max-width: 74vh;
   max-height: 74vh;
 }

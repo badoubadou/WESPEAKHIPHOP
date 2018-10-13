@@ -28,13 +28,20 @@
 			padding 10px 0
 
 	.contentpopin 
-		width 60%
+		width 61%
 		margin auto
+		color #ffffff
+		
 		.logo		
-			padding 10px 0
+			padding 15px 0
 			svg
 				width 100%
 				height auto 
+				
+				path
+				polygon
+				rect
+					fill #ffffff
 
 	#credittxt
 	#abouttxt
@@ -56,16 +63,27 @@
 		margin 0
 		padding 10px 0
 		text-align center
+		.txt
+			width 100%
+			text-align justify
+			text-justify inter-word
+			font-size 1.15em
 		li
 			display inline-block
-		li
+			width 33%
+			&:first-child
+				text-align left
+			&:last-child
+				text-align right 
 		a
 		svg
 			width 50px
 			height 50px
 
 	.sharesite
-		border-top 1px solid #000
+		text-align center
+		border-top 1px solid #ffffff
+		border-bottom 1px solid #ffffff
 		padding 10px 0
 
 	#close

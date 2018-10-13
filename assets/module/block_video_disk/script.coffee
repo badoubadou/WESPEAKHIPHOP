@@ -1,17 +1,15 @@
 class player_video
 	constructor: (@$container) ->
-		@timelineKnob = new TimelineMax(paused: true)
-		@timelineInfo = new TimelineMax(paused: true, reapeat : -1)
-		@timelinePlatine = new TimelineMax(paused: true)
-		@timelineDisk = new TimelineMax(paused: true)
-		@setTimeLine()
+		#------------------- SET VAR ---------------------------#
+		@timelineKnob = new TimelineMax({paused: true})
+		@timelineInfo = new TimelineMax({paused: true, repeat: -1})
+		@timelineIntro = null
 		@player = $('#player')[0]
-
-		scale_disk = 2
-
+		@scale_disk = 2
 		if window.isMobile()
+			console.log 'window is mobile ?????'
 			$('#player').attr('src', 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/black_white_1.mp4')
-			scale_disk = 1.1
+			@scale_disk = 1
 		
 		@duration = 168.182
 		if @player.duration && @player.duration > 1
@@ -19,7 +17,6 @@ class player_video
 			@duration = @player.duration
 		
 		@disk_speep = 0.39
-
 		@sounddirection = 0
 		@scratchBank = []
 		@scratchBank.push new Howl(
@@ -29,106 +26,22 @@ class player_video
 				src: [ 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/video_reverse.mp3' ]
 				buffer: true)
 		
+		#------------------- SET FUNCTION ---------------------------#
+		@setTimeLineIntro()
 		$('#player').addClass('ready')
 		@loadMap()
-		@createTween()
+		@createTweenInfo()
+		@setTimeLineKnob()
+		@setScratcher()
 		@bindEvents()
 
-	setTimeLine : (curentTime) ->
-		that = @
-		@timelineDisk.from('#block_video_disk', 1.5 ,{ rotation: 270, opacity:0, scale:2, ease:Power1.easeOut} )
-			.add(@play_video_disk)
-			.from('#platine', 1 ,{opacity:0, scale:.8}, '-=.5')
-			.staggerFrom('#list_artists li', .3 ,{opacity:0}, 0.04 )
-			.from(['#play-video-btn', '#play-video-btn-mobile', '#pause-video-btn'], .6 ,{opacity:0}  )
-			.from('#main_footer', .8 ,{y:40, ease:Power3.easeOut})
-			.from('#left_col', .8 ,{x:'-100%', ease:Power3.easeOut} , '-=.8')
-			.add(@show_logo)
-			.from('#artists_info', .5 ,{opacity:0, ease:Power3.easeOut}, '+=2')
-			.from('#smallmap', .6 ,{opacity:0, y:150, ease:Power3.easeOut} )
-			.add(@reset_small_map_css)
-			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut})
-			.add(@show_tuto, '+=2')
-			.from('.tuto', .6 ,{opacity:0, ease:Power3.easeOut}, '+=2' )
-			# .totalProgress(curentTime || 0)
-
-	showFooter_header : ->
-		$('body').removeClass('hidefooter')
-		$('body').removeClass('hide_left_col')
-	
-	reset_small_map_css : ->
-		$('#smallmap').removeAttr('style')
-
-	show_logo : ->
-		$('.logoWSH').trigger 'showLogo'
-
-	show_tuto : ->
-		$('.tuto').removeClass('hide')
-
-	play_video_disk : ->
-		$('#player')[0].play()
-		$('body').removeClass 'disk_on_hold'
-
-	loadMap : ->
-		console.log '---> load small map'
-		that = @
-		$.get 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/smallmap-'+$('#langage_short').val()+'.svg', (data) ->
-			console.log '---> small map loaded'
-			div = document.createElement('div')
-			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
-			$( "#smallmap" ).append( div.innerHTML )
-			return
-
-	skipIntro : ->
-		console.log 'skipIntro : player play ------------------------------'
-		@player.pause()
-		@timelineDisk.play()
-		$('#popin').off 'endIntro'
-
-	changeCurrentTime: (@$deg, @$myplayer, dir, speed)->
-		if(@$deg<0)
-			@$deg = 360  + @$deg
-		percentage = @$deg / 3.6
-		player_new_CT = @$myplayer.duration * (percentage/100)
-		# console.log 'player_new_CT : '+player_new_CT
-		@$myplayer.currentTime = player_new_CT
-
-		@sounddirection = if dir == 'clockwise' then 0 else 1
-		opositeDirection =  if dir == 'clockwise' then 1 else 0
-		
-		PBR = speed / @disk_speep
-
-		PBR = Math.min(Math.max((speed / @disk_speep), 0.9), 1.2)
-		roundedPBR = Number(PBR.toFixed(4))
-				
-		# console.log dir + '  @sounddirection  : '+@sounddirection  + '  // opositeDirection  : '+opositeDirection+'. speed : '+speed + '  PBR : '+roundedPBR
-		@scratchBank[@sounddirection].rate(roundedPBR)
-
-		sound_new_CT = if dir == 'clockwise' then player_new_CT else (@$myplayer.duration - player_new_CT)
-
-		if @scratchBank[opositeDirection].playing()
-			@scratchBank[opositeDirection].stop()
-		if !@scratchBank[@sounddirection].playing()
-			@scratchBank[@sounddirection].seek(sound_new_CT)
-			@scratchBank[@sounddirection].play()
-
-	skipTo: (@$player, @$id)->
-		nbVideo =  28
-		player = @$player
-		PBR = 1
-		percentageID = @$id / nbVideo 
-		timeToStop = player.duration() * percentageID
-		checkEndTime = ->
-			if(player.currentTime() < (timeToStop) && (PBR < 16))
-				PBR += 1
-			else
-				PBR = 1.0
-				player.off 'timeupdate', checkEndTime
-			# player.playbackRate(PBR)
-			
-		@$player.on 'timeupdate', checkEndTime
 	#------------------- TWEEN ---------------------------#
-	createTween: () ->
+	resetallCss: () ->
+		console.log 'reset###########################'
+		$('#block_video_disk, #platine ,#disk, #left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn, #play-video-btn-mobile, #pause-video-btn, #main_footer, #left_col,#artists_info,#smallmap, #txt_help_disk, .tuto').attr('style','')
+		
+
+	createTweenInfo: (curentTime) ->
 		that = @
 		updateInfo= (id)->
 			console.log ' ---------- id updateInfo : '+id
@@ -147,9 +60,6 @@ class player_video
 		duration_sequence = @duration / 28 
 		sequence = '+='+(duration_sequence - 1)
 		
-		@timelineKnob =  TweenMax.to('#knob', @duration, {ease:Linear.easeNone, rotation: 360, repeat:-1, paused: true })
-		@timelinePlatine =  TweenMax.to('#platine', @duration, {ease:Linear.easeNone, rotation: 360, repeat:-1, paused: true })
-
 		@timelineInfo
 			.add(-> updateInfo(0); )
 			.fromTo('#artists_info li:eq(0) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
@@ -235,30 +145,170 @@ class player_video
 			.add(-> updateInfo(27); )
 			.fromTo('#artists_info li:eq(27) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
 			.to('#artists_info li:eq(27) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
-			.add(-> updateInfo(28); )
-			.fromTo('#artists_info li:eq(28) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(28) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+
+	setTimeLineIntro : (curentTime) ->
+		that = @
+		that.timelineIntro = new TimelineMax({paused: true})
+		console.log 'curentTime : '+curentTime
+		that.timelineIntro.from('#block_video_disk', 1.5 ,{ rotation: 270, opacity:0, scale:that.scale_disk, ease:Power1.easeOut} )
+			.add(@play_video_disk)
+			.from('#platine', 1 ,{opacity:0, scale:.8}, '-=.5')
+			.staggerFrom('#list_artists li', .3 ,{opacity:0}, 0.04 )
+			.from(['#play-video-btn', '#play-video-btn-mobile', '#pause-video-btn'], .6 ,{opacity:0}  )
+			.from('#main_footer', .8 ,{y:40, ease:Power3.easeOut})
+			.from('#left_col', .8 ,{x:'-100%', ease:Power3.easeOut} , '-=.8')
+			.add(@show_logo)
+			.from('#artists_info', .5 ,{opacity:0, ease:Power3.easeOut}, '+=2')
+			.from('#smallmap', .6 ,{opacity:0, y:150, ease:Power3.easeOut} )
+			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut})
+			.add(@resetallCss)
+			.from('.tuto', .6 ,{opacity:0, ease:Power3.easeOut} )
+			
+	setTimeLineKnob : (rot_from, rot_to) ->
+		that = @
+		if !rot_from
+			rot_from = 0
+		if !rot_to
+			rot_to = 360
+		
+		that.timelineKnob.fromTo('#disk', 168.182, {rotation:rot_from},{rotation:rot_to, ease:Linear.easeNone, repeat:-1})
+					
+	showFooter_header : ->
+		$('body').removeClass('hidefooter')
+		$('body').removeClass('hide_left_col')
+	
+	show_logo : ->
+		$('.logoWSH').trigger 'showLogo'
+
+	play_video_disk : ->
+		$('#player')[0].play()
+		$('body').removeClass 'disk_on_hold'
+
+	loadMap : ->
+		console.log '---> load small map'
+		that = @
+		$.get 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/smallmap-'+$('#langage_short').val()+'.svg', (data) ->
+			console.log '---> small map loaded'
+			div = document.createElement('div')
+			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
+			$( "#smallmap" ).append( div.innerHTML )
+			return
+
+	skipIntro : ->
+		console.log 'skipIntro : player play ------------------------------'
+		@player.pause()
+		@timelineIntro.play()
+		$('#popin').off 'endIntro'
+
+	changeCurrentTime: (@$deg, @$myplayer, dir, speed)->
+		if(@$deg<0)
+			@$deg = 360  + @$deg
+		percentage = @$deg / 3.6
+		player_new_CT = @$myplayer.duration * (percentage/100)
+		# console.log 'player_new_CT : '+player_new_CT
+		@$myplayer.currentTime = player_new_CT
+
+		@sounddirection = if dir == 'clockwise' then 0 else 1
+		opositeDirection =  if dir == 'clockwise' then 1 else 0
+		
+		PBR = speed / @disk_speep
+
+		PBR = Math.min(Math.max((speed / @disk_speep), 0.9), 1.2)
+		roundedPBR = Number(PBR.toFixed(4))
+				
+		# console.log dir + '  @sounddirection  : '+@sounddirection  + '  // opositeDirection  : '+opositeDirection+'. speed : '+speed + '  PBR : '+roundedPBR
+		@scratchBank[@sounddirection].rate(roundedPBR)
+
+		sound_new_CT = if dir == 'clockwise' then player_new_CT else (@$myplayer.duration - player_new_CT)
+
+		if @scratchBank[opositeDirection].playing()
+			@scratchBank[opositeDirection].stop()
+		if !@scratchBank[@sounddirection].playing()
+			@scratchBank[@sounddirection].seek(sound_new_CT)
+			@scratchBank[@sounddirection].play()
+
+	skipTo: (@$player, @$id)->
+		nbVideo =  28
+		player = @$player
+		PBR = 1
+		percentageID = @$id / nbVideo 
+		timeToStop = player.duration() * percentageID
+		checkEndTime = ->
+			if(player.currentTime() < (timeToStop) && (PBR < 16))
+				PBR += 1
+			else
+				PBR = 1.0
+				player.off 'timeupdate', checkEndTime
+			# player.playbackRate(PBR)
+			
+		@$player.on 'timeupdate', checkEndTime
+	
+	setScratcher: ->
+		that = @
+		resumePlayDisk = (rotation)->
+			that.timelineInfo.time that.player.currentTime
+			that.timelineInfo.play()
+			that.setTimeLineKnob((rotation % 360),((rotation % 360)+360))
+			that.timelineKnob.play()	
+
+		rotationSnap = 360 / 28
+		previousRotation = 0
+		Draggable.create '#disk',
+			type: 'rotation'
+			throwProps: true
+			onRelease: ->
+				if(!$('#disk').hasClass 'drag')
+					resumePlayDisk(this.rotation)
+					$('#disk').removeClass 'drag'
+
+			onDragStart: ->
+				$('#disk').addClass 'drag'
+				that.timelineInfo.pause()
+			
+			onDrag: ->
+				yourDraggable = Draggable.get('#disk')
+				dir = if yourDraggable.rotation - previousRotation > 0 then 'clockwise' else 'counter-clockwise'
+				speed = Number(Math.abs(yourDraggable.rotation - previousRotation))
+				roundedSpeed = Number(speed.toFixed(4))
+				previousRotation = yourDraggable.rotation
+				that.changeCurrentTime(this.rotation % 360, that.player, dir, roundedSpeed)
+			
+			onThrowUpdate: ->
+				that.changeCurrentTime(this.rotation % 360, that.player, 'clockwise', that.disk_speep)
+			
+			onThrowComplete: ->
+				resumePlayDisk(this.rotation)
+				that.player.play()
+				that.scratchBank[0].stop()
+				that.scratchBank[1].stop()
+				$('#disk').removeClass 'drag'
+				
+			snap: (endValue) ->
+				Math.round(endValue / rotationSnap) * rotationSnap
+		return 
 
 	bindEvents: ->
 		that = @
 		console.log 'bindEvents player_video'
 
-		# $(window).on 'resizeEnd', ->
-		# 	# if !that.timelineDisk
-		# 	# 	return 
-		# 	# curentTime = that.timelineDisk.totalProgress()
-		# 	# console.log 'resized  = '+curentTime
-		# 	# that.timelineDisk.clear()
-		# 	# # that.setTimeLine(curentTime)
-		# 	# that.timelineDisk.play(0)
-		# 	return
+		$(window).on 'resizeEnd', ->
+			Draggable.get("#disk").kill()
+			# TweenMax.killTweensOf﻿($('#disk'))
+			TweenMax.killAll()
+			that.resetallCss()
+			setTimeout (->
+				console.log 'set scrather'
+				that.setScratcher()
+				return
+			), 700
+			
+			return
 		
 		#------------------- END TUTO -------------------#
 		$('.btn_get_it').on 'click', ->
 			$('.tuto').remove()
 		#------------------- ENDINTRO -------------------#
 		$('#popin').on 'endIntro', ->
-			console.log '--------------------------- end intro'
 			that.skipIntro()
 
 		#------------------- POPIN LISTNER -------------------#
@@ -331,10 +381,8 @@ class player_video
 			if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
 				that.player.pause()
 				return
-			that.timelineInfo.play()
 			that.timelineKnob.play()
-			that.timelinePlatine.play()
-			# $('.lds-dual-ring').addClass('done')
+			that.timelineInfo.play()
 			console.log 'trigger hide on player Js play '
 			$('.lds-dual-ring').trigger 'hidespiner'
 			$('#pause-video-btn').removeClass 'paused'
@@ -343,7 +391,6 @@ class player_video
 			console.log 'pause'+that.timelineKnob
 			that.timelineInfo.pause()
 			that.timelineKnob.pause()
-			that.timelinePlatine.pause()
 			$('#pause-video-btn').addClass 'paused'
 
 		# $('#player').on 'waiting', ->
@@ -356,40 +403,9 @@ class player_video
 		# 	that.timelineInfo.pause()
 		# 	$('#pause-video-btn').addClass 'paused'
 
-		$('#player').on 'seeked', ->
-			that.timelineInfo.time that.player.currentTime
+		# $('#player').on 'seeked', ->
+		# 	that.timelineInfo.time that.player.currentTime
 		
-		rotationSnap = 360 / 28
-		previousRotation = 0
-		Draggable.create '#knob',
-			type: 'rotation'
-			throwProps: true
-			onRelease: ->
-				if(!$('#knob').hasClass 'drag')
-					that.timelineKnob =  TweenMax.fromTo('#knob', that.duration, {rotation:(this.rotation % 360)},{ease:Linear.easeNone, rotation: ((this.rotation % 360)+360), repeat:-1})
-					$('#knob').removeClass 'drag'
-
-			onDrag: ->
-				$('#knob').addClass 'drag'
-				yourDraggable = Draggable.get('#knob')
-				dir = if yourDraggable.rotation - previousRotation > 0 then 'clockwise' else 'counter-clockwise'
-				speed = Number(Math.abs(yourDraggable.rotation - previousRotation))
-				roundedSpeed = Number(speed.toFixed(4))
-				previousRotation = yourDraggable.rotation
-				that.changeCurrentTime(this.rotation % 360, that.player, dir, roundedSpeed)
-			
-			onThrowUpdate: ->
-				that.changeCurrentTime(this.rotation % 360, that.player, 'clockwise', that.disk_speep)
-			
-			onThrowComplete: ->
-				that.timelineKnob =  TweenMax.fromTo('#knob', that.duration, {rotation:(this.rotation % 360)},{ease:Linear.easeNone, rotation: ((this.rotation % 360)+360), repeat:-1})
-				that.player.play()
-				that.scratchBank[0].stop()
-				that.scratchBank[1].stop()
-				$('#knob').removeClass 'drag'
-				
-			snap: (endValue) ->
-				Math.round(endValue / rotationSnap) * rotationSnap
-		return 
+		
 
 module.player_video = player_video

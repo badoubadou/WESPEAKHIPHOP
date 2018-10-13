@@ -38,6 +38,8 @@ var s3 = require('gulp-s3-upload')(config);
 
 const stripDebug = require('gulp-strip-debug');
 
+const htmlmin = require('gulp-htmlmin');
+
 
 var pugfile = ['assets/pug/*.pug', '!assets/pug/layout.pug'];
 var stylfile = ['assets/style/**/*.styl', 'assets/module/**/*.styl'];
@@ -73,16 +75,16 @@ gulp.task('makecoffee', function() {
 
 gulp.task('uglifymyjs', function () {
     return gulp.src('public/js/myscript/base.js')
-        .pipe(stripDebug())
+        // .pipe(stripDebug())
         .pipe(rename('base.min.js'))
-        .pipe(uglify(/* options */))
+        // .pipe(uglify(/* options */))
         .pipe(gulp.dest(dest+'js/myscript/'));
 });
 
 gulp.task('concatalljs', function() {
     return gulp.src(vendor)
         .pipe(concat('script.min.js'))
-        .pipe(uglify(/* options */))
+        // .pipe(uglify(/* options */))
         .pipe(gulp.dest(dest+'js/'));
 });
 
@@ -112,11 +114,12 @@ gulp.task('uploadjs', function() {
 });
 
 gulp.task('coffee', function(done) {
+    gutil.log('update coffee');
+    done();
     runSequence('clean:js', 'makecoffee', 'uglifymyjs','concatalljs', 'gzipjs', 'uploadjs', function() {
         gutil.log('clean:js, makecoffee, uglifymyjs, concatalljs & gzipjs finished ');
     });
 });
-
 
 /*------------------ CSS ----------------*/
 gulp.task('minifycss', function () {
@@ -161,9 +164,9 @@ gulp.task('gzipcss', function() {
 gulp.task('css', function (done) {
     gutil.log('start css ');
     done();
-    runSequence('minifycss', function() {
-        console.log('minifycss finished');
-        runSequence('clean:css','stylus','concatcss','minifycss','gzipcss', 'uploadcsscomp' );
+    runSequence(['clean:css', 'stylus'], function() {
+        console.log('clean:css & stylus finished');
+        runSequence('concatcss','minifycss','gzipcss', 'uploadcsscomp' );
     });
 });
 
@@ -177,7 +180,7 @@ gulp.task('uploadcsscomp', function() {
 });
 
 
-
+/*------------------------ PUG ----------------------------*/
 gulp.task('pug:data', function() {
     return gulp.src('assets/json/**/*.json')
         .pipe(merge({
@@ -197,7 +200,7 @@ gulp.task('pug:data', function() {
         .pipe(gulp.dest('assets/temp'));
 });
 
-gulp.task('pug', ['pug:data'], function() {
+gulp.task('complilpug', function() {
     return gulp.src(pugfile)
         .pipe(data(function() {
             return JSON.parse(fs.readFileSync('assets/temp/data.json'))
@@ -208,6 +211,19 @@ gulp.task('pug', ['pug:data'], function() {
         }))
         .pipe(gulp.dest(dest));
 });
+
+gulp.task('minify', () => {
+  return gulp.src('public/*.html')
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(gulp.dest('public/'));
+});
+
+gulp.task('pug', function() {
+    gutil.log('update pug');
+    runSequence('pug:data','complilpug','minify' );
+});
+
+/*------------------------ MUSK ----------------------------*/
 
 gulp.task('misc', ['cleansvgclass'], function () {
     gulp.src(imageminussvg)
