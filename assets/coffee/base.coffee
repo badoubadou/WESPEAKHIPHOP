@@ -1,3 +1,4 @@
+'use strict'
 window.isMobile = ->
 	typeof window.orientation != 'undefined' or navigator.userAgent.indexOf('IEMobile') != -1
 
@@ -31,14 +32,14 @@ window.currentLayout = ->
 
 
 
-$(window).on 'resize', ->
-	if @resizeTO
-		clearTimeout @resizeTO
-	@resizeTO = setTimeout((->
-		console.log window.layout+'!='+window.currentLayout()
-		if (layout != currentLayout())
-			layout = currentLayout()
-			$(this).trigger 'resizeEnd'
-		return
-	), 500)
-	return
+# $(window).on 'resize', ->
+# 	if @resizeTO
+# 		clearTimeout @resizeTO
+# 	@resizeTO = setTimeout((->
+# 		console.log window.layout+'!='+window.currentLayout()
+# 		if (layout != currentLayout())
+# 			layout = currentLayout()
+# 			$(this).trigger 'resizeEnd'
+# 		return
+# 	), 500)
+# 	return

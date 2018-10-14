@@ -1,4 +1,5 @@
 class player_video_youtube
+	'use strict'
 	constructor: (@$container) ->
 		@playerYT = null
 		@drawLogo = null
@@ -50,6 +51,7 @@ class player_video_youtube
 			$('body').on 'doc-ready', ->
 				console.log 'doc-ready'
 				that.startSite(that)
+				$('body').off()
 		else
 			console.log 'doc already ready'
 			that.startSite(that)
@@ -63,6 +65,7 @@ class player_video_youtube
 			$('.video-container').removeClass 'hidden hide'
 			# GoInFullscreen($('body').get(0))
 			that.playerYT.play()
+			$('#enter_site').off()
 			return
 		#------------------- SOUND ---------------------------#
 		$('#sound').on 'click', ->
@@ -198,6 +201,7 @@ class player_video_youtube
 			$('#close').removeClass('hide')
 			$('.video-container').removeClass 'with_btn_skip'
 			$('#logowhite').trigger 'destroyLogo'
+			$('.skip_intro').off()
 			return
 
 		$('.skip_intro').on 'click', ->

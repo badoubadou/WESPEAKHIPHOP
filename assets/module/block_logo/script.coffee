@@ -1,4 +1,5 @@
 class logo
+	'use strict'
 	constructor: (@spiner) ->
 		TweenLite.set 'svg', visibility: 'visible'
 		MorphSVGPlugin.convertToPath 'line'
@@ -63,6 +64,7 @@ class logo
 		@reverse_delay.resume()	
 
 	destroyLogo : ->
+		$('#logowhite').off()
 		$('#logowhite').remove()
 
 	bindEvents : ->
@@ -87,6 +89,7 @@ class logo
 
 		$('.logoWSH').on 'showLogo', ->
 			console.log 'show logo'
+			$('.logoWSH').off()
 			that.showLogoBlack()
 
 module.logo = logo

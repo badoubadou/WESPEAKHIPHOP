@@ -1,4 +1,5 @@
 class spiner
+	'use strict'
 	constructor: (@spiner) ->
 		console.log '----------------- > constructor spinner'
 		@timelineSpiner = new TimelineMax(paused:true, onReverseComplete:@maskSpiner, onStart: @unmaskSpiner)		

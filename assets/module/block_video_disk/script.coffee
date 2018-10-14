@@ -1,4 +1,6 @@
+'use strict'
 class player_video
+	'use strict'
 	constructor: (@$container) ->
 		#------------------- SET VAR ---------------------------#
 		@timelineKnob = new TimelineMax({paused: true})

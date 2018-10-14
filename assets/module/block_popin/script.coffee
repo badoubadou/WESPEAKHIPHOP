@@ -1,4 +1,5 @@
 class popin
+	'use strict'
 	constructor: () ->
 		@timelinePopin = null
 		@bindEvents()
