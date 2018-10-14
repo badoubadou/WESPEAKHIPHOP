@@ -1038,6 +1038,10 @@
         paused: true
       });
       console.log('curentTime : ' + curentTime);
+      TweenLite.set(['#block_video_disk', '#disk'], {
+        xPercent: -50,
+        yPercent: -50
+      });
       return that.timelineIntro.from('#block_video_disk', 1.5, {
         rotation: 270,
         opacity: 0,
@@ -1067,7 +1071,7 @@
         opacity: 0,
         left: '-100%',
         ease: Power3.easeOut
-      }).add(this.resetallCss).from('.tuto', .6, {
+      }).from('.tuto', .6, {
         opacity: 0,
         ease: Power3.easeOut
       });
@@ -1228,17 +1232,19 @@
       var that, windowBlurred, windowFocused;
       that = this;
       console.log('bindEvents player_video');
-      $(window).on('resizeEnd', function() {
-        Draggable.get("#disk").kill();
-        // TweenMax.killTweensOf﻿($('#disk'))
-        TweenMax.killAll();
-        that.resetallCss();
-        setTimeout((function() {
-          console.log('set scrather');
-          that.setScratcher();
-        }), 700);
-      });
-      
+      // $(window).on 'resizeEnd', ->
+      // 	# Draggable.get("#disk").kill()
+      // 	# TweenMax.killTweensOf﻿($('#disk'))
+      // 	# TweenMax.killAll()
+      // 	# that.resetallCss()
+      // 	# setTimeout (->
+      // 	# 	console.log 'set scrather'
+      // 	# 	that.setScratcher()
+      // 	# 	return
+      // 	# ), 700
+
+      // 	return
+
       //------------------- END TUTO -------------------#
       $('.btn_get_it').on('click', function() {
         return $('.tuto').remove();

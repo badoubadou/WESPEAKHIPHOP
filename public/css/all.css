@@ -1870,6 +1870,10 @@ p:empty {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.centered_with_tweenmax {
+  top: 50%;
+  left: 50%;
+}
 .btn {
   cursor: pointer;
 }

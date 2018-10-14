@@ -150,6 +150,9 @@ class player_video
 		that = @
 		that.timelineIntro = new TimelineMax({paused: true})
 		console.log 'curentTime : '+curentTime
+
+		TweenLite.set(['#block_video_disk', '#disk'], {xPercent: -50,yPercent: -50});
+
 		that.timelineIntro.from('#block_video_disk', 1.5 ,{ rotation: 270, opacity:0, scale:that.scale_disk, ease:Power1.easeOut} )
 			.add(@play_video_disk)
 			.from('#platine', 1 ,{opacity:0, scale:.8}, '-=.5')
@@ -161,7 +164,6 @@ class player_video
 			.from('#artists_info', .5 ,{opacity:0, ease:Power3.easeOut}, '+=2')
 			.from('#smallmap', .6 ,{opacity:0, y:150, ease:Power3.easeOut} )
 			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut})
-			.add(@resetallCss)
 			.from('.tuto', .6 ,{opacity:0, ease:Power3.easeOut} )
 			
 	setTimeLineKnob : (rot_from, rot_to) ->
@@ -291,18 +293,18 @@ class player_video
 		that = @
 		console.log 'bindEvents player_video'
 
-		$(window).on 'resizeEnd', ->
-			Draggable.get("#disk").kill()
-			# TweenMax.killTweensOf﻿($('#disk'))
-			TweenMax.killAll()
-			that.resetallCss()
-			setTimeout (->
-				console.log 'set scrather'
-				that.setScratcher()
-				return
-			), 700
+		# $(window).on 'resizeEnd', ->
+		# 	# Draggable.get("#disk").kill()
+		# 	# TweenMax.killTweensOf﻿($('#disk'))
+		# 	# TweenMax.killAll()
+		# 	# that.resetallCss()
+		# 	# setTimeout (->
+		# 	# 	console.log 'set scrather'
+		# 	# 	that.setScratcher()
+		# 	# 	return
+		# 	# ), 700
 			
-			return
+		# 	return
 		
 		#------------------- END TUTO -------------------#
 		$('.btn_get_it').on 'click', ->
