@@ -146,12 +146,16 @@ class player_video
 			.fromTo('#artists_info li:eq(27) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
 			.to('#artists_info li:eq(27) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 
+	removeTLIntro : ->
+		$('#left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn, #play-video-btn-mobile, #pause-video-btn, #main_footer, .tuto').attr('style','')
+		this.kill()
+
 	setTimeLineIntro : (curentTime) ->
 		that = @
-		that.timelineIntro = new TimelineMax({paused: true})
+		that.timelineIntro = new TimelineMax({paused: true, onComplete:@removeTLIntro})
 		console.log 'curentTime : '+curentTime
 
-		TweenLite.set(['#block_video_disk', '#disk'], {xPercent: -50,yPercent: -50});
+		TweenLite.set(['#block_video_disk', '#disk', '#platine'], {xPercent: -50,yPercent: -50});
 
 		that.timelineIntro.from('#block_video_disk', 1.5 ,{ rotation: 270, opacity:0, scale:that.scale_disk, ease:Power1.easeOut} )
 			.add(@play_video_disk)
@@ -161,8 +165,8 @@ class player_video
 			.from('#main_footer', .8 ,{y:40, ease:Power3.easeOut})
 			.from('#left_col', .8 ,{x:'-100%', ease:Power3.easeOut} , '-=.8')
 			.add(@show_logo)
-			.from('#artists_info', .5 ,{opacity:0, ease:Power3.easeOut}, '+=2')
 			.from('#smallmap', .6 ,{opacity:0, y:150, ease:Power3.easeOut} )
+			.from('#artists_info', .5 ,{opacity:0, ease:Power3.easeOut})
 			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut})
 			.from('.tuto', .6 ,{opacity:0, ease:Power3.easeOut} )
 			

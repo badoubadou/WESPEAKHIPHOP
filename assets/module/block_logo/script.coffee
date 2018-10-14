@@ -16,7 +16,7 @@ class logo
 			.from("#logowhite #mask11", 1.3, {drawSVG:0, ease:Power3.easeInOut},1 )
 			.from("#logowhite #mask12", 1.3, {drawSVG:0, ease:Power3.easeInOut},1.1 )
 			.from("#logowhite #mask13", 1.3, {drawSVG:0, ease:Power3.easeInOut},1.2 )
-		@dLB = new TimelineMax({paused:true});
+		@dLB = new TimelineMax({paused:true, onComplete:@finishedBlackLogo});
 		@dLB.from("#mask1_2_black", 1, {drawSVG: 0,ease: Power3.easeInOut})
 			.from("#mask2_black", 1.3, {drawSVG: 0,ease: Power3.easeInOut}, 0.1)
 			.from("#mask3_black", 1.3, {drawSVG: 0,ease: Power3.easeInOut}, 0.2)
@@ -33,7 +33,11 @@ class logo
 		@reverse_delay = null
 		@bindEvents()
 	
+	finishedBlackLogo : ->
+		this.kill()
+
 	finishedHideLogo : ->
+		this.kill()
 		$('#logowhite').data('animstatus', 'done')
 
 	showLogoBlack : ->
@@ -59,7 +63,7 @@ class logo
 		@reverse_delay.resume()	
 
 	destroyLogo : ->
-		$('#logowhite').data('animstatus', 'done').addClass('hide')
+		$('#logowhite').remove()
 
 	bindEvents : ->
 		that = @

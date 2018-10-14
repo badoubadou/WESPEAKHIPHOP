@@ -58,7 +58,8 @@
         ease: Power3.easeInOut
       }, 1.2);
       this.dLB = new TimelineMax({
-        paused: true
+        paused: true,
+        onComplete: this.finishedBlackLogo
       });
       this.dLB.from("#mask1_2_black", 1, {
         drawSVG: 0,
@@ -104,7 +105,12 @@
       this.bindEvents();
     }
 
+    finishedBlackLogo() {
+      return this.kill();
+    }
+
     finishedHideLogo() {
+      this.kill();
       return $('#logowhite').data('animstatus', 'done');
     }
 
@@ -138,7 +144,7 @@
     }
 
     destroyLogo() {
-      return $('#logowhite').data('animstatus', 'done').addClass('hide');
+      return $('#logowhite').remove();
     }
 
     bindEvents() {
@@ -1031,14 +1037,20 @@
       }, sequence);
     }
 
+    removeTLIntro() {
+      $('#left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn, #play-video-btn-mobile, #pause-video-btn, #main_footer, .tuto').attr('style', '');
+      return this.kill();
+    }
+
     setTimeLineIntro(curentTime) {
       var that;
       that = this;
       that.timelineIntro = new TimelineMax({
-        paused: true
+        paused: true,
+        onComplete: this.removeTLIntro
       });
       console.log('curentTime : ' + curentTime);
-      TweenLite.set(['#block_video_disk', '#disk'], {
+      TweenLite.set(['#block_video_disk', '#disk', '#platine'], {
         xPercent: -50,
         yPercent: -50
       });
@@ -1060,12 +1072,12 @@
       }).from('#left_col', .8, {
         x: '-100%',
         ease: Power3.easeOut
-      }, '-=.8').add(this.show_logo).from('#artists_info', .5, {
-        opacity: 0,
-        ease: Power3.easeOut
-      }, '+=2').from('#smallmap', .6, {
+      }, '-=.8').add(this.show_logo).from('#smallmap', .6, {
         opacity: 0,
         y: 150,
+        ease: Power3.easeOut
+      }).from('#artists_info', .5, {
+        opacity: 0,
         ease: Power3.easeOut
       }).from('#txt_help_disk', .8, {
         opacity: 0,

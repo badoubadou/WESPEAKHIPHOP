@@ -15,13 +15,13 @@
 		bottom 0
 		position absolute
 		width 25px
-		transition .5s bottom ease   
+		transition .4s bottom ease   
 		svg
 			width 25px
 			height 25px
 		
 	.plyr--hide-controls .myfullscreen
-		bottom -60px
+		bottom -40px
 		
 	.plyr
 		vert_align_middle()
@@ -30,16 +30,19 @@
 		position absolute
 		width 100%
 		
-	
 	.plyr__controls
-		padding 10px 40px 10px
+		padding 10px 50px 10px 10px
 
 	&.with_btn_skip
 		.myfullscreen
-			right 150px
-			
+			right 128px
+			bottom -2px
+		.plyr--hide-controls
+			.myfullscreen
+				bottom -40px
+		
 		.plyr__controls
-			padding 10px 180px 10px
+			padding 10px 160px 10px 10px
 	
 	.plyr__video-wrapper
 		top 0

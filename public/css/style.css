@@ -469,6 +469,12 @@ p:empty {
 }
 .btn {
   cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .triangle {
   display: block;
@@ -1259,8 +1265,8 @@ span.lign_header {
   left: 50%;
   transform: translate(-50%, -50%);
   position: relative;
-  width: 310px;
-  height: 310px;
+  width: 95vw;
+  height: 95vw;
   padding: 0;
   border-radius: 50%;
   list-style: none;
@@ -1290,115 +1296,115 @@ span.lign_header {
   }
 }
 #list_artists > *:nth-of-type(1) {
-  transform: rotate(-90deg) translate(155px) rotate(90deg);
+  transform: rotate(-90deg) translate(47.5vw) rotate(90deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(2) {
-  transform: rotate(-77.14285714285714deg) translate(155px) rotate(77.14285714285714deg);
+  transform: rotate(-77.14285714285714deg) translate(47.5vw) rotate(77.14285714285714deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(3) {
-  transform: rotate(-64.28571428571428deg) translate(155px) rotate(64.28571428571428deg);
+  transform: rotate(-64.28571428571428deg) translate(47.5vw) rotate(64.28571428571428deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(4) {
-  transform: rotate(-51.428571428571416deg) translate(155px) rotate(51.428571428571416deg);
+  transform: rotate(-51.428571428571416deg) translate(47.5vw) rotate(51.428571428571416deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(5) {
-  transform: rotate(-38.571428571428555deg) translate(155px) rotate(38.571428571428555deg);
+  transform: rotate(-38.571428571428555deg) translate(47.5vw) rotate(38.571428571428555deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(6) {
-  transform: rotate(-25.714285714285698deg) translate(155px) rotate(25.714285714285698deg);
+  transform: rotate(-25.714285714285698deg) translate(47.5vw) rotate(25.714285714285698deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(7) {
-  transform: rotate(-12.85714285714284deg) translate(155px) rotate(12.85714285714284deg);
+  transform: rotate(-12.85714285714284deg) translate(47.5vw) rotate(12.85714285714284deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(8) {
-  transform: rotate(1.8e-14deg) translate(155px) rotate(-1.8e-14deg);
+  transform: rotate(1.8e-14deg) translate(47.5vw) rotate(-1.8e-14deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(9) {
-  transform: rotate(12.857142857142875deg) translate(155px) rotate(-12.857142857142875deg);
+  transform: rotate(12.857142857142875deg) translate(47.5vw) rotate(-12.857142857142875deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(10) {
-  transform: rotate(25.714285714285733deg) translate(155px) rotate(-25.714285714285733deg);
+  transform: rotate(25.714285714285733deg) translate(47.5vw) rotate(-25.714285714285733deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(11) {
-  transform: rotate(38.57142857142859deg) translate(155px) rotate(-38.57142857142859deg);
+  transform: rotate(38.57142857142859deg) translate(47.5vw) rotate(-38.57142857142859deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(12) {
-  transform: rotate(51.428571428571445deg) translate(155px) rotate(-51.428571428571445deg);
+  transform: rotate(51.428571428571445deg) translate(47.5vw) rotate(-51.428571428571445deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(13) {
-  transform: rotate(64.2857142857143deg) translate(155px) rotate(-64.2857142857143deg);
+  transform: rotate(64.2857142857143deg) translate(47.5vw) rotate(-64.2857142857143deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(14) {
-  transform: rotate(77.14285714285717deg) translate(155px) rotate(-77.14285714285717deg);
+  transform: rotate(77.14285714285717deg) translate(47.5vw) rotate(-77.14285714285717deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(15) {
-  transform: rotate(90.00000000000003deg) translate(155px) rotate(-90.00000000000003deg);
+  transform: rotate(90.00000000000003deg) translate(47.5vw) rotate(-90.00000000000003deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(16) {
-  transform: rotate(102.85714285714289deg) translate(155px) rotate(-102.85714285714289deg);
+  transform: rotate(102.85714285714289deg) translate(47.5vw) rotate(-102.85714285714289deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(17) {
-  transform: rotate(115.71428571428575deg) translate(155px) rotate(-115.71428571428575deg);
+  transform: rotate(115.71428571428575deg) translate(47.5vw) rotate(-115.71428571428575deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(18) {
-  transform: rotate(128.5714285714286deg) translate(155px) rotate(-128.5714285714286deg);
+  transform: rotate(128.5714285714286deg) translate(47.5vw) rotate(-128.5714285714286deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(19) {
-  transform: rotate(141.42857142857147deg) translate(155px) rotate(-141.42857142857147deg);
+  transform: rotate(141.42857142857147deg) translate(47.5vw) rotate(-141.42857142857147deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(20) {
-  transform: rotate(154.28571428571433deg) translate(155px) rotate(-154.28571428571433deg);
+  transform: rotate(154.28571428571433deg) translate(47.5vw) rotate(-154.28571428571433deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(21) {
-  transform: rotate(167.1428571428572deg) translate(155px) rotate(-167.1428571428572deg);
+  transform: rotate(167.1428571428572deg) translate(47.5vw) rotate(-167.1428571428572deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(22) {
-  transform: rotate(180.00000000000006deg) translate(155px) rotate(-180.00000000000006deg);
+  transform: rotate(180.00000000000006deg) translate(47.5vw) rotate(-180.00000000000006deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(23) {
-  transform: rotate(192.85714285714292deg) translate(155px) rotate(-192.85714285714292deg);
+  transform: rotate(192.85714285714292deg) translate(47.5vw) rotate(-192.85714285714292deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(24) {
-  transform: rotate(205.71428571428578deg) translate(155px) rotate(-205.71428571428578deg);
+  transform: rotate(205.71428571428578deg) translate(47.5vw) rotate(-205.71428571428578deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(25) {
-  transform: rotate(218.57142857142864deg) translate(155px) rotate(-218.57142857142864deg);
+  transform: rotate(218.57142857142864deg) translate(47.5vw) rotate(-218.57142857142864deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(26) {
-  transform: rotate(231.4285714285715deg) translate(155px) rotate(-231.4285714285715deg);
+  transform: rotate(231.4285714285715deg) translate(47.5vw) rotate(-231.4285714285715deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(27) {
-  transform: rotate(244.28571428571436deg) translate(155px) rotate(-244.28571428571436deg);
+  transform: rotate(244.28571428571436deg) translate(47.5vw) rotate(-244.28571428571436deg);
   text-align: center;
 }
 #list_artists > *:nth-of-type(28) {
-  transform: rotate(257.1428571428572deg) translate(155px) rotate(-257.1428571428572deg);
+  transform: rotate(257.1428571428572deg) translate(47.5vw) rotate(-257.1428571428572deg);
   text-align: center;
 }
 @media screen and (max-width: 47.9em) and (max-height: 420px) and (orientation: landscape) {
@@ -2018,18 +2024,18 @@ input[type=range]::-ms-fill-upper {
   bottom: 0;
   position: absolute;
   width: 25px;
-  -webkit-transition: 0.5s bottom ease;
-  -moz-transition: 0.5s bottom ease;
-  -o-transition: 0.5s bottom ease;
-  -ms-transition: 0.5s bottom ease;
-  transition: 0.5s bottom ease;
+  -webkit-transition: 0.4s bottom ease;
+  -moz-transition: 0.4s bottom ease;
+  -o-transition: 0.4s bottom ease;
+  -ms-transition: 0.4s bottom ease;
+  transition: 0.4s bottom ease;
 }
 .video-container .myfullscreen svg {
   width: 25px;
   height: 25px;
 }
 .video-container .plyr--hide-controls .myfullscreen {
-  bottom: -60px;
+  bottom: -40px;
 }
 .video-container .plyr {
   position: absolute;
@@ -2045,13 +2051,17 @@ input[type=range]::-ms-fill-upper {
   width: 100%;
 }
 .video-container .plyr__controls {
-  padding: 10px 40px 10px;
+  padding: 10px 50px 10px 10px;
 }
 .video-container.with_btn_skip .myfullscreen {
-  right: 150px;
+  right: 128px;
+  bottom: -2px;
+}
+.video-container.with_btn_skip .plyr--hide-controls .myfullscreen {
+  bottom: -40px;
 }
 .video-container.with_btn_skip .plyr__controls {
-  padding: 10px 180px 10px;
+  padding: 10px 160px 10px 10px;
 }
 .video-container .plyr__video-wrapper {
   top: 0;
@@ -2269,8 +2279,8 @@ input[type=range]::-ms-fill-upper {
   background: #ffce00;
   display: none;
   position: absolute;
-  bottom: 13px;
-  right: -6px;
+  bottom: 15px;
+  right: -10px;
   z-index: 10;
 }
 body.hidefooter #popin .skip_intro {
@@ -2777,7 +2787,7 @@ body.hidefooter #popin .skip_intro {
 #marker {
   display: block;
   width: 25px;
-  height: 55px;
+  height: -52.5vw;
   top: 0;
   position: absolute;
   left: 50%;
@@ -2792,7 +2802,7 @@ body.hidefooter #popin .skip_intro {
 }
 #marker svg {
   width: auto;
-  height: 55px;
+  height: -52.5vw;
 }
 @media screen and (min-width: 48em) and (orientation: landscape) {
   #marker {
@@ -2850,8 +2860,8 @@ body.hidefooter #popin .skip_intro {
   }
 }
 .size_disk {
-  width: 300px;
-  height: 300px;
+  width: 85vw;
+  height: 85vw;
   max-width: 73vh;
   max-height: 73vh;
 }
@@ -2872,8 +2882,8 @@ body.hidefooter #popin .skip_intro {
   }
 }
 .size_platine {
-  width: 310px;
-  height: 310px;
+  width: 90vw;
+  height: 90vw;
   max-width: 78vh;
   max-height: 78vh;
 }
@@ -2913,8 +2923,8 @@ body.hidefooter #popin .skip_intro {
   -o-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  width: 300px;
-  height: 300px;
+  width: 85vw;
+  height: 85vw;
   max-width: 74vh;
   max-height: 74vh;
 }
