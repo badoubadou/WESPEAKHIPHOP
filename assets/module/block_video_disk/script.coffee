@@ -8,7 +8,7 @@ class player_video
 		@scale_disk = 2
 		if window.isMobile()
 			console.log 'window is mobile ?????'
-			$('#player').attr('src', 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/black_white_1.mp4')
+			$('#player').attr('src', 'https://d2e3lhf7z9v1b2.cloudfront.net/black_white_1.mp4')
 			@scale_disk = 1
 		
 		@duration = 168.182
@@ -20,10 +20,10 @@ class player_video
 		@sounddirection = 0
 		@scratchBank = []
 		@scratchBank.push new Howl(
-				src: [ 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/video.mp3' ]
+				src: [ 'https://d2e3lhf7z9v1b2.cloudfront.net/video.mp3' ]
 				buffer: true)
 		@scratchBank.push new Howl(
-				src: [ 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/video_reverse.mp3' ]
+				src: [ 'https://d2e3lhf7z9v1b2.cloudfront.net/video_reverse.mp3' ]
 				buffer: true)
 		
 		#------------------- SET FUNCTION ---------------------------#
@@ -193,7 +193,7 @@ class player_video
 	loadMap : ->
 		console.log '---> load small map'
 		that = @
-		$.get 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/smallmap-'+$('#langage_short').val()+'.svg', (data) ->
+		$.get 'https://d2e3lhf7z9v1b2.cloudfront.net/smallmap-'+$('#langage_short').val()+'.svg', (data) ->
 			console.log '---> small map loaded'
 			div = document.createElement('div')
 			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)

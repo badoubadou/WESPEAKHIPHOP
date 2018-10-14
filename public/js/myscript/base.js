@@ -634,7 +634,7 @@
       this.scale_disk = 2;
       if (window.isMobile()) {
         console.log('window is mobile ?????');
-        $('#player').attr('src', 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/black_white_1.mp4');
+        $('#player').attr('src', 'https://d2e3lhf7z9v1b2.cloudfront.net/black_white_1.mp4');
         this.scale_disk = 1;
       }
       this.duration = 168.182;
@@ -646,11 +646,11 @@
       this.sounddirection = 0;
       this.scratchBank = [];
       this.scratchBank.push(new Howl({
-        src: ['https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/video.mp3'],
+        src: ['https://d2e3lhf7z9v1b2.cloudfront.net/video.mp3'],
         buffer: true
       }));
       this.scratchBank.push(new Howl({
-        src: ['https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/video_reverse.mp3'],
+        src: ['https://d2e3lhf7z9v1b2.cloudfront.net/video_reverse.mp3'],
         buffer: true
       }));
       
@@ -1125,7 +1125,7 @@
       var that;
       console.log('---> load small map');
       that = this;
-      return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/smallmap-' + $('#langage_short').val() + '.svg', function(data) {
+      return $.get('https://d2e3lhf7z9v1b2.cloudfront.net/smallmap-' + $('#langage_short').val() + '.svg', function(data) {
         var div;
         console.log('---> small map loaded');
         div = document.createElement('div');

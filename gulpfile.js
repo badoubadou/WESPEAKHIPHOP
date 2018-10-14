@@ -309,3 +309,8 @@ gulp.task("upload", function() {
     ;
 });
 
+gulp.task('gzipsvg', function() {
+    return gulp.src(['public/image/smallmap-en.svg', 'public/image/smallmap-fr.svg'])
+    .pipe(gzip({append: false}))
+    .pipe(gulp.dest('public/image/'));
+});
