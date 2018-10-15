@@ -1277,7 +1277,7 @@
       }
 
       bindEvents() {
-        var that, windowBlurred, windowFocused;
+        var that, videoDiskCanPlay, windowBlurred, windowFocused;
         that = this;
         console.log('bindEvents player_video');
         // $(window).on 'resizeEnd', ->
@@ -1369,6 +1369,13 @@
           }
         });
         //------------------- PLAYER JS ---------------------------#		
+        videoDiskCanPlay = function() {
+          return $('.skip_intro').show();
+        };
+        $('#player').on('canplaythrough', videoDiskCanPlay);
+        if ($('#player')[0].readyState > 3) {
+          videoDiskCanPlay();
+        }
         $('#player').on('play', function(e) {
           console.log('play video disk');
           $('body').removeClass('video-disk-waiting');

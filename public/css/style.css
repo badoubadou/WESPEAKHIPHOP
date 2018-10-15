@@ -1874,9 +1874,6 @@ input[type=range]::-ms-fill-upper {
   right: -10px;
   z-index: 10;
 }
-body.hidefooter #popin .skip_intro {
-  display: block;
-}
 #checklayout .mobile,
 #checklayout .ipad,
 #checklayout .desktop {

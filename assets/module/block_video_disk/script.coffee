@@ -383,6 +383,13 @@ class player_video
 				that.player.pause()
 
 		#------------------- PLAYER JS ---------------------------#		
+		videoDiskCanPlay = ->
+			$('.skip_intro').show()
+		$('#player').on 'canplaythrough', videoDiskCanPlay
+		
+		if $('#player')[0].readyState > 3
+			videoDiskCanPlay()
+
 		$('#player').on 'play', (e) ->
 			console.log 'play video disk'
 			$('body').removeClass 'video-disk-waiting'
