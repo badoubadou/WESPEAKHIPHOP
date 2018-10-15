@@ -34,7 +34,7 @@ class player_video
 		@createTweenInfo()
 		@setTimeLineKnob()
 		@setScratcher()
-		@initVideo()
+		# @initVideo()
 		@bindEvents()
 
 	#------------------- TWEEN ---------------------------#
@@ -351,6 +351,12 @@ class player_video
 			
 		# 	return
 		
+
+		$('#enter_site').on 'init_video_disk_mobile', ->
+			$('#enter_site').off()
+			that.initVideo()
+
+
 		#------------------- END TUTO -------------------#
 		$('.btn_get_it').on 'click', ->
 			$('.tuto').remove()

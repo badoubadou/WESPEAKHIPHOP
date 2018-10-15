@@ -63,8 +63,8 @@ class player_video_youtube
 			console.log 'enter site --------------------------------'
 			$('.intro_page').addClass 'hidden'
 			$('.video-container').removeClass 'hidden hide'
-			# GoInFullscreen($('body').get(0))
 			that.playerYT.play()
+			$('#enter_site').trigger 'init_video_disk_mobile'
 			$('#enter_site').off()
 			return
 		#------------------- SOUND ---------------------------#
