@@ -583,6 +583,10 @@
       constructor(spiner1) {
         this.spiner = spiner1;
         console.log('----------------- > constructor spinner');
+        TweenLite.set(['.lds-dual-ring .ring_black'], {
+          xPercent: -50,
+          yPercent: -50
+        });
         this.timelineSpiner = new TimelineMax({
           paused: true,
           onReverseComplete: this.maskSpiner,
@@ -665,7 +669,6 @@
         this.player = $('#player')[0];
         this.scale_disk = 2;
         if (window.isMobile()) {
-          console.log('window is mobile ?????');
           $('#player').attr('src', 'https://d2e3lhf7z9v1b2.cloudfront.net/25f500kfaststartmobile.mp4');
           this.scale_disk = 1;
         }

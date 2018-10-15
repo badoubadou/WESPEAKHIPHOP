@@ -9,7 +9,6 @@ class player_video
 		@player = $('#player')[0]
 		@scale_disk = 2
 		if window.isMobile()
-			console.log 'window is mobile ?????'
 			$('#player').attr('src', 'https://d2e3lhf7z9v1b2.cloudfront.net/25f500kfaststartmobile.mp4')
 			@scale_disk = 1
 		

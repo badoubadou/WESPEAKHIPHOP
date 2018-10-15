@@ -2,6 +2,9 @@ class spiner
 	'use strict'
 	constructor: (@spiner) ->
 		console.log '----------------- > constructor spinner'
+
+		TweenLite.set(['.lds-dual-ring .ring_black'], {xPercent: -50,yPercent: -50});
+		
 		@timelineSpiner = new TimelineMax(paused:true, onReverseComplete:@maskSpiner, onStart: @unmaskSpiner)		
 			.to('.lds-dual-ring .ring_black', 2 ,{scale: 0, ease:Power3.easeOut})			
 			.fromTo('.lds-dual-ring', 2 ,{opacity: 0},{opacity: 1, ease:Power3.easeOut}, '-=2')	
