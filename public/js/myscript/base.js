@@ -666,7 +666,7 @@
         this.scale_disk = 2;
         if (window.isMobile()) {
           console.log('window is mobile ?????');
-          $('#player').attr('src', 'https://d2e3lhf7z9v1b2.cloudfront.net/black_white_1.mp4');
+          // $('#player').attr('src', 'https://d2e3lhf7z9v1b2.cloudfront.net/25f500kfaststart.mp4')
           this.scale_disk = 1;
         }
         this.duration = 168.182;
