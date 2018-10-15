@@ -10,7 +10,7 @@ class player_video
 		@scale_disk = 2
 		if window.isMobile()
 			console.log 'window is mobile ?????'
-			# $('#player').attr('src', 'https://d2e3lhf7z9v1b2.cloudfront.net/25f500kfaststart.mp4')
+			$('#player').attr('src', 'https://d2e3lhf7z9v1b2.cloudfront.net/25f500kfaststartmobile.mp4')
 			@scale_disk = 1
 		
 		@duration = 168.182
