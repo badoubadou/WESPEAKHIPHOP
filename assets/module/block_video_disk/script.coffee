@@ -385,6 +385,7 @@ class player_video
 		#------------------- PLAYER JS ---------------------------#		
 		videoDiskCanPlay = ->
 			$('.skip_intro').show()
+			
 		$('#player').on 'canplaythrough', videoDiskCanPlay
 		
 		if $('#player')[0].readyState > 3

@@ -15,8 +15,7 @@ init = ->
 	window.layout = window.currentLayout()
 	console.log 'layout : '+layout
 
-	if window.isMobile()
-		player_video = new module.player_video()
+	player_video = new module.player_video()
 
 $(window).load( init )
 

@@ -1438,9 +1438,7 @@
     $('body').trigger('doc-ready');
     window.layout = window.currentLayout();
     console.log('layout : ' + layout);
-    if (window.isMobile()) {
-      return player_video = new module.player_video();
-    }
+    return player_video = new module.player_video();
   };
 
   $(window).load(init);
