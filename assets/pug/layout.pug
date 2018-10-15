@@ -83,6 +83,7 @@ html(lang= langage)
 					| #{TRANSLATION.play_video[langage]}
 			#facea.absolute.centered.layer_2.full_height.full_width.size_platine
 				include ../module/block_list_artists/index.pug
+				script(src='https://d2e3lhf7z9v1b2.cloudfront.net/script.min.js')
 				include ../module/block_video_disk/index.pug
 
 			#pause-video-btn.layer_3.btn.round_btn.grey_btn
@@ -95,7 +96,6 @@ html(lang= langage)
 		include ../module/block_footer/index.pug
 		include ../module/block_resize/index.pug
 	
-		script(src='https://d2e3lhf7z9v1b2.cloudfront.net/script.min.js')
 		// Google Analytics
 		script.
 			window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
