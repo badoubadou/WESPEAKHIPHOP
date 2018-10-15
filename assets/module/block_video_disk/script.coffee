@@ -305,8 +305,7 @@ class player_video
 			console.log '#HAVE_ENOUGH_DATA'
 			#HAVE_ENOUGH_DATA
 			$('#player')[0].addEventListener 'canplaythrough', onCanPlay, false
-			$('#player')[0].addEventListener 'canplay', onCanPlay, false
-			$('#player')[0].addEventListener 'load', onCanPlay, false
+			$('#player')[0].addEventListener 'onloadedmetadata', onCanPlay, false
 			#add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
 			setTimeout (->
 				$('#player')[0].pause()
@@ -330,7 +329,7 @@ class player_video
 		onCanPlay = ->
 			console.log 'onCanPlay'
 			$('#player')[0].removeEventListener 'canplaythrough', onCanPlay, false
-			$('#player')[0].removeEventListener 'load', onCanPlay, false
+			$('#player')[0].removeEventListener 'onloadedmetadata', onCanPlay, false
 			#video is ready
 			$('.skip_intro').show()
 		return

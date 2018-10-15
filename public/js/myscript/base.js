@@ -189,112 +189,6 @@
 }).call(this);
 
 (function() {
-  var popin;
-
-  popin = (function() {
-    'use strict';
-    class popin {
-      constructor() {
-        this.timelinePopin = null;
-        this.bindEvents();
-      }
-
-      afterclose() {
-        console.log('afterclose');
-        $('#popin').addClass('hide').trigger('classChange');
-        $('#popin').addClass('hide').trigger('closePopin');
-        $('#popin').removeAttr('style');
-        $('#popin').find('*').removeAttr('style');
-        return $('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
-      }
-
-      closePopin() {
-        console.log('closePopin @timelinePopin : ' + this.timelinePopin);
-        if (this.timelinePopin) {
-          return this.timelinePopin.reverse();
-        } else {
-          console.log('trigger : classChange closePopin');
-          $('#popin').addClass('hide');
-          $('#popin').trigger('classChange');
-          return $('#popin').trigger('closePopin');
-        }
-      }
-
-      bindEvents() {
-        var showPopin, that;
-        that = this;
-        showPopin = function($target) {
-          $('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
-          $('#popin').toggleClass('hide').trigger('classChange');
-          $($target).removeClass('hide');
-          that.timelinePopin = new TimelineMax({
-            onReverseComplete: that.afterclose
-          });
-          return that.timelinePopin.from('#popin', .6, {
-            opacity: 0,
-            ease: Power3.easeOut
-          }).fromTo($target, 0.5, {
-            alpha: 0,
-            marginTop: 30,
-            ease: Power1.easeInOut
-          }, {
-            alpha: 1,
-            marginTop: 0
-          });
-        };
-        
-        //------------------- ABOUT  --------------------------#
-        $('#apropos_btn').on({
-          'click': function(e) {
-            e.preventDefault();
-            return showPopin('#popin #abouttxt');
-          }
-        });
-        //------------------- CREDIT  --------------------------#
-        $('#credit_btn').on({
-          'click': function(e) {
-            e.preventDefault();
-            return showPopin('#popin #credittxt');
-          }
-        });
-        //------------------- CREDIT  --------------------------#
-        $('#about-btn, .block_contry .bio').on({
-          'click': function(e) {
-            var artistid;
-            e.preventDefault();
-            if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
-              artistid = $(this).data('artistid') - 1;
-              console.log('artistid =' + artistid);
-              $('#popin #artist_info .info').addClass('hide');
-              $('#popin #artist_info .info:eq(' + artistid + ')').removeClass('hide');
-              showPopin('#artist_info');
-              return;
-            }
-            return showPopin('#artist_info');
-          }
-        });
-        $('#share').on({
-          'click': function(e) {
-            e.preventDefault();
-            return showPopin('#shareinfo');
-          }
-        });
-        return $('#close, #back').on('click', function() {
-          return that.closePopin();
-        });
-      }
-
-    };
-
-    return popin;
-
-  }).call(this);
-
-  module.popin = popin;
-
-}).call(this);
-
-(function() {
   var player_video_youtube;
 
   player_video_youtube = (function() {
@@ -571,6 +465,112 @@
   }).call(this);
 
   module.player_video_youtube = player_video_youtube;
+
+}).call(this);
+
+(function() {
+  var popin;
+
+  popin = (function() {
+    'use strict';
+    class popin {
+      constructor() {
+        this.timelinePopin = null;
+        this.bindEvents();
+      }
+
+      afterclose() {
+        console.log('afterclose');
+        $('#popin').addClass('hide').trigger('classChange');
+        $('#popin').addClass('hide').trigger('closePopin');
+        $('#popin').removeAttr('style');
+        $('#popin').find('*').removeAttr('style');
+        return $('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
+      }
+
+      closePopin() {
+        console.log('closePopin @timelinePopin : ' + this.timelinePopin);
+        if (this.timelinePopin) {
+          return this.timelinePopin.reverse();
+        } else {
+          console.log('trigger : classChange closePopin');
+          $('#popin').addClass('hide');
+          $('#popin').trigger('classChange');
+          return $('#popin').trigger('closePopin');
+        }
+      }
+
+      bindEvents() {
+        var showPopin, that;
+        that = this;
+        showPopin = function($target) {
+          $('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
+          $('#popin').toggleClass('hide').trigger('classChange');
+          $($target).removeClass('hide');
+          that.timelinePopin = new TimelineMax({
+            onReverseComplete: that.afterclose
+          });
+          return that.timelinePopin.from('#popin', .6, {
+            opacity: 0,
+            ease: Power3.easeOut
+          }).fromTo($target, 0.5, {
+            alpha: 0,
+            marginTop: 30,
+            ease: Power1.easeInOut
+          }, {
+            alpha: 1,
+            marginTop: 0
+          });
+        };
+        
+        //------------------- ABOUT  --------------------------#
+        $('#apropos_btn').on({
+          'click': function(e) {
+            e.preventDefault();
+            return showPopin('#popin #abouttxt');
+          }
+        });
+        //------------------- CREDIT  --------------------------#
+        $('#credit_btn').on({
+          'click': function(e) {
+            e.preventDefault();
+            return showPopin('#popin #credittxt');
+          }
+        });
+        //------------------- CREDIT  --------------------------#
+        $('#about-btn, .block_contry .bio').on({
+          'click': function(e) {
+            var artistid;
+            e.preventDefault();
+            if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
+              artistid = $(this).data('artistid') - 1;
+              console.log('artistid =' + artistid);
+              $('#popin #artist_info .info').addClass('hide');
+              $('#popin #artist_info .info:eq(' + artistid + ')').removeClass('hide');
+              showPopin('#artist_info');
+              return;
+            }
+            return showPopin('#artist_info');
+          }
+        });
+        $('#share').on({
+          'click': function(e) {
+            e.preventDefault();
+            return showPopin('#shareinfo');
+          }
+        });
+        return $('#close, #back').on('click', function() {
+          return that.closePopin();
+        });
+      }
+
+    };
+
+    return popin;
+
+  }).call(this);
+
+  module.popin = popin;
 
 }).call(this);
 
@@ -1286,8 +1286,7 @@
           console.log('#HAVE_ENOUGH_DATA');
           //HAVE_ENOUGH_DATA
           $('#player')[0].addEventListener('canplaythrough', onCanPlay, false);
-          $('#player')[0].addEventListener('canplay', onCanPlay, false);
-          $('#player')[0].addEventListener('load', onCanPlay, false);
+          $('#player')[0].addEventListener('onloadedmetadata', onCanPlay, false);
           //add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
           setTimeout((function() {
             $('#player')[0].pause();
@@ -1310,7 +1309,7 @@
         onCanPlay = function() {
           console.log('onCanPlay');
           $('#player')[0].removeEventListener('canplaythrough', onCanPlay, false);
-          $('#player')[0].removeEventListener('load', onCanPlay, false);
+          $('#player')[0].removeEventListener('onloadedmetadata', onCanPlay, false);
           //video is ready
           return $('.skip_intro').show();
         };
