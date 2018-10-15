@@ -305,6 +305,7 @@ class player_video
 			console.log '#HAVE_ENOUGH_DATA'
 			#HAVE_ENOUGH_DATA
 			$('#player')[0].addEventListener 'canplaythrough', onCanPlay, false
+			$('#player')[0].addEventListener 'canplay', onCanPlay, false
 			$('#player')[0].addEventListener 'load', onCanPlay, false
 			#add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
 			setTimeout (->
