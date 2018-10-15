@@ -3,34 +3,14 @@
 	
 .full_height
 	height 100%
-
-// .full_height_minus_footer
-// 	height "calc(100% - %s)" % ($height_footer)
 	
 .full_height_minus_footer_minus_header_mobile
 	transition height 0.5s ease-in-out 
-	@media $mobile	
-		top $height_header_info_mobile
-		height "calc(100% - %s - %s)" % ($height_footer $height_header_info_mobile)
-	@media $ipad	
-		top $height_header_info_ipad
-		height "calc(100% - %s - %s)" % ($height_footer $height_header_info_ipad)
-	@media $desktop	
+	height "calc(100% - %s - %s)" % ($height_footer $height_header_info_mobile)
+	@media $landscape
 		top 0
-		height "calc(100% - %s)" % ($height_footer)
+		height "calc(100% - %s)" % ($height_footer )
 		
-	// body.hidefooter &
-	// 	@media $mobile	
-	// 		top $height_header_info_mobile
-	// 		height "calc(100% - %s)" % ($height_header_info_mobile)
-	// 	@media $ipad	
-	// 		top $height_header_info_ipad
-	// 		height "calc(100% - %s)" % ( $height_header_info_ipad)
-	// 	@media $desktop	
-	// 		top 0
-	// 		height 100%
-		
-	
 .layer_bottom
 	z-index -1
 	
@@ -62,11 +42,12 @@
 	overflow hidden
 
 .short_text
-	@media $ipad
+	@media $landscape
 		display none !important
 .long_text
-	@media $mobile
-		display none !important
+	display none !important
+	@media $landscape
+		display block !important
 
 .site
 	position relative
@@ -89,10 +70,6 @@
 		
 #block_video_disk
 	border-radius 50%
-	#play-video-btn
-		display none
-		@media $ipad
-			display block
 	
 #mouse_over_bg
 	opacity 0
@@ -106,40 +83,29 @@
 .trans
 	opacity 0
 
-
 body
 html
 	background $light-yellow
 	background-color $light-yellow
 
-
 #main
-	@media $ipad
+	@media $landscape
 		width calc(100% - 300px)
 		margin-left 300px
 	
-	@media $desktop
-		width calc(100% - 300px)
-		margin-left 300px
-	
-	@media $desktop_only
+	@media $landscape_desktop
 		width calc(100% - 370px)
 		margin-left 370px
 		
 #left_col
 	height 20vh
-	@media $desktop
-		width 300px
-		height "calc(100% - %s)" % ($height_footer)
-		background $yellow
-		position absolute
-	@media $ipad	
+	@media $landscape	
 		width 300px
 		height "calc(100% - %s)" % ($height_footer)
 		background $yellow
 		position absolute
 	
-	@media $desktop_only	
+	@media $landscape_desktop	
 		width 370px
 		height "calc(100% - %s)" % ($height_footer)
 		background $yellow

@@ -1,21 +1,14 @@
 #smallmap
-	transition opacity 1s
 	position absolute
-	bottom 300px
-	align_middle()
+	left 50%
 	display none
-	width 95%
-	height auto
-	
-	@media $desktop
-		width 80%
+	height auto	
+	width 90%
+	left 50%
+	bottom 300px
 
-	@media $mobile_et_ipad
-		bottom $height_footer + 10px
-		width 190px
-		left 10px
-		
-	@media $ipad
+	@media $landscape
+		width 80%
 		display block
 		svg .small-map-st2
 			opacity 0

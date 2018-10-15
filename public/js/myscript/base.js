@@ -594,7 +594,7 @@
         }).to('.lds-dual-ring .ring_black', 2, {
           scale: 0,
           ease: Power3.easeOut
-        }).fromTo('.lds-dual-ring', 2, {
+        }).fromTo('.lds-dual-ring', 0.5, {
           opacity: 0
         }, {
           opacity: 1,
@@ -710,23 +710,17 @@
         that = this;
         updateInfo = function(id) {
           var svgcontry;
-          console.log(' ---------- id updateInfo : ' + id);
           $('#play-video-btn, #play-video-btn-mobile, #startvideo').attr('href', $('#list_artists li:eq(' + id + ') a').attr('href'));
           $('#list_artists li a.selected').removeClass('selected');
           $('#list_artists li:eq(' + id + ') a').addClass('selected');
           svgcontry = '#smallmap svg #' + $('#artists_info li:eq(' + id + ') .contry').data('contrynicename');
+          console.log(' ---------- id updateInfo   : ' + svgcontry);
           TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {
             alpha: 0
           });
           TweenMax.to(svgcontry, 0.5, {
-            scale: 3,
-            transformOrigin: '50% 50%',
-            repeat: -1,
-            yoyo: true
-          });
-          TweenMax.to(svgcontry, 0.5, {
             alpha: 1
-          }, '+=.5');
+          });
           $('#artists_info li').removeClass('ontop');
           $('#artists_info li:eq(' + id + ')').addClass('ontop');
           $('#popin #artist_info .info').addClass('hide');
@@ -1081,13 +1075,14 @@
         var that;
         that = this;
         that.timelineIntro = new TimelineMax({
-          paused: true,
-          onComplete: this.removeTLIntro
+          paused: true
         });
-        console.log('curentTime : ' + curentTime);
         TweenLite.set(['#block_video_disk', '#disk', '#platine'], {
           xPercent: -50,
           yPercent: -50
+        });
+        TweenLite.set(['#smallmap'], {
+          xPercent: -50
         });
         return that.timelineIntro.from('#block_video_disk', 1.5, {
           rotation: 270,
@@ -1107,9 +1102,9 @@
         }).from('#left_col', .8, {
           x: '-100%',
           ease: Power3.easeOut
-        }, '-=.8').add(this.show_logo).from('#smallmap', .6, {
+        }, '-=.8').add(this.show_logo).from('#smallmap', 1, {
           opacity: 0,
-          y: 150,
+          y: 50,
           ease: Power3.easeOut
         }).from('#artists_info', .5, {
           opacity: 0,
@@ -1166,6 +1161,12 @@
           div = document.createElement('div');
           div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
           $("#smallmap").append(div.innerHTML);
+          TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {
+            scale: 3,
+            transformOrigin: '50% 50%',
+            repeat: -1,
+            yoyo: true
+          });
         });
       }
 

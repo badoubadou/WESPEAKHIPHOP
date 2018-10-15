@@ -8,39 +8,30 @@
 	font-size .7em
 
 	.warp_ul_footer
-		@media $ipad
-			width auto
-			position absolute
-			display inline-block
-			right 0
+		width 100%
+		text-align right
 	ul 
 		margin 0
 		padding 0
 		display inline-block
 		
-
 		&#right-ul
 			right 0
 			text-align right
 			position absolute
 			
-			@media $ipad
-				right auto
-				position relative
-		
 		&#left-ul
 			position absolute
 			left 5px
 			li a
 				padding 0 5px
-			@media $ipad
-				left auto 
-				padding 0 10px
+				
+		@media $landscape
+			&#right-ul
+			&#left-ul
 				position relative
-			li span 
-				padding 0 3px
-				@media $ipad
-					padding 0 10px
+				left auto
+				right auto
 
 		li
 			display inline-block
@@ -49,7 +40,7 @@
 			font-weight 100
 			color #989898
 			
-			@media $ipad
+			@media $landscape
 				&.seperateur
 					padding-right 11px
 					&:after
@@ -61,7 +52,7 @@
 			a
 				line-height $height_footer
 				padding 0 5px
-				@media $ipad
+				@media $landscape
 					padding 0 10px
 				height 100%
 				display block
@@ -75,7 +66,7 @@
 				
 			#sound
 			.myfullscreen
-				@media $ipad
+				@media $landscape
 					padding 0 10px
 				
 		
@@ -85,9 +76,7 @@
 			&:hover
 				color #989898
 				background $yellow
-		
-		
-						
+							
 	#share
 		svg
 			width 13px
@@ -96,7 +85,7 @@
 		
 		.txt
 			display none
-			@media $ipad
+			@media $landscape
 				display inline-block
 
 #sound
@@ -114,7 +103,6 @@
 	&.actif
 		svg #lign
 			display block
-	
 
 
 .myfullscreen

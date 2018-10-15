@@ -15,16 +15,12 @@
 	svg
 		width auto
 		height (($size_disk_small - $size_video_small) / 2)
-	@media $ipad
+	@media $landscape
 		height (($size_disk_medium - $size_video_medium) / 2)
 		svg
 			width auto
 			height (($size_disk_medium - $size_video_medium) / 2)		
-	@media $large_screen
-		height (($size_disk_large - $size_video_large) / 2)
-		svg
-			width auto
-			height (($size_disk_large - $size_video_large) / 2)	
+	
 
 .circular_mask
 	overflow hidden
@@ -42,22 +38,14 @@
 		width $size_video_small
 		height $size_video_small
 		
-	@media $ipad
+	@media $landscape
 		width $size_video_medium
 		height $size_video_medium
 		.player-dimensions
 		video
 			width $size_video_medium
 			height $size_video_medium
-		
-	@media $large_screen
-		width $size_video_large
-		height $size_video_large
-		
-		.player-dimensions
-		video
-			width $size_video_large
-			height $size_video_large	
+			
 		
 .size_disk
 	width $size_disk_small
@@ -65,17 +53,13 @@
 	max-width 73vh
 	max-height 73vh
 	
-	@media $ipad
+	@media $landscape
 		width $size_disk_medium
 		height $size_disk_medium
 		max-width 90vh
 		max-height 90vh
 
-	@media $large_screen
-		width $size_disk_large
-		height $size_disk_large
-		max-width 90vh
-		max-height 90vh
+	
 
 .size_platine
 	width $size_platine_small
@@ -83,12 +67,9 @@
 	max-width 78vh
 	max-height 78vh
 	
-	@media $ipad
+	@media $landscape
 		width $size_disk_medium+$epaiseur_platine
 		height $size_disk_medium+$epaiseur_platine
-	@media $large_screen
-		width $size_disk_large+$epaiseur_platine
-		height $size_disk_large+$epaiseur_platine
 	
 #mask_video
 	border 3px solid #000
@@ -112,12 +93,10 @@
 	max-width 74vh
 	max-height 74vh
 	
-	@media $ipad
+	@media $landscape
 		width $size_disk_medium - 10px
 		height $size_disk_medium - 10px
-	@media $large_screen
-		width $size_disk_large - 10px
-		height $size_disk_large  - 10px
+	
 	
 #play-video-btn
 #play-video-btn-mobile
@@ -144,6 +123,11 @@
 		position relative
 		left 5px
 
+#play-video-btn
+	display none
+	@media $landscape
+		display block
+
 #play-video-btn-mobile
 	bottom auto
 	top 5px
@@ -152,7 +136,7 @@
 		right 5px
 		transform none
 		
-	@media $ipad
+	@media $landscape
 		display none
 
 
@@ -175,7 +159,7 @@
 		span:last-child
 			display inline-block
 	
-	@media $ipad
+	@media $landscape
 		right 30px
 	
 	@media $mobile_landscape

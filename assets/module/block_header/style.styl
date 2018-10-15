@@ -1,22 +1,21 @@
 .header
-	@media $mobile_et_ipad
-		transition background-color 2s 
-		width 100%
-		position absolute 
-		background $yellow
-		
-	@media $mobile
-		height $height_header_info_mobile
+	transition background-color 2s 
+	width 100%
+	position absolute 
+	background $yellow	
+	height $height_header_info_mobile
 			
-	@media $ipad
+	@media $landscape
 		height $height_header_info_ipad
+		margin 20px
+		width calc( 100% - 40px)
 		
-	@media $desktop
+		
+	@media $landscape_desktop
 		z-index 1
 		width auto
 		display block
 		position relative
-		width 100%
 		
 h1
 	display block
@@ -25,30 +24,21 @@ h1
 	padding 0
 	margin 0 2%
 	position relative
-	@media $desktop
+	@media $landscape
 		align_middle()
-		top 20px
 		width calc( 100% - 50px)
 		margin 0
+		max-height 130px
 		
-
 .logoWSH
 	height 100%
 	width auto
 	display block
 	svg
-		width auto
-		height 100%
+		width 100%
+		max-height 100%
 		center()
-	@media $mobile_et_ipad
-		visibility hidden
-		.hidefooter & 
-			visibility visible
-
-		svg
-			width 100%
 	
-
 span.lign_header
 	display block
 	width 1px
@@ -57,5 +47,5 @@ span.lign_header
 	position absolute
 	vert_align_middle()
 	left 33%
-	@media $desktop
+	@media $landscape
 		display none

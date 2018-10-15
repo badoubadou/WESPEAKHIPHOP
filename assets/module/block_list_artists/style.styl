@@ -2,10 +2,8 @@
 	on-circle(28, $size_name_circle_small, 10px)
 	width 0
 	height 0	
-	@media $mobile_landscape
-		on-circle(28, 80vh, 10px)
 		
-	@media $ipad	
+	@media $landscape	
 		on-circle(28, $size_name_circle_medium, 80px)
 		width 0
 		height 0
@@ -60,7 +58,7 @@
 		> *:nth-of-type(28)
 			text-align left
 		
-	@media $desktop_only
+	@media $landscape_desktop
 		> *:nth-of-type(3)
 			width 180px
 		> *:nth-of-type(10)
@@ -74,10 +72,10 @@
 			margin-left -126px
 			
 
-	@media $large_screen
-		on-circle(28, $size_name_circle_large, 80px)
-		width 0
-		height 0
+	// @media $large_screen
+	// 	on-circle(28, $size_name_circle_large, 80px)
+	// 	width 0
+	// 	height 0
 
 	li a
 		bottom 0
@@ -92,12 +90,15 @@
 		&.selected
 			font-weight 900
 			color #000
-			
-		span.dot
-			display none
+		
 		span.txt
-			display inline-block
-			line-height 1.1em
+			display none
+		span.dot
+			background $grey
+			display block
+			width 4px
+			height 4px
+			border-radius 50%	
 			
 		.warp_contry
 			display none	
@@ -105,7 +106,7 @@
 			font-weight 500
 			opacity 0
 			transition opacity .5s ease
-			@media $ipad
+			@media $landscape
 				display block
 	
 		&:hover
@@ -113,12 +114,9 @@
 			.warp_contry
 				opacity 1
 
-		@media $mobile
-			span.txt
-				display none
+		@media $landscape
 			span.dot
-				background $grey
-				display block
-				width 4px
-				height 4px
-				border-radius 50%
+				display none
+			span.txt
+				display inline-block
+				line-height 1.1em

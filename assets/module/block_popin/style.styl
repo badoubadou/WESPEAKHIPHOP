@@ -10,6 +10,13 @@
 	// 		width 215px
 	// 		height auto
 		
+	#artist_info
+		max-height 100%
+		overflow-y scroll
+		overflow-x hidden
+		.info
+			margin 20px 0
+				
 	.logo_komet
 		width 100px
 		height auto
@@ -28,9 +35,11 @@
 			padding 10px 0
 
 	.contentpopin 
-		width 61%
+		width 100%
 		margin auto
 		color #ffffff
+		@media $landscape
+			width 61%
 		
 		.logo		
 			padding 15px 0
@@ -106,13 +115,12 @@
 		&.big
 			overflow-y scroll
 			overflow-x hidden
-			@media $mobile
-				width 90%
-				height 80%
-			@media $ipad
+			width 90%
+			height 80%
+			@media $landscape
 				width 80%
 				height 70%
-			@media $desktop
+			@media $landscape_desktop
 				width 50%
 				height 70%	
 
@@ -136,6 +144,7 @@
 	
 	.contry
 		color #fff
+		line-height 1
 
 	.date
 	.contry

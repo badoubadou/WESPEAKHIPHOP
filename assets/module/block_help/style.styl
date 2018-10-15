@@ -10,15 +10,11 @@
 	height 30px
 	color #333333
 	font-size 1em
+	bottom 40px
+	left 10px
 	
-	@media $mobile_landscape
-		display none
-	
-	@media $mobile
-		bottom 40px
-		left 10px
-	
-	@media $ipad
+	@media $landscape
+		bottom -2px
 		left 20px
 		height 100%
 		color $yellow
@@ -43,9 +39,9 @@
 		padding 0
 		font-weight 100
 		
-		@media $ipad
+		@media $landscape
 			width 300px
-		@media $desktop
+		@media $landscape_desktop
 			width 700px
 			height 40px
 			left 0px

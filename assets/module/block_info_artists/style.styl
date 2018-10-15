@@ -8,9 +8,10 @@
 	transition opacity 1s
 	overflow hidden
 	height 100%
-	
-	@media $mobile_landscape
-		max-height 70%
+	top 0
+	bottom auto
+	height $height_header_info_mobile
+	width 66%
 
 	li
 		position absolute
@@ -19,6 +20,14 @@
 		overflow hidden
 		color #ffffff
 		z-index -1
+		transition opacity 1s
+		padding 0 10px
+		vert_align_middle()
+		font-size .8em
+		@media $landscape
+			font-size 1.5em
+		@media $landscape_desktop
+			font-size 1.8em
 		
 		&.ontop
 			z-index 2
@@ -32,13 +41,10 @@
 		
 		h3.name
 			padding 0
-			margin 7px 0
-		.name
-		.date
-		.tagline
-		.contry
-			line-height .9em
-
+			margin 3px 0
+			@media $landscape
+				margin 7px 0
+			
 		.date
 		.contry
 		.tagline
@@ -49,23 +55,29 @@
 			text-transform uppercase
 			line-height 1em
 			font-weight 900
-			
-		.contry
-			color $dark-grey
 		
 		.name
 		.date
-			color $yellow
-			
-		.date
+		.tagline
 		.contry
-			font-size 3em
-		
-		.name
-			font-size 2.5em
+			line-height .9em
+			color #000
 		
 		.tagline
-			font-size 4em
+		.date
+			color $light-yellow
+			
+		
+		.contry
+		.date
+			font-size 2em
+			
+		.tagline
+			font-size 1.5em
+			
+		.contry
+		.date
+			letter-spacing -1px
 			
 			q
 				font-style italic
@@ -95,12 +107,9 @@
 			top -5px
 			position relative
 			
-			@media $ipad
-				font-size .9em
+			@media $landscape
+				font-size .6em
 				margin 0px 20px
-			
-			@media $desktop
-				font-size .75em
 				margin 10px 0
 				padding 0 15px
 				display block
@@ -109,69 +118,25 @@
 	
 	@media $mobile_landscape
 		li
-			font-size .6em
 			height 100%
 
-	@media $mobile_et_ipad
-		top O
-		bottom auto
-		li
-			transition opacity 1s
-			padding 0 10px
-			vert_align_middle()
-			.name
-			.date
-				color #ffffff
-			
-			.tagline
-				color #000
-		
-			
-	@media $mobile
-		height $height_header_info_mobile
-		width 66%
-		li
-			.name
-				font-size .95em
-				padding 3px 0
-			
-			.tagline
-			.contry
-			.date
-				font-size 1.5em
-				
-			.contry
-			.date
-				letter-spacing -1px
-			
-	@media $ipad
-		height $height_header_info_ipad
-		width 70%
-		li
-			.name
-				font-size 1.5em
-				padding 10px 0
-			
-			.tagline
-			.date
-			.contry
-				font-size 2.7em
-				
-	@media $desktop
+	@media $landscape
 		height 285px
 		width 100%
 		bottom 0
+		top auto
 		left 0px
 		background #010101
 		
-
 		li
 			bottom 0
-			width 100%
+			width calc( 100% - 20px)
+			margin 0 10px
+			padding 0
 			.warper
 				height auto
 				center()
-				width calc(100% - 50px)
+				width 100%
 				
 				.tagline
 				.contry
@@ -187,12 +152,9 @@
 				#about-btn
 					display inline-block
 					
-				.name
-					font-size 1.32em
-					
-				.tagline
-					font-size 2.6em
-					
-				.date
-				.contry
-					font-size 3.18em
+	@media $landscape_desktop
+		li
+			width calc( 100% - 60px)
+			margin 0 30px
+			
+	

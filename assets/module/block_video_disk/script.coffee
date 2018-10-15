@@ -41,18 +41,17 @@ class player_video
 		console.log 'reset###########################'
 		$('#block_video_disk, #platine ,#disk, #left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn, #play-video-btn-mobile, #pause-video-btn, #main_footer, #left_col,#artists_info,#smallmap, #txt_help_disk, .tuto').attr('style','')
 		
-
 	createTweenInfo: (curentTime) ->
 		that = @
+			
 		updateInfo= (id)->
-			console.log ' ---------- id updateInfo : '+id
 			$('#play-video-btn, #play-video-btn-mobile, #startvideo').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
 			$('#list_artists li a.selected').removeClass('selected')
 			$('#list_artists li:eq('+id+') a').addClass('selected')
 			svgcontry = '#smallmap svg #'+$('#artists_info li:eq('+id+') .contry').data 'contrynicename'
+			console.log ' ---------- id updateInfo   : '+svgcontry
 			TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {alpha: 0})
-			TweenMax.to(svgcontry, 0.5, {scale: 3, transformOrigin:'50% 50%', repeat:-1, yoyo:true})
-			TweenMax.to(svgcontry, 0.5, {alpha: 1}, '+=.5')
+			TweenMax.to(svgcontry, 0.5, {alpha: 1})
 			$('#artists_info li').removeClass('ontop')
 			$('#artists_info li:eq('+id+')').addClass('ontop')
 			$('#popin #artist_info .info').addClass('hide')
@@ -153,10 +152,10 @@ class player_video
 
 	setTimeLineIntro : (curentTime) ->
 		that = @
-		that.timelineIntro = new TimelineMax({paused: true, onComplete:@removeTLIntro})
-		console.log 'curentTime : '+curentTime
+		that.timelineIntro = new TimelineMax({paused: true})
 
 		TweenLite.set(['#block_video_disk', '#disk', '#platine'], {xPercent: -50,yPercent: -50});
+		TweenLite.set(['#smallmap'], {xPercent: -50});
 
 		that.timelineIntro.from('#block_video_disk', 1.5 ,{ rotation: 270, opacity:0, scale:that.scale_disk, ease:Power1.easeOut} )
 			.add(@play_video_disk)
@@ -166,7 +165,7 @@ class player_video
 			.from('#main_footer', .8 ,{y:40, ease:Power3.easeOut})
 			.from('#left_col', .8 ,{x:'-100%', ease:Power3.easeOut} , '-=.8')
 			.add(@show_logo)
-			.from('#smallmap', .6 ,{opacity:0, y:150, ease:Power3.easeOut} )
+			.from('#smallmap', 1 ,{opacity:0, y:50, ease:Power3.easeOut} )
 			.from('#artists_info', .5 ,{opacity:0, ease:Power3.easeOut})
 			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut})
 			.from('.tuto', .6 ,{opacity:0, ease:Power3.easeOut} )
@@ -199,6 +198,8 @@ class player_video
 			div = document.createElement('div')
 			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
 			$( "#smallmap" ).append( div.innerHTML )
+			TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {scale: 3, transformOrigin:'50% 50%', repeat:-1, yoyo:true})
+		
 			return
 
 	skipIntro : ->
