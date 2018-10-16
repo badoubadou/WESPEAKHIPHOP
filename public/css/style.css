@@ -1566,22 +1566,6 @@ span.lign_header {
     line-height: 1.1em;
   }
 }
-input[type=range]::-webkit-slider-thumb {
-  display: none;
-  -webkit-appearance: none;
-}
-input[type=range] {
-  -webkit-appearance: none;
-}
-input[type=range]:focus {
-  outline: none;
-}
-input[type=range]::-moz-range-track,
-input[type=range]::-moz-range-thumb,
-input[type=range]::-ms-fill-lower,
-input[type=range]::-ms-fill-upper {
-  border-radius: 0px;
-}
 .video-container {
   height: 0;
   width: 100%;
@@ -1868,7 +1852,7 @@ input[type=range]::-ms-fill-upper {
 }
 #popin .skip_intro {
   background: #ffce00;
-  display: none;
+  visibility: hidden;
   position: absolute;
   bottom: 15px;
   right: -10px;

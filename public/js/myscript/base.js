@@ -279,9 +279,17 @@
           console.log('enter site --------------------------------');
           $('.intro_page').addClass('hidden');
           $('.video-container').removeClass('hidden hide');
+          // GoInFullscreen($('body').get(0))
           that.playerYT.play();
-          $('#enter_site').trigger('init_video_disk_mobile');
           $('#enter_site').off();
+          setTimeout((function() {
+            TweenMax.fromTo('.skip_intro', .6, {
+              autoAlpha: 0,
+              visibility: 'visible'
+            }, {
+              autoAlpha: 1
+            });
+          }), 3000);
         });
         //------------------- SOUND ---------------------------#
         $('#sound').on('click', function() {
@@ -696,7 +704,6 @@
         this.createTweenInfo();
         this.setTimeLineKnob();
         this.setScratcher();
-        // @initVideo()
         this.bindEvents();
       }
 
@@ -1277,44 +1284,6 @@
         });
       }
 
-      initVideo() {
-        var onCanPlay;
-        console.log('initVideo');
-        $('#player')[0].play();
-        //start loading, didn't used `vid.load()` since it causes problems with the `ended` event
-        if ($('#player')[0].readyState !== 4) {
-          console.log('#HAVE_ENOUGH_DATA');
-          //HAVE_ENOUGH_DATA
-          $('#player')[0].addEventListener('canplaythrough', onCanPlay, false);
-          $('#player')[0].addEventListener('onloadedmetadata', onCanPlay, false);
-          //add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
-          setTimeout((function() {
-            $('#player')[0].pause();
-            $('#player')[0].currentTime = 0;
-          //block play so it buffers before playing
-          }), 1);
-        } else {
-          //it needs to be after a delay otherwise it doesn't work properly.
-          console.log('#video is ready');
-          setTimeout((function() {
-            $('#player')[0].pause();
-            $('#player')[0].currentTime = 0;
-          //block play so it buffers before playing
-          }), 1);
-          $('.skip_intro').show();
-        }
-        return;
-        
-        //video is ready
-        onCanPlay = function() {
-          console.log('onCanPlay');
-          $('#player')[0].removeEventListener('canplaythrough', onCanPlay, false);
-          $('#player')[0].removeEventListener('onloadedmetadata', onCanPlay, false);
-          //video is ready
-          return $('.skip_intro').show();
-        };
-      }
-
       bindEvents() {
         var that, windowBlurred, windowFocused;
         that = this;
@@ -1331,10 +1300,7 @@
         // 	# ), 700
 
         // 	return
-        $('#enter_site').on('init_video_disk_mobile', function() {
-          $('#enter_site').off();
-          return that.initVideo();
-        });
+
         //------------------- END TUTO -------------------#
         $('.btn_get_it').on('click', function() {
           return $('.tuto').remove();
@@ -1410,7 +1376,14 @@
             return that.player.pause();
           }
         });
-        //------------------- PLAYER JS ---------------------------#	
+        //------------------- PLAYER JS ---------------------------#		
+        // videoDiskCanPlay = ->
+        // 	$('.skip_intro').show()
+
+        // $('#player').on 'canplaythrough', videoDiskCanPlay
+
+        // if $('#player')[0].readyState > 3
+        // 	videoDiskCanPlay()
         $('#player').on('play', function(e) {
           console.log('play video disk');
           $('body').removeClass('video-disk-waiting');
@@ -1433,8 +1406,6 @@
       }
 
     };
-
-    console.log('WTF---------------------------------------');
 
     return player_video;
 

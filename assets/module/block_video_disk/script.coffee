@@ -34,7 +34,6 @@ class player_video
 		@createTweenInfo()
 		@setTimeLineKnob()
 		@setScratcher()
-		# @initVideo()
 		@bindEvents()
 
 	#------------------- TWEEN ---------------------------#
@@ -296,44 +295,6 @@ class player_video
 				Math.round(endValue / rotationSnap) * rotationSnap
 		return 
 
-	console.log 'WTF---------------------------------------'	
-	initVideo : ->
-		console.log 'initVideo'
-		$('#player')[0].play()
-		#start loading, didn't used `vid.load()` since it causes problems with the `ended` event
-		if $('#player')[0].readyState != 4
-			console.log '#HAVE_ENOUGH_DATA'
-			#HAVE_ENOUGH_DATA
-			$('#player')[0].addEventListener 'canplaythrough', onCanPlay, false
-			$('#player')[0].addEventListener 'onloadedmetadata', onCanPlay, false
-			#add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
-			setTimeout (->
-				$('#player')[0].pause()
-				$('#player')[0].currentTime = 0
-				#block play so it buffers before playing
-				return
-			), 1
-			#it needs to be after a delay otherwise it doesn't work properly.
-		else
-			console.log '#video is ready'
-			setTimeout (->
-				$('#player')[0].pause()
-				$('#player')[0].currentTime = 0
-				#block play so it buffers before playing
-				return
-			), 1
-			$('.skip_intro').show()	
-			#video is ready
-		return
-
-		onCanPlay = ->
-			console.log 'onCanPlay'
-			$('#player')[0].removeEventListener 'canplaythrough', onCanPlay, false
-			$('#player')[0].removeEventListener 'onloadedmetadata', onCanPlay, false
-			#video is ready
-			$('.skip_intro').show()
-		return
-
 	bindEvents: ->
 		that = @
 		console.log 'bindEvents player_video'
@@ -351,12 +312,6 @@ class player_video
 			
 		# 	return
 		
-
-		$('#enter_site').on 'init_video_disk_mobile', ->
-			$('#enter_site').off()
-			that.initVideo()
-
-
 		#------------------- END TUTO -------------------#
 		$('.btn_get_it').on 'click', ->
 			$('.tuto').remove()
@@ -427,7 +382,14 @@ class player_video
 			else
 				that.player.pause()
 
-		#------------------- PLAYER JS ---------------------------#	
+		#------------------- PLAYER JS ---------------------------#		
+		# videoDiskCanPlay = ->
+		# 	$('.skip_intro').show()
+			
+		# $('#player').on 'canplaythrough', videoDiskCanPlay
+		
+		# if $('#player')[0].readyState > 3
+		# 	videoDiskCanPlay()
 
 		$('#player').on 'play', (e) ->
 			console.log 'play video disk'
