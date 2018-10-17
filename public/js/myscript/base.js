@@ -1119,12 +1119,12 @@
         }).from('#artists_info', .5, {
           opacity: 0,
           ease: Power3.easeOut
+        }).from('.tuto', .6, {
+          opacity: 0,
+          ease: Power3.easeOut
         }).from('#txt_help_disk', .8, {
           opacity: 0,
           left: '-100%',
-          ease: Power3.easeOut
-        }).from('.tuto', .6, {
-          opacity: 0,
           ease: Power3.easeOut
         });
       }
@@ -1197,6 +1197,9 @@
           div = document.createElement('div');
           div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
           $("#smallmap").append(div.innerHTML);
+          TweenLite.set(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], {
+            alpha: 0
+          });
           TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {
             scale: 3,
             transformOrigin: '50% 50%',
