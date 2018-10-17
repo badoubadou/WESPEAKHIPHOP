@@ -1,3 +1,7 @@
+var config = {
+    accessKeyId: "AKIAJUYRDM6H3KW3O5FQ",
+    secretAccessKey: "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"
+}
 var gulp   = require('gulp');
 var concat = require('gulp-concat');
 var notify = require('gulp-notify');
@@ -9,36 +13,23 @@ var sass = require('gulp-sass');
 var pug    = require('gulp-pug');
 var runSequence = require('run-sequence');
 var replace = require('gulp-replace');
-
 var cleanCSS = require('gulp-clean-css');
-
 var tap = require('gulp-tap');
-
 var data = require('gulp-data');
 fs = require('fs'),
 path = require('path'),
 merge = require('gulp-merge-json');
-
 var gutil        = require('gulp-util');
 var coffee       = require('gulp-coffee');
 var del = require('del');
 var gutil = require('gulp-util');
-
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify-es').default;
-
 var gzip = require("gulp-gzip");
-
-var config = {
-    accessKeyId: "AKIAJUYRDM6H3KW3O5FQ",
-    secretAccessKey: "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"
-}
-
-var s3 = require('gulp-s3-upload')(config);
-
 const stripDebug = require('gulp-strip-debug');
-
+var s3 = require('gulp-s3-upload')(config);
 const htmlmin = require('gulp-htmlmin');
+var inlinesource = require('gulp-inline-source');
 
 
 var pugfile = ['assets/pug/*.pug', '!assets/pug/layout.pug'];
@@ -50,7 +41,6 @@ var misc = ['assets/image/**'];
 var imageminussvg = ['assets/image/**', '!assets/image/*.svg'];
 var dest = 'public/';
 var toUpload = ['public/image/**', 'public/css/style.css', 'public/js/**', 'public/font/**'];
-
 var watch_coffee = jsfile;
 var src_coffee = jsfile;
 var vendor = [
@@ -67,7 +57,6 @@ var vendor = [
     // 'assets/coffee/vendor/wad.min.js'
 ];
 
-var inlinesource = require('gulp-inline-source');
 
 gulp.task('makecoffee', function() {
     return gulp.src(src_coffee)

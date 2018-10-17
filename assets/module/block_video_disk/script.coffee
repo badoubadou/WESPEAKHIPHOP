@@ -31,6 +31,8 @@ class player_video
 		@setTimeLineIntro()
 		$('#player').addClass('ready')
 		@loadMap()
+		@loadLign()
+		@loadLogoShare()
 		@createTweenInfo()
 		@setTimeLineKnob()
 		@setScratcher()
@@ -190,6 +192,26 @@ class player_video
 		$('#player')[0].play()
 		$('body').removeClass 'disk_on_hold'
 
+	loadLogoShare : ->
+		console.log '---> load logo share '
+		that = @
+		$.get 'https://d2e3lhf7z9v1b2.cloudfront.net/logo-share.svg', (data) ->
+			console.log '---> logo share  loaded'
+			div = document.createElement('div')
+			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
+			$( '#logosharesite' ).append( div.innerHTML )
+			return
+
+	loadLign : ->
+		console.log '---> load lign'
+		that = @
+		$.get 'https://d2e3lhf7z9v1b2.cloudfront.net/lign.svg', (data) ->
+			console.log '---> lign loaded'
+			div = document.createElement('div')
+			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
+			$( '.lign_svg' ).append( div.innerHTML )
+			return
+
 	loadMap : ->
 		console.log '---> load small map'
 		that = @
@@ -199,7 +221,6 @@ class player_video
 			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
 			$( "#smallmap" ).append( div.innerHTML )
 			TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {scale: 3, transformOrigin:'50% 50%', repeat:-1, yoyo:true})
-		
 			return
 
 	skipIntro : ->

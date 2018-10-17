@@ -701,6 +701,8 @@
         this.setTimeLineIntro();
         $('#player').addClass('ready');
         this.loadMap();
+        this.loadLign();
+        this.loadLogoShare();
         this.createTweenInfo();
         this.setTimeLineKnob();
         this.setScratcher();
@@ -1157,6 +1159,32 @@
       play_video_disk() {
         $('#player')[0].play();
         return $('body').removeClass('disk_on_hold');
+      }
+
+      loadLogoShare() {
+        var that;
+        console.log('---> load logo share ');
+        that = this;
+        return $.get('https://d2e3lhf7z9v1b2.cloudfront.net/logo-share.svg', function(data) {
+          var div;
+          console.log('---> logo share  loaded');
+          div = document.createElement('div');
+          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
+          $('#logosharesite').append(div.innerHTML);
+        });
+      }
+
+      loadLign() {
+        var that;
+        console.log('---> load lign');
+        that = this;
+        return $.get('https://d2e3lhf7z9v1b2.cloudfront.net/lign.svg', function(data) {
+          var div;
+          console.log('---> lign loaded');
+          div = document.createElement('div');
+          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
+          $('.lign_svg').append(div.innerHTML);
+        });
       }
 
       loadMap() {
