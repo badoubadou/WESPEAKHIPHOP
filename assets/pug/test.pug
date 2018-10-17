@@ -1,14 +1,136 @@
 doctype html
 html
 	head
-		link(type="text/css" rel="stylesheet" href="css/test.css")
-		link(rel="stylesheet" href="https://cdn.plyr.io/3.4.4/plyr.css")
-
+		link(rel="stylesheet"  href="css/inlinestyle.css" inline)
+		link(rel="preload" href="https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'")
 
 	body
-		#player(data-plyr-provider="vimeo" data-plyr-embed-id="76979871")
+		#popin.absolute.layer_top_plus.full_height.full_width
+			#abouttxt.block.big.centered.layer_top
+				.warp
+					p.title
+						|Crédits
+					.warp_left
+						p.subtitle
+							| Ecriture et Réalisation 
+						p
+							| Vina Hiridjee et David Boisseaux-Chical
+						p.subtitle
+							| Direction artistique et Graphisme
+						p
+							| Nicolas Dali
+						p.subtitle
+							| Conception et Développement
+						p
+							| Romain Malauzat  
+						p.subtitle
+							| Production
+						p
+							| Komet Prod
+							p.retour
+								| www.kometprod.com
+						p.subtitle
+							| Traduction
+						p.retour
+							| Traducteur Anglais – Français : Sasha Lagrange Mentz, Hendrik Mentz, Balthazar Jungnell
+						p.retour
+							| Traducteur Corée du Sud : Soy Kim
+						p.retour
+							| Traducteur Indonésie/ Malaisie: Wee Chyn
+						p.retour
+							| Traducteur Philippines : Kriztel Lorbes
+						p.retour
+							| Traducteur Maroc : Abdellatif Bachar et Jihane Kéjairi Schott
+						p.retour
+							| Traducteur Sénégal : Djibril Marone
+						p.retour
+							| Traducteur Cambodge : Hiep Chan Vicheth
+						p.retour
+							| Traducteur Thaïlande : Pongsatorn Dechanupav
+						p.retour
+							| Traducteur Guinée-Conakry : Master G
+					.warp_right
+						p.subtitle
+							| Tournage 
+						p
+							| Images : David Boisseaux-Chical
+						p.retour
+							| Journaliste : Vina Hiridjee
+						p.subtitle
+							| Tournage La Place
+						p
+							| Images : David Boisseaux-Chical
+						p.retour
+							| Journaliste : Ismaël Mereghetti
+						p.retour
+							| Images Interview Dj Mathematics : Hicham Rami
+						p.retour
+							| Images Interview End of the Game: Hashka
+						p.subtitle
+							| Rédaction Webdocumentaire 
+						p
+							| Zoé Lamazou
+						p.subtitle
+							| Montage 
+						p
+							| Monteurs
+							| David Boisseaux-Chical, Mathilde Babo
 
+						p.subtitle
+							| Etalonnage
+						p
+							| Jérémie Pujau 
+						p.subtitle
+							| Montage son et mixage
+						p
+							| Marcel Dadalto 
+						p.subtitle
+							| Musique 
+						p
+							| Laurent Bardainne
 
-	script(src="https://cdn.plyr.io/3.4.4/plyr.js")
-	script.
-		const player = new Plyr('#player');
+						p.subtitle
+							| Sous-titrage 
+						p
+							| Luana Santos
+					
+				.warp
+					p.title
+						| Remerciements
+					.warp_left
+						p
+							| Aris Koukoulis, Magalie Loony, Sarah Leduc, Jessica Nay, Palmyre Badinier, Sabrina Hiridjee, François Langella, Benjamin Fernandez, Armel Parisot, Igor Ochronowicz, Régis Cazanave, Martine Chicalski, Sylvain Dumaine, Dimitri Chabrol, Karoline Hoeppner, Sarah Chiang, Jules Salters, Loubna Fahmi.
+						p.spacer
+							| Betino’s record shop, 32 Rue Saint-Sébastien, 75011 Paris 
+						p
+							| http://www.betinos.com/
+					.warp_right
+						p
+							| Avec la participation du Centre National de la Cinématographie et de l'image animée - Nouveaux média 
+						p.spacer
+							| Avec le soutien de La Place Jean-Marc Mougeot Marina Gentle 
+						p.spacer
+							| Et de Sennheiser Magdalena Bojanowski 
+						p.spacer
+							| MOUV’ Bruno Laforestrie 
+						p.spacer
+							| COURRIER INTERNATIONAL : Claire Carrard Carolin Lohrenz
+
+				.warp
+					ul.listlogo
+						li
+							a(href='https://www.cnc.fr/', target='_blank')
+								img(src='https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/CNC_logo.svg')
+						li
+							a(href='https://www.mouv.fr/', target='_blank')
+								img(src='https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/mouv.svg')
+						li
+							a(href='http://laplace.paris/', target='_blank')
+								img(src='https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/laplace.png')
+						li
+							a(href='https://www.courrierinternational.com/', target='_blank')
+								img(src='https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/courrier_international.png')
+					.logokomet
+						a(href='http://www.kometprod.com', target='_blank')
+							img(src='https://d2e3lhf7z9v1b2.cloudfront.net/logo_komet.png')
+						

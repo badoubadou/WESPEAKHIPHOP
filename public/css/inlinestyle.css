@@ -88,6 +88,12 @@ body #main {
   font-weight: 100;
   src: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Knockout-HTF28-JuniorFeatherwt.woff2") format("woff2"), url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Knockout-HTF28-JuniorFeatherwt.woff") format("woff");
 }
+@font-face {
+  font-family: Knockout;
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Knockout-HTF68-FF-Regular.woff2") format("woff2"), url("https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/Knockout-HTF68-FF-Regular.woff") format("woff");
+}
 .loader-bar {
   height: 0px;
   width: 100%;
@@ -772,11 +778,17 @@ html {
 #popin #abouttxt {
   color: #fff;
   text-transform: none;
+  text-align: center;
+  font-weight: 100;
+  font-family: Knockout, Helvetica, Arial, sans-serif;
+  font-size: 1.2em;
 }
 #popin #credittxt .title,
 #popin #abouttxt .title {
   font-weight: 900;
-  color: #ffce00;
+  font-size: 2em;
+  text-transform: uppercase;
+  color: #fff;
 }
 #popin #credittxt a,
 #popin #abouttxt a,
@@ -784,6 +796,75 @@ html {
 #popin #abouttxt a:hover {
   text-decoration: none;
   color: #fff;
+}
+#popin #credittxt .warp_left,
+#popin #abouttxt .warp_left,
+#popin #credittxt .warp_right,
+#popin #abouttxt .warp_right {
+  width: calc(50% - 10px);
+  display: inline-block;
+  vertical-align: top;
+}
+#popin #credittxt .warp_left,
+#popin #abouttxt .warp_left {
+  text-align: right;
+  padding-right: 10px;
+}
+#popin #credittxt .warp_right,
+#popin #abouttxt .warp_right {
+  padding-left: 10px;
+  text-align: left;
+}
+#popin #credittxt .subtitle,
+#popin #abouttxt .subtitle {
+  text-transform: uppercase;
+  font-size: 1.2em;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+#popin #credittxt .listlogo,
+#popin #abouttxt .listlogo {
+  list-style: none;
+  padding: 0;
+}
+#popin #credittxt .listlogo li,
+#popin #abouttxt .listlogo li {
+  display: inline-block;
+  width: calc(25% - 60px);
+  margin: 30px;
+}
+#popin #credittxt .listlogo li a,
+#popin #abouttxt .listlogo li a {
+  display: block;
+  width: 100%;
+}
+#popin #credittxt .listlogo li a img,
+#popin #abouttxt .listlogo li a img {
+  width: 100%;
+}
+#popin #credittxt .logokomet,
+#popin #abouttxt .logokomet {
+  margin: auto;
+  display: inline-block;
+  width: calc(25% - 60px);
+  margin: 30px;
+}
+#popin #credittxt .logokomet a,
+#popin #abouttxt .logokomet a {
+  display: block;
+  width: 100%;
+}
+#popin #credittxt .logokomet a img,
+#popin #abouttxt .logokomet a img {
+  width: 100%;
+}
+#popin #credittxt p,
+#popin #abouttxt p {
+  margin: 0px;
+}
+#popin #credittxt p.spacer,
+#popin #abouttxt p.spacer {
+  margin: 10px 0;
 }
 #popin .sharebtn {
   list-style-type: none;
@@ -848,18 +929,23 @@ html {
   overflow-y: scroll;
   overflow-x: hidden;
   width: 90%;
-  height: 80%;
+  max-height: 80%;
+  height: auto;
 }
 @media screen and (orientation: landscape) {
   #popin .block.big {
     width: 80%;
-    height: 70%;
+    max-width: 1000px;
+    max-height: 70%;
+    height: auto;
   }
 }
 @media screen and (min-width: 70em) and (orientation: landscape) {
   #popin .block.big {
-    width: 50%;
-    height: 70%;
+    width: 80%;
+    max-width: 1000px;
+    max-height: 90%;
+    height: auto;
   }
 }
 #popin .yellow,

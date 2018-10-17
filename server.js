@@ -24,6 +24,7 @@ app.get('/', function(req, res) {
         else
         filePath = '/public/index.html';
         res.sendFile(path.join(__dirname + filePath));
+
 });
 
 app.listen(port);

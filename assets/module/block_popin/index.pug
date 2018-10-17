@@ -19,15 +19,19 @@
 				a(href='')#enter_site.btn.round_btn.yellow_btn
 					| #{TRANSLATION.language_btn_fr[langage]}
 		
-	
 	include ../block_spiner/index.pug
-	
 	include ../block_player_youtube/index.pug
 
 	#abouttxt.hide.block.big.centered.layer_top
-		| !{ABOUT[langage]}
+		if langage == 'en'
+			include about.pug
+		else
+			include apropos.pug
 	#credittxt.hide.block.big.centered.layer_top
-		| !{CREDIT[langage]}
+		if langage == 'en'
+			include credit-en.pug
+		else
+			include credit-fr.pug
 			
 
 	#artist_info.hide.centered.layer_top
