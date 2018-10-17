@@ -77,7 +77,9 @@ $break-xlarg = 75em
 // $mobile_et_ipad = $bs-screen-md-max /// mobile et ipad
 
 
-$mobile_landscape = unquote('screen and (min-width: '+48em+') and (orientation: landscape)')
+$mobile_landscape = unquote('screen and (max-width: '+48em+') and (orientation: landscape)')
 $landscape = unquote('screen and (orientation: landscape)')
 $landscape_desktop = unquote('screen and (min-width: '+70em+') and (orientation: landscape)')
 
+$too_smallheight_map = unquote('screen and (max-height: 620px) and (orientation: landscape)')
+$smallheight_map = unquote('screen and (max-height: 650px) and (orientation: landscape)')

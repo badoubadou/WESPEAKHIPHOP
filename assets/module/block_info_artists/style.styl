@@ -24,6 +24,7 @@
 		padding 0 10px
 		vert_align_middle()
 		font-size .8em
+		height 100%
 		@media $landscape
 			font-size 1.5em
 		@media $landscape_desktop
@@ -116,10 +117,6 @@
 				background $yellow
 				color #333333
 	
-	@media $mobile_landscape
-		li
-			height 100%
-
 	@media $landscape
 		height 285px
 		width 100%
@@ -156,5 +153,11 @@
 		li
 			width calc( 100% - 60px)
 			margin 0 30px
-			
+	
+	@media $mobile_landscape
+		height 185px
+		li
+			font-size .8em
+			height 100%
+	
 	

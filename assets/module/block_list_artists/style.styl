@@ -70,7 +70,9 @@
 		> *:nth-of-type(23)
 			width 130px
 			margin-left -126px
-			
+	
+	@media $mobile_landscape
+		display none
 
 	// @media $large_screen
 	// 	on-circle(28, $size_name_circle_large, 80px)
@@ -113,10 +115,19 @@
 		&.selected	
 			.warp_contry
 				opacity 1
-
 		@media $landscape
 			span.dot
 				display none
 			span.txt
 				display inline-block
 				line-height 1.1em
+				
+		@media $mobile_landscape
+			span.txt
+				display none
+			span.dot
+				background $grey
+				display block
+				width 4px
+				height 4px
+				border-radius 50%

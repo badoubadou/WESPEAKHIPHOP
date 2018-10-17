@@ -9,13 +9,17 @@
 		height $height_header_info_ipad
 		margin 20px
 		width calc( 100% - 40px)
-		
-		
+			
 	@media $landscape_desktop
 		z-index 1
 		width auto
 		display block
-		position relative
+		position relative	
+	
+	@media $mobile_landscape
+		height calc( 100% - 225px)
+		margin 15px 5px
+		width calc( 100% - 10px)
 		
 h1
 	display block
@@ -29,6 +33,8 @@ h1
 		width calc( 100% - 50px)
 		margin 0
 		max-height 130px
+	
+	
 		
 .logoWSH
 	height 100%

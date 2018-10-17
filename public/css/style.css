@@ -161,6 +161,13 @@
     position: relative;
   }
 }
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  .header {
+    height: calc(100% - 225px);
+    margin: 15px 5px;
+    width: calc(100% - 10px);
+  }
+}
 h1 {
   display: block;
   width: 30%;
@@ -222,6 +229,11 @@ span.lign_header {
   font-size: 1em;
   bottom: 40px;
   left: 10px;
+}
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  #block_help {
+    display: none;
+  }
 }
 @media screen and (orientation: landscape) {
   #block_help {
@@ -303,6 +315,7 @@ span.lign_header {
   top: 50%;
   transform: translateY(-50%);
   font-size: 0.8em;
+  height: 100%;
 }
 @media screen and (orientation: landscape) {
   #artists_info li {
@@ -410,11 +423,6 @@ span.lign_header {
     color: #333;
   }
 }
-@media screen and (min-width: 48em) and (orientation: landscape) {
-  #artists_info li {
-    height: 100%;
-  }
-}
 @media screen and (orientation: landscape) {
   #artists_info {
     height: 285px;
@@ -458,6 +466,15 @@ span.lign_header {
   #artists_info li {
     width: calc(100% - 60px);
     margin: 0 30px;
+  }
+}
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  #artists_info {
+    height: 185px;
+  }
+  #artists_info li {
+    font-size: 0.8em;
+    height: 100%;
   }
 }
 #list_artists {
@@ -615,8 +632,8 @@ span.lign_header {
     left: 50%;
     transform: translate(-50%, -50%);
     position: relative;
-    width: 590px;
-    height: 590px;
+    width: 90vh;
+    height: 90vh;
     padding: 0;
     border-radius: 50%;
     list-style: none;
@@ -635,115 +652,115 @@ span.lign_header {
     margin-left: -40px;
   }
   #list_artists > *:nth-of-type(1) {
-    transform: rotate(-90deg) translate(295px) rotate(90deg);
+    transform: rotate(-90deg) translate(45vh) rotate(90deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(2) {
-    transform: rotate(-77.14285714285714deg) translate(295px) rotate(77.14285714285714deg);
+    transform: rotate(-77.14285714285714deg) translate(45vh) rotate(77.14285714285714deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(3) {
-    transform: rotate(-64.28571428571428deg) translate(295px) rotate(64.28571428571428deg);
+    transform: rotate(-64.28571428571428deg) translate(45vh) rotate(64.28571428571428deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(4) {
-    transform: rotate(-51.428571428571416deg) translate(295px) rotate(51.428571428571416deg);
+    transform: rotate(-51.428571428571416deg) translate(45vh) rotate(51.428571428571416deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(5) {
-    transform: rotate(-38.571428571428555deg) translate(295px) rotate(38.571428571428555deg);
+    transform: rotate(-38.571428571428555deg) translate(45vh) rotate(38.571428571428555deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(6) {
-    transform: rotate(-25.714285714285698deg) translate(295px) rotate(25.714285714285698deg);
+    transform: rotate(-25.714285714285698deg) translate(45vh) rotate(25.714285714285698deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(7) {
-    transform: rotate(-12.85714285714284deg) translate(295px) rotate(12.85714285714284deg);
+    transform: rotate(-12.85714285714284deg) translate(45vh) rotate(12.85714285714284deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(8) {
-    transform: rotate(1.8e-14deg) translate(295px) rotate(-1.8e-14deg);
+    transform: rotate(1.8e-14deg) translate(45vh) rotate(-1.8e-14deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(9) {
-    transform: rotate(12.857142857142875deg) translate(295px) rotate(-12.857142857142875deg);
+    transform: rotate(12.857142857142875deg) translate(45vh) rotate(-12.857142857142875deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(10) {
-    transform: rotate(25.714285714285733deg) translate(295px) rotate(-25.714285714285733deg);
+    transform: rotate(25.714285714285733deg) translate(45vh) rotate(-25.714285714285733deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(11) {
-    transform: rotate(38.57142857142859deg) translate(295px) rotate(-38.57142857142859deg);
+    transform: rotate(38.57142857142859deg) translate(45vh) rotate(-38.57142857142859deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(12) {
-    transform: rotate(51.428571428571445deg) translate(295px) rotate(-51.428571428571445deg);
+    transform: rotate(51.428571428571445deg) translate(45vh) rotate(-51.428571428571445deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(13) {
-    transform: rotate(64.2857142857143deg) translate(295px) rotate(-64.2857142857143deg);
+    transform: rotate(64.2857142857143deg) translate(45vh) rotate(-64.2857142857143deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(14) {
-    transform: rotate(77.14285714285717deg) translate(295px) rotate(-77.14285714285717deg);
+    transform: rotate(77.14285714285717deg) translate(45vh) rotate(-77.14285714285717deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(15) {
-    transform: rotate(90.00000000000003deg) translate(295px) rotate(-90.00000000000003deg);
+    transform: rotate(90.00000000000003deg) translate(45vh) rotate(-90.00000000000003deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(16) {
-    transform: rotate(102.85714285714289deg) translate(295px) rotate(-102.85714285714289deg);
+    transform: rotate(102.85714285714289deg) translate(45vh) rotate(-102.85714285714289deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(17) {
-    transform: rotate(115.71428571428575deg) translate(295px) rotate(-115.71428571428575deg);
+    transform: rotate(115.71428571428575deg) translate(45vh) rotate(-115.71428571428575deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(18) {
-    transform: rotate(128.5714285714286deg) translate(295px) rotate(-128.5714285714286deg);
+    transform: rotate(128.5714285714286deg) translate(45vh) rotate(-128.5714285714286deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(19) {
-    transform: rotate(141.42857142857147deg) translate(295px) rotate(-141.42857142857147deg);
+    transform: rotate(141.42857142857147deg) translate(45vh) rotate(-141.42857142857147deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(20) {
-    transform: rotate(154.28571428571433deg) translate(295px) rotate(-154.28571428571433deg);
+    transform: rotate(154.28571428571433deg) translate(45vh) rotate(-154.28571428571433deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(21) {
-    transform: rotate(167.1428571428572deg) translate(295px) rotate(-167.1428571428572deg);
+    transform: rotate(167.1428571428572deg) translate(45vh) rotate(-167.1428571428572deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(22) {
-    transform: rotate(180.00000000000006deg) translate(295px) rotate(-180.00000000000006deg);
+    transform: rotate(180.00000000000006deg) translate(45vh) rotate(-180.00000000000006deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(23) {
-    transform: rotate(192.85714285714292deg) translate(295px) rotate(-192.85714285714292deg);
+    transform: rotate(192.85714285714292deg) translate(45vh) rotate(-192.85714285714292deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(24) {
-    transform: rotate(205.71428571428578deg) translate(295px) rotate(-205.71428571428578deg);
+    transform: rotate(205.71428571428578deg) translate(45vh) rotate(-205.71428571428578deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(25) {
-    transform: rotate(218.57142857142864deg) translate(295px) rotate(-218.57142857142864deg);
+    transform: rotate(218.57142857142864deg) translate(45vh) rotate(-218.57142857142864deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(26) {
-    transform: rotate(231.4285714285715deg) translate(295px) rotate(-231.4285714285715deg);
+    transform: rotate(231.4285714285715deg) translate(45vh) rotate(-231.4285714285715deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(27) {
-    transform: rotate(244.28571428571436deg) translate(295px) rotate(-244.28571428571436deg);
+    transform: rotate(244.28571428571436deg) translate(45vh) rotate(-244.28571428571436deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(28) {
-    transform: rotate(257.1428571428572deg) translate(295px) rotate(-257.1428571428572deg);
+    transform: rotate(257.1428571428572deg) translate(45vh) rotate(-257.1428571428572deg);
     text-align: center;
   }
   #list_artists > *:nth-of-type(3) {
@@ -825,6 +842,11 @@ span.lign_header {
     margin-left: -126px;
   }
 }
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  #list_artists {
+    display: none;
+  }
+}
 #list_artists li a {
   bottom: 0;
   font-size: 0.65em;
@@ -875,6 +897,18 @@ span.lign_header {
   #list_artists li a span.txt {
     display: inline-block;
     line-height: 1.1em;
+  }
+}
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  #list_artists li a span.txt {
+    display: none;
+  }
+  #list_artists li a span.dot {
+    background: #979797;
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
   }
 }
 .video-container {
@@ -1187,6 +1221,21 @@ span.lign_header {
     opacity: 0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
+  }
+}
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  #smallmap {
+    display: none;
+  }
+}
+@media screen and (max-height: 650px) and (orientation: landscape) {
+  #smallmap {
+    width: 55%;
+  }
+}
+@media screen and (max-height: 620px) and (orientation: landscape) {
+  #smallmap {
+    display: none;
   }
 }
 .demi_cercle,
@@ -1551,8 +1600,14 @@ span.lign_header {
 }
 @media screen and (min-width: 70em) and (orientation: landscape) {
   .tuto {
-    width: calc(100% - 370px);
-    margin-left: 370px;
+    width: calc(100% - 350px);
+    margin-left: 350px;
+  }
+}
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  .tuto {
+    width: calc(100% - 150px);
+    margin-left: 150px;
   }
 }
 .tuto .warp_tuto {
@@ -1598,10 +1653,20 @@ span.lign_header {
     width: 130px;
   }
 }
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  .tuto .fleche {
+    display: none;
+  }
+}
 .tuto .btn_get_it {
   display: inline-block;
   padding: 0 20px;
   margin: 15px;
+}
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  .tuto .btn_get_it {
+    font-size: 0.7em;
+  }
 }
 .tuto .hand {
   position: absolute;
@@ -1645,11 +1710,11 @@ span.lign_header {
 }
 @media screen and (orientation: landscape) {
   #marker {
-    height: 140px;
+    height: -71.5vh;
   }
   #marker svg {
     width: auto;
-    height: 140px;
+    height: -71.5vh;
   }
 }
 .circular_mask {
@@ -1686,8 +1751,8 @@ span.lign_header {
 }
 @media screen and (orientation: landscape) {
   .size_disk {
-    width: 500px;
-    height: 500px;
+    width: 77vh;
+    height: 77vh;
     max-width: 90vh;
     max-height: 90vh;
   }
@@ -1695,13 +1760,11 @@ span.lign_header {
 .size_platine {
   width: 90vw;
   height: 90vw;
-  max-width: 78vh;
-  max-height: 78vh;
 }
 @media screen and (orientation: landscape) {
   .size_platine {
-    width: 535px;
-    height: 535px;
+    width: 83vh;
+    height: 83vh;
   }
 }
 #mask_video {
@@ -1735,8 +1798,8 @@ span.lign_header {
 }
 @media screen and (orientation: landscape) {
   .lign_svg {
-    width: 490px;
-    height: 490px;
+    width: 77vh;
+    height: 77vh;
   }
 }
 #play-video-btn,
@@ -1793,7 +1856,7 @@ span.lign_header {
   bottom: auto;
   top: 5px;
 }
-@media screen and (min-width: 48em) and (orientation: landscape) {
+@media screen and (max-width: 48em) and (orientation: landscape) {
   #play-video-btn-mobile {
     left: auto;
     right: 5px;
@@ -1836,7 +1899,7 @@ span.lign_header {
     right: 30px;
   }
 }
-@media screen and (min-width: 48em) and (orientation: landscape) {
+@media screen and (max-width: 48em) and (orientation: landscape) {
   #pause-video-btn {
     bottom: 5px;
     right: 5px;

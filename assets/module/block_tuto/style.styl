@@ -5,8 +5,13 @@
 		margin-left 300px
 		
 	@media $landscape_desktop
-		width calc(100% - 370px)
-		margin-left 370px
+		width calc(100% - 350px)
+		margin-left 350px
+	
+	@media $mobile_landscape
+		width calc(100% - 150px)
+		margin-left 150px
+	
 	
 	.warp_tuto
 		text-align center
@@ -40,10 +45,16 @@
 			left 12%
 			width 130px
 		
+		@media $mobile_landscape
+			display none
+		
 	.btn_get_it
 		display inline-block
 		padding 0 20px
 		margin 15px
+		
+		@media $mobile_landscape
+			font-size .7em
 		
 	.hand
 		position absolute

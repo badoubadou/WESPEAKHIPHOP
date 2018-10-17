@@ -94,8 +94,13 @@ html
 		margin-left 300px
 	
 	@media $landscape_desktop
-		width calc(100% - 370px)
-		margin-left 370px
+		width calc(100% - 350px)
+		margin-left 350px
+	
+	@media $mobile_landscape
+		width calc(100% - 150px)
+		margin-left 150px
+	
 		
 #left_col
 	height 20vh
@@ -106,12 +111,15 @@ html
 		position absolute
 	
 	@media $landscape_desktop	
-		width 370px
+		width 350px
 		height "calc(100% - %s)" % ($height_footer)
 		background $yellow
 		position absolute
 		
-
+	@media $mobile_landscape
+		width 150px
+		height "calc(100% - %s)" % ($height_footer)
+		
 
 .logo-black-st0
 	fill #000000

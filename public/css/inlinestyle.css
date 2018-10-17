@@ -649,8 +649,14 @@ html {
 }
 @media screen and (min-width: 70em) and (orientation: landscape) {
   #main {
-    width: calc(100% - 370px);
-    margin-left: 370px;
+    width: calc(100% - 350px);
+    margin-left: 350px;
+  }
+}
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  #main {
+    width: calc(100% - 150px);
+    margin-left: 150px;
   }
 }
 #left_col {
@@ -666,10 +672,16 @@ html {
 }
 @media screen and (min-width: 70em) and (orientation: landscape) {
   #left_col {
-    width: 370px;
+    width: 350px;
     height: calc(100% - 40px);
     background: #ffce00;
     position: absolute;
+  }
+}
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  #left_col {
+    width: 150px;
+    height: calc(100% - 40px);
   }
 }
 .logo-black-st0 {
