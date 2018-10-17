@@ -736,6 +736,7 @@ html {
 }
 #popin .intro_page .btn_intro a {
   visibility: hidden;
+  opacity: 0;
 }
 #popin .intro_page .btn {
   margin-left: 20px;

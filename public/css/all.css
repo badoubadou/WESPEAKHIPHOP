@@ -2231,6 +2231,12 @@ span.lign_header {
   #list_artists > *:nth-of-type(28) {
     text-align: left;
   }
+  #list_artists > *:nth-of-type(13) {
+    margin-left: -20px;
+  }
+  #list_artists > *:nth-of-type(16) {
+    margin-left: -20px;
+  }
 }
 @media screen and (min-width: 70em) and (orientation: landscape) {
   #list_artists > *:nth-of-type(3) {
@@ -2430,6 +2436,9 @@ span.lign_header {
 }
 #popin .intro_page .btn_intro a {
   visibility: hidden;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
 }
 #popin .intro_page .btn {
   margin-left: 20px;
@@ -3201,15 +3210,13 @@ span.lign_header {
   -o-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  width: 85vw;
-  height: 85vw;
-  max-width: 74vh;
-  max-height: 74vh;
+  width: 83vw;
+  height: 83vw;
 }
 @media screen and (orientation: landscape) {
   .lign_svg {
-    width: 73vh;
-    height: 73vh;
+    width: 71vh;
+    height: 71vh;
   }
 }
 #play-video-btn,
@@ -3306,7 +3313,7 @@ span.lign_header {
 }
 @media screen and (orientation: landscape) {
   #pause-video-btn {
-    right: 30px;
+    right: 90px;
   }
 }
 @media screen and (max-width: 48em) and (orientation: landscape) {

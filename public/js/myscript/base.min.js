@@ -260,7 +260,7 @@
       }
 
       bindEvents() {
-        var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, controls, that, vid_intro_finished;
+        var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, that, vid_intro_finished;
         that = this;
         if (!$('body').hasClass('doc-ready')) {
           $('body').on('doc-ready', function() {
@@ -349,8 +349,22 @@
           }
         });
         //------------------- PLAYER YOUTUBE -------------------#
-        controls = '<div class="plyr__controls"> <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play"> <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-pause"></use></svg> <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-play"></use></svg> <span class="label--pressed plyr__tooltip" role="tooltip">Pause</span> <span class="label--not-pressed plyr__tooltip" role="tooltip">Play</span> </button> <div class="plyr__progress"> <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek"> <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress> <span role="tooltip" class="plyr__tooltip">00:00</span> </div> </div>';
-        this.playerYT = new Plyr('#playerYT', {controls});
+        // controls = '<div class="plyr__controls">
+        //     <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play">
+        //         <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-pause"></use></svg>
+        //         <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-play"></use></svg>
+        //         <span class="label--pressed plyr__tooltip" role="tooltip">Pause</span>
+        //         <span class="label--not-pressed plyr__tooltip" role="tooltip">Play</span>
+        //     </button>
+        //     <div class="plyr__progress">
+        //         <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek">
+        //         <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress>
+        //         <span role="tooltip" class="plyr__tooltip">00:00</span>
+        //     </div>
+        // </div>'
+        this.playerYT = new Plyr('#playerYT', {
+          controls: ['play', 'progress', 'captions']
+        });
         
         //------------------- PLAYER YOUTUBE IS READY -------------------#
         this.playerYT.on('ready', function(event) {
@@ -462,7 +476,8 @@
               }
             ]
           };
-          $('#popin').removeClass('hide').trigger('classChange');
+          $('#popin').trigger('showVideo');
+          $('#popin').trigger('classChange');
         });
       }
 
@@ -515,6 +530,9 @@
           $('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
           $('#popin').toggleClass('hide').trigger('classChange');
           $($target).removeClass('hide');
+          if ($target === '.video-container') {
+            $('.video-container').addClass('trans');
+          }
           that.timelinePopin = new TimelineMax({
             onReverseComplete: that.afterclose
           });
@@ -567,8 +585,11 @@
             return showPopin('#shareinfo');
           }
         });
-        return $('#close, #back').on('click', function() {
+        $('#close, #back').on('click', function() {
           return that.closePopin();
+        });
+        return $('#popin').on('showVideo', function() {
+          return showPopin('.video-container');
         });
       }
 
@@ -1178,7 +1199,7 @@
         var that;
         console.log('---> load lign');
         that = this;
-        return $.get('https://d2e3lhf7z9v1b2.cloudfront.net/lign.svg', function(data) {
+        return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/lign.svg', function(data) {
           var div;
           console.log('---> lign loaded');
           div = document.createElement('div');

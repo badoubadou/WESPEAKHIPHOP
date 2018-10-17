@@ -28,6 +28,8 @@ class popin
 			$('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
 			$('#popin').toggleClass('hide').trigger 'classChange'
 			$($target).removeClass('hide')
+			if($target == '.video-container')
+				$('.video-container').addClass 'trans'
 			that.timelinePopin = new TimelineMax({onReverseComplete:that.afterclose})
 			that.timelinePopin.from('#popin', .6 ,{opacity: 0, ease:Power3.easeOut})
 				.fromTo($target, 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
@@ -58,5 +60,8 @@ class popin
 
 		$('#close, #back').on 'click', ->
 			that.closePopin()
+
+		$('#popin').on 'showVideo', ->
+			showPopin('.video-container')
 
 module.popin = popin

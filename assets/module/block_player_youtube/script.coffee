@@ -123,21 +123,21 @@ class player_video_youtube
 				GoOutFullscreen()
 
 		#------------------- PLAYER YOUTUBE -------------------#
-		controls = '<div class="plyr__controls">
-		    <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play">
-		        <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-pause"></use></svg>
-		        <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-play"></use></svg>
-		        <span class="label--pressed plyr__tooltip" role="tooltip">Pause</span>
-		        <span class="label--not-pressed plyr__tooltip" role="tooltip">Play</span>
-		    </button>
-		    <div class="plyr__progress">
-		        <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek">
-		        <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress>
-		        <span role="tooltip" class="plyr__tooltip">00:00</span>
-		    </div>
-		</div>'
+		# controls = '<div class="plyr__controls">
+		#     <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play">
+		#         <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-pause"></use></svg>
+		#         <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-play"></use></svg>
+		#         <span class="label--pressed plyr__tooltip" role="tooltip">Pause</span>
+		#         <span class="label--not-pressed plyr__tooltip" role="tooltip">Play</span>
+		#     </button>
+		#     <div class="plyr__progress">
+		#         <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek">
+		#         <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress>
+		#         <span role="tooltip" class="plyr__tooltip">00:00</span>
+		#     </div>
+		# </div>'
 
-		@playerYT = new Plyr('#playerYT', { controls })
+		@playerYT = new Plyr('#playerYT', { controls:['play', 'progress', 'captions'] })
 		
 		#------------------- PLAYER YOUTUBE IS READY -------------------#
 		@playerYT.on 'ready', (event) ->
@@ -247,7 +247,8 @@ class player_video_youtube
 					},
 				],
 			};
-			$('#popin').removeClass('hide').trigger 'classChange'
+			$('#popin').trigger 'showVideo'
+			$('#popin').trigger 'classChange'
 			return
 	
 module.player_video_youtube = player_video_youtube

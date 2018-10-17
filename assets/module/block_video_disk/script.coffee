@@ -205,7 +205,7 @@ class player_video
 	loadLign : ->
 		console.log '---> load lign'
 		that = @
-		$.get 'https://d2e3lhf7z9v1b2.cloudfront.net/lign.svg', (data) ->
+		$.get 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/lign.svg', (data) ->
 			console.log '---> lign loaded'
 			div = document.createElement('div')
 			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
