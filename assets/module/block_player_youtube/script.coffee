@@ -14,8 +14,8 @@ class player_video_youtube
 		if(!$('.video-container').hasClass('customised'))
 			@customizePlayerYT()
 		$('.lds-dual-ring').trigger 'hidespiner'
-		TweenMax.set(['.txt_intro', '.btn_intro'],{autoAlpha:0,display:"none"});
-		TweenMax.staggerFromTo(['.txt_intro', '.btn_intro'],.8, {autoAlpha:0, display:"block", y:-10},{autoAlpha:1, y:0, ease:Power1.easeOut}, 0.5);
+		TweenMax.set(['.btn_intro a'],{autoAlpha:0,visibility:"hidden"});
+		TweenMax.staggerFromTo('.btn_intro a',.8, {autoAlpha:0, visibility:"visible", y:-10},{autoAlpha:1, y:0, ease:Power1.easeOut}, 0.5);
 		@playerYT.play()
 
 	customizePlayerYT : ->

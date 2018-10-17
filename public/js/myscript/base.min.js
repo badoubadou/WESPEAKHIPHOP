@@ -210,13 +210,13 @@
           this.customizePlayerYT();
         }
         $('.lds-dual-ring').trigger('hidespiner');
-        TweenMax.set(['.txt_intro', '.btn_intro'], {
+        TweenMax.set(['.btn_intro a'], {
           autoAlpha: 0,
-          display: "none"
+          visibility: "hidden"
         });
-        TweenMax.staggerFromTo(['.txt_intro', '.btn_intro'], .8, {
+        TweenMax.staggerFromTo('.btn_intro a', .8, {
           autoAlpha: 0,
-          display: "block",
+          visibility: "visible",
           y: -10
         }, {
           autoAlpha: 1,

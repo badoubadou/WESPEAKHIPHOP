@@ -731,6 +731,12 @@ html {
   width: 80%;
   max-width: 240px;
 }
+#popin .intro_page .btn_intro {
+  margin-top: 20px;
+}
+#popin .intro_page .btn_intro a {
+  visibility: hidden;
+}
 #popin .intro_page .btn {
   margin-left: 20px;
 }
