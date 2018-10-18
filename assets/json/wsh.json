@@ -4,7 +4,7 @@
       "title": "wespeakhiphop",
       "link": "http://wespeakhiphop.romza.eu",
       "description": "Just another Romain Malauzat Illustration Sites site",
-      "pubDate": "Tue, 09 Oct 2018 13:39:12 +0000",
+      "pubDate": "Thu, 18 Oct 2018 12:29:18 +0000",
       "language": "en-US",
       "wxr_version": "1.2",
       "base_site_url": "http://romza.eu/",
@@ -32,6 +32,48 @@
          }
       ],
       "term": [
+         {
+            "term_id": "141",
+            "term_taxonomy": "pays",
+            "term_slug": "belgique",
+            "term_parent": null,
+            "term_name": "Belgique"
+         },
+         {
+            "term_id": "143",
+            "term_taxonomy": "pays",
+            "term_slug": "belgique-2",
+            "term_parent": null,
+            "term_name": "Belgique"
+         },
+         {
+            "term_id": "145",
+            "term_taxonomy": "pays",
+            "term_slug": "belgique-3",
+            "term_parent": null,
+            "term_name": "Belgique"
+         },
+         {
+            "term_id": "149",
+            "term_taxonomy": "pays",
+            "term_slug": "belgium",
+            "term_parent": null,
+            "term_name": "Belgium"
+         },
+         {
+            "term_id": "151",
+            "term_taxonomy": "pays",
+            "term_slug": "belgium-2",
+            "term_parent": null,
+            "term_name": "Belgium"
+         },
+         {
+            "term_id": "147",
+            "term_taxonomy": "pays",
+            "term_slug": "belgiun",
+            "term_parent": null,
+            "term_name": "Belgiun"
+         },
          {
             "term_id": "15",
             "term_taxonomy": "pays",
@@ -109,6 +151,20 @@
             "term_slug": "pll_en",
             "term_parent": null,
             "term_name": "English"
+         },
+         {
+            "term_id": "153",
+            "term_taxonomy": "pays",
+            "term_slug": "etats-unis",
+            "term_parent": null,
+            "term_name": "Etats-Unis"
+         },
+         {
+            "term_id": "155",
+            "term_taxonomy": "pays",
+            "term_slug": "etats-unis-2",
+            "term_parent": null,
+            "term_name": "Etats-Unis"
          },
          {
             "term_id": "20",
@@ -635,6 +691,70 @@
             "term_description": "a:2:{s:2:\"en\";i:94;s:2:\"fr\";i:27;}"
          },
          {
+            "term_id": "142",
+            "term_taxonomy": "term_translations",
+            "term_slug": "pll_5bc7776495eb4",
+            "term_parent": null,
+            "term_name": "pll_5bc7776495eb4",
+            "term_description": "a:1:{s:2:\"fr\";i:141;}"
+         },
+         {
+            "term_id": "144",
+            "term_taxonomy": "term_translations",
+            "term_slug": "pll_5bc7777a57f34",
+            "term_parent": null,
+            "term_name": "pll_5bc7777a57f34",
+            "term_description": "a:1:{s:2:\"fr\";i:143;}"
+         },
+         {
+            "term_id": "146",
+            "term_taxonomy": "term_translations",
+            "term_slug": "pll_5bc7778923a7d",
+            "term_parent": null,
+            "term_name": "pll_5bc7778923a7d",
+            "term_description": "a:1:{s:2:\"fr\";i:145;}"
+         },
+         {
+            "term_id": "148",
+            "term_taxonomy": "term_translations",
+            "term_slug": "pll_5bc777ba4f6d5",
+            "term_parent": null,
+            "term_name": "pll_5bc777ba4f6d5",
+            "term_description": "a:1:{s:2:\"en\";i:147;}"
+         },
+         {
+            "term_id": "150",
+            "term_taxonomy": "term_translations",
+            "term_slug": "pll_5bc777c083212",
+            "term_parent": null,
+            "term_name": "pll_5bc777c083212",
+            "term_description": "a:1:{s:2:\"en\";i:149;}"
+         },
+         {
+            "term_id": "152",
+            "term_taxonomy": "term_translations",
+            "term_slug": "pll_5bc777c8504e5",
+            "term_parent": null,
+            "term_name": "pll_5bc777c8504e5",
+            "term_description": "a:1:{s:2:\"en\";i:151;}"
+         },
+         {
+            "term_id": "154",
+            "term_taxonomy": "term_translations",
+            "term_slug": "pll_5bc7780321566",
+            "term_parent": null,
+            "term_name": "pll_5bc7780321566",
+            "term_description": "a:1:{s:2:\"fr\";i:153;}"
+         },
+         {
+            "term_id": "156",
+            "term_taxonomy": "term_translations",
+            "term_slug": "pll_5bc7780592bec",
+            "term_parent": null,
+            "term_name": "pll_5bc7780592bec",
+            "term_description": "a:1:{s:2:\"fr\";i:155;}"
+         },
+         {
             "term_id": "42",
             "term_taxonomy": "pays",
             "term_slug": "senegal",
@@ -878,11 +998,11 @@
             "postmeta": [
                {
                   "meta_key": "_ratio_video",
-                  "meta_value": "16"
+                  "meta_value": "4"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=1L4Zm1NYuK8"
+                  "meta_value": "https://www.youtube.com/watch?time_continue=36&v=Q98bKf7jI_8&ab_channel=WESPEAKHIPHOP"
                },
                {
                   "meta_key": "tag_line",
@@ -968,11 +1088,11 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=Zmb4nX5bYEk"
+                  "meta_value": "https://www.youtube.com/watch?v=9nHOLNnrgpo&ab_channel=WESPEAKHIPHOP"
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Pour l’amour de&nbsp;l’art"
+                  "meta_value": "Pour l’amour de l’art"
                },
                {
                   "meta_key": "description",
@@ -1049,16 +1169,16 @@
             ],
             "postmeta": [
                {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
+                  "meta_key": "_edit_last",
+                  "meta_value": "1"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=AWU-IHFYgfE"
+                  "meta_value": "https://www.youtube.com/watch?time_continue=1&v=ob_xKCz190Q&ab_channel=WESPEAKHIPHOP"
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "<q>L’essence du hip-hop c’est le&nbsp;défi<\/q>"
+                  "meta_value": "<q>L’essence du hip-hop c’est le défi<\/q>"
                },
                {
                   "meta_key": "description",
@@ -1091,7 +1211,7 @@
             ]
          },
          {
-            "title": "JeanJass et Caballero",
+            "title": "JeanJass<br \/>& Caballero",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/jeanjass/",
             "pubDate": "Thu, 12 Jul 2018 14:26:26 +0000",
             "creator": "romain",
@@ -1124,8 +1244,8 @@
                },
                {
                   "domain": "pays",
-                  "nicename": "france",
-                  "#text": "France"
+                  "nicename": "belgique",
+                  "#text": "Belgique"
                },
                {
                   "domain": "post_translations",
@@ -1136,11 +1256,11 @@
             "postmeta": [
                {
                   "meta_key": "_ratio_video",
-                  "meta_value": "16"
+                  "meta_value": "4"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=z240KTpmMFo"
+                  "meta_value": "https://www.youtube.com/watch?v=7Yu7JnLeLOg&ab_channel=WESPEAKHIPHOP"
                },
                {
                   "meta_key": "tag_line",
@@ -1222,7 +1342,7 @@
             "postmeta": [
                {
                   "meta_key": "_ratio_video",
-                  "meta_value": "16"
+                  "meta_value": "4"
                },
                {
                   "meta_key": "video",
@@ -1230,7 +1350,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Satire à phases&nbsp;réelles"
+                  "meta_value": "Satire à phases réelles"
                },
                {
                   "meta_key": "description",
@@ -1307,8 +1427,8 @@
             ],
             "postmeta": [
                {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
+                  "meta_key": "_edit_last",
+                  "meta_value": "1"
                },
                {
                   "meta_key": "video",
@@ -1479,8 +1599,8 @@
             ],
             "postmeta": [
                {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
+                  "meta_key": "_edit_last",
+                  "meta_value": "1"
                },
                {
                   "meta_key": "video",
@@ -1488,7 +1608,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Colonel de la&nbsp;génération consciente"
+                  "meta_value": "<q>Colonel de la génération consciente<\/q>"
                },
                {
                   "meta_key": "description",
@@ -1660,7 +1780,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Une&nbsp;autocensure <q>positive<\/q>"
+                  "meta_value": "Une autocensure \"positive\""
                },
                {
                   "meta_key": "description",
@@ -1716,14 +1836,14 @@
             "is_sticky": "0",
             "category": [
                {
+                  "domain": "pays",
+                  "nicename": "etats-unis",
+                  "#text": "Etats-Unis"
+               },
+               {
                   "domain": "language",
                   "nicename": "fr",
                   "#text": "Français"
-               },
-               {
-                  "domain": "pays",
-                  "nicename": "usa",
-                  "#text": "USA"
                },
                {
                   "domain": "post_translations",
@@ -1733,12 +1853,12 @@
             ],
             "postmeta": [
                {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
+                  "meta_key": "_edit_last",
+                  "meta_value": "1"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=421pio73uDg"
+                  "meta_value": "https://www.youtube.com/watch?v=bwBbaswId3A&ab_channel=WESPEAKHIPHOP"
                },
                {
                   "meta_key": "tag_line",
@@ -1828,7 +1948,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Le son d’une&nbsp;génération debout"
+                  "meta_value": "Le son d’une génération debout"
                },
                {
                   "meta_key": "description",
@@ -1905,8 +2025,8 @@
             ],
             "postmeta": [
                {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
+                  "meta_key": "_edit_last",
+                  "meta_value": "1"
                },
                {
                   "meta_key": "video",
@@ -2000,7 +2120,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Pionnier mystique du rap&nbsp;israélien"
+                  "meta_value": "Pionnier mystique du rap israélien"
                },
                {
                   "meta_key": "description",
@@ -2168,7 +2288,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "les soupirs nihilistes du rap&nbsp;coréen"
+                  "meta_value": "les soupirs nihilistes du rap coréen"
                },
                {
                   "meta_key": "description",
@@ -2254,7 +2374,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Hip&nbsp;Hop&nbsp;marocain, rap the kasbah !"
+                  "meta_value": "Hip Hop marocain, rap the kasbah !"
                },
                {
                   "meta_key": "description",
@@ -2344,7 +2464,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": "Da Arabian MC's, or DAM, is one of the first Palestinian rap groups formed in the late 1990s. In Arabic as well as in Hebrew, the name of the crew means <q>blood<\/q>. Mahmoud Jrere, Tamer and Suhell Nafar sing in both languages, as well as in English, about the blood their brothers have spilt. They find their inspiration in literature, poetry and traditional Arabic music as much as in American rap. Their lyrics open a breach into another world. The group evokes memories of historical conflicts, but also speaks to feminism and the scourge of drugs in their home city of Lod, not far from Tel Aviv."
+                  "meta_value": "Da Arabian MC's, or DAM, is one of the first Palestinian rap groups formed in the late 1990s. In Arabic as well as in Hebrew, the name of the crew means \"blood\". Mahmoud Jrere, Tamer and Suhell Nafar sing in both languages, as well as in English, about the blood their brothers have spilt. They find their inspiration in literature, poetry and traditional Arabic music as much as in American rap. Their lyrics open a breach into another world. The group evokes memories of historical conflicts, but also speaks to feminism and the scourge of drugs in their home city of Lod, not far from Tel Aviv."
                },
                {
                   "meta_key": "date",
@@ -2499,8 +2619,8 @@
             ],
             "postmeta": [
                {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
+                  "meta_key": "_edit_last",
+                  "meta_value": "1"
                },
                {
                   "meta_key": "video",
@@ -2680,7 +2800,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "L’antigangsta de&nbsp;Jakarta"
+                  "meta_value": "L’antigangsta de Jakarta"
                },
                {
                   "meta_key": "description",
@@ -2766,7 +2886,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Chercheurs de&nbsp;sommets"
+                  "meta_value": "Chercheurs de sommets"
                },
                {
                   "meta_key": "description",
@@ -2945,8 +3065,8 @@
                   "meta_value": "2006"
                },
                {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
+                  "meta_key": "_edit_last",
+                  "meta_value": "1"
                },
                {
                   "meta_key": "_video",
@@ -3135,7 +3255,7 @@
             ]
          },
          {
-            "title": "Thaitanium / Eazy / South Side",
+            "title": "Thaitanium /<br \/>Eazy / South Side",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/thaitanium-eazy-south-side/",
             "pubDate": "Fri, 13 Jul 2018 13:38:05 +0000",
             "creator": "romain",
@@ -3188,11 +3308,11 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Le rap&nbsp;transfuge des Thaï New&#8209;Yorkais"
+                  "meta_value": "Le rap transfuge des Thaï New-Yorkais"
                },
                {
                   "meta_key": "description",
-                  "meta_value": "Enfants prodigues de la diaspora Thaïlandaise aux US, Khanngoen <q>Khan<\/q> Nuanual, P. Cess - Prinya <q>Way<\/q> Intachai, Sunny Day - Nay Mayo <q>Day<\/q> Thot comptent parmi les premiers importateurs du hip hop dans leur pays d’origine. Les deux albums succédant à la formation du groupe, en 2000, sont enregistrés à New York. Mais c’est bien à Bangkok, qu’ils rencontrent un succès populaire immédiat, comme les trois albums suivants."
+                  "meta_value": "Enfants prodigues de la diaspora Thaïlandaise aux US, Khanngoen \"Khan\" Nuanual, P. Cess - Prinya \"Way\" Intachai, Sunny Day - Nay Mayo \"Day\" Thot comptent parmi les premiers importateurs du hip hop dans leur pays d’origine. Les deux albums succédant à la formation du groupe, en 2000, sont enregistrés à New York. Mais c’est bien à Bangkok, qu’ils rencontrent un succès populaire immédiat, comme les trois albums suivants."
                },
                {
                   "meta_key": "date",
@@ -3311,7 +3431,7 @@
             ]
          },
          {
-            "title": "Daara J,",
+            "title": "Daara J",
             "link": "http://wespeakhiphop.romza.eu/fr/videos/daara/",
             "pubDate": "Fri, 13 Jul 2018 13:42:51 +0000",
             "creator": "romain",
@@ -3368,7 +3488,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": "Depuis leur rencontre au lycée, au début des années 1990, les sénégalais NDongo D et Faada Freddy ont écrit ensemble l’une des plus belles success stories du rap africain. Leur duo <q>Daara J<\/q> ramène avec force le hip hop à ses racines, qu’ils croient fermement arrimées à leur continent. Fiers héritiers d’Afrika Bambaataa, les deux artistes revendiquent un rap hybride. Trouvant sa source dans la tradition des griots africains, irriguée par des influences multiples (soul, rock, reggae… et bien sûr le hip hop originel du Bronx ), leur musique a conquis le public au Sénégal et séduit bien au-delà de la scène africaine. \nLe message, enfin, de NDongo D et Faada Freddy n’a pas changé depuis vingt ans. Paix, fraternité et solidarité sont les valeurs fondatrices de leur art. Une philosophie de vie concrétisée par un engagement durable au service de causes humanitaires."
+                  "meta_value": "Depuis leur rencontre au lycée, au début des années 1990, les sénégalais NDongo D et Faada Freddy ont écrit ensemble l’une des plus belles success stories du rap africain. Leur duo \"Daara J\" ramène avec force le hip hop à ses racines, qu’ils croient fermement arrimées à leur continent. Fiers héritiers d’Afrika Bambaataa, les deux artistes revendiquent un rap hybride. Trouvant sa source dans la tradition des griots africains, irriguée par des influences multiples (soul, rock, reggae… et bien sûr le hip hop originel du Bronx ), leur musique a conquis le public au Sénégal et séduit bien au-delà de la scène africaine. \nLe message, enfin, de NDongo D et Faada Freddy n’a pas changé depuis vingt ans. Paix, fraternité et solidarité sont les valeurs fondatrices de leur art. Une philosophie de vie concrétisée par un engagement durable au service de causes humanitaires."
                },
                {
                   "meta_key": "date",
@@ -3450,7 +3570,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Semeurs de&nbsp;chance"
+                  "meta_value": "Semeurs de chance"
                },
                {
                   "meta_key": "description",
@@ -3532,7 +3652,7 @@
                },
                {
                   "meta_key": "tag_line",
-                  "meta_value": "Chroniqueurs de&nbsp;la colère"
+                  "meta_value": "Chroniqueurs de la colère"
                },
                {
                   "meta_key": "description",
@@ -3622,7 +3742,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": "Some journalists poke their pens deep into the wound, and so the lyricists of Casa Crew go where it hurts most. Formed in 2003, the crew are pioneers of the <q>green and red<\/q> hip-hop of the Shereefian flag. \nWith their rap in Darija (an Arabic dialect), the focus of Masta Flow, Chaht Man, Jocker and Caprice is the streets of Morocco. With stabbing beats, they speak of misery, unemployment and the unspeakable evils of the Kingdom."
+                  "meta_value": "Some journalists poke their pens deep into the wound, and so the lyricists of Casa Crew go where it hurts most. Formed in 2003, the crew are pioneers of the \"green and red\" hip-hop of the Shereefian flag. \nWith their rap in Darija (an Arabic dialect), the focus of Masta Flow, Chaht Man, Jocker and Caprice is the streets of Morocco. With stabbing beats, they speak of misery, unemployment and the unspeakable evils of the Kingdom."
                },
                {
                   "meta_key": "date",
@@ -4032,7 +4152,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": "Rapping since the late 1990s, Bakary Blaise Beavogui, aka Masta G fully assumes his 100% political lyrics. Each and every song is a rallying call. \nThe Guinean rejects commercially-orientated hip-hop and embraces gangsta-rap in defense of human rights. Right from his first album in 2003, Elections Bata ly (The elections are approaching), Masta G rails against the democratic vacuum in his country led by the irremovable Lansana Conte. His unrepentant lyrics earned him a stay in prison for <q>incitement to violence and undermining State Security<\/q>."
+                  "meta_value": "Rapping since the late 1990s, Bakary Blaise Beavogui, aka Masta G fully assumes his 100% political lyrics. Each and every song is a rallying call. \nThe Guinean rejects commercially-orientated hip-hop and embraces gangsta-rap in defense of human rights. Right from his first album in 2003, Elections Bata ly (The elections are approaching), Masta G rails against the democratic vacuum in his country led by the irremovable Lansana Conte. His unrepentant lyrics earned him a stay in prison for \"incitement to violence and undermining State Security\"."
                },
                {
                   "meta_key": "date",
@@ -4285,8 +4405,8 @@
                   "meta_value": "2006"
                },
                {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
+                  "meta_key": "_edit_last",
+                  "meta_value": "1"
                },
                {
                   "meta_key": "_video",
@@ -4516,7 +4636,7 @@
             "postmeta": [
                {
                   "meta_key": "video",
-                  "meta_value": "https://youtu.be/PS1Os5ebVHg"
+                  "meta_value": "https://www.youtube.com/watch?v=dhK61RVfd9E&ab_channel=WESPEAKHIPHOP"
                },
                {
                   "meta_key": "tag_line",
@@ -4531,8 +4651,8 @@
                   "meta_value": "2017"
                },
                {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
+                  "meta_key": "_edit_last",
+                  "meta_value": "1"
                },
                {
                   "meta_key": "_video",
@@ -4613,8 +4733,8 @@
                   "meta_value": "2013"
                },
                {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
+                  "meta_key": "_edit_last",
+                  "meta_value": "1"
                },
                {
                   "meta_key": "_video",
@@ -4770,15 +4890,15 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": "Follow, on stage, the man who brought hip-hop to Senegal. With Tiken Jah Fakoli as background, and to the sound of the kora, chant with the crowd the lyrics of Africanist rap: <q>Quit the power!<\/q> Didier Awadi is the co-founder of Positive Black Soul, the group that popularized rap in West Africa in the 1990s. Partisan for a peaceful Africa, Awadi preaches hope and unity. Known for being a man of his word, the Senegalese rapper shares his microphone with major artists from the continent and beyond. Wyclef Jean, Ismaël Lo, Mary Ndiaye, Old Farka Toure and Alpha Blondy, among others, have featured with the ambassador of 100% made in Africa hip-hop."
+                  "meta_value": "Follow, on stage, the man who brought hip-hop to Senegal. With Tiken Jah Fakoli as background, and to the sound of the kora, chant with the crowd the lyrics of Africanist rap: \"Quit the power!\" Didier Awadi is the co-founder of Positive Black Soul, the group that popularized rap in West Africa in the 1990s. Partisan for a peaceful Africa, Awadi preaches hope and unity. Known for being a man of his word, the Senegalese rapper shares his microphone with major artists from the continent and beyond. Wyclef Jean, Ismaël Lo, Mary Ndiaye, Old Farka Toure and Alpha Blondy, among others, have featured with the ambassador of 100% made in Africa hip-hop."
                },
                {
                   "meta_key": "date",
                   "meta_value": "2007"
                },
                {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
+                  "meta_key": "_edit_last",
+                  "meta_value": "1"
                },
                {
                   "meta_key": "_video",
@@ -4852,7 +4972,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": "According to his official biography, Yehoshua Sofer was born in Jamaica, from where he would have drawn his ragga influences. His move to Israel followed a stay in Los Angeles, where he would have taken a liking to hip-hop culture, and trained with Chuck Norris. <q>Humus makes you stupid<\/q>; will that be the punch line that history will remember? In any case, it is the flagship title that in 1993 cemented the success of Sofer, aka Nigel Ha'Admor in Israel. The rapper has since abandoned his stage name to become the only teacher of a Hebrew warrior art that dates back thousands of years, and that he has now popularized - some would say invented."
+                  "meta_value": "According to his official biography, Yehoshua Sofer was born in Jamaica, from where he would have drawn his ragga influences. His move to Israel followed a stay in Los Angeles, where he would have taken a liking to hip-hop culture, and trained with Chuck Norris. \"Humus makes you stupid\"; will that be the punch line that history will remember? In any case, it is the flagship title that in 1993 cemented the success of Sofer, aka Nigel Ha'Admor in Israel. The rapper has since abandoned his stage name to become the only teacher of a Hebrew warrior art that dates back thousands of years, and that he has now popularized - some would say invented."
                },
                {
                   "meta_key": "date",
@@ -5016,7 +5136,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": "Prodigious children from the Thai diaspora, in the US Khanngoen <q>Khan<\/q> Nuanual, P. Cess - Prinya <q>Way<\/q> Intachai and Sunny Day - Nay Mayo <q>Day<\/q> Thot were among the first to import hip-hop to their country of origin. The first two albums of the group, released in 2000, were recorded in New York. But it's really in Bangkok, with their successive three albums, where they won critical acclaim."
+                  "meta_value": "Prodigious children from the Thai diaspora, in the US Khanngoen \"Khan\" Nuanual, P. Cess - Prinya \"Way\" Intachai and Sunny Day - Nay Mayo \"Day\" Thot were among the first to import hip-hop to their country of origin. The first two albums of the group, released in 2000, were recorded in New York. But it's really in Bangkok, with their successive three albums, where they won critical acclaim."
                },
                {
                   "meta_key": "date",
@@ -5106,7 +5226,7 @@
                },
                {
                   "meta_key": "_ratio_video",
-                  "meta_value": "16"
+                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -5127,7 +5247,7 @@
             ]
          },
          {
-            "title": "JeanJass et Caballero",
+            "title": "JeanJass<br \/>& Caballero",
             "link": "http://wespeakhiphop.romza.eu/en/videos/jeanjass-et-caballero/",
             "pubDate": "Thu, 16 Aug 2018 14:14:07 +0000",
             "creator": "romain",
@@ -5154,14 +5274,14 @@
             "is_sticky": "0",
             "category": [
                {
+                  "domain": "pays",
+                  "nicename": "belgium",
+                  "#text": "Belgium"
+               },
+               {
                   "domain": "language",
                   "nicename": "en",
                   "#text": "English"
-               },
-               {
-                  "domain": "pays",
-                  "nicename": "france",
-                  "#text": "France"
                },
                {
                   "domain": "post_translations",
@@ -5176,7 +5296,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://youtu.be/z240KTpmMFo"
+                  "meta_value": "https://www.youtube.com/watch?v=d7fJm-3JDVA&ab_channel=WESPEAKHIPHOP"
                },
                {
                   "meta_key": "description",
@@ -5188,7 +5308,7 @@
                },
                {
                   "meta_key": "_ratio_video",
-                  "meta_value": "16"
+                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -5258,7 +5378,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://youtu.be/wf7uBHOkNKk"
+                  "meta_value": "https://www.youtube.com/watch?v=FzX_AABqQv0&ab_channel=WESPEAKHIPHOP"
                },
                {
                   "meta_key": "description",
@@ -5340,7 +5460,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://youtu.be/BR1U65GQs0A"
+                  "meta_value": "https://www.youtube.com/watch?time_continue=36&v=cq5my0-JOj0&ab_channel=WESPEAKHIPHOP"
                },
                {
                   "meta_key": "description",
@@ -5352,7 +5472,7 @@
                },
                {
                   "meta_key": "_ratio_video",
-                  "meta_value": "16"
+                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -5405,14 +5525,14 @@
                   "#text": "English"
                },
                {
-                  "domain": "pays",
-                  "nicename": "usa",
-                  "#text": "USA"
-               },
-               {
                   "domain": "post_translations",
                   "nicename": "pll_5b758712bc14e",
                   "#text": "pll_5b758712bc14e"
+               },
+               {
+                  "domain": "pays",
+                  "nicename": "usa",
+                  "#text": "USA"
                }
             ],
             "postmeta": [
@@ -5422,7 +5542,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://youtu.be/h8_iKYFNiy8"
+                  "meta_value": "https://www.youtube.com/watch?v=-Y_65jQmMfc"
                },
                {
                   "meta_key": "description",
@@ -5433,8 +5553,8 @@
                   "meta_value": "2017"
                },
                {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
+                  "meta_key": "_edit_last",
+                  "meta_value": "1"
                },
                {
                   "meta_key": "_video",
@@ -5500,7 +5620,7 @@
             "postmeta": [
                {
                   "meta_key": "tag_line",
-                  "meta_value": "A <q>positive<\/q> self-censorship"
+                  "meta_value": "A \"positive\" self-censorship"
                },
                {
                   "meta_key": "video",
@@ -5508,7 +5628,7 @@
                },
                {
                   "meta_key": "description",
-                  "meta_value": "Joe Flizzow is a businessman, a pioneer of hip-hop in Malaysia. By the end of the 1990s, this MC had built on the solid foundation of his fame a small business empire called Kartel. Joe produces music and TV shows, owns labels, recruits talent and is creator of a line of spin-offs - all while remaining a rapper and producing his own hits! <q>I'm not attracted to gangsta life, but I like the gangsta mentality!<\/q> This concludes the demonstration."
+                  "meta_value": "Joe Flizzow is a businessman, a pioneer of hip-hop in Malaysia. By the end of the 1990s, this MC had built on the solid foundation of his fame a small business empire called Kartel. Joe produces music and TV shows, owns labels, recruits talent and is creator of a line of spin-offs - all while remaining a rapper and producing his own hits! \"I'm not attracted to gangsta life, but I like the gangsta mentality!” This concludes the demonstration."
                },
                {
                   "meta_key": "date",

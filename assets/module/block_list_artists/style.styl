@@ -7,24 +7,6 @@
 		on-circle(28, $size_name_circle_medium, 80px)
 		width 0
 		height 0
-		> *:nth-of-type(3)
-			padding-left 80px
-		> *:nth-of-type(5)
-			padding-left 60px
-		> *:nth-of-type(7)
-			padding-left 38px
-		> *:nth-of-type(12)
-			width 100px
-		> *:nth-of-type(21)
-			margin-left -60px
-		> *:nth-of-type(22)
-			margin-left -55px
-		> *:nth-of-type(23)
-			margin-left -60px
-		> *:nth-of-type(25)
-			margin-left -80px
-			width 100px
-			
 		> *:nth-of-type(1)
 			text-align center
 		> *:nth-of-type(2)
@@ -40,7 +22,7 @@
 		> *:nth-of-type(12)
 		> *:nth-of-type(13)
 		> *:nth-of-type(14)
-			text-align right
+			text-align left
 		> *:nth-of-type(15)
 			text-align center
 		> *:nth-of-type(16)
@@ -56,16 +38,83 @@
 		> *:nth-of-type(26)
 		> *:nth-of-type(27)
 		> *:nth-of-type(28)
-			text-align left
-		
+			text-align right
+		> *:nth-of-type(2)
+		> *:nth-of-type(3)
+		> *:nth-of-type(4)
+		> *:nth-of-type(5)
+		> *:nth-of-type(6)
+		> *:nth-of-type(7)
+		> *:nth-of-type(8)
+		> *:nth-of-type(9)
+		> *:nth-of-type(10)
+		> *:nth-of-type(11)
+		> *:nth-of-type(12)
 		> *:nth-of-type(13)
-			margin-left -20px
+		> *:nth-of-type(14)
+			margin-left 0
 		> *:nth-of-type(16)
-			margin-left -20px
+		> *:nth-of-type(17)
+		> *:nth-of-type(18)
+		> *:nth-of-type(19)
+		> *:nth-of-type(20)
+		> *:nth-of-type(21)
+		> *:nth-of-type(22)
+		> *:nth-of-type(23)
+		> *:nth-of-type(24)
+		> *:nth-of-type(25)
+		> *:nth-of-type(26)
+		> *:nth-of-type(27)
+		> *:nth-of-type(28)
+			margin-left -70px
+		> *:nth-of-type(7)
+			width 100px		
+		> *:nth-of-type(12)
+			width 100px		
+		> *:nth-of-type(3)
+			width 140px
+		> *:nth-of-type(25)
+			width 95px
+			margin-left -80px
 		
 	@media $landscape_desktop
+		on-circle(28, $size_name_circle_large, 80px)
+		width 0
+		height 0	
+		> *:nth-of-type(1)
+			text-align center
+		> *:nth-of-type(2)
 		> *:nth-of-type(3)
-			width 180px
+		> *:nth-of-type(4)
+		> *:nth-of-type(5)
+		> *:nth-of-type(6)
+		> *:nth-of-type(7)
+		> *:nth-of-type(8)
+		> *:nth-of-type(9)
+		> *:nth-of-type(10)
+		> *:nth-of-type(11)
+		> *:nth-of-type(12)
+		> *:nth-of-type(13)
+		> *:nth-of-type(14)
+			text-align left
+		> *:nth-of-type(15)
+			text-align center
+		> *:nth-of-type(16)
+		> *:nth-of-type(17)
+		> *:nth-of-type(18)
+		> *:nth-of-type(19)
+		> *:nth-of-type(20)
+		> *:nth-of-type(21)
+		> *:nth-of-type(22)
+		> *:nth-of-type(23)
+		> *:nth-of-type(24)
+		> *:nth-of-type(25)
+		> *:nth-of-type(26)
+		> *:nth-of-type(27)
+		> *:nth-of-type(28)
+			text-align right
+		> *:nth-of-type(3)
+			width 250px
 		> *:nth-of-type(10)
 			width 110px
 			padding-left 20px
@@ -75,14 +124,9 @@
 		> *:nth-of-type(23)
 			width 130px
 			margin-left -126px
-	
+		
 	@media $mobile_landscape
 		display none
-
-	// @media $large_screen
-	// 	on-circle(28, $size_name_circle_large, 80px)
-	// 	width 0
-	// 	height 0
 
 	li a
 		bottom 0
@@ -112,13 +156,14 @@
 			font-size 1em
 			font-weight 500
 			transition opacity .5s ease
+			opacity 0
 			@media $landscape
 				display block
 	
-		// &:hover
-		// &.selected	
-		// 	.warp_contry
-		// 		opacity 1
+		&:hover
+		&.selected	
+			.warp_contry
+				opacity 1
 		@media $landscape
 			span.dot
 				display none

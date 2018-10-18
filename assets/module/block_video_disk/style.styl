@@ -45,7 +45,14 @@
 		video
 			width $size_video_medium
 			height $size_video_medium
-			
+	
+	// @media $landscape_desktop
+	// 	width $size_video_large
+	// 	height $size_video_large
+	// 	.player-dimensions
+	// 	video
+	// 		width $size_video_large
+	// 		height $size_video_large		
 		
 .size_disk
 	width $size_disk_small
@@ -57,19 +64,27 @@
 		width $size_disk_medium
 		height $size_disk_medium
 		max-width 90vh
+		max-height 90vh	
+
+	@media $landscape_desktop
+		width $size_disk_large
+		height $size_disk_large
+		max-width 90vh
 		max-height 90vh
 
-	
 
 .size_platine
 	width $size_platine_small
 	height $size_platine_small
-	// max-width 78vh
-	// max-height 78vh
-	
+
 	@media $landscape
 		width $size_platine_medium
 		height $size_platine_medium
+	
+	@media $landscape_desktop
+		width $size_platine_large
+		height $size_platine_large
+	
 	
 #mask_video
 	border 3px solid #000
@@ -90,12 +105,13 @@
 	center()
 	width $size_ligndisk_small
 	height $size_ligndisk_small
-	// max-width 74vh
-	// max-height 74vh
 	
 	@media $landscape
 		width $size_ligndisk_medium
 		height $size_ligndisk_medium
+	@media $landscape_desktop
+		width $size_ligndisk_large
+		height $size_ligndisk_large
 	
 	
 #play-video-btn
@@ -107,12 +123,11 @@
 	height 20px
 	text-align center
 	align_middle()
-	font-size .6em
+	// font-size .6em
 	padding 0 15px
-	width 90px
+	width 125px
 	bottom 40px
 	span
-		top 1px
 		position relative
 	.triangle
 		position absolute
@@ -147,7 +162,7 @@
 	right 10px
 	position absolute
 	padding 0px 20px
-	font-size .7em
+	// font-size .7em
 	span:last-child
 		display none
 	
@@ -160,6 +175,9 @@
 			display inline-block
 	
 	@media $landscape
+		right 50px
+	
+	@media $landscape_desktop
 		right 90px
 	
 	@media $mobile_landscape

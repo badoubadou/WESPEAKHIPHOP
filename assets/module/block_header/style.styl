@@ -15,7 +15,8 @@
 		width auto
 		display block
 		position relative	
-	
+		margin 30px
+		
 	@media $mobile_landscape
 		height calc( 100% - 225px)
 		margin 15px 5px
@@ -44,6 +45,15 @@ h1
 		width 100%
 		max-height 100%
 		center()
+		@media $landscape
+			top 0
+			transform none
+			align_middle()
+		
+		@media $mobile_landscape
+			top 0
+			transform none
+			align_middle()
 	
 span.lign_header
 	display block

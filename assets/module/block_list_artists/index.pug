@@ -8,7 +8,8 @@ ul#list_artists.layer_top
 				li
 					a(href=youtube_link, data-ratiovideo=youtube_ratio, title=video.title )
 						span.dot
-						span.txt= video.title
+						span.txt 
+							| !{video.title}
 						.warp_contry
 							each cat in video.category
 								if cat.domain == 'pays'

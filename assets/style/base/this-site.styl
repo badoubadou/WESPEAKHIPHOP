@@ -88,7 +88,8 @@ html
 	background $light-yellow
 	background-color $light-yellow
 
-#main
+.mainwidth
+	width 100%
 	@media $landscape
 		width calc(100% - 300px)
 		margin-left 300px
@@ -100,7 +101,9 @@ html
 	@media $mobile_landscape
 		width calc(100% - 150px)
 		margin-left 150px
-	
+
+#main
+	@extend .mainwidth
 		
 #left_col
 	height 20vh

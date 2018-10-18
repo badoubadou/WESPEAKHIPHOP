@@ -25,16 +25,19 @@
 		vert_align_middle()
 		font-size .8em
 		height 100%
+		width calc( 100% - 20px)
 		@media $landscape
+			width  100%
 			font-size 1.5em
-		@media $landscape_desktop
-			font-size 1.8em
+		// @media $landscape_desktop
+		// 	font-size 1.8em
 		
 		&.ontop
 			z-index 2
 			
 		.warper
 			opacity 0
+			vert_align_middle()
 		
 		span
 			display block
@@ -80,15 +83,18 @@
 		.date
 			letter-spacing -1px
 			
-			q
-				font-style italic
-				&:after
-				&:before
-					font-family $ft-family-primary
+		q
+			font-style italic
+			&:after
+			&:before
+				font-family $ft-family-primary
 					
 		.warp_contry_date
 			display inline-block		
 		
+		.date
+			padding-right 10px
+
 		.date
 		.contry
 			font-weight 100
@@ -101,8 +107,8 @@
 		#about-btn
 			background #333333
 			color #fff
-			font-size .5em
-			margin 0 0 0 5px
+			// font-size .5em
+			margin 5px 0 0 0
 			padding 0 10px
 			display inline-block
 			top -5px
@@ -114,8 +120,8 @@
 				margin 10px 0
 				padding 0 15px
 				display block
-				background $yellow
-				color #333333
+				// background $yellow
+				// color #333333
 	
 	@media $landscape
 		height 285px
@@ -127,8 +133,8 @@
 		
 		li
 			bottom 0
-			width calc( 100% - 20px)
-			margin 0 10px
+			width calc( 100% - 40px)
+			margin 0 20px
 			padding 0
 			.warper
 				height auto

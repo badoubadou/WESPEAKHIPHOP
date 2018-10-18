@@ -1560,12 +1560,13 @@
     width: calc(100% - 40px);
   }
 }
-@media screen and (min-width: 70em) and (orientation: landscape) {
+@media screen and (min-width: 78em) and (orientation: landscape) {
   .header {
     z-index: 1;
     width: auto;
     display: block;
     position: relative;
+    margin: 30px;
   }
 }
 @media screen and (max-width: 48em) and (orientation: landscape) {
@@ -1605,6 +1606,24 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+@media screen and (orientation: landscape) {
+  .logoWSH svg {
+    top: 0;
+    transform: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  .logoWSH svg {
+    top: 0;
+    transform: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 span.lign_header {
   display: block;
@@ -1677,7 +1696,7 @@ span.lign_header {
     width: 300px;
   }
 }
-@media screen and (min-width: 70em) and (orientation: landscape) {
+@media screen and (min-width: 78em) and (orientation: landscape) {
   #block_help #warp_txt_help,
   #block_help #txt_help_disk,
   #block_help #txt_help_map {
@@ -1723,15 +1742,12 @@ span.lign_header {
   transform: translateY(-50%);
   font-size: 0.8em;
   height: 100%;
+  width: calc(100% - 20px);
 }
 @media screen and (orientation: landscape) {
   #artists_info li {
+    width: 100%;
     font-size: 1.5em;
-  }
-}
-@media screen and (min-width: 70em) and (orientation: landscape) {
-  #artists_info li {
-    font-size: 1.8em;
   }
 }
 #artists_info li.ontop {
@@ -1739,6 +1755,9 @@ span.lign_header {
 }
 #artists_info li .warper {
   opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 #artists_info li span {
   display: block;
@@ -1786,18 +1805,18 @@ span.lign_header {
 #artists_info li .date {
   letter-spacing: -1px;
 }
-#artists_info li .contry q,
-#artists_info li .date q {
+#artists_info li q {
   font-style: italic;
 }
-#artists_info li .contry q:after,
-#artists_info li .date q:after,
-#artists_info li .contry q:before,
-#artists_info li .date q:before {
+#artists_info li q:after,
+#artists_info li q:before {
   font-family: Gotham, Helvetica, Arial, sans-serif;
 }
 #artists_info li .warp_contry_date {
   display: inline-block;
+}
+#artists_info li .date {
+  padding-right: 10px;
 }
 #artists_info li .date,
 #artists_info li .contry {
@@ -1812,8 +1831,7 @@ span.lign_header {
 #artists_info li #about-btn {
   background: #333;
   color: #fff;
-  font-size: 0.5em;
-  margin: 0 0 0 5px;
+  margin: 5px 0 0 0;
   padding: 0 10px;
   display: inline-block;
   top: -5px;
@@ -1826,8 +1844,6 @@ span.lign_header {
     margin: 10px 0;
     padding: 0 15px;
     display: block;
-    background: #ffce00;
-    color: #333;
   }
 }
 @media screen and (orientation: landscape) {
@@ -1841,8 +1857,8 @@ span.lign_header {
   }
   #artists_info li {
     bottom: 0;
-    width: calc(100% - 20px);
-    margin: 0 10px;
+    width: calc(100% - 40px);
+    margin: 0 20px;
     padding: 0;
   }
   #artists_info li .warper {
@@ -1869,7 +1885,7 @@ span.lign_header {
     display: inline-block;
   }
 }
-@media screen and (min-width: 70em) and (orientation: landscape) {
+@media screen and (min-width: 78em) and (orientation: landscape) {
   #artists_info li {
     width: calc(100% - 60px);
     margin: 0 30px;
@@ -2039,6 +2055,224 @@ span.lign_header {
     left: 50%;
     transform: translate(-50%, -50%);
     position: relative;
+    width: 75vh;
+    height: 75vh;
+    padding: 0;
+    border-radius: 50%;
+    list-style: none;
+    margin: 0;
+    width: 0;
+    height: 0;
+  }
+  #list_artists > * {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 10px;
+    margin-top: -5px;
+    margin-left: -40px;
+  }
+  #list_artists > *:nth-of-type(1) {
+    transform: rotate(-90deg) translate(37.5vh) rotate(90deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(2) {
+    transform: rotate(-77.14285714285714deg) translate(37.5vh) rotate(77.14285714285714deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(3) {
+    transform: rotate(-64.28571428571428deg) translate(37.5vh) rotate(64.28571428571428deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(4) {
+    transform: rotate(-51.428571428571416deg) translate(37.5vh) rotate(51.428571428571416deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(5) {
+    transform: rotate(-38.571428571428555deg) translate(37.5vh) rotate(38.571428571428555deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(6) {
+    transform: rotate(-25.714285714285698deg) translate(37.5vh) rotate(25.714285714285698deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(7) {
+    transform: rotate(-12.85714285714284deg) translate(37.5vh) rotate(12.85714285714284deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(8) {
+    transform: rotate(1.8e-14deg) translate(37.5vh) rotate(-1.8e-14deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(9) {
+    transform: rotate(12.857142857142875deg) translate(37.5vh) rotate(-12.857142857142875deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(10) {
+    transform: rotate(25.714285714285733deg) translate(37.5vh) rotate(-25.714285714285733deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(11) {
+    transform: rotate(38.57142857142859deg) translate(37.5vh) rotate(-38.57142857142859deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(12) {
+    transform: rotate(51.428571428571445deg) translate(37.5vh) rotate(-51.428571428571445deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(13) {
+    transform: rotate(64.2857142857143deg) translate(37.5vh) rotate(-64.2857142857143deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(14) {
+    transform: rotate(77.14285714285717deg) translate(37.5vh) rotate(-77.14285714285717deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(15) {
+    transform: rotate(90.00000000000003deg) translate(37.5vh) rotate(-90.00000000000003deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(16) {
+    transform: rotate(102.85714285714289deg) translate(37.5vh) rotate(-102.85714285714289deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(17) {
+    transform: rotate(115.71428571428575deg) translate(37.5vh) rotate(-115.71428571428575deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(18) {
+    transform: rotate(128.5714285714286deg) translate(37.5vh) rotate(-128.5714285714286deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(19) {
+    transform: rotate(141.42857142857147deg) translate(37.5vh) rotate(-141.42857142857147deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(20) {
+    transform: rotate(154.28571428571433deg) translate(37.5vh) rotate(-154.28571428571433deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(21) {
+    transform: rotate(167.1428571428572deg) translate(37.5vh) rotate(-167.1428571428572deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(22) {
+    transform: rotate(180.00000000000006deg) translate(37.5vh) rotate(-180.00000000000006deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(23) {
+    transform: rotate(192.85714285714292deg) translate(37.5vh) rotate(-192.85714285714292deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(24) {
+    transform: rotate(205.71428571428578deg) translate(37.5vh) rotate(-205.71428571428578deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(25) {
+    transform: rotate(218.57142857142864deg) translate(37.5vh) rotate(-218.57142857142864deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(26) {
+    transform: rotate(231.4285714285715deg) translate(37.5vh) rotate(-231.4285714285715deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(27) {
+    transform: rotate(244.28571428571436deg) translate(37.5vh) rotate(-244.28571428571436deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(28) {
+    transform: rotate(257.1428571428572deg) translate(37.5vh) rotate(-257.1428571428572deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(1) {
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(2),
+  #list_artists > *:nth-of-type(3),
+  #list_artists > *:nth-of-type(4),
+  #list_artists > *:nth-of-type(5),
+  #list_artists > *:nth-of-type(6),
+  #list_artists > *:nth-of-type(7),
+  #list_artists > *:nth-of-type(8),
+  #list_artists > *:nth-of-type(9),
+  #list_artists > *:nth-of-type(10),
+  #list_artists > *:nth-of-type(11),
+  #list_artists > *:nth-of-type(12),
+  #list_artists > *:nth-of-type(13),
+  #list_artists > *:nth-of-type(14) {
+    text-align: left;
+  }
+  #list_artists > *:nth-of-type(15) {
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(16),
+  #list_artists > *:nth-of-type(17),
+  #list_artists > *:nth-of-type(18),
+  #list_artists > *:nth-of-type(19),
+  #list_artists > *:nth-of-type(20),
+  #list_artists > *:nth-of-type(21),
+  #list_artists > *:nth-of-type(22),
+  #list_artists > *:nth-of-type(23),
+  #list_artists > *:nth-of-type(24),
+  #list_artists > *:nth-of-type(25),
+  #list_artists > *:nth-of-type(26),
+  #list_artists > *:nth-of-type(27),
+  #list_artists > *:nth-of-type(28) {
+    text-align: right;
+  }
+  #list_artists > *:nth-of-type(2),
+  #list_artists > *:nth-of-type(3),
+  #list_artists > *:nth-of-type(4),
+  #list_artists > *:nth-of-type(5),
+  #list_artists > *:nth-of-type(6),
+  #list_artists > *:nth-of-type(7),
+  #list_artists > *:nth-of-type(8),
+  #list_artists > *:nth-of-type(9),
+  #list_artists > *:nth-of-type(10),
+  #list_artists > *:nth-of-type(11),
+  #list_artists > *:nth-of-type(12),
+  #list_artists > *:nth-of-type(13),
+  #list_artists > *:nth-of-type(14) {
+    margin-left: 0;
+  }
+  #list_artists > *:nth-of-type(16),
+  #list_artists > *:nth-of-type(17),
+  #list_artists > *:nth-of-type(18),
+  #list_artists > *:nth-of-type(19),
+  #list_artists > *:nth-of-type(20),
+  #list_artists > *:nth-of-type(21),
+  #list_artists > *:nth-of-type(22),
+  #list_artists > *:nth-of-type(23),
+  #list_artists > *:nth-of-type(24),
+  #list_artists > *:nth-of-type(25),
+  #list_artists > *:nth-of-type(26),
+  #list_artists > *:nth-of-type(27),
+  #list_artists > *:nth-of-type(28) {
+    margin-left: -70px;
+  }
+  #list_artists > *:nth-of-type(7) {
+    width: 100px;
+  }
+  #list_artists > *:nth-of-type(12) {
+    width: 100px;
+  }
+  #list_artists > *:nth-of-type(3) {
+    width: 140px;
+  }
+  #list_artists > *:nth-of-type(25) {
+    width: 95px;
+    margin-left: -80px;
+  }
+}
+@media screen and (min-width: 78em) and (orientation: landscape) {
+  #list_artists {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: relative;
     width: 86vh;
     height: 86vh;
     padding: 0;
@@ -2170,31 +2404,6 @@ span.lign_header {
     transform: rotate(257.1428571428572deg) translate(43vh) rotate(-257.1428571428572deg);
     text-align: center;
   }
-  #list_artists > *:nth-of-type(3) {
-    padding-left: 80px;
-  }
-  #list_artists > *:nth-of-type(5) {
-    padding-left: 60px;
-  }
-  #list_artists > *:nth-of-type(7) {
-    padding-left: 38px;
-  }
-  #list_artists > *:nth-of-type(12) {
-    width: 100px;
-  }
-  #list_artists > *:nth-of-type(21) {
-    margin-left: -60px;
-  }
-  #list_artists > *:nth-of-type(22) {
-    margin-left: -55px;
-  }
-  #list_artists > *:nth-of-type(23) {
-    margin-left: -60px;
-  }
-  #list_artists > *:nth-of-type(25) {
-    margin-left: -80px;
-    width: 100px;
-  }
   #list_artists > *:nth-of-type(1) {
     text-align: center;
   }
@@ -2211,7 +2420,7 @@ span.lign_header {
   #list_artists > *:nth-of-type(12),
   #list_artists > *:nth-of-type(13),
   #list_artists > *:nth-of-type(14) {
-    text-align: right;
+    text-align: left;
   }
   #list_artists > *:nth-of-type(15) {
     text-align: center;
@@ -2229,18 +2438,10 @@ span.lign_header {
   #list_artists > *:nth-of-type(26),
   #list_artists > *:nth-of-type(27),
   #list_artists > *:nth-of-type(28) {
-    text-align: left;
+    text-align: right;
   }
-  #list_artists > *:nth-of-type(13) {
-    margin-left: -20px;
-  }
-  #list_artists > *:nth-of-type(16) {
-    margin-left: -20px;
-  }
-}
-@media screen and (min-width: 70em) and (orientation: landscape) {
   #list_artists > *:nth-of-type(3) {
-    width: 180px;
+    width: 250px;
   }
   #list_artists > *:nth-of-type(10) {
     width: 110px;
@@ -2292,11 +2493,16 @@ span.lign_header {
   font-size: 1em;
   font-weight: 500;
   transition: opacity 0.5s ease;
+  opacity: 0;
 }
 @media screen and (orientation: landscape) {
   #list_artists li a .warp_contry {
     display: block;
   }
+}
+#list_artists li a:hover .warp_contry,
+#list_artists li a.selected .warp_contry {
+  opacity: 1;
 }
 @media screen and (orientation: landscape) {
   #list_artists li a span.dot {
@@ -2417,6 +2623,28 @@ span.lign_header {
   max-height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
+  width: calc(100% - 40px);
+  padding: 20px;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+@media screen and (orientation: landscape) {
+  #popin #artist_info {
+    width: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
 }
 #popin #artist_info .info {
   margin: 20px 0;
@@ -2478,6 +2706,15 @@ span.lign_header {
   font-weight: 100;
   font-family: Knockout, Helvetica, Arial, sans-serif;
   font-size: 1.2em;
+  width: calc(100% - 50px);
+  padding: 0 25px;
+}
+@media screen and (orientation: landscape) {
+  #popin #credittxt,
+  #popin #abouttxt {
+    width: calc(100% - 100px);
+    padding: 0 50px;
+  }
 }
 #popin #credittxt .title,
 #popin #abouttxt .title {
@@ -2526,8 +2763,15 @@ span.lign_header {
 #popin #credittxt .listlogo li,
 #popin #abouttxt .listlogo li {
   display: inline-block;
-  width: calc(25% - 60px);
-  margin: 30px;
+  width: calc(50% - 20px);
+  margin: 10px;
+}
+@media screen and (orientation: landscape) {
+  #popin #credittxt .listlogo li,
+  #popin #abouttxt .listlogo li {
+    width: calc(25% - 60px);
+    margin: 30px;
+  }
 }
 #popin #credittxt .listlogo li a,
 #popin #abouttxt .listlogo li a {
@@ -2542,8 +2786,14 @@ span.lign_header {
 #popin #abouttxt .logokomet {
   margin: auto;
   display: inline-block;
-  width: calc(25% - 60px);
-  margin: 30px;
+  width: 50%;
+}
+@media screen and (orientation: landscape) {
+  #popin #credittxt .logokomet,
+  #popin #abouttxt .logokomet {
+    width: calc(25% - 60px);
+    margin: 30px;
+  }
 }
 #popin #credittxt .logokomet a,
 #popin #abouttxt .logokomet a {
@@ -2606,6 +2856,12 @@ span.lign_header {
   border: 1px #fff solid;
   border-radius: 50%;
 }
+@media screen and (orientation: landscape) {
+  #popin #close {
+    top: 40px;
+    right: 40px;
+  }
+}
 #popin:after {
   content: '';
   position: absolute;
@@ -2638,7 +2894,7 @@ span.lign_header {
     height: auto;
   }
 }
-@media screen and (min-width: 70em) and (orientation: landscape) {
+@media screen and (min-width: 78em) and (orientation: landscape) {
   #popin .block.big {
     width: 80%;
     max-width: 1000px;
@@ -2709,17 +2965,22 @@ span.lign_header {
   height: auto;
   width: 90%;
   left: 50%;
-  top: 180px;
+  bottom: 300px;
 }
 @media screen and (orientation: landscape) {
   #smallmap {
-    width: 80%;
+    width: calc(100% - 40px);
     display: block;
   }
   #smallmap svg .small-map-st2 {
     opacity: 0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
+  }
+}
+@media screen and (min-width: 78em) and (orientation: landscape) {
+  #smallmap {
+    width: calc(100% - 60px);
   }
 }
 @media screen and (max-width: 48em) and (orientation: landscape) {
@@ -3091,24 +3352,6 @@ span.lign_header {
 .tuto {
   height: 100%;
 }
-@media screen and (orientation: landscape) {
-  .tuto {
-    width: calc(100% - 300px);
-    margin-left: 300px;
-  }
-}
-@media screen and (min-width: 70em) and (orientation: landscape) {
-  .tuto {
-    width: calc(100% - 350px);
-    margin-left: 350px;
-  }
-}
-@media screen and (max-width: 48em) and (orientation: landscape) {
-  .tuto {
-    width: calc(100% - 150px);
-    margin-left: 150px;
-  }
-}
 .tuto .warp_tuto {
   text-align: center;
 }
@@ -3209,11 +3452,11 @@ span.lign_header {
 }
 @media screen and (orientation: landscape) {
   #marker {
-    height: -73.5vh;
+    height: -79vh;
   }
   #marker svg {
     width: auto;
-    height: -73.5vh;
+    height: -79vh;
   }
 }
 .circular_mask {
@@ -3250,6 +3493,14 @@ span.lign_header {
 }
 @media screen and (orientation: landscape) {
   .size_disk {
+    width: 62vh;
+    height: 62vh;
+    max-width: 90vh;
+    max-height: 90vh;
+  }
+}
+@media screen and (min-width: 78em) and (orientation: landscape) {
+  .size_disk {
     width: 73vh;
     height: 73vh;
     max-width: 90vh;
@@ -3261,6 +3512,12 @@ span.lign_header {
   height: 90vw;
 }
 @media screen and (orientation: landscape) {
+  .size_platine {
+    width: 68vh;
+    height: 68vh;
+  }
+}
+@media screen and (min-width: 78em) and (orientation: landscape) {
   .size_platine {
     width: 79vh;
     height: 79vh;
@@ -3295,6 +3552,12 @@ span.lign_header {
 }
 @media screen and (orientation: landscape) {
   .lign_svg {
+    width: 60vh;
+    height: 60vh;
+  }
+}
+@media screen and (min-width: 78em) and (orientation: landscape) {
+  .lign_svg {
     width: 71vh;
     height: 71vh;
   }
@@ -3314,14 +3577,12 @@ span.lign_header {
   -o-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
-  font-size: 0.6em;
   padding: 0 15px;
-  width: 90px;
+  width: 125px;
   bottom: 40px;
 }
 #play-video-btn span,
 #play-video-btn-mobile span {
-  top: 1px;
   position: relative;
 }
 #play-video-btn .triangle,
@@ -3376,7 +3637,6 @@ span.lign_header {
   right: 10px;
   position: absolute;
   padding: 0px 20px;
-  font-size: 0.7em;
 }
 #pause-video-btn span:last-child {
   display: none;
@@ -3392,6 +3652,11 @@ span.lign_header {
   display: inline-block;
 }
 @media screen and (orientation: landscape) {
+  #pause-video-btn {
+    right: 50px;
+  }
+}
+@media screen and (min-width: 78em) and (orientation: landscape) {
   #pause-video-btn {
     right: 90px;
   }

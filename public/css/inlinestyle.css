@@ -462,6 +462,7 @@ p:empty {
   left: 50%;
 }
 .btn {
+  font-weight: 100;
   cursor: pointer;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -469,6 +470,12 @@ p:empty {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  font-size: 10px;
+}
+@media screen and (orientation: landscape) {
+  .btn {
+    font-size: 12px;
+  }
 }
 .triangle {
   display: block;
@@ -647,19 +654,26 @@ html {
   background: #f0f2da;
   background-color: #f0f2da;
 }
+.mainwidth,
+#main {
+  width: 100%;
+}
 @media screen and (orientation: landscape) {
+  .mainwidth,
   #main {
     width: calc(100% - 300px);
     margin-left: 300px;
   }
 }
-@media screen and (min-width: 70em) and (orientation: landscape) {
+@media screen and (min-width: 78em) and (orientation: landscape) {
+  .mainwidth,
   #main {
     width: calc(100% - 350px);
     margin-left: 350px;
   }
 }
 @media screen and (max-width: 48em) and (orientation: landscape) {
+  .mainwidth,
   #main {
     width: calc(100% - 150px);
     margin-left: 150px;
@@ -676,7 +690,7 @@ html {
     position: absolute;
   }
 }
-@media screen and (min-width: 70em) and (orientation: landscape) {
+@media screen and (min-width: 78em) and (orientation: landscape) {
   #left_col {
     width: 350px;
     height: calc(100% - 40px);
@@ -723,6 +737,20 @@ html {
   max-height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
+  width: calc(100% - 40px);
+  padding: 20px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media screen and (orientation: landscape) {
+  #popin #artist_info {
+    width: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 #popin #artist_info .info {
   margin: 20px 0;
@@ -782,6 +810,15 @@ html {
   font-weight: 100;
   font-family: Knockout, Helvetica, Arial, sans-serif;
   font-size: 1.2em;
+  width: calc(100% - 50px);
+  padding: 0 25px;
+}
+@media screen and (orientation: landscape) {
+  #popin #credittxt,
+  #popin #abouttxt {
+    width: calc(100% - 100px);
+    padding: 0 50px;
+  }
 }
 #popin #credittxt .title,
 #popin #abouttxt .title {
@@ -830,8 +867,15 @@ html {
 #popin #credittxt .listlogo li,
 #popin #abouttxt .listlogo li {
   display: inline-block;
-  width: calc(25% - 60px);
-  margin: 30px;
+  width: calc(50% - 20px);
+  margin: 10px;
+}
+@media screen and (orientation: landscape) {
+  #popin #credittxt .listlogo li,
+  #popin #abouttxt .listlogo li {
+    width: calc(25% - 60px);
+    margin: 30px;
+  }
 }
 #popin #credittxt .listlogo li a,
 #popin #abouttxt .listlogo li a {
@@ -846,8 +890,14 @@ html {
 #popin #abouttxt .logokomet {
   margin: auto;
   display: inline-block;
-  width: calc(25% - 60px);
-  margin: 30px;
+  width: 50%;
+}
+@media screen and (orientation: landscape) {
+  #popin #credittxt .logokomet,
+  #popin #abouttxt .logokomet {
+    width: calc(25% - 60px);
+    margin: 30px;
+  }
 }
 #popin #credittxt .logokomet a,
 #popin #abouttxt .logokomet a {
@@ -910,6 +960,12 @@ html {
   border: 1px #fff solid;
   border-radius: 50%;
 }
+@media screen and (orientation: landscape) {
+  #popin #close {
+    top: 40px;
+    right: 40px;
+  }
+}
 #popin:after {
   content: '';
   position: absolute;
@@ -940,7 +996,7 @@ html {
     height: auto;
   }
 }
-@media screen and (min-width: 70em) and (orientation: landscape) {
+@media screen and (min-width: 78em) and (orientation: landscape) {
   #popin .block.big {
     width: 80%;
     max-width: 1000px;
