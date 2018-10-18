@@ -735,7 +735,7 @@ html {
 }
 #popin #artist_info {
   max-height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   width: calc(100% - 40px);
   padding: 20px;
@@ -982,7 +982,7 @@ html {
   height: 70%;
 }
 #popin .block.big {
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   width: 90%;
   max-height: 80%;
