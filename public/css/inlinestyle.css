@@ -658,6 +658,7 @@ html {
   background: #f0f2da;
   background-color: #f0f2da;
   touch-action: none;
+  overflow: hidden;
 }
 .mainwidth,
 #main {
