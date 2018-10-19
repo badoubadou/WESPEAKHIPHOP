@@ -29,7 +29,16 @@ window.currentLayout = ->
 	if ($('#checklayout .desktop').css('display') == 'block')
 		return 'desktop'
 
+document.addEventListener 'gesturestart', (e) ->
+	e.preventDefault()
+	return
 
+document.addEventListener 'touchmove', ((event) ->
+  event = event.originalEvent or event
+  if event.scale > 1
+    event.preventDefault()
+  return
+), false
 
 # $(window).on 'resize', ->
 # 	if @resizeTO
