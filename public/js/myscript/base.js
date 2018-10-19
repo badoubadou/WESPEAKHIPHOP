@@ -202,6 +202,7 @@
         this.blankVideo = 'https://cdn.plyr.io/static/blank.mp4';
         this.bildIntroYoutube();
         this.bindEvents();
+        this.needStartSite = true;
       }
 
       playYTisReady() {
@@ -223,11 +224,17 @@
           y: 0,
           ease: Power1.easeOut
         }, 0.5);
-        return this.playerYT.play();
+        if (this.needStartSite) {
+          this.startSite();
+          return this.needStartSite = false;
+        } else {
+          return this.playerYT.play();
+        }
       }
 
       customizePlayerYT() {
         var custom_btn;
+        console.log('customizePlayerYT');
         custom_btn = $('#warp_custom_btn').detach();
         $('.video-container .plyr').append(custom_btn);
         return $('.video-container').addClass('customised');
@@ -241,9 +248,12 @@
         return $('#playerYT').attr('data-plyr-embed-id', randomid);
       }
 
-      startSite(that) {
-        console.log('startSite');
-        return $('#logowhite').trigger('showLogo');
+      startSite() {
+        console.log('startSite then loadMap');
+        $('#logowhite').trigger('showLogo');
+        this.loadMap();
+        this.loadLign();
+        return this.loadLogoShare();
       }
 
       YouTubeGetID(url) {
@@ -259,30 +269,80 @@
         }
       }
 
+      loadLogoShare() {
+        var that;
+        console.log('---> load logo share ');
+        that = this;
+        return $.get('https://d2e3lhf7z9v1b2.cloudfront.net/logo-share.svg', function(data) {
+          var div;
+          console.log('---> logo share  loaded');
+          div = document.createElement('div');
+          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
+          $('#logosharesite').append(div.innerHTML);
+        });
+      }
+
+      loadLign() {
+        var that;
+        console.log('---> load lign');
+        that = this;
+        return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/lign.svg', function(data) {
+          var div;
+          console.log('---> lign loaded');
+          div = document.createElement('div');
+          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
+          $('.lign_svg').append(div.innerHTML);
+        });
+      }
+
+      loadMap() {
+        var that;
+        console.log('---> load small map');
+        that = this;
+        return $.get('https://d2e3lhf7z9v1b2.cloudfront.net/smallmap-' + $('#langage_short').val() + '.svg', function(data) {
+          var div;
+          console.log('---> small map loaded');
+          div = document.createElement('div');
+          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
+          $("#smallmap").append(div.innerHTML);
+          TweenLite.set(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], {
+            alpha: 0
+          });
+          TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {
+            scale: 3,
+            transformOrigin: '50% 50%',
+            repeat: -1,
+            yoyo: true
+          });
+        });
+      }
+
       bindEvents() {
-        var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, that, vid_intro_finished;
+        var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, finished_popin_transition, that, vid_intro_finished;
         that = this;
         if (!$('body').hasClass('doc-ready')) {
           $('body').on('doc-ready', function() {
             console.log('doc-ready');
-            that.startSite(that);
+            // that.startSite(that)
             return $('body').off();
           });
         } else {
           console.log('doc already ready');
-          that.startSite(that);
         }
+        // that.startSite(that)
+
         //------------------- ENTER SITE -------------------#
-        $('#enter_site').on('click touch', function(e) {
+        $('#enter_site').on('click touchstart', function(e) {
           e.preventDefault();
           that.intro_is_done = true;
-          console.log('enter site --------------------------------');
+          console.log('enter site -------------------------------- dafucked ?  ');
           $('.intro_page').addClass('hidden');
           $('.video-container').removeClass('hidden hide');
           // GoInFullscreen($('body').get(0))
           that.playerYT.play();
           $('#enter_site').off();
           setTimeout((function() {
+            console.log('show skip_intro damed it');
             TweenMax.fromTo('.skip_intro', .6, {
               autoAlpha: 0,
               visibility: 'visible'
@@ -292,7 +352,7 @@
           }), 3000);
         });
         //------------------- SOUND ---------------------------#
-        $('#sound').on('click touch', function() {
+        $('#sound').on('click touchstart', function() {
           var event_name;
           console.log('click sound');
           event_name = 'sound_on';
@@ -339,7 +399,7 @@
           }
         };
         $('.myfullscreen').on({
-          'click touch': function() {
+          'click touchstart': function() {
             console.log('click ');
             if (!IsFullScreenCurrently()) {
               return GoInFullscreen($('body').get(0));
@@ -348,21 +408,10 @@
             }
           }
         });
-        //------------------- PLAYER YOUTUBE -------------------#
-        // controls = '<div class="plyr__controls">
-        //     <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play">
-        //         <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-pause"></use></svg>
-        //         <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-play"></use></svg>
-        //         <span class="label--pressed plyr__tooltip" role="tooltip">Pause</span>
-        //         <span class="label--not-pressed plyr__tooltip" role="tooltip">Play</span>
-        //     </button>
-        //     <div class="plyr__progress">
-        //         <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek">
-        //         <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress>
-        //         <span role="tooltip" class="plyr__tooltip">00:00</span>
-        //     </div>
-        // </div>'
         this.playerYT = new Plyr('#playerYT', {
+          autoplay: true,
+          playsinline: true,
+          clickToPlay: false,
           controls: ['play', 'progress', 'captions']
         });
         
@@ -428,16 +477,27 @@
             ]
           };
         });
+        finished_popin_transition = function() {
+          console.log('done');
+          return $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange').attr('style', '');
+        };
         vid_intro_finished = function() {
+          var player_video;
+          player_video = new module.player_video();
           console.log('vid_intro_finished ----- trigger end Intro trigger close  Popin');
-          $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange');
-          $('.skip_intro').remove();
+          // $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange')
           $('#close').removeClass('hide');
           $('.video-container').removeClass('with_btn_skip');
           $('#logowhite').trigger('destroyLogo');
-          $('.skip_intro').off();
+          $('.skip_intro').off().remove();
+          $('.intro_page').remove();
+          that.playerYT.pause();
+          TweenMax.to('#popin', .8, {
+            opacity: 0,
+            onComplete: finished_popin_transition
+          });
         };
-        $('.skip_intro').on('click touch', function() {
+        $('.skip_intro').on('click touchstart', function() {
           vid_intro_finished();
         });
         this.playerYT.on('ended', function(event) {
@@ -446,8 +506,14 @@
           }
           vid_intro_finished();
         });
+        // $('.video-container').on 'touchstart', ->
+        // 	console.log 'touch video player '
+        // 	if that.playerYT
+        // 		if !that.playerYT.playing
+        // 			that.playerYT.play()
+
         //------------------- CLICK LIST ARTIST -------------------#
-        return $('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on('click touch', function(event) {
+        return $('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on('click touchstart', function(event) {
           var idyoutube, ratiovideo;
           event.preventDefault();
           idyoutube = that.YouTubeGetID($(this).attr('href'));
@@ -478,6 +544,8 @@
           };
           $('#popin').trigger('showVideo');
           $('#popin').trigger('classChange');
+          that.playerYT.play();
+          console.log('play youtube on touch start');
         });
       }
 
@@ -551,28 +619,28 @@
         
         //------------------- ABOUT  --------------------------#
         $('#apropos_btn').on({
-          'click touch': function(e) {
+          'click touchstart': function(e) {
             e.preventDefault();
             return showPopin('#popin #abouttxt');
           }
         });
         //------------------- CREDIT  --------------------------#
         $('#credit_btn').on({
-          'click touch': function(e) {
+          'click touchstart': function(e) {
             e.preventDefault();
             return showPopin('#popin #credittxt');
           }
         });
         //------------------- CONTACT  --------------------------#
         $('#mail_btn').on({
-          'click touch': function(e) {
+          'click touchstart': function(e) {
             e.preventDefault();
             return showPopin('#popin #contacttxt');
           }
         });
         //------------------- CREDIT  --------------------------#
         $('#about-btn, .block_contry .bio').on({
-          'click touch': function(e) {
+          'click touchstart': function(e) {
             var artistid;
             e.preventDefault();
             if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
@@ -587,12 +655,12 @@
           }
         });
         $('#share').on({
-          'click touch': function(e) {
+          'click touchstart': function(e) {
             e.preventDefault();
             return showPopin('#shareinfo');
           }
         });
-        $('#close, #back').on('click touch', function() {
+        $('#close, #back').on('click touchstart', function() {
           return that.closePopin();
         });
         return $('#popin').on('showVideo', function() {
@@ -728,9 +796,6 @@
         //------------------- SET FUNCTION ---------------------------#
         this.setTimeLineIntro();
         $('#player').addClass('ready');
-        this.loadMap();
-        this.loadLign();
-        this.loadLogoShare();
         this.createTweenInfo();
         this.setTimeLineKnob();
         this.setScratcher();
@@ -1189,54 +1254,6 @@
         return $('body').removeClass('disk_on_hold');
       }
 
-      loadLogoShare() {
-        var that;
-        console.log('---> load logo share ');
-        that = this;
-        return $.get('https://d2e3lhf7z9v1b2.cloudfront.net/logo-share.svg', function(data) {
-          var div;
-          console.log('---> logo share  loaded');
-          div = document.createElement('div');
-          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
-          $('#logosharesite').append(div.innerHTML);
-        });
-      }
-
-      loadLign() {
-        var that;
-        console.log('---> load lign');
-        that = this;
-        return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/lign.svg', function(data) {
-          var div;
-          console.log('---> lign loaded');
-          div = document.createElement('div');
-          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
-          $('.lign_svg').append(div.innerHTML);
-        });
-      }
-
-      loadMap() {
-        var that;
-        console.log('---> load small map');
-        that = this;
-        return $.get('https://d2e3lhf7z9v1b2.cloudfront.net/smallmap-' + $('#langage_short').val() + '.svg', function(data) {
-          var div;
-          console.log('---> small map loaded');
-          div = document.createElement('div');
-          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
-          $("#smallmap").append(div.innerHTML);
-          TweenLite.set(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], {
-            alpha: 0
-          });
-          TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {
-            scale: 3,
-            transformOrigin: '50% 50%',
-            repeat: -1,
-            yoyo: true
-          });
-        });
-      }
-
       skipIntro() {
         console.log('skipIntro : player play ------------------------------ ??????? ');
         this.player.pause();
@@ -1366,7 +1383,7 @@
         // 	return
 
         //------------------- END TUTO -------------------#
-        $('.btn_get_it').on('click touch', function() {
+        $('.tuto').on('click touchstart', function() {
           return $('.tuto').remove();
         });
         //------------------- ENDINTRO -------------------#
@@ -1433,7 +1450,7 @@
           return that.player.muted = false;
         });
         //------------------- SOUND ---------------------------#
-        $('#pause-video-btn').on('click touch', function() {
+        $('#pause-video-btn').on('click touchstart', function() {
           if ($(this).hasClass('paused')) {
             return that.player.play();
           } else {
@@ -1493,29 +1510,30 @@
 
 (function() {
   'use strict';
-  var init;
+  var init, spiner;
 
   window.isMobile = function() {
     return typeof window.orientation !== 'undefined' || navigator.userAgent.indexOf('IEMobile') !== -1;
   };
 
   init = function() {
-    var logo, player_video, player_video_youtube, popin, spiner;
+    var logo, player_video_youtube, popin;
     console.log('window load -> init');
     player_video_youtube = new module.player_video_youtube();
-    spiner = new module.spiner($('.lds-dual-ring'));
     popin = new module.popin();
     logo = new module.logo();
     $('body').addClass('doc-ready');
     $('body').trigger('doc-ready');
     window.layout = window.currentLayout();
     console.log('layout : ' + layout);
-    player_video = new module.player_video();
-    window.scrollTo(x - coord, y - coord);
+    // player_video = new module.player_video()
+    window.scrollTo(0, 0);
     return console.log('scroll top');
   };
 
   $(window).load(init);
+
+  spiner = new module.spiner($('.lds-dual-ring'));
 
   window.currentLayout = function() {
     console.log('--------------- > ' + $('#checklayout .desktop').css('display'));

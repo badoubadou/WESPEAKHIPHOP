@@ -2540,7 +2540,7 @@ span.lign_header {
   padding-bottom: 56.25%;
 }
 .video-container.quatre_tier {
-  padding-bottom: 75%;
+  padding-bottom: 70%;
 }
 .video-container .myfullscreen {
   z-index: 10;
@@ -2586,6 +2586,7 @@ span.lign_header {
 }
 .video-container.with_btn_skip .plyr__controls {
   padding: 10px 160px 10px 10px;
+  bottom: 20px;
 }
 .video-container .plyr__video-wrapper {
   top: 0;

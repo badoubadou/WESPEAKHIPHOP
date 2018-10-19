@@ -5,7 +5,6 @@ window.isMobile = ->
 init = ->
 	console.log 'window load -> init'
 	player_video_youtube = new module.player_video_youtube()
-	spiner = new module.spiner($('.lds-dual-ring'))
 	popin = new module.popin()
 	logo = new module.logo()
 	
@@ -15,11 +14,12 @@ init = ->
 	window.layout = window.currentLayout()
 	console.log 'layout : '+layout
 
-	player_video = new module.player_video()
-	window.scrollTo(x-coord, y-coord)
+	# player_video = new module.player_video()
+	window.scrollTo(0, 0)
 	console.log 'scroll top'
 
 $(window).load( init )
+spiner = new module.spiner($('.lds-dual-ring'))
 
 
 window.currentLayout = ->

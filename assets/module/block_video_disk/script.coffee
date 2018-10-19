@@ -30,9 +30,6 @@ class player_video
 		#------------------- SET FUNCTION ---------------------------#
 		@setTimeLineIntro()
 		$('#player').addClass('ready')
-		@loadMap()
-		@loadLign()
-		@loadLogoShare()
 		@createTweenInfo()
 		@setTimeLineKnob()
 		@setScratcher()
@@ -192,38 +189,6 @@ class player_video
 		$('#player')[0].play()
 		$('body').removeClass 'disk_on_hold'
 
-	loadLogoShare : ->
-		console.log '---> load logo share '
-		that = @
-		$.get 'https://d2e3lhf7z9v1b2.cloudfront.net/logo-share.svg', (data) ->
-			console.log '---> logo share  loaded'
-			div = document.createElement('div')
-			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
-			$( '#logosharesite' ).append( div.innerHTML )
-			return
-
-	loadLign : ->
-		console.log '---> load lign'
-		that = @
-		$.get 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/lign.svg', (data) ->
-			console.log '---> lign loaded'
-			div = document.createElement('div')
-			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
-			$( '.lign_svg' ).append( div.innerHTML )
-			return
-
-	loadMap : ->
-		console.log '---> load small map'
-		that = @
-		$.get 'https://d2e3lhf7z9v1b2.cloudfront.net/smallmap-'+$('#langage_short').val()+'.svg', (data) ->
-			console.log '---> small map loaded'
-			div = document.createElement('div')
-			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
-			$( "#smallmap" ).append( div.innerHTML )
-			TweenLite.set(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], {alpha:0});
-			TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {scale: 3, transformOrigin:'50% 50%', repeat:-1, yoyo:true})
-			return
-
 	skipIntro : ->
 		console.log 'skipIntro : player play ------------------------------ ??????? '
 		@player.pause()
@@ -339,7 +304,7 @@ class player_video
 		# 	return
 		
 		#------------------- END TUTO -------------------#
-		$('.btn_get_it').on 'click touch', ->
+		$('.tuto').on 'click touchstart', ->
 			$('.tuto').remove()
 		#------------------- ENDINTRO -------------------#
 		$('#popin').on 'endIntro', ->
@@ -402,7 +367,7 @@ class player_video
 			that.player.muted = false
 
 		#------------------- SOUND ---------------------------#
-		$('#pause-video-btn').on 'click touch', ->
+		$('#pause-video-btn').on 'click touchstart', ->
 			if $(this).hasClass 'paused'
 				that.player.play()
 			else

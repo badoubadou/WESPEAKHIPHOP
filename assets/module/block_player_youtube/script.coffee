@@ -5,9 +5,9 @@ class player_video_youtube
 		@drawLogo = null
 		@intro_is_done = false
 		@blankVideo = 'https://cdn.plyr.io/static/blank.mp4'
-		
 		@bildIntroYoutube()
 		@bindEvents()
+		@needStartSite = true
 
 	playYTisReady : ->
 		console.log  '----------------------- playYTisReady -------------------------------------------'
@@ -16,23 +16,31 @@ class player_video_youtube
 		$('.lds-dual-ring').trigger 'hidespiner'
 		TweenMax.set(['.btn_intro a'],{autoAlpha:0,visibility:"hidden"});
 		TweenMax.staggerFromTo('.btn_intro a',.8, {autoAlpha:0, visibility:"visible", y:-10},{autoAlpha:1, y:0, ease:Power1.easeOut}, 0.5);
-		@playerYT.play()
+		if @needStartSite 
+			@startSite()
+			@needStartSite = false
+		else
+			@playerYT.play()
 
 	customizePlayerYT : ->
+		console.log 'customizePlayerYT'
 		custom_btn = $('#warp_custom_btn').detach()
 		$('.video-container .plyr').append custom_btn
 		$('.video-container').addClass 'customised'
 			
-
 	bildIntroYoutube : ->
 		that = @
 		random = Math.floor(Math.random() * 4)
 		randomid = $('#idIntroYoutube input:eq('+random+')').val()
 		$('#playerYT').attr('data-plyr-embed-id',randomid)
 
-	startSite: (that)->
-		console.log 'startSite'
+	startSite: ()->
+		console.log 'startSite then loadMap'
 		$('#logowhite').trigger 'showLogo'
+		@loadMap()
+		@loadLign()
+		@loadLogoShare()
+		
 
 	YouTubeGetID: (url) ->
 		ID = ''
@@ -43,6 +51,38 @@ class player_video_youtube
 		else
 			ID = url
 			ID
+	
+	loadLogoShare : ->
+		console.log '---> load logo share '
+		that = @
+		$.get 'https://d2e3lhf7z9v1b2.cloudfront.net/logo-share.svg', (data) ->
+			console.log '---> logo share  loaded'
+			div = document.createElement('div')
+			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
+			$( '#logosharesite' ).append( div.innerHTML )
+			return
+
+	loadLign : ->
+		console.log '---> load lign'
+		that = @
+		$.get 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/lign.svg', (data) ->
+			console.log '---> lign loaded'
+			div = document.createElement('div')
+			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
+			$( '.lign_svg' ).append( div.innerHTML )
+			return
+
+	loadMap : ->
+		console.log '---> load small map'
+		that = @
+		$.get 'https://d2e3lhf7z9v1b2.cloudfront.net/smallmap-'+$('#langage_short').val()+'.svg', (data) ->
+			console.log '---> small map loaded'
+			div = document.createElement('div')
+			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
+			$( "#smallmap" ).append( div.innerHTML )
+			TweenLite.set(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], {alpha:0});
+			TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {scale: 3, transformOrigin:'50% 50%', repeat:-1, yoyo:true})
+			return
 
 	bindEvents: ->
 		that = @
@@ -50,30 +90,31 @@ class player_video_youtube
 		if !$('body').hasClass 'doc-ready'
 			$('body').on 'doc-ready', ->
 				console.log 'doc-ready'
-				that.startSite(that)
+				# that.startSite(that)
 				$('body').off()
 		else
 			console.log 'doc already ready'
-			that.startSite(that)
+			# that.startSite(that)
 
 		#------------------- ENTER SITE -------------------#
-		$('#enter_site').on 'click touch', (e)->
+		$('#enter_site').on 'click touchstart', (e)->
 			e.preventDefault()
 			that.intro_is_done = true
-			console.log 'enter site --------------------------------'
+			console.log 'enter site -------------------------------- dafucked ?  '
 			$('.intro_page').addClass 'hidden'
 			$('.video-container').removeClass 'hidden hide'
 			# GoInFullscreen($('body').get(0))
 			that.playerYT.play()
 			$('#enter_site').off()
 			setTimeout (->
+				console.log 'show skip_intro damed it'
 				TweenMax.fromTo('.skip_intro', .6, {autoAlpha:0, visibility:'visible'}, {autoAlpha:1 })
 				return
 			), 3000
 
 			return
 		#------------------- SOUND ---------------------------#
-		$('#sound').on 'click touch', ->
+		$('#sound').on 'click touchstart', ->
 			console.log 'click sound'
 			event_name = 'sound_on'
 			if ($('#sound').hasClass('actif'))
@@ -115,29 +156,14 @@ class player_video_youtube
 			else
 				true
 
-		$('.myfullscreen').on 'click touch': ->
+		$('.myfullscreen').on 'click touchstart': ->
 			console.log 'click '
 			if !IsFullScreenCurrently()
 				GoInFullscreen($('body').get(0))
 			else
 				GoOutFullscreen()
 
-		#------------------- PLAYER YOUTUBE -------------------#
-		# controls = '<div class="plyr__controls">
-		#     <button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play">
-		#         <svg class="icon--pressed" role="presentation"><use xlink:href="#plyr-pause"></use></svg>
-		#         <svg class="icon--not-pressed" role="presentation"><use xlink:href="#plyr-play"></use></svg>
-		#         <span class="label--pressed plyr__tooltip" role="tooltip">Pause</span>
-		#         <span class="label--not-pressed plyr__tooltip" role="tooltip">Play</span>
-		#     </button>
-		#     <div class="plyr__progress">
-		#         <input data-plyr="seek" type="range" min="0" max="100" step="0.01" value="0" aria-label="Seek">
-		#         <progress class="plyr__progress__buffer" min="0" max="100" value="0">% buffered</progress>
-		#         <span role="tooltip" class="plyr__tooltip">00:00</span>
-		#     </div>
-		# </div>'
-
-		@playerYT = new Plyr('#playerYT', { controls:['play', 'progress', 'captions'] })
+		@playerYT = new Plyr('#playerYT', { autoplay: true,playsinline: true, clickToPlay: false, controls:['play', 'progress', 'captions'] })
 		
 		#------------------- PLAYER YOUTUBE IS READY -------------------#
 		@playerYT.on 'ready', (event) ->
@@ -199,17 +225,23 @@ class player_video_youtube
 			# that.playerYT.stop()
 
 		#------------------- INTRO FINISHED -------------------#
+		finished_popin_transition = ->
+			console.log 'done'
+			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange').attr('style','')
 		vid_intro_finished = ->
+			player_video = new module.player_video()
 			console.log 'vid_intro_finished ----- trigger end Intro trigger close  Popin'
-			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange')
-			$('.skip_intro').remove()
+			# $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange')
 			$('#close').removeClass('hide')
 			$('.video-container').removeClass 'with_btn_skip'
 			$('#logowhite').trigger 'destroyLogo'
-			$('.skip_intro').off()
+			$('.skip_intro').off().remove()
+			$('.intro_page').remove()
+			that.playerYT.pause()
+			TweenMax.to('#popin', .8,{opacity:0,onComplete:finished_popin_transition})
 			return
 
-		$('.skip_intro').on 'click touch', ->
+		$('.skip_intro').on 'click touchstart', ->
 			vid_intro_finished()
 			return
 			
@@ -219,8 +251,15 @@ class player_video_youtube
 			vid_intro_finished()
 			return
 
+		# $('.video-container').on 'touchstart', ->
+		# 	console.log 'touch video player '
+		# 	if that.playerYT
+		# 		if !that.playerYT.playing
+		# 			that.playerYT.play()
+				
+
 		#------------------- CLICK LIST ARTIST -------------------#
-		$('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on 'click touch', (event) ->
+		$('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on 'click touchstart', (event) ->
 			event.preventDefault()
 			idyoutube = that.YouTubeGetID($(this).attr('href'))
 			ratiovideo = $(this).data('ratiovideo')
@@ -249,6 +288,8 @@ class player_video_youtube
 			};
 			$('#popin').trigger 'showVideo'
 			$('#popin').trigger 'classChange'
+			that.playerYT.play()	
+			console.log 'play youtube on touch start'
 			return
 	
 module.player_video_youtube = player_video_youtube

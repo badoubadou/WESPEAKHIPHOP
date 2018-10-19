@@ -35,19 +35,19 @@ class popin
 				.fromTo($target, 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
 		
 		#------------------- ABOUT  --------------------------#
-		$('#apropos_btn').on 'click touch': (e) ->
+		$('#apropos_btn').on 'click touchstart': (e) ->
 			e.preventDefault()
 			showPopin('#popin #abouttxt')
 		#------------------- CREDIT  --------------------------#
-		$('#credit_btn').on 'click touch': (e) ->
+		$('#credit_btn').on 'click touchstart': (e) ->
 			e.preventDefault()
 			showPopin('#popin #credittxt')
 		#------------------- CONTACT  --------------------------#
-		$('#mail_btn').on 'click touch': (e) ->
+		$('#mail_btn').on 'click touchstart': (e) ->
 			e.preventDefault()
 			showPopin('#popin #contacttxt')
 		#------------------- CREDIT  --------------------------#
-		$('#about-btn, .block_contry .bio').on 'click touch':(e) ->
+		$('#about-btn, .block_contry .bio').on 'click touchstart':(e) ->
 			e.preventDefault()
 			if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
 				artistid = $(this).data('artistid') - 1
@@ -58,11 +58,11 @@ class popin
 				return
 			showPopin('#artist_info')
 			
-		$('#share').on 'click touch': (e) ->
+		$('#share').on 'click touchstart': (e) ->
 			e.preventDefault()
 			showPopin('#shareinfo')
 
-		$('#close, #back').on 'click touch', ->
+		$('#close, #back').on 'click touchstart', ->
 			that.closePopin()
 
 		$('#popin').on 'showVideo', ->
