@@ -1528,13 +1528,20 @@
     }
   };
 
+  document.addEventListener('dblclick', function(e) {
+    e.preventDefault();
+    console.log('prevented dooble click');
+  });
+
   document.addEventListener('gesturestart', function(e) {
     e.preventDefault();
+    console.log('prevented gesturestart');
   });
 
   document.addEventListener('touchmove', (function(event) {
     event = event.originalEvent || event;
-    if (event.scale > 1) {
+    if ((event.scale !== void 0) && (event.scale !== 1)) {
+      console.log('prevented touchmove');
       event.preventDefault();
     }
   }), false);

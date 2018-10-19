@@ -29,15 +29,22 @@ window.currentLayout = ->
 	if ($('#checklayout .desktop').css('display') == 'block')
 		return 'desktop'
 
+document.addEventListener 'dblclick', (e) ->
+	e.preventDefault()
+	console.log 'prevented dooble click'
+	return
+
 document.addEventListener 'gesturestart', (e) ->
 	e.preventDefault()
+	console.log 'prevented gesturestart'
 	return
 
 document.addEventListener 'touchmove', ((event) ->
-  event = event.originalEvent or event
-  if event.scale > 1
-    event.preventDefault()
-  return
+	event = event.originalEvent or event
+	if ((event.scale != undefined) && (event.scale != 1))
+		console.log 'prevented touchmove'
+		event.preventDefault()
+	return
 ), false
 
 # $(window).on 'resize', ->
