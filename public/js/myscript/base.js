@@ -273,7 +273,7 @@
           that.startSite(that);
         }
         //------------------- ENTER SITE -------------------#
-        $('#enter_site').on('click', function(e) {
+        $('#enter_site').on('click touch', function(e) {
           e.preventDefault();
           that.intro_is_done = true;
           console.log('enter site --------------------------------');
@@ -292,7 +292,7 @@
           }), 3000);
         });
         //------------------- SOUND ---------------------------#
-        $('#sound').on('click', function() {
+        $('#sound').on('click touch', function() {
           var event_name;
           console.log('click sound');
           event_name = 'sound_on';
@@ -339,7 +339,7 @@
           }
         };
         $('.myfullscreen').on({
-          'click': function() {
+          'click touch': function() {
             console.log('click ');
             if (!IsFullScreenCurrently()) {
               return GoInFullscreen($('body').get(0));
@@ -437,7 +437,7 @@
           $('#logowhite').trigger('destroyLogo');
           $('.skip_intro').off();
         };
-        $('.skip_intro').on('click', function() {
+        $('.skip_intro').on('click touch', function() {
           vid_intro_finished();
         });
         this.playerYT.on('ended', function(event) {
@@ -447,7 +447,7 @@
           vid_intro_finished();
         });
         //------------------- CLICK LIST ARTIST -------------------#
-        return $('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on('click', function(event) {
+        return $('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on('click touch', function(event) {
           var idyoutube, ratiovideo;
           event.preventDefault();
           idyoutube = that.YouTubeGetID($(this).attr('href'));
@@ -551,28 +551,28 @@
         
         //------------------- ABOUT  --------------------------#
         $('#apropos_btn').on({
-          'click': function(e) {
+          'click touch': function(e) {
             e.preventDefault();
             return showPopin('#popin #abouttxt');
           }
         });
         //------------------- CREDIT  --------------------------#
         $('#credit_btn').on({
-          'click': function(e) {
+          'click touch': function(e) {
             e.preventDefault();
             return showPopin('#popin #credittxt');
           }
         });
         //------------------- CONTACT  --------------------------#
         $('#mail_btn').on({
-          'click': function(e) {
+          'click touch': function(e) {
             e.preventDefault();
             return showPopin('#popin #contacttxt');
           }
         });
         //------------------- CREDIT  --------------------------#
         $('#about-btn, .block_contry .bio').on({
-          'click': function(e) {
+          'click touch': function(e) {
             var artistid;
             e.preventDefault();
             if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
@@ -587,12 +587,12 @@
           }
         });
         $('#share').on({
-          'click': function(e) {
+          'click touch': function(e) {
             e.preventDefault();
             return showPopin('#shareinfo');
           }
         });
-        $('#close, #back').on('click', function() {
+        $('#close, #back').on('click touch', function() {
           return that.closePopin();
         });
         return $('#popin').on('showVideo', function() {
@@ -1366,7 +1366,7 @@
         // 	return
 
         //------------------- END TUTO -------------------#
-        $('.btn_get_it').on('click', function() {
+        $('.btn_get_it').on('click touch', function() {
           return $('.tuto').remove();
         });
         //------------------- ENDINTRO -------------------#
@@ -1433,7 +1433,7 @@
           return that.player.muted = false;
         });
         //------------------- SOUND ---------------------------#
-        $('#pause-video-btn').on('click', function() {
+        $('#pause-video-btn').on('click touch', function() {
           if ($(this).hasClass('paused')) {
             return that.player.play();
           } else {

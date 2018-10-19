@@ -57,7 +57,7 @@ class player_video_youtube
 			that.startSite(that)
 
 		#------------------- ENTER SITE -------------------#
-		$('#enter_site').on 'click', (e)->
+		$('#enter_site').on 'click touch', (e)->
 			e.preventDefault()
 			that.intro_is_done = true
 			console.log 'enter site --------------------------------'
@@ -73,7 +73,7 @@ class player_video_youtube
 
 			return
 		#------------------- SOUND ---------------------------#
-		$('#sound').on 'click', ->
+		$('#sound').on 'click touch', ->
 			console.log 'click sound'
 			event_name = 'sound_on'
 			if ($('#sound').hasClass('actif'))
@@ -115,7 +115,7 @@ class player_video_youtube
 			else
 				true
 
-		$('.myfullscreen').on 'click': ->
+		$('.myfullscreen').on 'click touch': ->
 			console.log 'click '
 			if !IsFullScreenCurrently()
 				GoInFullscreen($('body').get(0))
@@ -209,7 +209,7 @@ class player_video_youtube
 			$('.skip_intro').off()
 			return
 
-		$('.skip_intro').on 'click', ->
+		$('.skip_intro').on 'click touch', ->
 			vid_intro_finished()
 			return
 			
@@ -220,7 +220,7 @@ class player_video_youtube
 			return
 
 		#------------------- CLICK LIST ARTIST -------------------#
-		$('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on 'click', (event) ->
+		$('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on 'click touch', (event) ->
 			event.preventDefault()
 			idyoutube = that.YouTubeGetID($(this).attr('href'))
 			ratiovideo = $(this).data('ratiovideo')

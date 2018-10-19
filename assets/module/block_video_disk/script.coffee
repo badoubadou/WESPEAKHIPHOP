@@ -339,7 +339,7 @@ class player_video
 		# 	return
 		
 		#------------------- END TUTO -------------------#
-		$('.btn_get_it').on 'click', ->
+		$('.btn_get_it').on 'click touch', ->
 			$('.tuto').remove()
 		#------------------- ENDINTRO -------------------#
 		$('#popin').on 'endIntro', ->
@@ -402,7 +402,7 @@ class player_video
 			that.player.muted = false
 
 		#------------------- SOUND ---------------------------#
-		$('#pause-video-btn').on 'click', ->
+		$('#pause-video-btn').on 'click touch', ->
 			if $(this).hasClass 'paused'
 				that.player.play()
 			else
