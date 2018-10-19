@@ -229,7 +229,7 @@ class player_video
 		@player.pause()
 		@timelineIntro.play()
 		$('#popin').off 'endIntro'
-		if window.isMobile
+		if window.isMobile()
 			play_video_disk()
 
 	changeCurrentTime: (@$deg, @$myplayer, dir, speed)->
