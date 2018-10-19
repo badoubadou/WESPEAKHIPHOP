@@ -1238,10 +1238,15 @@
       }
 
       skipIntro() {
-        console.log('skipIntro : player play ------------------------------');
+        console.log('skipIntro : player play ------------------------------ ??????? ');
         this.player.pause();
         this.timelineIntro.play();
-        return $('#popin').off('endIntro');
+        $('#popin').off('endIntro');
+        console.log(' is mobile ? ' + window.isMobile());
+        if (window.isMobile()) {
+          console.log('so play video damned it');
+          return this.play_video_disk();
+        }
       }
 
       changeCurrentTime($deg, $myplayer, dir, speed) {
