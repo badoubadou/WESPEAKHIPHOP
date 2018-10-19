@@ -2579,7 +2579,7 @@ span.lign_header {
 }
 .video-container.with_btn_skip .myfullscreen {
   right: 128px;
-  bottom: -2px;
+  bottom: 18px;
 }
 .video-container.with_btn_skip .plyr--hide-controls .myfullscreen {
   bottom: -40px;
@@ -2606,6 +2606,11 @@ span.lign_header {
   height: 70px;
   z-index: 1;
   background: #000;
+}
+.video-container .warp_custom_btn {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 .video-container .hider_logo.hide_hider {
   bottom: -70px;
@@ -3021,7 +3026,7 @@ span.lign_header {
   background: #ffce00;
   visibility: hidden;
   position: absolute;
-  bottom: 15px;
+  bottom: 30px;
   right: -10px;
   z-index: 10;
 }
