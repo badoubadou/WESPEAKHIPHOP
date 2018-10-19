@@ -41,7 +41,6 @@ class player_video_youtube
 		@loadLign()
 		@loadLogoShare()
 		
-
 	YouTubeGetID: (url) ->
 		ID = ''
 		url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/)
@@ -103,7 +102,7 @@ class player_video_youtube
 			console.log 'enter site -------------------------------- dafucked ?  '
 			$('.intro_page').addClass 'hidden'
 			$('.video-container').removeClass 'hidden hide'
-			# GoInFullscreen($('body').get(0))
+			GoInFullscreen($('body').get(0))
 			that.playerYT.play()
 			$('#enter_site').off()
 			setTimeout (->
@@ -176,6 +175,7 @@ class player_video_youtube
 				$('.video-container').removeClass 'trans'
 				$('.video-container .myfullscreen').removeClass 'hide'
 				$('.hider_logo').addClass 'hide_hider'
+				$('.hider_top').addClass 'hide_hider'
 				if ($('#logowhite').data('animstatus') == 'done')
 					return
 				
@@ -188,11 +188,13 @@ class player_video_youtube
 			
 			if event.detail.code == 2 #-------------------------  PAUSE
 				$('.hider_logo').removeClass 'hide_hider'
+				$('.hider_top').removeClass 'hide_hider'
 				if ($('#logowhite').data('animstatus') == 'playing')
 					$('#logowhite').trigger 'pausehideLogo'
 			
 			if event.detail.code == 3 #-------------------------  BUFFER
 				$('.hider_logo').removeClass 'hide_hider'
+				$('.hider_top').removeClass 'hide_hider'
 				if ($('#logowhite').data('animstatus') == 'playing')
 					$('#logowhite').trigger 'pausehideLogo'
 			return
@@ -243,6 +245,8 @@ class player_video_youtube
 
 		$('.skip_intro').on 'click touchstart', ->
 			vid_intro_finished()
+			if(window.isMobile())
+				$('#player')[0].play()
 			return
 			
 		@playerYT.on 'ended', (event) ->

@@ -52,13 +52,18 @@
 		height 100%
 
 	.hider_logo
+	.hider_top
 		right 0px
 		bottom -1px
 		position absolute
 		width 100%
 		height 70px
-		z-index 1
+		z-index 100
 		background #000000
+	
+	.hider_top
+		top -1px
+		bottom auto
 	
 	.warp_custom_btn
 		width 100%
@@ -70,4 +75,7 @@
 		bottom -70px
 		transition .5s bottom ease 3s
 		
+	.hider_top.hide_hider
+		top -70px
+		transition .5s top ease 3s
 	

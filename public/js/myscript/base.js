@@ -4,6 +4,383 @@
 }).call(this);
 
 (function() {
+  var player_video_youtube;
+
+  player_video_youtube = (function() {
+    'use strict';
+    class player_video_youtube {
+      constructor($container) {
+        this.$container = $container;
+        this.playerYT = null;
+        this.drawLogo = null;
+        this.intro_is_done = false;
+        this.blankVideo = 'https://cdn.plyr.io/static/blank.mp4';
+        this.bildIntroYoutube();
+        this.bindEvents();
+        this.needStartSite = true;
+      }
+
+      playYTisReady() {
+        console.log('----------------------- playYTisReady -------------------------------------------');
+        if (!$('.video-container').hasClass('customised')) {
+          this.customizePlayerYT();
+        }
+        $('.lds-dual-ring').trigger('hidespiner');
+        TweenMax.set(['.btn_intro a'], {
+          autoAlpha: 0,
+          visibility: "hidden"
+        });
+        TweenMax.staggerFromTo('.btn_intro a', .8, {
+          autoAlpha: 0,
+          visibility: "visible",
+          y: -10
+        }, {
+          autoAlpha: 1,
+          y: 0,
+          ease: Power1.easeOut
+        }, 0.5);
+        if (this.needStartSite) {
+          this.startSite();
+          return this.needStartSite = false;
+        } else {
+          return this.playerYT.play();
+        }
+      }
+
+      customizePlayerYT() {
+        var custom_btn;
+        console.log('customizePlayerYT');
+        custom_btn = $('#warp_custom_btn').detach();
+        $('.video-container .plyr').append(custom_btn);
+        return $('.video-container').addClass('customised');
+      }
+
+      bildIntroYoutube() {
+        var random, randomid, that;
+        that = this;
+        random = Math.floor(Math.random() * 4);
+        randomid = $('#idIntroYoutube input:eq(' + random + ')').val();
+        return $('#playerYT').attr('data-plyr-embed-id', randomid);
+      }
+
+      startSite() {
+        console.log('startSite then loadMap');
+        $('#logowhite').trigger('showLogo');
+        this.loadMap();
+        this.loadLign();
+        return this.loadLogoShare();
+      }
+
+      YouTubeGetID(url) {
+        var ID;
+        ID = '';
+        url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+        if (url[2] !== void 0) {
+          ID = url[2].split(/[^0-9a-z_\-]/i);
+          return ID = ID[0];
+        } else {
+          ID = url;
+          return ID;
+        }
+      }
+
+      loadLogoShare() {
+        var that;
+        console.log('---> load logo share ');
+        that = this;
+        return $.get('https://d2e3lhf7z9v1b2.cloudfront.net/logo-share.svg', function(data) {
+          var div;
+          console.log('---> logo share  loaded');
+          div = document.createElement('div');
+          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
+          $('#logosharesite').append(div.innerHTML);
+        });
+      }
+
+      loadLign() {
+        var that;
+        console.log('---> load lign');
+        that = this;
+        return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/lign.svg', function(data) {
+          var div;
+          console.log('---> lign loaded');
+          div = document.createElement('div');
+          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
+          $('.lign_svg').append(div.innerHTML);
+        });
+      }
+
+      loadMap() {
+        var that;
+        console.log('---> load small map');
+        that = this;
+        return $.get('https://d2e3lhf7z9v1b2.cloudfront.net/smallmap-' + $('#langage_short').val() + '.svg', function(data) {
+          var div;
+          console.log('---> small map loaded');
+          div = document.createElement('div');
+          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
+          $("#smallmap").append(div.innerHTML);
+          TweenLite.set(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], {
+            alpha: 0
+          });
+          TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {
+            scale: 3,
+            transformOrigin: '50% 50%',
+            repeat: -1,
+            yoyo: true
+          });
+        });
+      }
+
+      bindEvents() {
+        var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, finished_popin_transition, that, vid_intro_finished;
+        that = this;
+        if (!$('body').hasClass('doc-ready')) {
+          $('body').on('doc-ready', function() {
+            console.log('doc-ready');
+            // that.startSite(that)
+            return $('body').off();
+          });
+        } else {
+          console.log('doc already ready');
+        }
+        // that.startSite(that)
+
+        //------------------- ENTER SITE -------------------#
+        $('#enter_site').on('click touchstart', function(e) {
+          e.preventDefault();
+          that.intro_is_done = true;
+          console.log('enter site -------------------------------- dafucked ?  ');
+          $('.intro_page').addClass('hidden');
+          $('.video-container').removeClass('hidden hide');
+          GoInFullscreen($('body').get(0));
+          that.playerYT.play();
+          $('#enter_site').off();
+          setTimeout((function() {
+            console.log('show skip_intro damed it');
+            TweenMax.fromTo('.skip_intro', .6, {
+              autoAlpha: 0,
+              visibility: 'visible'
+            }, {
+              autoAlpha: 1
+            });
+          }), 3000);
+        });
+        //------------------- SOUND ---------------------------#
+        $('#sound').on('click touchstart', function() {
+          var event_name;
+          console.log('click sound');
+          event_name = 'sound_on';
+          if ($('#sound').hasClass('actif')) {
+            event_name = 'sound_off';
+          }
+          $(this).trigger(event_name);
+          console.log(event_name);
+          return $('#sound').toggleClass('actif');
+        });
+        //------------------- FULL SCREEN ---------------------------#				
+        GoInFullscreen = function(element) {
+          $('.myfullscreen').addClass('actiffullscreen');
+          if (element.requestFullscreen) {
+            element.requestFullscreen();
+          } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+          } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+          } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+          }
+        };
+        GoOutFullscreen = function() {
+          $('.myfullscreen').removeClass('actiffullscreen');
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+          }
+        };
+        IsFullScreenCurrently = function() {
+          var full_screen_element;
+          full_screen_element = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
+          // If no element is in full-screen
+          if (full_screen_element === null) {
+            return false;
+          } else {
+            return true;
+          }
+        };
+        $('.myfullscreen').on({
+          'click touchstart': function() {
+            console.log('click ');
+            if (!IsFullScreenCurrently()) {
+              return GoInFullscreen($('body').get(0));
+            } else {
+              return GoOutFullscreen();
+            }
+          }
+        });
+        this.playerYT = new Plyr('#playerYT', {
+          autoplay: true,
+          playsinline: true,
+          clickToPlay: false,
+          controls: ['play', 'progress', 'captions']
+        });
+        
+        //------------------- PLAYER YOUTUBE IS READY -------------------#
+        this.playerYT.on('ready', function(event) {
+          that.playYTisReady();
+        });
+        this.playerYT.on('statechange', function(event) {
+          console.log('on statechange YOUTUBE  event code : ' + event.detail.code);
+          if (event.detail.code === 1) { //-------------------------  PLAY 
+            $('.video-container').removeClass('trans');
+            $('.video-container .myfullscreen').removeClass('hide');
+            $('.hider_logo').addClass('hide_hider');
+            $('.hider_top').addClass('hide_hider');
+            if ($('#logowhite').data('animstatus') === 'done') {
+              return;
+            }
+            if ($('#logowhite').data('animstatus') === 'waiting') {
+              console.log('trigger hide');
+              $('#logowhite').trigger('hideLogo');
+            }
+            if ($('#logowhite').data('animstatus') === 'paused') {
+              $('#logowhite').trigger('resumehideLogo');
+            }
+          }
+          if (event.detail.code === 2) { //-------------------------  PAUSE
+            $('.hider_logo').removeClass('hide_hider');
+            $('.hider_top').removeClass('hide_hider');
+            if ($('#logowhite').data('animstatus') === 'playing') {
+              $('#logowhite').trigger('pausehideLogo');
+            }
+          }
+          if (event.detail.code === 3) { //-------------------------  BUFFER
+            $('.hider_logo').removeClass('hide_hider');
+            $('.hider_top').removeClass('hide_hider');
+            if ($('#logowhite').data('animstatus') === 'playing') {
+              $('#logowhite').trigger('pausehideLogo');
+            }
+          }
+        });
+        
+        //------------------- FOCUS -------------------#
+        $(window).on('pageshow focus', function() {
+          console.log('on focus : ' + that.playerYT.paused);
+          if (that.playerYT.paused) {
+            return that.playerYT.play();
+          }
+        });
+        $(window).on('pagehide blur', function() {
+          console.log('on blur : ' + that.playerYT.playing);
+          if (that.playerYT.playing) {
+            return that.playerYT.pause();
+          }
+        });
+        //------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
+        $('#popin').on('closePopin', function() {
+          console.log('------------ > closePopin stop player YOUTUBE');
+          $('.video-container').addClass('trans blankVideo');
+          return that.playerYT.source = {
+            type: 'video',
+            sources: [
+              {
+                src: that.blankVideo,
+                type: 'video/mp4'
+              }
+            ]
+          };
+        });
+        finished_popin_transition = function() {
+          console.log('done');
+          return $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange').attr('style', '');
+        };
+        vid_intro_finished = function() {
+          var player_video;
+          player_video = new module.player_video();
+          console.log('vid_intro_finished ----- trigger end Intro trigger close  Popin');
+          // $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange')
+          $('#close').removeClass('hide');
+          $('.video-container').removeClass('with_btn_skip');
+          $('#logowhite').trigger('destroyLogo');
+          $('.skip_intro').off().remove();
+          $('.intro_page').remove();
+          that.playerYT.pause();
+          TweenMax.to('#popin', .8, {
+            opacity: 0,
+            onComplete: finished_popin_transition
+          });
+        };
+        $('.skip_intro').on('click touchstart', function() {
+          vid_intro_finished();
+          if (window.isMobile()) {
+            $('#player')[0].play();
+          }
+        });
+        this.playerYT.on('ended', function(event) {
+          if ($('.video-container').hasClass('blankVideo')) {
+            return;
+          }
+          vid_intro_finished();
+        });
+        // $('.video-container').on 'touchstart', ->
+        // 	console.log 'touch video player '
+        // 	if that.playerYT
+        // 		if !that.playerYT.playing
+        // 			that.playerYT.play()
+
+        //------------------- CLICK LIST ARTIST -------------------#
+        return $('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on('click touchstart', function(event) {
+          var idyoutube, ratiovideo;
+          event.preventDefault();
+          idyoutube = that.YouTubeGetID($(this).attr('href'));
+          ratiovideo = $(this).data('ratiovideo');
+          if (ratiovideo === 4) {
+            $('.video-container').addClass('quatre_tier');
+          } else {
+            $('.video-container').removeClass('quatre_tier');
+          }
+          if (!$('#artist_info').hasClass('hide')) {
+            $('#artist_info').addClass('hide');
+          }
+          $('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
+          $('.video-container').removeClass('hide');
+          console.log('trigger showspiner');
+          $('.lds-dual-ring').trigger('showspiner');
+          console.log('trigger show');
+          window.currentArtist = $('#artist_info .info:not(.hide)').index();
+          $('.video-container').removeClass('blankVideo');
+          that.playerYT.source = {
+            type: 'video',
+            sources: [
+              {
+                src: idyoutube,
+                provider: 'youtube'
+              }
+            ]
+          };
+          $('#popin').trigger('showVideo');
+          $('#popin').trigger('classChange');
+          that.playerYT.play();
+          console.log('play youtube on touch start');
+        });
+      }
+
+    };
+
+    return player_video_youtube;
+
+  }).call(this);
+
+  module.player_video_youtube = player_video_youtube;
+
+}).call(this);
+
+(function() {
   var logo;
 
   logo = (function() {
@@ -189,377 +566,6 @@
 }).call(this);
 
 (function() {
-  var player_video_youtube;
-
-  player_video_youtube = (function() {
-    'use strict';
-    class player_video_youtube {
-      constructor($container) {
-        this.$container = $container;
-        this.playerYT = null;
-        this.drawLogo = null;
-        this.intro_is_done = false;
-        this.blankVideo = 'https://cdn.plyr.io/static/blank.mp4';
-        this.bildIntroYoutube();
-        this.bindEvents();
-        this.needStartSite = true;
-      }
-
-      playYTisReady() {
-        console.log('----------------------- playYTisReady -------------------------------------------');
-        if (!$('.video-container').hasClass('customised')) {
-          this.customizePlayerYT();
-        }
-        $('.lds-dual-ring').trigger('hidespiner');
-        TweenMax.set(['.btn_intro a'], {
-          autoAlpha: 0,
-          visibility: "hidden"
-        });
-        TweenMax.staggerFromTo('.btn_intro a', .8, {
-          autoAlpha: 0,
-          visibility: "visible",
-          y: -10
-        }, {
-          autoAlpha: 1,
-          y: 0,
-          ease: Power1.easeOut
-        }, 0.5);
-        if (this.needStartSite) {
-          this.startSite();
-          return this.needStartSite = false;
-        } else {
-          return this.playerYT.play();
-        }
-      }
-
-      customizePlayerYT() {
-        var custom_btn;
-        console.log('customizePlayerYT');
-        custom_btn = $('#warp_custom_btn').detach();
-        $('.video-container .plyr').append(custom_btn);
-        return $('.video-container').addClass('customised');
-      }
-
-      bildIntroYoutube() {
-        var random, randomid, that;
-        that = this;
-        random = Math.floor(Math.random() * 4);
-        randomid = $('#idIntroYoutube input:eq(' + random + ')').val();
-        return $('#playerYT').attr('data-plyr-embed-id', randomid);
-      }
-
-      startSite() {
-        console.log('startSite then loadMap');
-        $('#logowhite').trigger('showLogo');
-        this.loadMap();
-        this.loadLign();
-        return this.loadLogoShare();
-      }
-
-      YouTubeGetID(url) {
-        var ID;
-        ID = '';
-        url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
-        if (url[2] !== void 0) {
-          ID = url[2].split(/[^0-9a-z_\-]/i);
-          return ID = ID[0];
-        } else {
-          ID = url;
-          return ID;
-        }
-      }
-
-      loadLogoShare() {
-        var that;
-        console.log('---> load logo share ');
-        that = this;
-        return $.get('https://d2e3lhf7z9v1b2.cloudfront.net/logo-share.svg', function(data) {
-          var div;
-          console.log('---> logo share  loaded');
-          div = document.createElement('div');
-          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
-          $('#logosharesite').append(div.innerHTML);
-        });
-      }
-
-      loadLign() {
-        var that;
-        console.log('---> load lign');
-        that = this;
-        return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/lign.svg', function(data) {
-          var div;
-          console.log('---> lign loaded');
-          div = document.createElement('div');
-          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
-          $('.lign_svg').append(div.innerHTML);
-        });
-      }
-
-      loadMap() {
-        var that;
-        console.log('---> load small map');
-        that = this;
-        return $.get('https://d2e3lhf7z9v1b2.cloudfront.net/smallmap-' + $('#langage_short').val() + '.svg', function(data) {
-          var div;
-          console.log('---> small map loaded');
-          div = document.createElement('div');
-          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
-          $("#smallmap").append(div.innerHTML);
-          TweenLite.set(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], {
-            alpha: 0
-          });
-          TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {
-            scale: 3,
-            transformOrigin: '50% 50%',
-            repeat: -1,
-            yoyo: true
-          });
-        });
-      }
-
-      bindEvents() {
-        var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, finished_popin_transition, that, vid_intro_finished;
-        that = this;
-        if (!$('body').hasClass('doc-ready')) {
-          $('body').on('doc-ready', function() {
-            console.log('doc-ready');
-            // that.startSite(that)
-            return $('body').off();
-          });
-        } else {
-          console.log('doc already ready');
-        }
-        // that.startSite(that)
-
-        //------------------- ENTER SITE -------------------#
-        $('#enter_site').on('click touchstart', function(e) {
-          e.preventDefault();
-          that.intro_is_done = true;
-          console.log('enter site -------------------------------- dafucked ?  ');
-          $('.intro_page').addClass('hidden');
-          $('.video-container').removeClass('hidden hide');
-          // GoInFullscreen($('body').get(0))
-          that.playerYT.play();
-          $('#enter_site').off();
-          setTimeout((function() {
-            console.log('show skip_intro damed it');
-            TweenMax.fromTo('.skip_intro', .6, {
-              autoAlpha: 0,
-              visibility: 'visible'
-            }, {
-              autoAlpha: 1
-            });
-          }), 3000);
-        });
-        //------------------- SOUND ---------------------------#
-        $('#sound').on('click touchstart', function() {
-          var event_name;
-          console.log('click sound');
-          event_name = 'sound_on';
-          if ($('#sound').hasClass('actif')) {
-            event_name = 'sound_off';
-          }
-          $(this).trigger(event_name);
-          console.log(event_name);
-          return $('#sound').toggleClass('actif');
-        });
-        //------------------- FULL SCREEN ---------------------------#				
-        GoInFullscreen = function(element) {
-          $('.myfullscreen').addClass('actiffullscreen');
-          if (element.requestFullscreen) {
-            element.requestFullscreen();
-          } else if (element.mozRequestFullScreen) {
-            element.mozRequestFullScreen();
-          } else if (element.webkitRequestFullscreen) {
-            element.webkitRequestFullscreen();
-          } else if (element.msRequestFullscreen) {
-            element.msRequestFullscreen();
-          }
-        };
-        GoOutFullscreen = function() {
-          $('.myfullscreen').removeClass('actiffullscreen');
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-          } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-          } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-          }
-        };
-        IsFullScreenCurrently = function() {
-          var full_screen_element;
-          full_screen_element = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
-          // If no element is in full-screen
-          if (full_screen_element === null) {
-            return false;
-          } else {
-            return true;
-          }
-        };
-        $('.myfullscreen').on({
-          'click touchstart': function() {
-            console.log('click ');
-            if (!IsFullScreenCurrently()) {
-              return GoInFullscreen($('body').get(0));
-            } else {
-              return GoOutFullscreen();
-            }
-          }
-        });
-        this.playerYT = new Plyr('#playerYT', {
-          autoplay: true,
-          playsinline: true,
-          clickToPlay: false,
-          controls: ['play', 'progress', 'captions']
-        });
-        
-        //------------------- PLAYER YOUTUBE IS READY -------------------#
-        this.playerYT.on('ready', function(event) {
-          that.playYTisReady();
-        });
-        this.playerYT.on('statechange', function(event) {
-          console.log('on statechange YOUTUBE  event code : ' + event.detail.code);
-          if (event.detail.code === 1) { //-------------------------  PLAY 
-            $('.video-container').removeClass('trans');
-            $('.video-container .myfullscreen').removeClass('hide');
-            $('.hider_logo').addClass('hide_hider');
-            if ($('#logowhite').data('animstatus') === 'done') {
-              return;
-            }
-            if ($('#logowhite').data('animstatus') === 'waiting') {
-              console.log('trigger hide');
-              $('#logowhite').trigger('hideLogo');
-            }
-            if ($('#logowhite').data('animstatus') === 'paused') {
-              $('#logowhite').trigger('resumehideLogo');
-            }
-          }
-          if (event.detail.code === 2) { //-------------------------  PAUSE
-            $('.hider_logo').removeClass('hide_hider');
-            if ($('#logowhite').data('animstatus') === 'playing') {
-              $('#logowhite').trigger('pausehideLogo');
-            }
-          }
-          if (event.detail.code === 3) { //-------------------------  BUFFER
-            $('.hider_logo').removeClass('hide_hider');
-            if ($('#logowhite').data('animstatus') === 'playing') {
-              $('#logowhite').trigger('pausehideLogo');
-            }
-          }
-        });
-        
-        //------------------- FOCUS -------------------#
-        $(window).on('pageshow focus', function() {
-          console.log('on focus : ' + that.playerYT.paused);
-          if (that.playerYT.paused) {
-            return that.playerYT.play();
-          }
-        });
-        $(window).on('pagehide blur', function() {
-          console.log('on blur : ' + that.playerYT.playing);
-          if (that.playerYT.playing) {
-            return that.playerYT.pause();
-          }
-        });
-        //------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
-        $('#popin').on('closePopin', function() {
-          console.log('------------ > closePopin stop player YOUTUBE');
-          $('.video-container').addClass('trans blankVideo');
-          return that.playerYT.source = {
-            type: 'video',
-            sources: [
-              {
-                src: that.blankVideo,
-                type: 'video/mp4'
-              }
-            ]
-          };
-        });
-        finished_popin_transition = function() {
-          console.log('done');
-          return $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange').attr('style', '');
-        };
-        vid_intro_finished = function() {
-          var player_video;
-          player_video = new module.player_video();
-          console.log('vid_intro_finished ----- trigger end Intro trigger close  Popin');
-          // $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange')
-          $('#close').removeClass('hide');
-          $('.video-container').removeClass('with_btn_skip');
-          $('#logowhite').trigger('destroyLogo');
-          $('.skip_intro').off().remove();
-          $('.intro_page').remove();
-          that.playerYT.pause();
-          TweenMax.to('#popin', .8, {
-            opacity: 0,
-            onComplete: finished_popin_transition
-          });
-        };
-        $('.skip_intro').on('click touchstart', function() {
-          vid_intro_finished();
-        });
-        this.playerYT.on('ended', function(event) {
-          if ($('.video-container').hasClass('blankVideo')) {
-            return;
-          }
-          vid_intro_finished();
-        });
-        // $('.video-container').on 'touchstart', ->
-        // 	console.log 'touch video player '
-        // 	if that.playerYT
-        // 		if !that.playerYT.playing
-        // 			that.playerYT.play()
-
-        //------------------- CLICK LIST ARTIST -------------------#
-        return $('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on('click touchstart', function(event) {
-          var idyoutube, ratiovideo;
-          event.preventDefault();
-          idyoutube = that.YouTubeGetID($(this).attr('href'));
-          ratiovideo = $(this).data('ratiovideo');
-          if (ratiovideo === 4) {
-            $('.video-container').addClass('quatre_tier');
-          } else {
-            $('.video-container').removeClass('quatre_tier');
-          }
-          if (!$('#artist_info').hasClass('hide')) {
-            $('#artist_info').addClass('hide');
-          }
-          $('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
-          $('.video-container').removeClass('hide');
-          console.log('trigger showspiner');
-          $('.lds-dual-ring').trigger('showspiner');
-          console.log('trigger show');
-          window.currentArtist = $('#artist_info .info:not(.hide)').index();
-          $('.video-container').removeClass('blankVideo');
-          that.playerYT.source = {
-            type: 'video',
-            sources: [
-              {
-                src: idyoutube,
-                provider: 'youtube'
-              }
-            ]
-          };
-          $('#popin').trigger('showVideo');
-          $('#popin').trigger('classChange');
-          that.playerYT.play();
-          console.log('play youtube on touch start');
-        });
-      }
-
-    };
-
-    return player_video_youtube;
-
-  }).call(this);
-
-  module.player_video_youtube = player_video_youtube;
-
-}).call(this);
-
-(function() {
   var popin;
 
   popin = (function() {
@@ -597,6 +603,17 @@
         showPopin = function($target) {
           $('.video-container, #abouttxt, #credittxt, #contacttxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
           $('#popin').toggleClass('hide').trigger('classChange');
+          $('#popin').removeClass('greybg');
+          console.log('??????? fuck it : ' + ($target === '#popin #credittxt') + '. $target : ' + $target);
+          if ($target === '#popin #abouttxt') {
+            $('#popin').addClass('greybg');
+          }
+          if ($target === '#popin #credittxt') {
+            $('#popin').addClass('greybg');
+          }
+          if ($target === '#popin #contacttxt') {
+            $('#popin').addClass('greybg');
+          }
           $($target).removeClass('hide');
           if ($target === '.video-container') {
             $('.video-container').addClass('trans');

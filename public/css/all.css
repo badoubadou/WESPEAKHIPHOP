@@ -1805,9 +1805,6 @@ span.lign_header {
 #artists_info li .date {
   letter-spacing: -1px;
 }
-#artists_info li q {
-  font-style: italic;
-}
 #artists_info li q:after,
 #artists_info li q:before {
   font-family: Gotham, Helvetica, Arial, sans-serif;
@@ -2598,14 +2595,19 @@ span.lign_header {
   padding-bottom: 0;
   height: 100%;
 }
-.video-container .hider_logo {
+.video-container .hider_logo,
+.video-container .hider_top {
   right: 0px;
   bottom: -1px;
   position: absolute;
   width: 100%;
   height: 70px;
-  z-index: 1;
+  z-index: 100;
   background: #000;
+}
+.video-container .hider_top {
+  top: -1px;
+  bottom: auto;
 }
 .video-container .warp_custom_btn {
   width: 100%;
@@ -2619,6 +2621,14 @@ span.lign_header {
   -o-transition: 0.5s bottom ease 3s;
   -ms-transition: 0.5s bottom ease 3s;
   transition: 0.5s bottom ease 3s;
+}
+.video-container .hider_top.hide_hider {
+  top: -70px;
+  -webkit-transition: 0.5s top ease 3s;
+  -moz-transition: 0.5s top ease 3s;
+  -o-transition: 0.5s top ease 3s;
+  -ms-transition: 0.5s top ease 3s;
+  transition: 0.5s top ease 3s;
 }
 #popin {
   position: absolute;
@@ -2948,6 +2958,18 @@ span.lign_header {
   -ms-filter: none;
   filter: none;
   z-index: -1;
+}
+#popin.greybg:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1d1d1b;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
 }
 #popin .block {
   width: 20%;

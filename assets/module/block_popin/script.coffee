@@ -27,6 +27,16 @@ class popin
 		showPopin = ($target)->
 			$('.video-container, #abouttxt, #credittxt, #contacttxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
 			$('#popin').toggleClass('hide').trigger 'classChange'
+			$('#popin').removeClass 'greybg'
+			
+			console.log '??????? fuck it : '+($target == '#popin #credittxt')+'. $target : '+$target
+			if($target == '#popin #abouttxt')
+				$('#popin').addClass 'greybg'
+			if($target == '#popin #credittxt')
+				$('#popin').addClass 'greybg'
+			if($target == '#popin #contacttxt')
+				$('#popin').addClass 'greybg'
+				
 			$($target).removeClass('hide')
 			if($target == '.video-container')
 				$('.video-container').addClass 'trans'
