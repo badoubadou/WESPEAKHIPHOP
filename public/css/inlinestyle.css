@@ -471,6 +471,7 @@ p:empty {
   -ms-user-select: none;
   user-select: none;
   font-size: 10px;
+  touch-action: none;
 }
 @media screen and (orientation: landscape) {
   .btn {
@@ -656,6 +657,7 @@ body,
 html {
   background: #f0f2da;
   background-color: #f0f2da;
+  touch-action: none;
 }
 .mainwidth,
 #main {
