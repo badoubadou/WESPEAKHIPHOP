@@ -25,7 +25,7 @@ class popin
 	bindEvents : ->
 		that = @
 		showPopin = ($target)->
-			$('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
+			$('.video-container, #abouttxt, #credittxt, #contacttxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
 			$('#popin').toggleClass('hide').trigger 'classChange'
 			$($target).removeClass('hide')
 			if($target == '.video-container')
@@ -42,6 +42,10 @@ class popin
 		$('#credit_btn').on 'click': (e) ->
 			e.preventDefault()
 			showPopin('#popin #credittxt')
+		#------------------- CONTACT  --------------------------#
+		$('#mail_btn').on 'click': (e) ->
+			e.preventDefault()
+			showPopin('#popin #contacttxt')
 		#------------------- CREDIT  --------------------------#
 		$('#about-btn, .block_contry .bio').on 'click':(e) ->
 			e.preventDefault()

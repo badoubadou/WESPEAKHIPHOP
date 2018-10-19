@@ -1292,117 +1292,174 @@ span.lign_header {
   fill: #fff;
 }
 #popin #credittxt,
-#popin #abouttxt {
-  color: #fff;
+#popin #abouttxt,
+#popin #contacttxt {
+  color: #fefeff;
   text-transform: none;
   text-align: center;
   font-weight: 100;
   font-family: Knockout, Helvetica, Arial, sans-serif;
   font-size: 1.2em;
   width: calc(100% - 50px);
+  max-width: calc(100% - 50px);
   padding: 0 25px;
 }
 @media screen and (orientation: landscape) {
   #popin #credittxt,
-  #popin #abouttxt {
+  #popin #abouttxt,
+  #popin #contacttxt {
     width: calc(100% - 100px);
+    max-width: calc(100% - 100px);
     padding: 0 50px;
   }
 }
+@media screen and (orientation: landscape) {
+  #popin #credittxt#abouttxt,
+  #popin #abouttxt#abouttxt,
+  #popin #contacttxt#abouttxt {
+    max-width: 70%;
+  }
+}
+#popin #credittxt#abouttxt p:not(.title),
+#popin #abouttxt#abouttxt p:not(.title),
+#popin #contacttxt#abouttxt p:not(.title),
+#popin #credittxt#abouttxt b,
+#popin #abouttxt#abouttxt b,
+#popin #contacttxt#abouttxt b {
+  margin: 1em;
+  font-size: 0.75em;
+  font-family: Gotham, Helvetica, Arial, sans-serif;
+}
+#popin #credittxt#contacttxt,
+#popin #abouttxt#contacttxt,
+#popin #contacttxt#contacttxt {
+  max-width: 300px;
+  font-family: Gotham, Helvetica, Arial, sans-serif;
+}
+#popin #credittxt#contacttxt p,
+#popin #abouttxt#contacttxt p,
+#popin #contacttxt#contacttxt p {
+  padding: 5px 0;
+}
+#popin #credittxt#contacttxt .logokomet,
+#popin #abouttxt#contacttxt .logokomet,
+#popin #contacttxt#contacttxt .logokomet {
+  width: auto;
+  margin: 0;
+}
 #popin #credittxt .title,
-#popin #abouttxt .title {
+#popin #abouttxt .title,
+#popin #contacttxt .title {
   font-weight: 900;
   font-size: 2em;
   text-transform: uppercase;
-  color: #fff;
+  font-family: Knockout, Helvetica, Arial, sans-serif;
 }
 #popin #credittxt a,
 #popin #abouttxt a,
+#popin #contacttxt a,
 #popin #credittxt a:hover,
-#popin #abouttxt a:hover {
+#popin #abouttxt a:hover,
+#popin #contacttxt a:hover {
   text-decoration: none;
   color: #fff;
 }
 #popin #credittxt .warp_left,
 #popin #abouttxt .warp_left,
+#popin #contacttxt .warp_left,
 #popin #credittxt .warp_right,
-#popin #abouttxt .warp_right {
+#popin #abouttxt .warp_right,
+#popin #contacttxt .warp_right {
   width: calc(50% - 10px);
   display: inline-block;
   vertical-align: top;
 }
 #popin #credittxt .warp_left,
-#popin #abouttxt .warp_left {
+#popin #abouttxt .warp_left,
+#popin #contacttxt .warp_left {
   text-align: right;
   padding-right: 10px;
 }
 #popin #credittxt .warp_right,
-#popin #abouttxt .warp_right {
+#popin #abouttxt .warp_right,
+#popin #contacttxt .warp_right {
   padding-left: 10px;
   text-align: left;
 }
 #popin #credittxt .subtitle,
-#popin #abouttxt .subtitle {
+#popin #abouttxt .subtitle,
+#popin #contacttxt .subtitle {
   text-transform: uppercase;
   font-size: 1.2em;
   margin-top: 10px;
   margin-bottom: 0;
 }
 #popin #credittxt .listlogo,
-#popin #abouttxt .listlogo {
+#popin #abouttxt .listlogo,
+#popin #contacttxt .listlogo {
   list-style: none;
   padding: 0;
 }
 #popin #credittxt .listlogo li,
-#popin #abouttxt .listlogo li {
+#popin #abouttxt .listlogo li,
+#popin #contacttxt .listlogo li {
   display: inline-block;
   width: calc(50% - 20px);
   margin: 10px;
 }
 @media screen and (orientation: landscape) {
   #popin #credittxt .listlogo li,
-  #popin #abouttxt .listlogo li {
+  #popin #abouttxt .listlogo li,
+  #popin #contacttxt .listlogo li {
     width: calc(25% - 60px);
     margin: 30px;
   }
 }
 #popin #credittxt .listlogo li a,
-#popin #abouttxt .listlogo li a {
+#popin #abouttxt .listlogo li a,
+#popin #contacttxt .listlogo li a {
   display: block;
   width: 100%;
 }
 #popin #credittxt .listlogo li a img,
-#popin #abouttxt .listlogo li a img {
+#popin #abouttxt .listlogo li a img,
+#popin #contacttxt .listlogo li a img {
   width: 100%;
 }
 #popin #credittxt .logokomet,
-#popin #abouttxt .logokomet {
+#popin #abouttxt .logokomet,
+#popin #contacttxt .logokomet {
   margin: auto;
   display: inline-block;
   width: 50%;
 }
 @media screen and (orientation: landscape) {
   #popin #credittxt .logokomet,
-  #popin #abouttxt .logokomet {
+  #popin #abouttxt .logokomet,
+  #popin #contacttxt .logokomet {
     width: calc(25% - 60px);
     margin: 30px;
   }
 }
 #popin #credittxt .logokomet a,
-#popin #abouttxt .logokomet a {
+#popin #abouttxt .logokomet a,
+#popin #contacttxt .logokomet a {
   display: block;
   width: 100%;
 }
 #popin #credittxt .logokomet a img,
-#popin #abouttxt .logokomet a img {
+#popin #abouttxt .logokomet a img,
+#popin #contacttxt .logokomet a img {
   width: 100%;
 }
 #popin #credittxt p,
-#popin #abouttxt p {
+#popin #abouttxt p,
+#popin #contacttxt p {
   margin: 0px;
 }
 #popin #credittxt p.spacer,
-#popin #abouttxt p.spacer {
+#popin #abouttxt p.spacer,
+#popin #contacttxt p.spacer {
   margin: 10px 0;
 }
 #popin .sharebtn {
@@ -1476,14 +1533,13 @@ span.lign_header {
   overflow-y: auto;
   overflow-x: hidden;
   width: 90%;
-  max-height: 80%;
+  max-height: calc(100% - 100px);
   height: auto;
 }
 @media screen and (orientation: landscape) {
   #popin .block.big {
     width: 80%;
     max-width: 1000px;
-    max-height: 70%;
     height: auto;
   }
 }
@@ -1491,7 +1547,6 @@ span.lign_header {
   #popin .block.big {
     width: 80%;
     max-width: 1000px;
-    max-height: 90%;
     height: auto;
   }
 }

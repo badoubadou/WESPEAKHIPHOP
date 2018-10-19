@@ -32,6 +32,8 @@
 			include credit-en.pug
 		else
 			include credit-fr.pug
+	#contacttxt.hide.block.big.centered.layer_top
+		include contact.pug
 			
 
 	#artist_info.hide.layer_top
@@ -66,18 +68,8 @@
 					.sharesite
 						.txt
 							| #{TRANSLATION.sharesite[langage]}
+						include share.pug
 						
-						ul.sharebtn
-							li
-								a(href="https://www.facebook.com/sharer/sharer.php?u="+pageurl+"&display=popup&ref=plugin&src=share_button" title="facebook share" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=580')")
-									include ../../../public/image/facebook.svg
-							li
-								a(href="http://twitter.com/share?text="+txttwitter+"&url="+pageurl+"&hashtags=wespeakhiphop,hiphop" title="twitter share"  onclick="return !window.open(this.href, 'Twitter', 'width=640,height=580')")
-									include ../../../public/image/tweeter.svg
-							li
-								a(href="mailto:?subject="+mailbody title="mail" )
-									include ../../../public/image/mail.svg
-
 	#close.layer_top.btn.hide
 		include ../../../public/image/close.svg
 	

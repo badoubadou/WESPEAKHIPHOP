@@ -527,7 +527,7 @@
         var showPopin, that;
         that = this;
         showPopin = function($target) {
-          $('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
+          $('.video-container, #abouttxt, #credittxt, #contacttxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
           $('#popin').toggleClass('hide').trigger('classChange');
           $($target).removeClass('hide');
           if ($target === '.video-container') {
@@ -561,6 +561,13 @@
           'click': function(e) {
             e.preventDefault();
             return showPopin('#popin #credittxt');
+          }
+        });
+        //------------------- CONTACT  --------------------------#
+        $('#mail_btn').on({
+          'click': function(e) {
+            e.preventDefault();
+            return showPopin('#popin #contacttxt');
           }
         });
         //------------------- CREDIT  --------------------------#
