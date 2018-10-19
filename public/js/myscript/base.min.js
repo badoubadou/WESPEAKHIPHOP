@@ -1510,7 +1510,9 @@
     $('body').trigger('doc-ready');
     window.layout = window.currentLayout();
     console.log('layout : ' + layout);
-    return player_video = new module.player_video();
+    player_video = new module.player_video();
+    window.scrollTo(x - coord, y - coord);
+    return console.log('scroll top');
   };
 
   $(window).load(init);

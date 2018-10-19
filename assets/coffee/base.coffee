@@ -16,6 +16,8 @@ init = ->
 	console.log 'layout : '+layout
 
 	player_video = new module.player_video()
+	window.scrollTo(x-coord, y-coord)
+	console.log 'scroll top'
 
 $(window).load( init )
 
@@ -46,6 +48,7 @@ document.addEventListener 'touchmove', ((event) ->
 		event.preventDefault()
 	return
 ), false
+
 
 # $(window).on 'resize', ->
 # 	if @resizeTO
