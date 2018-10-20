@@ -251,9 +251,7 @@
       startSite() {
         console.log('startSite then loadMap');
         $('#logowhite').trigger('showLogo');
-        this.loadMap();
-        this.loadLign();
-        return this.loadLogoShare();
+        return this.loadMap();
       }
 
       YouTubeGetID(url) {
@@ -267,32 +265,6 @@
           ID = url;
           return ID;
         }
-      }
-
-      loadLogoShare() {
-        var that;
-        console.log('---> load logo share ');
-        that = this;
-        return $.get('https://d2e3lhf7z9v1b2.cloudfront.net/logo-share.svg', function(data) {
-          var div;
-          console.log('---> logo share  loaded');
-          div = document.createElement('div');
-          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
-          $('#logosharesite').append(div.innerHTML);
-        });
-      }
-
-      loadLign() {
-        var that;
-        console.log('---> load lign');
-        that = this;
-        return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/lign.svg', function(data) {
-          var div;
-          console.log('---> lign loaded');
-          div = document.createElement('div');
-          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
-          $('.lign_svg').append(div.innerHTML);
-        });
       }
 
       loadMap() {

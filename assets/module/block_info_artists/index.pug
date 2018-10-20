@@ -8,7 +8,8 @@ ul#artists_info.layer_0
 							- tagline = meta.meta_value
 							| !{tagline}
 				
-				h3.name= video.title
+				h3.name
+					| !{video.title}
 				.warp_contry_date
 					each cat in video.category
 						if cat.domain == 'pays'

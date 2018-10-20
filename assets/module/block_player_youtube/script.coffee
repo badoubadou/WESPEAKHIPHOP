@@ -38,8 +38,7 @@ class player_video_youtube
 		console.log 'startSite then loadMap'
 		$('#logowhite').trigger 'showLogo'
 		@loadMap()
-		@loadLign()
-		@loadLogoShare()
+
 		
 	YouTubeGetID: (url) ->
 		ID = ''
@@ -51,25 +50,7 @@ class player_video_youtube
 			ID = url
 			ID
 	
-	loadLogoShare : ->
-		console.log '---> load logo share '
-		that = @
-		$.get 'https://d2e3lhf7z9v1b2.cloudfront.net/logo-share.svg', (data) ->
-			console.log '---> logo share  loaded'
-			div = document.createElement('div')
-			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
-			$( '#logosharesite' ).append( div.innerHTML )
-			return
 
-	loadLign : ->
-		console.log '---> load lign'
-		that = @
-		$.get 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/lign.svg', (data) ->
-			console.log '---> lign loaded'
-			div = document.createElement('div')
-			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
-			$( '.lign_svg' ).append( div.innerHTML )
-			return
 
 	loadMap : ->
 		console.log '---> load small map'
