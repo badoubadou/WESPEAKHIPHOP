@@ -2736,6 +2736,12 @@ span.lign_header {
     padding: 0 50px;
   }
 }
+#popin #credittxt#abouttxt,
+#popin #abouttxt#abouttxt,
+#popin #contacttxt#abouttxt {
+  text-align: justify;
+  text-justify: inter-word;
+}
 #popin #credittxt#abouttxt .title,
 #popin #abouttxt#abouttxt .title,
 #popin #contacttxt#abouttxt .title {
@@ -2754,7 +2760,7 @@ span.lign_header {
 #popin #credittxt#abouttxt b,
 #popin #abouttxt#abouttxt b,
 #popin #contacttxt#abouttxt b {
-  margin: 1em;
+  margin: 1em 0;
   font-size: 0.75em;
   font-family: Gotham, Helvetica, Arial, sans-serif;
 }
@@ -2788,6 +2794,12 @@ span.lign_header {
   font-size: 2.5em;
   text-transform: uppercase;
   font-family: Knockout, Helvetica, Arial, sans-serif;
+}
+#popin #credittxt #credittxt .title,
+#popin #abouttxt #credittxt .title,
+#popin #contacttxt #credittxt .title {
+  font-weight: normal;
+  font-size: 1.35em;
 }
 #popin #credittxt a,
 #popin #abouttxt a,
