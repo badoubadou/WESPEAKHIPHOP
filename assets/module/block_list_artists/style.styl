@@ -1,7 +1,11 @@
 #list_artists
-	on-circle(28, $size_name_circle_small, 10px)
+	on-circle(28, $size_name_circle_smaller, 10px)
 	width 0
 	height 0	
+	@media $large_portrait	
+		on-circle(28, $size_name_circle_small, 10px)
+		width 0
+		height 0	
 		
 	@media $landscape	
 		on-circle(28, $size_name_circle_medium, 80px)

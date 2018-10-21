@@ -199,7 +199,7 @@ gulp.task('cssinline', function (done) {
     gutil.log('start css inline');
     done();
     runSequence(['clean:css', 'stylus'], function() {
-        runSequence('concatcss', 'inlinesource' );
+        runSequence('concatcss', 'inlinesource', 'pug' );
     });
 });
 

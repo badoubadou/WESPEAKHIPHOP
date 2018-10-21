@@ -791,11 +791,6 @@ html {
   margin: auto;
   color: #fff;
 }
-@media screen and (orientation: landscape) {
-  #popin .contentpopin {
-    width: 61%;
-  }
-}
 #popin .contentpopin .logo {
   padding: 15px 0;
 }
@@ -943,9 +938,18 @@ html {
 #popin #credittxt .listlogo li,
 #popin #abouttxt .listlogo li,
 #popin #contacttxt .listlogo li {
+  width: 100%;
+  padding-bottom: 20px;
   display: inline-block;
-  width: calc(50% - 20px);
-  margin: 10px;
+}
+@media screen and (min-width: 34em) and (orientation: portrait) {
+  #popin #credittxt .listlogo li,
+  #popin #abouttxt .listlogo li,
+  #popin #contacttxt .listlogo li {
+    width: calc(50% - 20px);
+    margin: 10px;
+    padding: 20px;
+  }
 }
 @media screen and (orientation: landscape) {
   #popin #credittxt .listlogo li,
@@ -960,24 +964,31 @@ html {
 #popin #contacttxt .listlogo li a {
   display: block;
   width: 100%;
+  height: 40px;
 }
 #popin #credittxt .listlogo li a img,
 #popin #abouttxt .listlogo li a img,
 #popin #contacttxt .listlogo li a img {
-  width: 100%;
+  height: 100%;
+}
+#popin #credittxt .listlogo #logocnc img,
+#popin #abouttxt .listlogo #logocnc img,
+#popin #contacttxt .listlogo #logocnc img {
+  height: 30px;
+  width: auto;
 }
 #popin #credittxt .logokomet,
 #popin #abouttxt .logokomet,
 #popin #contacttxt .logokomet {
   margin: auto;
   display: inline-block;
-  width: 50%;
+  width: 20%;
 }
 @media screen and (orientation: landscape) {
   #popin #credittxt .logokomet,
   #popin #abouttxt .logokomet,
   #popin #contacttxt .logokomet {
-    width: calc(25% - 60px);
+    width: calc(15% - 60px);
     margin: 30px;
   }
 }
@@ -1004,7 +1015,8 @@ html {
 }
 #popin .sharebtn {
   list-style-type: none;
-  margin: 0;
+  margin: auto;
+  max-width: 200px;
   padding: 10px 0;
   text-align: center;
 }
@@ -1034,6 +1046,13 @@ html {
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
   padding: 10px 0;
+}
+#popin .logosharesite {
+  width: 200px;
+}
+#popin .logosharesite img {
+  width: 100%;
+  height: auto;
 }
 #popin #close {
   width: 30px;
@@ -1211,8 +1230,11 @@ html {
   margin-bottom: 300px;
 }
 .lds-dual-ring .ring_1 {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
+}
+.lds-dual-ring .ring_1:before {
+  display: none;
 }
 .lds-dual-ring .ring_2 {
   width: 80%;

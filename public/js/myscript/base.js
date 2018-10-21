@@ -347,6 +347,9 @@
           } else if (element.msRequestFullscreen) {
             element.msRequestFullscreen();
           }
+          if (IsFullScreenCurrently()) {
+            $('.myfullscreen').addClass('actiffullscreen');
+          }
         };
         GoOutFullscreen = function() {
           $('.myfullscreen').removeClass('actiffullscreen');
@@ -676,7 +679,7 @@
       constructor(spiner1) {
         this.spiner = spiner1;
         console.log('----------------- > constructor spinner');
-        TweenLite.set(['.lds-dual-ring .ring_black'], {
+        TweenLite.set(['.ring_1', '.ring_2', '.ring_3'], {
           xPercent: -50,
           yPercent: -50
         });
@@ -684,15 +687,16 @@
           paused: true,
           onReverseComplete: this.maskSpiner,
           onStart: this.unmaskSpiner
-        }).to('.lds-dual-ring .ring_black', 2, {
-          scale: 0,
-          ease: Power3.easeOut
-        }).fromTo('.lds-dual-ring', 0.5, {
+        }).staggerFromTo(['.ring_1', '.ring_2', '.ring_3'], 2, {
+          scale: 0.5,
           opacity: 0
         }, {
+          scale: 1,
           opacity: 1,
           ease: Power3.easeOut
-        }, '-=2');
+        }, 0.5);
+        
+        // .fromTo('.lds-dual-ring', 0.5 ,{opacity: 0},{opacity: 1, ease:Power3.easeOut}, '-=2')	
         this.bindEvents();
         this.showSpiner();
       }

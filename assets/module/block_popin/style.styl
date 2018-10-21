@@ -52,8 +52,8 @@
 		width 100%
 		margin auto
 		color #ffffff
-		@media $landscape
-			width 61%
+		//@media $landscape
+		//	width 61%
 		
 		.logo		
 			padding 15px 0
@@ -152,9 +152,15 @@
 			list-style none
 			padding 0
 			li
+				width 100%
+				padding-bottom 20px
 				display inline-block
-				width calc(50% - 20px)
-				margin 10px
+				
+				@media $large_portrait
+					width calc(50% - 20px)
+					margin 10px				
+					padding 20px
+					
 				@media $landscape
 					width calc( 25% - 60px)
 					margin 30px
@@ -162,15 +168,21 @@
 				a
 					display block
 					width 100%
+					height 40px
+
 					img
-						width 100%
+						height 100%
+						
+			#logocnc img
+				height 30px
+				width auto
 						
 		.logokomet
 			margin auto
 			display inline-block
-			width 50%
+			width 20%
 			@media $landscape
-				width calc( 25% - 60px)
+				width calc( 15% - 60px)
 				margin 30px
 			a
 				display block
@@ -187,7 +199,8 @@
 			
 	.sharebtn
 		list-style-type none
-		margin 0
+		margin auto
+		max-width 200px
 		padding 10px 0
 		text-align center
 		.txt
@@ -212,6 +225,12 @@
 		border-top 1px solid #ffffff
 		border-bottom 1px solid #ffffff
 		padding 10px 0
+
+	.logosharesite
+		width 200px
+		img
+			width 100%
+			height auto
 
 	#close
 		width 30px

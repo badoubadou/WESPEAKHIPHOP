@@ -28,11 +28,12 @@
 	
 
 .size_video
-	width $size_video_small
-	height $size_video_small
-	max-width 50vh
-	max-height 50vh
-
+	width $size_video_smaller
+	height $size_video_smaller
+	@media $large_portrait
+		width $size_video_small
+		height $size_video_small
+		
 	.player-dimensions
 	video
 		width $size_video_small
@@ -44,56 +45,66 @@
 		.player-dimensions
 		video
 			width $size_video_medium
-			height $size_video_medium
-	
-	// @media (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5)
-	// 	width $size_video_large
-	// 	height $size_video_large
-	// 	.player-dimensions
-	// 	video
-	// 		width $size_video_large
-	// 		height $size_video_large
-		
-	// @media $landscape_desktop
-	// 	width $size_video_large
-	// 	height $size_video_large
-	// 	.player-dimensions
-	// 	video
-	// 		width $size_video_large
-	// 		height $size_video_large		
+			height $size_video_medium	
 		
 .size_disk
-	width $size_disk_small
-	height $size_disk_small
-	max-width 73vh
-	max-height 73vh
+	width $size_disk_smaller
+	height $size_disk_smaller
 	
+	@media $large_portrait
+		width $size_disk_small
+		height $size_disk_small
+		
+
 	@media $landscape
 		width $size_disk_medium
 		height $size_disk_medium
-		max-width 90vh
-		max-height 90vh	
+		// max-width 90vh
+		// max-height 90vh	
 
 	@media $landscape_desktop
 		width $size_disk_large
 		height $size_disk_large
-		max-width 90vh
-		max-height 90vh
+		// max-width 90vh
+		// max-height 90vh
 
 
 .size_platine
-	width $size_platine_small
-	height $size_platine_small
+	width $size_platine_smaller
+	height $size_platine_smaller
+	
+	@media $large_portrait
+		width $size_platine_small
+		height $size_platine_small
 
 	@media $landscape
 		width $size_platine_medium
 		height $size_platine_medium
+		max-width auto
+		max-height auto
+	
 	
 	@media $landscape_desktop
 		width $size_platine_large
 		height $size_platine_large
 	
+.lign_svg
+	center()
+	width $size_ligndisk_smaller
+	height $size_ligndisk_smaller
 	
+	@media $large_portrait
+		width $size_ligndisk_small
+		height $size_ligndisk_small
+		
+	@media $landscape
+		width $size_ligndisk_medium
+		height $size_ligndisk_medium
+	@media $landscape_desktop
+		width $size_ligndisk_large
+		height $size_ligndisk_large
+
+
 #mask_video
 	border 3px solid #000
 	
@@ -109,17 +120,7 @@
 	background $yellow
 	z-index -1
 	
-.lign_svg
-	center()
-	width $size_ligndisk_small
-	height $size_ligndisk_small
-	
-	@media $landscape
-		width $size_ligndisk_medium
-		height $size_ligndisk_medium
-	@media $landscape_desktop
-		width $size_ligndisk_large
-		height $size_ligndisk_large
+
 	
 	
 #play-video-btn

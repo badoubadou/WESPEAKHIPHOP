@@ -114,6 +114,9 @@ class player_video_youtube
 				element.webkitRequestFullscreen()
 			else if element.msRequestFullscreen
 				element.msRequestFullscreen()
+
+			if IsFullScreenCurrently()
+				$('.myfullscreen').addClass 'actiffullscreen'
 			return
 
 		GoOutFullscreen = ->
