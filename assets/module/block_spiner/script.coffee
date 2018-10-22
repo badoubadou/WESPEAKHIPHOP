@@ -12,6 +12,7 @@ class spiner
 		@showSpiner()
 
 	maskSpiner : ->
+		$('.lds-dual-ring').trigger 'loaderhidden'
 		$('.lds-dual-ring').addClass('no_spinner').hide()
 
 	unmaskSpiner : ->

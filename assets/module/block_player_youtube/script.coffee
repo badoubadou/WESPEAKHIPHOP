@@ -14,8 +14,6 @@ class player_video_youtube
 		if(!$('.video-container').hasClass('customised'))
 			@customizePlayerYT()
 		$('.lds-dual-ring').trigger 'hidespiner'
-		TweenMax.set(['.btn_intro a'],{autoAlpha:0,visibility:"hidden"});
-		TweenMax.staggerFromTo('.btn_intro a',.8, {autoAlpha:0, visibility:"visible", y:-10},{autoAlpha:1, y:0, ease:Power1.easeOut}, 0.5);
 		if @needStartSite 
 			@startSite()
 			@needStartSite = false
@@ -36,7 +34,11 @@ class player_video_youtube
 
 	startSite: ()->
 		console.log 'startSite then loadMap'
-		$('#logowhite').trigger 'showLogo'
+		$('.lds-dual-ring').on 'loaderhidden', ->
+			$('#logowhite').trigger 'showLogo'
+		$('#logowhite').on 'finishedShowLogo', ->
+			TweenMax.set(['.btn_intro a'],{autoAlpha:0,visibility:"hidden"});
+			TweenMax.staggerFromTo('.btn_intro a',.8, {autoAlpha:0, visibility:"visible", y:-10},{autoAlpha:1, y:0, ease:Power1.easeOut}, 0.5);
 		@loadMap()
 
 		

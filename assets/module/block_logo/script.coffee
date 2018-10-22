@@ -3,7 +3,7 @@ class logo
 	constructor: (@spiner) ->
 		TweenLite.set 'svg', visibility: 'visible'
 		MorphSVGPlugin.convertToPath 'line'
-		@drawLogoWhite = new TimelineMax({paused:true, onReverseComplete:@finishedHideLogo});
+		@drawLogoWhite = new TimelineMax({paused:true, onComplete:@finishedShowLogo, onReverseComplete:@finishedHideLogo});
 		@drawLogoWhite.from("#logowhite #mask1_2_", 1, {drawSVG:0, ease:Power3.easeInOut} )
 			.from("#logowhite #mask2", 1.3, {drawSVG:0, ease:Power3.easeInOut},0.1 )
 			.from("#logowhite #mask3", 1.3, {drawSVG:0, ease:Power3.easeInOut},0.2 )
@@ -38,12 +38,14 @@ class logo
 		this.kill()
 
 	finishedHideLogo : ->
-		this.kill()
-		$('#logowhite').data('animstatus', 'done')
+		$('#logowhite').remove()
 
 	showLogoBlack : ->
 		@dLB.play()
 	
+	finishedShowLogo : ->
+		$('#logowhite').trigger 'finishedShowLogo'
+
 	showLogoWhite : ->
 		@drawLogoWhite.play()
 	

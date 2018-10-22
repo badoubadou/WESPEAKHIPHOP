@@ -2713,6 +2713,10 @@ span.lign_header {
 .video-container .plyr--hide-controls .myfullscreen {
   bottom: -40px;
 }
+.video-container .plyr__control--overlaid {
+  background: rgba(255,206,0,0.8);
+  padding: 25px;
+}
 .video-container .plyr {
   position: absolute;
   top: 50%;
