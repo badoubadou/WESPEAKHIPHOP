@@ -146,7 +146,7 @@ class player_video_youtube
 			else
 				GoOutFullscreen()
 
-		@playerYT = new Plyr('#playerYT', { autoplay: true,playsinline: true, clickToPlay: false, controls:['play', 'progress', 'captions'] })
+		@playerYT = new Plyr('#playerYT', { autoplay: true,playsinline: true, clickToPlay: false, controls:['play-large', 'play', 'progress', 'captions'] })
 		
 		#------------------- PLAYER YOUTUBE IS READY -------------------#
 		@playerYT.on 'ready', (event) ->
