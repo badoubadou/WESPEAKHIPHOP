@@ -36,12 +36,15 @@ class player_video_youtube
 		$('#playerYT').attr('data-plyr-embed-id',randomid)
 
 	startSite: ()->
+		btnIntroVisible = ->
+			console.log 'finished show btn'
+			player_video = new module.player_video()
 		console.log 'startSite then loadMap'
 		$('.lds-dual-ring').on 'loaderhidden', ->
 			$('#logowhite').trigger 'showLogo'
 		$('#logowhite').on 'finishedShowLogo', ->
 			TweenMax.set(['.btn_intro a'],{autoAlpha:0,visibility:"hidden"});
-			TweenMax.staggerFromTo('.btn_intro a',.8, {autoAlpha:0, visibility:"visible", y:-10},{autoAlpha:1, y:0, ease:Power1.easeOut}, 0.5);
+			TweenMax.staggerFromTo('.btn_intro a',.8, {autoAlpha:0, visibility:"visible", y:-10},{autoAlpha:1, y:0, ease:Power1.easeOut}, 0.5, btnIntroVisible);
 		@loadMap()
 
 	YouTubeGetID: (url) ->
@@ -225,16 +228,17 @@ class player_video_youtube
 			console.log 'done'
 			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange').attr('style','')
 		vid_intro_finished = ->
-			player_video = new module.player_video()
 			console.log 'vid_intro_finished ----- trigger end Intro trigger close  Popin'
-			# $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange')
 			$('#close').removeClass('hide')
 			$('.video-container').removeClass 'with_btn_skip'
 			$('#logowhite').trigger 'destroyLogo'
 			$('.skip_intro').off().remove()
 			$('.intro_page').remove()
 			that.playerYT.pause()
-			TweenMax.to('#popin', .8,{opacity:0,onComplete:finished_popin_transition})
+			if(window.isMobile())
+				finished_popin_transition()
+			else
+				TweenMax.to('#popin', .8,{opacity:0,onComplete:finished_popin_transition})
 			return
 
 		$('.skip_intro').on 'click touchstart', ->
