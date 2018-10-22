@@ -215,14 +215,14 @@
           this.customizePlayerYT();
         }
         $('.lds-dual-ring').trigger('hidespiner');
-        if (window.isMobile()) {
-          $('.btn_video_ipad').removeClass('hide');
-        }
         if (this.needStartSite) {
           this.startSite();
           return this.needStartSite = false;
         } else {
-          return this.playerYT.play();
+          this.playerYT.play();
+          if (window.isMobile()) {
+            return $('.btn_video_ipad').removeClass('hide');
+          }
         }
       }
 

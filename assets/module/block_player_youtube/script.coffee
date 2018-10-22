@@ -15,15 +15,15 @@ class player_video_youtube
 			@customizePlayerYT()
 		$('.lds-dual-ring').trigger 'hidespiner'
 		
-		if(window.isMobile())
-			$('.btn_video_ipad').removeClass('hide')
-		
+
 		if @needStartSite 
 			@startSite()
 			@needStartSite = false
 		else
 			@playerYT.play()
-
+			if(window.isMobile())
+				$('.btn_video_ipad').removeClass('hide')
+		
 	customizePlayerYT : ->
 		console.log 'customizePlayerYT'
 		custom_btn = $('#warp_custom_btn').detach()
