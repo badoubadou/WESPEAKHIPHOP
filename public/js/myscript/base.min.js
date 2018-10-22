@@ -215,6 +215,9 @@
           this.customizePlayerYT();
         }
         $('.lds-dual-ring').trigger('hidespiner');
+        if (window.isMobile()) {
+          $('.btn_video_ipad').removeClass('hide');
+        }
         if (this.needStartSite) {
           this.startSite();
           return this.needStartSite = false;
@@ -528,10 +531,7 @@
               }
             ]
           };
-          that.playerYT.play();
-          if (window.isMobile()) {
-            return $('.btn_video_ipad').removeClass('hide');
-          }
+          return that.playerYT.play();
         };
         $('.btn_video_ipad').on('click touchstart', function(event) {
           that.playerYT.play();
@@ -696,6 +696,82 @@
   }).call(this);
 
   module.popin = popin;
+
+}).call(this);
+
+(function() {
+  var spiner;
+
+  spiner = (function() {
+    'use strict';
+    class spiner {
+      constructor(spiner1) {
+        this.spiner = spiner1;
+        console.log('----------------- > constructor spinner');
+        TweenLite.set(['.ring_1', '.ring_2', '.ring_3'], {
+          xPercent: -50,
+          yPercent: -50
+        });
+        this.timelineSpiner = new TimelineMax({
+          paused: true,
+          onReverseComplete: this.maskSpiner,
+          onStart: this.unmaskSpiner
+        }).staggerFromTo(['.ring_1', '.ring_2', '.ring_3'], 2, {
+          scale: 0.5,
+          opacity: 0
+        }, {
+          scale: 1,
+          opacity: 1,
+          ease: Power3.easeOut
+        }, 0.5);
+        
+        // .fromTo('.lds-dual-ring', 0.5 ,{opacity: 0},{opacity: 1, ease:Power3.easeOut}, '-=2')	
+        this.bindEvents();
+        this.showSpiner();
+      }
+
+      maskSpiner() {
+        $('.lds-dual-ring').trigger('loaderhidden');
+        return $('.lds-dual-ring').addClass('no_spinner').hide();
+      }
+
+      unmaskSpiner() {
+        console.log('unmaskSpiner -> ');
+        return $('.lds-dual-ring').removeClass('no_spinner').show();
+      }
+
+      showSpiner() {
+        var that;
+        that = this;
+        console.log('----------------------- > show spinner');
+        return this.timelineSpiner.play();
+      }
+
+      hideSpiner() {
+        var that;
+        that = this;
+        return that.timelineSpiner.reverse();
+      }
+
+      bindEvents() {
+        var that;
+        that = this;
+        that.spiner.on('hidespiner', function() {
+          return that.hideSpiner();
+        });
+        return that.spiner.on('showspiner', function() {
+          console.log('catch showspiner');
+          return that.showSpiner();
+        });
+      }
+
+    };
+
+    return spiner;
+
+  }).call(this);
+
+  module.spiner = spiner;
 
 }).call(this);
 
@@ -1453,82 +1529,6 @@
   // $('#player').on 'seeked', ->
   // 	that.timelineInfo.time that.player.currentTime
   module.player_video = player_video;
-
-}).call(this);
-
-(function() {
-  var spiner;
-
-  spiner = (function() {
-    'use strict';
-    class spiner {
-      constructor(spiner1) {
-        this.spiner = spiner1;
-        console.log('----------------- > constructor spinner');
-        TweenLite.set(['.ring_1', '.ring_2', '.ring_3'], {
-          xPercent: -50,
-          yPercent: -50
-        });
-        this.timelineSpiner = new TimelineMax({
-          paused: true,
-          onReverseComplete: this.maskSpiner,
-          onStart: this.unmaskSpiner
-        }).staggerFromTo(['.ring_1', '.ring_2', '.ring_3'], 2, {
-          scale: 0.5,
-          opacity: 0
-        }, {
-          scale: 1,
-          opacity: 1,
-          ease: Power3.easeOut
-        }, 0.5);
-        
-        // .fromTo('.lds-dual-ring', 0.5 ,{opacity: 0},{opacity: 1, ease:Power3.easeOut}, '-=2')	
-        this.bindEvents();
-        this.showSpiner();
-      }
-
-      maskSpiner() {
-        $('.lds-dual-ring').trigger('loaderhidden');
-        return $('.lds-dual-ring').addClass('no_spinner').hide();
-      }
-
-      unmaskSpiner() {
-        console.log('unmaskSpiner -> ');
-        return $('.lds-dual-ring').removeClass('no_spinner').show();
-      }
-
-      showSpiner() {
-        var that;
-        that = this;
-        console.log('----------------------- > show spinner');
-        return this.timelineSpiner.play();
-      }
-
-      hideSpiner() {
-        var that;
-        that = this;
-        return that.timelineSpiner.reverse();
-      }
-
-      bindEvents() {
-        var that;
-        that = this;
-        that.spiner.on('hidespiner', function() {
-          return that.hideSpiner();
-        });
-        return that.spiner.on('showspiner', function() {
-          console.log('catch showspiner');
-          return that.showSpiner();
-        });
-      }
-
-    };
-
-    return spiner;
-
-  }).call(this);
-
-  module.spiner = spiner;
 
 }).call(this);
 

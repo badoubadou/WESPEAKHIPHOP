@@ -14,6 +14,10 @@ class player_video_youtube
 		if(!$('.video-container').hasClass('customised'))
 			@customizePlayerYT()
 		$('.lds-dual-ring').trigger 'hidespiner'
+		
+		if(window.isMobile())
+			$('.btn_video_ipad').removeClass('hide')
+		
 		if @needStartSite 
 			@startSite()
 			@needStartSite = false
@@ -274,8 +278,7 @@ class player_video_youtube
 				],
 			};
 			that.playerYT.play()
-			if(window.isMobile())
-				$('.btn_video_ipad').removeClass('hide')
+			
 			
 		$('.btn_video_ipad').on 'click touchstart', (event) ->
 			that.playerYT.play()
