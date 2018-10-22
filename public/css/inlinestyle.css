@@ -1069,7 +1069,19 @@ html {
   border: 2px #fff solid;
   border-radius: 50%;
 }
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  #popin #close {
+    top: 10px;
+    right: 10px;
+  }
+}
 @media screen and (orientation: landscape) {
+  #popin #close {
+    top: 40px;
+    right: 40px;
+  }
+}
+@media screen and (min-width: 34em) and (orientation: portrait) {
   #popin #close {
     top: 40px;
     right: 40px;
