@@ -18,6 +18,7 @@
 					| #{TRANSLATION.language_btn_en[langage]}
 				a(href='')#enter_site.btn.round_btn.yellow_btn
 					| #{TRANSLATION.language_btn_fr[langage]}
+
 		
 	include ../block_spiner/index.pug
 	include ../block_player_youtube/index.pug
@@ -59,6 +60,13 @@
 				each meta in video.postmeta
 					if meta.meta_key == 'video'
 						- var youtube_link = meta.meta_value
+
+		//- each video in videos
+		//- 	each meta in video.postmeta
+		//- 		if meta.meta_key == 'video'
+		//- 			- var youtube_link = meta.meta_value
+		//- 			.plyr__video-embed
+		//- 				iframe(src=youtube_link+"?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay")
 
 		a(href='')#startvideofrompopin.round_btn.btn.yellow
 			| #{TRANSLATION.startvideo[langage]}

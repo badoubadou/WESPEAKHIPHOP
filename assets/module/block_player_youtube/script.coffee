@@ -161,6 +161,7 @@ class player_video_youtube
 				$('.video-container .myfullscreen').removeClass 'hide'
 				$('.hider_logo').addClass 'hide_hider'
 				$('.hider_top').addClass 'hide_hider'
+				$('.btn_video_ipad').addClass('hide')
 				if ($('#logowhite').data('animstatus') == 'done')
 					return
 				
@@ -272,8 +273,14 @@ class player_video_youtube
 					},
 				],
 			};
-			that.playerYT.play()	
+			that.playerYT.play()
+			if(window.isMobile())
+				$('.btn_video_ipad').removeClass('hide')
 			
+		$('.btn_video_ipad').on 'click touchstart', (event) ->
+			that.playerYT.play()
+			$('.btn_video_ipad').addClass('hide')	
+			return false
 
 		$('#startvideofrompopin').on 'click touchstart', (event) ->
 			idyoutube = that.YouTubeGetID($(this).attr('href'))
