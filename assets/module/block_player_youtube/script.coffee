@@ -148,10 +148,9 @@ class player_video_youtube
 			else
 				GoOutFullscreen()
 
-
 		mycontrols = ['play-large', 'play', 'progress', 'captions']
-		if(window.isMobile())
-			mycontrols = ['play-large', 'play', 'progress', 'captions', 'fullscreen']
+		# if(window.isMobile())
+		# 	mycontrols = ['play-large', 'play', 'progress', 'captions', 'fullscreen']
 		@playerYT = new Plyr('#playerYT', { autoplay: true,playsinline: true, clickToPlay: false, controls:mycontrols })
 		
 		#------------------- PLAYER YOUTUBE IS READY -------------------#
@@ -166,7 +165,14 @@ class player_video_youtube
 				$('.video-container .myfullscreen').removeClass 'hide'
 				$('.hider_logo').addClass 'hide_hider'
 				$('.hider_top').addClass 'hide_hider'
-				$('.btn_video_ipad').addClass('hide')
+				if(window.isMobile())
+					$('.btn_video_ipad').addClass('hide')
+				else
+					$('.hider_logo').addClass 'hide_hider'
+					$('.hider_top').addClass 'hide_hider'
+							
+				if (!$('#logowhite'))
+					return
 				if ($('#logowhite').data('animstatus') == 'done')
 					return
 				
@@ -178,16 +184,20 @@ class player_video_youtube
 					$('#logowhite').trigger 'resumehideLogo'
 			
 			if event.detail.code == 2 #-------------------------  PAUSE
-				$('.hider_logo').removeClass 'hide_hider'
-				$('.hider_top').removeClass 'hide_hider'
 				if ($('#logowhite').data('animstatus') == 'playing')
 					$('#logowhite').trigger 'pausehideLogo'
+				if(window.isMobile())
+					return
+				$('.hider_logo').removeClass 'hide_hider'
+				$('.hider_top').removeClass 'hide_hider'
 			
 			if event.detail.code == 3 #-------------------------  BUFFER
-				$('.hider_logo').removeClass 'hide_hider'
-				$('.hider_top').removeClass 'hide_hider'
 				if ($('#logowhite').data('animstatus') == 'playing')
 					$('#logowhite').trigger 'pausehideLogo'
+				if(window.isMobile())
+					return
+				$('.hider_logo').removeClass 'hide_hider'
+				$('.hider_top').removeClass 'hide_hider'
 			return
 			
 		#------------------- FOCUS -------------------#
