@@ -1292,7 +1292,7 @@
 
       play_video_disk() {
         $('#player')[0].play();
-        return $('body').removeClass('disk_on_hold');
+        $('body').removeClass('disk_on_hold');
       }
 
       skipIntro() {

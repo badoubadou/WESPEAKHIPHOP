@@ -189,6 +189,7 @@ class player_video
 	play_video_disk : ->
 		$('#player')[0].play()
 		$('body').removeClass 'disk_on_hold'
+		return
 
 	skipIntro : ->
 		console.log 'skipIntro : player play ------------------------------ ??????? '
