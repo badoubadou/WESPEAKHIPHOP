@@ -208,7 +208,6 @@ class player_video_youtube
 				that.playerYT.pause()
 
 		#------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
-		
 		$('#popin').on 'closePopin', ->
 			console.log '------------ > closePopin stop player YOUTUBE'
 			$('.video-container').addClass 'trans blankVideo'
@@ -222,7 +221,6 @@ class player_video_youtube
 				],
 			};
 			# that.playerYT.stop()
-
 		#------------------- INTRO FINISHED -------------------#
 		finished_popin_transition = ->
 			console.log 'done'
