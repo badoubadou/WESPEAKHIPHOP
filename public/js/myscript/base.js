@@ -1590,6 +1590,10 @@
     }
   }), false);
 
+  if (navigator.userAgent.match(/(iPad|iPhone|iPod)/i)) {
+    $('body').addClass('device-ios');
+  }
+
   // $(window).on 'resize', ->
 // 	if @resizeTO
 // 		clearTimeout @resizeTO

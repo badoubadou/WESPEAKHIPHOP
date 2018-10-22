@@ -1537,6 +1537,11 @@
 .myfullscreen.actif svg #lign {
   display: block;
 }
+.device-ios .myfullscreen,
+.device-ios .myfullscreen.actif,
+.device-ios .myfullscreen.actiffullscreen {
+  display: none;
+}
 .myfullscreen #fsactif {
   display: none;
 }
