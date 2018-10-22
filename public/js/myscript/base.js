@@ -301,7 +301,7 @@
       }
 
       bindEvents() {
-        var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, checkClassAndTrigger, checkratio, finished_popin_transition, startPlyr, that, vid_intro_finished;
+        var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, checkClassAndTrigger, checkratio, finished_popin_transition, mycontrols, startPlyr, that, vid_intro_finished;
         that = this;
         if (!$('body').hasClass('doc-ready')) {
           $('body').on('doc-ready', function() {
@@ -394,11 +394,15 @@
             }
           }
         });
+        mycontrols = ['play-large', 'play', 'progress', 'captions'];
+        if (window.isMobile()) {
+          mycontrols = ['play-large', 'play', 'progress', 'captions', 'fullscreen'];
+        }
         this.playerYT = new Plyr('#playerYT', {
           autoplay: true,
           playsinline: true,
           clickToPlay: false,
-          controls: ['play-large', 'play', 'progress', 'captions']
+          controls: mycontrols
         });
         
         //------------------- PLAYER YOUTUBE IS READY -------------------#

@@ -15,7 +15,6 @@ class player_video_youtube
 			@customizePlayerYT()
 		$('.lds-dual-ring').trigger 'hidespiner'
 		
-
 		if @needStartSite 
 			@startSite()
 			@needStartSite = false
@@ -55,8 +54,6 @@ class player_video_youtube
 			ID = url
 			ID
 	
-
-
 	loadMap : ->
 		console.log '---> load small map'
 		that = @
@@ -151,7 +148,11 @@ class player_video_youtube
 			else
 				GoOutFullscreen()
 
-		@playerYT = new Plyr('#playerYT', { autoplay: true,playsinline: true, clickToPlay: false, controls:['play-large', 'play', 'progress', 'captions'] })
+
+		mycontrols = ['play-large', 'play', 'progress', 'captions']
+		if(window.isMobile())
+			mycontrols = ['play-large', 'play', 'progress', 'captions', 'fullscreen']
+		@playerYT = new Plyr('#playerYT', { autoplay: true,playsinline: true, clickToPlay: false, controls:mycontrols })
 		
 		#------------------- PLAYER YOUTUBE IS READY -------------------#
 		@playerYT.on 'ready', (event) ->
