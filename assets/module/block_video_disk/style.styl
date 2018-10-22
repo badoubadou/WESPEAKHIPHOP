@@ -30,14 +30,18 @@
 .size_video
 	width $size_video_smaller
 	height $size_video_smaller
+	.player-dimensions
+		video
+			width $size_video_smaller
+			height $size_video_smaller
+			
 	@media $large_portrait
 		width $size_video_small
 		height $size_video_small
-		
-	.player-dimensions
-	video
-		width $size_video_small
-		height $size_video_small
+		.player-dimensions
+		video
+			width $size_video_small
+			height $size_video_small
 		
 	@media $landscape
 		width $size_video_medium
@@ -46,6 +50,14 @@
 		video
 			width $size_video_medium
 			height $size_video_medium	
+	
+	@media $mobile_landscape
+		width 180px
+		height 180px
+		.player-dimensions
+		video
+			width 180px
+			height 180px	
 		
 .size_disk
 	width $size_disk_smaller
@@ -55,19 +67,17 @@
 		width $size_disk_small
 		height $size_disk_small
 		
-
 	@media $landscape
 		width $size_disk_medium
 		height $size_disk_medium
-		// max-width 90vh
-		// max-height 90vh	
 
 	@media $landscape_desktop
 		width $size_disk_large
 		height $size_disk_large
-		// max-width 90vh
-		// max-height 90vh
-
+		
+	@media $mobile_landscape
+		width $size_disk_large
+		height $size_disk_large
 
 .size_platine
 	width $size_platine_smaller
@@ -83,8 +93,11 @@
 		max-width auto
 		max-height auto
 	
-	
 	@media $landscape_desktop
+		width $size_platine_large
+		height $size_platine_large
+			
+	@media $mobile_landscape
 		width $size_platine_large
 		height $size_platine_large
 	
@@ -100,10 +113,14 @@
 	@media $landscape
 		width $size_ligndisk_medium
 		height $size_ligndisk_medium
+		
 	@media $landscape_desktop
 		width $size_ligndisk_large
 		height $size_ligndisk_large
 
+	@media $mobile_landscape
+		width $size_ligndisk_large
+		height $size_ligndisk_large
 
 #mask_video
 	border 3px solid #000

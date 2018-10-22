@@ -2385,16 +2385,20 @@ span.lign_header {
   width: 150px;
   height: 150px;
 }
+.size_video .player-dimensions video {
+  width: 150px;
+  height: 150px;
+}
 @media screen and (min-width: 34em) and (orientation: portrait) {
   .size_video {
     width: 220px;
     height: 220px;
   }
-}
-.size_video .player-dimensions,
-.size_video video {
-  width: 220px;
-  height: 220px;
+  .size_video .player-dimensions,
+  .size_video video {
+    width: 220px;
+    height: 220px;
+  }
 }
 @media screen and (orientation: landscape) {
   .size_video {
@@ -2405,6 +2409,17 @@ span.lign_header {
   .size_video video {
     width: 220px;
     height: 220px;
+  }
+}
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  .size_video {
+    width: 180px;
+    height: 180px;
+  }
+  .size_video .player-dimensions,
+  .size_video video {
+    width: 180px;
+    height: 180px;
   }
 }
 .size_disk {
@@ -2429,6 +2444,12 @@ span.lign_header {
     height: 73vh;
   }
 }
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  .size_disk {
+    width: 73vh;
+    height: 73vh;
+  }
+}
 .size_platine {
   width: 85vw;
   height: 85vw;
@@ -2448,6 +2469,12 @@ span.lign_header {
   }
 }
 @media screen and (min-width: 78em) and (orientation: landscape) {
+  .size_platine {
+    width: 79vh;
+    height: 79vh;
+  }
+}
+@media screen and (max-width: 48em) and (orientation: landscape) {
   .size_platine {
     width: 79vh;
     height: 79vh;
@@ -2478,6 +2505,12 @@ span.lign_header {
   }
 }
 @media screen and (min-width: 78em) and (orientation: landscape) {
+  .lign_svg {
+    width: 71vh;
+    height: 71vh;
+  }
+}
+@media screen and (max-width: 48em) and (orientation: landscape) {
   .lign_svg {
     width: 71vh;
     height: 71vh;
