@@ -1594,7 +1594,8 @@
     $('body').addClass('device-ios');
   }
 
-  // $(window).on 'resize', ->
+  
+// $(window).on 'resize', ->
 // 	if @resizeTO
 // 		clearTimeout @resizeTO
 // 	@resizeTO = setTimeout((->
