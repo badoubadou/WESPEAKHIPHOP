@@ -417,9 +417,6 @@
             $('.hider_top').addClass('hide_hider');
             if (window.isMobile()) {
               $('.btn_video_ipad').addClass('hide');
-            } else {
-              $('.hider_logo').addClass('hide_hider');
-              $('.hider_top').addClass('hide_hider');
             }
             if (!$('#logowhite')) {
               return;
@@ -439,18 +436,12 @@
             if ($('#logowhite').data('animstatus') === 'playing') {
               $('#logowhite').trigger('pausehideLogo');
             }
-            if (window.isMobile()) {
-              return;
-            }
             $('.hider_logo').removeClass('hide_hider');
             $('.hider_top').removeClass('hide_hider');
           }
           if (event.detail.code === 3) { //-------------------------  BUFFER
             if ($('#logowhite').data('animstatus') === 'playing') {
               $('#logowhite').trigger('pausehideLogo');
-            }
-            if (window.isMobile()) {
-              return;
             }
             $('.hider_logo').removeClass('hide_hider');
             $('.hider_top').removeClass('hide_hider');
