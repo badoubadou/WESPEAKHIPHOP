@@ -2766,6 +2766,7 @@ span.lign_header {
 }
 .video-container .plyr__controls {
   padding: 10px 50px 10px 10px;
+  z-index: 101;
 }
 .video-container.with_btn_skip .myfullscreen {
   right: 128px;

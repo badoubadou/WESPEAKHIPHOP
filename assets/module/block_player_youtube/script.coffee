@@ -210,6 +210,9 @@ class player_video_youtube
 		#------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
 		$('#popin').on 'closePopin', ->
 			console.log '------------ > closePopin stop player YOUTUBE'
+			$('.hider_logo').removeClass 'hide_hider'
+			$('.hider_top').removeClass 'hide_hider'
+				
 			$('.video-container').addClass 'trans blankVideo'
 			that.playerYT.source = {
 				type: 'video',
