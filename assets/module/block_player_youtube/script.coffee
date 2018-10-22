@@ -41,7 +41,6 @@ class player_video_youtube
 			TweenMax.staggerFromTo('.btn_intro a',.8, {autoAlpha:0, visibility:"visible", y:-10},{autoAlpha:1, y:0, ease:Power1.easeOut}, 0.5);
 		@loadMap()
 
-		
 	YouTubeGetID: (url) ->
 		ID = ''
 		url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/)
@@ -249,24 +248,21 @@ class player_video_youtube
 				
 
 		#------------------- CLICK LIST ARTIST -------------------#
-		$('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on 'click touchstart', (event) ->
-			event.preventDefault()
-			idyoutube = that.YouTubeGetID($(this).attr('href'))
-			ratiovideo = $(this).data('ratiovideo')
+		checkratio =(ratiovideo) ->
+			console.log 'ratiovideo : '+ratiovideo
 			if(ratiovideo==4)
 				$('.video-container').addClass 'quatre_tier'
 			else
 				$('.video-container').removeClass 'quatre_tier'
-				
-			if !$('#artist_info').hasClass 'hide'
-				$('#artist_info').addClass 'hide'
-			$('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
+
+		checkClassAndTrigger =()->
+			$('#abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
 			$('.video-container').removeClass 'hide'
-			console.log 'trigger showspiner'
-			$('.lds-dual-ring').trigger 'showspiner'
-			console.log 'trigger show'
-			window.currentArtist = $('#artist_info .info:not(.hide)').index()
 			$('.video-container').removeClass 'blankVideo'
+			$('.video-container').removeClass 'trans'
+			$('.lds-dual-ring').trigger 'showspiner'
+			
+		startPlyr =(idyoutube)->
 			that.playerYT.source = {
 				type: 'video',
 				sources: [
@@ -276,10 +272,24 @@ class player_video_youtube
 					},
 				],
 			};
-			$('#popin').trigger 'showVideo'
-			$('#popin').trigger 'classChange'
 			that.playerYT.play()	
-			console.log 'play youtube on touch start'
-			return
+			
+
+		$('#startvideofrompopin').on 'click touchstart', (event) ->
+			idyoutube = that.YouTubeGetID($(this).attr('href'))
+			checkratio($(this).data('ratiovideo'))
+			checkClassAndTrigger()
+			startPlyr(idyoutube)
+			return false
+
+		$('#list_artists li a, #play-video-btn, #play-video-btn-mobile, a.watch').on 'click touchstart', (event) ->
+			console.log 'click start video'
+			idyoutube = that.YouTubeGetID($(this).attr('href'))
+			checkratio($(this).data('ratiovideo'))
+			checkClassAndTrigger()
+			startPlyr(idyoutube)
+			$('#popin').trigger 'classChange'
+			$('#popin').trigger 'showVideo'
+			return false
 	
 module.player_video_youtube = player_video_youtube

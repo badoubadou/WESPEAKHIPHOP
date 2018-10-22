@@ -298,7 +298,7 @@
       }
 
       bindEvents() {
-        var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, finished_popin_transition, that, vid_intro_finished;
+        var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, checkClassAndTrigger, checkratio, finished_popin_transition, startPlyr, that, vid_intro_finished;
         that = this;
         if (!$('body').hasClass('doc-ready')) {
           $('body').on('doc-ready', function() {
@@ -502,26 +502,22 @@
         // 			that.playerYT.play()
 
         //------------------- CLICK LIST ARTIST -------------------#
-        return $('#list_artists li a, #play-video-btn, #play-video-btn-mobile, #startvideo, a.watch').on('click touchstart', function(event) {
-          var idyoutube, ratiovideo;
-          event.preventDefault();
-          idyoutube = that.YouTubeGetID($(this).attr('href'));
-          ratiovideo = $(this).data('ratiovideo');
+        checkratio = function(ratiovideo) {
+          console.log('ratiovideo : ' + ratiovideo);
           if (ratiovideo === 4) {
-            $('.video-container').addClass('quatre_tier');
+            return $('.video-container').addClass('quatre_tier');
           } else {
-            $('.video-container').removeClass('quatre_tier');
+            return $('.video-container').removeClass('quatre_tier');
           }
-          if (!$('#artist_info').hasClass('hide')) {
-            $('#artist_info').addClass('hide');
-          }
-          $('.video-container, #abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
+        };
+        checkClassAndTrigger = function() {
+          $('#abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
           $('.video-container').removeClass('hide');
-          console.log('trigger showspiner');
-          $('.lds-dual-ring').trigger('showspiner');
-          console.log('trigger show');
-          window.currentArtist = $('#artist_info .info:not(.hide)').index();
           $('.video-container').removeClass('blankVideo');
+          $('.video-container').removeClass('trans');
+          return $('.lds-dual-ring').trigger('showspiner');
+        };
+        startPlyr = function(idyoutube) {
           that.playerYT.source = {
             type: 'video',
             sources: [
@@ -531,10 +527,26 @@
               }
             ]
           };
-          $('#popin').trigger('showVideo');
+          return that.playerYT.play();
+        };
+        $('#startvideofrompopin').on('click touchstart', function(event) {
+          var idyoutube;
+          idyoutube = that.YouTubeGetID($(this).attr('href'));
+          checkratio($(this).data('ratiovideo'));
+          checkClassAndTrigger();
+          startPlyr(idyoutube);
+          return false;
+        });
+        return $('#list_artists li a, #play-video-btn, #play-video-btn-mobile, a.watch').on('click touchstart', function(event) {
+          var idyoutube;
+          console.log('click start video');
+          idyoutube = that.YouTubeGetID($(this).attr('href'));
+          checkratio($(this).data('ratiovideo'));
+          checkClassAndTrigger();
+          startPlyr(idyoutube);
           $('#popin').trigger('classChange');
-          that.playerYT.play();
-          console.log('play youtube on touch start');
+          $('#popin').trigger('showVideo');
+          return false;
         });
       }
 
@@ -815,7 +827,8 @@
         that = this;
         updateInfo = function(id) {
           var svgcontry;
-          $('#play-video-btn, #play-video-btn-mobile, #startvideo').attr('href', $('#list_artists li:eq(' + id + ') a').attr('href'));
+          $('#play-video-btn, #play-video-btn-mobile, #startvideofrompopin').attr('href', $('#list_artists li:eq(' + id + ') a').attr('href'));
+          $('#play-video-btn, #play-video-btn-mobile, #startvideofrompopin').data('ratiovideo', $('#list_artists li:eq(' + id + ') a').data('ratiovideo'));
           $('#list_artists li a.selected').removeClass('selected');
           $('#list_artists li:eq(' + id + ') a').addClass('selected');
           svgcontry = '#smallmap svg #' + $('#artists_info li:eq(' + id + ') .contry').data('contrynicename');
@@ -1207,14 +1220,14 @@
         }).from('#left_col', .8, {
           x: '-100%',
           ease: Power3.easeOut
-        }, '-=.8').add(this.show_logo).from('#smallmap', 1, {
+        }, '-=.8').add(this.show_logo).from('.tuto', .6, {
+          opacity: 0,
+          ease: Power3.easeOut
+        }).from('#smallmap', 1, {
           opacity: 0,
           y: 50,
           ease: Power3.easeOut
         }).from('#artists_info', .5, {
-          opacity: 0,
-          ease: Power3.easeOut
-        }).from('.tuto', .6, {
           opacity: 0,
           ease: Power3.easeOut
         }).from('#txt_help_disk', .8, {
