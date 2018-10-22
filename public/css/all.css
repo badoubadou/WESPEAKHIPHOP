@@ -2775,7 +2775,8 @@ span.lign_header {
   right: 128px;
   bottom: 18px;
 }
-.video-container.with_btn_skip .plyr--hide-controls .myfullscreen {
+.video-container.with_btn_skip .plyr--hide-controls .myfullscreen,
+.video-container.with_btn_skip .plyr--stopped .myfullscreen {
   bottom: -40px;
 }
 .video-container.with_btn_skip .plyr__controls {

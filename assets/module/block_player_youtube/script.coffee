@@ -212,8 +212,7 @@ class player_video_youtube
 			console.log '------------ > closePopin stop player YOUTUBE'
 			$('.hider_logo').removeClass 'hide_hider'
 			$('.hider_top').removeClass 'hide_hider'
-				
-			$('.video-container').addClass 'trans blankVideo'
+			$('.video-container').addClass 'trans'
 			that.playerYT.source = {
 				type: 'video',
 				sources: [
@@ -229,11 +228,10 @@ class player_video_youtube
 			console.log 'done'
 			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange').attr('style','')
 		vid_intro_finished = ->
-			console.log 'vid_intro_finished ----- trigger end Intro trigger close  Popin'
+			console.log 'vid_intro_finished ----- trigger end Intro trigger close  Popin serieux ie ? '
 			$('#close').removeClass('hide')
 			$('.video-container').removeClass 'with_btn_skip'
 			$('#logowhite').trigger 'destroyLogo'
-			$('.skip_intro').off().remove()
 			$('.intro_page').remove()
 			that.playerYT.pause()
 			if(window.isMobile())
@@ -243,13 +241,20 @@ class player_video_youtube
 			return
 
 		$('.skip_intro').on 'click touchstart', ->
+			$('.skip_intro').off()
+			$('.skip_intro').remove()
 			vid_intro_finished()
 			if(window.isMobile())
 				$('#player')[0].play()
 			return
 			
 		@playerYT.on 'ended', (event) ->
-			if ($('.video-container').hasClass('blankVideo'))
+			console.log 'fin de video ?? blank video : '+that.playerYT.source
+			if (that.playerYT.source=='https://cdn.plyr.io/static/blank.mp4')
+				return
+			if (that.playerYT.source==undefined)
+				return
+			if (!that.playerYT.source)
 				return
 			vid_intro_finished()
 			return
@@ -272,7 +277,6 @@ class player_video_youtube
 		checkClassAndTrigger =()->
 			$('#abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
 			$('.video-container').removeClass 'hide'
-			$('.video-container').removeClass 'blankVideo'
 			$('.video-container').removeClass 'trans'
 			$('.lds-dual-ring').trigger 'showspiner'
 			
@@ -307,7 +311,7 @@ class player_video_youtube
 			checkratio($(this).data('ratiovideo'))
 			checkClassAndTrigger()
 			startPlyr(idyoutube)
-			$('#popin').trigger 'classChange'
+			# $('#popin').trigger 'classChange'
 			$('#popin').trigger 'showVideo'
 			return false
 	

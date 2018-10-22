@@ -472,7 +472,7 @@
           console.log('------------ > closePopin stop player YOUTUBE');
           $('.hider_logo').removeClass('hide_hider');
           $('.hider_top').removeClass('hide_hider');
-          $('.video-container').addClass('trans blankVideo');
+          $('.video-container').addClass('trans');
           return that.playerYT.source = {
             type: 'video',
             sources: [
@@ -488,11 +488,10 @@
           return $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange').attr('style', '');
         };
         vid_intro_finished = function() {
-          console.log('vid_intro_finished ----- trigger end Intro trigger close  Popin');
+          console.log('vid_intro_finished ----- trigger end Intro trigger close  Popin serieux ie ? ');
           $('#close').removeClass('hide');
           $('.video-container').removeClass('with_btn_skip');
           $('#logowhite').trigger('destroyLogo');
-          $('.skip_intro').off().remove();
           $('.intro_page').remove();
           that.playerYT.pause();
           if (window.isMobile()) {
@@ -505,13 +504,22 @@
           }
         };
         $('.skip_intro').on('click touchstart', function() {
+          $('.skip_intro').off();
+          $('.skip_intro').remove();
           vid_intro_finished();
           if (window.isMobile()) {
             $('#player')[0].play();
           }
         });
         this.playerYT.on('ended', function(event) {
-          if ($('.video-container').hasClass('blankVideo')) {
+          console.log('fin de video ?? blank video : ' + that.playerYT.source);
+          if (that.playerYT.source === 'https://cdn.plyr.io/static/blank.mp4') {
+            return;
+          }
+          if (that.playerYT.source === void 0) {
+            return;
+          }
+          if (!that.playerYT.source) {
             return;
           }
           vid_intro_finished();
@@ -534,7 +542,6 @@
         checkClassAndTrigger = function() {
           $('#abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
           $('.video-container').removeClass('hide');
-          $('.video-container').removeClass('blankVideo');
           $('.video-container').removeClass('trans');
           return $('.lds-dual-ring').trigger('showspiner');
         };
@@ -570,7 +577,7 @@
           checkratio($(this).data('ratiovideo'));
           checkClassAndTrigger();
           startPlyr(idyoutube);
-          $('#popin').trigger('classChange');
+          // $('#popin').trigger 'classChange'
           $('#popin').trigger('showVideo');
           return false;
         });
