@@ -60,7 +60,7 @@ class player_video_youtube
 	loadMap : ->
 		console.log '---> load small map'
 		that = @
-		$.get 'https://d2e3lhf7z9v1b2.cloudfront.net/smallmap-'+$('#langage_short').val()+'.svg', (data) ->
+		$.get 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/smallmap-'+$('#langage_short').val()+'.svg', (data) ->
 			console.log '---> small map loaded'
 			div = document.createElement('div')
 			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)

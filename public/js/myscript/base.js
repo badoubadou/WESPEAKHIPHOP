@@ -288,7 +288,7 @@
         var that;
         console.log('---> load small map');
         that = this;
-        return $.get('https://d2e3lhf7z9v1b2.cloudfront.net/smallmap-' + $('#langage_short').val() + '.svg', function(data) {
+        return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/smallmap-' + $('#langage_short').val() + '.svg', function(data) {
           var div;
           console.log('---> small map loaded');
           div = document.createElement('div');
