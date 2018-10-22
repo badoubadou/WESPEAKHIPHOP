@@ -40,7 +40,8 @@
 		each video in videos
 			.info.hide
 				- var title_video = video.title
-				.name= video.title
+				.name
+					| !{video.title}
 				each meta in video.postmeta
 					if meta.meta_key == 'date'
 						span.date= meta.meta_value
