@@ -5,8 +5,8 @@ var compression = require('compression');
 var path = require('path');
 var port = process.env.PORT || 1881; 
 // viewed at http://localhost:1881
-// app.use(compression());
-// app.disable('x-powered-by');
+app.use(compression());
+app.disable('x-powered-by');
 app.get('/', function(req, res) {
     var q = url.parse(req.url, true);
     var urlStr = 'http://' + req.headers.host + req.url,
