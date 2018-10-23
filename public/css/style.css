@@ -1368,6 +1368,7 @@ span.lign_header {
 .video-container.with_btn_skip .myfullscreen {
   right: 128px;
   bottom: 18px;
+  z-index: 101;
 }
 .video-container.with_btn_skip .plyr--hide-controls .myfullscreen,
 .video-container.with_btn_skip .plyr--stopped .myfullscreen {

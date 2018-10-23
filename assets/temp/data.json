@@ -109,12 +109,12 @@
 			"fr": "Play"
 		},
 		"btn_tuto": {
-			"en": "I get it",
+			"en": "I got it",
 			"fr": "J’ai compris"
 		},
 		"txt_tuto": {
-			"en": "Spin the vinyl with your mouse<br />and discover 28 artists from around the Hip Hop world",
-			"fr": "Scratchez le vinyle avec votre souris<br />et découvrez 28 artistes de la planète Hip Hop."
+			"en": "Spin the vinyl<br />and discover 28 artists from around the Hip Hop world",
+			"fr": "Scratchez le vinyle<br />et découvrez 28 artistes de la planète Hip Hop."
 		},
 		"og_url": {
 			"en": "http://www.wespeakhiphop.com",
@@ -4877,7 +4877,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=Ed6onhWK1IQ"
+							"meta_value": "https://www.youtube.com/watch?v=1rCt-tvNvAo"
 						},
 						{
 							"meta_key": "description",
