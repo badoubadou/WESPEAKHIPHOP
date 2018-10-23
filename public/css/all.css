@@ -1523,6 +1523,7 @@
   display: block;
   margin: 0;
   cursor: pointer;
+  z-index: 101;
 }
 #sound svg,
 .myfullscreen svg {

@@ -52,7 +52,8 @@
 
 				each meta in video.postmeta
 					if meta.meta_key == 'description'
-						.bio= meta.meta_value
+						.bio
+							| !{meta.meta_value}
 
 				each meta in video.postmeta
 					if meta.meta_key == '_ratio_video'
