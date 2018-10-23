@@ -1304,7 +1304,6 @@
 
       skipIntro() {
         console.log('skipIntro : player play ------------------------------ ??????? ');
-        this.player.pause();
         this.timelineIntro.play();
         $('#popin').off('endIntro');
         console.log(' is mobile ? ' + window.isMobile());

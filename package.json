@@ -37,7 +37,7 @@
     "gulp-inline-source": "^3.2.0",
     "gulp-replace": "^1.0.0",
     "gulp-s3-gzip": "^0.3.2",
-    "gulp-sass": "^4.0.1",
+    "gulp-sass": "^4.0.2",
     "gulp-strip-debug": "^3.0.0",
     "gulp-uglify-es": "^1.0.4"
   }
