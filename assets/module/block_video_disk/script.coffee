@@ -193,7 +193,6 @@ class player_video
 
 	skipIntro : ->
 		console.log 'skipIntro : player play ------------------------------ ??????? '
-		@player.pause()
 		@timelineIntro.play()
 		$('#popin').off 'endIntro'
 		console.log ' is mobile ? '+window.isMobile()
