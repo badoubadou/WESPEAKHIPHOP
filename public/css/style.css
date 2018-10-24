@@ -1301,6 +1301,11 @@ span.lign_header {
   width: 25px;
   height: 25px;
 }
+.video-container #warp_custom_btn {
+  position: absolute;
+  right: 10px;
+  bottom: 50px;
+}
 #popin {
   position: absolute;
   top: 0;

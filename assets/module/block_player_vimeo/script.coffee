@@ -10,8 +10,8 @@ class player_video_vimeo
 
 	playYTisReady : ->
 		console.log  '----------------------- playYTisReady -------------------------------------------'
-		# if(!$('.video-container').hasClass('customised'))
-		# 	@customizePlayerYT()
+		if(!$('.video-container').hasClass('customised'))
+			@customizePlayerYT()
 		$('.lds-dual-ring').trigger 'hidespiner'
 		
 		if @needStartSite 
@@ -23,10 +23,12 @@ class player_video_vimeo
 				$('.btn_video_ipad').removeClass('hide')
 		
 	customizePlayerYT : ->
-		console.log 'customizePlayerYT'
-		custom_btn = $('#warp_custom_btn').detach()
-		$('.video-container .plyr').append custom_btn
-		$('.video-container').addClass 'customised'
+		# console.log 'customizePlayerYT = '+$('.vp-controls').lenght()
+
+		# $('.vp-controls').css('padding-right','200px')
+		# custom_btn = $('#warp_custom_btn').detach()
+		# $('.video-container .plyr').append custom_btn
+		# $('.video-container').addClass 'customised'
 			
 	bildIntroYoutube : ->
 		that = @
@@ -240,16 +242,19 @@ class player_video_vimeo
 			# $('.lds-dual-ring').trigger 'showspiner'
 			
 		startVimeo =(idVimeo)->
-			that.playerYT.loadVideo(idVimeo).then (id) ->
-				console.log 'loaded '
-				that.playYTisReady()
-				# that.playerYT.play()
-				# the video successfully loaded
+			that.playerYT.getVideoId().then (id) ->
+				console.log 'current id '+id
+				if(id != idVimeo)
+					that.playerYT.loadVideo(idVimeo).then (id) ->
+						console.log 'loaded '
+						that.playYTisReady()
+						return
 				return
-			that.playerYT.ready().then () ->
-				console.log 'ready'
-				#
-				return
+			
+			# that.playerYT.ready().then () ->
+			# 	console.log 'ready'
+			# 	#
+			# 	return
 
 
 		$('.btn_video_ipad').on 'click touchstart', (event) ->
