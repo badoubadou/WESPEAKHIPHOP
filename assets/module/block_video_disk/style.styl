@@ -49,15 +49,23 @@
 		.player-dimensions
 		video
 			width $size_video_medium
-			height $size_video_medium	
-	
+			height $size_video_medium		
+
 	@media $mobile_landscape
 		width 180px
 		height 180px
 		.player-dimensions
 		video
 			width 180px
-			height 180px	
+			height 180px
+	
+	@media $landscape_verybig
+		width $size_video_large
+		height $size_video_large
+		.player-dimensions
+		video
+			width $size_video_large
+			height $size_video_large
 		
 .size_disk
 	width $size_disk_smaller

@@ -62,7 +62,7 @@ var vendor = [
     'assets/coffee/vendor/ThrowPropsPlugin.min.js',
     'assets/coffee/vendor/CSSPlugin.min.js',
     'assets/coffee/vendor/howler.core.min.js',
-    'assets/coffee/vendor/plyr.min.js',
+    'assets/coffee/vendor/vimeo.js',
     'public/js/myscript/base.min.js',
     // 'assets/coffee/vendor/wad.min.js'
 ];

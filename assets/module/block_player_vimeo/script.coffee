@@ -1,18 +1,17 @@
-class player_video_youtube
+class player_video_vimeo
 	'use strict'
 	constructor: (@$container) ->
 		@playerYT = null
 		@drawLogo = null
 		@intro_is_done = false
-		@blankVideo = 'https://cdn.plyr.io/static/blank.mp4'
 		@bildIntroYoutube()
 		@bindEvents()
 		@needStartSite = true
 
 	playYTisReady : ->
 		console.log  '----------------------- playYTisReady -------------------------------------------'
-		if(!$('.video-container').hasClass('customised'))
-			@customizePlayerYT()
+		# if(!$('.video-container').hasClass('customised'))
+		# 	@customizePlayerYT()
 		$('.lds-dual-ring').trigger 'hidespiner'
 		
 		if @needStartSite 
@@ -48,14 +47,8 @@ class player_video_youtube
 		@loadMap()
 
 	YouTubeGetID: (url) ->
-		ID = ''
-		url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/)
-		if url[2] != undefined
-			ID = url[2].split(/[^0-9a-z_\-]/i)
-			ID = ID[0]
-		else
-			ID = url
-			ID
+		r = /(videos|video|channels|\.com)\/([\d]+)/
+		return url.match(r)[2]
 	
 	loadMap : ->
 		console.log '---> load small map'
@@ -151,50 +144,35 @@ class player_video_youtube
 			else
 				GoOutFullscreen()
 
-		mycontrols = ['play-large', 'play', 'progress', 'captions']
-		# if(window.isMobile())
-		# 	mycontrols = ['play-large', 'play', 'progress', 'captions', 'fullscreen']
-		@playerYT = new Plyr('#playerYT', { autoplay: true,playsinline: true, clickToPlay: false, controls:mycontrols })
+		options = {id: 296714611, width: 640,loop: false, autoplay:true, email:false}
+		@playerYT = new (Vimeo.Player)('playerYT', options)
 		
 		#------------------- PLAYER YOUTUBE IS READY -------------------#
-		@playerYT.on 'ready', (event) ->
+		@playerYT.ready().then ->
+			console.log 'player ready'
 			that.playYTisReady()
 			return
 
-		@playerYT.on 'statechange', (event) ->
-			console.log 'on statechange YOUTUBE  event code : '+event.detail.code
-			if event.detail.code == 1 #-------------------------  PLAY 
-				$('.video-container').removeClass 'trans'
-				$('.video-container .myfullscreen').removeClass 'hide'
-				$('.hider_logo').addClass 'hide_hider'
-				$('.hider_top').addClass 'hide_hider'
-				if(window.isMobile())
-					$('.btn_video_ipad').addClass('hide')
-							
-				if (!$('#logowhite'))
-					return
-				if ($('#logowhite').data('animstatus') == 'done')
-					return
-				
-				if ($('#logowhite').data('animstatus') == 'waiting')
-					console.log 'trigger hide'
-					$('#logowhite').trigger 'hideLogo'
-				
-				if ($('#logowhite').data('animstatus') == 'paused')
-					$('#logowhite').trigger 'resumehideLogo'
+		@playerYT.on 'play', (event) ->
+			$('.video-container').removeClass 'trans'
+			$('.video-container .myfullscreen').removeClass 'hide'
+			$('.hider_logo').addClass 'hide_hider'
+			$('.hider_top').addClass 'hide_hider'
+			if(window.isMobile())
+				$('.btn_video_ipad').addClass('hide')
+						
+			if (!$('#logowhite'))
+				return
+			if ($('#logowhite').data('animstatus') == 'done')
+				return
 			
-			if event.detail.code == 2 #-------------------------  PAUSE
-				if ($('#logowhite').data('animstatus') == 'playing')
-					$('#logowhite').trigger 'pausehideLogo'
-				$('.hider_logo').removeClass 'hide_hider'
-				$('.hider_top').removeClass 'hide_hider'
+			if ($('#logowhite').data('animstatus') == 'waiting')
+				console.log 'trigger hide'
+				$('#logowhite').trigger 'hideLogo'
 			
-			if event.detail.code == 3 #-------------------------  BUFFER
-				if ($('#logowhite').data('animstatus') == 'playing')
-					$('#logowhite').trigger 'pausehideLogo'
-				$('.hider_logo').removeClass 'hide_hider'
-				$('.hider_top').removeClass 'hide_hider'
-			return
+			if ($('#logowhite').data('animstatus') == 'paused')
+				$('#logowhite').trigger 'resumehideLogo'
+		
 			
 		#------------------- FOCUS -------------------#
 		$(window).on 'pageshow focus', ->
@@ -213,20 +191,15 @@ class player_video_youtube
 			$('.hider_logo').removeClass 'hide_hider'
 			$('.hider_top').removeClass 'hide_hider'
 			$('.video-container').addClass 'trans'
-			that.playerYT.source = {
-				type: 'video',
-				sources: [
-					{
-						src: that.blankVideo,
-						type: 'video/mp4',
-					},
-				],
-			};
-			# that.playerYT.stop()
+			that.playerYT.pause().then(->
+				# The video is paused
+				return
+			)
 		#------------------- INTRO FINISHED -------------------#
 		finished_popin_transition = ->
 			console.log 'done'
 			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange').attr('style','')
+		
 		vid_intro_finished = ->
 			console.log 'vid_intro_finished ----- trigger end Intro trigger close  Popin serieux ie ? '
 			$('#close').removeClass('hide')
@@ -249,22 +222,8 @@ class player_video_youtube
 			return
 			
 		@playerYT.on 'ended', (event) ->
-			console.log 'fin de video ?? blank video : '+that.playerYT.source
-			if (that.playerYT.source=='https://cdn.plyr.io/static/blank.mp4')
-				return
-			if (that.playerYT.source==undefined)
-				return
-			if (!that.playerYT.source)
-				return
 			vid_intro_finished()
 			return
-
-		# $('.video-container').on 'touchstart', ->
-		# 	console.log 'touch video player '
-		# 	if that.playerYT
-		# 		if !that.playerYT.playing
-		# 			that.playerYT.play()
-				
 
 		#------------------- CLICK LIST ARTIST -------------------#
 		checkratio =(ratiovideo) ->
@@ -278,41 +237,41 @@ class player_video_youtube
 			$('#abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
 			$('.video-container').removeClass 'hide'
 			$('.video-container').removeClass 'trans'
-			$('.lds-dual-ring').trigger 'showspiner'
+			# $('.lds-dual-ring').trigger 'showspiner'
 			
-		startPlyr =(idyoutube)->
-			that.playerYT.source = {
-				type: 'video',
-				sources: [
-					{
-						src: idyoutube,
-						provider: 'youtube',
-					},
-				],
-			};
-			that.playerYT.play()
-			
-			
+		startVimeo =(idVimeo)->
+			that.playerYT.loadVideo(idVimeo).then (id) ->
+				console.log 'loaded '
+				that.playYTisReady()
+				# that.playerYT.play()
+				# the video successfully loaded
+				return
+			that.playerYT.ready().then () ->
+				console.log 'ready'
+				#
+				return
+
+
 		$('.btn_video_ipad').on 'click touchstart', (event) ->
 			that.playerYT.play()
 			$('.btn_video_ipad').addClass('hide')	
 			return false
 
 		$('#startvideofrompopin').on 'click touchstart', (event) ->
-			idyoutube = that.YouTubeGetID($(this).attr('href'))
+			idVimeo = that.YouTubeGetID($(this).attr('href'))
 			checkratio($(this).data('ratiovideo'))
 			checkClassAndTrigger()
-			startPlyr(idyoutube)
+			startVimeo(idVimeo)
 			return false
 
 		$('#list_artists li a, #play-video-btn, #play-video-btn-mobile, a.watch').on 'click touchstart', (event) ->
-			console.log 'click start video'
-			idyoutube = that.YouTubeGetID($(this).attr('href'))
+			idVimeo = that.YouTubeGetID($(this).attr('href'))
+			console.log 'id vimeo : '+idVimeo
 			checkratio($(this).data('ratiovideo'))
 			checkClassAndTrigger()
-			startPlyr(idyoutube)
+			startVimeo(idVimeo)
 			# $('#popin').trigger 'classChange'
 			$('#popin').trigger 'showVideo'
 			return false
 	
-module.player_video_youtube = player_video_youtube
+module.player_video_vimeo = player_video_vimeo

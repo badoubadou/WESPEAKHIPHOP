@@ -1,6 +1,5 @@
 .video-container.layer_1.hidden.with_btn_skip.quatre_tier
-	#playerYT(data-plyr-provider="youtube" data-plyr-embed-id="hvZJI8rerWA" data-plyr-config='{ "volume": 1 }')
-	
+	#playerYT
 	#warp_custom_btn
 		.skip_intro.layer_2.btn.round_btn
 			| #{TRANSLATION.skip_intro[langage]}
@@ -10,9 +9,4 @@
 			#fsactif
 				include ../../../public/image/fullscreen_actif.svg
 		
-		.hider_logo
-		.hider_top
-		
-	.btn_video_ipad.hide
-		svg(role="presentation" focusable="false")
-			use(xlink:href="#plyr-play")
+	
