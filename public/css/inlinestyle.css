@@ -967,6 +967,20 @@ html {
   list-style: none;
   padding: 0;
 }
+@media screen and (min-width: 34em) and (orientation: portrait) {
+  #popin #credittxt .listlogo,
+  #popin #abouttxt .listlogo,
+  #popin #contacttxt .listlogo {
+    width: 70%;
+  }
+}
+@media screen and (orientation: landscape) {
+  #popin #credittxt .listlogo,
+  #popin #abouttxt .listlogo,
+  #popin #contacttxt .listlogo {
+    width: 70%;
+  }
+}
 #popin #credittxt .listlogo li,
 #popin #abouttxt .listlogo li,
 #popin #contacttxt .listlogo li {
@@ -987,8 +1001,8 @@ html {
   #popin #credittxt .listlogo li,
   #popin #abouttxt .listlogo li,
   #popin #contacttxt .listlogo li {
-    width: calc(25% - 60px);
-    margin: 30px;
+    width: calc(50% - 60px);
+    margin: 0 10px;
   }
 }
 #popin #credittxt .listlogo li a,

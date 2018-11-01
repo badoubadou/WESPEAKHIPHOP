@@ -146,6 +146,10 @@
 		.listlogo
 			list-style none
 			padding 0
+			@media $large_portrait
+				width 70%
+			@media $landscape	
+				width 70%
 			li
 				width 100%
 				padding-bottom 20px
@@ -157,8 +161,8 @@
 					padding 20px
 					
 				@media $landscape
-					width calc( 25% - 60px)
-					margin 30px
+					width calc( 50% - 60px)
+					margin 0 10px
 				
 				a
 					display block
@@ -167,6 +171,9 @@
 
 					img
 						height 100%
+						
+					
+					
 						
 			#logocnc img
 				height 30px
