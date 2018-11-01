@@ -6,7 +6,7 @@ class spiner
 		TweenLite.set(['.ring_1', '.ring_2', '.ring_3'], {xPercent: -50,yPercent: -50});
 		
 		@timelineSpiner = new TimelineMax(paused:true, onReverseComplete:@maskSpiner, onStart: @unmaskSpiner)		
-			.staggerFromTo(['.ring_1', '.ring_2', '.ring_3'], 2 ,{scale: 0.5, opacity: 0},{scale: 1, opacity: 1, ease:Power3.easeOut}, 0.5)			
+			.staggerFromTo(['.ring_1', '.ring_2', '.ring_3'], 2 ,{opacity: 0},{scale: 1, opacity: 1, ease:Power3.easeOut}, 0.5)			
 			# .fromTo('.lds-dual-ring', 0.5 ,{opacity: 0},{opacity: 1, ease:Power3.easeOut}, '-=2')	
 		@bindEvents()
 		@showSpiner()

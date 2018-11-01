@@ -726,7 +726,6 @@
           onReverseComplete: this.maskSpiner,
           onStart: this.unmaskSpiner
         }).staggerFromTo(['.ring_1', '.ring_2', '.ring_3'], 2, {
-          scale: 0.5,
           opacity: 0
         }, {
           scale: 1,
