@@ -37,7 +37,6 @@ class player_video
 
 	#------------------- TWEEN ---------------------------#
 	resetallCss: () ->
-		console.log 'reset###########################'
 		$('#block_video_disk, #platine ,#disk, #left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn, #play-video-btn-mobile, #pause-video-btn, #main_footer, #left_col,#artists_info,#smallmap, #txt_help_disk, .tuto').attr('style','')
 		
 	createTweenInfo: (curentTime) ->

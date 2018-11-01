@@ -4,14 +4,11 @@ class player_video_vimeo
 		@playerYT = null
 		@drawLogo = null
 		@intro_is_done = false
-		@bildIntroYoutube()
 		@bindEvents()
 		@needStartSite = true
 
 	playYTisReady : ->
 		console.log  '----------------------- playYTisReady -------------------------------------------'
-		if(!$('.video-container').hasClass('customised'))
-			@customizePlayerYT()
 		$('.lds-dual-ring').trigger 'hidespiner'
 		
 		if @needStartSite 
@@ -19,22 +16,25 @@ class player_video_vimeo
 			@needStartSite = false
 		else
 			@playerYT.play()
+			# @playerYT.enableTextTrack('fr').then((track) ->
+			# 	).catch (error) ->
+			# 	console.log '###---------', error
+			# 	return
+			# @playerYT.getTextTracks().then((tracks) ->
+			# 	console.log 'tracks  = '+tracks
+			# 	).catch (error) ->
+			# 	console.log '###---------', error
+			# 	return
+			
 			if(window.isMobile())
 				$('.btn_video_ipad').removeClass('hide')
-		
-	customizePlayerYT : ->
-		# console.log 'customizePlayerYT = '+$('.vp-controls').lenght()
-
-		# $('.vp-controls').css('padding-right','200px')
-		# custom_btn = $('#warp_custom_btn').detach()
-		# $('.video-container .plyr').append custom_btn
-		# $('.video-container').addClass 'customised'
+	
 			
-	bildIntroYoutube : ->
+	getIntroVimeo : ->
 		that = @
 		random = Math.floor(Math.random() * 4)
 		randomid = $('#idIntroYoutube input:eq('+random+')').val()
-		$('#playerYT').attr('data-plyr-embed-id',randomid)
+		return randomid
 
 	startSite: ()->
 		btnIntroVisible = ->
@@ -85,6 +85,7 @@ class player_video_vimeo
 			$('.video-container').removeClass 'hidden hide'
 			GoInFullscreen($('body').get(0))
 			that.playerYT.play()
+			$('#logowhite').trigger 'hideLogo'
 			$('#enter_site').off()
 			setTimeout (->
 				console.log 'show skip_intro damed it'
@@ -146,9 +147,25 @@ class player_video_vimeo
 			else
 				GoOutFullscreen()
 
-		options = {id: 296714611, width: 640,loop: false, autoplay:true, email:false}
+		# options = {id: 296883720, width: 640,loop: false, autoplay:true, email:false}
+		options = {id: @getIntroVimeo(), width: 640,loop: false, autoplay:true, email:false}
 		@playerYT = new (Vimeo.Player)('playerYT', options)
+		@playerYT.enableTextTrack('fr').then((track) ->
+		).catch (error) ->
+			console.log '###', error
+			return
 		
+		@playerYT.getTextTracks().then((tracks) ->
+			tracksLength = tracks.length
+			trackOptions = ''
+			i = 0
+			console.log 'getTextTracks : ' + tracksLength
+			while i < tracksLength
+				console.log tracks[i].language
+				i++
+			return
+		).catch (error) ->
+
 		#------------------- PLAYER YOUTUBE IS READY -------------------#
 		@playerYT.ready().then ->
 			console.log 'player ready'
@@ -156,6 +173,7 @@ class player_video_vimeo
 			return
 
 		@playerYT.on 'play', (event) ->
+			console.log $('#logowhite').data('animstatus')
 			$('.video-container').removeClass 'trans'
 			$('.video-container .myfullscreen').removeClass 'hide'
 			$('.hider_logo').addClass 'hide_hider'
@@ -167,14 +185,17 @@ class player_video_vimeo
 				return
 			if ($('#logowhite').data('animstatus') == 'done')
 				return
-			
-			if ($('#logowhite').data('animstatus') == 'waiting')
-				console.log 'trigger hide'
-				$('#logowhite').trigger 'hideLogo'
-			
+			if ($('#logowhite').data('animstatus') == 'waiting-init')
+				$('#logowhite').data('animstatus', 'waiting')
+				return
+
 			if ($('#logowhite').data('animstatus') == 'paused')
 				$('#logowhite').trigger 'resumehideLogo'
-		
+
+		@playerYT.on 'pause', (event) ->
+			if ($('#logowhite').data('animstatus') == 'playing')
+				$('#logowhite').trigger 'pausehideLogo'
+			
 			
 		#------------------- FOCUS -------------------#
 		$(window).on 'pageshow focus', ->
@@ -209,18 +230,17 @@ class player_video_vimeo
 			$('#logowhite').trigger 'destroyLogo'
 			$('.intro_page').remove()
 			that.playerYT.pause()
+			$('.skip_intro').off()
+			$('.skip_intro').remove()
 			if(window.isMobile())
+				$('#player')[0].play()
 				finished_popin_transition()
 			else
 				TweenMax.to('#popin', .8,{opacity:0,onComplete:finished_popin_transition})
 			return
 
 		$('.skip_intro').on 'click touchstart', ->
-			$('.skip_intro').off()
-			$('.skip_intro').remove()
 			vid_intro_finished()
-			if(window.isMobile())
-				$('#player')[0].play()
 			return
 			
 		@playerYT.on 'ended', (event) ->
@@ -243,20 +263,33 @@ class player_video_vimeo
 			
 		startVimeo =(idVimeo)->
 			that.playerYT.getVideoId().then (id) ->
-				console.log 'current id '+id
+				console.log 'current id -------------'+id
 				if(id != idVimeo)
+					$('.video-container').addClass 'trans'
+					# options = {id: idVimeo, width: 640,loop: false, autoplay:true, email:false}
+					# that.playerYT = new (Vimeo.Player)('playerYT', options)
+		
 					that.playerYT.loadVideo(idVimeo).then (id) ->
 						console.log 'loaded '
 						that.playYTisReady()
 						return
+					that.playerYT.enableTextTrack('fr').then((track) ->
+						).catch (error) ->
+						console.log '###', error
+						return
+					that.playerYT.getTextTracks().then((tracks) ->
+						tracksLength = tracks.length
+						trackOptions = ''
+						i = 0
+						console.log 'getTextTracks : ' + tracksLength
+						while i < tracksLength
+							console.log tracks[i].language
+							i++
+						return
+					).catch (error) ->
+
 				return
 			
-			# that.playerYT.ready().then () ->
-			# 	console.log 'ready'
-			# 	#
-			# 	return
-
-
 		$('.btn_video_ipad').on 'click touchstart', (event) ->
 			that.playerYT.play()
 			$('.btn_video_ipad').addClass('hide')	
