@@ -1002,7 +1002,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?time_continue=36&v=Q98bKf7jI_8&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297168651"
                },
                {
                   "meta_key": "tag_line",
@@ -1088,7 +1088,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=9nHOLNnrgpo&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297271326"
                },
                {
                   "meta_key": "tag_line",
@@ -1174,7 +1174,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?time_continue=1&v=ob_xKCz190Q&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297298919"
                },
                {
                   "meta_key": "tag_line",
@@ -1260,7 +1260,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=7Yu7JnLeLOg&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297074327"
                },
                {
                   "meta_key": "tag_line",
@@ -1346,7 +1346,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=EQGu07aLjys"
+                  "meta_value": "https://vimeo.com/297161654"
                },
                {
                   "meta_key": "tag_line",
@@ -1427,12 +1427,13 @@
             ],
             "postmeta": [
                {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
                },
+               
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=qVTrbzLX4Rw"
+                  "meta_value": "https://vimeo.com/297065561"
                },
                {
                   "meta_key": "tag_line",
@@ -1518,7 +1519,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=mNaC9idbHs0&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/296927736"
                },
                {
                   "meta_key": "tag_line",
@@ -1599,12 +1600,12 @@
             ],
             "postmeta": [
                {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=l3x5dXlD-y8&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297186144"
                },
                {
                   "meta_key": "tag_line",
@@ -1690,7 +1691,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=Q7k1_5g4rR4&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297132576"
                },
                {
                   "meta_key": "tag_line",
@@ -1776,7 +1777,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=m9dx6C7MLa0&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297078672"
                },
                {
                   "meta_key": "tag_line",
@@ -1858,7 +1859,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=bwBbaswId3A&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/296706742"
                },
                {
                   "meta_key": "tag_line",
@@ -1944,7 +1945,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=RWC_ncvfgtk&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/296913406"
                },
                {
                   "meta_key": "tag_line",
@@ -2025,12 +2026,13 @@
             ],
             "postmeta": [
                {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
                },
+               
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=pBS9Dehhv1A&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/296930719"
                },
                {
                   "meta_key": "tag_line",
@@ -2116,7 +2118,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=etkjOx4AQ1I&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297124934"
                },
                {
                   "meta_key": "tag_line",
@@ -2202,7 +2204,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=gTPl7idK1gY&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297152210"
                },
                {
                   "meta_key": "tag_line",
@@ -2283,8 +2285,12 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=iM9gCt1nKTA&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/296946812"
                },
                {
                   "meta_key": "tag_line",
@@ -2297,10 +2303,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2006"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_oembed_c59c63f11b8b2c9d8cb9095c5dc77f4f",
@@ -2369,8 +2371,12 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=sRQbroiNZmA&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/296876416"
                },
                {
                   "meta_key": "tag_line",
@@ -2383,10 +2389,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2006"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_oembed_90239e43fa7bdc518c2ed80c329cfa1a",
@@ -2455,12 +2457,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "The sound of a stand&#8209;up generation"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=L_VjfYC9Dt8&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/296909249"
                },
                {
                   "meta_key": "description",
@@ -2469,10 +2475,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2006"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -2537,12 +2539,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "Sowers of luck"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=6auSzdHo3BQ&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297080869"
                },
                {
                   "meta_key": "description",
@@ -2551,10 +2557,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2008"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -2619,12 +2621,13 @@
             ],
             "postmeta": [
                {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
                },
+               
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=viwWPTZ9i2g"
+                  "meta_value": "https://vimeo.com/297291371"
                },
                {
                   "meta_key": "tag_line",
@@ -2710,7 +2713,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=aKiCiof4USs&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297070211"
                },
                {
                   "meta_key": "tag_line",
@@ -2796,7 +2799,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=N77hmmnoRVM&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/298342350/5f71fd4892"
                },
                {
                   "meta_key": "tag_line",
@@ -2882,7 +2885,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=cA1p3GvP3c8&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297267855"
                },
                {
                   "meta_key": "tag_line",
@@ -2968,7 +2971,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=DZPBFHBh6a4&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/298345154/61daf3a2da"
                },
                {
                   "meta_key": "tag_line",
@@ -3049,8 +3052,12 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=IIZkHIi0-Kg&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297718173"
                },
                {
                   "meta_key": "tag_line",
@@ -3063,10 +3070,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2006"
-               },
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
                },
                {
                   "meta_key": "_video",
@@ -3131,8 +3134,12 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=IRuT1d1KxZI&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297128932"
                },
                {
                   "meta_key": "tag_line",
@@ -3145,10 +3152,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2005"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -3218,7 +3221,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=GyHCfI7Wu6g&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297306012"
                },
                {
                   "meta_key": "tag_line",
@@ -3304,7 +3307,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=CFsqJJflGCw&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/296714611"
                },
                {
                   "meta_key": "tag_line",
@@ -3394,7 +3397,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=G_qciiPIKFs&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297309954"
                },
                {
                   "meta_key": "tag_line",
@@ -3480,7 +3483,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=JRBCXPe9W5w&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/296906637"
                },
                {
                   "meta_key": "tag_line",
@@ -3566,7 +3569,7 @@
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=rk5_m0IsosI&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297278552"
                },
                {
                   "meta_key": "tag_line",
@@ -3647,8 +3650,12 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=BW8LOCN2_fc&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/296883720"
                },
                {
                   "meta_key": "tag_line",
@@ -3661,10 +3668,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2006"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_oembed_8d832540057033b2a89bd7bbe42098d4",
@@ -3733,8 +3736,12 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=vyevFwkR_cE&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/296880345"
                },
                {
                   "meta_key": "tag_line",
@@ -3747,10 +3754,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2006"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -3815,12 +3818,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "The nihilistic sighs of Korean rap"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=J9ncXBEzssU&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/296944607"
                },
                {
                   "meta_key": "description",
@@ -3829,10 +3836,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2006"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -3897,12 +3900,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "Moroccan hip&#8209;hop,<br\/>rap the kasbah!"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=4R8wB04DOiQ&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/296872474"
                },
                {
                   "meta_key": "description",
@@ -3911,10 +3918,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2006"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -3979,12 +3982,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "Born from the dust"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=6K0cMKsPJxg&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297307517"
                },
                {
                   "meta_key": "description",
@@ -3993,10 +4000,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2006"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -4061,12 +4064,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "Conscious griots, rap&nbsp;citizens"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=gX4pSL84kME&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/296903765"
                },
                {
                   "meta_key": "description",
@@ -4075,10 +4082,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2005"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -4143,12 +4146,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "Master of the democratic trip"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=04iBeCdViMk&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297149238"
                },
                {
                   "meta_key": "description",
@@ -4157,10 +4164,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2006"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -4225,12 +4228,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "Return to the source"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=mCe00SoKLLM&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297137873"
                },
                {
                   "meta_key": "description",
@@ -4239,10 +4246,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2006"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -4307,12 +4310,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "The anti-gangsta of&nbsp;Jakarta"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=hKm4GtgHm5Y&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/298340897/867dfa9cbd"
                },
                {
                   "meta_key": "description",
@@ -4321,10 +4328,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2009"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -4389,12 +4392,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "<q>King David would be able to understand&nbsp;me<\/q>"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=yZpxjF02olE&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297288944"
                },
                {
                   "meta_key": "description",
@@ -4403,10 +4410,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2006"
-               },
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
                },
                {
                   "meta_key": "_video",
@@ -4471,12 +4474,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "Beatboxer in all&nbsp;humility"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=x89hbxnr_VI&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/298343741/58e486bb93"
                },
                {
                   "meta_key": "description",
@@ -4485,10 +4492,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2011"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -4553,12 +4556,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "Aiming for the summit"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=rz7XS5eVcDw&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297264682"
                },
                {
                   "meta_key": "description",
@@ -4567,10 +4574,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2009"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -4635,8 +4638,12 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "16"
+               },
+               {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=dhK61RVfd9E&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297293979"
                },
                {
                   "meta_key": "tag_line",
@@ -4649,10 +4656,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2017"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "16"
                },
                {
                   "meta_key": "_video",
@@ -4717,12 +4720,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "<q>Islam is the new&nbsp;black<\/q>"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=1rCt-tvNvAo"
+                  "meta_value": "https://vimeo.com/297061037"
                },
                {
                   "meta_key": "description",
@@ -4731,10 +4738,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2013"
-               },
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
                },
                {
                   "meta_key": "_video",
@@ -4799,12 +4802,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "The warrior poets of&nbsp;Manila"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=cR6RurSste8&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/296924841"
                },
                {
                   "meta_key": "description",
@@ -4813,10 +4820,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2009"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -4881,12 +4884,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "<q>Colonel of the conscious generation<\/q>"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=O0zDilhtfnA&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297183064"
                },
                {
                   "meta_key": "description",
@@ -4895,10 +4902,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2007"
-               },
-               {
-                  "meta_key": "_edit_last",
-                  "meta_value": "1"
                },
                {
                   "meta_key": "_video",
@@ -4963,12 +4966,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "Mystic pioneer of Israeli rap"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=8ZkY6URiW28&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297120618"
                },
                {
                   "meta_key": "description",
@@ -4977,10 +4984,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2006"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -5045,12 +5048,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "The fertile voice"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=6671FQzB6jw&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297304628"
                },
                {
                   "meta_key": "description",
@@ -5059,10 +5066,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2006"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -5127,12 +5130,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "The New York Thaï’s defector rap"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=bfwg9Mnh2bI&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/296718287"
                },
                {
                   "meta_key": "description",
@@ -5141,10 +5148,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2012"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -5209,12 +5212,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "Satire fired with real&nbsp;phases"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://youtu.be/pL8Z1gqUL8o"
+                  "meta_value": "https://vimeo.com/297156406"
                },
                {
                   "meta_key": "description",
@@ -5223,10 +5230,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2013"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -5291,12 +5294,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "16"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "Belgian trip under&nbsp;the influence"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=d7fJm-3JDVA&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297072241"
                },
                {
                   "meta_key": "description",
@@ -5305,10 +5312,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2017"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "16"
                },
                {
                   "meta_key": "_video",
@@ -5373,12 +5376,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "For the love of&nbsp;art"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=FzX_AABqQv0&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297274367"
                },
                {
                   "meta_key": "description",
@@ -5387,10 +5394,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2018"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",
@@ -5455,12 +5458,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "16"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "A universal language"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?time_continue=36&v=cq5my0-JOj0&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297167229"
                },
                {
                   "meta_key": "description",
@@ -5469,10 +5476,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2017"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "16"
                },
                {
                   "meta_key": "_video",
@@ -5537,12 +5540,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "16"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "<q>We did not learn music at school<\/q>"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=-Y_65jQmMfc"
+                  "meta_value": "https://vimeo.com/296710988"
                },
                {
                   "meta_key": "description",
@@ -5551,10 +5558,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2017"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "16"
                },
                {
                   "meta_key": "_video",
@@ -5619,12 +5622,16 @@
             ],
             "postmeta": [
                {
+                  "meta_key": "_ratio_video",
+                  "meta_value": "4"
+               },
+               {
                   "meta_key": "tag_line",
                   "meta_value": "A \"positive\" self&#8209;censorship"
                },
                {
                   "meta_key": "video",
-                  "meta_value": "https://www.youtube.com/watch?v=FH91k5uCEZc&ab_channel=WESPEAKHIPHOP"
+                  "meta_value": "https://vimeo.com/297076396"
                },
                {
                   "meta_key": "description",
@@ -5633,10 +5640,6 @@
                {
                   "meta_key": "date",
                   "meta_value": "2011"
-               },
-               {
-                  "meta_key": "_ratio_video",
-                  "meta_value": "4"
                },
                {
                   "meta_key": "_video",

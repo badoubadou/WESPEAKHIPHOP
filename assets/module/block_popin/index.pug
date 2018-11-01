@@ -1,6 +1,6 @@
 #popin.absolute.layer_top_plus.full_height.full_width
 	.intro_page.centered.layer_top_plus
-		.layer_1#logowhite.hidden.logo(data-animstatus='waiting')
+		.layer_1#logowhite.hidden.logo(data-animstatus='waiting-init')
 			include ../../../public/image/logo-white.svg
 			//- include ../../../public/image/logo.svg
 
@@ -21,7 +21,7 @@
 
 		
 	include ../block_spiner/index.pug
-	include ../block_player_youtube/index.pug
+	include ../block_player_vimeo/index.pug
 
 	#abouttxt.hide.block.big.centered.layer_top
 		if langage == 'en'

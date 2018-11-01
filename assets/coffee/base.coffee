@@ -3,8 +3,8 @@ window.isMobile = ->
 	typeof window.orientation != 'undefined' or navigator.userAgent.indexOf('IEMobile') != -1
 
 init = ->
-	console.log 'window load -> init'
-	player_video_youtube = new module.player_video_youtube()
+	console.log 'window load -> init vimeo ?'
+	player_video_vimeo = new module.player_video_vimeo()
 	popin = new module.popin()
 	logo = new module.logo()
 	
