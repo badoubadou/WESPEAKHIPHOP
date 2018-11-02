@@ -9,7 +9,7 @@ app.use(compression());
 app.disable('x-powered-by');
 app.get('/robots.txt', function (req, res) {
     res.type('text/plain');
-    res.send("User-agent: *\nDisallow: /");
+    res.send("User-agent: *\nDisallow:");
 });
 app.get('/', function(req, res) {
     var q = url.parse(req.url, true);
