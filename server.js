@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 var compression = require('compression');
 var path = require('path');
+var sitemap = require('express-sitemap')();
 var port = process.env.PORT || 1881; 
 // viewed at http://localhost:1881
 app.use(compression());
@@ -30,5 +31,5 @@ app.get('/', function(req, res) {
         res.sendFile(path.join(__dirname + filePath));
 
 });
-
 app.listen(port);
+sitemap.generate(app);
