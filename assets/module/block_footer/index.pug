@@ -4,13 +4,13 @@
 	.warp_ul_footer
 		ul#left-ul
 			li.seperateur
-				a#apropos_btn(href='#abouttxt')
+				a#apropos_btn(href='#abouttxt' title=TRANSLATION.a_propos[langage])
 					| #{TRANSLATION.a_propos[langage]}
 			li.seperateur
-				a#credit_btn(href='#credittxt')
+				a#credit_btn(href='#credittxt' title=TRANSLATION.credit[langage])
 					| #{TRANSLATION.credit[langage]}
 			li
-				a#mail_btn(href='#contacttxt')
+				a#mail_btn(href='#contacttxt' title=TRANSLATION.contact[langage])
 					| #{TRANSLATION.contact[langage]}
 		
 		ul#right-ul
@@ -38,7 +38,7 @@
 						include ../../../public/image/fullscreen_actif.svg
 			
 			li
-				a#share(href='#shareinfo')
+				a#share(href='#shareinfo' title=TRANSLATION.partager[langage])
 					include ../../../public/image/share.svg
 					span.txt
 						| #{TRANSLATION.partager[langage]}
