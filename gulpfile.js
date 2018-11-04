@@ -39,7 +39,7 @@ var s3 = require('gulp-s3-upload')(config);
 const stripDebug = require('gulp-strip-debug');
 
 const htmlmin = require('gulp-htmlmin');
-
+var ext_replace = require('gulp-ext-replace');
 
 var pugfile = ['assets/pug/*.pug', '!assets/pug/layout.pug'];
 var stylfile = ['assets/style/**/*.styl', 'assets/module/**/*.styl'];
@@ -249,9 +249,16 @@ gulp.task('minify', () => {
     .pipe(gulp.dest('public/'));
 });
 
+
+gulp.task('changesitemapext', function() {
+  gulp.src('public/sitemap.html')
+      .pipe(ext_replace('.xml'))
+      .pipe(gulp.dest('public/'))
+});
+
 gulp.task('pug', function() {
     gutil.log('update pug');
-    runSequence('pug:data','complilpug','inlinesource','minify' );
+    runSequence('pug:data','complilpug','inlinesource','minify' , 'changesitemapext');
 });
 
 /*------------------------ MUSK ----------------------------*/
