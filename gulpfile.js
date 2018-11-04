@@ -254,6 +254,7 @@ gulp.task('changesitemapext', function() {
   gulp.src(['public/sitemap.html', 'public/sitemap-en.html'])
       .pipe(ext_replace('.xml'))
       .pipe(gulp.dest('public/'))
+      del(['public/sitemap.html', 'public/sitemap-en.html']);
 });
 
 gulp.task('pug', function() {
