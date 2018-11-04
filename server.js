@@ -14,12 +14,11 @@ app.get('/robots.txt', function (req, res) {
     res.send("User-agent: *\nDisallow: \nSitemap: http://"+req.headers.host+"/sitemap.xml");
 });
 app.get('/sitemap.xml', function (req, res) {
-    filePath = '/public/sitemap.html';
+    filePath = '/public/sitemap.xml';
     if ((req.headers.host == 'www.wespeakhiphop.com') || (req.headers.host == 'wespeakhiphop.com'))
-        filePath = '/public/sitemap-en.html';
+        filePath = '/public/sitemap-en.xml';
     
     res.sendFile(path.join(__dirname + filePath));
-
 });
 app.get('/', function(req, res) {
     var q = url.parse(req.url, true);
