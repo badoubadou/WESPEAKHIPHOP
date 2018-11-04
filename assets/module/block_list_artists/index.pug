@@ -5,10 +5,10 @@ ul#list_artists.layer_top
 				- var youtube_ratio = meta.meta_value
 			if meta.meta_key == 'video'
 				- var youtube_link = meta.meta_value
-				li
-					a(href=youtube_link, data-ratiovideo=youtube_ratio, title=video.title )
+				li(itemscope itemprop="potentialAction" itemtype="http://schema.org/WatchAction")
+					a(href=youtube_link, data-ratiovideo=youtube_ratio, title=video.title ,  itemprop='target')
 						span.dot
-						span.txt 
+						span.txt(itemprop="name")
 							| !{video.title}
 						.warp_contry
 							each cat in video.category
