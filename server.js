@@ -14,11 +14,9 @@ app.get('/robots.txt', function (req, res) {
     res.send("User-agent: *\nDisallow: \nSitemap: http://"+req.headers.host+"/sitemap.xml");
 });
 app.get('/sitemap.xml', function (req, res) {
-    var filePath = '.' + req.url;
+    filePath = '/public/sitemap.html';
     if ((req.headers.host == 'www.wespeakhiphop.com') || (req.headers.host == 'wespeakhiphop.com'))
         filePath = '/public/sitemap-en.html';
-    else
-        filePath = '/public/sitemap.html';
     
     res.sendFile(path.join(__dirname + filePath));
 
