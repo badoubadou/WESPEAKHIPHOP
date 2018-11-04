@@ -11,7 +11,7 @@ app.use(compression());
 app.disable('x-powered-by');
 app.get('/robots.txt', function (req, res) {
     res.type('text/plain');
-    res.send("User-agent: *\nDisallow:");
+    res.send("User-agent: *\nDisallow: \nSitemap: http://"+req.headers.host+"/sitemap.xml");
 });
 app.get('/sitemap.xml', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/sitemap.xml'));
