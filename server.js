@@ -14,7 +14,14 @@ app.get('/robots.txt', function (req, res) {
     res.send("User-agent: *\nDisallow: \nSitemap: http://"+req.headers.host+"/sitemap.xml");
 });
 app.get('/sitemap.xml', function (req, res) {
-    res.sendFile(path.join(__dirname + '/public/sitemap.xml'));
+    var filePath = '.' + req.url;
+    if ((req.headers.host == 'www.wespeakhiphop.com') || (req.headers.host == 'wespeakhiphop.com'))
+        filePath = '/public/sitemap-en.html';
+    else
+        filePath = '/public/sitemap.html';
+    
+    res.sendFile(path.join(__dirname + filePath));
+
 });
 app.get('/', function(req, res) {
     var q = url.parse(req.url, true);
