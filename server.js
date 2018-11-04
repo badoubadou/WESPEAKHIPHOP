@@ -23,7 +23,11 @@ app.get('/', function(req, res) {
     var filePath = '.' + req.url;
     var extname = path.extname(filePath);
 
-    if((extname=='.jpg') || (extname=='.png') )
+    if((extname=='.jpg') || (extname=='.png') || (extname=='.svg') )
+        res.setHeader("Cache-Control", "public, max-age=2592000");
+        res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());
+
+    if((extname=='.css') || (extname=='.js') )
         res.setHeader("Cache-Control", "public, max-age=2592000");
         res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());
 
