@@ -251,7 +251,7 @@ gulp.task('minify', () => {
 
 
 gulp.task('changesitemapext', function() {
-  gulp.src('public/sitemap.html')
+  gulp.src(['public/sitemap.html', 'public/sitemap-en.html'])
       .pipe(ext_replace('.xml'))
       .pipe(gulp.dest('public/'))
 });
