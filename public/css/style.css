@@ -2285,6 +2285,11 @@ span.lign_header {
   width: 125px;
   bottom: 40px;
 }
+@media screen and (min-width: 78em) and (orientation: landscape) {
+  #play-video-btn {
+    padding: 0 15px;
+  }
+}
 #play-video-btn span {
   position: relative;
 }
