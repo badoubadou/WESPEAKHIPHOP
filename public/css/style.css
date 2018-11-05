@@ -2311,6 +2311,11 @@ span.lign_header {
     display: block;
   }
 }
+@media screen and (min-width: 34em) and (orientation: portrait) {
+  #play-video-btn {
+    display: block;
+  }
+}
 #play-video-btn-mobile {
   bottom: auto;
   top: 5px;
@@ -2323,6 +2328,11 @@ span.lign_header {
   }
 }
 @media screen and (orientation: landscape) {
+  #play-video-btn-mobile {
+    display: none;
+  }
+}
+@media screen and (min-width: 34em) and (orientation: portrait) {
   #play-video-btn-mobile {
     display: none;
   }
