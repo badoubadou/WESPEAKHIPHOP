@@ -686,6 +686,7 @@ html {
   background-color: #f0f2da;
   touch-action: none;
   overflow: hidden;
+  position: fixed;
 }
 .mainwidth,
 #main {

@@ -49,8 +49,15 @@ document.addEventListener 'touchmove', ((event) ->
 	return
 ), false
 
+
+freezeVp = (e) ->
+	e.preventDefault()
+	return
+
 if (navigator.userAgent.match(/(iPad|iPhone|iPod)/i))
 	$('body').addClass 'device-ios'
+	document.body.addEventListener("touchmove", freezeVp, false);
+
 	
 # $(window).on 'resize', ->
 # 	if @resizeTO
