@@ -1,9 +1,14 @@
+- year = new Date().getFullYear()
+- month = new Date().getMonth()
+- month = (month < 10) ? ('0'+month) : month
+- day = new Date().getDate()
+- day = (day < 10) ? ('0'+day) : day
 doctype xml
 urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
 
 	//- Home page
 	url
 		loc= 'http://wespeakhiphop.fr'
-		lastmod= (new Date()).toLocaleDateString()
+		lastmod= year+'-'+month+'-'+day
 		changefreq yearly
 		priority= 1
