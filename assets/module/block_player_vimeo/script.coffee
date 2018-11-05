@@ -261,7 +261,7 @@ class player_video_vimeo
 						console.log 'loaded '
 						that.playYTisReady()
 						return
-					that.playerYT.enableTextTrack('fr').then((track) ->
+					that.playerYT.enableTextTrack($('#langage_short').val()).then((track) ->
 						).catch (error) ->
 						console.log '###', error
 						return

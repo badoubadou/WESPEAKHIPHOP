@@ -519,7 +519,7 @@
                 console.log('loaded ');
                 that.playYTisReady();
               });
-              that.playerYT.enableTextTrack('fr').then(function(track) {}).catch(function(error) {
+              that.playerYT.enableTextTrack($('#langage_short').val()).then(function(track) {}).catch(function(error) {
                 console.log('###', error);
               });
               that.playerYT.getTextTracks().then(function(tracks) {
