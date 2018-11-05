@@ -37,14 +37,14 @@ class player_video
 
 	#------------------- TWEEN ---------------------------#
 	resetallCss: () ->
-		$('#block_video_disk, #platine ,#disk, #left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn, #play-video-btn-mobile, #pause-video-btn, #main_footer, #left_col,#artists_info,#smallmap, #txt_help_disk, .tuto').attr('style','')
+		$('#block_video_disk, #platine ,#disk, #left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn,  #pause-video-btn, #main_footer, #left_col,#artists_info,#smallmap, #txt_help_disk, .tuto').attr('style','')
 		
 	createTweenInfo: (curentTime) ->
 		that = @
 			
 		updateInfo= (id)->
-			$('#play-video-btn, #play-video-btn-mobile, #startvideofrompopin').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
-			$('#play-video-btn, #play-video-btn-mobile, #startvideofrompopin').data('ratiovideo', $('#list_artists li:eq('+id+') a').data('ratiovideo'))
+			$('#play-video-btn,  #startvideofrompopin').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
+			$('#play-video-btn,  #startvideofrompopin').data('ratiovideo', $('#list_artists li:eq('+id+') a').data('ratiovideo'))
 			$('#list_artists li a.selected').removeClass('selected')
 			$('#list_artists li:eq('+id+') a').addClass('selected')
 			svgcontry = '#smallmap svg #'+$('#artists_info li:eq('+id+') .contry').data 'contrynicename'
@@ -146,7 +146,7 @@ class player_video
 			.to('#artists_info li:eq(27) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 
 	removeTLIntro : ->
-		$('#left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn, #play-video-btn-mobile, #pause-video-btn, #main_footer, .tuto').attr('style','')
+		$('#left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn,  #pause-video-btn, #main_footer, .tuto').attr('style','')
 		this.kill()
 
 	setTimeLineIntro : (curentTime) ->
@@ -160,7 +160,7 @@ class player_video
 			.add(@play_video_disk)
 			.from('#platine', 1 ,{opacity:0, scale:.8}, '-=.5')
 			.staggerFrom('#list_artists li', .3 ,{opacity:0}, 0.04 )
-			.from(['#play-video-btn', '#play-video-btn-mobile', '#pause-video-btn'], .6 ,{opacity:0}  )
+			.from(['#play-video-btn', '#pause-video-btn'], .6 ,{opacity:0}  )
 			.from('#main_footer', .8 ,{y:40, ease:Power3.easeOut})
 			.from('#left_col', .8 ,{x:'-100%', ease:Power3.easeOut} , '-=.8')
 			.add(@show_logo)

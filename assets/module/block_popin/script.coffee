@@ -76,6 +76,7 @@ class popin
 			that.closePopin()
 
 		$('#popin').on 'showVideo', ->
+			console.log 'belors ?? - showVideo'
 			showPopin('.video-container')
 
 module.popin = popin

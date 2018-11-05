@@ -3678,8 +3678,7 @@ span.lign_header {
   background: #ffce00;
   z-index: -1;
 }
-#play-video-btn,
-#play-video-btn-mobile {
+#play-video-btn {
   text-transform: uppercase;
   background: #ffce00;
   border-radius: 10px;
@@ -3689,60 +3688,23 @@ span.lign_header {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  padding: 0 15px;
+  padding: 0 5px;
   width: 125px;
   bottom: 40px;
 }
-#play-video-btn span,
-#play-video-btn-mobile span {
+#play-video-btn span {
   position: relative;
 }
-#play-video-btn .triangle,
-#play-video-btn-mobile .triangle {
+#play-video-btn .triangle {
   position: absolute;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   left: 9px;
 }
-#play-video-btn span.txt,
-#play-video-btn-mobile span.txt {
+#play-video-btn span.txt {
   position: relative;
   left: 5px;
-}
-#play-video-btn {
-  display: none;
-}
-@media screen and (orientation: landscape) {
-  #play-video-btn {
-    display: block;
-  }
-}
-@media screen and (min-width: 34em) and (orientation: portrait) {
-  #play-video-btn {
-    display: block;
-  }
-}
-#play-video-btn-mobile {
-  bottom: auto;
-  top: 5px;
-}
-@media screen and (max-width: 48em) and (orientation: landscape) {
-  #play-video-btn-mobile {
-    left: auto;
-    right: 5px;
-    transform: none;
-  }
-}
-@media screen and (orientation: landscape) {
-  #play-video-btn-mobile {
-    display: none;
-  }
-}
-@media screen and (min-width: 34em) and (orientation: portrait) {
-  #play-video-btn-mobile {
-    display: none;
-  }
 }
 #pause-video-btn {
   bottom: 40px;

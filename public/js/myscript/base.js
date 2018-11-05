@@ -4,392 +4,6 @@
 }).call(this);
 
 (function() {
-  var player_video_vimeo;
-
-  player_video_vimeo = (function() {
-    'use strict';
-    class player_video_vimeo {
-      constructor($container) {
-        this.$container = $container;
-        this.playerYT = null;
-        this.drawLogo = null;
-        this.intro_is_done = false;
-        this.bindEvents();
-        this.needStartSite = true;
-      }
-
-      playYTisReady() {
-        console.log('----------------------- playYTisReady -------------------------------------------');
-        $('.lds-dual-ring').trigger('hidespiner');
-        if (this.needStartSite) {
-          this.startSite();
-          return this.needStartSite = false;
-        } else {
-          this.playerYT.play();
-          // @playerYT.enableTextTrack('fr').then((track) ->
-          // 	).catch (error) ->
-          // 	console.log '###---------', error
-          // 	return
-          // @playerYT.getTextTracks().then((tracks) ->
-          // 	console.log 'tracks  = '+tracks
-          // 	).catch (error) ->
-          // 	console.log '###---------', error
-          // 	return
-          if (window.isMobile()) {
-            return $('.btn_video_ipad').removeClass('hide');
-          }
-        }
-      }
-
-      getIntroVimeo() {
-        var random, randomid, that;
-        that = this;
-        random = Math.floor(Math.random() * 4);
-        randomid = $('#idIntroYoutube input:eq(' + random + ')').val();
-        return randomid;
-      }
-
-      startSite() {
-        var btnIntroVisible;
-        btnIntroVisible = function() {
-          var player_video;
-          console.log('finished show btn');
-          return player_video = new module.player_video();
-        };
-        console.log('startSite then loadMap');
-        $('.lds-dual-ring').on('loaderhidden', function() {
-          return $('#logowhite').trigger('showLogo');
-        });
-        $('#logowhite').on('finishedShowLogo', function() {
-          TweenMax.set(['.btn_intro a'], {
-            autoAlpha: 0,
-            visibility: "hidden"
-          });
-          return TweenMax.staggerFromTo('.btn_intro a', .8, {
-            autoAlpha: 0,
-            visibility: "visible",
-            y: -10
-          }, {
-            autoAlpha: 1,
-            y: 0,
-            ease: Power1.easeOut
-          }, 0.5, btnIntroVisible);
-        });
-        return this.loadMap();
-      }
-
-      YouTubeGetID(url) {
-        var r;
-        r = /(videos|video|channels|\.com)\/([\d]+)/;
-        return url.match(r)[2];
-      }
-
-      loadMap() {
-        var that;
-        console.log('---> load small map');
-        that = this;
-        return $.get('https://d2ph0hjd2fuiu5.cloudfront.net/smallmap-' + $('#langage_short').val() + '.svg', function(data) {
-          var div;
-          console.log('---> small map loaded');
-          div = document.createElement('div');
-          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
-          $("#smallmap").append(div.innerHTML);
-          TweenLite.set(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], {
-            alpha: 0
-          });
-          TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {
-            scale: 3,
-            transformOrigin: '50% 50%',
-            repeat: -1,
-            yoyo: true
-          });
-        });
-      }
-
-      bindEvents() {
-        var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, checkClassAndTrigger, checkratio, finished_popin_transition, options, startVimeo, that, vid_intro_finished;
-        that = this;
-        if (!$('body').hasClass('doc-ready')) {
-          $('body').on('doc-ready', function() {
-            console.log('doc-ready');
-            // that.startSite(that)
-            return $('body').off();
-          });
-        } else {
-          console.log('doc already ready');
-        }
-        // that.startSite(that)
-
-        //------------------- ENTER SITE -------------------#
-        $('#enter_site').on('click touchstart', function(e) {
-          e.preventDefault();
-          that.intro_is_done = true;
-          console.log('enter site -------------------------------- dafucked ?  ');
-          $('.intro_page').addClass('hidden');
-          $('.video-container').removeClass('hidden hide');
-          GoInFullscreen($('body').get(0));
-          that.playerYT.play();
-          $('#logowhite').trigger('hideLogo');
-          $('#enter_site').off();
-          setTimeout((function() {
-            console.log('show skip_intro damed it');
-            TweenMax.fromTo('.skip_intro', .6, {
-              autoAlpha: 0,
-              visibility: 'visible'
-            }, {
-              autoAlpha: 1
-            });
-          }), 3000);
-        });
-        //------------------- SOUND ---------------------------#
-        $('#sound').on('click touchstart', function() {
-          var event_name;
-          console.log('click sound');
-          event_name = 'sound_on';
-          if ($('#sound').hasClass('actif')) {
-            event_name = 'sound_off';
-          }
-          $(this).trigger(event_name);
-          console.log(event_name);
-          return $('#sound').toggleClass('actif');
-        });
-        //------------------- FULL SCREEN ---------------------------#				
-        GoInFullscreen = function(element) {
-          $('.myfullscreen').addClass('actiffullscreen');
-          if (element.requestFullscreen) {
-            element.requestFullscreen();
-          } else if (element.mozRequestFullScreen) {
-            element.mozRequestFullScreen();
-          } else if (element.webkitRequestFullscreen) {
-            element.webkitRequestFullscreen();
-          } else if (element.msRequestFullscreen) {
-            element.msRequestFullscreen();
-          }
-          if (IsFullScreenCurrently()) {
-            $('.myfullscreen').addClass('actiffullscreen');
-          }
-        };
-        GoOutFullscreen = function() {
-          $('.myfullscreen').removeClass('actiffullscreen');
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-          } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-          } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-          }
-        };
-        IsFullScreenCurrently = function() {
-          var full_screen_element;
-          full_screen_element = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
-          // If no element is in full-screen
-          if (full_screen_element === null) {
-            return false;
-          } else {
-            return true;
-          }
-        };
-        $('.myfullscreen').on({
-          'click touchstart': function() {
-            console.log('click ');
-            if (!IsFullScreenCurrently()) {
-              return GoInFullscreen($('body').get(0));
-            } else {
-              return GoOutFullscreen();
-            }
-          }
-        });
-        // options = {id: 296883720, width: 640,loop: false, autoplay:true, email:false}
-        options = {
-          id: this.getIntroVimeo(),
-          width: 640,
-          loop: false,
-          autoplay: true,
-          email: false
-        };
-        this.playerYT = new Vimeo.Player('playerYT', options);
-        this.playerYT.enableTextTrack('fr').then(function(track) {}).catch(function(error) {
-          console.log('###', error);
-        });
-        this.playerYT.getTextTracks().then(function(tracks) {
-          var i, trackOptions, tracksLength;
-          tracksLength = tracks.length;
-          trackOptions = '';
-          i = 0;
-          console.log('getTextTracks : ' + tracksLength);
-          while (i < tracksLength) {
-            console.log(tracks[i].language);
-            i++;
-          }
-        }).catch(function(error) {});
-        //------------------- PLAYER YOUTUBE IS READY -------------------#
-        this.playerYT.ready().then(function() {
-          console.log('player ready');
-          that.playYTisReady();
-        });
-        this.playerYT.on('play', function(event) {
-          console.log($('#logowhite').data('animstatus'));
-          $('.video-container').removeClass('trans');
-          $('.video-container .myfullscreen').removeClass('hide');
-          $('.hider_logo').addClass('hide_hider');
-          $('.hider_top').addClass('hide_hider');
-          if (window.isMobile()) {
-            $('.btn_video_ipad').addClass('hide');
-          }
-          if (!$('#logowhite')) {
-            return;
-          }
-          if ($('#logowhite').data('animstatus') === 'done') {
-            return;
-          }
-          if ($('#logowhite').data('animstatus') === 'waiting-init') {
-            $('#logowhite').data('animstatus', 'waiting');
-            return;
-          }
-          if ($('#logowhite').data('animstatus') === 'paused') {
-            return $('#logowhite').trigger('resumehideLogo');
-          }
-        });
-        this.playerYT.on('pause', function(event) {
-          if ($('#logowhite').data('animstatus') === 'playing') {
-            return $('#logowhite').trigger('pausehideLogo');
-          }
-        });
-        
-        //------------------- FOCUS -------------------#
-        $(window).on('pageshow focus', function() {
-          console.log('on focus : ' + that.playerYT.paused);
-          if (that.playerYT.paused) {
-            return that.playerYT.play();
-          }
-        });
-        $(window).on('pagehide blur', function() {
-          console.log('on blur : ' + that.playerYT.playing);
-          if (that.playerYT.playing) {
-            return that.playerYT.pause();
-          }
-        });
-        //------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
-        $('#popin').on('closePopin', function() {
-          console.log('------------ > closePopin stop player YOUTUBE');
-          $('.hider_logo').removeClass('hide_hider');
-          $('.hider_top').removeClass('hide_hider');
-          $('.video-container').addClass('trans');
-          return that.playerYT.pause().then(function() {});
-        });
-        //------------------- INTRO FINISHED -------------------#
-        // The video is paused
-        finished_popin_transition = function() {
-          console.log('done');
-          return $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange').attr('style', '');
-        };
-        vid_intro_finished = function() {
-          console.log('vid_intro_finished ----- trigger end Intro trigger close  Popin serieux ie ? ');
-          $('#close').removeClass('hide');
-          $('.video-container').removeClass('with_btn_skip');
-          $('#logowhite').trigger('destroyLogo');
-          $('.intro_page').remove();
-          that.playerYT.pause();
-          $('.skip_intro').off();
-          $('.skip_intro').remove();
-          if (window.isMobile()) {
-            $('#player')[0].play();
-            finished_popin_transition();
-          } else {
-            TweenMax.to('#popin', .8, {
-              opacity: 0,
-              onComplete: finished_popin_transition
-            });
-          }
-        };
-        $('.skip_intro').on('click touchstart', function() {
-          vid_intro_finished();
-        });
-        this.playerYT.on('ended', function(event) {
-          vid_intro_finished();
-        });
-        //------------------- CLICK LIST ARTIST -------------------#
-        checkratio = function(ratiovideo) {
-          console.log('ratiovideo : ' + ratiovideo);
-          if (ratiovideo === 4) {
-            return $('.video-container').addClass('quatre_tier');
-          } else {
-            return $('.video-container').removeClass('quatre_tier');
-          }
-        };
-        checkClassAndTrigger = function() {
-          $('#abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
-          $('.video-container').removeClass('hide');
-          return $('.video-container').removeClass('trans');
-        };
-        // $('.lds-dual-ring').trigger 'showspiner'
-        startVimeo = function(idVimeo) {
-          return that.playerYT.getVideoId().then(function(id) {
-            console.log('current id -------------' + id);
-            if (id !== idVimeo) {
-              $('.video-container').addClass('trans');
-              // options = {id: idVimeo, width: 640,loop: false, autoplay:true, email:false}
-              // that.playerYT = new (Vimeo.Player)('playerYT', options)
-              that.playerYT.loadVideo(idVimeo).then(function(id) {
-                console.log('loaded ');
-                that.playYTisReady();
-              });
-              that.playerYT.enableTextTrack('fr').then(function(track) {}).catch(function(error) {
-                console.log('###', error);
-              });
-              that.playerYT.getTextTracks().then(function(tracks) {
-                var i, trackOptions, tracksLength;
-                tracksLength = tracks.length;
-                trackOptions = '';
-                i = 0;
-                console.log('getTextTracks : ' + tracksLength);
-                while (i < tracksLength) {
-                  console.log(tracks[i].language);
-                  i++;
-                }
-              }).catch(function(error) {});
-            }
-          });
-        };
-        $('.btn_video_ipad').on('click touchstart', function(event) {
-          that.playerYT.play();
-          $('.btn_video_ipad').addClass('hide');
-          return false;
-        });
-        $('#startvideofrompopin').on('click touchstart', function(event) {
-          var idVimeo;
-          idVimeo = that.YouTubeGetID($(this).attr('href'));
-          checkratio($(this).data('ratiovideo'));
-          checkClassAndTrigger();
-          startVimeo(idVimeo);
-          return false;
-        });
-        return $('#list_artists li a, #play-video-btn, #play-video-btn-mobile, a.watch').on('click touchstart', function(event) {
-          var idVimeo;
-          idVimeo = that.YouTubeGetID($(this).attr('href'));
-          console.log('id vimeo : ' + idVimeo);
-          checkratio($(this).data('ratiovideo'));
-          checkClassAndTrigger();
-          startVimeo(idVimeo);
-          // $('#popin').trigger 'classChange'
-          $('#popin').trigger('showVideo');
-          return false;
-        });
-      }
-
-    };
-
-    return player_video_vimeo;
-
-  }).call(this);
-
-  module.player_video_vimeo = player_video_vimeo;
-
-}).call(this);
-
-(function() {
   var logo;
 
   logo = (function() {
@@ -579,6 +193,384 @@
 }).call(this);
 
 (function() {
+  var player_video_vimeo;
+
+  player_video_vimeo = (function() {
+    'use strict';
+    class player_video_vimeo {
+      constructor($container) {
+        this.$container = $container;
+        this.playerYT = null;
+        this.playerIntroVimeo = null;
+        this.drawLogo = null;
+        this.intro_is_done = false;
+        this.bindEvents();
+        this.needStartSite = true;
+      }
+
+      playYTisReady() {
+        console.log('----------------------- playYTisReady -------------------------------------------');
+        return $('.lds-dual-ring').trigger('hidespiner');
+      }
+
+      playIntroisReady() {
+        console.log('----------------------- playIntroisReady -------------------------------------------');
+        $('.lds-dual-ring').trigger('hidespiner');
+        return this.startSite();
+      }
+
+      getIntroVimeo() {
+        var random, randomid, that;
+        that = this;
+        random = Math.floor(Math.random() * 4);
+        randomid = $('#idIntroYoutube input:eq(' + random + ')').val();
+        return randomid;
+      }
+
+      startSite() {
+        var btnIntroVisible;
+        btnIntroVisible = function() {
+          var player_video;
+          console.log('finished show btn');
+          return player_video = new module.player_video();
+        };
+        console.log('startSite then loadMap');
+        $('.lds-dual-ring').on('loaderhidden', function() {
+          return $('#logowhite').trigger('showLogo');
+        });
+        $('#logowhite').on('finishedShowLogo', function() {
+          TweenMax.set(['.btn_intro a'], {
+            autoAlpha: 0,
+            visibility: "hidden"
+          });
+          return TweenMax.staggerFromTo('.btn_intro a', .8, {
+            autoAlpha: 0,
+            visibility: "visible",
+            y: -10
+          }, {
+            autoAlpha: 1,
+            y: 0,
+            ease: Power1.easeOut
+          }, 0.5, btnIntroVisible);
+        });
+        return this.loadMap();
+      }
+
+      YouTubeGetID(url) {
+        var r;
+        r = /(videos|video|channels|\.com)\/([\d]+)/;
+        return url.match(r)[2];
+      }
+
+      loadMap() {
+        var that;
+        console.log('---> load small map');
+        that = this;
+        return $.get('https://d2ph0hjd2fuiu5.cloudfront.net/smallmap-' + $('#langage_short').val() + '.svg', function(data) {
+          var div;
+          console.log('---> small map loaded');
+          div = document.createElement('div');
+          div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
+          $("#smallmap").append(div.innerHTML);
+          TweenLite.set(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], {
+            alpha: 0
+          });
+          TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {
+            scale: 3,
+            transformOrigin: '50% 50%',
+            repeat: -1,
+            yoyo: true
+          });
+        });
+      }
+
+      bindEvents() {
+        var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, checkClassAndTrigger, checkratio, finished_popin_transition, options, startVimeo, that, vid_intro_finished;
+        that = this;
+        if (!$('body').hasClass('doc-ready')) {
+          $('body').on('doc-ready', function() {
+            console.log('doc-ready');
+            // that.startSite(that)
+            return $('body').off();
+          });
+        } else {
+          console.log('doc already ready');
+        }
+        // that.startSite(that)
+
+        //------------------- ENTER SITE -------------------#
+        $('#enter_site').on('click touchstart', function(e) {
+          e.preventDefault();
+          that.intro_is_done = true;
+          console.log('enter site -------------------------------- dafucked ?  ');
+          $('.intro_page').addClass('hidden');
+          $('.video-container').removeClass('hidden hide');
+          GoInFullscreen($('body').get(0));
+          that.playerIntroVimeo.play();
+          $('#logowhite').trigger('hideLogo');
+          $('#enter_site').off();
+          setTimeout((function() {
+            console.log('show skip_intro damed it');
+            TweenMax.fromTo('.skip_intro', .6, {
+              autoAlpha: 0,
+              visibility: 'visible'
+            }, {
+              autoAlpha: 1
+            });
+          }), 3000);
+        });
+        //------------------- SOUND ---------------------------#
+        $('#sound').on('click touchstart', function() {
+          var event_name;
+          console.log('click sound');
+          event_name = 'sound_on';
+          if ($('#sound').hasClass('actif')) {
+            event_name = 'sound_off';
+          }
+          $(this).trigger(event_name);
+          console.log(event_name);
+          return $('#sound').toggleClass('actif');
+        });
+        //------------------- FULL SCREEN ---------------------------#				
+        GoInFullscreen = function(element) {
+          $('.myfullscreen').addClass('actiffullscreen');
+          if (element.requestFullscreen) {
+            element.requestFullscreen();
+          } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+          } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+          } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+          }
+          if (IsFullScreenCurrently()) {
+            $('.myfullscreen').addClass('actiffullscreen');
+          }
+        };
+        GoOutFullscreen = function() {
+          $('.myfullscreen').removeClass('actiffullscreen');
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+          }
+        };
+        IsFullScreenCurrently = function() {
+          var full_screen_element;
+          full_screen_element = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
+          // If no element is in full-screen
+          if (full_screen_element === null) {
+            return false;
+          } else {
+            return true;
+          }
+        };
+        $('.myfullscreen').on({
+          'click touchstart': function() {
+            console.log('click ');
+            if (!IsFullScreenCurrently()) {
+              return GoInFullscreen($('body').get(0));
+            } else {
+              return GoOutFullscreen();
+            }
+          }
+        });
+        // options = {id: 296883720, width: 640,loop: false, autoplay:true, email:false}
+        options = {
+          id: this.getIntroVimeo(),
+          width: 640,
+          loop: false,
+          autoplay: false,
+          email: false
+        };
+        this.playerIntroVimeo = new Vimeo.Player('playerIntroVimeo', options);
+        
+        //------------------- PLAYER YOUTUBE IS READY -------------------#
+        // @playerYT.ready().then ->
+        // 	console.log 'player ready'
+        // 	that.playYTisReady()
+        // 	return
+        this.playerIntroVimeo.ready().then(function() {
+          console.log('player ready');
+          that.playIntroisReady();
+        });
+        this.playerIntroVimeo.on('play', function(event) {
+          console.log($('#logowhite').data('animstatus'));
+          $('.video-container').removeClass('trans');
+          $('.video-container .myfullscreen').removeClass('hide');
+          $('.hider_logo').addClass('hide_hider');
+          $('.hider_top').addClass('hide_hider');
+          if (window.isMobile()) {
+            $('.btn_video_ipad').addClass('hide');
+          }
+          if (!$('#logowhite')) {
+            return;
+          }
+          if ($('#logowhite').data('animstatus') === 'done') {
+            return;
+          }
+          if ($('#logowhite').data('animstatus') === 'waiting-init') {
+            $('#logowhite').data('animstatus', 'waiting');
+            return;
+          }
+          if ($('#logowhite').data('animstatus') === 'paused') {
+            return $('#logowhite').trigger('resumehideLogo');
+          }
+        });
+        this.playerIntroVimeo.on('pause', function(event) {
+          if ($('#logowhite').data('animstatus') === 'playing') {
+            return $('#logowhite').trigger('pausehideLogo');
+          }
+        });
+        
+        //------------------- FOCUS -------------------#
+        // $(window).on 'pageshow focus', ->
+        // 	console.log 'on focus : '+that.playerYT.paused
+        // 	if that.playerYT.paused
+        // 		that.playerYT.play()
+
+        // $(window).on 'pagehide blur', ->
+        // 	console.log 'on blur : '+that.playerYT.playing
+        // 	if that.playerYT.playing
+        // 		that.playerYT.pause()
+
+        //------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
+        $('#popin').on('closePopin', function() {
+          console.log('------------ > closePopin stop player YOUTUBE');
+          $('.hider_logo').removeClass('hide_hider');
+          $('.hider_top').removeClass('hide_hider');
+          $('.video-container').addClass('trans');
+          if (that.playerYT) {
+            that.playerYT.pause().then(function() {});
+            // The video is paused
+            return that.playerYT.destroy().then(function() {
+              // The video is paused
+              that.playerYT = null;
+            });
+          }
+        });
+        //------------------- INTRO FINISHED -------------------#
+        finished_popin_transition = function() {
+          console.log('done');
+          return $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange').attr('style', '');
+        };
+        vid_intro_finished = function() {
+          that.playerIntroVimeo.pause();
+          console.log('vid_intro_finished ----- trigger end Intro trigger close  Popin serieux ie ? ');
+          $('#close').removeClass('hide');
+          $('.video-container').removeClass('with_btn_skip');
+          $('#logowhite').trigger('destroyLogo');
+          $('.intro_page').remove();
+          $('.skip_intro').off();
+          $('.skip_intro').remove();
+          if (window.isMobile()) {
+            $('#player')[0].play();
+            finished_popin_transition();
+          } else {
+            TweenMax.to('#popin', .8, {
+              opacity: 0,
+              onComplete: finished_popin_transition
+            });
+          }
+        };
+        $('.skip_intro').on('click touchstart', function() {
+          vid_intro_finished();
+        });
+        this.playerIntroVimeo.on('ended', function(event) {
+          vid_intro_finished();
+        });
+        //------------------- CLICK LIST ARTIST -------------------#
+        checkratio = function(ratiovideo) {
+          console.log('ratiovideo : ' + ratiovideo);
+          if (ratiovideo === 4) {
+            return $('.video-container').addClass('quatre_tier');
+          } else {
+            return $('.video-container').removeClass('quatre_tier');
+          }
+        };
+        checkClassAndTrigger = function() {
+          $('#abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
+          $('.video-container').removeClass('hide');
+          return $('.video-container').removeClass('trans');
+        };
+        // $('.lds-dual-ring').trigger 'showspiner'
+        startVimeo = function(idVimeo) {
+          if (!that.playerYT) {
+            options = {
+              id: idVimeo,
+              width: 640,
+              loop: false,
+              autoplay: true,
+              email: false
+            };
+            that.playerYT = new Vimeo.Player('playerYT', options);
+          }
+          $('#popin').trigger('showVideo');
+          return that.playerYT.getVideoId().then(function(id) {
+            console.log('current id -------------' + id);
+            if (id !== idVimeo) {
+              $('.video-container').addClass('trans');
+              that.playerYT.loadVideo(idVimeo).then(function(id) {
+                console.log('loaded ');
+                that.playYTisReady();
+              });
+              that.playerYT.enableTextTrack('fr').then(function(track) {}).catch(function(error) {
+                console.log('###', error);
+              });
+              that.playerYT.getTextTracks().then(function(tracks) {
+                var i, trackOptions, tracksLength;
+                tracksLength = tracks.length;
+                trackOptions = '';
+                i = 0;
+                console.log('getTextTracks : ' + tracksLength);
+                while (i < tracksLength) {
+                  console.log(tracks[i].language);
+                  i++;
+                }
+              }).catch(function(error) {});
+            }
+          });
+        };
+        
+        // $('.btn_video_ipad').on 'click touchstart', (event) ->
+        // 	that.playerYT.play()
+        // 	$('.btn_video_ipad').addClass('hide')	
+        // 	return false
+        $('#startvideofrompopin').on('click touchstart', function(event) {
+          var idVimeo;
+          idVimeo = that.YouTubeGetID($(this).attr('href'));
+          checkratio($(this).data('ratiovideo'));
+          checkClassAndTrigger();
+          startVimeo(idVimeo);
+          return false;
+        });
+        return $('#list_artists li a, #play-video-btn, a.watch').on('click touchstart', function(event) {
+          var idVimeo;
+          idVimeo = that.YouTubeGetID($(this).attr('href'));
+          console.log('id vimeo : ' + idVimeo);
+          checkratio($(this).data('ratiovideo'));
+          checkClassAndTrigger();
+          startVimeo(idVimeo);
+          // $('#popin').trigger 'classChange'
+          return false;
+        });
+      }
+
+    };
+
+    return player_video_vimeo;
+
+  }).call(this);
+
+  module.player_video_vimeo = player_video_vimeo;
+
+}).call(this);
+
+(function() {
   var popin;
 
   popin = (function() {
@@ -694,6 +686,7 @@
           return that.closePopin();
         });
         return $('#popin').on('showVideo', function() {
+          console.log('belors ?? - showVideo');
           return showPopin('.video-container');
         });
       }
@@ -835,7 +828,7 @@
 
       //------------------- TWEEN ---------------------------#
       resetallCss() {
-        return $('#block_video_disk, #platine ,#disk, #left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn, #play-video-btn-mobile, #pause-video-btn, #main_footer, #left_col,#artists_info,#smallmap, #txt_help_disk, .tuto').attr('style', '');
+        return $('#block_video_disk, #platine ,#disk, #left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn,  #pause-video-btn, #main_footer, #left_col,#artists_info,#smallmap, #txt_help_disk, .tuto').attr('style', '');
       }
 
       createTweenInfo(curentTime) {
@@ -843,8 +836,8 @@
         that = this;
         updateInfo = function(id) {
           var svgcontry;
-          $('#play-video-btn, #play-video-btn-mobile, #startvideofrompopin').attr('href', $('#list_artists li:eq(' + id + ') a').attr('href'));
-          $('#play-video-btn, #play-video-btn-mobile, #startvideofrompopin').data('ratiovideo', $('#list_artists li:eq(' + id + ') a').data('ratiovideo'));
+          $('#play-video-btn,  #startvideofrompopin').attr('href', $('#list_artists li:eq(' + id + ') a').attr('href'));
+          $('#play-video-btn,  #startvideofrompopin').data('ratiovideo', $('#list_artists li:eq(' + id + ') a').data('ratiovideo'));
           $('#list_artists li a.selected').removeClass('selected');
           $('#list_artists li:eq(' + id + ') a').addClass('selected');
           svgcontry = '#smallmap svg #' + $('#artists_info li:eq(' + id + ') .contry').data('contrynicename');
@@ -1201,7 +1194,7 @@
       }
 
       removeTLIntro() {
-        $('#left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn, #play-video-btn-mobile, #pause-video-btn, #main_footer, .tuto').attr('style', '');
+        $('#left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn,  #pause-video-btn, #main_footer, .tuto').attr('style', '');
         return this.kill();
       }
 
@@ -1228,7 +1221,7 @@
           scale: .8
         }, '-=.5').staggerFrom('#list_artists li', .3, {
           opacity: 0
-        }, 0.04).from(['#play-video-btn', '#play-video-btn-mobile', '#pause-video-btn'], .6, {
+        }, 0.04).from(['#play-video-btn', '#pause-video-btn'], .6, {
           opacity: 0
         }).from('#main_footer', .8, {
           y: 40,
