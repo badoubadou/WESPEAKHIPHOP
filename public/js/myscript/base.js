@@ -499,6 +499,8 @@
         };
         // $('.lds-dual-ring').trigger 'showspiner'
         startVimeo = function(idVimeo) {
+          $('.lds-dual-ring').trigger('showspiner');
+          $('#popin').trigger('showVideo');
           if (!that.playerYT) {
             options = {
               id: idVimeo,
@@ -509,7 +511,6 @@
             };
             that.playerYT = new Vimeo.Player('playerYT', options);
           }
-          $('#popin').trigger('showVideo');
           return that.playerYT.getVideoId().then(function(id) {
             console.log('current id -------------' + id);
             if (id !== idVimeo) {

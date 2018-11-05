@@ -246,11 +246,12 @@ class player_video_vimeo
 			# $('.lds-dual-ring').trigger 'showspiner'
 			
 		startVimeo =(idVimeo)->
+			$('.lds-dual-ring').trigger 'showspiner'
+			$('#popin').trigger 'showVideo'
+			
 			if (!that.playerYT)
 				options = {id: idVimeo, width: 640,loop: false, autoplay:true, email:false}
 				that.playerYT = new (Vimeo.Player)('playerYT', options)
-			
-			$('#popin').trigger 'showVideo'
 			
 			that.playerYT.getVideoId().then (id) ->
 				console.log 'current id -------------'+id
