@@ -33,12 +33,12 @@
 			li
 				span.myfullscreen
 					#fs
-						img(src='https://d25xbwtykg1lvk.cloudfront.net/fullscreen.svg', alt='fullscreen')
+						include ../../../public/image/fullscreen.svg
 					#fsactif
-						img(src='https://d25xbwtykg1lvk.cloudfront.net/fullscreen_actif.svg', alt='fullscreen_actif')
+						include ../../../public/image/fullscreen_actif.svg
 			
 			li
 				a#share(href='#shareinfo' title=TRANSLATION.partager[langage])
-					img(src='https://d25xbwtykg1lvk.cloudfront.net/share.svg', alt='share')
+					include ../../../public/image/share.svg
 					span.txt
 						| #{TRANSLATION.partager[langage]}
