@@ -203,7 +203,6 @@
         this.playerYT = null;
         this.playerIntroVimeo = null;
         this.drawLogo = null;
-        this.intro_is_done = false;
         this.bindEvents();
         this.needStartSite = true;
       }
@@ -241,11 +240,10 @@
         $('#logowhite').on('finishedShowLogo', function() {
           TweenMax.set(['.btn_intro a'], {
             autoAlpha: 0,
-            visibility: "hidden"
+            visibility: "visible"
           });
           return TweenMax.staggerFromTo('.btn_intro a', .8, {
             autoAlpha: 0,
-            visibility: "visible",
             y: -10
           }, {
             autoAlpha: 1,
@@ -300,14 +298,13 @@
 
         //------------------- ENTER SITE -------------------#
         $('#enter_site').on('click touchstart', function(event) {
-          that.intro_is_done = true;
           console.log('enter site -------------------------------- dafucked ?  ');
-          $('.intro_page').addClass('hidden');
-          $('.video-container').removeClass('hidden hide');
-          GoInFullscreen($('body').get(0));
-          that.playerIntroVimeo.play();
-          $('#logowhite').trigger('hideLogo');
           $('#enter_site').off();
+          $('.intro_page').remove();
+          $('.video-container').removeClass('hidden hide');
+          if (!$('body').hasClass('device-ios')) {
+            GoInFullscreen($('body').get(0));
+          }
           setTimeout((function() {
             console.log('show skip_intro damed it');
             TweenMax.fromTo('.skip_intro', .6, {
@@ -317,10 +314,19 @@
               autoAlpha: 1
             });
           }), 3000);
+          that.playerIntroVimeo.play();
           event.stopPropagation();
           event.preventDefault();
           return false;
         });
+        $('#other_lang').on('click touchstart', function(event) {
+          window.location.href = $(this).attr('href');
+          event.stopPropagation();
+          event.preventDefault();
+          return false;
+          return console.log('cliked');
+        });
+        
         //------------------- SOUND ---------------------------#
         $('#sound').on('click touchstart', function(event) {
           var event_name;
@@ -408,25 +414,7 @@
         this.playerIntroVimeo.on('play', function(event) {
           console.log($('#logowhite').data('animstatus'));
           $('.video-container').removeClass('trans');
-          $('.video-container .myfullscreen').removeClass('hide');
-          $('.hider_logo').addClass('hide_hider');
-          $('.hider_top').addClass('hide_hider');
-          if (window.isMobile()) {
-            $('.btn_video_ipad').addClass('hide');
-          }
-          if (!$('#logowhite')) {
-            return;
-          }
-          if ($('#logowhite').data('animstatus') === 'done') {
-            return;
-          }
-          if ($('#logowhite').data('animstatus') === 'waiting-init') {
-            $('#logowhite').data('animstatus', 'waiting');
-            return;
-          }
-          if ($('#logowhite').data('animstatus') === 'paused') {
-            return $('#logowhite').trigger('resumehideLogo');
-          }
+          return $('#logowhite').trigger('hideLogo');
         });
         this.playerIntroVimeo.on('pause', function(event) {
           if ($('#logowhite').data('animstatus') === 'playing') {
@@ -1399,8 +1387,13 @@
         // 	return
 
         //------------------- END TUTO -------------------#
-        $('.tuto').on('click touchstart', function() {
-          return $('.tuto').remove();
+        $('.tuto').on('click touchstart', function(event) {
+          $('.tuto').remove();
+          event.stopPropagation();
+          event.preventDefault();
+          $(window).on('pagehide blur', windowBlurred);
+          $(window).on('pageshow focus', windowFocused);
+          return false;
         });
         //------------------- ENDINTRO -------------------#
         $('#popin').on('endIntro', function() {
@@ -1455,8 +1448,6 @@
             }
           }
         };
-        $(window).on('pagehide blur', windowBlurred);
-        $(window).on('pageshow focus', windowFocused);
         //------------------- SOUND ---------------------------#
         $('#sound').on('sound_off', function() {
           return that.player.muted = true;
@@ -1466,12 +1457,15 @@
           return that.player.muted = false;
         });
         //------------------- SOUND ---------------------------#
-        $('#pause-video-btn').on('click touchstart', function() {
+        $('#pause-video-btn').on('click touchstart', function(event) {
           if ($(this).hasClass('paused')) {
-            return that.player.play();
+            that.player.play();
           } else {
-            return that.player.pause();
+            that.player.pause();
           }
+          event.stopPropagation();
+          event.preventDefault();
+          return false;
         });
         //------------------- PLAYER JS ---------------------------#		
         // videoDiskCanPlay = ->
@@ -1582,7 +1576,7 @@
   }), false);
 
   freezeVp = function(e) {
-    if (!$('#credittxt').hasClass('hide')) {
+    if ($('#credittxt').hasClass('hide')) {
       e.preventDefault();
     }
   };

@@ -304,8 +304,13 @@ class player_video
 		# 	return
 		
 		#------------------- END TUTO -------------------#
-		$('.tuto').on 'click touchstart', ->
+		$('.tuto').on 'click touchstart', (event) ->
 			$('.tuto').remove()
+			event.stopPropagation()
+			event.preventDefault()
+			$(window).on 'pagehide blur', windowBlurred
+			$(window).on 'pageshow focus', windowFocused
+			return false
 		#------------------- ENDINTRO -------------------#
 		$('#popin').on 'endIntro', ->
 			that.skipIntro()
@@ -355,8 +360,7 @@ class player_video
 					that.player.play()
 			return
 
-		$(window).on 'pagehide blur', windowBlurred
-		$(window).on 'pageshow focus', windowFocused
+
 
 		#------------------- SOUND ---------------------------#
 		$('#sound').on 'sound_off', ->
@@ -367,11 +371,15 @@ class player_video
 			that.player.muted = false
 
 		#------------------- SOUND ---------------------------#
-		$('#pause-video-btn').on 'click touchstart', ->
+		$('#pause-video-btn').on 'click touchstart', (event) ->
 			if $(this).hasClass 'paused'
 				that.player.play()
 			else
 				that.player.pause()
+
+			event.stopPropagation()
+			event.preventDefault()
+			return false
 
 		#------------------- PLAYER JS ---------------------------#		
 		# videoDiskCanPlay = ->

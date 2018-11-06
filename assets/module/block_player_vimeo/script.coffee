@@ -4,7 +4,6 @@ class player_video_vimeo
 		@playerYT = null
 		@playerIntroVimeo = null
 		@drawLogo = null
-		@intro_is_done = false
 		@bindEvents()
 		@needStartSite = true
 
@@ -14,7 +13,7 @@ class player_video_vimeo
 	
 	playIntroisReady : ->
 		console.log  '----------------------- playIntroisReady -------------------------------------------'
-		$('.lds-dual-ring').trigger 'hidespiner'	
+		$('.lds-dual-ring').trigger 'hidespiner'
 		@startSite()
 			
 	getIntroVimeo : ->
@@ -31,8 +30,8 @@ class player_video_vimeo
 		$('.lds-dual-ring').on 'loaderhidden', ->
 			$('#logowhite').trigger 'showLogo'
 		$('#logowhite').on 'finishedShowLogo', ->
-			TweenMax.set(['.btn_intro a'],{autoAlpha:0,visibility:"hidden"});
-			TweenMax.staggerFromTo('.btn_intro a',.8, {autoAlpha:0, visibility:"visible", y:-10},{autoAlpha:1, y:0, ease:Power1.easeOut}, 0.5, btnIntroVisible);
+			TweenMax.set(['.btn_intro a'],{autoAlpha:0,visibility:"visible"});
+			TweenMax.staggerFromTo('.btn_intro a',.8, {autoAlpha:0, y:-10},{autoAlpha:1, y:0, ease:Power1.easeOut}, 0.5, btnIntroVisible);
 		@loadMap()
 
 	YouTubeGetID: (url) ->
@@ -65,22 +64,30 @@ class player_video_vimeo
 
 		#------------------- ENTER SITE -------------------#
 		$('#enter_site').on 'click touchstart', (event)->
-			that.intro_is_done = true
 			console.log 'enter site -------------------------------- dafucked ?  '
-			$('.intro_page').addClass 'hidden'
-			$('.video-container').removeClass 'hidden hide'
-			GoInFullscreen($('body').get(0))
-			that.playerIntroVimeo.play()
-			$('#logowhite').trigger 'hideLogo'
 			$('#enter_site').off()
+			$('.intro_page').remove()
+			$('.video-container').removeClass 'hidden hide'
+			if(!$('body').hasClass 'device-ios')
+				GoInFullscreen($('body').get(0))
 			setTimeout (->
 				console.log 'show skip_intro damed it'
 				TweenMax.fromTo('.skip_intro', .6, {autoAlpha:0, visibility:'visible'}, {autoAlpha:1 })
 				return
 			), 3000
+			that.playerIntroVimeo.play()
 			event.stopPropagation()
 			event.preventDefault()
 			return false
+
+		$('#other_lang').on 'click touchstart', (event)->
+			window.location.href = $(this).attr('href')
+			event.stopPropagation()
+			event.preventDefault()
+			return false
+			console.log 'cliked'
+						
+		
 		#------------------- SOUND ---------------------------#
 		$('#sound').on 'click touchstart', (event)->
 			console.log 'click sound'
@@ -159,23 +166,9 @@ class player_video_vimeo
 		@playerIntroVimeo.on 'play', (event) ->
 			console.log $('#logowhite').data('animstatus')
 			$('.video-container').removeClass 'trans'
-			$('.video-container .myfullscreen').removeClass 'hide'
-			$('.hider_logo').addClass 'hide_hider'
-			$('.hider_top').addClass 'hide_hider'
-			if(window.isMobile())
-				$('.btn_video_ipad').addClass('hide')
-						
-			if (!$('#logowhite'))
-				return
-			if ($('#logowhite').data('animstatus') == 'done')
-				return
-			if ($('#logowhite').data('animstatus') == 'waiting-init')
-				$('#logowhite').data('animstatus', 'waiting')
-				return
-
-			if ($('#logowhite').data('animstatus') == 'paused')
-				$('#logowhite').trigger 'resumehideLogo'
-
+			$('#logowhite').trigger 'hideLogo'
+		
+			
 		@playerIntroVimeo.on 'pause', (event) ->
 			if ($('#logowhite').data('animstatus') == 'playing')
 				$('#logowhite').trigger 'pausehideLogo'

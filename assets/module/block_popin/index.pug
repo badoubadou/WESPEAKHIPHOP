@@ -7,15 +7,14 @@
 			if langage == 'en'
 				a(href='')#enter_site.btn.round_btn.yellow_btn
 					| #{TRANSLATION.language_btn_en[langage]}
-				a(href='http://www.wespeakhiphop.fr' title='version française').btn.round_btn.white_btn
+				a(href='http://www.wespeakhiphop.fr' title='version française')#other_lang.btn.round_btn.white_btn
 					| #{TRANSLATION.language_btn_fr[langage]}
 			else
-				a(href='http://www.wespeakhiphop.com' title='english version').btn.round_btn.white_btn
+				a(href='http://www.wespeakhiphop.com' title='english version')#other_lang.btn.round_btn.white_btn
 					| #{TRANSLATION.language_btn_en[langage]}
 				a(href='')#enter_site.btn.round_btn.yellow_btn
 					| #{TRANSLATION.language_btn_fr[langage]}
 
-		
 	include ../block_spiner/index.pug
 	include ../block_player_vimeo/index.pug
 

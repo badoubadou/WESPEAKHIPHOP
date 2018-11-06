@@ -48,7 +48,7 @@ document.addEventListener 'touchmove', ((event) ->
 ), false
 
 freezeVp = (e) ->
-	if(!$('#credittxt').hasClass('hide'))
+	if($('#credittxt').hasClass('hide'))
 		e.preventDefault()
 		return
 
