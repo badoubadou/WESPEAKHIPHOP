@@ -362,10 +362,17 @@ gulp.task('gzipimg', function() {
 });
 
 gulp.task('uploadimgcomp', function() {
-    gulp.src('public/image/comp/close.svg')
+    gulp.src('public/image/comp/rename/*')
     .pipe(s3({
         Bucket: 'wespeakhiphop-assets',
         ACL: 'public-read',
         manualContentEncoding: 'gzip'
     }));
+});
+gulp.task('rename-comp-img', function() {
+    return gulp.src('public/image/comp/*')
+      .pipe(rename(function (path) {
+        path.basename += "-comp";
+      }))
+  .pipe(gulp.dest('public/image/comp/rename/')); 
 });

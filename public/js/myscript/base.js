@@ -797,7 +797,7 @@
         this.player = $('#player')[0];
         this.scale_disk = 2;
         if (window.isMobile()) {
-          $('#player').attr('src', 'https://d2e3lhf7z9v1b2.cloudfront.net/25f500kfaststartmobile.mp4');
+          $('#player').attr('src', 'https://d25xbwtykg1lvk.cloudfront.net/25f500kfaststartmobile.mp4');
           this.scale_disk = 1;
         }
         this.duration = 168.182;
@@ -809,11 +809,11 @@
         this.sounddirection = 0;
         this.scratchBank = [];
         this.scratchBank.push(new Howl({
-          src: ['https://d2e3lhf7z9v1b2.cloudfront.net/video.mp3'],
+          src: ['https://d25xbwtykg1lvk.cloudfront.net/video.mp3'],
           buffer: true
         }));
         this.scratchBank.push(new Howl({
-          src: ['https://d2e3lhf7z9v1b2.cloudfront.net/video_reverse.mp3'],
+          src: ['https://d25xbwtykg1lvk.cloudfront.net/video_reverse.mp3'],
           buffer: true
         }));
         

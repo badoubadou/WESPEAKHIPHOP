@@ -9,7 +9,7 @@ class player_video
 		@player = $('#player')[0]
 		@scale_disk = 2
 		if window.isMobile()
-			$('#player').attr('src', 'https://d2e3lhf7z9v1b2.cloudfront.net/25f500kfaststartmobile.mp4')
+			$('#player').attr('src', 'https://d25xbwtykg1lvk.cloudfront.net/25f500kfaststartmobile.mp4')
 			@scale_disk = 1
 		
 		@duration = 168.182
@@ -21,10 +21,10 @@ class player_video
 		@sounddirection = 0
 		@scratchBank = []
 		@scratchBank.push new Howl(
-				src: [ 'https://d2e3lhf7z9v1b2.cloudfront.net/video.mp3' ]
+				src: [ 'https://d25xbwtykg1lvk.cloudfront.net/video.mp3' ]
 				buffer: true)
 		@scratchBank.push new Howl(
-				src: [ 'https://d2e3lhf7z9v1b2.cloudfront.net/video_reverse.mp3' ]
+				src: [ 'https://d25xbwtykg1lvk.cloudfront.net/video_reverse.mp3' ]
 				buffer: true)
 		
 		#------------------- SET FUNCTION ---------------------------#

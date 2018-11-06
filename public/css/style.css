@@ -2286,8 +2286,8 @@ span.lign_header {
   border: 3px solid #000;
 }
 #disk {
-  cursor: url("https://d2e3lhf7z9v1b2.cloudfront.net/hand-small.png") 30 40, auto;
-  cursor: -webkit-image-set(url("https://d2e3lhf7z9v1b2.cloudfront.net/hand-small.png") 1x, url("https://d2e3lhf7z9v1b2.cloudfront.net/hand.png") 2x) 30 40, auto;
+  cursor: url("https://d25xbwtykg1lvk.cloudfront.net/hand-small.png") 30 40, auto;
+  cursor: -webkit-image-set(url("https://d25xbwtykg1lvk.cloudfront.net/hand-small.png") 1x, url("https://d25xbwtykg1lvk.cloudfront.net/hand.png") 2x) 30 40, auto;
 }
 #bg_disk {
   display: block;
