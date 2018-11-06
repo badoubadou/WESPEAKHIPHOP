@@ -278,7 +278,8 @@ gulp.task('watch', function() {
     gulp.watch(stylfile, ['css']);
     gulp.watch(['assets/pug/*.pug', 'assets/module/**/*.pug', 'assets/image/*.svg', 'assets/json/*.json'], ['pug']);
     gulp.watch(['assets/image/*.svg'], ['cleansvgclass']);
-    gulp.watch(['assets/image/**', 'public/image/**'], ['uploadimage']);
+    gulp.watch(['assets/image/**', 'public/image/**']);
+    // gulp.watch(['assets/image/**', 'public/image/**'], ['uploadimage']);
     gulp.watch(cssinlignfile, ['cssinline']);
 });
 
@@ -312,11 +313,16 @@ gulp.task('cleansvgclass', function() {
     }));
 });
 
+
+var expires = new Date();
+expires.setUTCFullYear(2020);
+
 gulp.task("uploadimage", function() {
     gulp.src(['public/image/**/*'])
         .pipe(s3({
             Bucket: 'wespeakhiphop-assets', //  Required
             ACL:    'public-read'       //  Needs to be user-defined
+            // Expires: expires
         }, {
             // S3 Constructor Options, ie:
             maxRetries: 5
@@ -329,6 +335,7 @@ gulp.task("uploadcleansvg", function() {
         .pipe(s3({
             Bucket: 'wespeakhiphop-assets', //  Required
             ACL:    'public-read'       //  Needs to be user-defined
+            // Expires: expires
         }, {
             // S3 Constructor Options, ie:
             maxRetries: 5

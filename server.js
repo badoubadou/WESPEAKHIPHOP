@@ -32,8 +32,8 @@ app.get('/', function(req, res) {
         res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());
 
     if((extname=='.css') || (extname=='.js') )
-        res.setHeader("Cache-Control", "public, max-age=0");
-        res.setHeader("Expires", new Date(Date.now()).toUTCString());
+        res.setHeader("Cache-Control", "public, max-age=600");
+        res.setHeader("Expires", new Date(Date.now()+600).toUTCString());
 
     if (filePath == './')
         if ((req.headers.host == 'www.wespeakhiphop.com') || (req.headers.host == 'wespeakhiphop.com'))

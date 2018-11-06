@@ -4,6 +4,195 @@
 }).call(this);
 
 (function() {
+  var logo;
+
+  logo = (function() {
+    'use strict';
+    class logo {
+      constructor(spiner) {
+        this.spiner = spiner;
+        TweenLite.set('svg', {
+          visibility: 'visible'
+        });
+        MorphSVGPlugin.convertToPath('line');
+        this.drawLogoWhite = new TimelineMax({
+          paused: true,
+          onComplete: this.finishedShowLogo,
+          onReverseComplete: this.finishedHideLogo
+        });
+        this.drawLogoWhite.from("#logowhite #mask1_2_", 1, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }).from("#logowhite #mask2", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.1).from("#logowhite #mask3", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.2).from("#logowhite #mask4", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.3).from("#logowhite #mask5", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.4).from("#logowhite #mask6", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.5).from("#logowhite #mask7", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.6).from("#logowhite #mask8", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.7).from("#logowhite #mask9", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.8).from("#logowhite #mask10", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.9).from("#logowhite #mask11", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 1).from("#logowhite #mask12", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 1.1).from("#logowhite #mask13", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 1.2);
+        this.dLB = new TimelineMax({
+          paused: true,
+          onComplete: this.finishedBlackLogo
+        });
+        this.dLB.from("#mask1_2_black", 1, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }).from("#mask2_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.1).from("#mask3_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.2).from("#mask4_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.3).from("#mask5_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.4).from("#mask6_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.5).from("#mask7_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.6).from("#mask8_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.7).from("#mask9_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.8).from("#mask10_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.9).from("#mask11_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 1).from("#mask12_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 1.1).from("#mask13_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 1.2);
+        this.reverse_delay = null;
+        this.bindEvents();
+      }
+
+      finishedBlackLogo() {
+        return this.kill();
+      }
+
+      finishedHideLogo() {
+        return $('#logowhite').remove();
+      }
+
+      showLogoBlack() {
+        return this.dLB.play();
+      }
+
+      finishedShowLogo() {
+        return $('#logowhite').trigger('finishedShowLogo');
+      }
+
+      showLogoWhite() {
+        return this.drawLogoWhite.play();
+      }
+
+      hideLogoWhite() {
+        var that;
+        that = this;
+        $('#logowhite').data('animstatus', 'playing');
+        console.log('catch hideLogo  data = ' + $('#logowhite').data('animstatus'));
+        return this.reverse_delay = TweenMax.delayedCall(4, function() {
+          return that.drawLogoWhite.reverse();
+        });
+      }
+
+      pausehideLogo() {
+        console.log('pausehideLogo data = ' + $('#logowhite').data('animstatus'));
+        $('#logowhite').data('animstatus', 'paused');
+        return this.reverse_delay.pause();
+      }
+
+      resumehideLogo() {
+        $('#logowhite').data('animstatus', 'playing');
+        return this.reverse_delay.resume();
+      }
+
+      destroyLogo() {
+        $('#logowhite').off();
+        return $('#logowhite').remove();
+      }
+
+      bindEvents() {
+        var that;
+        that = this;
+        $('#logowhite').on('destroyLogo', function() {
+          return that.destroyLogo();
+        });
+        $('#logowhite').on('showLogo', function() {
+          return that.showLogoWhite();
+        });
+        $('#logowhite').on('hideLogo', function() {
+          console.log('catch hideLogo');
+          return that.hideLogoWhite();
+        });
+        $('#logowhite').on('pausehideLogo', function() {
+          console.log('catch pausehideLogo');
+          return that.pausehideLogo();
+        });
+        $('#logowhite').on('resumehideLogo', function() {
+          console.log('catch resumehideLogo');
+          return that.resumehideLogo();
+        });
+        return $('.logoWSH').on('showLogo', function() {
+          console.log('show logo');
+          $('.logoWSH').off();
+          return that.showLogoBlack();
+        });
+      }
+
+    };
+
+    return logo;
+
+  }).call(this);
+
+  module.logo = logo;
+
+}).call(this);
+
+(function() {
   var player_video_vimeo;
 
   player_video_vimeo = (function() {
@@ -514,191 +703,77 @@
 }).call(this);
 
 (function() {
-  var logo;
+  var spiner;
 
-  logo = (function() {
+  spiner = (function() {
     'use strict';
-    class logo {
-      constructor(spiner) {
-        this.spiner = spiner;
-        TweenLite.set('svg', {
-          visibility: 'visible'
+    class spiner {
+      constructor(spiner1) {
+        this.spiner = spiner1;
+        console.log('----------------- > constructor spinner');
+        TweenLite.set(['.ring_1', '.ring_2', '.ring_3'], {
+          xPercent: -50,
+          yPercent: -50
         });
-        MorphSVGPlugin.convertToPath('line');
-        this.drawLogoWhite = new TimelineMax({
+        this.timelineSpiner = new TimelineMax({
           paused: true,
-          onComplete: this.finishedShowLogo,
-          onReverseComplete: this.finishedHideLogo
-        });
-        this.drawLogoWhite.from("#logowhite #mask1_2_", 1, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }).from("#logowhite #mask2", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.1).from("#logowhite #mask3", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.2).from("#logowhite #mask4", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.3).from("#logowhite #mask5", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.4).from("#logowhite #mask6", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.5).from("#logowhite #mask7", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.6).from("#logowhite #mask8", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.7).from("#logowhite #mask9", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.8).from("#logowhite #mask10", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.9).from("#logowhite #mask11", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1).from("#logowhite #mask12", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1.1).from("#logowhite #mask13", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1.2);
-        this.dLB = new TimelineMax({
-          paused: true,
-          onComplete: this.finishedBlackLogo
-        });
-        this.dLB.from("#mask1_2_black", 1, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }).from("#mask2_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.1).from("#mask3_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.2).from("#mask4_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.3).from("#mask5_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.4).from("#mask6_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.5).from("#mask7_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.6).from("#mask8_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.7).from("#mask9_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.8).from("#mask10_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.9).from("#mask11_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1).from("#mask12_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1.1).from("#mask13_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1.2);
-        this.reverse_delay = null;
+          onReverseComplete: this.maskSpiner,
+          onStart: this.unmaskSpiner
+        }).staggerFromTo(['.ring_1', '.ring_2', '.ring_3'], 2, {
+          opacity: 0
+        }, {
+          scale: 1,
+          opacity: 1,
+          ease: Power3.easeOut
+        }, 0.5);
+        
+        // .fromTo('.lds-dual-ring', 0.5 ,{opacity: 0},{opacity: 1, ease:Power3.easeOut}, '-=2')	
         this.bindEvents();
+        this.showSpiner();
       }
 
-      finishedBlackLogo() {
-        return this.kill();
+      maskSpiner() {
+        $('.lds-dual-ring').trigger('loaderhidden');
+        return $('.lds-dual-ring').addClass('no_spinner').hide();
       }
 
-      finishedHideLogo() {
-        return $('#logowhite').remove();
+      unmaskSpiner() {
+        console.log('unmaskSpiner -> ');
+        return $('.lds-dual-ring').removeClass('no_spinner').show();
       }
 
-      showLogoBlack() {
-        return this.dLB.play();
-      }
-
-      finishedShowLogo() {
-        return $('#logowhite').trigger('finishedShowLogo');
-      }
-
-      showLogoWhite() {
-        return this.drawLogoWhite.play();
-      }
-
-      hideLogoWhite() {
+      showSpiner() {
         var that;
         that = this;
-        $('#logowhite').data('animstatus', 'playing');
-        console.log('catch hideLogo  data = ' + $('#logowhite').data('animstatus'));
-        return this.reverse_delay = TweenMax.delayedCall(4, function() {
-          return that.drawLogoWhite.reverse();
-        });
+        console.log('----------------------- > show spinner');
+        return this.timelineSpiner.play();
       }
 
-      pausehideLogo() {
-        console.log('pausehideLogo data = ' + $('#logowhite').data('animstatus'));
-        $('#logowhite').data('animstatus', 'paused');
-        return this.reverse_delay.pause();
-      }
-
-      resumehideLogo() {
-        $('#logowhite').data('animstatus', 'playing');
-        return this.reverse_delay.resume();
-      }
-
-      destroyLogo() {
-        $('#logowhite').off();
-        return $('#logowhite').remove();
+      hideSpiner() {
+        var that;
+        that = this;
+        return that.timelineSpiner.reverse();
       }
 
       bindEvents() {
         var that;
         that = this;
-        $('#logowhite').on('destroyLogo', function() {
-          return that.destroyLogo();
+        that.spiner.on('hidespiner', function() {
+          return that.hideSpiner();
         });
-        $('#logowhite').on('showLogo', function() {
-          return that.showLogoWhite();
-        });
-        $('#logowhite').on('hideLogo', function() {
-          console.log('catch hideLogo');
-          return that.hideLogoWhite();
-        });
-        $('#logowhite').on('pausehideLogo', function() {
-          console.log('catch pausehideLogo');
-          return that.pausehideLogo();
-        });
-        $('#logowhite').on('resumehideLogo', function() {
-          console.log('catch resumehideLogo');
-          return that.resumehideLogo();
-        });
-        return $('.logoWSH').on('showLogo', function() {
-          console.log('show logo');
-          $('.logoWSH').off();
-          return that.showLogoBlack();
+        return that.spiner.on('showspiner', function() {
+          console.log('catch showspiner');
+          return that.showSpiner();
         });
       }
 
     };
 
-    return logo;
+    return spiner;
 
   }).call(this);
 
-  module.logo = logo;
+  module.spiner = spiner;
 
 }).call(this);
 
@@ -1454,81 +1529,6 @@
   // $('#player').on 'seeked', ->
   // 	that.timelineInfo.time that.player.currentTime
   module.player_video = player_video;
-
-}).call(this);
-
-(function() {
-  var spiner;
-
-  spiner = (function() {
-    'use strict';
-    class spiner {
-      constructor(spiner1) {
-        this.spiner = spiner1;
-        console.log('----------------- > constructor spinner');
-        TweenLite.set(['.ring_1', '.ring_2', '.ring_3'], {
-          xPercent: -50,
-          yPercent: -50
-        });
-        this.timelineSpiner = new TimelineMax({
-          paused: true,
-          onReverseComplete: this.maskSpiner,
-          onStart: this.unmaskSpiner
-        }).staggerFromTo(['.ring_1', '.ring_2', '.ring_3'], 2, {
-          opacity: 0
-        }, {
-          scale: 1,
-          opacity: 1,
-          ease: Power3.easeOut
-        }, 0.5);
-        
-        // .fromTo('.lds-dual-ring', 0.5 ,{opacity: 0},{opacity: 1, ease:Power3.easeOut}, '-=2')	
-        this.bindEvents();
-        this.showSpiner();
-      }
-
-      maskSpiner() {
-        $('.lds-dual-ring').trigger('loaderhidden');
-        return $('.lds-dual-ring').addClass('no_spinner').hide();
-      }
-
-      unmaskSpiner() {
-        console.log('unmaskSpiner -> ');
-        return $('.lds-dual-ring').removeClass('no_spinner').show();
-      }
-
-      showSpiner() {
-        var that;
-        that = this;
-        console.log('----------------------- > show spinner');
-        return this.timelineSpiner.play();
-      }
-
-      hideSpiner() {
-        var that;
-        that = this;
-        return that.timelineSpiner.reverse();
-      }
-
-      bindEvents() {
-        var that;
-        that = this;
-        that.spiner.on('hidespiner', function() {
-          return that.hideSpiner();
-        });
-        return that.spiner.on('showspiner', function() {
-          console.log('catch showspiner');
-          return that.showSpiner();
-        });
-      }
-
-    };
-
-    return spiner;
-
-  }).call(this);
-
-  module.spiner = spiner;
 
 }).call(this);
 

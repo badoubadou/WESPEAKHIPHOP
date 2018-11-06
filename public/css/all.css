@@ -1414,6 +1414,9 @@
   color: #989898;
   font-size: 0.7em;
 }
+.footer .unmute-st0 {
+  fill: #989898;
+}
 .footer .warp_ul_footer {
   width: 100%;
   text-align: right;
@@ -1503,6 +1506,7 @@
   color: #989898;
   background: #ffce00;
 }
+.footer #share img,
 .footer #share svg {
   width: 13px;
   height: 13px;
@@ -1525,15 +1529,21 @@
   cursor: pointer;
   z-index: 101;
 }
+#sound img,
+.myfullscreen img,
 #sound svg,
 .myfullscreen svg {
   width: 15px;
   height: 15px;
 }
+#sound img #lign,
+.myfullscreen img #lign,
 #sound svg #lign,
 .myfullscreen svg #lign {
   display: none;
 }
+#sound.actif img,
+.myfullscreen.actif img,
 #sound.actif svg #lign,
 .myfullscreen.actif svg #lign {
   display: block;
@@ -1943,17 +1953,6 @@ span.lign_header {
   height: 10px;
   margin-top: -5px;
   margin-left: -5px;
-}
-@media $mobile {
-  #list_artists > * {
-    margin-left: -3px;
-    margin-top: -3px;
-  }
-}
-@media $ipad {
-  #list_artists > * {
-    height: 10px;
-  }
 }
 #list_artists > *:nth-of-type(1) {
   transform: rotate(-90deg) translate(45vw) rotate(90deg);
@@ -2722,6 +2721,30 @@ span.lign_header {
   max-width: 70%;
   margin: auto;
 }
+#popin .logo-white-st0 {
+  fill: #fff;
+}
+#popin .logo-white-st1 {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 28;
+  stroke-linejoin: bevel;
+  stroke-miterlimit: 10;
+}
+#popin .logo-white-st2 {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 21;
+  stroke-miterlimit: 10;
+}
+#popin .logo-white-st3 {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 21;
+  stroke-linecap: square;
+  stroke-linejoin: bevel;
+  stroke-miterlimit: 10;
+}
 #popin #artist_info {
   max-height: 100%;
   overflow-y: auto;
@@ -3035,7 +3058,8 @@ span.lign_header {
   text-align: right;
 }
 #popin .sharebtn a,
-#popin .sharebtn svg {
+#popin .sharebtn svg,
+#popin .sharebtn img {
   width: 50px;
   height: 50px;
 }
@@ -3504,7 +3528,8 @@ span.lign_header {
   transform: translateX(-50%);
   opacity: 0.97;
 }
-#marker svg {
+#marker svg,
+#marker img {
   width: auto;
   height: -82.5vh;
 }
@@ -3512,7 +3537,8 @@ span.lign_header {
   #marker {
     height: -79vh;
   }
-  #marker svg {
+  #marker svg,
+  #marker img {
     width: auto;
     height: -79vh;
   }

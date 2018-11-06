@@ -1,7 +1,6 @@
 #block_video_disk.absolute.full_height.full_width.centered_with_tweenmax.overflow_hidden
 	#disk_hole.absolute.centered.layer_top
 	.circular_mask.absolute.centered.layer_3.size_video
-		//- .lds-dual-ring
 		a(href="", title=TRANSLATION.play_video[langage])#play-video-btn.layer_3.btn
 			span.triangle
 			span.txt
@@ -10,7 +9,6 @@
 	#disk.absolute.centered_with_tweenmax.layer_2.circular_mask.size_platine
 		#platine.absolute.centered_with_tweenmax.layer_0.size_platine
 			img(src='https://d2e3lhf7z9v1b2.cloudfront.net/platine.svg', alt='platine')
-			//- include ../../cleansvg/platine.svg
 		
 		#knob.absolute.centered.circular_mask.size_disk
 			#mask_video.circular_mask.absolute.centered.layer_3.size_video
@@ -18,10 +16,8 @@
 					source(src='https://d2e3lhf7z9v1b2.cloudfront.net/25f500kfaststart.mp4', type='video/mp4')
 			.lign_svg
 				img(src='https://d2e3lhf7z9v1b2.cloudfront.net/lign.svg', alt='disk')
-				//- include ../../../public/image/lign.svg
 			#marker.absolute.align_middle
-				include ../../../public/image/marker.svg
-			
+				img(src='https://d2e3lhf7z9v1b2.cloudfront.net/marker.svg', alt='marker')
 			
 			span#bg_disk.absolute.centered
 

@@ -2,10 +2,6 @@
 	.intro_page.centered.layer_top_plus
 		.layer_1#logowhite.hidden.logo(data-animstatus='waiting-init')
 			include ../../../public/image/logo-white.svg
-			//- include ../../../public/image/logo.svg
-
-		//- .txt_intro.hidden
-		//- 	| #{TRANSLATION.txt_intro[langage]}
 
 		.btn_intro
 			if langage == 'en'
@@ -63,12 +59,6 @@
 					if meta.meta_key == 'video'
 						- var youtube_link = meta.meta_value
 
-		//- each video in videos
-		//- 	each meta in video.postmeta
-		//- 		if meta.meta_key == 'video'
-		//- 			- var youtube_link = meta.meta_value
-		//- 			.plyr__video-embed
-		//- 				iframe(src=youtube_link+"?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay")
 
 		a(href='')#startvideofrompopin.round_btn.btn.yellow
 			| #{TRANSLATION.startvideo[langage]}
@@ -82,12 +72,11 @@
 				.contentpopin
 					.logo#logosharesite
 						img(src='https://d2e3lhf7z9v1b2.cloudfront.net/logo-white.svg', alt='We Speak Hip Hop')
-						//- include ../../../public/image/logo-share.svg
 					.sharesite
 						.txt
 							| #{TRANSLATION.sharesite[langage]}
 						include share.pug
 						
 	#close.layer_top.btn.hide
-		include ../../../public/image/close.svg
-	
+		img(src='https://d2e3lhf7z9v1b2.cloudfront.net/close.svg', alt='close')
+		
