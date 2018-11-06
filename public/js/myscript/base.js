@@ -455,7 +455,6 @@
         });
         //------------------- INTRO FINISHED -------------------#
         finished_popin_transition = function() {
-          console.log('done');
           return $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange').attr('style', '');
         };
         vid_intro_finished = function() {

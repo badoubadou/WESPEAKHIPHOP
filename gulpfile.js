@@ -355,8 +355,17 @@ gulp.task("upload", function() {
     ;
 });
 
-gulp.task('gzipsvg', function() {
-    return gulp.src(['public/image/smallmap-en.svg', 'public/image/smallmap-fr.svg'])
+gulp.task('gzipimg', function() {
+    return gulp.src(['public/image/*', '!public/image/smallmap-en.svg', '!public/image/smallmap-fr.svg'])
     .pipe(gzip({append: false}))
-    .pipe(gulp.dest('public/image/'));
+    .pipe(gulp.dest('public/image/comp/'));
+});
+
+gulp.task('uploadimgcomp', function() {
+    gulp.src('public/image/comp/close.svg')
+    .pipe(s3({
+        Bucket: 'wespeakhiphop-assets',
+        ACL: 'public-read',
+        manualContentEncoding: 'gzip'
+    }));
 });

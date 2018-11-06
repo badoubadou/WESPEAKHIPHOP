@@ -204,7 +204,6 @@ class player_video_vimeo
 				)
 		#------------------- INTRO FINISHED -------------------#
 		finished_popin_transition = ->
-			console.log 'done'
 			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange').attr('style','')
 		
 		vid_intro_finished = ->
