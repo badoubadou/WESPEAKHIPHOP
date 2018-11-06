@@ -299,8 +299,7 @@
         // that.startSite(that)
 
         //------------------- ENTER SITE -------------------#
-        $('#enter_site').on('click touchstart', function(e) {
-          e.preventDefault();
+        $('#enter_site').on('click touchstart', function(event) {
           that.intro_is_done = true;
           console.log('enter site -------------------------------- dafucked ?  ');
           $('.intro_page').addClass('hidden');
@@ -318,9 +317,12 @@
               autoAlpha: 1
             });
           }), 3000);
+          event.stopPropagation();
+          event.preventDefault();
+          return false;
         });
         //------------------- SOUND ---------------------------#
-        $('#sound').on('click touchstart', function() {
+        $('#sound').on('click touchstart', function(event) {
           var event_name;
           console.log('click sound');
           event_name = 'sound_on';
@@ -329,8 +331,12 @@
           }
           $(this).trigger(event_name);
           console.log(event_name);
-          return $('#sound').toggleClass('actif');
+          $('#sound').toggleClass('actif');
+          event.stopPropagation();
+          event.preventDefault();
+          return false;
         });
+        
         //------------------- FULL SCREEN ---------------------------#				
         GoInFullscreen = function(element) {
           $('.myfullscreen').addClass('actiffullscreen');
@@ -369,15 +375,16 @@
             return true;
           }
         };
-        $('.myfullscreen').on({
-          'click touchstart': function() {
-            console.log('click ');
-            if (!IsFullScreenCurrently()) {
-              return GoInFullscreen($('body').get(0));
-            } else {
-              return GoOutFullscreen();
-            }
+        $('.myfullscreen').on('click touchstart', function(event) {
+          console.log('click ');
+          if (!IsFullScreenCurrently()) {
+            GoInFullscreen($('body').get(0));
+          } else {
+            GoOutFullscreen();
           }
+          event.stopPropagation();
+          event.preventDefault();
+          return false;
         });
         // options = {id: 296883720, width: 640,loop: false, autoplay:true, email:false}
         options = {
@@ -476,8 +483,11 @@
             });
           }
         };
-        $('.skip_intro').on('click touchstart', function() {
+        $('.skip_intro').on('click touchstart', function(event) {
           vid_intro_finished();
+          event.stopPropagation();
+          event.preventDefault();
+          return false;
         });
         this.playerIntroVimeo.on('ended', function(event) {
           vid_intro_finished();
@@ -509,53 +519,31 @@
               email: false
             };
             that.playerYT = new Vimeo.Player('playerYT', options);
+            that.playerYT.enableTextTrack($('#langage_short').val()).then(function(track) {}).catch(function(error) {
+              console.log('###', error);
+            });
+            return that.playerYT.ready().then(function() {
+              console.log('player ready');
+              that.playYTisReady();
+            });
           }
-          return that.playerYT.getVideoId().then(function(id) {
-            console.log('current id -------------' + id);
-            if (id !== idVimeo) {
-              $('.video-container').addClass('trans');
-              that.playerYT.loadVideo(idVimeo).then(function(id) {
-                console.log('loaded ');
-                that.playYTisReady();
-              });
-              that.playerYT.enableTextTrack($('#langage_short').val()).then(function(track) {}).catch(function(error) {
-                console.log('###', error);
-              });
-              that.playerYT.getTextTracks().then(function(tracks) {
-                var i, trackOptions, tracksLength;
-                tracksLength = tracks.length;
-                trackOptions = '';
-                i = 0;
-                console.log('getTextTracks : ' + tracksLength);
-                while (i < tracksLength) {
-                  console.log(tracks[i].language);
-                  i++;
-                }
-              }).catch(function(error) {});
-            }
-          });
         };
         
-        // $('.btn_video_ipad').on 'click touchstart', (event) ->
-        // 	that.playerYT.play()
-        // 	$('.btn_video_ipad').addClass('hide')	
+        // $('.startvideofrompopin').on 'click touchstart', (event) ->
+        // 	idVimeo = that.YouTubeGetID($(this).attr('href'))
+        // 	console.log 'id vimeo : '+idVimeo
+        // 	event.stopPropagation()
+        // 	event.preventDefault()
         // 	return false
-        $('#startvideofrompopin').on('click touchstart', function(event) {
-          var idVimeo;
-          idVimeo = that.YouTubeGetID($(this).attr('href'));
-          checkratio($(this).data('ratiovideo'));
-          checkClassAndTrigger();
-          startVimeo(idVimeo);
-          return false;
-        });
-        return $('#list_artists li a, #play-video-btn, a.watch').on('click touchstart', function(event) {
+        return $('.startvideofrompopin, #list_artists li a, #play-video-btn, a.watch').on('click touchstart', function(event) {
           var idVimeo;
           idVimeo = that.YouTubeGetID($(this).attr('href'));
           console.log('id vimeo : ' + idVimeo);
           checkratio($(this).data('ratiovideo'));
           checkClassAndTrigger();
           startVimeo(idVimeo);
-          // $('#popin').trigger 'classChange'
+          event.stopPropagation();
+          event.preventDefault();
           return false;
         });
       }
@@ -607,7 +595,9 @@
         that = this;
         showPopin = function($target) {
           $('.video-container, #abouttxt, #credittxt, #contacttxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
-          $('#popin').toggleClass('hide').trigger('classChange');
+          if ($('#popin').hasClass('hide')) {
+            $('#popin').removeClass('hide').trigger('classChange');
+          }
           $('#popin').removeClass('greybg');
           console.log('??????? fuck it : ' + ($target === '#popin #credittxt') + '. $target : ' + $target);
           if ($target === '#popin #abouttxt') {
@@ -640,50 +630,53 @@
         };
         
         //------------------- ABOUT  --------------------------#
-        $('#apropos_btn').on({
-          'click touchstart': function(e) {
-            e.preventDefault();
-            return showPopin('#popin #abouttxt');
-          }
+        $('#apropos_btn').on('click touchstart', function(e) {
+          showPopin('#popin #abouttxt');
+          e.stopPropagation();
+          e.preventDefault();
+          return false;
         });
         //------------------- CREDIT  --------------------------#
-        $('#credit_btn').on({
-          'click touchstart': function(e) {
-            e.preventDefault();
-            return showPopin('#popin #credittxt');
-          }
+        $('#credit_btn').on('click touchstart', function(e) {
+          showPopin('#popin #credittxt');
+          e.stopPropagation();
+          e.preventDefault();
+          return false;
         });
         //------------------- CONTACT  --------------------------#
-        $('#mail_btn').on({
-          'click touchstart': function(e) {
-            e.preventDefault();
-            return showPopin('#popin #contacttxt');
-          }
+        $('#mail_btn').on('click touchstart', function(e) {
+          showPopin('#popin #contacttxt');
+          e.stopPropagation();
+          e.preventDefault();
+          return false;
         });
         //------------------- CREDIT  --------------------------#
-        $('#about-btn, .block_contry .bio').on({
-          'click touchstart': function(e) {
-            var artistid;
-            e.preventDefault();
-            if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
-              artistid = $(this).data('artistid') - 1;
-              console.log('artistid =' + artistid);
-              $('#popin #artist_info .info').addClass('hide');
-              $('#popin #artist_info .info:eq(' + artistid + ')').removeClass('hide');
-              showPopin('#artist_info');
-              return;
-            }
-            return showPopin('#artist_info');
+        $('#about-btn, .block_contry .bio').on('click touchstart', function(e) {
+          var artistid;
+          if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
+            artistid = $(this).data('artistid') - 1;
+            console.log('artistid =' + artistid);
+            $('#popin #artist_info .info').addClass('hide');
+            $('#popin #artist_info .info:eq(' + artistid + ')').removeClass('hide');
+            showPopin('#artist_info');
+            return;
           }
+          showPopin('#artist_info');
+          e.stopPropagation();
+          e.preventDefault();
+          return false;
         });
-        $('#share').on({
-          'click touchstart': function(e) {
-            e.preventDefault();
-            return showPopin('#shareinfo');
-          }
+        $('#share').on('click touchstart', function(e) {
+          showPopin('#shareinfo');
+          e.stopPropagation();
+          e.preventDefault();
+          return false;
         });
-        $('#close, #back').on('click touchstart', function() {
-          return that.closePopin();
+        $('#close, #back').on('click touchstart', function(e) {
+          that.closePopin();
+          e.stopPropagation();
+          e.preventDefault();
+          return false;
         });
         return $('#popin').on('showVideo', function() {
           console.log('belors ?? - showVideo');
@@ -836,8 +829,8 @@
         that = this;
         updateInfo = function(id) {
           var svgcontry;
-          $('#play-video-btn,  #startvideofrompopin').attr('href', $('#list_artists li:eq(' + id + ') a').attr('href'));
-          $('#play-video-btn,  #startvideofrompopin').data('ratiovideo', $('#list_artists li:eq(' + id + ') a').data('ratiovideo'));
+          $('#play-video-btn,  .startvideofrompopin').attr('href', $('#list_artists li:eq(' + id + ') a').attr('href'));
+          $('#play-video-btn,  .startvideofrompopin').data('ratiovideo', $('#list_artists li:eq(' + id + ') a').data('ratiovideo'));
           $('#list_artists li a.selected').removeClass('selected');
           $('#list_artists li:eq(' + id + ') a').addClass('selected');
           svgcontry = '#smallmap svg #' + $('#artists_info li:eq(' + id + ') .contry').data('contrynicename');
@@ -1549,7 +1542,6 @@
     $('body').trigger('doc-ready');
     window.layout = window.currentLayout();
     console.log('layout : ' + layout);
-    // player_video = new module.player_video()
     window.scrollTo(0, 0);
     return console.log('scroll top');
   };
@@ -1590,7 +1582,9 @@
   }), false);
 
   freezeVp = function(e) {
-    e.preventDefault();
+    if (!$('#credittxt').hasClass('hide')) {
+      e.preventDefault();
+    }
   };
 
   if (navigator.userAgent.match(/(iPad|iPhone|iPod)/i)) {

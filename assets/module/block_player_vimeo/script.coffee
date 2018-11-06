@@ -64,8 +64,7 @@ class player_video_vimeo
 			# that.startSite(that)
 
 		#------------------- ENTER SITE -------------------#
-		$('#enter_site').on 'click touchstart', (e)->
-			e.preventDefault()
+		$('#enter_site').on 'click touchstart', (event)->
 			that.intro_is_done = true
 			console.log 'enter site -------------------------------- dafucked ?  '
 			$('.intro_page').addClass 'hidden'
@@ -79,10 +78,11 @@ class player_video_vimeo
 				TweenMax.fromTo('.skip_intro', .6, {autoAlpha:0, visibility:'visible'}, {autoAlpha:1 })
 				return
 			), 3000
-
-			return
+			event.stopPropagation()
+			event.preventDefault()
+			return false
 		#------------------- SOUND ---------------------------#
-		$('#sound').on 'click touchstart', ->
+		$('#sound').on 'click touchstart', (event)->
 			console.log 'click sound'
 			event_name = 'sound_on'
 			if ($('#sound').hasClass('actif'))
@@ -90,6 +90,9 @@ class player_video_vimeo
 			$(this).trigger event_name
 			console.log event_name
 			$('#sound').toggleClass 'actif'
+			event.stopPropagation()
+			event.preventDefault()
+			return false			
 
 		#------------------- FULL SCREEN ---------------------------#				
 		GoInFullscreen = (element) ->
@@ -127,12 +130,15 @@ class player_video_vimeo
 			else
 				true
 
-		$('.myfullscreen').on 'click touchstart': ->
+		$('.myfullscreen').on 'click touchstart', (event) ->
 			console.log 'click '
 			if !IsFullScreenCurrently()
 				GoInFullscreen($('body').get(0))
 			else
 				GoOutFullscreen()
+			event.stopPropagation()
+			event.preventDefault()
+			return false
 
 		# options = {id: 296883720, width: 640,loop: false, autoplay:true, email:false}
 		options = {id: @getIntroVimeo(), width: 640,loop: false, autoplay:false, email:false}
@@ -222,9 +228,11 @@ class player_video_vimeo
 				TweenMax.to('#popin', .8,{opacity:0,onComplete:finished_popin_transition})
 			return
 
-		$('.skip_intro').on 'click touchstart', ->
+		$('.skip_intro').on 'click touchstart',(event) ->
 			vid_intro_finished()
-			return
+			event.stopPropagation()
+			event.preventDefault()
+			return false
 			
 		@playerIntroVimeo.on 'ended', (event) ->
 			vid_intro_finished()
@@ -251,51 +259,32 @@ class player_video_vimeo
 			if (!that.playerYT)
 				options = {id: idVimeo, width: 640,loop: false, autoplay:true, email:false}
 				that.playerYT = new (Vimeo.Player)('playerYT', options)
-			
-			that.playerYT.getVideoId().then (id) ->
-				console.log 'current id -------------'+id
-				if(id != idVimeo)
-					$('.video-container').addClass 'trans'
-					that.playerYT.loadVideo(idVimeo).then (id) ->
-						console.log 'loaded '
-						that.playYTisReady()
-						return
-					that.playerYT.enableTextTrack($('#langage_short').val()).then((track) ->
+				that.playerYT.enableTextTrack($('#langage_short').val()).then((track) ->
 						).catch (error) ->
 						console.log '###', error
 						return
-					that.playerYT.getTextTracks().then((tracks) ->
-						tracksLength = tracks.length
-						trackOptions = ''
-						i = 0
-						console.log 'getTextTracks : ' + tracksLength
-						while i < tracksLength
-							console.log tracks[i].language
-							i++
-						return
-					).catch (error) ->
 
-				return
+				that.playerYT.ready().then ->
+					console.log 'player ready'
+					that.playYTisReady()
+					return
 			
-		# $('.btn_video_ipad').on 'click touchstart', (event) ->
-		# 	that.playerYT.play()
-		# 	$('.btn_video_ipad').addClass('hide')	
+			
+		# $('.startvideofrompopin').on 'click touchstart', (event) ->
+		# 	idVimeo = that.YouTubeGetID($(this).attr('href'))
+		# 	console.log 'id vimeo : '+idVimeo
+		# 	event.stopPropagation()
+		# 	event.preventDefault()
 		# 	return false
 
-		$('#startvideofrompopin').on 'click touchstart', (event) ->
-			idVimeo = that.YouTubeGetID($(this).attr('href'))
-			checkratio($(this).data('ratiovideo'))
-			checkClassAndTrigger()
-			startVimeo(idVimeo)
-			return false
-
-		$('#list_artists li a, #play-video-btn, a.watch').on 'click touchstart', (event) ->
+		$('.startvideofrompopin, #list_artists li a, #play-video-btn, a.watch').on 'click touchstart', (event) ->
 			idVimeo = that.YouTubeGetID($(this).attr('href'))
 			console.log 'id vimeo : '+idVimeo
 			checkratio($(this).data('ratiovideo'))
 			checkClassAndTrigger()
 			startVimeo(idVimeo)
-			# $('#popin').trigger 'classChange'
+			event.stopPropagation()
+			event.preventDefault()
 			return false
 	
 module.player_video_vimeo = player_video_vimeo

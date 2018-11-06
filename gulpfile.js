@@ -78,16 +78,16 @@ gulp.task('makecoffee', function() {
 
 gulp.task('uglifymyjs', function () {
     return gulp.src('public/js/myscript/base.js')
-        .pipe(stripDebug())
+        // .pipe(stripDebug())
         .pipe(rename('base.min.js'))
-        .pipe(uglify(/* options */))
+        // .pipe(uglify(/* options */))
         .pipe(gulp.dest(dest+'js/myscript/'));
 });
 
 gulp.task('concatalljs', function() {
     return gulp.src(vendor)
         .pipe(concat('script-v2.min.js'))
-        .pipe(uglify(/* options */))
+        // .pipe(uglify(/* options */))
         .pipe(gulp.dest(dest+'js/'));
 });
 
@@ -208,7 +208,11 @@ gulp.task('uploadcsscomp', function() {
     .pipe(s3({
         Bucket: 'wespeakhiphop-assets',
         ACL: 'public-read',
-        manualContentEncoding: 'gzip'
+        manualContentEncoding: 'gzip',
+        uploadNewFilesOnly: false,
+        Metadata: {
+           'Cache-Control': 'max-age=31536000, no-transform, public',
+        }
     }));
 });
 /*------------------------ PUG ----------------------------*/

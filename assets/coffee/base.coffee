@@ -14,13 +14,11 @@ init = ->
 	window.layout = window.currentLayout()
 	console.log 'layout : '+layout
 
-	# player_video = new module.player_video()
 	window.scrollTo(0, 0)
 	console.log 'scroll top'
 
 $(window).load( init )
 spiner = new module.spiner($('.lds-dual-ring'))
-
 
 window.currentLayout = ->
 	console.log '--------------- > '+ $('#checklayout .desktop').css('display')
@@ -49,24 +47,14 @@ document.addEventListener 'touchmove', ((event) ->
 	return
 ), false
 
-
 freezeVp = (e) ->
-	e.preventDefault()
-	return
+	if(!$('#credittxt').hasClass('hide'))
+		e.preventDefault()
+		return
 
 if (navigator.userAgent.match(/(iPad|iPhone|iPod)/i))
 	$('body').addClass 'device-ios'
 	document.body.addEventListener("touchmove", freezeVp, false);
 
-	
-# $(window).on 'resize', ->
-# 	if @resizeTO
-# 		clearTimeout @resizeTO
-# 	@resizeTO = setTimeout((->
-# 		console.log window.layout+'!='+window.currentLayout()
-# 		if (layout != currentLayout())
-# 			layout = currentLayout()
-# 			$(this).trigger 'resizeEnd'
-# 		return
-# 	), 500)
-# 	return
+
+

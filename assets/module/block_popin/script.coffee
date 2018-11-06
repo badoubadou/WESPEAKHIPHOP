@@ -26,7 +26,9 @@ class popin
 		that = @
 		showPopin = ($target)->
 			$('.video-container, #abouttxt, #credittxt, #contacttxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
-			$('#popin').toggleClass('hide').trigger 'classChange'
+			if($('#popin').hasClass('hide'))
+				$('#popin').removeClass('hide').trigger 'classChange'
+			
 			$('#popin').removeClass 'greybg'
 			
 			console.log '??????? fuck it : '+($target == '#popin #credittxt')+'. $target : '+$target
@@ -45,20 +47,25 @@ class popin
 				.fromTo($target, 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
 		
 		#------------------- ABOUT  --------------------------#
-		$('#apropos_btn').on 'click touchstart': (e) ->
-			e.preventDefault()
+		$('#apropos_btn').on 'click touchstart', (e) ->
 			showPopin('#popin #abouttxt')
-		#------------------- CREDIT  --------------------------#
-		$('#credit_btn').on 'click touchstart': (e) ->
+			e.stopPropagation()
 			e.preventDefault()
+			return false
+		#------------------- CREDIT  --------------------------#
+		$('#credit_btn').on 'click touchstart', (e) ->
 			showPopin('#popin #credittxt')
+			e.stopPropagation()
+			e.preventDefault()
+			return false
 		#------------------- CONTACT  --------------------------#
-		$('#mail_btn').on 'click touchstart': (e) ->
-			e.preventDefault()
+		$('#mail_btn').on 'click touchstart', (e) ->
 			showPopin('#popin #contacttxt')
-		#------------------- CREDIT  --------------------------#
-		$('#about-btn, .block_contry .bio').on 'click touchstart':(e) ->
+			e.stopPropagation()
 			e.preventDefault()
+			return false
+		#------------------- CREDIT  --------------------------#
+		$('#about-btn, .block_contry .bio').on 'click touchstart',(e) ->
 			if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
 				artistid = $(this).data('artistid') - 1
 				console.log('artistid ='+artistid)
@@ -67,13 +74,21 @@ class popin
 				showPopin('#artist_info')
 				return
 			showPopin('#artist_info')
-			
-		$('#share').on 'click touchstart': (e) ->
+			e.stopPropagation()
 			e.preventDefault()
+			return false
+			
+		$('#share').on 'click touchstart', (e) ->
 			showPopin('#shareinfo')
+			e.stopPropagation()
+			e.preventDefault()
+			return false
 
-		$('#close, #back').on 'click touchstart', ->
+		$('#close, #back').on 'click touchstart', (e) ->
 			that.closePopin()
+			e.stopPropagation()
+			e.preventDefault()
+			return false
 
 		$('#popin').on 'showVideo', ->
 			console.log 'belors ?? - showVideo'

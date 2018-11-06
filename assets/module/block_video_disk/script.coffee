@@ -43,8 +43,8 @@ class player_video
 		that = @
 			
 		updateInfo= (id)->
-			$('#play-video-btn,  #startvideofrompopin').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
-			$('#play-video-btn,  #startvideofrompopin').data('ratiovideo', $('#list_artists li:eq('+id+') a').data('ratiovideo'))
+			$('#play-video-btn,  .startvideofrompopin').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
+			$('#play-video-btn,  .startvideofrompopin').data('ratiovideo', $('#list_artists li:eq('+id+') a').data('ratiovideo'))
 			$('#list_artists li a.selected').removeClass('selected')
 			$('#list_artists li:eq('+id+') a').addClass('selected')
 			svgcontry = '#smallmap svg #'+$('#artists_info li:eq('+id+') .contry').data 'contrynicename'
