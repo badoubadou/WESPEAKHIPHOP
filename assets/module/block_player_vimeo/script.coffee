@@ -203,8 +203,6 @@ class player_video_vimeo
 		#------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
 		$('#popin').on 'closePopin', ->
 			console.log '------------ > closePopin stop player YOUTUBE'
-			$('.hider_logo').removeClass 'hide_hider'
-			$('.hider_top').removeClass 'hide_hider'
 			$('.video-container').addClass 'trans'
 			if(that.playerYT)
 				that.playerYT.pause().then(->

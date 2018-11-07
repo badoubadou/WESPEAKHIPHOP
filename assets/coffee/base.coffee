@@ -11,23 +11,13 @@ init = ->
 	$('body').addClass 'doc-ready'
 	$('body').trigger 'doc-ready'
 
-	window.layout = window.currentLayout()
-	console.log 'layout : '+layout
-
 	window.scrollTo(0, 0)
 	console.log 'scroll top'
 
 $(window).load( init )
 spiner = new module.spiner($('.lds-dual-ring'))
 
-window.currentLayout = ->
-	console.log '--------------- > '+ $('#checklayout .desktop').css('display')
-	if ($('#checklayout .mobile').css('display') == 'block')
-		return 'mobile'
-	if ($('#checklayout .ipad').css('display') == 'block')
-		return 'ipad'
-	if ($('#checklayout .desktop').css('display') == 'block')
-		return 'desktop'
+
 
 document.addEventListener 'dblclick', (e) ->
 	e.preventDefault()

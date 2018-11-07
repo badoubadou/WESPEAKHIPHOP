@@ -121,130 +121,6 @@ body #main {
   font-weight: 700;
   src: url("https://d25xbwtykg1lvk.cloudfront.net/Knockout-HTF68-FF-Regular.woff2") format("woff2"), url("https://d25xbwtykg1lvk.cloudfront.net/Knockout-HTF68-FF-Regular.woff") format("woff");
 }
-.loader-bar {
-  height: 0px;
-  width: 100%;
-  transition: all 1s ease;
-  position: relative;
-  background: #fff;
-  overflow: hidden;
-}
-.loader-bar:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 100%;
-  background: #7a0307;
-  opacity: 1;
-}
-.loader-bar:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 100%;
-  background: #fff;
-  opacity: 1;
-}
-.loader-bar.show-progress {
-  height: 2px;
-}
-.loader-bar.show-progress:before {
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-name: makeitgrow;
-}
-@-moz-keyframes makeitgrow {
-  0% {
-    width: 0%;
-    left: 0%;
-  }
-  50% {
-    width: 100%;
-    left: 0%;
-  }
-  100% {
-    width: 100%;
-    left: 100%;
-  }
-}
-@-webkit-keyframes makeitgrow {
-  0% {
-    width: 0%;
-    left: 0%;
-  }
-  50% {
-    width: 100%;
-    left: 0%;
-  }
-  100% {
-    width: 100%;
-    left: 100%;
-  }
-}
-@-o-keyframes makeitgrow {
-  0% {
-    width: 0%;
-    left: 0%;
-  }
-  50% {
-    width: 100%;
-    left: 0%;
-  }
-  100% {
-    width: 100%;
-    left: 100%;
-  }
-}
-@keyframes makeitgrow {
-  0% {
-    width: 0%;
-    left: 0%;
-  }
-  50% {
-    width: 100%;
-    left: 0%;
-  }
-  100% {
-    width: 100%;
-    left: 100%;
-  }
-}
-@-moz-keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(3600deg);
-  }
-}
-@-webkit-keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(3600deg);
-  }
-}
-@-o-keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(3600deg);
-  }
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(3600deg);
-  }
-}
 /* normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   -ms-text-size-adjust: 100% /* 2 */;
@@ -440,8 +316,6 @@ body {
 a {
   color: #000;
   text-decoration: none;
-  transition: color;
-  transition-duration: 0.4s;
 }
 a:visited {
   color: #000;
@@ -594,7 +468,6 @@ p:empty {
   height: 100%;
 }
 .full_height_minus_footer_minus_header_mobile {
-  transition: height 0.5s ease-in-out;
   height: calc(100% - 40px - 20vh);
 }
 @media screen and (orientation: landscape) {
