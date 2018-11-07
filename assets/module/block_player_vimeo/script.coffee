@@ -69,7 +69,8 @@ class player_video_vimeo
 			btnIntroInVisible = ->
 				# $('.intro_page').remove()
 				$('.video-container').removeClass 'hidden hide'
-				that.playerIntroVimeo.play()
+				if(!window.isMobile())
+					that.playerIntroVimeo.play()
 			
 			$('#enter_site').off()
 
@@ -82,6 +83,8 @@ class player_video_vimeo
 			console.log 'delaytween = '+delaytween
 			TweenMax.staggerTo('.btn_intro a',.3, {opacity:0, y:-10, delay:delaytween, ease:Power1.easeOut}, 0.2, btnIntroInVisible);
 			
+			if(window.isMobile())
+				that.playerIntroVimeo.play()
 
 			setTimeout (->
 				TweenMax.fromTo('.skip_intro', .6, {autoAlpha:0, visibility:'visible'}, {autoAlpha:1 })
