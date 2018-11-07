@@ -275,7 +275,6 @@ class player_video_vimeo
 					that.playYTisReady()
 					return
 			
-			
 		# $('.startvideofrompopin').on 'click touchstart', (event) ->
 		# 	idVimeo = that.YouTubeGetID($(this).attr('href'))
 		# 	console.log 'id vimeo : '+idVimeo
