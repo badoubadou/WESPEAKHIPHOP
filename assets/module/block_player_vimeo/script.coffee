@@ -1,20 +1,21 @@
 class player_video_vimeo
 	'use strict'
-	constructor: (@$container) ->
+	constructor: (@isMobile) ->
 		@playerYT = null
 		@playerIntroVimeo = null
 		@drawLogo = null
 		@bindEvents()
 		@needStartSite = true
 
+		@el_spiner = $('.lds-dual-ring')
 
 	playYTisReady : ->
 		console.log  '----------------------- playYTisReady -------------------------------------------'
-		$('.lds-dual-ring').trigger 'hidespiner'
+		@el_spiner.trigger 'hidespiner'
 	
 	playIntroisReady : ->
 		console.log  '----------------------- playIntroisReady -------------------------------------------'
-		$('.lds-dual-ring').trigger 'hidespiner'
+		@el_spiner.trigger 'hidespiner'
 		@startSite()
 			
 	getIntroVimeo : ->
@@ -69,7 +70,7 @@ class player_video_vimeo
 			btnIntroInVisible = ->
 				# $('.intro_page').remove()
 				$('.video-container').removeClass 'hidden hide'
-				if(!window.isMobile())
+				if(!that.isMobile)
 					that.playerIntroVimeo.play()
 			
 			$('#enter_site').off()
@@ -83,7 +84,7 @@ class player_video_vimeo
 			console.log 'delaytween = '+delaytween
 			TweenMax.staggerTo('.btn_intro a',.3, {opacity:0, y:-10, delay:delaytween, ease:Power1.easeOut}, 0.2, btnIntroInVisible);
 			
-			if(window.isMobile())
+			if(that.isMobile)
 				that.playerIntroVimeo.play()
 
 			setTimeout (->
@@ -179,9 +180,12 @@ class player_video_vimeo
 			return
 
 		@playerIntroVimeo.on 'play', (event) ->
-			console.log $('#logowhite').data('animstatus')
 			$('.video-container').removeClass 'trans'
-			$('#logowhite').trigger 'hideLogo'
+			if ($('#logowhite').data('animstatus')=='paused')
+				$('#logowhite').trigger 'resumehideLogo'
+			else
+				$('#logowhite').trigger 'hideLogo'
+			
 		
 			
 		@playerIntroVimeo.on 'pause', (event) ->
@@ -216,7 +220,10 @@ class player_video_vimeo
 				)
 		#------------------- INTRO FINISHED -------------------#
 		finished_popin_transition = ->
-			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange').attr('style','')
+			if(!that.isMobile)
+				$('#player')[0].play()
+				console.log 'play disk'
+			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').attr('style','')
 		
 		vid_intro_finished = ->
 			that.playerIntroVimeo.pause()
@@ -227,7 +234,7 @@ class player_video_vimeo
 			$('.intro_page').remove()
 			$('.skip_intro').off()
 			$('.skip_intro').remove()
-			if(window.isMobile())
+			if(that.isMobile)
 				$('#player')[0].play()
 				finished_popin_transition()
 			else

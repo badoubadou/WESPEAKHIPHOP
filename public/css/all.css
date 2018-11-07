@@ -1854,7 +1854,8 @@ span.lign_header {
 #artists_info li .contry.contry {
   padding-right: 5px;
 }
-#artists_info li #about-btn {
+#artists_info li #about-btn,
+#artists_info li .about-btn {
   background: #333;
   color: #fff;
   margin: 5px 0 0 0;
@@ -1864,7 +1865,8 @@ span.lign_header {
   position: relative;
 }
 @media screen and (orientation: landscape) {
-  #artists_info li #about-btn {
+  #artists_info li #about-btn,
+  #artists_info li .about-btn {
     font-size: 0.6em;
     margin: 0px 20px;
     margin: 10px 0;
@@ -1907,7 +1909,8 @@ span.lign_header {
     display: inline-block;
     width: 100%;
   }
-  #artists_info li .warper #about-btn {
+  #artists_info li .warper #about-btn,
+  #artists_info li .warper .about-btn {
     display: inline-block;
   }
 }

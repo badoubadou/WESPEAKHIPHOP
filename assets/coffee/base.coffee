@@ -1,22 +1,25 @@
 'use strict'
-window.isMobile = ->
-	typeof window.orientation != 'undefined' or navigator.userAgent.indexOf('IEMobile') != -1
 
-init = ->
-	console.log 'window load -> init vimeo ?'
-	player_video_vimeo = new module.player_video_vimeo()
-	popin = new module.popin()
-	logo = new module.logo()
-	
-	$('body').addClass 'doc-ready'
-	$('body').trigger 'doc-ready'
-
-	window.scrollTo(0, 0)
-	console.log 'scroll top'
-
-$(window).load( init )
 spiner = new module.spiner($('.lds-dual-ring'))
+(($, window, document) ->
+	# The $ is now locally scoped 
+	# Listen for the jQuery ready event on the document
+	$ ->
+		# The DOM is ready!
+		checkMobile = ->
+			typeof window.orientation != 'undefined' or navigator.userAgent.indexOf('IEMobile') != -1
 
+		isMobile = checkMobile()
+		console.log 'window load -> init vimeo ????'
+		player_video_vimeo = new module.player_video_vimeo(isMobile)
+		popin = new module.popin()
+		logo = new module.logo($('#logowhite'))
+		window.scrollTo(0, 0)
+		console.log 'scroll top'
+		return
+	# The rest of the code goes here!
+	return
+) window.jQuery, window, document
 
 
 document.addEventListener 'dblclick', (e) ->

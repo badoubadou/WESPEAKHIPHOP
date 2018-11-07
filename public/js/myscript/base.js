@@ -9,8 +9,8 @@
   logo = (function() {
     'use strict';
     class logo {
-      constructor(spiner) {
-        this.spiner = spiner;
+      constructor(el_logowhite1) {
+        this.el_logowhite = el_logowhite1;
         TweenLite.set('svg', {
           visibility: 'visible'
         });
@@ -18,7 +18,8 @@
         this.drawLogoWhite = new TimelineMax({
           paused: true,
           onComplete: this.finishedShowLogo,
-          onReverseComplete: this.finishedHideLogo
+          onCompleteParams: [this.el_logowhite],
+          onReverseComplete: this.destroyLogo
         });
         this.drawLogoWhite.from("#logowhite #mask1_2_", 1, {
           drawSVG: 0,
@@ -61,8 +62,7 @@
           ease: Power3.easeInOut
         }, 1.2);
         this.dLB = new TimelineMax({
-          paused: true,
-          onComplete: this.finishedBlackLogo
+          paused: true
         });
         this.dLB.from("#mask1_2_black", 1, {
           drawSVG: 0,
@@ -108,20 +108,8 @@
         this.bindEvents();
       }
 
-      finishedBlackLogo() {
-        return this.kill();
-      }
-
-      finishedHideLogo() {
-        return $('#logowhite').remove();
-      }
-
-      showLogoBlack() {
-        return this.dLB.play();
-      }
-
-      finishedShowLogo() {
-        return $('#logowhite').trigger('finishedShowLogo');
+      finishedShowLogo(el_logowhite) {
+        return el_logowhite.trigger('finishedShowLogo');
       }
 
       showLogoWhite() {
@@ -130,55 +118,66 @@
 
       hideLogoWhite() {
         var that;
+        console.log('hideLogoWhite');
         that = this;
-        $('#logowhite').data('animstatus', 'playing');
-        console.log('catch hideLogo  data = ' + $('#logowhite').data('animstatus'));
-        return this.reverse_delay = TweenMax.delayedCall(4, function() {
-          return that.drawLogoWhite.reverse();
-        });
+        if (this.el_logowhite) {
+          this.el_logowhite.data('animstatus', 'playing');
+          return this.reverse_delay = TweenMax.delayedCall(4, function() {
+            if (that.drawLogoWhite) {
+              return that.drawLogoWhite.reverse();
+            }
+          });
+        }
       }
 
       pausehideLogo() {
-        console.log('pausehideLogo data = ' + $('#logowhite').data('animstatus'));
-        $('#logowhite').data('animstatus', 'paused');
-        return this.reverse_delay.pause();
+        console.log('pausehideLogo');
+        if (this.el_logowhite) {
+          this.el_logowhite.data('animstatus', 'paused');
+          return this.reverse_delay.pause();
+        }
       }
 
       resumehideLogo() {
-        $('#logowhite').data('animstatus', 'playing');
-        return this.reverse_delay.resume();
+        console.log('resumehideLogo');
+        if (this.el_logowhite) {
+          this.el_logowhite.data('animstatus', 'playing');
+          return this.reverse_delay.resume();
+        }
       }
 
       destroyLogo() {
-        $('#logowhite').off();
-        return $('#logowhite').remove();
+        this.el_logowhite.off();
+        this.el_logowhite.remove();
+        this.el_logowhite = null;
+        this.drawLogoWhite = null;
+        this.reverse_delay = null;
+        return console.log('destroyLogo');
       }
 
       bindEvents() {
         var that;
         that = this;
-        $('#logowhite').on('destroyLogo', function() {
-          return that.destroyLogo();
-        });
-        $('#logowhite').on('showLogo', function() {
-          return that.showLogoWhite();
-        });
-        $('#logowhite').on('hideLogo', function() {
-          console.log('catch hideLogo');
-          return that.hideLogoWhite();
-        });
-        $('#logowhite').on('pausehideLogo', function() {
-          console.log('catch pausehideLogo');
-          return that.pausehideLogo();
-        });
-        $('#logowhite').on('resumehideLogo', function() {
-          console.log('catch resumehideLogo');
-          return that.resumehideLogo();
+        that.el_logowhite.on({
+          'destroyLogo': function() {
+            that.destroyLogo();
+          },
+          'showLogo': function() {
+            that.showLogoWhite();
+          },
+          'hideLogo': function() {
+            that.hideLogoWhite();
+          },
+          'pausehideLogo': function() {
+            that.pausehideLogo();
+          },
+          'resumehideLogo': function() {
+            that.resumehideLogo();
+          }
         });
         return $('.logoWSH').on('showLogo', function() {
-          console.log('show logo');
-          $('.logoWSH').off();
-          return that.showLogoBlack();
+          $(this).off();
+          return that.dLB.play();
         });
       }
 
@@ -198,23 +197,24 @@
   player_video_vimeo = (function() {
     'use strict';
     class player_video_vimeo {
-      constructor($container) {
-        this.$container = $container;
+      constructor(isMobile) {
+        this.isMobile = isMobile;
         this.playerYT = null;
         this.playerIntroVimeo = null;
         this.drawLogo = null;
         this.bindEvents();
         this.needStartSite = true;
+        this.el_spiner = $('.lds-dual-ring');
       }
 
       playYTisReady() {
         console.log('----------------------- playYTisReady -------------------------------------------');
-        return $('.lds-dual-ring').trigger('hidespiner');
+        return this.el_spiner.trigger('hidespiner');
       }
 
       playIntroisReady() {
         console.log('----------------------- playIntroisReady -------------------------------------------');
-        $('.lds-dual-ring').trigger('hidespiner');
+        this.el_spiner.trigger('hidespiner');
         return this.startSite();
       }
 
@@ -303,7 +303,7 @@
           btnIntroInVisible = function() {
             // $('.intro_page').remove()
             $('.video-container').removeClass('hidden hide');
-            if (!window.isMobile()) {
+            if (!that.isMobile) {
               return that.playerIntroVimeo.play();
             }
           };
@@ -320,7 +320,7 @@
             delay: delaytween,
             ease: Power1.easeOut
           }, 0.2, btnIntroInVisible);
-          if (window.isMobile()) {
+          if (that.isMobile) {
             that.playerIntroVimeo.play();
           }
           setTimeout((function() {
@@ -428,9 +428,12 @@
           that.playIntroisReady();
         });
         this.playerIntroVimeo.on('play', function(event) {
-          console.log($('#logowhite').data('animstatus'));
           $('.video-container').removeClass('trans');
-          return $('#logowhite').trigger('hideLogo');
+          if ($('#logowhite').data('animstatus') === 'paused') {
+            return $('#logowhite').trigger('resumehideLogo');
+          } else {
+            return $('#logowhite').trigger('hideLogo');
+          }
         });
         this.playerIntroVimeo.on('pause', function(event) {
           if ($('#logowhite').data('animstatus') === 'playing') {
@@ -464,7 +467,11 @@
         });
         //------------------- INTRO FINISHED -------------------#
         finished_popin_transition = function() {
-          return $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').trigger('classChange').attr('style', '');
+          if (!that.isMobile) {
+            $('#player')[0].play();
+            console.log('play disk');
+          }
+          return $('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').attr('style', '');
         };
         vid_intro_finished = function() {
           that.playerIntroVimeo.pause();
@@ -475,7 +482,7 @@
           $('.intro_page').remove();
           $('.skip_intro').off();
           $('.skip_intro').remove();
-          if (window.isMobile()) {
+          if (that.isMobile) {
             $('#player')[0].play();
             finished_popin_transition();
           } else {
@@ -568,16 +575,17 @@
     class popin {
       constructor() {
         this.timelinePopin = null;
+        this.el_popin = $('#popin');
+        this.popin_content = $('.video-container, #abouttxt, #credittxt, #contacttxt, #artist_info, #shareinfo, #logowhite');
         this.bindEvents();
       }
 
-      afterclose() {
+      afterclose(el_popin, popin_content) {
         console.log('afterclose');
-        $('#popin').addClass('hide').trigger('classChange');
-        $('#popin').addClass('hide').trigger('closePopin');
-        $('#popin').removeAttr('style');
-        $('#popin').find('*').removeAttr('style');
-        return $('.video-container, #abouttxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
+        el_popin.addClass('hide').trigger('closePopin');
+        el_popin.removeAttr('style');
+        el_popin.find('*').removeAttr('style');
+        return popin_content.addClass('hide');
       }
 
       closePopin() {
@@ -585,10 +593,8 @@
         if (this.timelinePopin) {
           return this.timelinePopin.reverse();
         } else {
-          console.log('trigger : classChange closePopin');
-          $('#popin').addClass('hide');
-          $('#popin').trigger('classChange');
-          return $('#popin').trigger('closePopin');
+          this.el_popin.addClass('hide');
+          return this.el_popin.trigger('closePopin');
         }
       }
 
@@ -596,27 +602,22 @@
         var showPopin, that;
         that = this;
         showPopin = function($target) {
-          $('.video-container, #abouttxt, #credittxt, #contacttxt, #artist_info, #shareinfo, #logowhite').addClass('hide');
-          if ($('#popin').hasClass('hide')) {
-            $('#popin').removeClass('hide').trigger('classChange');
+          that.el_popin.trigger('showPopin');
+          that.popin_content.addClass('hide');
+          if (that.el_popin.hasClass('hide')) {
+            that.el_popin.removeClass('hide');
           }
-          $('#popin').removeClass('greybg');
-          console.log('??????? fuck it : ' + ($target === '#popin #credittxt') + '. $target : ' + $target);
-          if ($target === '#popin #abouttxt') {
-            $('#popin').addClass('greybg');
-          }
-          if ($target === '#popin #credittxt') {
-            $('#popin').addClass('greybg');
-          }
-          if ($target === '#popin #contacttxt') {
-            $('#popin').addClass('greybg');
+          that.el_popin.removeClass('greybg');
+          if (($target === '#abouttxt') || ($target === '#credittxt') || ($target === '#contacttxt')) {
+            that.el_popin.addClass('greybg');
           }
           $($target).removeClass('hide');
           if ($target === '.video-container') {
             $('.video-container').addClass('trans');
           }
           that.timelinePopin = new TimelineMax({
-            onReverseComplete: that.afterclose
+            onReverseComplete: that.afterclose,
+            onReverseCompleteParams: [that.el_popin, that.popin_content]
           });
           return that.timelinePopin.from('#popin', .6, {
             opacity: 0,
@@ -631,45 +632,17 @@
           });
         };
         
-        //------------------- ABOUT  --------------------------#
-        $('#apropos_btn').on('click touchstart', function(e) {
-          showPopin('#popin #abouttxt');
+        //------------------- ABOUT SHARE CREDIT MAIL --------------------------#
+        $('.btnfooterpopin').on('click touchstart', function(e) {
+          showPopin($(this).attr('href'));
           e.stopPropagation();
           e.preventDefault();
           return false;
         });
-        //------------------- CREDIT  --------------------------#
-        $('#credit_btn').on('click touchstart', function(e) {
-          showPopin('#popin #credittxt');
-          e.stopPropagation();
-          e.preventDefault();
-          return false;
-        });
-        //------------------- CONTACT  --------------------------#
-        $('#mail_btn').on('click touchstart', function(e) {
-          showPopin('#popin #contacttxt');
-          e.stopPropagation();
-          e.preventDefault();
-          return false;
-        });
-        //------------------- CREDIT  --------------------------#
-        $('#about-btn, .block_contry .bio').on('click touchstart', function(e) {
-          var artistid;
-          if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
-            artistid = $(this).data('artistid') - 1;
-            console.log('artistid =' + artistid);
-            $('#popin #artist_info .info').addClass('hide');
-            $('#popin #artist_info .info:eq(' + artistid + ')').removeClass('hide');
-            showPopin('#artist_info');
-            return;
-          }
+        
+        //------------------- BIO  --------------------------#
+        $('.about-btn').on('click touchstart', function(e) {
           showPopin('#artist_info');
-          e.stopPropagation();
-          e.preventDefault();
-          return false;
-        });
-        $('#share').on('click touchstart', function(e) {
-          showPopin('#shareinfo');
           e.stopPropagation();
           e.preventDefault();
           return false;
@@ -680,7 +653,7 @@
           e.preventDefault();
           return false;
         });
-        return $('#popin').on('showVideo', function() {
+        return this.el_popin.on('showVideo', function() {
           console.log('belors ?? - showVideo');
           return showPopin('.video-container');
         });
@@ -702,45 +675,45 @@
   spiner = (function() {
     'use strict';
     class spiner {
-      constructor(spiner1) {
-        this.spiner = spiner1;
+      constructor(myspiner1) {
+        this.myspiner = myspiner1;
+        this.subring = ['.ring_1', '.ring_2', '.ring_3'];
         console.log('----------------- > constructor spinner');
-        TweenLite.set(['.ring_1', '.ring_2', '.ring_3'], {
+        TweenLite.set(this.subring, {
           xPercent: -50,
           yPercent: -50
         });
         this.timelineSpiner = new TimelineMax({
           paused: true,
           onReverseComplete: this.maskSpiner,
-          onStart: this.unmaskSpiner
-        }).staggerFromTo(['.ring_1', '.ring_2', '.ring_3'], 2, {
+          onReverseCompleteParams: [this.myspiner],
+          onStart: this.unmaskSpiner,
+          onStartParams: [this.myspiner]
+        }).staggerFromTo(this.subring, 2, {
           opacity: 0
         }, {
           scale: 1,
           opacity: 1,
           ease: Power3.easeOut
         }, 0.5);
-        
-        // .fromTo('.lds-dual-ring', 0.5 ,{opacity: 0},{opacity: 1, ease:Power3.easeOut}, '-=2')	
         this.bindEvents();
         this.showSpiner();
       }
 
-      maskSpiner() {
-        $('.lds-dual-ring').trigger('loaderhidden');
-        return $('.lds-dual-ring').addClass('no_spinner').hide();
+      maskSpiner(myspiner) {
+        myspiner.trigger('loaderhidden');
+        return myspiner.addClass('no_spinner').hide();
       }
 
-      unmaskSpiner() {
+      unmaskSpiner(myspiner) {
         console.log('unmaskSpiner -> ');
-        return $('.lds-dual-ring').removeClass('no_spinner').show();
+        return myspiner.removeClass('no_spinner').show();
       }
 
       showSpiner() {
         var that;
         that = this;
-        console.log('----------------------- > show spinner');
-        return this.timelineSpiner.play();
+        return that.timelineSpiner.play();
       }
 
       hideSpiner() {
@@ -752,12 +725,12 @@
       bindEvents() {
         var that;
         that = this;
-        that.spiner.on('hidespiner', function() {
-          return that.hideSpiner();
+        that.myspiner.on('hidespiner', function() {
+          return that.hideSpiner(that.myspiner);
         });
-        return that.spiner.on('showspiner', function() {
+        return that.myspiner.on('showspiner', function() {
           console.log('catch showspiner');
-          return that.showSpiner();
+          return that.showSpiner(that.myspiner);
         });
       }
 
@@ -778,9 +751,31 @@
   player_video = (function() {
     'use strict';
     class player_video {
-      constructor($container) {
+      constructor($container, isMobile) {
         this.$container = $container;
+        this.isMobile = isMobile;
         //------------------- SET VAR ---------------------------#
+        this.disk_speep = 0.39;
+        this.scale_disk = 2;
+        this.duration = 168.182;
+        
+        //------------------- SET ELEMENT ---------------------------#
+        this.el_popin = $('#popin');
+        this.el_sound = $('#sound');
+        this.el_player = $('#player');
+        this.player = $('#player')[0];
+        this.el_pause_btn = $('#pause-video-btn');
+        this.el_spiner = $('.lds-dual-ring');
+        this.el_body = $('body');
+        this.el_disk = $('#disk');
+        this.el_btn_play_video = $('#play-video-btn, .startvideofrompopin');
+        this.el_artists_info_li = $('#artists_info li');
+        this.el_popin_artist_info_info = $('#popin #artist_info .info');
+        this.el_artists_info_li = $('#artists_info li');
+        this.el_list_artists_li = $('#list_artists li');
+        this.el_tuto = $('.tuto');
+        this.el_window = $(window);
+        //------------------- SET TWEEN ---------------------------#
         this.timelineKnob = new TimelineMax({
           paused: true
         });
@@ -789,18 +784,15 @@
           repeat: -1
         });
         this.timelineIntro = null;
-        this.player = $('#player')[0];
-        this.scale_disk = 2;
-        if (window.isMobile()) {
+        if (this.isMobile) {
           $('#player').attr('src', 'https://d25xbwtykg1lvk.cloudfront.net/25f500kfaststartmobile.mp4');
           this.scale_disk = 1;
         }
-        this.duration = 168.182;
         if (this.player.duration && this.player.duration > 1) {
-          console.log('correct duration');
           this.duration = this.player.duration;
         }
-        this.disk_speep = 0.39;
+        
+        //------------------- SET SOUND ---------------------------#
         this.sounddirection = 0;
         this.scratchBank = [];
         this.scratchBank.push(new Howl({
@@ -814,7 +806,7 @@
         
         //------------------- SET FUNCTION ---------------------------#
         this.setTimeLineIntro();
-        $('#player').addClass('ready');
+        this.el_player.addClass('ready');
         this.createTweenInfo();
         this.setTimeLineKnob();
         this.setScratcher();
@@ -822,31 +814,26 @@
       }
 
       //------------------- TWEEN ---------------------------#
-      resetallCss() {
-        return $('#block_video_disk, #platine ,#disk, #left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn,  #pause-video-btn, #main_footer, #left_col,#artists_info,#smallmap, #txt_help_disk, .tuto').attr('style', '');
-      }
-
       createTweenInfo(curentTime) {
         var duration_sequence, sequence, that, updateInfo;
         that = this;
         updateInfo = function(id) {
           var svgcontry;
-          $('#play-video-btn,  .startvideofrompopin').attr('href', $('#list_artists li:eq(' + id + ') a').attr('href'));
-          $('#play-video-btn,  .startvideofrompopin').data('ratiovideo', $('#list_artists li:eq(' + id + ') a').data('ratiovideo'));
-          $('#list_artists li a.selected').removeClass('selected');
-          $('#list_artists li:eq(' + id + ') a').addClass('selected');
-          svgcontry = '#smallmap svg #' + $('#artists_info li:eq(' + id + ') .contry').data('contrynicename');
-          console.log(' ---------- id updateInfo   : ' + svgcontry);
+          svgcontry = '#smallmap svg #' + that.el_artists_info_li.eq(id).find('.contry').data('contrynicename');
+          that.el_btn_play_video.attr('href', that.el_list_artists_li.eq(id).find('a').attr('href'));
+          that.el_btn_play_video.data('ratiovideo', that.el_list_artists_li.eq(id).find('a').data('ratiovideo'));
+          that.el_list_artists_li.eq(id).find('a.selected').removeClass('selected');
+          that.el_list_artists_li.eq(id).find('a').addClass('selected');
           TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {
             alpha: 0
           });
           TweenMax.to(svgcontry, 0.5, {
             alpha: 1
           });
-          $('#artists_info li').removeClass('ontop');
-          $('#artists_info li:eq(' + id + ')').addClass('ontop');
-          $('#popin #artist_info .info').addClass('hide');
-          return $('#popin #artist_info .info:eq(' + id + ')').removeClass('hide');
+          that.el_artists_info_li.removeClass('ontop');
+          that.el_artists_info_li.eq(id).addClass('ontop');
+          that.el_popin_artist_info_info.addClass('hide');
+          return that.el_popin_artist_info_info.eq(id).removeClass('hide');
         };
         duration_sequence = this.duration / 28;
         sequence = '+=' + (duration_sequence - 1);
@@ -1188,11 +1175,6 @@
         }, sequence);
       }
 
-      removeTLIntro() {
-        $('#left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn,  #pause-video-btn, #main_footer, .tuto').attr('style', '');
-        return this.kill();
-      }
-
       setTimeLineIntro(curentTime) {
         var that;
         that = this;
@@ -1241,16 +1223,9 @@
         });
       }
 
-      setTimeLineKnob(rot_from, rot_to) {
-        var that;
-        that = this;
-        if (!rot_from) {
-          rot_from = 0;
-        }
-        if (!rot_to) {
-          rot_to = 360;
-        }
-        return that.timelineKnob.fromTo('#disk', 168.182, {
+      setTimeLineKnob(rot_from = 0, rot_to = 360) {
+        console.log('setTimeLineKnob');
+        return this.timelineKnob.fromTo('#disk', this.duration, {
           rotation: rot_from
         }, {
           rotation: rot_to,
@@ -1259,27 +1234,22 @@
         });
       }
 
-      showFooter_header() {
-        $('body').removeClass('hidefooter');
-        return $('body').removeClass('hide_left_col');
-      }
-
       show_logo() {
         return $('.logoWSH').trigger('showLogo');
       }
 
       play_video_disk() {
-        $('#player')[0].play();
-        $('body').removeClass('disk_on_hold');
+        if (!this.isMobile) {
+          $('#player')[0].play();
+          $('body').removeClass('disk_on_hold');
+        }
       }
 
       skipIntro() {
         console.log('skipIntro : player play ------------------------------ ??????? ');
         this.timelineIntro.play();
-        $('#popin').off('endIntro');
-        console.log(' is mobile ? ' + window.isMobile());
-        if (window.isMobile()) {
-          console.log('so play video damned it');
+        this.el_popin.off('endIntro');
+        if (this.isMobile) {
           return this.play_video_disk();
         }
       }
@@ -1293,15 +1263,12 @@
         }
         percentage = this.$deg / 3.6;
         player_new_CT = this.$myplayer.duration * (percentage / 100);
-        // console.log 'player_new_CT : '+player_new_CT
         this.$myplayer.currentTime = player_new_CT;
         this.sounddirection = dir === 'clockwise' ? 0 : 1;
         opositeDirection = dir === 'clockwise' ? 1 : 0;
         PBR = speed / this.disk_speep;
         PBR = Math.min(Math.max(speed / this.disk_speep, 0.9), 1.2);
         roundedPBR = Number(PBR.toFixed(4));
-        
-        // console.log dir + '  @sounddirection  : '+@sounddirection  + '  // opositeDirection  : '+opositeDirection+'. speed : '+speed + '  PBR : '+roundedPBR
         this.scratchBank[this.sounddirection].rate(roundedPBR);
         sound_new_CT = dir === 'clockwise' ? player_new_CT : this.$myplayer.duration - player_new_CT;
         if (this.scratchBank[opositeDirection].playing()) {
@@ -1330,7 +1297,6 @@
             return player.off('timeupdate', checkEndTime);
           }
         };
-        // player.playbackRate(PBR)
         return this.$player.on('timeupdate', checkEndTime);
       }
 
@@ -1349,13 +1315,13 @@
           type: 'rotation',
           throwProps: true,
           onRelease: function() {
-            if (!$('#disk').hasClass('drag')) {
+            if (!that.el_disk.hasClass('drag')) {
               resumePlayDisk(this.rotation);
-              return $('#disk').removeClass('drag');
+              return that.el_disk.removeClass('drag');
             }
           },
           onDragStart: function() {
-            $('#disk').addClass('drag');
+            that.el_disk.addClass('drag');
             return that.timelineInfo.pause();
           },
           onDrag: function() {
@@ -1375,7 +1341,7 @@
             that.player.play();
             that.scratchBank[0].stop();
             that.scratchBank[1].stop();
-            return $('#disk').removeClass('drag');
+            return that.el_disk.removeClass('drag');
           },
           snap: function(endValue) {
             return Math.round(endValue / rotationSnap) * rotationSnap;
@@ -1386,49 +1352,29 @@
       bindEvents() {
         var that, windowBlurred, windowFocused;
         that = this;
-        console.log('bindEvents player_video');
-        // $(window).on 'resizeEnd', ->
-        // 	# Draggable.get("#disk").kill()
-        // 	# TweenMax.killTweensOf﻿($('#disk'))
-        // 	# TweenMax.killAll()
-        // 	# that.resetallCss()
-        // 	# setTimeout (->
-        // 	# 	console.log 'set scrather'
-        // 	# 	that.setScratcher()
-        // 	# 	return
-        // 	# ), 700
-
-        // 	return
-
         //------------------- END TUTO -------------------#
-        $('.tuto').on('click touchstart', function(event) {
-          $('.tuto').remove();
+        that.el_tuto.on('click touchstart', function(event) {
+          this.remove();
           event.stopPropagation();
           event.preventDefault();
-          $(window).on('pagehide blur', windowBlurred);
-          $(window).on('pageshow focus', windowFocused);
+          that.el_window.on('pagehide blur', windowBlurred);
+          that.el_window.on('pageshow focus', windowFocused);
           return false;
         });
         //------------------- ENDINTRO -------------------#
-        $('#popin').on('endIntro', function() {
+        that.el_popin.on('endIntro', function() {
           return that.skipIntro();
         });
         //------------------- POPIN LISTNER -------------------#
-        $('#popin').on('classChange', function() {
-          console.log('->>>>>>>>>>>>>>>>>>>>>>> popin change ' + ($(this).hasClass('hide')));
-          if ($('body').hasClass('disk_on_hold')) {
-            console.log('disk on hold');
-            return;
-          }
-          if ($(this).hasClass('hide')) {
-            console.log('player play ');
-            if (that.player) {
-              that.player.play();
-            }
-          } else {
-            console.log('player pause ');
+        that.el_popin.on({
+          'showPopin': function() {
             if (that.player) {
               that.player.pause();
+            }
+          },
+          'closePopin': function() {
+            if (that.player) {
+              that.player.play();
             }
           }
         });
@@ -1438,21 +1384,17 @@
           if (that.player) {
             that.player.pause();
           }
-          $('body').trigger('blur');
+          that.el_body.trigger('blur');
         };
         windowFocused = function() {
           console.log('focus');
-          $('body').trigger('focus');
-          if ($('body').hasClass('video-disk-waiting')) {
+          that.el_body.trigger('focus');
+          if (that.el_body.hasClass('video-disk-waiting')) {
             console.log('hasClass video-disk-waiting');
             return;
           }
-          if (!$('#popin').hasClass('hide')) {
+          if (!that.el_popin.hasClass('hide')) {
             console.log('popin hasNotClass hide');
-            return;
-          }
-          if ($('#contrys').hasClass('selected')) {
-            console.log('contrys hasClass selected');
             return;
           }
           if (that.player) {
@@ -1463,15 +1405,16 @@
           }
         };
         //------------------- SOUND ---------------------------#
-        $('#sound').on('sound_off', function() {
-          return that.player.muted = true;
-        });
-        $('#sound').on('sound_on', function() {
-          console.log('sound_on' + that.player.muted);
-          return that.player.muted = false;
+        that.el_sound.on({
+          'sound_off': function() {
+            that.player.muted = true;
+          },
+          'sound_on': function() {
+            that.player.muted = false;
+          }
         });
         //------------------- SOUND ---------------------------#
-        $('#pause-video-btn').on('click touchstart', function(event) {
+        that.el_pause_btn.on('click touchstart', function(event) {
           if ($(this).hasClass('paused')) {
             that.player.play();
           } else {
@@ -1481,32 +1424,20 @@
           event.preventDefault();
           return false;
         });
-        //------------------- PLAYER JS ---------------------------#		
-        // videoDiskCanPlay = ->
-        // 	$('.skip_intro').show()
-
-        // $('#player').on 'canplaythrough', videoDiskCanPlay
-
-        // if $('#player')[0].readyState > 3
-        // 	videoDiskCanPlay()
-        $('#player').on('play', function(e) {
-          console.log('play video disk');
-          $('body').removeClass('video-disk-waiting');
-          if ($("#mode_switcher [data-face='face_pays']").hasClass('selected')) {
-            that.player.pause();
-            return;
+        //------------------- PLAYER VIDEO DISK ---------------------------#		
+        return that.el_player.on({
+          'play': function() {
+            that.el_body.removeClass('video-disk-waiting');
+            that.timelineKnob.play();
+            that.timelineInfo.play();
+            that.el_spiner.trigger('hidespiner');
+            that.el_pause_btn.removeClass('paused');
+          },
+          'pause': function() {
+            that.timelineInfo.pause();
+            that.timelineKnob.pause();
+            that.el_pause_btn.addClass('paused');
           }
-          that.timelineKnob.play();
-          that.timelineInfo.play();
-          console.log('trigger hide on player Js play ');
-          $('.lds-dual-ring').trigger('hidespiner');
-          return $('#pause-video-btn').removeClass('paused');
-        });
-        return $('#player').on('pause', function() {
-          console.log('pause' + that.timelineKnob);
-          that.timelineInfo.pause();
-          that.timelineKnob.pause();
-          return $('#pause-video-btn').addClass('paused');
         });
       }
 
@@ -1516,45 +1447,35 @@
 
   }).call(this);
 
-  // $('#player').on 'waiting', ->
-  // 	console.log 'waiting'
-  // 	that.timelineInfo.pause()
-  // 	$('#pause-video-btn').addClass 'paused'
-
-  // $('#player').on 'stalled', ->
-  // 	console.log 'stalled'
-  // 	that.timelineInfo.pause()
-  // 	$('#pause-video-btn').addClass 'paused'
-
-  // $('#player').on 'seeked', ->
-  // 	that.timelineInfo.time that.player.currentTime
   module.player_video = player_video;
 
 }).call(this);
 
 (function() {
   'use strict';
-  var freezeVp, init, spiner;
-
-  window.isMobile = function() {
-    return typeof window.orientation !== 'undefined' || navigator.userAgent.indexOf('IEMobile') !== -1;
-  };
-
-  init = function() {
-    var logo, player_video_vimeo, popin;
-    console.log('window load -> init vimeo ?');
-    player_video_vimeo = new module.player_video_vimeo();
-    popin = new module.popin();
-    logo = new module.logo();
-    $('body').addClass('doc-ready');
-    $('body').trigger('doc-ready');
-    window.scrollTo(0, 0);
-    return console.log('scroll top');
-  };
-
-  $(window).load(init);
+  var freezeVp, spiner;
 
   spiner = new module.spiner($('.lds-dual-ring'));
+
+  (function($, window, document) {
+    // The $ is now locally scoped 
+    // Listen for the jQuery ready event on the document
+    $(function() {
+      var checkMobile, isMobile, logo, player_video_vimeo, popin;
+      // The DOM is ready!
+      checkMobile = function() {
+        return typeof window.orientation !== 'undefined' || navigator.userAgent.indexOf('IEMobile') !== -1;
+      };
+      isMobile = checkMobile();
+      console.log('window load -> init vimeo ????');
+      player_video_vimeo = new module.player_video_vimeo(isMobile);
+      popin = new module.popin();
+      logo = new module.logo($('#logowhite'));
+      window.scrollTo(0, 0);
+      console.log('scroll top');
+    });
+  // The rest of the code goes here!
+  })(window.jQuery, window, document);
 
   document.addEventListener('dblclick', function(e) {
     e.preventDefault();

@@ -1,23 +1,40 @@
 'use strict'
 class player_video
 	'use strict'
-	constructor: (@$container) ->
+	constructor: (@$container, @isMobile) ->
 		#------------------- SET VAR ---------------------------#
+		@disk_speep = 0.39
+		@scale_disk = 2
+		@duration = 168.182
+		
+		#------------------- SET ELEMENT ---------------------------#
+		@el_popin = $('#popin')
+		@el_sound = $('#sound')
+		@el_player = $('#player')
+		@player = $('#player')[0]
+		@el_pause_btn = $('#pause-video-btn')
+		@el_spiner = $('.lds-dual-ring')
+		@el_body = $('body')
+		@el_disk = $('#disk')
+		@el_btn_play_video = $('#play-video-btn, .startvideofrompopin')
+		@el_artists_info_li = $('#artists_info li')
+		@el_popin_artist_info_info = $('#popin #artist_info .info')
+		@el_artists_info_li = $('#artists_info li')
+		@el_list_artists_li = $('#list_artists li')
+		@el_tuto = $('.tuto')
+		@el_window = $(window)
+		#------------------- SET TWEEN ---------------------------#
 		@timelineKnob = new TimelineMax({paused: true})
 		@timelineInfo = new TimelineMax({paused: true, repeat: -1})
 		@timelineIntro = null
-		@player = $('#player')[0]
-		@scale_disk = 2
-		if window.isMobile()
+		if @isMobile
 			$('#player').attr('src', 'https://d25xbwtykg1lvk.cloudfront.net/25f500kfaststartmobile.mp4')
 			@scale_disk = 1
 		
-		@duration = 168.182
 		if @player.duration && @player.duration > 1
-			console.log 'correct duration'
 			@duration = @player.duration
 		
-		@disk_speep = 0.39
+		#------------------- SET SOUND ---------------------------#
 		@sounddirection = 0
 		@scratchBank = []
 		@scratchBank.push new Howl(
@@ -29,32 +46,28 @@ class player_video
 		
 		#------------------- SET FUNCTION ---------------------------#
 		@setTimeLineIntro()
-		$('#player').addClass('ready')
+		@el_player.addClass('ready')
 		@createTweenInfo()
 		@setTimeLineKnob()
 		@setScratcher()
 		@bindEvents()
 
 	#------------------- TWEEN ---------------------------#
-	resetallCss: () ->
-		$('#block_video_disk, #platine ,#disk, #left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn,  #pause-video-btn, #main_footer, #left_col,#artists_info,#smallmap, #txt_help_disk, .tuto').attr('style','')
-		
 	createTweenInfo: (curentTime) ->
 		that = @
-			
+	
 		updateInfo= (id)->
-			$('#play-video-btn,  .startvideofrompopin').attr('href', $('#list_artists li:eq('+id+') a').attr('href'))
-			$('#play-video-btn,  .startvideofrompopin').data('ratiovideo', $('#list_artists li:eq('+id+') a').data('ratiovideo'))
-			$('#list_artists li a.selected').removeClass('selected')
-			$('#list_artists li:eq('+id+') a').addClass('selected')
-			svgcontry = '#smallmap svg #'+$('#artists_info li:eq('+id+') .contry').data 'contrynicename'
-			console.log ' ---------- id updateInfo   : '+svgcontry
+			svgcontry = '#smallmap svg #'+that.el_artists_info_li.eq(id).find('.contry').data 'contrynicename'
+			that.el_btn_play_video.attr('href', that.el_list_artists_li.eq(id).find('a').attr('href'))
+			that.el_btn_play_video.data('ratiovideo', that.el_list_artists_li.eq(id).find('a').data('ratiovideo'))
+			that.el_list_artists_li.eq(id).find('a.selected').removeClass('selected')
+			that.el_list_artists_li.eq(id).find('a').addClass('selected')
 			TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {alpha: 0})
 			TweenMax.to(svgcontry, 0.5, {alpha: 1})
-			$('#artists_info li').removeClass('ontop')
-			$('#artists_info li:eq('+id+')').addClass('ontop')
-			$('#popin #artist_info .info').addClass('hide')
-			$('#popin #artist_info .info:eq('+id+')').removeClass('hide')
+			that.el_artists_info_li.removeClass('ontop')
+			that.el_artists_info_li.eq(id).addClass('ontop')
+			that.el_popin_artist_info_info.addClass('hide')
+			that.el_popin_artist_info_info.eq(id).removeClass('hide')
 
 		duration_sequence = @duration / 28 
 		sequence = '+='+(duration_sequence - 1)
@@ -145,14 +158,9 @@ class player_video
 			.fromTo('#artists_info li:eq(27) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
 			.to('#artists_info li:eq(27) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
 
-	removeTLIntro : ->
-		$('#left_col, #smallmap, #artists_info, #txt_help_disk, #list_artists li, #play-video-btn,  #pause-video-btn, #main_footer, .tuto').attr('style','')
-		this.kill()
-
 	setTimeLineIntro : (curentTime) ->
 		that = @
 		that.timelineIntro = new TimelineMax({paused: true})
-
 		TweenLite.set(['#block_video_disk', '#disk', '#platine'], {xPercent: -50,yPercent: -50});
 		TweenLite.set(['#smallmap'], {xPercent: -50});
 
@@ -169,34 +177,24 @@ class player_video
 			.from('#artists_info', .5 ,{opacity:0, ease:Power3.easeOut})
 			.from('#txt_help_disk', .8 ,{opacity:0, left: '-100%', ease:Power3.easeOut})
 			
-	setTimeLineKnob : (rot_from, rot_to) ->
-		that = @
-		if !rot_from
-			rot_from = 0
-		if !rot_to
-			rot_to = 360
-		
-		that.timelineKnob.fromTo('#disk', 168.182, {rotation:rot_from},{rotation:rot_to, ease:Linear.easeNone, repeat:-1})
-					
-	showFooter_header : ->
-		$('body').removeClass('hidefooter')
-		$('body').removeClass('hide_left_col')
+	setTimeLineKnob : (rot_from = 0, rot_to = 360) ->
+		console.log 'setTimeLineKnob' 
+		@timelineKnob.fromTo('#disk', @duration, {rotation:rot_from},{rotation:rot_to, ease:Linear.easeNone, repeat:-1})
 	
 	show_logo : ->
 		$('.logoWSH').trigger 'showLogo'
 
 	play_video_disk : ->
-		$('#player')[0].play()
-		$('body').removeClass 'disk_on_hold'
+		if !@isMobile
+			$('#player')[0].play()
+			$('body').removeClass 'disk_on_hold'
 		return
 
 	skipIntro : ->
 		console.log 'skipIntro : player play ------------------------------ ??????? '
 		@timelineIntro.play()
-		$('#popin').off 'endIntro'
-		console.log ' is mobile ? '+window.isMobile()
-		if window.isMobile()
-			console.log 'so play video damned it'
+		@el_popin.off 'endIntro'
+		if @isMobile
 			@play_video_disk()
 
 	changeCurrentTime: (@$deg, @$myplayer, dir, speed)->
@@ -204,20 +202,15 @@ class player_video
 			@$deg = 360  + @$deg
 		percentage = @$deg / 3.6
 		player_new_CT = @$myplayer.duration * (percentage/100)
-		# console.log 'player_new_CT : '+player_new_CT
 		@$myplayer.currentTime = player_new_CT
 
 		@sounddirection = if dir == 'clockwise' then 0 else 1
 		opositeDirection =  if dir == 'clockwise' then 1 else 0
 		
 		PBR = speed / @disk_speep
-
 		PBR = Math.min(Math.max((speed / @disk_speep), 0.9), 1.2)
 		roundedPBR = Number(PBR.toFixed(4))
-				
-		# console.log dir + '  @sounddirection  : '+@sounddirection  + '  // opositeDirection  : '+opositeDirection+'. speed : '+speed + '  PBR : '+roundedPBR
 		@scratchBank[@sounddirection].rate(roundedPBR)
-
 		sound_new_CT = if dir == 'clockwise' then player_new_CT else (@$myplayer.duration - player_new_CT)
 
 		if @scratchBank[opositeDirection].playing()
@@ -238,7 +231,6 @@ class player_video
 			else
 				PBR = 1.0
 				player.off 'timeupdate', checkEndTime
-			# player.playbackRate(PBR)
 			
 		@$player.on 'timeupdate', checkEndTime
 	
@@ -256,12 +248,12 @@ class player_video
 			type: 'rotation'
 			throwProps: true
 			onRelease: ->
-				if(!$('#disk').hasClass 'drag')
+				if(!that.el_disk.hasClass 'drag')
 					resumePlayDisk(this.rotation)
-					$('#disk').removeClass 'drag'
+					that.el_disk.removeClass 'drag'
 
 			onDragStart: ->
-				$('#disk').addClass 'drag'
+				that.el_disk.addClass 'drag'
 				that.timelineInfo.pause()
 			
 			onDrag: ->
@@ -280,7 +272,7 @@ class player_video
 				that.player.play()
 				that.scratchBank[0].stop()
 				that.scratchBank[1].stop()
-				$('#disk').removeClass 'drag'
+				that.el_disk.removeClass 'drag'
 				
 			snap: (endValue) ->
 				Math.round(endValue / rotationSnap) * rotationSnap
@@ -288,90 +280,66 @@ class player_video
 
 	bindEvents: ->
 		that = @
-		console.log 'bindEvents player_video'
-
-		# $(window).on 'resizeEnd', ->
-		# 	# Draggable.get("#disk").kill()
-		# 	# TweenMax.killTweensOf﻿($('#disk'))
-		# 	# TweenMax.killAll()
-		# 	# that.resetallCss()
-		# 	# setTimeout (->
-		# 	# 	console.log 'set scrather'
-		# 	# 	that.setScratcher()
-		# 	# 	return
-		# 	# ), 700
-			
-		# 	return
-		
 		#------------------- END TUTO -------------------#
-		$('.tuto').on 'click touchstart', (event) ->
-			$('.tuto').remove()
+		that.el_tuto.on 'click touchstart', (event) ->
+			this.remove()
 			event.stopPropagation()
 			event.preventDefault()
-			$(window).on 'pagehide blur', windowBlurred
-			$(window).on 'pageshow focus', windowFocused
+			that.el_window.on 'pagehide blur', windowBlurred
+			that.el_window.on 'pageshow focus', windowFocused
 			return false
 		#------------------- ENDINTRO -------------------#
-		$('#popin').on 'endIntro', ->
+		that.el_popin.on 'endIntro', ->
 			that.skipIntro()
 
 		#------------------- POPIN LISTNER -------------------#
-		$('#popin').on 'classChange', ->
-			console.log '->>>>>>>>>>>>>>>>>>>>>>> popin change '+($(this).hasClass 'hide')
-			if ($('body').hasClass('disk_on_hold'))
-				console.log 'disk on hold'
-				return
-			if $(this).hasClass 'hide'
-				console.log 'player play '
-				if that.player
-					that.player.play()
-			else
-				console.log 'player pause '
+		that.el_popin.on 
+			'showPopin': ->
 				if that.player
 					that.player.pause()
-			return
+				return
+			'closePopin': ->
+				if that.player
+					that.player.play()
+				return
+
 		#------------------- FOCUS ---------------------------#
 		windowBlurred = ->
 			console.log 'blur'
 			if that.player
 				that.player.pause()
 
-			$('body').trigger 'blur'
+			that.el_body.trigger 'blur'
 			return
 
 		windowFocused = ->
 			console.log 'focus'
-			$('body').trigger 'focus'
-			if $('body').hasClass 'video-disk-waiting'
+			that.el_body.trigger 'focus'
+			if that.el_body.hasClass 'video-disk-waiting'
 				console.log 'hasClass video-disk-waiting'
 				return
 
-			if !$('#popin').hasClass 'hide'
+			if !that.el_popin.hasClass 'hide'
 				console.log 'popin hasNotClass hide'
 				return
 			
-			if $('#contrys').hasClass 'selected'
-				console.log 'contrys hasClass selected'
-				return
-
 			if that.player
 				console.log 'play video'
 				if that.player.paused
 					that.player.play()
 			return
 
-
+		#------------------- SOUND ---------------------------#
+		that.el_sound.on 
+			'sound_off': ->
+				that.player.muted = true
+				return
+			'sound_on': ->
+				that.player.muted = false
+				return
 
 		#------------------- SOUND ---------------------------#
-		$('#sound').on 'sound_off', ->
-			that.player.muted = true
-
-		$('#sound').on 'sound_on', ->
-			console.log 'sound_on' + that.player.muted
-			that.player.muted = false
-
-		#------------------- SOUND ---------------------------#
-		$('#pause-video-btn').on 'click touchstart', (event) ->
+		that.el_pause_btn.on 'click touchstart', (event) ->
 			if $(this).hasClass 'paused'
 				that.player.play()
 			else
@@ -381,46 +349,19 @@ class player_video
 			event.preventDefault()
 			return false
 
-		#------------------- PLAYER JS ---------------------------#		
-		# videoDiskCanPlay = ->
-		# 	$('.skip_intro').show()
-			
-		# $('#player').on 'canplaythrough', videoDiskCanPlay
-		
-		# if $('#player')[0].readyState > 3
-		# 	videoDiskCanPlay()
-
-		$('#player').on 'play', (e) ->
-			console.log 'play video disk'
-			$('body').removeClass 'video-disk-waiting'
-			if $("#mode_switcher [data-face='face_pays']").hasClass 'selected'
-				that.player.pause()
+		#------------------- PLAYER VIDEO DISK ---------------------------#		
+		that.el_player.on
+			'play': ->
+				that.el_body.removeClass 'video-disk-waiting'
+				that.timelineKnob.play()
+				that.timelineInfo.play()
+				that.el_spiner.trigger 'hidespiner'
+				that.el_pause_btn.removeClass 'paused'
 				return
-			that.timelineKnob.play()
-			that.timelineInfo.play()
-			console.log 'trigger hide on player Js play '
-			$('.lds-dual-ring').trigger 'hidespiner'
-			$('#pause-video-btn').removeClass 'paused'
-
-		$('#player').on 'pause', ->
-			console.log 'pause'+that.timelineKnob
-			that.timelineInfo.pause()
-			that.timelineKnob.pause()
-			$('#pause-video-btn').addClass 'paused'
-
-		# $('#player').on 'waiting', ->
-		# 	console.log 'waiting'
-		# 	that.timelineInfo.pause()
-		# 	$('#pause-video-btn').addClass 'paused'
-
-		# $('#player').on 'stalled', ->
-		# 	console.log 'stalled'
-		# 	that.timelineInfo.pause()
-		# 	$('#pause-video-btn').addClass 'paused'
-
-		# $('#player').on 'seeked', ->
-		# 	that.timelineInfo.time that.player.currentTime
-		
-		
+			'pause': ->
+				that.timelineInfo.pause()
+				that.timelineKnob.pause()
+				that.el_pause_btn.addClass 'paused'
+				return
 
 module.player_video = player_video

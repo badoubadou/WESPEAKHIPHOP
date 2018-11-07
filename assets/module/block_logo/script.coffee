@@ -1,9 +1,9 @@
 class logo
 	'use strict'
-	constructor: (@spiner) ->
+	constructor: (@el_logowhite) ->
 		TweenLite.set 'svg', visibility: 'visible'
 		MorphSVGPlugin.convertToPath 'line'
-		@drawLogoWhite = new TimelineMax({paused:true, onComplete:@finishedShowLogo, onReverseComplete:@finishedHideLogo});
+		@drawLogoWhite = new TimelineMax({paused:true, onComplete:@finishedShowLogo, onCompleteParams:[@el_logowhite], onReverseComplete:@destroyLogo});
 		@drawLogoWhite.from("#logowhite #mask1_2_", 1, {drawSVG:0, ease:Power3.easeInOut} )
 			.from("#logowhite #mask2", 1.3, {drawSVG:0, ease:Power3.easeInOut},0.1 )
 			.from("#logowhite #mask3", 1.3, {drawSVG:0, ease:Power3.easeInOut},0.2 )
@@ -17,7 +17,7 @@ class logo
 			.from("#logowhite #mask11", 1.3, {drawSVG:0, ease:Power3.easeInOut},1 )
 			.from("#logowhite #mask12", 1.3, {drawSVG:0, ease:Power3.easeInOut},1.1 )
 			.from("#logowhite #mask13", 1.3, {drawSVG:0, ease:Power3.easeInOut},1.2 )
-		@dLB = new TimelineMax({paused:true, onComplete:@finishedBlackLogo});
+		@dLB = new TimelineMax({paused:true});
 		@dLB.from("#mask1_2_black", 1, {drawSVG: 0,ease: Power3.easeInOut})
 			.from("#mask2_black", 1.3, {drawSVG: 0,ease: Power3.easeInOut}, 0.1)
 			.from("#mask3_black", 1.3, {drawSVG: 0,ease: Power3.easeInOut}, 0.2)
@@ -34,64 +34,62 @@ class logo
 		@reverse_delay = null
 		@bindEvents()
 	
-	finishedBlackLogo : ->
-		this.kill()
-
-	finishedHideLogo : ->
-		$('#logowhite').remove()
-
-	showLogoBlack : ->
-		@dLB.play()
-	
-	finishedShowLogo : ->
-		$('#logowhite').trigger 'finishedShowLogo'
+	finishedShowLogo : (el_logowhite)->
+		el_logowhite.trigger 'finishedShowLogo'
 
 	showLogoWhite : ->
 		@drawLogoWhite.play()
 	
 	hideLogoWhite : ->
+		console.log 'hideLogoWhite'
 		that = @
-		$('#logowhite').data('animstatus', 'playing')
-		console.log 'catch hideLogo  data = '+$('#logowhite').data('animstatus')
-		@reverse_delay = TweenMax.delayedCall 4, ->
-			that.drawLogoWhite.reverse()	
-		
+		if @el_logowhite
+			@el_logowhite.data('animstatus', 'playing')
+			@reverse_delay = TweenMax.delayedCall 4, ->
+				if that.drawLogoWhite
+					that.drawLogoWhite.reverse()	
+			
 	pausehideLogo : ->
-		console.log 'pausehideLogo data = '+$('#logowhite').data('animstatus')
-		$('#logowhite').data('animstatus', 'paused')
-		@reverse_delay.pause()	
-		
+		console.log 'pausehideLogo'
+		if @el_logowhite
+			@el_logowhite.data('animstatus', 'paused')
+			@reverse_delay.pause()	
+			
 	resumehideLogo : ->
-		$('#logowhite').data('animstatus', 'playing')
-		@reverse_delay.resume()	
+		console.log 'resumehideLogo'
+		if @el_logowhite
+			@el_logowhite.data('animstatus', 'playing')
+			@reverse_delay.resume()	
 
 	destroyLogo : ->
-		$('#logowhite').off()
-		$('#logowhite').remove()
+		@el_logowhite.off()
+		@el_logowhite.remove()
+		@el_logowhite = null
+		@drawLogoWhite = null
+		@reverse_delay = null
+		console.log 'destroyLogo'
 
 	bindEvents : ->
 		that = @
-		$('#logowhite').on 'destroyLogo', ->
-			that.destroyLogo()
-
-		$('#logowhite').on 'showLogo', ->
-			that.showLogoWhite()
-
-		$('#logowhite').on 'hideLogo', ->
-			console.log 'catch hideLogo'
-			that.hideLogoWhite()
-
-		$('#logowhite').on 'pausehideLogo', ->
-			console.log 'catch pausehideLogo'
-			that.pausehideLogo()
-
-		$('#logowhite').on 'resumehideLogo', ->
-			console.log 'catch resumehideLogo'
-			that.resumehideLogo()
+		that.el_logowhite.on 
+			'destroyLogo': ->
+				that.destroyLogo()
+				return
+			'showLogo': ->
+				that.showLogoWhite()
+				return
+			'hideLogo': ->
+				that.hideLogoWhite()
+				return
+			'pausehideLogo': ->
+				that.pausehideLogo()
+				return
+			'resumehideLogo': ->
+				that.resumehideLogo()
+				return
 
 		$('.logoWSH').on 'showLogo', ->
-			console.log 'show logo'
-			$('.logoWSH').off()
-			that.showLogoBlack()
+			$(this).off()
+			that.dLB.play()
 
 module.logo = logo
