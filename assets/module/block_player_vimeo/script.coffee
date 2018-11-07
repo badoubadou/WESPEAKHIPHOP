@@ -7,6 +7,7 @@ class player_video_vimeo
 		@bindEvents()
 		@needStartSite = true
 
+
 	playYTisReady : ->
 		console.log  '----------------------- playYTisReady -------------------------------------------'
 		$('.lds-dual-ring').trigger 'hidespiner'
@@ -65,17 +66,28 @@ class player_video_vimeo
 		#------------------- ENTER SITE -------------------#
 		$('#enter_site').on 'click touchstart', (event)->
 			console.log 'enter site -------------------------------- dafucked ?  '
+			btnIntroInVisible = ->
+				# $('.intro_page').remove()
+				$('.video-container').removeClass 'hidden hide'
+				that.playerIntroVimeo.play()
+			
 			$('#enter_site').off()
-			$('.intro_page').remove()
-			$('.video-container').removeClass 'hidden hide'
+
+			delaytween = 0
+		
 			if(!$('body').hasClass 'device-ios')
 				GoInFullscreen($('body').get(0))
+				delaytween = 0.8
+			
+			console.log 'delaytween = '+delaytween
+			TweenMax.staggerTo('.btn_intro a',.3, {opacity:0, y:-10, delay:delaytween, ease:Power1.easeOut}, 0.2, btnIntroInVisible);
+			
+
 			setTimeout (->
-				console.log 'show skip_intro damed it'
 				TweenMax.fromTo('.skip_intro', .6, {autoAlpha:0, visibility:'visible'}, {autoAlpha:1 })
 				return
 			), 3000
-			that.playerIntroVimeo.play()
+			
 			event.stopPropagation()
 			event.preventDefault()
 			return false

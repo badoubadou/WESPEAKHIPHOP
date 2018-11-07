@@ -298,15 +298,27 @@
 
         //------------------- ENTER SITE -------------------#
         $('#enter_site').on('click touchstart', function(event) {
+          var btnIntroInVisible, delaytween;
           console.log('enter site -------------------------------- dafucked ?  ');
+          btnIntroInVisible = function() {
+            // $('.intro_page').remove()
+            $('.video-container').removeClass('hidden hide');
+            return that.playerIntroVimeo.play();
+          };
           $('#enter_site').off();
-          $('.intro_page').remove();
-          $('.video-container').removeClass('hidden hide');
+          delaytween = 0;
           if (!$('body').hasClass('device-ios')) {
             GoInFullscreen($('body').get(0));
+            delaytween = 0.8;
           }
+          console.log('delaytween = ' + delaytween);
+          TweenMax.staggerTo('.btn_intro a', .3, {
+            opacity: 0,
+            y: -10,
+            delay: delaytween,
+            ease: Power1.easeOut
+          }, 0.2, btnIntroInVisible);
           setTimeout((function() {
-            console.log('show skip_intro damed it');
             TweenMax.fromTo('.skip_intro', .6, {
               autoAlpha: 0,
               visibility: 'visible'
@@ -314,7 +326,6 @@
               autoAlpha: 1
             });
           }), 3000);
-          that.playerIntroVimeo.play();
           event.stopPropagation();
           event.preventDefault();
           return false;
