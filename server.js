@@ -13,6 +13,18 @@ app.get('/robots.txt', function (req, res) {
     res.type('text/plain');
     res.send("User-agent: *\nDisallow: \nSitemap: http://"+req.headers.host+"/sitemap.xml");
 });
+
+app.get('/manifest.json', function (req, res) {
+    filePath = '/public/manifest.json'; 
+    res.sendFile(path.join(__dirname + filePath));
+});
+
+app.get('/browserconfig.xml', function (req, res) {
+    filePath = '/public/browserconfig.xml'; 
+    res.sendFile(path.join(__dirname + filePath));
+});
+
+
 app.get('/sitemap.xml', function (req, res) {
     filePath = '/public/sitemap.xml';
     if ((req.headers.host == 'www.wespeakhiphop.com') || (req.headers.host == 'wespeakhiphop.com'))
