@@ -54,7 +54,8 @@ var toUpload = ['public/image/**', 'public/css/style.css', 'public/js/**', 'publ
 var watch_coffee = jsfile;
 var src_coffee = jsfile;
 var vendor = [
-    'assets/coffee/vendor/jquery.min.js',
+    // 'assets/coffee/vendor/jquery.min.js',
+    'assets/coffee/vendor/jquery-3.3.1.min.js',
     'assets/coffee/vendor/TweenMax.min.js',
     'assets/coffee/vendor/Draggable.min.js',
     'assets/coffee/vendor/DrawSVGPlugin.min.js',
