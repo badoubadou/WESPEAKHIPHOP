@@ -246,4 +246,8 @@ window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
 else window.addEventListener('load', loadDeferredStyles);</script><!-- Google Analytics--><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-126368952-1', 'auto');
-ga('send', 'pageview');</script><script async="" src="https://www.google-analytics.com/analytics.js"></script></body></html>
+ga('send', 'pageview');</script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script>if('serviceWorker' in navigator) {
+navigator.serviceWorker
+.register('/sw.js')
+.then(function() { console.log("Service Worker Registered"); });
+}</script></body></html>

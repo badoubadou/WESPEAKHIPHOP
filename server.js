@@ -24,6 +24,11 @@ app.get('/browserconfig.xml', function (req, res) {
     res.sendFile(path.join(__dirname + filePath));
 });
 
+app.get('/sw.js', function (req, res) {
+    filePath = '/public/sw.js'; 
+    res.sendFile(path.join(__dirname + filePath));
+});
+
 
 app.get('/sitemap.xml', function (req, res) {
     filePath = '/public/sitemap.xml';

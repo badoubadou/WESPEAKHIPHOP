@@ -2,7 +2,7 @@
   "name": "We Speak Hip hop",
   "short_name": "WSHH",
   "description": "A documentary series by Vina Hiridjee and David Boisseaux-Chical.",
-  "start_url": "/",
+  "start_url": "/index.html?homescreen=1",
   "background_color": "#232323",
   "theme_color": "#ffce00",
   "display": "fullscreen",

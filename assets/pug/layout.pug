@@ -137,3 +137,9 @@ html(lang= langage)
 			ga('send', 'pageview');
 		script(async='', src='https://www.google-analytics.com/analytics.js')
 
+		script.
+			if('serviceWorker' in navigator) {
+			navigator.serviceWorker
+			.register('/sw.js')
+			.then(function() { console.log("Service Worker Registered"); });
+			}
