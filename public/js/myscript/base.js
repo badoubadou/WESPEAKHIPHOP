@@ -1360,11 +1360,13 @@
         that = this;
         //------------------- END TUTO -------------------#
         that.el_tuto.on('click touchstart', function(event) {
-          this.remove();
-          event.stopPropagation();
-          event.preventDefault();
+          $(this).off();
+          $(this).remove();
+          that.el_tuto = null;
           that.el_window.on('pagehide blur', windowBlurred);
           that.el_window.on('pageshow focus', windowFocused);
+          event.stopPropagation();
+          event.preventDefault();
           return false;
         });
         //------------------- ENDINTRO -------------------#
