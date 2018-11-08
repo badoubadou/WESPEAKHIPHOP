@@ -366,7 +366,7 @@ gulp.task('gzipimg', function() {
 });
 
 gulp.task('uploadimgcomp', function() {
-    gulp.src('public/image/comp/rename/*')
+    gulp.src('public/image/comp/*')
     .pipe(s3({
         Bucket: 'wespeakhiphop-assets',
         ACL: 'public-read',
