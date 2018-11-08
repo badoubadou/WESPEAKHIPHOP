@@ -62,9 +62,13 @@ class logo
 			@reverse_delay.resume()	
 
 	destroyLogo : ->
-		@el_logowhite.off()
-		@el_logowhite.remove()
-		@el_logowhite = null
+		console.log 'destroyLogo'
+		if @el_logowhite
+			console.log 'do destroyLogo'
+			@el_logowhite.off()
+			@el_logowhite.remove()
+			@el_logowhite = null
+
 		@drawLogoWhite = null
 		@reverse_delay = null
 		console.log 'destroyLogo'

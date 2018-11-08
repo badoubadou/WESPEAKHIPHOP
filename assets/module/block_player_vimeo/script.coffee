@@ -1,13 +1,26 @@
 class player_video_vimeo
 	'use strict'
 	constructor: (@isMobile) ->
+		@Lang = $('#langage_short').val()
+		@el_spiner = $('.lds-dual-ring')
+		@el_logowhite = $('#logowhite')
+		@smallmapContry = '.smallmap-'+@Lang+'-st1'
+		@el_enter_site = $('#enter_site')
+		@el_video_container = $('.video-container')
+		@el_body = $('body')
+		@el_other_lang = $('#other_lang')
+		@el_sound = $('#sound')
+		@el_myfullscreen = $('.myfullscreen')
+		@el_popin = $('#popin')
+		@el_skip_intro = $('.skip_intro')
+		@el_to_hide_when_video = $('#abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite')
+
 		@playerYT = null
 		@playerIntroVimeo = null
 		@drawLogo = null
 		@bindEvents()
 		@needStartSite = true
 
-		@el_spiner = $('.lds-dual-ring')
 
 	playYTisReady : ->
 		console.log  '----------------------- playYTisReady -------------------------------------------'
@@ -19,7 +32,6 @@ class player_video_vimeo
 		@startSite()
 			
 	getIntroVimeo : ->
-		that = @
 		random = Math.floor(Math.random() * 4)
 		randomid = $('#idIntroYoutube input:eq('+random+')').val()
 		return randomid
@@ -28,11 +40,12 @@ class player_video_vimeo
 		btnIntroVisible = ->
 			console.log 'finished show btn'
 			player_video = new module.player_video()
-		console.log 'startSite then loadMap'
-		$('.lds-dual-ring').on 'loaderhidden', ->
-			$('#logowhite').trigger 'showLogo'
-		$('#logowhite').on 'finishedShowLogo', ->
-			TweenMax.set(['.btn_intro a'],{autoAlpha:0,visibility:"visible"});
+		el_logowhite = @el_logowhite
+		@el_spiner.on 'loaderhidden', ->
+			el_logowhite.trigger 'showLogo'
+		@el_logowhite.on 'finishedShowLogo', ->
+			console.log 'finishedShowLogo'
+			TweenMax.set('.btn_intro a',{autoAlpha:0,visibility:"visible"});
 			TweenMax.staggerFromTo('.btn_intro a',.8, {autoAlpha:0, y:-10},{autoAlpha:1, y:0, ease:Power1.easeOut}, 0.5, btnIntroVisible);
 		@loadMap()
 
@@ -41,44 +54,35 @@ class player_video_vimeo
 		return url.match(r)[2]
 	
 	loadMap : ->
-		console.log '---> load small map'
 		that = @
-		$.get 'https://d2ph0hjd2fuiu5.cloudfront.net/smallmap-'+$('#langage_short').val()+'.svg', (data) ->
+		$.get 'https://d2ph0hjd2fuiu5.cloudfront.net/smallmap-'+that.Lang+'.svg', (data) ->
 			console.log '---> small map loaded'
 			div = document.createElement('div')
 			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
 			$( "#smallmap" ).append( div.innerHTML )
-			TweenLite.set(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], {alpha:0});
-			TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {scale: 3, transformOrigin:'50% 50%', repeat:-1, yoyo:true})
+			TweenLite.set(that.smallmapContry, {alpha:0});
+			TweenMax.to(that.smallmapContry, 0.5, {scale: 3, transformOrigin:'50% 50%', repeat:-1, yoyo:true})
 			return
 
 	bindEvents: ->
 		that = @
-		#------------------- DOC READY ------------------------#
-		if !$('body').hasClass 'doc-ready'
-			$('body').on 'doc-ready', ->
-				console.log 'doc-ready'
-				# that.startSite(that)
-				$('body').off()
-		else
-			console.log 'doc already ready'
-			# that.startSite(that)
-
 		#------------------- ENTER SITE -------------------#
-		$('#enter_site').on 'click touchstart', (event)->
+		that.el_enter_site.on 'click touchstart', (event)->
 			console.log 'enter site -------------------------------- dafucked ?  '
 			btnIntroInVisible = ->
-				# $('.intro_page').remove()
-				$('.video-container').removeClass 'hidden hide'
+				that.el_video_container.removeClass 'hidden hide'
 				if(!that.isMobile)
 					that.playerIntroVimeo.play()
 			
-			$('#enter_site').off()
+			that.el_enter_site.off()
+			that.el_enter_site = null
+			that.el_other_lang.off()
+			that.el_other_lang = null
 
 			delaytween = 0
 		
-			if(!$('body').hasClass 'device-ios')
-				GoInFullscreen($('body').get(0))
+			if(!that.el_body.hasClass 'device-ios')
+				GoInFullscreen(that.el_body.get(0), that.el_myfullscreen)
 				delaytween = 0.8
 			
 			console.log 'delaytween = '+delaytween
@@ -96,41 +100,39 @@ class player_video_vimeo
 			event.preventDefault()
 			return false
 
-		$('#other_lang').on 'click touchstart', (event)->
+		that.el_other_lang.on 'click touchstart', (event)->
 			window.location.href = $(this).attr('href')
 			event.stopPropagation()
 			event.preventDefault()
 			return false
-			console.log 'cliked'
 						
-		
 		#------------------- SOUND ---------------------------#
-		$('#sound').on 'click touchstart', (event)->
+		that.el_sound.on 'click touchstart', (event)->
 			console.log 'click sound'
 			event_name = 'sound_on'
-			if ($('#sound').hasClass('actif'))
+			if (that.el_sound.hasClass('actif'))
 				event_name = 'sound_off'
 			$(this).trigger event_name
 			console.log event_name
-			$('#sound').toggleClass 'actif'
+			that.el_sound.toggleClass 'actif'
 			event.stopPropagation()
 			event.preventDefault()
 			return false			
 
 		#------------------- FULL SCREEN ---------------------------#				
-		GoInFullscreen = (element) ->
-			$('.myfullscreen').addClass 'actiffullscreen'
-			if element.requestFullscreen
-				element.requestFullscreen()
-			else if element.mozRequestFullScreen
-				element.mozRequestFullScreen()
-			else if element.webkitRequestFullscreen
-				element.webkitRequestFullscreen()
-			else if element.msRequestFullscreen
-				element.msRequestFullscreen()
+		GoInFullscreen = (el_body, btn) ->
+			btn.addClass 'actiffullscreen'
+			if el_body.requestFullscreen
+				el_body.requestFullscreen()
+			else if el_body.mozRequestFullScreen
+				el_body.mozRequestFullScreen()
+			else if el_body.webkitRequestFullscreen
+				el_body.webkitRequestFullscreen()
+			else if el_body.msRequestFullscreen
+				el_body.msRequestFullscreen()
 
 			if IsFullScreenCurrently()
-				$('.myfullscreen').addClass 'actiffullscreen'
+				btn.addClass 'actiffullscreen'
 			return
 
 		GoOutFullscreen = ->
@@ -153,10 +155,10 @@ class player_video_vimeo
 			else
 				true
 
-		$('.myfullscreen').on 'click touchstart', (event) ->
+		that.el_myfullscreen.on 'click touchstart', (event) ->
 			console.log 'click '
 			if !IsFullScreenCurrently()
-				GoInFullscreen($('body').get(0))
+				GoInFullscreen($('body').get(0), $(this))
 			else
 				GoOutFullscreen()
 			event.stopPropagation()
@@ -180,17 +182,17 @@ class player_video_vimeo
 			return
 
 		@playerIntroVimeo.on 'play', (event) ->
-			$('.video-container').removeClass 'trans'
-			if ($('#logowhite').data('animstatus')=='paused')
-				$('#logowhite').trigger 'resumehideLogo'
+			that.el_video_container.removeClass 'trans'
+			if (that.el_logowhite.data('animstatus')=='paused')
+				that.el_logowhite.trigger 'resumehideLogo'
 			else
-				$('#logowhite').trigger 'hideLogo'
+				that.el_logowhite.trigger 'hideLogo'
 			
 		
 			
 		@playerIntroVimeo.on 'pause', (event) ->
-			if ($('#logowhite').data('animstatus') == 'playing')
-				$('#logowhite').trigger 'pausehideLogo'
+			if (that.el_logowhite.data('animstatus') == 'playing')
+				that.el_logowhite.trigger 'pausehideLogo'
 			
 			
 		#------------------- FOCUS -------------------#
@@ -205,9 +207,8 @@ class player_video_vimeo
 		# 		that.playerYT.pause()
 
 		#------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
-		$('#popin').on 'closePopin', ->
-			console.log '------------ > closePopin stop player YOUTUBE'
-			$('.video-container').addClass 'trans'
+		@el_popin.on 'closePopin', ->
+			that.el_video_container.addClass 'trans'
 			if(that.playerYT)
 				that.playerYT.pause().then(->
 					# The video is paused
@@ -223,17 +224,22 @@ class player_video_vimeo
 			if(!that.isMobile)
 				$('#player')[0].play()
 				console.log 'play disk'
-			$('#popin').addClass('hide').trigger('endIntro').trigger('closePopin').attr('style','')
+			that.el_popin.addClass('hide').trigger('endIntro').trigger('closePopin').attr('style','')
 		
 		vid_intro_finished = ->
 			that.playerIntroVimeo.pause()
-			console.log 'vid_intro_finished ----- trigger end Intro trigger close  Popin serieux ie ? '
 			$('#close').removeClass('hide')
-			$('.video-container').removeClass 'with_btn_skip'
-			$('#logowhite').trigger 'destroyLogo'
+			
+			that.el_video_container.removeClass 'with_btn_skip'
+			that.el_logowhite.trigger 'destroyLogo'
+			
+			that.el_skip_intro.off()
+			that.el_skip_intro.remove()
+			that.el_skip_intro = null
+			that.playerIntroVimeo.off('ended')
+			that.playerIntroVimeo = null
 			$('.intro_page').remove()
-			$('.skip_intro').off()
-			$('.skip_intro').remove()
+
 			if(that.isMobile)
 				$('#player')[0].play()
 				finished_popin_transition()
@@ -241,7 +247,7 @@ class player_video_vimeo
 				TweenMax.to('#popin', .8,{opacity:0,onComplete:finished_popin_transition})
 			return
 
-		$('.skip_intro').on 'click touchstart',(event) ->
+		@el_skip_intro.on 'click touchstart',(event) ->
 			vid_intro_finished()
 			event.stopPropagation()
 			event.preventDefault()
@@ -255,24 +261,24 @@ class player_video_vimeo
 		checkratio =(ratiovideo) ->
 			console.log 'ratiovideo : '+ratiovideo
 			if(ratiovideo==4)
-				$('.video-container').addClass 'quatre_tier'
+				that.el_video_container.addClass 'quatre_tier'
 			else
-				$('.video-container').removeClass 'quatre_tier'
+				that.el_video_container.removeClass 'quatre_tier'
 
 		checkClassAndTrigger =()->
-			$('#abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite').addClass 'hide'
-			$('.video-container').removeClass 'hide'
-			$('.video-container').removeClass 'trans'
+			that.el_to_hide_when_video.addClass 'hide'
+			that.el_video_container.removeClass 'hide'
+			that.el_video_container.removeClass 'trans'
 			# $('.lds-dual-ring').trigger 'showspiner'
 			
 		startVimeo =(idVimeo)->
-			$('.lds-dual-ring').trigger 'showspiner'
-			$('#popin').trigger 'showVideo'
+			that.el_spiner.trigger 'showspiner'
+			that.el_popin.trigger 'showVideo'
 			
 			if (!that.playerYT)
 				options = {id: idVimeo, width: 640,loop: false, autoplay:true, email:false}
 				that.playerYT = new (Vimeo.Player)('playerYT', options)
-				that.playerYT.enableTextTrack($('#langage_short').val()).then((track) ->
+				that.playerYT.enableTextTrack(that.Lang).then((track) ->
 						).catch (error) ->
 						console.log '###', error
 						return
@@ -291,7 +297,6 @@ class player_video_vimeo
 
 		$('.startvideofrompopin, #list_artists li a, #play-video-btn, a.watch').on 'click touchstart', (event) ->
 			idVimeo = that.YouTubeGetID($(this).attr('href'))
-			console.log 'id vimeo : '+idVimeo
 			checkratio($(this).data('ratiovideo'))
 			checkClassAndTrigger()
 			startVimeo(idVimeo)

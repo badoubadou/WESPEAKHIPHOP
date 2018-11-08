@@ -23,6 +23,7 @@ class player_video
 		@el_list_artists_li = $('#list_artists li')
 		@el_tuto = $('.tuto')
 		@el_window = $(window)
+		@smallmapContry = '.smallmap-'+$('#langage_short').val()+'-st1'
 		#------------------- SET TWEEN ---------------------------#
 		@timelineKnob = new TimelineMax({paused: true})
 		@timelineInfo = new TimelineMax({paused: true, repeat: -1})
@@ -57,12 +58,12 @@ class player_video
 		that = @
 	
 		updateInfo= (id)->
-			svgcontry = '#smallmap svg #'+that.el_artists_info_li.eq(id).find('.contry').data 'contrynicename'
+			svgcontry = '#'+that.el_artists_info_li.eq(id).find('.contry').data 'contrynicename'
 			that.el_btn_play_video.attr('href', that.el_list_artists_li.eq(id).find('a').attr('href'))
 			that.el_btn_play_video.data('ratiovideo', that.el_list_artists_li.eq(id).find('a').data('ratiovideo'))
-			that.el_list_artists_li.eq(id).find('a.selected').removeClass('selected')
+			that.el_list_artists_li.find('a.selected').removeClass('selected')
 			that.el_list_artists_li.eq(id).find('a').addClass('selected')
-			TweenMax.to(['#smallmap svg .smallmap-fr-st1', '#smallmap svg .smallmap-en-st1'], 0.5, {alpha: 0})
+			TweenMax.to(that.smallmapContry, 0.5, {alpha: 0})
 			TweenMax.to(svgcontry, 0.5, {alpha: 1})
 			that.el_artists_info_li.removeClass('ontop')
 			that.el_artists_info_li.eq(id).addClass('ontop')
