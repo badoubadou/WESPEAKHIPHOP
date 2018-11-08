@@ -24,6 +24,7 @@ class player_video
 		@el_tuto = $('.tuto')
 		@el_window = $(window)
 		@smallmapContry = '.smallmap-'+$('#langage_short').val()+'-st1'
+		@svgcontry = null
 		#------------------- SET TWEEN ---------------------------#
 		@timelineKnob = new TimelineMax({paused: true})
 		@timelineInfo = new TimelineMax({paused: true, repeat: -1})
@@ -58,13 +59,13 @@ class player_video
 		that = @
 	
 		updateInfo= (id)->
-			svgcontry = '#'+that.el_artists_info_li.eq(id).find('.contry').data 'contrynicename'
+			that.svgcontry = '#'+that.el_artists_info_li.eq(id).find('.contry').data 'contrynicename'
 			that.el_btn_play_video.attr('href', that.el_list_artists_li.eq(id).find('a').attr('href'))
 			that.el_btn_play_video.data('ratiovideo', that.el_list_artists_li.eq(id).find('a').data('ratiovideo'))
 			that.el_list_artists_li.find('a.selected').removeClass('selected')
 			that.el_list_artists_li.eq(id).find('a').addClass('selected')
 			TweenMax.to(that.smallmapContry, 0.5, {alpha: 0})
-			TweenMax.to(svgcontry, 0.5, {alpha: 1})
+			TweenMax.to(that.svgcontry, 0.5, {alpha: 1})
 			that.el_artists_info_li.removeClass('ontop')
 			that.el_artists_info_li.eq(id).addClass('ontop')
 			that.el_popin_artist_info_info.addClass('hide')

@@ -781,6 +781,7 @@
         this.el_tuto = $('.tuto');
         this.el_window = $(window);
         this.smallmapContry = '.smallmap-' + $('#langage_short').val() + '-st1';
+        this.svgcontry = null;
         //------------------- SET TWEEN ---------------------------#
         this.timelineKnob = new TimelineMax({
           paused: true
@@ -824,8 +825,7 @@
         var duration_sequence, sequence, that, updateInfo;
         that = this;
         updateInfo = function(id) {
-          var svgcontry;
-          svgcontry = '#' + that.el_artists_info_li.eq(id).find('.contry').data('contrynicename');
+          that.svgcontry = '#' + that.el_artists_info_li.eq(id).find('.contry').data('contrynicename');
           that.el_btn_play_video.attr('href', that.el_list_artists_li.eq(id).find('a').attr('href'));
           that.el_btn_play_video.data('ratiovideo', that.el_list_artists_li.eq(id).find('a').data('ratiovideo'));
           that.el_list_artists_li.find('a.selected').removeClass('selected');
@@ -833,7 +833,7 @@
           TweenMax.to(that.smallmapContry, 0.5, {
             alpha: 0
           });
-          TweenMax.to(svgcontry, 0.5, {
+          TweenMax.to(that.svgcontry, 0.5, {
             alpha: 1
           });
           that.el_artists_info_li.removeClass('ontop');
