@@ -2892,6 +2892,8 @@ span.lign_header {
 #popin #contacttxt a:hover {
   text-decoration: none;
   color: #fff;
+  display: block;
+  margin: auto;
 }
 #popin #credittxt .warp_left,
 #popin #abouttxt .warp_left,
@@ -3074,6 +3076,41 @@ span.lign_header {
   padding: 3px;
   border: 2px #fff solid;
   border-radius: 50%;
+}
+#popin #close span.cross {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: rotate(45deg) translate(-50%, -50%);
+}
+#popin #close span.cross:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 25px;
+  background: #fff;
+  opacity: 1;
+}
+#popin #close span.cross:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 2px;
+  background: #fff;
+  opacity: 1;
+}
+#popin #close span.cross:before,
+#popin #close span.cross:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 @media screen and (max-width: 48em) and (orientation: landscape) {
   #popin #close {

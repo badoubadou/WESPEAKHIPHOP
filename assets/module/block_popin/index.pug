@@ -70,13 +70,14 @@
 			div
 				.contentpopin
 					.logo#logosharesite
-						img(src='https://d25xbwtykg1lvk.cloudfront.net/logo-white-share.svg', alt='We Speak Hip Hop')
+						svg(viewBox="0 0 52 32"  xmlns="http://www.w3.org/2000/svg")
+							use(href='#logopartenaire-logo-share-white')
+
 					.sharesite
 						.txt
 							| #{TRANSLATION.sharesite[langage]}
 						include share.pug
 						
 	#close.layer_top.btn.hide
-		include ../../../public/image/close.svg
-		//- img(src='https://d25xbwtykg1lvk.cloudfront.net/close.svg', alt='close')
+		span.cross
 		

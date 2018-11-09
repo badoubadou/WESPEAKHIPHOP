@@ -144,6 +144,8 @@
 		a:hover
 			text-decoration none
 			color #ffffff
+			display block
+			margin auto
 			
 		.warp_left
 		.warp_right
@@ -266,6 +268,19 @@
 		padding 3px
 		border 2px #fff solid
 		border-radius 50%
+		span.cross
+			display block
+			center()
+			transform rotate(45deg) translate(-50%,-50%)
+			&:after
+				pseudo_full(#fff, 1, 25px, 2px)
+			&:before
+				pseudo_full(#fff, 1, 2px, 25px)
+			
+			&:before
+			&:after
+				center()
+
 		@media $mobile_landscape
 			top 10px
 			right 10px

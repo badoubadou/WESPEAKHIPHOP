@@ -23,6 +23,13 @@ class popin
 		
 	bindEvents : ->
 		that = @
+		loadPopinAssets = ->
+			$.get 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/sprite-popin.svg', (data) ->
+				div = document.createElement('div')
+				div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
+				$( "#sprite_svg" ).append( div.innerHTML ).addClass('done')
+				return
+
 		showPopin = ($target)->
 			that.el_popin.trigger 'showPopin'
 			that.popin_content.addClass 'hide'
@@ -44,6 +51,7 @@ class popin
 		
 		#------------------- ABOUT SHARE CREDIT MAIL --------------------------#
 		$('.btnfooterpopin').on 'click touchstart', (e) ->
+			loadPopinAssets()
 			showPopin($(this).attr('href'))
 			e.stopPropagation()
 			e.preventDefault()
