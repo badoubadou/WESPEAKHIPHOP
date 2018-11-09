@@ -81,13 +81,13 @@ class logo
 		if @el_logowhite
 			console.log 'do destroyLogo'
 			@el_logowhite.off()
+			@drawLogoWhite.seek(@drawLogoWhite.duration())
 			svglogo = @el_logowhite.find('svg').detach()
 			$('#blacklogo').append(svglogo)
 			@el_logowhite = null
 			@setAnnimBlack()
-
-		@drawLogoWhite = null
-		@reverse_delay = null
+			@drawLogoWhite = null
+			@reverse_delay = null
 		console.log 'destroyLogo'
 
 	bindEvents : ->

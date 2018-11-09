@@ -54,7 +54,6 @@ var toUpload = ['public/image/**', 'public/css/style.css', 'public/js/**', 'publ
 var watch_coffee = jsfile;
 var src_coffee = jsfile;
 var vendor = [
-    // 'assets/coffee/vendor/jquery.min.js',
     'assets/coffee/vendor/jquery-3.3.1.min.js',
     'assets/coffee/vendor/TweenMax.min.js',
     'assets/coffee/vendor/Draggable.min.js',
@@ -79,16 +78,16 @@ gulp.task('makecoffee', function() {
 
 gulp.task('uglifymyjs', function () {
     return gulp.src('public/js/myscript/base.js')
-        .pipe(stripDebug())
+        // .pipe(stripDebug())
         .pipe(rename('base.min.js'))
-        .pipe(uglify(/* options */))
+        // .pipe(uglify(/* options */))
         .pipe(gulp.dest(dest+'js/myscript/'));
 });
 
 gulp.task('concatalljs', function() {
     return gulp.src(vendor)
         .pipe(concat('script-v3.min.js'))
-        .pipe(uglify(/* options */))
+        // .pipe(uglify(/* options */))
         .pipe(gulp.dest(dest+'js/'));
 });
 

@@ -10,7 +10,7 @@ spiner = new module.spiner($('.lds-dual-ring'))
 			typeof window.orientation != 'undefined' or navigator.userAgent.indexOf('IEMobile') != -1
 
 		isMobile = checkMobile()
-		console.log 'window load -> init vimeo ????'
+		console.log 'window load -> isMobile ?'+isMobile
 		player_video_vimeo = new module.player_video_vimeo(isMobile)
 		popin = new module.popin()
 		logo = new module.logo($('#logowhite'))

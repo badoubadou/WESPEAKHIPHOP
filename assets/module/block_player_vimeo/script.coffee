@@ -38,10 +38,12 @@ class player_video_vimeo
 
 	startSite: ()->
 		btnIntroVisible = ->
-			console.log 'finished show btn'
-			player_video = new module.player_video()
+			isMobile = typeof window.orientation != 'undefined' or navigator.userAgent.indexOf('IEMobile') != -1
+			console.log 'finished show btn = '+isMobile
+			player_video = new module.player_video(isMobile)
 		el_logowhite = @el_logowhite
-		loadSpriteDisk = @loadSpriteDisk 
+		loadSpriteDisk = @loadSpriteDisk
+		isMobile = @isMobile
 		@el_spiner.on 'loaderhidden', ->
 			el_logowhite.trigger 'showLogo'
 		@el_logowhite.on 'finishedShowLogo', ->
@@ -81,6 +83,7 @@ class player_video_vimeo
 			console.log 'enter site -------------------------------- dafucked ?  '
 			btnIntroInVisible = ->
 				that.el_video_container.removeClass 'hidden hide'
+				console.log 'that.isMobile = '+that.isMobile
 				if(!that.isMobile)
 					that.playerIntroVimeo.play()
 			
@@ -237,6 +240,8 @@ class player_video_vimeo
 			that.el_popin.addClass('hide').trigger('endIntro').trigger('closePopin').attr('style','')
 		
 		vid_intro_finished = ->
+			if(that.el_body.hasClass('vid_intro_finished'))
+				return
 			that.playerIntroVimeo.pause()
 			$('#close').removeClass('hide')
 			
@@ -255,6 +260,8 @@ class player_video_vimeo
 				finished_popin_transition()
 			else
 				TweenMax.to('#popin', .8,{opacity:0,onComplete:finished_popin_transition})
+
+			that.el_body.addClass 'vid_intro_finished'
 			return
 
 		@el_skip_intro.on 'click touchstart',(event) ->

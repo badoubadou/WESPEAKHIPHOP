@@ -1,7 +1,7 @@
 'use strict'
 class player_video
 	'use strict'
-	constructor: (@$container, @isMobile) ->
+	constructor: (@isMobile) ->
 		#------------------- SET VAR ---------------------------#
 		@disk_speep = 0.39
 		@scale_disk = 2
@@ -29,6 +29,8 @@ class player_video
 		@timelineKnob = new TimelineMax({paused: true})
 		@timelineInfo = new TimelineMax({paused: true, repeat: -1})
 		@timelineIntro = null
+
+		console.log '&&&&&&&&&&&&&&@isMobile = '+@isMobile
 		if @isMobile
 			$('#player').attr('src', 'https://d2p8kxfsucab5j.cloudfront.net/25f500kfaststartmobile.mp4')
 			@scale_disk = 1
@@ -193,10 +195,11 @@ class player_video
 		return
 
 	skipIntro : ->
-		console.log 'skipIntro : player play ------------------------------ ??????? '
+		console.log 'skipIntro : player play ------------------------------ ??????? @isMobile = '+@isMobile
 		@timelineIntro.play()
 		@el_popin.off 'endIntro'
 		if @isMobile
+			console.log 'play vidoeo on skip'
 			@play_video_disk()
 
 	changeCurrentTime: (@$deg, @$myplayer, dir, speed)->

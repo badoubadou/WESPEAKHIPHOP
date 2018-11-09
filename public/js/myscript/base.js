@@ -155,13 +155,14 @@
         if (this.el_logowhite) {
           console.log('do destroyLogo');
           this.el_logowhite.off();
+          this.drawLogoWhite.seek(this.drawLogoWhite.duration());
           svglogo = this.el_logowhite.find('svg').detach();
           $('#blacklogo').append(svglogo);
           this.el_logowhite = null;
           this.setAnnimBlack();
+          this.drawLogoWhite = null;
+          this.reverse_delay = null;
         }
-        this.drawLogoWhite = null;
-        this.reverse_delay = null;
         return console.log('destroyLogo');
       }
 
@@ -202,13 +203,124 @@
 }).call(this);
 
 (function() {
+  var popin;
+
+  popin = (function() {
+    'use strict';
+    class popin {
+      constructor() {
+        this.timelinePopin = null;
+        this.el_popin = $('#popin');
+        this.popin_content = $('.video-container, #abouttxt, #credittxt, #contacttxt, #artist_info, #shareinfo, #logowhite');
+        this.bindEvents();
+      }
+
+      afterclose(el_popin, popin_content) {
+        console.log('afterclose');
+        el_popin.addClass('hide').trigger('closePopin');
+        el_popin.removeAttr('style');
+        el_popin.find('*').removeAttr('style');
+        return popin_content.addClass('hide');
+      }
+
+      closePopin() {
+        console.log('closePopin @timelinePopin : ' + this.timelinePopin);
+        if (this.timelinePopin) {
+          return this.timelinePopin.reverse();
+        } else {
+          this.el_popin.addClass('hide');
+          return this.el_popin.trigger('closePopin');
+        }
+      }
+
+      bindEvents() {
+        var loadPopinAssets, showPopin, that;
+        that = this;
+        loadPopinAssets = function() {
+          return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/sprite-popin.svg', function(data) {
+            var div;
+            div = document.createElement('div');
+            div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
+            $("#sprite_svg").append(div.innerHTML).addClass('done');
+          });
+        };
+        showPopin = function($target) {
+          that.el_popin.trigger('showPopin');
+          that.popin_content.addClass('hide');
+          if (that.el_popin.hasClass('hide')) {
+            that.el_popin.removeClass('hide');
+          }
+          that.el_popin.removeClass('greybg');
+          if (($target === '#abouttxt') || ($target === '#credittxt') || ($target === '#contacttxt')) {
+            that.el_popin.addClass('greybg');
+          }
+          $($target).removeClass('hide');
+          if ($target === '.video-container') {
+            $('.video-container').addClass('trans');
+          }
+          that.timelinePopin = new TimelineMax({
+            onReverseComplete: that.afterclose,
+            onReverseCompleteParams: [that.el_popin, that.popin_content]
+          });
+          return that.timelinePopin.from('#popin', .6, {
+            opacity: 0,
+            ease: Power3.easeOut
+          }).fromTo($target, 0.5, {
+            alpha: 0,
+            marginTop: 30,
+            ease: Power1.easeInOut
+          }, {
+            alpha: 1,
+            marginTop: 0
+          });
+        };
+        
+        //------------------- ABOUT SHARE CREDIT MAIL --------------------------#
+        $('.btnfooterpopin').on('click touchstart', function(e) {
+          loadPopinAssets();
+          showPopin($(this).attr('href'));
+          e.stopPropagation();
+          e.preventDefault();
+          return false;
+        });
+        
+        //------------------- BIO  --------------------------#
+        $('.about-btn').on('click touchstart', function(e) {
+          showPopin('#artist_info');
+          e.stopPropagation();
+          e.preventDefault();
+          return false;
+        });
+        $('#close, #back').on('click touchstart', function(e) {
+          that.closePopin();
+          e.stopPropagation();
+          e.preventDefault();
+          return false;
+        });
+        return this.el_popin.on('showVideo', function() {
+          console.log('belors ?? - showVideo');
+          return showPopin('.video-container');
+        });
+      }
+
+    };
+
+    return popin;
+
+  }).call(this);
+
+  module.popin = popin;
+
+}).call(this);
+
+(function() {
   var player_video_vimeo;
 
   player_video_vimeo = (function() {
     'use strict';
     class player_video_vimeo {
-      constructor(isMobile) {
-        this.isMobile = isMobile;
+      constructor(isMobile1) {
+        this.isMobile = isMobile1;
         this.Lang = $('#langage_short').val();
         this.el_spiner = $('.lds-dual-ring');
         this.el_logowhite = $('#logowhite');
@@ -248,14 +360,16 @@
       }
 
       startSite() {
-        var btnIntroVisible, el_logowhite, loadSpriteDisk;
+        var btnIntroVisible, el_logowhite, isMobile, loadSpriteDisk;
         btnIntroVisible = function() {
-          var player_video;
-          console.log('finished show btn');
-          return player_video = new module.player_video();
+          var isMobile, player_video;
+          isMobile = typeof window.orientation !== 'undefined' || navigator.userAgent.indexOf('IEMobile') !== -1;
+          console.log('finished show btn = ' + isMobile);
+          return player_video = new module.player_video(isMobile);
         };
         el_logowhite = this.el_logowhite;
         loadSpriteDisk = this.loadSpriteDisk;
+        isMobile = this.isMobile;
         this.el_spiner.on('loaderhidden', function() {
           return el_logowhite.trigger('showLogo');
         });
@@ -324,6 +438,7 @@
           console.log('enter site -------------------------------- dafucked ?  ');
           btnIntroInVisible = function() {
             that.el_video_container.removeClass('hidden hide');
+            console.log('that.isMobile = ' + that.isMobile);
             if (!that.isMobile) {
               return that.playerIntroVimeo.play();
             }
@@ -496,6 +611,9 @@
           return that.el_popin.addClass('hide').trigger('endIntro').trigger('closePopin').attr('style', '');
         };
         vid_intro_finished = function() {
+          if (that.el_body.hasClass('vid_intro_finished')) {
+            return;
+          }
           that.playerIntroVimeo.pause();
           $('#close').removeClass('hide');
           that.el_video_container.removeClass('with_btn_skip');
@@ -515,6 +633,7 @@
               onComplete: finished_popin_transition
             });
           }
+          that.el_body.addClass('vid_intro_finished');
         };
         this.el_skip_intro.on('click touchstart', function(event) {
           vid_intro_finished();
@@ -587,117 +706,6 @@
   }).call(this);
 
   module.player_video_vimeo = player_video_vimeo;
-
-}).call(this);
-
-(function() {
-  var popin;
-
-  popin = (function() {
-    'use strict';
-    class popin {
-      constructor() {
-        this.timelinePopin = null;
-        this.el_popin = $('#popin');
-        this.popin_content = $('.video-container, #abouttxt, #credittxt, #contacttxt, #artist_info, #shareinfo, #logowhite');
-        this.bindEvents();
-      }
-
-      afterclose(el_popin, popin_content) {
-        console.log('afterclose');
-        el_popin.addClass('hide').trigger('closePopin');
-        el_popin.removeAttr('style');
-        el_popin.find('*').removeAttr('style');
-        return popin_content.addClass('hide');
-      }
-
-      closePopin() {
-        console.log('closePopin @timelinePopin : ' + this.timelinePopin);
-        if (this.timelinePopin) {
-          return this.timelinePopin.reverse();
-        } else {
-          this.el_popin.addClass('hide');
-          return this.el_popin.trigger('closePopin');
-        }
-      }
-
-      bindEvents() {
-        var loadPopinAssets, showPopin, that;
-        that = this;
-        loadPopinAssets = function() {
-          return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/sprite-popin.svg', function(data) {
-            var div;
-            div = document.createElement('div');
-            div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
-            $("#sprite_svg").append(div.innerHTML).addClass('done');
-          });
-        };
-        showPopin = function($target) {
-          that.el_popin.trigger('showPopin');
-          that.popin_content.addClass('hide');
-          if (that.el_popin.hasClass('hide')) {
-            that.el_popin.removeClass('hide');
-          }
-          that.el_popin.removeClass('greybg');
-          if (($target === '#abouttxt') || ($target === '#credittxt') || ($target === '#contacttxt')) {
-            that.el_popin.addClass('greybg');
-          }
-          $($target).removeClass('hide');
-          if ($target === '.video-container') {
-            $('.video-container').addClass('trans');
-          }
-          that.timelinePopin = new TimelineMax({
-            onReverseComplete: that.afterclose,
-            onReverseCompleteParams: [that.el_popin, that.popin_content]
-          });
-          return that.timelinePopin.from('#popin', .6, {
-            opacity: 0,
-            ease: Power3.easeOut
-          }).fromTo($target, 0.5, {
-            alpha: 0,
-            marginTop: 30,
-            ease: Power1.easeInOut
-          }, {
-            alpha: 1,
-            marginTop: 0
-          });
-        };
-        
-        //------------------- ABOUT SHARE CREDIT MAIL --------------------------#
-        $('.btnfooterpopin').on('click touchstart', function(e) {
-          loadPopinAssets();
-          showPopin($(this).attr('href'));
-          e.stopPropagation();
-          e.preventDefault();
-          return false;
-        });
-        
-        //------------------- BIO  --------------------------#
-        $('.about-btn').on('click touchstart', function(e) {
-          showPopin('#artist_info');
-          e.stopPropagation();
-          e.preventDefault();
-          return false;
-        });
-        $('#close, #back').on('click touchstart', function(e) {
-          that.closePopin();
-          e.stopPropagation();
-          e.preventDefault();
-          return false;
-        });
-        return this.el_popin.on('showVideo', function() {
-          console.log('belors ?? - showVideo');
-          return showPopin('.video-container');
-        });
-      }
-
-    };
-
-    return popin;
-
-  }).call(this);
-
-  module.popin = popin;
 
 }).call(this);
 
@@ -783,8 +791,7 @@
   player_video = (function() {
     'use strict';
     class player_video {
-      constructor($container, isMobile) {
-        this.$container = $container;
+      constructor(isMobile) {
         this.isMobile = isMobile;
         //------------------- SET VAR ---------------------------#
         this.disk_speep = 0.39;
@@ -818,6 +825,7 @@
           repeat: -1
         });
         this.timelineIntro = null;
+        console.log('&&&&&&&&&&&&&&@isMobile = ' + this.isMobile);
         if (this.isMobile) {
           $('#player').attr('src', 'https://d2p8kxfsucab5j.cloudfront.net/25f500kfaststartmobile.mp4');
           this.scale_disk = 1;
@@ -1279,10 +1287,11 @@
       }
 
       skipIntro() {
-        console.log('skipIntro : player play ------------------------------ ??????? ');
+        console.log('skipIntro : player play ------------------------------ ??????? @isMobile = ' + this.isMobile);
         this.timelineIntro.play();
         this.el_popin.off('endIntro');
         if (this.isMobile) {
+          console.log('play vidoeo on skip');
           return this.play_video_disk();
         }
       }
@@ -1502,7 +1511,7 @@
         return typeof window.orientation !== 'undefined' || navigator.userAgent.indexOf('IEMobile') !== -1;
       };
       isMobile = checkMobile();
-      console.log('window load -> init vimeo ????');
+      console.log('window load -> isMobile ?' + isMobile);
       player_video_vimeo = new module.player_video_vimeo(isMobile);
       popin = new module.popin();
       logo = new module.logo($('#logowhite'));
