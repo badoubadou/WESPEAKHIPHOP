@@ -41,10 +41,12 @@ class player_video_vimeo
 			console.log 'finished show btn'
 			player_video = new module.player_video()
 		el_logowhite = @el_logowhite
+		loadSpriteDisk = @loadSpriteDisk 
 		@el_spiner.on 'loaderhidden', ->
 			el_logowhite.trigger 'showLogo'
 		@el_logowhite.on 'finishedShowLogo', ->
 			console.log 'finishedShowLogo'
+			loadSpriteDisk()
 			TweenMax.set('.btn_intro a',{autoAlpha:0,visibility:"visible"});
 			TweenMax.staggerFromTo('.btn_intro a',.8, {autoAlpha:0, y:-10},{autoAlpha:1, y:0, ease:Power1.easeOut}, 0.5, btnIntroVisible);
 		@loadMap()
@@ -62,6 +64,14 @@ class player_video_vimeo
 			$( "#smallmap" ).append( div.innerHTML )
 			TweenLite.set(that.smallmapContry, {alpha:0});
 			TweenMax.to(that.smallmapContry, 0.5, {scale: 3, transformOrigin:'50% 50%', repeat:-1, yoyo:true})
+			return
+
+	loadSpriteDisk : ->
+		console.log 'loadSpriteDisk'
+		$.get 'https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/sprite_disk.svg', (data) ->
+			div = document.createElement('div')
+			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)
+			$( "#sprite_svg_disk" ).append( div.innerHTML )
 			return
 
 	bindEvents: ->
