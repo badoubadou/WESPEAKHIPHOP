@@ -287,7 +287,7 @@
       loadMap() {
         var that;
         that = this;
-        return $.get('https://d2ph0hjd2fuiu5.cloudfront.net/smallmap-' + that.Lang + '.svg', function(data) {
+        return $.get('https://d2p8kxfsucab5j.cloudfront.net/smallmap-' + that.Lang + '.svg', function(data) {
           var div;
           console.log('---> small map loaded');
           div = document.createElement('div');
@@ -819,7 +819,7 @@
         });
         this.timelineIntro = null;
         if (this.isMobile) {
-          $('#player').attr('src', 'https://d25xbwtykg1lvk.cloudfront.net/25f500kfaststartmobile.mp4');
+          $('#player').attr('src', 'https://d2p8kxfsucab5j.cloudfront.net/25f500kfaststartmobile.mp4');
           this.scale_disk = 1;
         }
         if (this.player.duration && this.player.duration > 1) {
@@ -830,11 +830,11 @@
         this.sounddirection = 0;
         this.scratchBank = [];
         this.scratchBank.push(new Howl({
-          src: ['https://d25xbwtykg1lvk.cloudfront.net/video.mp3'],
+          src: ['https://d2p8kxfsucab5j.cloudfront.net/video.mp3'],
           buffer: true
         }));
         this.scratchBank.push(new Howl({
-          src: ['https://d25xbwtykg1lvk.cloudfront.net/video_reverse.mp3'],
+          src: ['https://d2p8kxfsucab5j.cloudfront.net/video_reverse.mp3'],
           buffer: true
         }));
         

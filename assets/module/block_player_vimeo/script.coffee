@@ -57,7 +57,7 @@ class player_video_vimeo
 	
 	loadMap : ->
 		that = @
-		$.get 'https://d2ph0hjd2fuiu5.cloudfront.net/smallmap-'+that.Lang+'.svg', (data) ->
+		$.get 'https://d2p8kxfsucab5j.cloudfront.net/smallmap-'+that.Lang+'.svg', (data) ->
 			console.log '---> small map loaded'
 			div = document.createElement('div')
 			div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement)

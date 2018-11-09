@@ -84,49 +84,49 @@ body #main {
   font-style: normal;
   font-weight: normal;
   font-display: swap;
-  src: url("https://d25xbwtykg1lvk.cloudfront.net/Gotham-Book.woff2") format("woff2"), url("https://d25xbwtykg1lvk.cloudfront.net/Gotham-Book.woff") format("woff");
+  src: url("https://d2p8kxfsucab5j.cloudfront.net/Gotham-Book.woff2") format("woff2"), url("https://d2p8kxfsucab5j.cloudfront.net/Gotham-Book.woff") format("woff");
 }
 @font-face {
   font-family: Gotham;
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("https://d25xbwtykg1lvk.cloudfront.net/Gotham-Bold.woff2") format("woff2"), url("https://d25xbwtykg1lvk.cloudfront.net/Gotham-Bold.woff") format("woff");
+  src: url("https://d2p8kxfsucab5j.cloudfront.net/Gotham-Bold.woff2") format("woff2"), url("https://d2p8kxfsucab5j.cloudfront.net/Gotham-Bold.woff") format("woff");
 }
 @font-face {
   font-family: Gotham;
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url("https://d25xbwtykg1lvk.cloudfront.net/Gotham-Black.woff2") format("woff2"), url("https://d25xbwtykg1lvk.cloudfront.net/Gotham-Black.woff") format("woff");
+  src: url("https://d2p8kxfsucab5j.cloudfront.net/Gotham-Black.woff2") format("woff2"), url("https://d2p8kxfsucab5j.cloudfront.net/Gotham-Black.woff") format("woff");
 }
 @font-face {
   font-family: Gotham;
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url("https://d25xbwtykg1lvk.cloudfront.net/Gotham-Light.woff2") format("woff2"), url("https://d25xbwtykg1lvk.cloudfront.net/Gotham-Light.woff") format("woff");
+  src: url("https://d2p8kxfsucab5j.cloudfront.net/Gotham-Light.woff2") format("woff2"), url("https://d2p8kxfsucab5j.cloudfront.net/Gotham-Light.woff") format("woff");
 }
 @font-face {
   font-family: Knockout;
   font-style: normal;
   font-weight: normal;
   font-display: swap;
-  src: url("https://d25xbwtykg1lvk.cloudfront.net/Knockout-HTF70-FullWelterwt.woff2") format("woff2"), url("https://d25xbwtykg1lvk.cloudfront.net/Knockout-HTF70-FullWelterwt.woff") format("woff");
+  src: url("https://d2p8kxfsucab5j.cloudfront.net/Knockout-HTF70-FullWelterwt.woff2") format("woff2"), url("https://d2p8kxfsucab5j.cloudfront.net/Knockout-HTF70-FullWelterwt.woff") format("woff");
 }
 @font-face {
   font-family: Knockout;
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url("https://d25xbwtykg1lvk.cloudfront.net/Knockout-HTF28-JuniorFeatherwt.woff2") format("woff2"), url("https://d25xbwtykg1lvk.cloudfront.net/Knockout-HTF28-JuniorFeatherwt.woff") format("woff");
+  src: url("https://d2p8kxfsucab5j.cloudfront.net/Knockout-HTF28-JuniorFeatherwt.woff2") format("woff2"), url("https://d2p8kxfsucab5j.cloudfront.net/Knockout-HTF28-JuniorFeatherwt.woff") format("woff");
 }
 @font-face {
   font-family: Knockout;
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("https://d25xbwtykg1lvk.cloudfront.net/Knockout-HTF68-FF-Regular.woff2") format("woff2"), url("https://d25xbwtykg1lvk.cloudfront.net/Knockout-HTF68-FF-Regular.woff") format("woff");
+  src: url("https://d2p8kxfsucab5j.cloudfront.net/Knockout-HTF68-FF-Regular.woff2") format("woff2"), url("https://d2p8kxfsucab5j.cloudfront.net/Knockout-HTF68-FF-Regular.woff") format("woff");
 }
 /* normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {

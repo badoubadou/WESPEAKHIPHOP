@@ -115,7 +115,7 @@ html(lang= langage)
 		
 			
 		include ../module/block_footer/index.pug
-		// include ../module/block_resize/index.pug
+		
 		noscript#deferred-styles
 			link(rel='stylesheet', type='text/css', href='https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/style.min.css')
 		script.
@@ -131,7 +131,6 @@ html(lang= langage)
 			if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
 			else window.addEventListener('load', loadDeferredStyles);
 
-		// Google Analytics
 		script.
 			window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 			ga('create', 'UA-126368952-1', 'auto');
