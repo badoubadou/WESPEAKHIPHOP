@@ -248,7 +248,7 @@ class player_video_vimeo
 			that.el_skip_intro = null
 			that.playerIntroVimeo.off('ended')
 			that.playerIntroVimeo = null
-			$('.intro_page').remove()
+			$('.intro_page').hide()
 
 			if(that.isMobile)
 				$('#player')[0].play()

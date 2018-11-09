@@ -21,89 +21,49 @@
           onCompleteParams: [this.el_logowhite],
           onReverseComplete: this.destroyLogo
         });
-        this.drawLogoWhite.from("#logowhite #mask1_2_", 1, {
+        this.drawLogoWhite.from("#logowhite #mask1_2_black", 1, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }).from("#logowhite #mask2", 1.3, {
+        }).from("#logowhite #mask2_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.1).from("#logowhite #mask3", 1.3, {
+        }, 0.1).from("#logowhite #mask3_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.2).from("#logowhite #mask4", 1.3, {
+        }, 0.2).from("#logowhite #mask4_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.3).from("#logowhite #mask5", 1.3, {
+        }, 0.3).from("#logowhite #mask5_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.4).from("#logowhite #mask6", 1.3, {
+        }, 0.4).from("#logowhite #mask6_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.5).from("#logowhite #mask7", 1.3, {
+        }, 0.5).from("#logowhite #mask7_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.6).from("#logowhite #mask8", 1.3, {
+        }, 0.6).from("#logowhite #mask8_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.7).from("#logowhite #mask9", 1.3, {
+        }, 0.7).from("#logowhite #mask9_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.8).from("#logowhite #mask10", 1.3, {
+        }, 0.8).from("#logowhite #mask10_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.9).from("#logowhite #mask11", 1.3, {
+        }, 0.9).from("#logowhite #mask11_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 1).from("#logowhite #mask12", 1.3, {
+        }, 1).from("#logowhite #mask12_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 1.1).from("#logowhite #mask13", 1.3, {
+        }, 1.1).from("#logowhite #mask13_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
         }, 1.2);
         this.dLB = new TimelineMax({
           paused: true
         });
-        this.dLB.from("#mask1_2_black", 1, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }).from("#mask2_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.1).from("#mask3_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.2).from("#mask4_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.3).from("#mask5_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.4).from("#mask6_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.5).from("#mask7_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.6).from("#mask8_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.7).from("#mask9_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.8).from("#mask10_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.9).from("#mask11_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1).from("#mask12_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1.1).from("#mask13_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1.2);
         this.reverse_delay = null;
         this.bindEvents();
       }
@@ -146,13 +106,59 @@
         }
       }
 
+      setAnnimBlack() {
+        return this.dLB.from("#blacklogo #mask1_2_black", 1, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }).from("#blacklogo #mask2_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.1).from("#blacklogo #mask3_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.2).from("#blacklogo #mask4_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.3).from("#blacklogo #mask5_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.4).from("#blacklogo #mask6_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.5).from("#blacklogo #mask7_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.6).from("#blacklogo #mask8_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.7).from("#blacklogo #mask9_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.8).from("#blacklogo #mask10_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.9).from("#blacklogo #mask11_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 1).from("#blacklogo #mask12_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 1.1).from("#blacklogo #mask13_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 1.2);
+      }
+
       destroyLogo() {
+        var svglogo;
         console.log('destroyLogo');
         if (this.el_logowhite) {
           console.log('do destroyLogo');
           this.el_logowhite.off();
-          this.el_logowhite.remove();
+          svglogo = this.el_logowhite.find('svg').detach();
+          $('#blacklogo').append(svglogo);
           this.el_logowhite = null;
+          this.setAnnimBlack();
         }
         this.drawLogoWhite = null;
         this.reverse_delay = null;
@@ -499,7 +505,7 @@
           that.el_skip_intro = null;
           that.playerIntroVimeo.off('ended');
           that.playerIntroVimeo = null;
-          $('.intro_page').remove();
+          $('.intro_page').hide();
           if (that.isMobile) {
             $('#player')[0].play();
             finished_popin_transition();

@@ -1,7 +1,12 @@
 #popin.absolute.layer_top_plus.full_height.full_width
 	.intro_page.centered.layer_top_plus
 		.layer_1#logowhite.hidden.logo(data-animstatus='waiting-init')
-			include ../../../public/image/logo-white.svg
+			//- include ../../../public/image/logo-white.svg
+			if langage == 'fr'
+				include ../../../public/image/logo.svg
+			else
+				include ../../../public/image/logo-en.svg
+
 
 		.btn_intro
 			if langage == 'en'

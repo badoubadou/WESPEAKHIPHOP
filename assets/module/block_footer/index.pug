@@ -1,6 +1,5 @@
 #main_footer.footer.layer_top
 	include ../block_help/index.pug
-
 	.warp_ul_footer
 		ul#left-ul
 			li.seperateur
@@ -33,12 +32,15 @@
 			li
 				span.myfullscreen
 					#fs
-						include ../../../public/image/fullscreen.svg
+						svg(viewBox="0 0 30 30"  xmlns="http://www.w3.org/2000/svg" overflow="visible")
+							use(href='#fullscreen_svg', x='0', y='0')
 					#fsactif
-						include ../../../public/image/fullscreen_actif.svg
+						svg(viewBox="0 0 30 30"  xmlns="http://www.w3.org/2000/svg" overflow="visible")
+							use(href='#fullscreen_actif_svg', x='0', y='0')
 			
 			li
 				a#share.btnfooterpopin(href='#shareinfo' title=TRANSLATION.partager[langage])
-					include ../../../public/image/share.svg
+					svg(viewBox="0 0 13 13"  xmlns="http://www.w3.org/2000/svg" overflow="visible")
+						use(href='#share_svg', x='0', y='0')
 					span.txt
 						| #{TRANSLATION.partager[langage]}
