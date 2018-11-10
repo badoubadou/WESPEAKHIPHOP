@@ -41,6 +41,7 @@ class player_video_vimeo
 			isMobile = typeof window.orientation != 'undefined' or navigator.userAgent.indexOf('IEMobile') != -1
 			console.log 'finished show btn = '+isMobile
 			player_video = new module.player_video(isMobile)
+
 		el_logowhite = @el_logowhite
 		loadSpriteDisk = @loadSpriteDisk
 		isMobile = @isMobile
@@ -80,10 +81,15 @@ class player_video_vimeo
 		that = @
 		#------------------- ENTER SITE -------------------#
 		that.el_enter_site.on 'click touchstart', (event)->
-			console.log 'enter site -------------------------------- dafucked ?  '
+			console.log 'enter site -------------------------------- '
 			btnIntroInVisible = ->
 				that.el_video_container.removeClass 'hidden hide'
-				console.log 'that.isMobile = '+that.isMobile
+				
+				$('.btn_intro a').on 'click', (event)->
+					event.stopPropagation()
+					event.preventDefault()
+					return false
+
 				if(!that.isMobile)
 					that.playerIntroVimeo.play()
 			

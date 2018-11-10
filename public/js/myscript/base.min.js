@@ -19,45 +19,46 @@
           paused: true,
           onComplete: this.finishedShowLogo,
           onCompleteParams: [this.el_logowhite],
-          onReverseComplete: this.destroyLogo
+          onReverseComplete: this.finishedHideLogo,
+          onReverseCompleteParams: [this.el_logowhite]
         });
-        this.drawLogoWhite.from("#logowhite #mask1_2_black", 1, {
+        this.drawLogoWhite.from("#mask1_2_black", 1, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }).from("#logowhite #mask2_black", 1.3, {
+        }).from("#mask2_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.1).from("#logowhite #mask3_black", 1.3, {
+        }, 0.1).from("#mask3_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.2).from("#logowhite #mask4_black", 1.3, {
+        }, 0.2).from("#mask4_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.3).from("#logowhite #mask5_black", 1.3, {
+        }, 0.3).from("#mask5_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.4).from("#logowhite #mask6_black", 1.3, {
+        }, 0.4).from("#mask6_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.5).from("#logowhite #mask7_black", 1.3, {
+        }, 0.5).from("#mask7_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.6).from("#logowhite #mask8_black", 1.3, {
+        }, 0.6).from("#mask8_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.7).from("#logowhite #mask9_black", 1.3, {
+        }, 0.7).from("#mask9_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.8).from("#logowhite #mask10_black", 1.3, {
+        }, 0.8).from("#mask10_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 0.9).from("#logowhite #mask11_black", 1.3, {
+        }, 0.9).from("#mask11_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 1).from("#logowhite #mask12_black", 1.3, {
+        }, 1).from("#mask12_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
-        }, 1.1).from("#logowhite #mask13_black", 1.3, {
+        }, 1.1).from("#mask13_black", 1.3, {
           drawSVG: 0,
           ease: Power3.easeInOut
         }, 1.2);
@@ -70,6 +71,10 @@
 
       finishedShowLogo(el_logowhite) {
         return el_logowhite.trigger('finishedShowLogo');
+      }
+
+      finishedHideLogo(el_logowhite) {
+        return el_logowhite.trigger('finishedHideLogo');
       }
 
       showLogoWhite() {
@@ -106,70 +111,29 @@
         }
       }
 
-      setAnnimBlack() {
-        return this.dLB.from("#blacklogo #mask1_2_black", 1, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }).from("#blacklogo #mask2_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.1).from("#blacklogo #mask3_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.2).from("#blacklogo #mask4_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.3).from("#blacklogo #mask5_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.4).from("#blacklogo #mask6_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.5).from("#blacklogo #mask7_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.6).from("#blacklogo #mask8_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.7).from("#blacklogo #mask9_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.8).from("#blacklogo #mask10_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.9).from("#blacklogo #mask11_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1).from("#blacklogo #mask12_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1.1).from("#blacklogo #mask13_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1.2);
-      }
-
       destroyLogo() {
         var svglogo;
-        console.log('destroyLogo');
+        console.log('destroyLogo -> is in fact move logo ');
         if (this.el_logowhite) {
-          console.log('do destroyLogo');
+          console.log('do move logo');
           this.el_logowhite.off();
           this.drawLogoWhite.seek(this.drawLogoWhite.duration());
+          $('#txth1').remove();
           svglogo = this.el_logowhite.find('svg').detach();
           $('#blacklogo').append(svglogo);
           this.el_logowhite = null;
-          this.setAnnimBlack();
-          this.drawLogoWhite = null;
           this.reverse_delay = null;
+          return $('.btn_intro a').off().remove();
         }
-        return console.log('destroyLogo');
       }
 
       bindEvents() {
         var that;
         that = this;
         that.el_logowhite.on({
+          'finishedHideLogo': function() {
+            return that.destroyLogo();
+          },
           'destroyLogo': function() {
             that.destroyLogo();
           },
@@ -188,7 +152,7 @@
         });
         return $('.logoWSH').on('showLogo', function() {
           $(this).off();
-          return that.dLB.play();
+          return that.drawLogoWhite.play();
         });
       }
 
@@ -199,117 +163,6 @@
   }).call(this);
 
   module.logo = logo;
-
-}).call(this);
-
-(function() {
-  var popin;
-
-  popin = (function() {
-    'use strict';
-    class popin {
-      constructor() {
-        this.timelinePopin = null;
-        this.el_popin = $('#popin');
-        this.popin_content = $('.video-container, #abouttxt, #credittxt, #contacttxt, #artist_info, #shareinfo, #logowhite');
-        this.bindEvents();
-      }
-
-      afterclose(el_popin, popin_content) {
-        console.log('afterclose');
-        el_popin.addClass('hide').trigger('closePopin');
-        el_popin.removeAttr('style');
-        el_popin.find('*').removeAttr('style');
-        return popin_content.addClass('hide');
-      }
-
-      closePopin() {
-        console.log('closePopin @timelinePopin : ' + this.timelinePopin);
-        if (this.timelinePopin) {
-          return this.timelinePopin.reverse();
-        } else {
-          this.el_popin.addClass('hide');
-          return this.el_popin.trigger('closePopin');
-        }
-      }
-
-      bindEvents() {
-        var loadPopinAssets, showPopin, that;
-        that = this;
-        loadPopinAssets = function() {
-          return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/sprite-popin.svg', function(data) {
-            var div;
-            div = document.createElement('div');
-            div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
-            $("#sprite_svg").append(div.innerHTML).addClass('done');
-          });
-        };
-        showPopin = function($target) {
-          that.el_popin.trigger('showPopin');
-          that.popin_content.addClass('hide');
-          if (that.el_popin.hasClass('hide')) {
-            that.el_popin.removeClass('hide');
-          }
-          that.el_popin.removeClass('greybg');
-          if (($target === '#abouttxt') || ($target === '#credittxt') || ($target === '#contacttxt')) {
-            that.el_popin.addClass('greybg');
-          }
-          $($target).removeClass('hide');
-          if ($target === '.video-container') {
-            $('.video-container').addClass('trans');
-          }
-          that.timelinePopin = new TimelineMax({
-            onReverseComplete: that.afterclose,
-            onReverseCompleteParams: [that.el_popin, that.popin_content]
-          });
-          return that.timelinePopin.from('#popin', .6, {
-            opacity: 0,
-            ease: Power3.easeOut
-          }).fromTo($target, 0.5, {
-            alpha: 0,
-            marginTop: 30,
-            ease: Power1.easeInOut
-          }, {
-            alpha: 1,
-            marginTop: 0
-          });
-        };
-        
-        //------------------- ABOUT SHARE CREDIT MAIL --------------------------#
-        $('.btnfooterpopin').on('click touchstart', function(e) {
-          loadPopinAssets();
-          showPopin($(this).attr('href'));
-          e.stopPropagation();
-          e.preventDefault();
-          return false;
-        });
-        
-        //------------------- BIO  --------------------------#
-        $('.about-btn').on('click touchstart', function(e) {
-          showPopin('#artist_info');
-          e.stopPropagation();
-          e.preventDefault();
-          return false;
-        });
-        $('#close, #back').on('click touchstart', function(e) {
-          that.closePopin();
-          e.stopPropagation();
-          e.preventDefault();
-          return false;
-        });
-        return this.el_popin.on('showVideo', function() {
-          console.log('belors ?? - showVideo');
-          return showPopin('.video-container');
-        });
-      }
-
-    };
-
-    return popin;
-
-  }).call(this);
-
-  module.popin = popin;
 
 }).call(this);
 
@@ -435,10 +288,14 @@
         //------------------- ENTER SITE -------------------#
         that.el_enter_site.on('click touchstart', function(event) {
           var btnIntroInVisible, delaytween;
-          console.log('enter site -------------------------------- dafucked ?  ');
+          console.log('enter site -------------------------------- ');
           btnIntroInVisible = function() {
             that.el_video_container.removeClass('hidden hide');
-            console.log('that.isMobile = ' + that.isMobile);
+            $('.btn_intro a').on('click', function(event) {
+              event.stopPropagation();
+              event.preventDefault();
+              return false;
+            });
             if (!that.isMobile) {
               return that.playerIntroVimeo.play();
             }
@@ -710,77 +567,113 @@
 }).call(this);
 
 (function() {
-  var spiner;
+  var popin;
 
-  spiner = (function() {
+  popin = (function() {
     'use strict';
-    class spiner {
-      constructor(myspiner1) {
-        this.myspiner = myspiner1;
-        this.subring = ['.ring_1', '.ring_2', '.ring_3'];
-        console.log('----------------- > constructor spinner');
-        TweenLite.set(this.subring, {
-          xPercent: -50,
-          yPercent: -50
-        });
-        this.timelineSpiner = new TimelineMax({
-          paused: true,
-          onReverseComplete: this.maskSpiner,
-          onReverseCompleteParams: [this.myspiner],
-          onStart: this.unmaskSpiner,
-          onStartParams: [this.myspiner]
-        }).staggerFromTo(this.subring, 2, {
-          opacity: 0
-        }, {
-          scale: 1,
-          opacity: 1,
-          ease: Power3.easeOut
-        }, 0.5);
+    class popin {
+      constructor() {
+        this.timelinePopin = null;
+        this.el_popin = $('#popin');
+        this.popin_content = $('.video-container, #abouttxt, #credittxt, #contacttxt, #artist_info, #shareinfo, #logowhite');
         this.bindEvents();
-        this.showSpiner();
       }
 
-      maskSpiner(myspiner) {
-        myspiner.trigger('loaderhidden');
-        return myspiner.addClass('no_spinner').hide();
+      afterclose(el_popin, popin_content) {
+        console.log('afterclose');
+        el_popin.addClass('hide').trigger('closePopin');
+        el_popin.removeAttr('style');
+        el_popin.find('*').removeAttr('style');
+        return popin_content.addClass('hide');
       }
 
-      unmaskSpiner(myspiner) {
-        console.log('unmaskSpiner -> ');
-        return myspiner.removeClass('no_spinner').show();
-      }
-
-      showSpiner() {
-        var that;
-        that = this;
-        return that.timelineSpiner.play();
-      }
-
-      hideSpiner() {
-        var that;
-        that = this;
-        return that.timelineSpiner.reverse();
+      closePopin() {
+        console.log('closePopin @timelinePopin : ' + this.timelinePopin);
+        if (this.timelinePopin) {
+          return this.timelinePopin.reverse();
+        } else {
+          this.el_popin.addClass('hide');
+          return this.el_popin.trigger('closePopin');
+        }
       }
 
       bindEvents() {
-        var that;
+        var loadPopinAssets, showPopin, that;
         that = this;
-        that.myspiner.on('hidespiner', function() {
-          return that.hideSpiner(that.myspiner);
+        loadPopinAssets = function() {
+          return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/sprite-popin.svg', function(data) {
+            var div;
+            div = document.createElement('div');
+            div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
+            $("#sprite_svg").append(div.innerHTML).addClass('done');
+          });
+        };
+        showPopin = function($target) {
+          that.el_popin.trigger('showPopin');
+          that.popin_content.addClass('hide');
+          if (that.el_popin.hasClass('hide')) {
+            that.el_popin.removeClass('hide');
+          }
+          that.el_popin.removeClass('greybg');
+          if (($target === '#abouttxt') || ($target === '#credittxt') || ($target === '#contacttxt')) {
+            that.el_popin.addClass('greybg');
+          }
+          $($target).removeClass('hide');
+          if ($target === '.video-container') {
+            $('.video-container').addClass('trans');
+          }
+          that.timelinePopin = new TimelineMax({
+            onReverseComplete: that.afterclose,
+            onReverseCompleteParams: [that.el_popin, that.popin_content]
+          });
+          return that.timelinePopin.from('#popin', .6, {
+            opacity: 0,
+            ease: Power3.easeOut
+          }).fromTo($target, 0.5, {
+            alpha: 0,
+            marginTop: 30,
+            ease: Power1.easeInOut
+          }, {
+            alpha: 1,
+            marginTop: 0
+          });
+        };
+        
+        //------------------- ABOUT SHARE CREDIT MAIL --------------------------#
+        $('.btnfooterpopin').on('click touchstart', function(e) {
+          loadPopinAssets();
+          showPopin($(this).attr('href'));
+          e.stopPropagation();
+          e.preventDefault();
+          return false;
         });
-        return that.myspiner.on('showspiner', function() {
-          console.log('catch showspiner');
-          return that.showSpiner(that.myspiner);
+        
+        //------------------- BIO  --------------------------#
+        $('.about-btn').on('click touchstart', function(e) {
+          showPopin('#artist_info');
+          e.stopPropagation();
+          e.preventDefault();
+          return false;
+        });
+        $('#close, #back').on('click touchstart', function(e) {
+          that.closePopin();
+          e.stopPropagation();
+          e.preventDefault();
+          return false;
+        });
+        return this.el_popin.on('showVideo', function() {
+          console.log('belors ?? - showVideo');
+          return showPopin('.video-container');
         });
       }
 
     };
 
-    return spiner;
+    return popin;
 
   }).call(this);
 
-  module.spiner = spiner;
+  module.popin = popin;
 
 }).call(this);
 
@@ -1492,6 +1385,81 @@
   }).call(this);
 
   module.player_video = player_video;
+
+}).call(this);
+
+(function() {
+  var spiner;
+
+  spiner = (function() {
+    'use strict';
+    class spiner {
+      constructor(myspiner1) {
+        this.myspiner = myspiner1;
+        this.subring = ['.ring_1', '.ring_2', '.ring_3'];
+        console.log('----------------- > constructor spinner');
+        TweenLite.set(this.subring, {
+          xPercent: -50,
+          yPercent: -50
+        });
+        this.timelineSpiner = new TimelineMax({
+          paused: true,
+          onReverseComplete: this.maskSpiner,
+          onReverseCompleteParams: [this.myspiner],
+          onStart: this.unmaskSpiner,
+          onStartParams: [this.myspiner]
+        }).staggerFromTo(this.subring, 2, {
+          opacity: 0
+        }, {
+          scale: 1,
+          opacity: 1,
+          ease: Power3.easeOut
+        }, 0.5);
+        this.bindEvents();
+        this.showSpiner();
+      }
+
+      maskSpiner(myspiner) {
+        myspiner.trigger('loaderhidden');
+        return myspiner.addClass('no_spinner').hide();
+      }
+
+      unmaskSpiner(myspiner) {
+        console.log('unmaskSpiner -> ');
+        return myspiner.removeClass('no_spinner').show();
+      }
+
+      showSpiner() {
+        var that;
+        that = this;
+        return that.timelineSpiner.play();
+      }
+
+      hideSpiner() {
+        var that;
+        that = this;
+        return that.timelineSpiner.reverse();
+      }
+
+      bindEvents() {
+        var that;
+        that = this;
+        that.myspiner.on('hidespiner', function() {
+          return that.hideSpiner(that.myspiner);
+        });
+        return that.myspiner.on('showspiner', function() {
+          console.log('catch showspiner');
+          return that.showSpiner(that.myspiner);
+        });
+      }
+
+    };
+
+    return spiner;
+
+  }).call(this);
+
+  module.spiner = spiner;
 
 }).call(this);
 
