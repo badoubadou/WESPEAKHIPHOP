@@ -36,6 +36,7 @@ app.get('/sitemap.xml', function (req, res) {
 });
 
 app.get('/', function(req, res) {
+    var filePath = '.' + req.url;
     if (filePath == './')
         if ((req.headers.host == 'www.wespeakhiphop.com') || (req.headers.host == 'wespeakhiphop.com'))
         filePath = '/public/index_en.html';
