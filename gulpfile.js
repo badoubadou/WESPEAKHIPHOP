@@ -60,7 +60,6 @@ var vendor = [
     'assets/coffee/vendor/DrawSVGPlugin.min.js',
     'assets/coffee/vendor/MorphSVGPlugin.min.js',
     'assets/coffee/vendor/ThrowPropsPlugin.min.js',
-    'assets/coffee/vendor/CSSPlugin.min.js',
     'assets/coffee/vendor/howler.core.min.js',
     'assets/coffee/vendor/vimeo.js',
     'public/js/myscript/base.min.js',
@@ -86,7 +85,7 @@ gulp.task('uglifymyjs', function () {
 
 gulp.task('concatalljs', function() {
     return gulp.src(vendor)
-        .pipe(concat('script-v3.min.js'))
+        .pipe(concat('script-v4.min.js'))
         .pipe(uglify(/* options */))
         .pipe(gulp.dest(dest+'js/'));
 });
@@ -98,13 +97,13 @@ gulp.task('clean:js', function () {
 });
 
 gulp.task('gzipjs', function() {
-    return gulp.src('public/js/script-v3.min.js')
+    return gulp.src('public/js/script-v4.min.js')
     .pipe(gzip({append: false}))
     .pipe(gulp.dest('public/js/comp/'));
 });
 
 gulp.task('uploadjs', function() {
-    gulp.src(['public/js/comp/script-v3.min.js'])
+    gulp.src(['public/js/comp/script-v4.min.js'])
         .pipe(s3({
             Bucket: 'wespeakhiphop-assets', //  Required
             ACL:    'public-read',       //  Needs to be user-defined
