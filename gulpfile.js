@@ -85,7 +85,7 @@ gulp.task('uglifymyjs', function () {
 
 gulp.task('concatalljs', function() {
     return gulp.src(vendor)
-        .pipe(concat('script-v4.min.js'))
+        .pipe(concat('script-v5.min.js'))
         .pipe(uglify(/* options */))
         .pipe(gulp.dest(dest+'js/'));
 });
@@ -97,13 +97,13 @@ gulp.task('clean:js', function () {
 });
 
 gulp.task('gzipjs', function() {
-    return gulp.src('public/js/script-v4.min.js')
+    return gulp.src('public/js/script-v5.min.js')
     .pipe(gzip({append: false}))
     .pipe(gulp.dest('public/js/comp/'));
 });
 
 gulp.task('uploadjs', function() {
-    gulp.src(['public/js/comp/script-v4.min.js'])
+    gulp.src(['public/js/comp/script-v5.min.js'])
         .pipe(s3({
             Bucket: 'wespeakhiphop-assets', //  Required
             ACL:    'public-read',       //  Needs to be user-defined
