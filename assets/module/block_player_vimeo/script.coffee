@@ -195,10 +195,10 @@ class player_video_vimeo
 		# 	that.playYTisReady()
 		# 	return
 
-		that.playIntroisReady()
-		# @playerIntroVimeo.ready().then ->
-		# 	console.log 'player ready'
-		# 	return
+		@playerIntroVimeo.ready().then ->
+			console.log 'player ready'
+			that.playIntroisReady()
+			return
 
 		@playerIntroVimeo.on 'play', (event) ->
 			that.el_video_container.removeClass 'trans'
