@@ -283,7 +283,7 @@
       }
 
       bindEvents() {
-        var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, checkClassAndTrigger, checkratio, finished_popin_transition, options, startVimeo, that, vid_intro_finished;
+        var checkClassAndTrigger, checkratio, finished_popin_transition, options, startVimeo, that, toggleFullScreen, vid_intro_finished;
         that = this;
         //------------------- ENTER SITE -------------------#
         that.el_enter_site.on('click touchstart', function(event) {
@@ -316,7 +316,7 @@
             ease: Power1.easeOut
           }, 0.2, btnIntroInVisible);
           if (that.isMobile) {
-            GoInFullscreen(that.el_body.get(0), that.el_myfullscreen);
+            toggleFullScreen();
             that.playerIntroVimeo.play();
           }
           setTimeout((function() {
@@ -355,49 +355,53 @@
         });
         
         //------------------- FULL SCREEN ---------------------------#				
-        GoInFullscreen = function(el_body, btn) {
-          if (el_body.requestFullscreen) {
-            el_body.requestFullscreen();
-          } else if (el_body.mozRequestFullScreen) {
-            el_body.mozRequestFullScreen();
-          } else if (el_body.webkitRequestFullscreen) {
-            el_body.webkitRequestFullscreen();
-          } else if (el_body.msRequestFullscreen) {
-            el_body.msRequestFullscreen();
-          }
-          if (IsFullScreenCurrently()) {
-            btn.addClass('actiffullscreen');
-          }
-        };
-        GoOutFullscreen = function() {
-          $('.myfullscreen').removeClass('actiffullscreen');
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-          } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-          } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-          }
-        };
-        IsFullScreenCurrently = function() {
-          var full_screen_element;
-          full_screen_element = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
-          // If no element is in full-screen
-          if (full_screen_element === null) {
-            return false;
+        // GoInFullscreen = (el_body, btn) ->
+        // 	if el_body.requestFullscreen
+        // 		el_body.requestFullscreen()
+        // 	else if el_body.mozRequestFullScreen
+        // 		el_body.mozRequestFullScreen()
+        // 	else if el_body.webkitRequestFullscreen
+        // 		el_body.webkitRequestFullscreen()
+        // 	else if el_body.msRequestFullscreen
+        // 		el_body.msRequestFullscreen()
+
+        // 	if IsFullScreenCurrently()
+        // 		btn.addClass 'actiffullscreen'
+        // 	return
+
+        // GoOutFullscreen = ->
+        // 	$('.myfullscreen').removeClass 'actiffullscreen'
+        // 	if document.exitFullscreen
+        // 		document.exitFullscreen()
+        // 	else if document.mozCancelFullScreen
+        // 		document.mozCancelFullScreen()
+        // 	else if document.webkitExitFullscreen
+        // 		document.webkitExitFullscreen()
+        // 	else if document.msExitFullscreen
+        // 		document.msExitFullscreen()
+        // 	return
+
+        // IsFullScreenCurrently = ->
+        // 	full_screen_element = document.fullscreenElement or document.webkitFullscreenElement or document.mozFullScreenElement or document.msFullscreenElement or null
+        // 	# If no element is in full-screen
+        // 	if full_screen_element == null
+        // 		false
+        // 	else
+        // 		true
+        toggleFullScreen = function() {
+          var cancelFullScreen, doc, docEl, requestFullScreen;
+          doc = window.document;
+          docEl = doc.documentElement;
+          requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+          cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+          if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+            requestFullScreen.call(docEl);
           } else {
-            return true;
+            cancelFullScreen.call(doc);
           }
         };
         that.el_myfullscreen.on('click touchstart', function(event) {
-          console.log('click ');
-          if (!IsFullScreenCurrently()) {
-            GoInFullscreen($('body').get(0), $(this));
-          } else {
-            GoOutFullscreen();
-          }
+          toggleFullScreen();
           event.stopPropagation();
           event.preventDefault();
           return false;

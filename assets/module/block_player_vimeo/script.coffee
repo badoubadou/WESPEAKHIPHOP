@@ -107,7 +107,7 @@ class player_video_vimeo
 			TweenMax.staggerTo('.btn_intro a',.3, {opacity:0, y:-10, delay:delaytween, ease:Power1.easeOut}, 0.2, btnIntroInVisible);
 			
 			if(that.isMobile)
-				GoInFullscreen(that.el_body.get(0), that.el_myfullscreen)
+				toggleFullScreen()
 				that.playerIntroVimeo.play()
 
 
@@ -140,46 +140,52 @@ class player_video_vimeo
 			return false			
 
 		#------------------- FULL SCREEN ---------------------------#				
-		GoInFullscreen = (el_body, btn) ->
-			if el_body.requestFullscreen
-				el_body.requestFullscreen()
-			else if el_body.mozRequestFullScreen
-				el_body.mozRequestFullScreen()
-			else if el_body.webkitRequestFullscreen
-				el_body.webkitRequestFullscreen()
-			else if el_body.msRequestFullscreen
-				el_body.msRequestFullscreen()
+		# GoInFullscreen = (el_body, btn) ->
+		# 	if el_body.requestFullscreen
+		# 		el_body.requestFullscreen()
+		# 	else if el_body.mozRequestFullScreen
+		# 		el_body.mozRequestFullScreen()
+		# 	else if el_body.webkitRequestFullscreen
+		# 		el_body.webkitRequestFullscreen()
+		# 	else if el_body.msRequestFullscreen
+		# 		el_body.msRequestFullscreen()
 
-			if IsFullScreenCurrently()
-				btn.addClass 'actiffullscreen'
-			return
+		# 	if IsFullScreenCurrently()
+		# 		btn.addClass 'actiffullscreen'
+		# 	return
 
-		GoOutFullscreen = ->
-			$('.myfullscreen').removeClass 'actiffullscreen'
-			if document.exitFullscreen
-				document.exitFullscreen()
-			else if document.mozCancelFullScreen
-				document.mozCancelFullScreen()
-			else if document.webkitExitFullscreen
-				document.webkitExitFullscreen()
-			else if document.msExitFullscreen
-				document.msExitFullscreen()
-			return
+		# GoOutFullscreen = ->
+		# 	$('.myfullscreen').removeClass 'actiffullscreen'
+		# 	if document.exitFullscreen
+		# 		document.exitFullscreen()
+		# 	else if document.mozCancelFullScreen
+		# 		document.mozCancelFullScreen()
+		# 	else if document.webkitExitFullscreen
+		# 		document.webkitExitFullscreen()
+		# 	else if document.msExitFullscreen
+		# 		document.msExitFullscreen()
+		# 	return
 
-		IsFullScreenCurrently = ->
-			full_screen_element = document.fullscreenElement or document.webkitFullscreenElement or document.mozFullScreenElement or document.msFullscreenElement or null
-			# If no element is in full-screen
-			if full_screen_element == null
-				false
+		# IsFullScreenCurrently = ->
+		# 	full_screen_element = document.fullscreenElement or document.webkitFullscreenElement or document.mozFullScreenElement or document.msFullscreenElement or null
+		# 	# If no element is in full-screen
+		# 	if full_screen_element == null
+		# 		false
+		# 	else
+		# 		true
+		toggleFullScreen = ->
+			doc = window.document
+			docEl = doc.documentElement
+			requestFullScreen = docEl.requestFullscreen or docEl.mozRequestFullScreen or docEl.webkitRequestFullScreen or docEl.msRequestFullscreen
+			cancelFullScreen = doc.exitFullscreen or doc.mozCancelFullScreen or doc.webkitExitFullscreen or doc.msExitFullscreen
+			if !doc.fullscreenElement and !doc.mozFullScreenElement and !doc.webkitFullscreenElement and !doc.msFullscreenElement
+				requestFullScreen.call docEl
 			else
-				true
+				cancelFullScreen.call doc
+			return
 
 		that.el_myfullscreen.on 'click touchstart', (event) ->
-			console.log 'click '
-			if !IsFullScreenCurrently()
-				GoInFullscreen($('body').get(0), $(this))
-			else
-				GoOutFullscreen()
+			toggleFullScreen()
 			event.stopPropagation()
 			event.preventDefault()
 			return false
