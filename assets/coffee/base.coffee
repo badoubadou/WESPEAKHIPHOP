@@ -9,6 +9,8 @@ spiner = new module.spiner($('.lds-dual-ring'))
 		checkMobile = ->
 			typeof window.orientation != 'undefined' or navigator.userAgent.indexOf('IEMobile') != -1
 
+		console.log 'window.navigator.hardwareConcurrency = '+window.navigator.hardwareConcurrency
+
 		isMobile = checkMobile()
 		console.log 'window load -> isMobile ?'+isMobile
 		player_video_vimeo = new module.player_video_vimeo(isMobile)

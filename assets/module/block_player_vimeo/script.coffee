@@ -101,14 +101,15 @@ class player_video_vimeo
 			delaytween = 0
 		
 			if(!that.el_body.hasClass 'device-ios')
-				GoInFullscreen(that.el_body.get(0), that.el_myfullscreen)
 				delaytween = 0.8
 			
-			console.log 'delaytween = '+delaytween
+			console.log 'delaytween =   '+delaytween
 			TweenMax.staggerTo('.btn_intro a',.3, {opacity:0, y:-10, delay:delaytween, ease:Power1.easeOut}, 0.2, btnIntroInVisible);
 			
 			if(that.isMobile)
+				GoInFullscreen(that.el_body.get(0), that.el_myfullscreen)
 				that.playerIntroVimeo.play()
+
 
 			setTimeout (->
 				TweenMax.fromTo('.skip_intro', .6, {autoAlpha:0, visibility:'visible'}, {autoAlpha:1 })
@@ -188,6 +189,17 @@ class player_video_vimeo
 		options = {id: @getIntroVimeo(), width: 640,loop: false, autoplay:false, email:false}
 		@playerIntroVimeo = new (Vimeo.Player)('playerIntroVimeo', options)
 		
+		# window.addEventListener 'orientationchange', ->
+		# 	orientation = screen.msOrientation or (screen.orientation or screen.mozOrientation or {}).type
+		# 	alert(orientation)
+		# 	console.log orientation
+		# 	if orientation == 'landscape-primary' or orientation == 'landscape-secondary '
+		# 		console.log that.el_body
+		# 		GoInFullscreen(that.el_body.get(0), that.el_myfullscreen)
+		# 	else
+		# 		GoOutFullscreen()
+		# 	return
+
 
 		#------------------- PLAYER YOUTUBE IS READY -------------------#
 		# @playerYT.ready().then ->
