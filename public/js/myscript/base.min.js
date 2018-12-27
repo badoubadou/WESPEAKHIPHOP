@@ -356,7 +356,6 @@
         
         //------------------- FULL SCREEN ---------------------------#				
         GoInFullscreen = function(el_body, btn) {
-          btn.addClass('actiffullscreen');
           if (el_body.requestFullscreen) {
             el_body.requestFullscreen();
           } else if (el_body.mozRequestFullScreen) {

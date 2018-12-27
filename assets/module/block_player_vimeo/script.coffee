@@ -141,7 +141,6 @@ class player_video_vimeo
 
 		#------------------- FULL SCREEN ---------------------------#				
 		GoInFullscreen = (el_body, btn) ->
-			btn.addClass 'actiffullscreen'
 			if el_body.requestFullscreen
 				el_body.requestFullscreen()
 			else if el_body.mozRequestFullScreen
