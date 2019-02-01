@@ -13,7 +13,8 @@ spiner = new module.spiner($('.lds-dual-ring'))
 
 		isMobile = checkMobile()
 		console.log 'window load -> isMobile ?'+isMobile
-		player_video_vimeo = new module.player_video_vimeo(isMobile)
+		player_video_vimeo = new module.player_video_youtube(isMobile)
+		# player_video_vimeo = new module.player_video_vimeo(isMobile)
 		popin = new module.popin()
 		logo = new module.logo($('#logowhite'))
 		window.scrollTo(0, 0)
