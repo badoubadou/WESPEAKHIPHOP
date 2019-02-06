@@ -821,7 +821,7 @@
             }, {
               autoAlpha: 1
             });
-          }), 3000);
+          }), 4500);
           event.stopPropagation();
           event.preventDefault();
           return false;

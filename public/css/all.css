@@ -1614,7 +1614,7 @@
 @media screen and (orientation: landscape) {
   .header {
     height: 160px;
-    margin: 20px;
+    margin: 10px;
     width: calc(100% - 40px);
   }
 }
@@ -1624,7 +1624,7 @@
     width: auto;
     display: block;
     position: relative;
-    margin: 30px;
+    margin: 15px;
   }
 }
 @media screen and (max-width: 48em) and (orientation: landscape) {
@@ -2677,8 +2677,11 @@ span.lign_header {
 }
 #list_artists li a:hover,
 #list_artists li a.selected {
-  font-weight: 900;
   color: #000;
+}
+#list_artists li a:hover .warp_contry .txt,
+#list_artists li a.selected .warp_contry .txt {
+  font-weight: 900;
 }
 #list_artists li a span.txt {
   display: none;

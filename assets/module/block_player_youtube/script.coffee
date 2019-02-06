@@ -207,7 +207,7 @@ class player_video_youtube
 			setTimeout (->
 				TweenMax.fromTo('.skip_intro', .6, {autoAlpha:0, visibility:'visible'}, {autoAlpha:1 })
 				return
-			), 3000
+			), 4500
 			
 			event.stopPropagation()
 			event.preventDefault()
