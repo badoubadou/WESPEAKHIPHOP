@@ -2865,6 +2865,7 @@ span.lign_header {
 }
 #popin .contentpopin .logo {
   padding: 15px 0;
+  max-width: 202px;
 }
 #popin .contentpopin .logo svg {
   width: 100%;
