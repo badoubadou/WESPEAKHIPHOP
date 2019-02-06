@@ -1435,9 +1435,6 @@
   position: absolute;
   left: 5px;
 }
-.footer ul#left-ul li a {
-  padding: 0 5px;
-}
 @media screen and (orientation: landscape) {
   .footer ul#right-ul,
   .footer ul#left-ul {
@@ -1452,6 +1449,12 @@
   position: relative;
   font-weight: 100;
   color: #989898;
+  padding: 0 5px;
+}
+@media screen and (orientation: landscape) {
+  .footer ul li {
+    padding: 0;
+  }
 }
 @media screen and (orientation: landscape) {
   .footer ul li.seperateur {
@@ -1475,12 +1478,17 @@
 }
 .footer ul li a {
   line-height: 40px;
-  padding: 0 15px;
+  padding: 0;
   height: 100%;
   display: block;
   color: #989898;
 }
 @media screen and (orientation: landscape) {
+  .footer ul li a {
+    padding: 0 2px;
+  }
+}
+@media screen and (min-width: 78em) and (orientation: landscape) {
   .footer ul li a {
     padding: 0 10px;
   }
@@ -1488,9 +1496,22 @@
 .footer ul li a:hover {
   color: #d8d8d8;
 }
+.footer ul li a span.txt {
+  top: 1px;
+  position: relative;
+}
 .footer ul li span {
   display: block;
-  padding: 0 5px;
+}
+@media screen and (orientation: landscape) {
+  .footer ul li span {
+    padding: 0 2px;
+  }
+}
+@media screen and (min-width: 78em) and (orientation: landscape) {
+  .footer ul li span {
+    padding: 0 10px;
+  }
 }
 @media screen and (orientation: landscape) {
   .footer ul li #sound,
@@ -1506,12 +1527,29 @@
   color: #989898;
   background: #ffce00;
 }
-.footer #share img,
-.footer #share svg {
+.footer img,
+.footer svg {
   width: 13px;
   height: 13px;
   display: inline-block;
   overflow: visible;
+  top: 0;
+  position: relative;
+}
+.footer #share {
+  padding: 0 10px 0 0;
+}
+.footer #share span {
+  padding: 0 10px;
+}
+@media screen and (orientation: landscape) {
+  .footer #share {
+    padding: 0 10px 0 5px;
+  }
+}
+.footer #share svg {
+  top: -1px;
+  position: relative;
 }
 .footer #share .txt {
   display: none;
@@ -1520,6 +1558,10 @@
   .footer #share .txt {
     display: inline-block;
   }
+}
+#boutique_btn svg,
+#boutique_btn span {
+  display: inline-block;
 }
 #sound,
 .myfullscreen {
@@ -1857,8 +1899,7 @@ span.lign_header {
 }
 #artists_info li #about-btn,
 #artists_info li .about-btn {
-  background: #333;
-  color: #fff;
+  font-weight: 700;
   margin: 5px 0 0 0;
   padding: 0 10px;
   display: inline-block;
@@ -1942,6 +1983,7 @@ span.lign_header {
   border-radius: 50%;
   list-style: none;
   margin: 0;
+  margin-top: -13px;
   width: 0;
   height: 0;
 }
@@ -1952,7 +1994,6 @@ span.lign_header {
   left: 50%;
   width: 10px;
   height: 10px;
-  margin-top: -5px;
   margin-left: -5px;
 }
 #list_artists > *:nth-of-type(1) {
@@ -2080,6 +2121,7 @@ span.lign_header {
     border-radius: 50%;
     list-style: none;
     margin: 0;
+    margin-top: -13px;
     width: 0;
     height: 0;
   }
@@ -2090,7 +2132,6 @@ span.lign_header {
     left: 50%;
     width: 10px;
     height: 10px;
-    margin-top: -5px;
     margin-left: -5px;
   }
   #list_artists > *:nth-of-type(1) {
@@ -2219,6 +2260,7 @@ span.lign_header {
     border-radius: 50%;
     list-style: none;
     margin: 0;
+    margin-top: -13px;
     width: 0;
     height: 0;
   }
@@ -2229,7 +2271,6 @@ span.lign_header {
     left: 50%;
     width: 80px;
     height: 10px;
-    margin-top: -5px;
     margin-left: -40px;
   }
   #list_artists > *:nth-of-type(1) {
@@ -2344,6 +2385,9 @@ span.lign_header {
     transform: rotate(257.1428571428572deg) translate(37.5vh) rotate(-257.1428571428572deg);
     text-align: center;
   }
+  #list_artists > *:nth-of-type(3) {
+    margin-top: 8px;
+  }
   #list_artists > *:nth-of-type(1) {
     text-align: center;
   }
@@ -2437,6 +2481,7 @@ span.lign_header {
     border-radius: 50%;
     list-style: none;
     margin: 0;
+    margin-top: -13px;
     width: 0;
     height: 0;
   }
@@ -2447,7 +2492,6 @@ span.lign_header {
     left: 50%;
     width: 80px;
     height: 10px;
-    margin-top: -5px;
     margin-left: -40px;
   }
   #list_artists > *:nth-of-type(1) {
@@ -2649,18 +2693,42 @@ span.lign_header {
 #list_artists li a .warp_contry {
   display: none;
   font-size: 1em;
-  font-weight: 500;
-  transition: opacity 0.5s ease;
-  opacity: 0;
+  position: relative;
 }
 @media screen and (orientation: landscape) {
   #list_artists li a .warp_contry {
     display: block;
   }
+  #list_artists li a .warp_contry .contry {
+    position: relative;
+  }
+  #list_artists li a .warp_contry .contry .txt {
+    position: relative;
+  }
+  #list_artists li a .warp_contry .contry:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffce00;
+    opacity: 1;
+    width: calc(100% + 10px);
+    transition: all 0.5s ease;
+    border-radius: 5px;
+    opacity: 0;
+    z-index: -1;
+    margin: 5px;
+    height: 15px;
+    top: -8px;
+    left: -10px;
+  }
 }
-#list_artists li a:hover .warp_contry,
-#list_artists li a.selected .warp_contry {
+#list_artists li a:hover .warp_contry .contry:after,
+#list_artists li a.selected .warp_contry .contry:after {
   opacity: 1;
+  font-weight: 500;
 }
 @media screen and (orientation: landscape) {
   #list_artists li a span.dot {
@@ -2683,6 +2751,17 @@ span.lign_header {
     border-radius: 50%;
   }
 }
+.skip_intro {
+  position: absolute;
+  bottom: 0px;
+  background: #ffce00;
+  visibility: hidden;
+  position: absolute;
+  z-index: 102;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .video-container {
   height: 0;
   width: 100%;
@@ -2695,11 +2774,6 @@ span.lign_header {
 }
 .video-container.quatre_tier {
   padding-bottom: 70%;
-}
-.video-container #warp_custom_btn {
-  position: absolute;
-  right: 10px;
-  bottom: 50px;
 }
 #popin {
   position: absolute;
@@ -3225,14 +3299,6 @@ span.lign_header {
   font-size: 0.8em;
   margin-right: 20px;
 }
-#popin .skip_intro {
-  background: #ffce00;
-  visibility: hidden;
-  position: absolute;
-  bottom: 30px;
-  right: -10px;
-  z-index: 101;
-}
 #smallmap {
   position: absolute;
   left: 50%;
@@ -3241,6 +3307,7 @@ span.lign_header {
   width: 90%;
   left: 50%;
   bottom: 300px;
+  z-index: 2;
 }
 @media screen and (orientation: landscape) {
   #smallmap {
@@ -3705,14 +3772,14 @@ span.lign_header {
 }
 @media screen and (min-width: 78em) and (orientation: landscape) {
   .lign_svg {
-    width: 71vh;
-    height: 71vh;
+    width: 72vh;
+    height: 72vh;
   }
 }
 @media screen and (max-width: 48em) and (orientation: landscape) {
   .lign_svg {
-    width: 71vh;
-    height: 71vh;
+    width: 72vh;
+    height: 72vh;
   }
 }
 #mask_video {
@@ -3730,6 +3797,7 @@ span.lign_header {
   background: #ffce00;
   z-index: -1;
 }
+#pause-video-btn,
 #play-video-btn {
   text-transform: uppercase;
   background: #ffce00;
@@ -3741,17 +3809,19 @@ span.lign_header {
   left: 50%;
   transform: translateX(-50%);
   padding: 0 5px;
-  width: 125px;
   bottom: 40px;
 }
 @media screen and (min-width: 78em) and (orientation: landscape) {
+  #pause-video-btn,
   #play-video-btn {
     padding: 0 15px;
   }
 }
+#pause-video-btn span,
 #play-video-btn span {
   position: relative;
 }
+#pause-video-btn .triangle,
 #play-video-btn .triangle {
   position: absolute;
   position: absolute;
@@ -3759,23 +3829,24 @@ span.lign_header {
   transform: translateY(-50%);
   left: 9px;
 }
+#pause-video-btn span.txt,
 #play-video-btn span.txt {
   position: relative;
   left: 5px;
 }
 #pause-video-btn {
   bottom: 40px;
-  width: auto;
+  width: 40px;
   display: block;
   right: 10px;
   position: absolute;
   padding: 0px 20px;
+  color: #333;
 }
 #pause-video-btn span:last-child {
   display: none;
 }
 #pause-video-btn.paused {
-  color: #333;
   background: #ffce00;
 }
 #pause-video-btn.paused span:first-child {
@@ -3783,20 +3854,4 @@ span.lign_header {
 }
 #pause-video-btn.paused span:last-child {
   display: inline-block;
-}
-@media screen and (orientation: landscape) {
-  #pause-video-btn {
-    right: 50px;
-  }
-}
-@media screen and (min-width: 78em) and (orientation: landscape) {
-  #pause-video-btn {
-    right: 90px;
-  }
-}
-@media screen and (max-width: 48em) and (orientation: landscape) {
-  #pause-video-btn {
-    bottom: 5px;
-    right: 5px;
-  }
 }

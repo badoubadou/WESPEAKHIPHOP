@@ -22,12 +22,11 @@
 			right 0
 			text-align right
 			position absolute
-			
+
 		&#left-ul
 			position absolute
 			left 5px
-			li a
-				padding 0 5px
+			
 				
 		@media $landscape
 			&#right-ul
@@ -42,6 +41,9 @@
 			position relative
 			font-weight 100
 			color #989898
+			padding 0 5px
+			@media $landscape
+				padding 0
 			
 			@media $landscape
 				&.seperateur
@@ -54,18 +56,29 @@
 
 			a
 				line-height $height_footer
-				padding 0 15px
+				padding 0
 				@media $landscape
+					padding 0 2px
+				
+				@media $landscape_desktop
 					padding 0 10px
+				
 				height 100%
 				display block
 				color #989898
 				&:hover
 					color $light-grey
 			
+				span.txt
+					top 1px
+					position relative
 			span
 				display block
-				padding 0 5px
+				@media $landscape
+					padding 0 2px
+				
+				@media $landscape_desktop
+					padding 0 10px
 				
 			#sound
 			.myfullscreen
@@ -80,18 +93,35 @@
 				color #989898
 				background $yellow
 							
-	#share
-		img
-		svg
-			width 13px
-			height 13px
-			display inline-block
-			overflow visible
+	img
+	svg
+		width 13px
+		height 13px
+		display inline-block
+		overflow visible
+		top 0
+		position relative
 		
+	#share
+		padding 0 10px 0 0
+		span
+			padding 0 10px
+		
+		@media $landscape
+			padding 0 10px 0 5px	
+		svg
+			top -1px
+			position relative
 		.txt
 			display none
 			@media $landscape
 				display inline-block
+
+
+#boutique_btn 
+	svg
+	span
+		display inline-block
 
 #sound
 .myfullscreen

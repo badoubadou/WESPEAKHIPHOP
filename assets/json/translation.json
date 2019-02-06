@@ -7,6 +7,22 @@
         "en": "Side : Artists",
         "fr": "Face artistes"
     },
+    "boutique": {
+        "en": "shop",
+        "fr": "boutique"
+    },
+    "donation": {
+        "en": "donation",
+        "fr": "donation"
+    },
+    "donation_short": {
+        "en": "don",
+        "fr": "don"
+    },
+    "a_propos": {
+        "en": "About",
+        "fr": "à propos"
+    },
     "a_propos": {
         "en": "About",
         "fr": "à propos"

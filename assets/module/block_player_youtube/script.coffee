@@ -16,7 +16,7 @@ class player_video_youtube
 		@el_to_hide_when_video = $('#abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite')
 
 		@playerYT = null
-		@playerIntroVimeo = null
+		@playerIntro = null
 		@drawLogo = null
 		@bindEvents()
 		@needStartSite = true
@@ -25,22 +25,19 @@ class player_video_youtube
 		firstScriptTag = document.getElementsByTagName('script')[0]
 		firstScriptTag.parentNode.insertBefore tag, firstScriptTag
 
-
 	playYTisReady : ->
 		console.log  '----------------------- playYTisReady -------------------------------------------'
 		@el_spiner.trigger 'hidespiner'
 	
-	playIntroisReady : ->
-		console.log  '----------------------- playIntroisReady -------------------------------------------'
-		@el_spiner.trigger 'hidespiner'
-		@startSite()
-			
-	getIntroVimeo : ->
+	getIntroId : ->
 		random = Math.floor(Math.random() * 4)
 		randomid = $('#idIntroYoutube input:eq('+random+')').val()
 		return randomid
 
 	startSite: ()->
+		console.log 'startSite'
+		that = @
+		that.el_spiner.trigger 'hidespiner'
 		btnIntroVisible = ->
 			isMobile = typeof window.orientation != 'undefined' or navigator.userAgent.indexOf('IEMobile') != -1
 			console.log 'finished show btn = '+isMobile
@@ -59,8 +56,14 @@ class player_video_youtube
 		@loadMap()
 
 	YouTubeGetID: (url) ->
-		r = /(videos|video|channels|\.com)\/([\d]+)/
-		return url.match(r)[2]
+		ID = ''
+		url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/)
+		if url[2] != undefined
+			ID = url[2].split(/[^0-9a-z_\-]/i)
+			ID = ID[0]
+		else
+			ID = url
+			ID
 	
 	loadMap : ->
 		that = @
@@ -81,8 +84,96 @@ class player_video_youtube
 			$( "#sprite_svg_disk" ).append( div.innerHTML )
 			return
 
+	hideLogo: ->
+		console.log 'hideLogo'
+		@el_logowhite.trigger 'hideLogo'
+
+	playerReady: ->
+		console.log 'playerReady'
+		$('body').trigger 'playerReady'
+
+	startIntroVideo: ->
+		console.log 'startIntroVideo' 
+		@hideLogo()
+
+	playerIntroReady: ->
+		console.log 'playerIntroReady'
+		$('body').trigger 'playerIntroReady'
+
+		
+	onPlayerIntroStateChange: (event)->
+		if event.data == YT.PlayerState.PLAYING and !$('body').hasClass 'startedIntroVideo' # --------- video start playing		
+			$('body').addClass 'startedIntroVideo'
+			$('body').trigger 'startIntroVideo'
+			console.log 'startIntroVideo'
+
+		if event.data == YT.PlayerState.PLAYING and $('body').hasClass 'startedIntroVideo' # --------- video resume	
+			$('#logowhite').trigger 'resumehideLogo'
+
+		if event.data ==  2 and $('body').hasClass 'startedIntroVideo'# --------- video pause	
+			console.log 'pause'
+			$('#logowhite').trigger 'pausehideLogo'
+
+		if event.data ==  3 and $('body').hasClass 'startedIntroVideo'# --------- video pause	
+			console.log 'pause'
+			$('#logowhite').trigger 'pausehideLogo'
+		
+		else if event.data == YT.PlayerState.ENDED # --------- video END
+			$('body').trigger 'endIntroVideo'
+			console.log 'endvideo'
+		
+	bildPlayerIntro: ->
+		that = @
+		console.log 'bildPlayerIntro'
+		that.playerIntro = new (YT.Player)('playerYTintro',
+			height: '390'
+			width: '640'
+			videoId: that.getIntroId()
+			fs: 0
+			playerVars: { 
+				autoplay: 1, 
+				modestbranding: 1, 
+				autohide: 1, 
+				disablekb: 1,
+				enablejsapi: 1,
+				fs: 1, 
+				rel: 0, 
+				hl: $('#langage_short').val(),
+				cc_lang_pref: $('#langage_short').val(), 
+				cc_load_policy: 1, 
+			}
+			events:
+				'onReady': that.playerIntroReady
+				'onStateChange': that.onPlayerIntroStateChange
+				)
+
 	bindEvents: ->
 		that = @
+		$('body').on 'YTAPIReady', ->
+			console.log 'YTAPIReady'
+			that.bildPlayerIntro()
+			return
+
+		$('body').on 'playerIntroReady', ->
+			that.startSite()
+			return
+
+		$('body').on 'playerReady', ->
+			that.el_spiner.trigger 'hidespiner'
+			return
+
+		$('body').on 'startVideo', ->
+			that.el_spiner.trigger 'hidespiner'
+			return
+		
+		$('body').on 'startIntroVideo', ->
+			that.startIntroVideo()
+			return
+
+		$('body').on 'endIntroVideo', ->
+			vid_intro_finished()
+			return
+
 		#------------------- ENTER SITE -------------------#
 		that.el_enter_site.on 'click touchstart', (event)->
 			console.log 'enter site -------------------------------- '
@@ -94,8 +185,8 @@ class player_video_youtube
 					event.preventDefault()
 					return false
 
-				if(!that.isMobile)
-					that.playerIntroVimeo.play()
+				# if(!that.isMobile)
+				# 	that.playerIntro.play()
 			
 			that.el_enter_site.off()
 			that.el_enter_site = null
@@ -111,7 +202,7 @@ class player_video_youtube
 			TweenMax.staggerTo('.btn_intro a',.3, {opacity:0, y:-10, delay:delaytween, ease:Power1.easeOut}, 0.2, btnIntroInVisible);
 			
 			if(that.isMobile)
-				that.playerIntroVimeo.play()
+				that.playerIntro.playVideo()
 
 			setTimeout (->
 				TweenMax.fromTo('.skip_intro', .6, {autoAlpha:0, visibility:'visible'}, {autoAlpha:1 })
@@ -178,7 +269,6 @@ class player_video_youtube
 				true
 
 		that.el_myfullscreen.on 'click', (event) ->
-			console.log 'click '
 			if !IsFullScreenCurrently()
 				GoInFullscreen($('body').get(0), $(this))
 			else
@@ -187,13 +277,79 @@ class player_video_youtube
 			event.preventDefault()
 			return false
 
-		# options = {id: @getIntroVimeo(), width: 640,loop: false, autoplay:false, email:false}
-		# @playerIntroVimeo = new (Vimeo.Player)('playerIntroVimeo', options)
 		window.onYouTubeIframeAPIReady = ->
-			@playerIntroVimeo = new (YT.Player)('playerYT',
+			console.log 'onYouTubeIframeAPIReady'
+			$('body').trigger 'YTAPIReady'
+
+		
+		
+		#------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
+		@el_popin.on 'closePopin', ->
+			that.el_video_container.addClass 'trans'
+			if(that.playerYT)
+				that.playerYT.pauseVideo()
+				
+		#------------------- INTRO FINISHED -------------------#
+		finished_popin_transition = ->
+			if(!that.isMobile)
+				$('#player')[0].play()
+				console.log 'play disk'
+			that.el_popin.addClass('hide').trigger('endIntro').trigger('closePopin').attr('style','')
+		
+		vid_intro_finished = ->
+			if(that.el_body.hasClass('vid_intro_finished'))
+				return
+			that.playerIntro.pauseVideo()
+			$('#close').removeClass('hide')
+			
+			that.el_video_container.removeClass 'with_btn_skip'
+			that.el_logowhite.trigger 'destroyLogo'
+			
+			that.el_skip_intro.off()
+			that.el_skip_intro.remove()
+			that.el_skip_intro = null
+			that.playerIntro = null
+			$('.intro_page').hide()
+
+			if(that.isMobile)
+				$('#player')[0].play()
+				finished_popin_transition()
+			else
+				TweenMax.to('#popin', .8,{opacity:0,onComplete:finished_popin_transition})
+
+
+			$('#playerYTintro').remove()
+			that.el_body.addClass 'vid_intro_finished'
+			return
+
+		@el_skip_intro.on 'click touchstart',(event) ->
+			vid_intro_finished()
+			event.stopPropagation()
+			event.preventDefault()
+			return false
+
+		#------------------- CLICK LIST ARTIST -------------------#
+		checkratio =(ratiovideo) ->
+			console.log 'ratiovideo : '+ratiovideo
+			if(ratiovideo==4)
+				that.el_video_container.addClass 'quatre_tier'
+			else
+				that.el_video_container.removeClass 'quatre_tier'
+
+		checkClassAndTrigger =()->
+			that.el_to_hide_when_video.addClass 'hide'
+			that.el_video_container.removeClass 'hide'
+			that.el_video_container.removeClass 'trans'
+			
+		startYoutube =(idYoutube)->
+			that.el_spiner.trigger 'showspiner'
+			that.el_popin.trigger 'showVideo'
+			
+			if (!that.playerYT)
+				that.playerYT = new (YT.Player)('playerYT',
 					height: '390'
 					width: '640'
-					videoId: 'CPfrRJf46sQ'
+					videoId: idYoutube
 					fs: 0
 					playerVars: { 
 						autoplay: 1, 
@@ -208,151 +364,22 @@ class player_video_youtube
 						cc_load_policy: 1, 
 					}
 					events:
-						'onReady': onPlayerReady
-						'onStateChange': onPlayerStateChange)
-
-		window.onPlayerReady = (event) ->
-			console.log 'onPlayerReady'
-			event.target.playVideo()
-			return
-
-		window.onPlayerStateChange = (event) ->
-			if event.data == YT.PlayerState.PLAYING and !done # --------- video start playing
-				$('#zone_youtube').addClass 'play'
-				$('#popin').removeClass('hide').trigger 'classChange'
-				$('.lds-dual-ring').addClass 'done'
-				$('#popin .video-container').removeClass 'hide'
-
-				if window.pauseSound
-					window.pauseSound()
-
-				if window.isMobile()
-					window.updateTxtInfoMobile($('#artist_info info:not(.hide)').index())
-			
-			else if event.data == YT.PlayerState.ENDED # --------- video start playing
-				window.closePopin()
-				console.log 'youtube is done'
-
-			return
-		
-		#------------------- PLAYER YOUTUBE IS READY -------------------#
-		# @playerIntroVimeo.ready().then ->
-		# 	console.log 'player ready'
-		# 	that.playIntroisReady()
-		# 	return
-
-		# @playerIntroVimeo.on 'play', (event) ->
-		# 	that.el_video_container.removeClass 'trans'
-		# 	if (that.el_logowhite.data('animstatus')=='paused')
-		# 		that.el_logowhite.trigger 'resumehideLogo'
-		# 	else
-		# 		that.el_logowhite.trigger 'hideLogo'
-			
-		
-			
-		# @playerIntroVimeo.on 'pause', (event) ->
-		# 	if (that.el_logowhite.data('animstatus') == 'playing')
-		# 		that.el_logowhite.trigger 'pausehideLogo'
-			
-
-		#------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
-		@el_popin.on 'closePopin', ->
-			that.el_video_container.addClass 'trans'
-			if(that.playerYT)
-				that.playerYT.pause().then(->
-					# The video is paused
-					return
-				)
-				that.playerYT.destroy().then(->
-					# The video is paused
-					that.playerYT = null
-					return
-				)
-		#------------------- INTRO FINISHED -------------------#
-		finished_popin_transition = ->
-			if(!that.isMobile)
-				$('#player')[0].play()
-				console.log 'play disk'
-			that.el_popin.addClass('hide').trigger('endIntro').trigger('closePopin').attr('style','')
-		
-		vid_intro_finished = ->
-			if(that.el_body.hasClass('vid_intro_finished'))
-				return
-			that.playerIntroVimeo.pause()
-			$('#close').removeClass('hide')
-			
-			that.el_video_container.removeClass 'with_btn_skip'
-			that.el_logowhite.trigger 'destroyLogo'
-			
-			that.el_skip_intro.off()
-			that.el_skip_intro.remove()
-			that.el_skip_intro = null
-			that.playerIntroVimeo.off('ended')
-			that.playerIntroVimeo = null
-			$('.intro_page').hide()
-
-			if(that.isMobile)
-				$('#player')[0].play()
-				finished_popin_transition()
+						'onReady': that.playerReady
+						)
 			else
-				TweenMax.to('#popin', .8,{opacity:0,onComplete:finished_popin_transition})
-
-			that.el_body.addClass 'vid_intro_finished'
-			return
-
-		@el_skip_intro.on 'click touchstart',(event) ->
-			vid_intro_finished()
-			event.stopPropagation()
-			event.preventDefault()
-			return false
-			
-		# @playerIntroVimeo.on 'ended', (event) ->
-		# 	vid_intro_finished()
-		# 	return
-
-		#------------------- CLICK LIST ARTIST -------------------#
-		checkratio =(ratiovideo) ->
-			console.log 'ratiovideo : '+ratiovideo
-			if(ratiovideo==4)
-				that.el_video_container.addClass 'quatre_tier'
-			else
-				that.el_video_container.removeClass 'quatre_tier'
-
-		checkClassAndTrigger =()->
-			that.el_to_hide_when_video.addClass 'hide'
-			that.el_video_container.removeClass 'hide'
-			that.el_video_container.removeClass 'trans'
-			# $('.lds-dual-ring').trigger 'showspiner'
-			
-		startVimeo =(idVimeo)->
-			that.el_spiner.trigger 'showspiner'
-			that.el_popin.trigger 'showVideo'
-			
-			if (!that.playerYT)
-				options = {id: idVimeo, width: 640,loop: false, autoplay:true, email:false}
-				that.playerYT = new (Vimeo.Player)('playerYT', options)
-				that.playerYT.enableTextTrack(that.Lang).then((track) ->
-						).catch (error) ->
-						console.log '###', error
-						return
-
-				that.playerYT.ready().then ->
-					console.log 'player ready'
-					that.playYTisReady()
-					return
+				that.el_spiner.trigger 'hidespiner'
+				that.playerYT.loadVideoById(idYoutube)
 
 
 		$('.startvideofrompopin, #list_artists li a, #play-video-btn, a.watch').on 'click touchstart', (event) ->
-			idVimeo = that.YouTubeGetID($(this).attr('href'))
+			idYoutube = that.YouTubeGetID($(this).attr('href'))
 			checkratio($(this).data('ratiovideo'))
 			checkClassAndTrigger()
-			startVimeo(idVimeo)
+			startYoutube(idYoutube)
 			event.stopPropagation()
 			event.preventDefault()
 			return false
 
-		
-	
 module.player_video_youtube = player_video_youtube
 
 

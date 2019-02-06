@@ -16,6 +16,18 @@
 			"en": "Side : Artists",
 			"fr": "Face artistes"
 		},
+		"boutique": {
+			"en": "shop",
+			"fr": "boutique"
+		},
+		"donation": {
+			"en": "donation",
+			"fr": "donation"
+		},
+		"donation_short": {
+			"en": "don",
+			"fr": "don"
+		},
 		"a_propos": {
 			"en": "About",
 			"fr": "à propos"
@@ -1161,7 +1173,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297168651"
+							"meta_value": "https://www.youtube.com/watch?v=Q98bKf7jI_8"
 						},
 						{
 							"meta_key": "tag_line",
@@ -1247,7 +1259,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297274367"
+							"meta_value": "https://www.youtube.com/watch?v=9nHOLNnrgpo"
 						},
 						{
 							"meta_key": "tag_line",
@@ -1333,7 +1345,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297298919"
+							"meta_value": "https://www.youtube.com/watch?time_continue=1&v=ob_xKCz190Q"
 						},
 						{
 							"meta_key": "tag_line",
@@ -1419,7 +1431,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297074327"
+							"meta_value": "https://www.youtube.com/watch?v=7Yu7JnLeLOg"
 						},
 						{
 							"meta_key": "tag_line",
@@ -1505,7 +1517,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297161654"
+							"meta_value": "https://www.youtube.com/watch?v=EQGu07aLjys"
 						},
 						{
 							"meta_key": "tag_line",
@@ -1591,7 +1603,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297065561"
+							"meta_value": "https://www.youtube.com/watch?v=qVTrbzLX4Rw"
 						},
 						{
 							"meta_key": "tag_line",
@@ -1677,7 +1689,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/296927736"
+							"meta_value": "https://www.youtube.com/watch?v=mNaC9idbHs0"
 						},
 						{
 							"meta_key": "tag_line",
@@ -1763,7 +1775,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297186144"
+							"meta_value": "https://www.youtube.com/watch?v=l3x5dXlD-y8"
 						},
 						{
 							"meta_key": "tag_line",
@@ -1849,7 +1861,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297132576"
+							"meta_value": "https://www.youtube.com/watch?v=Q7k1_5g4rR4"
 						},
 						{
 							"meta_key": "tag_line",
@@ -1935,7 +1947,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297078672"
+							"meta_value": "https://www.youtube.com/watch?v=m9dx6C7MLa0"
 						},
 						{
 							"meta_key": "tag_line",
@@ -2017,7 +2029,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/296706742"
+							"meta_value": "https://www.youtube.com/watch?v=bwBbaswId3A"
 						},
 						{
 							"meta_key": "tag_line",
@@ -2103,7 +2115,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/296913406"
+							"meta_value": "https://www.youtube.com/watch?v=RWC_ncvfgtk"
 						},
 						{
 							"meta_key": "tag_line",
@@ -2189,7 +2201,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/296930719"
+							"meta_value": "https://www.youtube.com/watch?v=pBS9Dehhv1A"
 						},
 						{
 							"meta_key": "tag_line",
@@ -2275,7 +2287,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297124934"
+							"meta_value": "https://www.youtube.com/watch?v=etkjOx4AQ1I"
 						},
 						{
 							"meta_key": "tag_line",
@@ -2361,7 +2373,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297152210"
+							"meta_value": "https://www.youtube.com/watch?v=gTPl7idK1gY"
 						},
 						{
 							"meta_key": "tag_line",
@@ -2447,7 +2459,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/296946812"
+							"meta_value": "https://www.youtube.com/watch?v=iM9gCt1nKTA"
 						},
 						{
 							"meta_key": "tag_line",
@@ -2533,7 +2545,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/296876416"
+							"meta_value": "https://www.youtube.com/watch?v=sRQbroiNZmA"
 						},
 						{
 							"meta_key": "tag_line",
@@ -2623,7 +2635,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/296909249"
+							"meta_value": "https://www.youtube.com/watch?v=L_VjfYC9Dt8"
 						},
 						{
 							"meta_key": "description",
@@ -2705,7 +2717,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297080869"
+							"meta_value": "https://www.youtube.com/watch?v=6auSzdHo3BQ"
 						},
 						{
 							"meta_key": "description",
@@ -2783,7 +2795,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297291371"
+							"meta_value": "https://www.youtube.com/watch?v=viwWPTZ9i2g"
 						},
 						{
 							"meta_key": "tag_line",
@@ -2869,7 +2881,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297070211"
+							"meta_value": "https://www.youtube.com/watch?v=aKiCiof4USs"
 						},
 						{
 							"meta_key": "tag_line",
@@ -2955,7 +2967,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/298342350/5f71fd4892"
+							"meta_value": "https://www.youtube.com/watch?v=N77hmmnoRVM"
 						},
 						{
 							"meta_key": "tag_line",
@@ -3041,7 +3053,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297267855"
+							"meta_value": "https://www.youtube.com/watch?v=cA1p3GvP3c8"
 						},
 						{
 							"meta_key": "tag_line",
@@ -3127,7 +3139,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/298345154/61daf3a2da"
+							"meta_value": "https://www.youtube.com/watch?v=DZPBFHBh6a4"
 						},
 						{
 							"meta_key": "tag_line",
@@ -3213,7 +3225,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297718173"
+							"meta_value": "https://www.youtube.com/watch?v=IIZkHIi0-Kg"
 						},
 						{
 							"meta_key": "tag_line",
@@ -3295,7 +3307,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297128932"
+							"meta_value": "https://www.youtube.com/watch?v=IRuT1d1KxZI"
 						},
 						{
 							"meta_key": "tag_line",
@@ -3377,7 +3389,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297306012"
+							"meta_value": "https://www.youtube.com/watch?v=GyHCfI7Wu6g"
 						},
 						{
 							"meta_key": "tag_line",
@@ -3463,7 +3475,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/296714611"
+							"meta_value": "https://www.youtube.com/watch?v=CFsqJJflGCw"
 						},
 						{
 							"meta_key": "tag_line",
@@ -3553,7 +3565,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297309954"
+							"meta_value": "https://www.youtube.com/watch?v=G_qciiPIKFs"
 						},
 						{
 							"meta_key": "tag_line",
@@ -3639,7 +3651,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/296906637"
+							"meta_value": "https://www.youtube.com/watch?v=JRBCXPe9W5w"
 						},
 						{
 							"meta_key": "tag_line",
@@ -3725,7 +3737,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297278552"
+							"meta_value": "https://www.youtube.com/watch?v=rk5_m0IsosI"
 						},
 						{
 							"meta_key": "tag_line",
@@ -3811,7 +3823,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://www.youtube.com/watch?v=vyevFwkR_cE&"
+							"meta_value": "https://www.youtube.com/watch?v=BW8LOCN2_fc"
 						},
 						{
 							"meta_key": "tag_line",
@@ -3983,7 +3995,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/296944607"
+							"meta_value": "https://www.youtube.com/watch?v=iM9gCt1nKTA"
 						},
 						{
 							"meta_key": "description",
@@ -4065,7 +4077,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/296872474"
+							"meta_value": "https://www.youtube.com/watch?v=4R8wB04DOiQ"
 						},
 						{
 							"meta_key": "description",
@@ -4147,7 +4159,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297307517"
+							"meta_value": "https://www.youtube.com/watch?v=6K0cMKsPJxg"
 						},
 						{
 							"meta_key": "description",
@@ -4229,7 +4241,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/296903765"
+							"meta_value": "https://www.youtube.com/watch?v=gX4pSL84kME"
 						},
 						{
 							"meta_key": "description",
@@ -4311,7 +4323,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297149238"
+							"meta_value": "https://www.youtube.com/watch?v=04iBeCdViMk"
 						},
 						{
 							"meta_key": "description",
@@ -4393,7 +4405,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297137873"
+							"meta_value": "https://www.youtube.com/watch?v=mCe00SoKLLM"
 						},
 						{
 							"meta_key": "description",
@@ -4475,7 +4487,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/298340897/867dfa9cbd"
+							"meta_value": "https://www.youtube.com/watch?v=hKm4GtgHm5Y"
 						},
 						{
 							"meta_key": "description",
@@ -4557,7 +4569,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297288944"
+							"meta_value": "https://www.youtube.com/watch?v=yZpxjF02olE"
 						},
 						{
 							"meta_key": "description",
@@ -4639,7 +4651,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/298343741/58e486bb93"
+							"meta_value": "https://www.youtube.com/watch?v=x89hbxnr_VI"
 						},
 						{
 							"meta_key": "description",
@@ -4721,7 +4733,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297264682"
+							"meta_value": "https://www.youtube.com/watch?v=rz7XS5eVcDw"
 						},
 						{
 							"meta_key": "description",
@@ -4799,7 +4811,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297293979"
+							"meta_value": "https://www.youtube.com/watch?v=dhK61RVfd9E"
 						},
 						{
 							"meta_key": "tag_line",
@@ -4885,7 +4897,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297061037"
+							"meta_value": "https://www.youtube.com/watch?v=1rCt-tvNvAo"
 						},
 						{
 							"meta_key": "description",
@@ -4967,7 +4979,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/296924841"
+							"meta_value": "https://www.youtube.com/watch?v=cR6RurSste8"
 						},
 						{
 							"meta_key": "description",
@@ -5049,7 +5061,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297183064"
+							"meta_value": "https://www.youtube.com/watch?v=O0zDilhtfnA"
 						},
 						{
 							"meta_key": "description",
@@ -5131,7 +5143,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297120618"
+							"meta_value": "https://www.youtube.com/watch?v=8ZkY6URiW28"
 						},
 						{
 							"meta_key": "description",
@@ -5213,7 +5225,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297304628"
+							"meta_value": "https://www.youtube.com/watch?v=6671FQzB6jw"
 						},
 						{
 							"meta_key": "description",
@@ -5295,7 +5307,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/296718287"
+							"meta_value": "https://www.youtube.com/watch?v=bfwg9Mnh2bI"
 						},
 						{
 							"meta_key": "description",
@@ -5377,7 +5389,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297156406"
+							"meta_value": "https://youtu.be/pL8Z1gqUL8o"
 						},
 						{
 							"meta_key": "description",
@@ -5459,7 +5471,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297072241"
+							"meta_value": "https://www.youtube.com/watch?v=d7fJm-3JDVA"
 						},
 						{
 							"meta_key": "description",
@@ -5541,7 +5553,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297274367"
+							"meta_value": "https://www.youtube.com/watch?v=FzX_AABqQv0"
 						},
 						{
 							"meta_key": "description",
@@ -5705,7 +5717,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/296710988"
+							"meta_value": "https://www.youtube.com/watch?v=-Y_65jQmMfc"
 						},
 						{
 							"meta_key": "description",
@@ -5787,7 +5799,7 @@
 						},
 						{
 							"meta_key": "video",
-							"meta_value": "https://vimeo.com/297076396"
+							"meta_value": "https://www.youtube.com/watch?v=FH91k5uCEZc"
 						},
 						{
 							"meta_key": "description",

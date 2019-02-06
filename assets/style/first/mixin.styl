@@ -33,6 +33,7 @@ on-circle($item-count, $circle-size, $item-size)
 	border-radius 50%
 	list-style none
 	margin 0
+	margin-top -13px
 	> *
 		display block
 		position absolute
@@ -40,7 +41,6 @@ on-circle($item-count, $circle-size, $item-size)
 		left 50%
 		width $item-size
 		height 10px
-		margin-top -5px
 		margin-left -($item-size / 2)
 		$angle = (360 / $item-count)
 		$rot = -90

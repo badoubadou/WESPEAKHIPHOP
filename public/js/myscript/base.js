@@ -4,6 +4,169 @@
 }).call(this);
 
 (function() {
+  var logo;
+
+  logo = (function() {
+    'use strict';
+    class logo {
+      constructor(el_logowhite1) {
+        this.el_logowhite = el_logowhite1;
+        TweenLite.set('svg', {
+          visibility: 'visible'
+        });
+        MorphSVGPlugin.convertToPath('line');
+        this.drawLogoWhite = new TimelineMax({
+          paused: true,
+          onComplete: this.finishedShowLogo,
+          onCompleteParams: [this.el_logowhite],
+          onReverseComplete: this.finishedHideLogo,
+          onReverseCompleteParams: [this.el_logowhite]
+        });
+        this.drawLogoWhite.from("#mask1_2_black", 1, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }).from("#mask2_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.1).from("#mask3_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.2).from("#mask4_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.3).from("#mask5_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.4).from("#mask6_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.5).from("#mask7_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.6).from("#mask8_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.7).from("#mask9_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.8).from("#mask10_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.9).from("#mask11_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 1).from("#mask12_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 1.1).from("#mask13_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 1.2);
+        this.dLB = new TimelineMax({
+          paused: true
+        });
+        this.reverse_delay = null;
+        this.bindEvents();
+      }
+
+      finishedShowLogo(el_logowhite) {
+        return el_logowhite.trigger('finishedShowLogo');
+      }
+
+      finishedHideLogo(el_logowhite) {
+        return el_logowhite.trigger('finishedHideLogo');
+      }
+
+      showLogoWhite() {
+        return this.drawLogoWhite.play();
+      }
+
+      hideLogoWhite() {
+        var that;
+        console.log('hideLogoWhite');
+        that = this;
+        if (this.el_logowhite) {
+          this.el_logowhite.data('animstatus', 'playing');
+          return this.reverse_delay = TweenMax.delayedCall(4, function() {
+            if (that.drawLogoWhite) {
+              return that.drawLogoWhite.reverse();
+            }
+          });
+        }
+      }
+
+      pausehideLogo() {
+        console.log('pausehideLogo');
+        if (this.el_logowhite) {
+          this.el_logowhite.data('animstatus', 'paused');
+          return this.reverse_delay.pause();
+        }
+      }
+
+      resumehideLogo() {
+        console.log('resumehideLogo');
+        if (this.el_logowhite) {
+          this.el_logowhite.data('animstatus', 'playing');
+          return this.reverse_delay.resume();
+        }
+      }
+
+      destroyLogo() {
+        var svglogo;
+        console.log('destroyLogo -> is in fact move logo ');
+        if (this.el_logowhite) {
+          console.log('do move logo');
+          this.el_logowhite.off();
+          this.drawLogoWhite.seek(this.drawLogoWhite.duration());
+          $('#txth1').remove();
+          svglogo = this.el_logowhite.find('svg').detach();
+          $('#blacklogo').append(svglogo);
+          this.el_logowhite = null;
+          this.reverse_delay = null;
+          return $('.btn_intro a').off().remove();
+        }
+      }
+
+      bindEvents() {
+        var that;
+        that = this;
+        that.el_logowhite.on({
+          'finishedHideLogo': function() {
+            return that.destroyLogo();
+          },
+          'destroyLogo': function() {
+            that.destroyLogo();
+          },
+          'showLogo': function() {
+            that.showLogoWhite();
+          },
+          'hideLogo': function() {
+            that.hideLogoWhite();
+          },
+          'pausehideLogo': function() {
+            that.pausehideLogo();
+          },
+          'resumehideLogo': function() {
+            that.resumehideLogo();
+          }
+        });
+        return $('.logoWSH').on('showLogo', function() {
+          $(this).off();
+          return that.drawLogoWhite.play();
+        });
+      }
+
+    };
+
+    return logo;
+
+  }).call(this);
+
+  module.logo = logo;
+
+}).call(this);
+
+(function() {
   var player_video_vimeo;
 
   player_video_vimeo = (function() {
@@ -426,7 +589,7 @@
         this.el_skip_intro = $('.skip_intro');
         this.el_to_hide_when_video = $('#abouttxt, #credittxt, #artist_info, #shareinfo, #logowhite');
         this.playerYT = null;
-        this.playerIntroVimeo = null;
+        this.playerIntro = null;
         this.drawLogo = null;
         this.bindEvents();
         this.needStartSite = true;
@@ -440,13 +603,7 @@
         return this.el_spiner.trigger('hidespiner');
       }
 
-      playIntroisReady() {
-        console.log('----------------------- playIntroisReady -------------------------------------------');
-        this.el_spiner.trigger('hidespiner');
-        return this.startSite();
-      }
-
-      getIntroVimeo() {
+      getIntroId() {
         var random, randomid;
         random = Math.floor(Math.random() * 4);
         randomid = $('#idIntroYoutube input:eq(' + random + ')').val();
@@ -454,7 +611,10 @@
       }
 
       startSite() {
-        var btnIntroVisible, el_logowhite, isMobile, loadSpriteDisk;
+        var btnIntroVisible, el_logowhite, isMobile, loadSpriteDisk, that;
+        console.log('startSite');
+        that = this;
+        that.el_spiner.trigger('hidespiner');
         btnIntroVisible = function() {
           var isMobile, player_video;
           isMobile = typeof window.orientation !== 'undefined' || navigator.userAgent.indexOf('IEMobile') !== -1;
@@ -487,9 +647,16 @@
       }
 
       YouTubeGetID(url) {
-        var r;
-        r = /(videos|video|channels|\.com)\/([\d]+)/;
-        return url.match(r)[2];
+        var ID;
+        ID = '';
+        url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+        if (url[2] !== void 0) {
+          ID = url[2].split(/[^0-9a-z_\-]/i);
+          return ID = ID[0];
+        } else {
+          ID = url;
+          return ID;
+        }
       }
 
       loadMap() {
@@ -523,24 +690,112 @@
         });
       }
 
-      bindEvents() {
-        var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, checkClassAndTrigger, checkratio, finished_popin_transition, startVimeo, that, vid_intro_finished;
+      hideLogo() {
+        console.log('hideLogo');
+        return this.el_logowhite.trigger('hideLogo');
+      }
+
+      playerReady() {
+        console.log('playerReady');
+        return $('body').trigger('playerReady');
+      }
+
+      startIntroVideo() {
+        console.log('startIntroVideo');
+        return this.hideLogo();
+      }
+
+      playerIntroReady() {
+        console.log('playerIntroReady');
+        return $('body').trigger('playerIntroReady');
+      }
+
+      onPlayerIntroStateChange(event) {
+        if (event.data === YT.PlayerState.PLAYING && !$('body').hasClass('startedIntroVideo')) { // --------- video start playing		
+          $('body').addClass('startedIntroVideo');
+          $('body').trigger('startIntroVideo');
+          console.log('startIntroVideo');
+        }
+        if (event.data === YT.PlayerState.PLAYING && $('body').hasClass('startedIntroVideo')) { // --------- video resume	
+          $('#logowhite').trigger('resumehideLogo');
+        }
+        if (event.data === 2 && $('body').hasClass('startedIntroVideo')) { // --------- video pause	
+          console.log('pause');
+          $('#logowhite').trigger('pausehideLogo');
+        }
+        if (event.data === 3 && $('body').hasClass('startedIntroVideo')) { // --------- video pause	
+          console.log('pause');
+          return $('#logowhite').trigger('pausehideLogo');
+        } else if (event.data === YT.PlayerState.ENDED) { // --------- video END
+          $('body').trigger('endIntroVideo');
+          return console.log('endvideo');
+        }
+      }
+
+      bildPlayerIntro() {
+        var that;
         that = this;
+        console.log('bildPlayerIntro');
+        return that.playerIntro = new YT.Player('playerYTintro', {
+          height: '390',
+          width: '640',
+          videoId: that.getIntroId(),
+          fs: 0,
+          playerVars: {
+            autoplay: 1,
+            modestbranding: 1,
+            autohide: 1,
+            disablekb: 1,
+            enablejsapi: 1,
+            fs: 1,
+            rel: 0,
+            hl: $('#langage_short').val(),
+            cc_lang_pref: $('#langage_short').val(),
+            cc_load_policy: 1
+          },
+          events: {
+            'onReady': that.playerIntroReady,
+            'onStateChange': that.onPlayerIntroStateChange
+          }
+        });
+      }
+
+      bindEvents() {
+        var GoInFullscreen, GoOutFullscreen, IsFullScreenCurrently, checkClassAndTrigger, checkratio, finished_popin_transition, startYoutube, that, vid_intro_finished;
+        that = this;
+        $('body').on('YTAPIReady', function() {
+          console.log('YTAPIReady');
+          that.bildPlayerIntro();
+        });
+        $('body').on('playerIntroReady', function() {
+          that.startSite();
+        });
+        $('body').on('playerReady', function() {
+          that.el_spiner.trigger('hidespiner');
+        });
+        $('body').on('startVideo', function() {
+          that.el_spiner.trigger('hidespiner');
+        });
+        $('body').on('startIntroVideo', function() {
+          that.startIntroVideo();
+        });
+        $('body').on('endIntroVideo', function() {
+          vid_intro_finished();
+        });
         //------------------- ENTER SITE -------------------#
         that.el_enter_site.on('click touchstart', function(event) {
           var btnIntroInVisible, delaytween;
           console.log('enter site -------------------------------- ');
           btnIntroInVisible = function() {
             that.el_video_container.removeClass('hidden hide');
-            $('.btn_intro a').on('click', function(event) {
+            return $('.btn_intro a').on('click', function(event) {
               event.stopPropagation();
               event.preventDefault();
               return false;
             });
-            if (!that.isMobile) {
-              return that.playerIntroVimeo.play();
-            }
           };
+          // if(!that.isMobile)
+          // 	that.playerIntro.play()
           that.el_enter_site.off();
           that.el_enter_site = null;
           that.el_other_lang.off();
@@ -557,7 +812,7 @@
             ease: Power1.easeOut
           }, 0.2, btnIntroInVisible);
           if (that.isMobile) {
-            that.playerIntroVimeo.play();
+            that.playerIntro.playVideo();
           }
           setTimeout((function() {
             TweenMax.fromTo('.skip_intro', .6, {
@@ -633,7 +888,6 @@
           }
         };
         that.el_myfullscreen.on('click', function(event) {
-          console.log('click ');
           if (!IsFullScreenCurrently()) {
             GoInFullscreen($('body').get(0), $(this));
           } else {
@@ -643,83 +897,19 @@
           event.preventDefault();
           return false;
         });
-        // options = {id: @getIntroVimeo(), width: 640,loop: false, autoplay:false, email:false}
-        // @playerIntroVimeo = new (Vimeo.Player)('playerIntroVimeo', options)
         window.onYouTubeIframeAPIReady = function() {
-          return this.playerIntroVimeo = new YT.Player('playerYT', {
-            height: '390',
-            width: '640',
-            videoId: 'CPfrRJf46sQ',
-            fs: 0,
-            playerVars: {
-              autoplay: 1,
-              modestbranding: 1,
-              autohide: 1,
-              disablekb: 1,
-              enablejsapi: 1,
-              fs: 1,
-              rel: 0,
-              hl: $('#langage_short').val(),
-              cc_lang_pref: $('#langage_short').val(),
-              cc_load_policy: 1
-            },
-            events: {
-              'onReady': onPlayerReady,
-              'onStateChange': onPlayerStateChange
-            }
-          });
-        };
-        window.onPlayerReady = function(event) {
-          console.log('onPlayerReady');
-          event.target.playVideo();
-        };
-        window.onPlayerStateChange = function(event) {
-          if (event.data === YT.PlayerState.PLAYING && !done) { // --------- video start playing
-            $('#zone_youtube').addClass('play');
-            $('#popin').removeClass('hide').trigger('classChange');
-            $('.lds-dual-ring').addClass('done');
-            $('#popin .video-container').removeClass('hide');
-            if (window.pauseSound) {
-              window.pauseSound();
-            }
-            if (window.isMobile()) {
-              window.updateTxtInfoMobile($('#artist_info info:not(.hide)').index());
-            }
-          } else if (event.data === YT.PlayerState.ENDED) { // --------- video start playing
-            window.closePopin();
-            console.log('youtube is done');
-          }
+          console.log('onYouTubeIframeAPIReady');
+          return $('body').trigger('YTAPIReady');
         };
         
-        //------------------- PLAYER YOUTUBE IS READY -------------------#
-        // @playerIntroVimeo.ready().then ->
-        // 	console.log 'player ready'
-        // 	that.playIntroisReady()
-        // 	return
-
-        // @playerIntroVimeo.on 'play', (event) ->
-        // 	that.el_video_container.removeClass 'trans'
-        // 	if (that.el_logowhite.data('animstatus')=='paused')
-        // 		that.el_logowhite.trigger 'resumehideLogo'
-        // 	else
-        // 		that.el_logowhite.trigger 'hideLogo'
-
-        // @playerIntroVimeo.on 'pause', (event) ->
-        // 	if (that.el_logowhite.data('animstatus') == 'playing')
-        // 		that.el_logowhite.trigger 'pausehideLogo'
-
         //------------------- STOP PLAYER WHEN CLOSE POPIN -------------------#
         this.el_popin.on('closePopin', function() {
           that.el_video_container.addClass('trans');
           if (that.playerYT) {
-            that.playerYT.pause().then(function() {});
-            // The video is paused
-            return that.playerYT.destroy().then(function() {
-              // The video is paused
-              that.playerYT = null;
-            });
+            return that.playerYT.pauseVideo();
           }
         });
+        
         //------------------- INTRO FINISHED -------------------#
         finished_popin_transition = function() {
           if (!that.isMobile) {
@@ -732,15 +922,14 @@
           if (that.el_body.hasClass('vid_intro_finished')) {
             return;
           }
-          that.playerIntroVimeo.pause();
+          that.playerIntro.pauseVideo();
           $('#close').removeClass('hide');
           that.el_video_container.removeClass('with_btn_skip');
           that.el_logowhite.trigger('destroyLogo');
           that.el_skip_intro.off();
           that.el_skip_intro.remove();
           that.el_skip_intro = null;
-          that.playerIntroVimeo.off('ended');
-          that.playerIntroVimeo = null;
+          that.playerIntro = null;
           $('.intro_page').hide();
           if (that.isMobile) {
             $('#player')[0].play();
@@ -751,6 +940,7 @@
               onComplete: finished_popin_transition
             });
           }
+          $('#playerYTintro').remove();
           that.el_body.addClass('vid_intro_finished');
         };
         this.el_skip_intro.on('click touchstart', function(event) {
@@ -759,11 +949,6 @@
           event.preventDefault();
           return false;
         });
-        
-        // @playerIntroVimeo.on 'ended', (event) ->
-        // 	vid_intro_finished()
-        // 	return
-
         //------------------- CLICK LIST ARTIST -------------------#
         checkratio = function(ratiovideo) {
           console.log('ratiovideo : ' + ratiovideo);
@@ -778,35 +963,42 @@
           that.el_video_container.removeClass('hide');
           return that.el_video_container.removeClass('trans');
         };
-        // $('.lds-dual-ring').trigger 'showspiner'
-        startVimeo = function(idVimeo) {
-          var options;
+        startYoutube = function(idYoutube) {
           that.el_spiner.trigger('showspiner');
           that.el_popin.trigger('showVideo');
           if (!that.playerYT) {
-            options = {
-              id: idVimeo,
-              width: 640,
-              loop: false,
-              autoplay: true,
-              email: false
-            };
-            that.playerYT = new Vimeo.Player('playerYT', options);
-            that.playerYT.enableTextTrack(that.Lang).then(function(track) {}).catch(function(error) {
-              console.log('###', error);
+            return that.playerYT = new YT.Player('playerYT', {
+              height: '390',
+              width: '640',
+              videoId: idYoutube,
+              fs: 0,
+              playerVars: {
+                autoplay: 1,
+                modestbranding: 1,
+                autohide: 1,
+                disablekb: 1,
+                enablejsapi: 1,
+                fs: 1,
+                rel: 0,
+                hl: $('#langage_short').val(),
+                cc_lang_pref: $('#langage_short').val(),
+                cc_load_policy: 1
+              },
+              events: {
+                'onReady': that.playerReady
+              }
             });
-            return that.playerYT.ready().then(function() {
-              console.log('player ready');
-              that.playYTisReady();
-            });
+          } else {
+            that.el_spiner.trigger('hidespiner');
+            return that.playerYT.loadVideoById(idYoutube);
           }
         };
         return $('.startvideofrompopin, #list_artists li a, #play-video-btn, a.watch').on('click touchstart', function(event) {
-          var idVimeo;
-          idVimeo = that.YouTubeGetID($(this).attr('href'));
+          var idYoutube;
+          idYoutube = that.YouTubeGetID($(this).attr('href'));
           checkratio($(this).data('ratiovideo'));
           checkClassAndTrigger();
-          startVimeo(idVimeo);
+          startYoutube(idYoutube);
           event.stopPropagation();
           event.preventDefault();
           return false;
@@ -1719,169 +1911,6 @@
   }).call(this);
 
   module.player_video = player_video;
-
-}).call(this);
-
-(function() {
-  var logo;
-
-  logo = (function() {
-    'use strict';
-    class logo {
-      constructor(el_logowhite1) {
-        this.el_logowhite = el_logowhite1;
-        TweenLite.set('svg', {
-          visibility: 'visible'
-        });
-        MorphSVGPlugin.convertToPath('line');
-        this.drawLogoWhite = new TimelineMax({
-          paused: true,
-          onComplete: this.finishedShowLogo,
-          onCompleteParams: [this.el_logowhite],
-          onReverseComplete: this.finishedHideLogo,
-          onReverseCompleteParams: [this.el_logowhite]
-        });
-        this.drawLogoWhite.from("#mask1_2_black", 1, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }).from("#mask2_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.1).from("#mask3_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.2).from("#mask4_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.3).from("#mask5_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.4).from("#mask6_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.5).from("#mask7_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.6).from("#mask8_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.7).from("#mask9_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.8).from("#mask10_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.9).from("#mask11_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1).from("#mask12_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1.1).from("#mask13_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1.2);
-        this.dLB = new TimelineMax({
-          paused: true
-        });
-        this.reverse_delay = null;
-        this.bindEvents();
-      }
-
-      finishedShowLogo(el_logowhite) {
-        return el_logowhite.trigger('finishedShowLogo');
-      }
-
-      finishedHideLogo(el_logowhite) {
-        return el_logowhite.trigger('finishedHideLogo');
-      }
-
-      showLogoWhite() {
-        return this.drawLogoWhite.play();
-      }
-
-      hideLogoWhite() {
-        var that;
-        console.log('hideLogoWhite');
-        that = this;
-        if (this.el_logowhite) {
-          this.el_logowhite.data('animstatus', 'playing');
-          return this.reverse_delay = TweenMax.delayedCall(4, function() {
-            if (that.drawLogoWhite) {
-              return that.drawLogoWhite.reverse();
-            }
-          });
-        }
-      }
-
-      pausehideLogo() {
-        console.log('pausehideLogo');
-        if (this.el_logowhite) {
-          this.el_logowhite.data('animstatus', 'paused');
-          return this.reverse_delay.pause();
-        }
-      }
-
-      resumehideLogo() {
-        console.log('resumehideLogo');
-        if (this.el_logowhite) {
-          this.el_logowhite.data('animstatus', 'playing');
-          return this.reverse_delay.resume();
-        }
-      }
-
-      destroyLogo() {
-        var svglogo;
-        console.log('destroyLogo -> is in fact move logo ');
-        if (this.el_logowhite) {
-          console.log('do move logo');
-          this.el_logowhite.off();
-          this.drawLogoWhite.seek(this.drawLogoWhite.duration());
-          $('#txth1').remove();
-          svglogo = this.el_logowhite.find('svg').detach();
-          $('#blacklogo').append(svglogo);
-          this.el_logowhite = null;
-          this.reverse_delay = null;
-          return $('.btn_intro a').off().remove();
-        }
-      }
-
-      bindEvents() {
-        var that;
-        that = this;
-        that.el_logowhite.on({
-          'finishedHideLogo': function() {
-            return that.destroyLogo();
-          },
-          'destroyLogo': function() {
-            that.destroyLogo();
-          },
-          'showLogo': function() {
-            that.showLogoWhite();
-          },
-          'hideLogo': function() {
-            that.hideLogoWhite();
-          },
-          'pausehideLogo': function() {
-            that.pausehideLogo();
-          },
-          'resumehideLogo': function() {
-            that.resumehideLogo();
-          }
-        });
-        return $('.logoWSH').on('showLogo', function() {
-          $(this).off();
-          return that.drawLogoWhite.play();
-        });
-      }
-
-    };
-
-    return logo;
-
-  }).call(this);
-
-  module.logo = logo;
 
 }).call(this);
 

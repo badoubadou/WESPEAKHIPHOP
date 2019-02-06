@@ -11,6 +11,10 @@
 		on-circle(28, $size_name_circle_medium, 80px)
 		width 0
 		height 0
+		
+		> *:nth-of-type(3)
+			margin-top 8px
+
 		> *:nth-of-type(1)
 			text-align center
 		> *:nth-of-type(2)
@@ -158,16 +162,32 @@
 		.warp_contry
 			display none	
 			font-size 1em
-			font-weight 500
-			transition opacity .5s ease
-			opacity 0
+			position relative
 			@media $landscape
 				display block
-	
+				.contry
+					position relative			
+					.txt
+						position relative
+					&:after
+						pseudo_full($yellow)
+						width calc( 100% + 10px )
+						transition all .5s ease
+						border-radius 5px
+						opacity 0
+						z-index -1
+						margin 5px
+						height 15px
+						top -8px
+						left -10px
+						
 		&:hover
 		&.selected	
 			.warp_contry
-				opacity 1
+				.contry:after
+					opacity 1
+					font-weight 500
+				
 		@media $landscape
 			span.dot
 				display none

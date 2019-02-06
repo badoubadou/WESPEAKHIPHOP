@@ -90,10 +90,9 @@ html(lang= langage)
 		link(rel="preconnect" href="https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/")
 		link(rel="preconnect" href="https://d2e3lhf7z9v1b2.cloudfront.net")
 
-		// link(rel="prefetch" href="https://player.vimeo.com")
 		link(rel="preload" href="https://d2p8kxfsucab5j.cloudfront.net/25f500kfaststart.mp4"  as="video"  type="video/mp4")
 
-		script(src='https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/script-v7.min.js' async)
+		script(src='https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/script-v8.min.js' async)
 
 	body.hidefooter.hide_left_col.video-disk-waiting.disk_on_hold.waiting-for-youtube(class=langage)
 		#sprite_svg
@@ -105,7 +104,6 @@ html(lang= langage)
 		input#langage_short(type='hidden', value!= langage)
 
 		include ../module/block_popin/index.pug
-
 		include ../module/block_tuto/index.pug
 		
 		#left_col.layer_3
@@ -119,11 +117,11 @@ html(lang= langage)
 				include ../module/block_list_artists/index.pug
 				include ../module/block_video_disk/index.pug
 
-			#pause-video-btn.layer_3.btn.round_btn.grey_btn
-				span
-					| #{TRANSLATION.txt_pause_video[langage]}
-				span
-					| #{TRANSLATION.txt_play_video[langage]}
+			// #pause-video-btn.layer_3.btn.round_btn.grey_btn
+			// 	span
+			// 		| #{TRANSLATION.txt_pause_video[langage]}
+			// 	span
+			// 		| #{TRANSLATION.txt_play_video[langage]}
 		
 			
 		include ../module/block_footer/index.pug

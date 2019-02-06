@@ -13,5 +13,7 @@ ul#list_artists.layer_top
 						.warp_contry
 							each cat in video.category
 								if cat.domain == 'pays'
-									span.contry(data-contrynicename=cat['nicename'])= cat['#text']
+									span.contry(data-contrynicename=cat['nicename'])
+										span.txt
+											!= cat['#text']
 						

@@ -3,28 +3,47 @@
 	.warp_ul_footer
 		ul#left-ul
 			li.seperateur
+				a#donation_btn.btnfooterpopin(href='#donationtxt' title=TRANSLATION.donation[langage])
+					span.txt.long_text
+						| #{TRANSLATION.donation[langage]}
+					span.txt.short_text
+						| #{TRANSLATION.donation_short[langage]}
+			li.seperateur
+				a#boutique_btn.btnfooterpopin(href='#boutiquext' title=TRANSLATION.boutique[langage])
+					svg(viewBox="0 0 30 30"  xmlns="http://www.w3.org/2000/svg" overflow="visible")
+						use(href='#cadi', x='0', y='0')
+					span.txt.long_text
+						| #{TRANSLATION.boutique[langage]}
+
+			li.seperateur
 				a#apropos_btn.btnfooterpopin(href='#abouttxt' title=TRANSLATION.a_propos[langage])
-					| #{TRANSLATION.a_propos[langage]}
+					span.txt
+						| #{TRANSLATION.a_propos[langage]}
 			li.seperateur
 				a#credit_btn.btnfooterpopin(href='#credittxt' title=TRANSLATION.credit[langage])
-					| #{TRANSLATION.credit[langage]}
+					span.txt
+						| #{TRANSLATION.credit[langage]}
 			li
 				a#mail_btn.btnfooterpopin(href='#contacttxt' title=TRANSLATION.contact[langage])
-					| #{TRANSLATION.contact[langage]}
+					span.txt.long_text
+						| #{TRANSLATION.contact[langage]}
+					span.txt.short_text
+						svg(viewBox="0 0 30 30"  xmlns="http://www.w3.org/2000/svg" overflow="visible")
+							use(href='#enveloppe', x='0', y='0')
 		
 		ul#right-ul
 			li
 				if langage == 'en'
 					a(href='http://wespeakhiphop.fr' title='version française')
-						span.short_text
+						span.short_text.txt
 							| #{TRANSLATION.language_name_short[langage]}
-						span.long_text
+						span.long_text.txt
 							| #{TRANSLATION.language_name[langage]}
 				else
 					a(href='http://wespeakhiphop.com' title='english version')
-						span.short_text
+						span.short_text.txt
 							| #{TRANSLATION.language_name_short[langage]}
-						span.long_text
+						span.long_text.txt
 							| #{TRANSLATION.language_name[langage]}
 			li
 				span#sound.actif

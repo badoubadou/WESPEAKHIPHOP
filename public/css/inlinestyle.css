@@ -523,7 +523,7 @@ p:empty {
 }
 @media screen and (orientation: landscape) {
   .long_text {
-    display: block !important;
+    display: inline-block !important;
   }
 }
 .site {
@@ -1169,14 +1169,6 @@ html {
   width: auto;
   font-size: 0.8em;
   margin-right: 20px;
-}
-#popin .skip_intro {
-  background: #ffce00;
-  visibility: hidden;
-  position: absolute;
-  bottom: 30px;
-  right: -10px;
-  z-index: 101;
 }
 .demi_cercle,
 .ring:before,
