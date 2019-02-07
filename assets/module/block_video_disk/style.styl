@@ -54,12 +54,12 @@
 			height $size_video_medium		
 
 	@media $mobile_landscape
-		width 180px
-		height 180px
+		width 120px
+		height 120px
 		.player-dimensions
 		video
-			width 180px
-			height 180px
+			width 120px
+			height 120px
 	
 	@media $landscape_verybig
 		width $size_video_large
@@ -132,10 +132,15 @@
 		width $size_ligndisk_large
 		height $size_ligndisk_large
 
+
+.lign_svg img
+	width 100%
+	height auto
+	
 .lign_svg #svg_txt_circ
 	center()
-	width $size_video_smaller + 35px
-	height $size_video_smaller + 35px
+	width $size_video_smaller + 30px
+	height $size_video_smaller + 30px
 			
 	@media $large_portrait
 		width $size_video_small + 35px
@@ -146,8 +151,8 @@
 		height $size_video_medium + 35px
 		
 	@media $mobile_landscape
-		width 180px  + 35px
-		height 180px + 35px
+		width 120px  + 20px
+		height 120px + 20px
 		
 	@media $landscape_verybig
 		width $size_video_large + 35px
@@ -180,13 +185,14 @@
 	height 20px
 	text-align center
 	align_middle()
-	// font-size .6em
 	padding 0 5px
+	bottom 15px
+	@media $landscape
+		bottom 40px
+	
 	@media $landscape_desktop
 		padding 0 15px
-	
-	// width 125px
-	bottom 40px
+
 	span
 		position relative
 	.triangle
@@ -199,13 +205,19 @@
 		left 5px
 
 #pause-video-btn
-	bottom 40px
 	width 40px
 	display block
 	right 10px
 	position absolute
 	padding 0px 20px
 	color #333333
+	bottom 15px
+	@media $landscape
+		bottom 40px
+		
+	@media $mobile_landscape
+		bottom 15px
+	
 	span:last-child
 		display none
 		

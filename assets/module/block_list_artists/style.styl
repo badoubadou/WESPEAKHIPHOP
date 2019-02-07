@@ -1,7 +1,8 @@
 #list_artists
 	on-circle(28, $size_name_circle_smaller, 10px)
 	width 0
-	height 0	
+	height 0
+	margin-top -2px
 	@media $large_portrait	
 		on-circle(28, $size_name_circle_small, 10px)
 		width 0
@@ -9,6 +10,7 @@
 		
 	@media $landscape	
 		on-circle(28, $size_name_circle_medium, 80px)
+		margin-top -13px
 		width 0
 		height 0
 		
@@ -88,7 +90,8 @@
 	@media $landscape_desktop
 		on-circle(28, $size_name_circle_large, 80px)
 		width 0
-		height 0	
+		height 0
+		margin-top -13px
 		> *:nth-of-type(1)
 			text-align center
 		> *:nth-of-type(2)
@@ -134,7 +137,37 @@
 			margin-left -126px
 		
 	@media $mobile_landscape
-		display none
+		on-circle(28, 83vh, 80px)
+		> *:nth-of-type(1)
+		> *:nth-of-type(2)
+		> *:nth-of-type(3)
+		> *:nth-of-type(4)
+		> *:nth-of-type(5)
+		> *:nth-of-type(6)
+		> *:nth-of-type(7)
+		> *:nth-of-type(8)
+		> *:nth-of-type(9)
+		> *:nth-of-type(10)
+		> *:nth-of-type(11)
+		> *:nth-of-type(12)
+		> *:nth-of-type(13)
+		> *:nth-of-type(14)
+		> *:nth-of-type(15)
+		> *:nth-of-type(16)
+		> *:nth-of-type(17)
+		> *:nth-of-type(18)
+		> *:nth-of-type(19)
+		> *:nth-of-type(20)
+		> *:nth-of-type(21)
+		> *:nth-of-type(22)
+		> *:nth-of-type(23)
+		> *:nth-of-type(24)
+		> *:nth-of-type(25)
+		> *:nth-of-type(26)
+		> *:nth-of-type(27)
+		> *:nth-of-type(28)
+			margin-left 0px
+			margin-top 0px
 
 	li a
 		bottom 0
@@ -181,6 +214,9 @@
 						height 15px
 						top -8px
 						left -10px
+						
+			@media $mobile_landscape
+				display none
 						
 		&:hover
 		&.selected	

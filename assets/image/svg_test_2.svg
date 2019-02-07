@@ -5,14 +5,15 @@
 <style type="text/css">
 	.st0{fill:none;}
 </style>
-<path id="curve_1" d="M24.3,250c0,0,2.8-225,223.6-225s227.8,225,227.8,225s1.4,225-225,225S24.3,250,24.3,250
+<path id="SVGID_x5F_1_x5F_" class="st0" d="M24.3,250c0,0,2.8-225,223.6-225s227.8,225,227.8,225s1.4,225-225,225S24.3,250,24.3,250
 	z"/>
-<text><textPath  xlink:href="#curve_1" startOffset="7.8939%">
-<tspan>blabla 1</tspan></textPath>
+<text><textPath  xlink:href="#SVGID_x5F_1_x5F_" startOffset="7.8939%">
+<tspan  style="font-family:'MyriadPro-Regular'; font-size:12px;">blabla 1</tspan></textPath>
 </text>
-<path id="curve_2" d="M475.7,250c0,0-2.8,225-223.6,225S24.3,250,24.3,250s-1.4-225,225-225
+<path id="SVGID_x5F_2_x5F_" class="st0" d="M475.7,250c0,0-2.8,225-223.6,225S24.3,250,24.3,250s-1.4-225,225-225
 	S475.7,250,475.7,250z"/>
-<text><textPath  xlink:href="#curve_2" startOffset="7.8939%">
-<tspan>blabla 1</tspan></textPath>
+<text><textPath  xlink:href="#SVGID_x5F_2_x5F_" startOffset="7.8939%">
+<tspan  style="font-family:'MyriadPro-Regular'; font-size:12px;">blabla 1</tspan></textPath>
 </text>
+<circle cx="249" cy="250" r="249"/>
 </svg>
