@@ -2667,7 +2667,7 @@ span.lign_header {
 }
 @media screen and (orientation: landscape) {
   #pause-video-btn {
-    bottom: 40px;
+    bottom: 20px;
   }
 }
 @media screen and (max-width: 48em) and (orientation: landscape) {
