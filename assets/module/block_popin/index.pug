@@ -82,8 +82,10 @@
 						.txt
 							| #{TRANSLATION.sharesite[langage]}
 						include share.pug
-						.txt
-							| #{TRANSLATION.followus[langage]}
+						a.txt(href="http://facebook.com" target="_blank")
+							| #{TRANSLATION.followusfb[langage]}
+						a.txt(href="https://www.instagram.com/we_speak_hip_hop/" target="_blank")
+							| #{TRANSLATION.followusinsta[langage]}
 						
 	#close.layer_top.btn.hide
 		span.cross

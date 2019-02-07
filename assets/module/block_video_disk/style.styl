@@ -132,6 +132,30 @@
 		width $size_ligndisk_large
 		height $size_ligndisk_large
 
+.lign_svg #svg_txt_circ
+	center()
+	width $size_video_smaller + 35px
+	height $size_video_smaller + 35px
+			
+	@media $large_portrait
+		width $size_video_small + 35px
+		height $size_video_small + 35px
+		
+	@media $landscape
+		width $size_video_medium + 35px
+		height $size_video_medium + 35px
+		
+	@media $mobile_landscape
+		width 180px  + 35px
+		height 180px + 35px
+		
+	@media $landscape_verybig
+		width $size_video_large + 35px
+		height $size_video_large + 35px
+		
+.txt_in_curve
+	font-size 25px
+		
 #mask_video
 	border 3px solid #000
 	

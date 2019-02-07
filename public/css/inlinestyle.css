@@ -1006,6 +1006,10 @@ html {
   border-bottom: 1px solid #fff;
   padding: 10px 0;
 }
+#popin .sharesite a {
+  color: #fff;
+  display: block;
+}
 #popin .logosharesite {
   width: 200px;
 }

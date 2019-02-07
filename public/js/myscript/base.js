@@ -1290,6 +1290,7 @@
           TweenMax.to(that.svgcontry, 0.5, {
             alpha: 1
           });
+          $('.txt_in_curve').text(that.el_artists_info_li.eq(id).find('.tagline').text());
           that.el_artists_info_li.removeClass('ontop');
           that.el_artists_info_li.eq(id).addClass('ontop');
           that.el_popin_artist_info_info.addClass('hide');
