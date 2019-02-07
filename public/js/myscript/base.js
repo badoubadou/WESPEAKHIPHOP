@@ -742,7 +742,7 @@
           videoId: that.getIntroId(),
           fs: 0,
           playerVars: {
-            autoplay: 1,
+            autoplay: 0,
             modestbranding: 1,
             autohide: 1,
             disablekb: 1,
@@ -788,14 +788,16 @@
           console.log('enter site -------------------------------- ');
           btnIntroInVisible = function() {
             that.el_video_container.removeClass('hidden hide');
-            return $('.btn_intro a').on('click', function(event) {
+            $('.btn_intro a').on('click', function(event) {
               event.stopPropagation();
               event.preventDefault();
               return false;
             });
+            if (!that.isMobile) {
+              console.log('??? ');
+              return that.playerIntro.playVideo();
+            }
           };
-          // if(!that.isMobile)
-          // 	that.playerIntro.play()
           that.el_enter_site.off();
           that.el_enter_site = null;
           that.el_other_lang.off();

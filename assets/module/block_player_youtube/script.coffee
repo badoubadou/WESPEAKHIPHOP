@@ -38,6 +38,7 @@ class player_video_youtube
 		console.log 'startSite'
 		that = @
 		that.el_spiner.trigger 'hidespiner'
+
 		btnIntroVisible = ->
 			isMobile = typeof window.orientation != 'undefined' or navigator.userAgent.indexOf('IEMobile') != -1
 			console.log 'finished show btn = '+isMobile
@@ -131,7 +132,7 @@ class player_video_youtube
 			videoId: that.getIntroId()
 			fs: 0
 			playerVars: { 
-				autoplay: 1, 
+				autoplay: 0, 
 				modestbranding: 1, 
 				autohide: 1, 
 				disablekb: 1,
@@ -185,8 +186,9 @@ class player_video_youtube
 					event.preventDefault()
 					return false
 
-				# if(!that.isMobile)
-				# 	that.playerIntro.play()
+				if(!that.isMobile)
+					console.log '??? '
+					that.playerIntro.playVideo()
 			
 			that.el_enter_site.off()
 			that.el_enter_site = null
