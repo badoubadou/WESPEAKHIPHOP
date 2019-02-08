@@ -1,18 +1,54 @@
 #list_artists
-	on-circle(28, $size_name_circle_smaller, 10px)
+	on-circle(28, $size_name_circle_smaller, 40px)
 	width 0
 	height 0
-	margin-top -2px
+	margin-top -20px
 	@media $large_portrait	
-		on-circle(28, $size_name_circle_small, 10px)
+		on-circle(28, $size_name_circle_small, 40px)
+		margin-top -20px
 		width 0
 		height 0	
 		
 	@media $landscape	
+		on-circle(28, 70vh, 40px)
+		margin-top -20px
+		width 0
+		height 0
+		
+	@media $landscape_smallwidth	
 		on-circle(28, $size_name_circle_medium, 80px)
 		margin-top -13px
 		width 0
 		height 0
+		> *:nth-of-type(1)
+		> *:nth-of-type(2)
+		> *:nth-of-type(3)
+		> *:nth-of-type(4)
+		> *:nth-of-type(5)
+		> *:nth-of-type(6)
+		> *:nth-of-type(7)
+		> *:nth-of-type(8)
+		> *:nth-of-type(9)
+		> *:nth-of-type(10)
+		> *:nth-of-type(11)
+		> *:nth-of-type(12)
+		> *:nth-of-type(13)
+		> *:nth-of-type(14)
+		> *:nth-of-type(15)
+		> *:nth-of-type(16)
+		> *:nth-of-type(17)
+		> *:nth-of-type(18)
+		> *:nth-of-type(19)
+		> *:nth-of-type(20)
+		> *:nth-of-type(21)
+		> *:nth-of-type(22)
+		> *:nth-of-type(23)
+		> *:nth-of-type(24)
+		> *:nth-of-type(25)
+		> *:nth-of-type(26)
+		> *:nth-of-type(27)
+		> *:nth-of-type(28)
+			margin-top 0px
 		
 		> *:nth-of-type(3)
 			margin-top 8px
@@ -82,7 +118,7 @@
 		> *:nth-of-type(12)
 			width 100px		
 		> *:nth-of-type(3)
-			width 140px
+			width 250px
 		> *:nth-of-type(25)
 			width 95px
 			margin-left -80px
@@ -138,6 +174,7 @@
 		
 	@media $mobile_landscape
 		on-circle(28, 83vh, 80px)
+		margin -2px
 		> *:nth-of-type(1)
 		> *:nth-of-type(2)
 		> *:nth-of-type(3)
@@ -187,20 +224,26 @@
 		span.txt
 			display none
 		span.dot
-			background $grey
+			background transparent
 			display block
-			width 4px
-			height 4px
-			border-radius 50%	
-			
+			width 40px
+			height 40px
+			border-radius 100%
+			position relative
+			&:after
+				pseudo_full($grey, 1, 4px, 4px )
+				center()
+				border-radius 100%
+				
 		.warp_contry
 			display none	
 			font-size 1em
 			position relative
-			@media $landscape
+			@media $landscape_smallwidth
 				display block
 				.contry
-					position relative			
+					position relative
+					top 2px			
 					.txt
 						position relative
 					&:after
@@ -211,12 +254,13 @@
 						opacity 0
 						z-index -1
 						margin 5px
-						height 15px
-						top -8px
+						height 16px
+						top -9px
 						left -10px
 						
 			@media $mobile_landscape
 				display none
+				
 						
 		&:hover
 		&.selected	
@@ -225,7 +269,7 @@
 					opacity 1
 					font-weight 500
 				
-		@media $landscape
+		@media $landscape_smallwidth
 			span.dot
 				display none
 			span.txt

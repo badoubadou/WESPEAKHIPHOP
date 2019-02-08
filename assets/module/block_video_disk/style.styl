@@ -26,7 +26,7 @@
 
 .circular_mask
 	overflow hidden
-	border-radius 50%
+	border-radius 100%
 	
 
 .size_video
@@ -80,6 +80,8 @@
 	@media $landscape
 		width $size_disk_medium
 		height $size_disk_medium
+		max-width calc( 100vw - 250px )
+		max-height calc( 100vw - 250px )
 
 	@media $landscape_desktop
 		width $size_disk_large
@@ -100,12 +102,14 @@
 	@media $landscape
 		width $size_platine_medium
 		height $size_platine_medium
-		max-width auto
-		max-height auto
+		max-width calc( 100vw - 200px )
+		max-height calc( 100vw - 200px )
 	
 	@media $landscape_desktop
 		width $size_platine_large
 		height $size_platine_large
+		max-width auto
+		max-height auto
 			
 	@media $mobile_landscape
 		width $size_platine_large
@@ -121,17 +125,20 @@
 		height $size_ligndisk_small
 		
 	@media $landscape
-		width $size_ligndisk_medium
-		height $size_ligndisk_medium
+		width $size_disk_medium
+		height $size_disk_medium
+		max-width calc( 100vw - 250px )
+		max-height calc( 100vw - 250px )
 		
 	@media $landscape_desktop
 		width $size_ligndisk_large
 		height $size_ligndisk_large
+		max-width auto
+		max-height auto
 
 	@media $mobile_landscape
 		width $size_ligndisk_large
 		height $size_ligndisk_large
-
 
 .lign_svg img
 	width 100%
@@ -143,8 +150,8 @@
 	height $size_video_smaller + 30px
 			
 	@media $large_portrait
-		width $size_video_medium + 55px
-		height $size_video_medium + 55px
+		width $size_video_medium + 50px
+		height $size_video_medium + 50px
 		
 	@media $landscape
 		width $size_video_medium + 42px
@@ -164,9 +171,9 @@
 #mask_video
 	border 3px solid #000
 	
-#disk
-	cursor url('https://d2p8kxfsucab5j.cloudfront.net/hand-small.png') 30 40, auto;
-	cursor -webkit-image-set(url('https://d2p8kxfsucab5j.cloudfront.net/hand-small.png') 1x,url('https://d2p8kxfsucab5j.cloudfront.net/hand.png') 2x) 30 40, auto
+// #disk
+// 	cursor url('https://d2p8kxfsucab5j.cloudfront.net/hand-small.png') 30 40, auto;
+// 	cursor -webkit-image-set(url('https://d2p8kxfsucab5j.cloudfront.net/hand-small.png') 1x,url('https://d2p8kxfsucab5j.cloudfront.net/hand.png') 2x) 30 40, auto
 	
 #bg_disk
 	display block
@@ -176,6 +183,11 @@
 	background $yellow
 	z-index -1
 
+#knob
+	z-index 10
+	cursor url('https://d2p8kxfsucab5j.cloudfront.net/hand-small.png') 30 40, auto;
+	cursor -webkit-image-set(url('https://d2p8kxfsucab5j.cloudfront.net/hand-small.png') 1x,url('https://d2p8kxfsucab5j.cloudfront.net/hand.png') 2x) 30 40, auto
+	
 #pause-video-btn
 #play-video-btn
 	text-transform uppercase
@@ -212,6 +224,7 @@
 	padding 0px 20px
 	color #333333
 	bottom 15px
+	z-index 100
 	@media $landscape
 		bottom 20px
 		
