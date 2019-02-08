@@ -4,6 +4,7 @@
 	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:none;}
+	.st1{fill:none;stroke:#000000;stroke-miterlimit:10;}
 </style>
 <path id="SVGID_x5F_1_x5F_" class="st0" d="M24.3,250c0,0,2.8-225,223.6-225s227.8,225,227.8,225s1.4,225-225,225S24.3,250,24.3,250
 	z"/>
@@ -13,7 +14,10 @@
 <path id="SVGID_x5F_2_x5F_" class="st0" d="M475.7,250c0,0-2.8,225-223.6,225S24.3,250,24.3,250s-1.4-225,225-225
 	S475.7,250,475.7,250z"/>
 <text><textPath  xlink:href="#SVGID_x5F_2_x5F_" startOffset="7.8939%">
-<tspan  style="font-family:'MyriadPro-Regular'; font-size:12px;">blabla 1</tspan></textPath>
+<tspan  class="st0" style="font-family:'MyriadPro-Regular'; font-size:12px;">blabla 1</tspan></textPath>
 </text>
-<circle cx="249" cy="250" r="249"/>
+<path id="mynewline" class="st1" d="M473.7,250c0,123.5-100.1,223.7-223.7,223.7S26.3,373.5,26.3,250S126.5,26.3,250,26.3
+	S473.7,126.5,473.7,250z"/>
+<path id="mynewline2" class="st1" d="M26.3,250C26.3,126.5,126.5,26.3,250,26.3S473.7,126.5,473.7,250S373.5,473.7,250,473.7
+	S26.3,373.5,26.3,250z"/>
 </svg>

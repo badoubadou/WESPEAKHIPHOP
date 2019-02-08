@@ -41,10 +41,10 @@
 </g>	 
 <g id="txt_circ">
 	<circle cx="249" cy="250" r="249" fill="#ffce00" />
-	<path id="curve_1" fill="transparent" d="M24.3,250c0,0,2.8-225,223.6-225s227.8,225,227.8,225s1.4,225-225,225S24.3,250,24.3,250
-	z"/>
-	<path id="curve_2" fill="transparent" d="M475.7,250c0,0-2.8,225-223.6,225S24.3,250,24.3,250s-1.4-225,225-225
-	S475.7,250,475.7,250z"/>
+	<path id="curve_1" fill="transparent" d="M26.3,250C26.3,126.5,126.5,26.3,250,26.3S473.7,126.5,473.7,250S373.5,473.7,250,473.7
+	S26.3,373.5,26.3,250z"/>
+	<path id="curve_2" fill="transparent" d="M473.7,250c0,123.5-100.1,223.7-223.7,223.7S26.3,373.5,26.3,250S126.5,26.3,250,26.3
+	S473.7,126.5,473.7,250z"/>
 	<text width="500">
 		<textPath class="txt_in_curve" xlink:href="#curve_1" startOffset="7.8939%">
 			We speak HipHop

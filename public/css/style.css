@@ -2460,13 +2460,13 @@ span.lign_header {
 }
 @media screen and (min-width: 120em) and (orientation: landscape) {
   .size_video {
-    width: 400px;
-    height: 400px;
+    width: 380px;
+    height: 380px;
   }
   .size_video .player-dimensions,
   .size_video video {
-    width: 400px;
-    height: 400px;
+    width: 380px;
+    height: 380px;
   }
 }
 .size_disk {
@@ -2573,14 +2573,14 @@ span.lign_header {
 }
 @media screen and (min-width: 34em) and (orientation: portrait) {
   .lign_svg #svg_txt_circ {
-    width: 255px;
-    height: 255px;
+    width: 275px;
+    height: 275px;
   }
 }
 @media screen and (orientation: landscape) {
   .lign_svg #svg_txt_circ {
-    width: 255px;
-    height: 255px;
+    width: 262px;
+    height: 262px;
   }
 }
 @media screen and (max-width: 48em) and (orientation: landscape) {
@@ -2591,8 +2591,8 @@ span.lign_header {
 }
 @media screen and (min-width: 120em) and (orientation: landscape) {
   .lign_svg #svg_txt_circ {
-    width: 435px;
-    height: 435px;
+    width: 430px;
+    height: 430px;
   }
 }
 .txt_in_curve {
