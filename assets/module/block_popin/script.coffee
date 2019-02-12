@@ -64,6 +64,9 @@ class popin
 			e.preventDefault()
 			return false
 
+		$('body').on 'finisedYT', ->
+			that.closePopin()
+			
 		$('#close, #back').on 'click touchstart', (e) ->
 			that.closePopin()
 			e.stopPropagation()

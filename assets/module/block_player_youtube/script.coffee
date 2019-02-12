@@ -122,6 +122,11 @@ class player_video_youtube
 		else if event.data == YT.PlayerState.ENDED # --------- video END
 			$('body').trigger 'endIntroVideo'
 			console.log 'endvideo'
+
+	onPlayerStateChange: (event)->
+		if event.data == YT.PlayerState.ENDED # --------- video END
+			$('body').trigger 'finisedYT'
+			console.log 'endvideo catched by popin close '
 		
 	bildPlayerIntro: ->
 		that = @
@@ -367,6 +372,7 @@ class player_video_youtube
 					}
 					events:
 						'onReady': that.playerReady
+						'onStateChange': that.onPlayerStateChange
 						)
 			else
 				that.el_spiner.trigger 'hidespiner'

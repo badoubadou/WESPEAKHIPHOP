@@ -3,11 +3,13 @@
 	.warp_ul_footer
 		ul#left-ul
 			li.seperateur
-				a#donation_btn.btnfooterpopin(href='#donationtxt' title=TRANSLATION.donation[langage])
+				a#donation_btn.btnfooterpopin(href=TRANSLATION.donate_link[langage] title=TRANSLATION.donation[langage])
 					span.txt.long_text
 						| #{TRANSLATION.donation[langage]}
 					span.txt.short_text
 						| #{TRANSLATION.donation_short[langage]}
+
+						donate_link
 			li.seperateur
 				a#boutique_btn.btnfooterpopin(href='#boutiquext' title=TRANSLATION.boutique[langage])
 					svg(viewBox="0 0 30 30"  xmlns="http://www.w3.org/2000/svg" overflow="visible")

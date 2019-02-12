@@ -150,5 +150,9 @@
     "followusinsta": {
         "en": "Follow us on Instagram",
         "fr": "Suivez nous sur Instagram"
+    },
+    "donate_link": {
+        "en": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D8BNTS4RJU64L&source=url",
+        "fr": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D8BNTS4RJU64L&source=url"
     }
 }

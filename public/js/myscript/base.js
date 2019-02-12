@@ -732,6 +732,13 @@
         }
       }
 
+      onPlayerStateChange(event) {
+        if (event.data === YT.PlayerState.ENDED) { // --------- video END
+          $('body').trigger('finisedYT');
+          return console.log('endvideo catched by popin close ');
+        }
+      }
+
       bildPlayerIntro() {
         var that;
         that = this;
@@ -987,7 +994,8 @@
                 cc_load_policy: 1
               },
               events: {
-                'onReady': that.playerReady
+                'onReady': that.playerReady,
+                'onStateChange': that.onPlayerStateChange
               }
             });
           } else {
@@ -1110,6 +1118,9 @@
           e.stopPropagation();
           e.preventDefault();
           return false;
+        });
+        $('body').on('finisedYT', function() {
+          return that.closePopin();
         });
         $('#close, #back').on('click touchstart', function(e) {
           that.closePopin();
