@@ -371,6 +371,8 @@ class player_video_youtube
 			else
 				that.el_spiner.trigger 'hidespiner'
 				that.playerYT.loadVideoById(idYoutube)
+				if(that.isMobile)
+					that.playerYT.playVideo()
 
 
 		$('.startvideofrompopin, #list_artists li a, #play-video-btn, a.watch').on 'click touchstart', (event) ->

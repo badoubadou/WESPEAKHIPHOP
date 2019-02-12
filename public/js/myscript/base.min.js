@@ -992,7 +992,10 @@
             });
           } else {
             that.el_spiner.trigger('hidespiner');
-            return that.playerYT.loadVideoById(idYoutube);
+            that.playerYT.loadVideoById(idYoutube);
+            if (that.isMobile) {
+              return that.playerYT.playVideo();
+            }
           }
         };
         return $('.startvideofrompopin, #list_artists li a, #play-video-btn, a.watch').on('click touchstart', function(event) {
