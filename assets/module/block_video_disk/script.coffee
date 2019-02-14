@@ -2,6 +2,12 @@
 class player_video
 	'use strict'
 	constructor: (@isMobile) ->
+		#------------------- BUFFER ----------------------------#
+		@lastPlayPos = 0
+		@currentPlayPos = 0
+		@bufferingDetected = false
+		@sequence = 0
+
 		#------------------- SET VAR ---------------------------#
 		@disk_speep = 0.39
 		@scale_disk = 2
@@ -74,94 +80,114 @@ class player_video
 			that.el_popin_artist_info_info.addClass('hide')
 			that.el_popin_artist_info_info.eq(id).removeClass('hide')
 
+			currentPlayPos = that.el_player.currentTime
+			# checking offset should be at most the check interval
+			# but allow for some margin
+			offset = ((that.sequence / 100) - 20) / 1000
+			# if no buffering is currently detected,
+			# and the position does not seem to increase
+			# and the player isn't manually paused...
+			console.log 'yoppilou '
+			if !that.bufferingDetected and that.currentPlayPos < that.lastPlayPos + that.offset and !that.el_player.paused
+				console.log 'buffering'
+				that.bufferingDetected = true
+				that.player.pause()
+				# if we were buffering but the player has advanced,
+				# then there is no buffering
+			# if that.bufferingDetected and that.currentPlayPos > that.lastPlayPos + that.offset and !that.el_player.paused
+			# 	console.log 'not buffering anymore'
+			# 	that.bufferingDetected = false
+			that.lastPlayPos = that.currentPlayPos
+			return
+
 		duration_sequence = @duration / 28 
-		sequence = '+='+(duration_sequence - 1)
+		@sequence = '+='+(duration_sequence - 1)
 		
 		@timelineInfo
 			.add(-> updateInfo(0); )
 			.fromTo('#artists_info li:eq(0) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(0) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(0) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(1); )
 			.fromTo('#artists_info li:eq(1) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(1) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(1) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(2); )
 			.fromTo('#artists_info li:eq(2) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(2) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(2) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(3); )
 			.fromTo('#artists_info li:eq(3) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(3) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(3) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(4); )
 			.fromTo('#artists_info li:eq(4) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(4) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(4) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(5); )
 			.fromTo('#artists_info li:eq(5) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(5) .warper', 0.5, { alpha: 0 }, sequence )
+			.to('#artists_info li:eq(5) .warper', 0.5, { alpha: 0 }, @sequence )
 			.add(-> updateInfo(6); )
 			.fromTo('#artists_info li:eq(6) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(6) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(6) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(7); )
 			.fromTo('#artists_info li:eq(7) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(7) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(7) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(8); )
 			.fromTo('#artists_info li:eq(8) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(8) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(8) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(9); )
 			.fromTo('#artists_info li:eq(9) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(9) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(9) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(10); )
 			.fromTo('#artists_info li:eq(10) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(10) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(10) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(11); )
 			.fromTo('#artists_info li:eq(11) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(11) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(11) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(12); )
 			.fromTo('#artists_info li:eq(12) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(12) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(12) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(13); )
 			.fromTo('#artists_info li:eq(13) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(13) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(13) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(14); )
 			.fromTo('#artists_info li:eq(14) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(14) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(14) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(15); )
 			.fromTo('#artists_info li:eq(15) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(15) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(15) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(16); )
 			.fromTo('#artists_info li:eq(16) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(16) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(16) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(17); )
 			.fromTo('#artists_info li:eq(17) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(17) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(17) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(18); )
 			.fromTo('#artists_info li:eq(18) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(18) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(18) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(19); )
 			.fromTo('#artists_info li:eq(19) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(19) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(19) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(20); )
 			.fromTo('#artists_info li:eq(20) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(20) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(20) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(21); )
 			.fromTo('#artists_info li:eq(21) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(21) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(21) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(22); )
 			.fromTo('#artists_info li:eq(22) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(22) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(22) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(23); )
 			.fromTo('#artists_info li:eq(23) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(23) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(23) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(24); )
 			.fromTo('#artists_info li:eq(24) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(24) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(24) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(25); )
 			.fromTo('#artists_info li:eq(25) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(25) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(25) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(26); )
 			.fromTo('#artists_info li:eq(26) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(26) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(26) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 			.add(-> updateInfo(27); )
 			.fromTo('#artists_info li:eq(27) .warper', 0.5, {alpha: 0, marginTop:30, ease:Power1.easeInOut},{alpha: 1, marginTop:0})
-			.to('#artists_info li:eq(27) .warper', 0.5, { alpha: 0 , marginTop:-30}, sequence)
+			.to('#artists_info li:eq(27) .warper', 0.5, { alpha: 0 , marginTop:-30}, @sequence)
 
 	setTimeLineIntro : (curentTime) ->
 		that = @
@@ -357,7 +383,7 @@ class player_video
 			event.preventDefault()
 			return false
 
-		#------------------- PLAYER VIDEO DISK ---------------------------#		
+		#------------------- PLAYER VIDEO DISK ---------------------------#	
 		that.el_player.on
 			'play': ->
 				that.el_body.removeClass 'video-disk-waiting'

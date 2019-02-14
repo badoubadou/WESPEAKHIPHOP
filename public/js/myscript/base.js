@@ -1228,6 +1228,11 @@
     class player_video {
       constructor(isMobile) {
         this.isMobile = isMobile;
+        //------------------- BUFFER ----------------------------#
+        this.lastPlayPos = 0;
+        this.currentPlayPos = 0;
+        this.bufferingDetected = false;
+        this.sequence = 0;
         //------------------- SET VAR ---------------------------#
         this.disk_speep = 0.39;
         this.scale_disk = 2;
@@ -1292,9 +1297,10 @@
 
       //------------------- TWEEN ---------------------------#
       createTweenInfo(curentTime) {
-        var duration_sequence, sequence, that, updateInfo;
+        var duration_sequence, that, updateInfo;
         that = this;
         updateInfo = function(id) {
+          var currentPlayPos, offset;
           that.svgcontry = '#' + that.el_artists_info_li.eq(id).find('.contry').data('contrynicename');
           that.el_btn_play_video.attr('href', that.el_list_artists_li.eq(id).find('a').attr('href'));
           that.el_btn_play_video.data('ratiovideo', that.el_list_artists_li.eq(id).find('a').data('ratiovideo'));
@@ -1310,10 +1316,29 @@
           that.el_artists_info_li.removeClass('ontop');
           that.el_artists_info_li.eq(id).addClass('ontop');
           that.el_popin_artist_info_info.addClass('hide');
-          return that.el_popin_artist_info_info.eq(id).removeClass('hide');
+          that.el_popin_artist_info_info.eq(id).removeClass('hide');
+          currentPlayPos = that.el_player.currentTime;
+          // checking offset should be at most the check interval
+          // but allow for some margin
+          offset = ((that.sequence / 100) - 20) / 1000;
+          // if no buffering is currently detected,
+          // and the position does not seem to increase
+          // and the player isn't manually paused...
+          console.log('yoppilou ');
+          if (!that.bufferingDetected && that.currentPlayPos < that.lastPlayPos + that.offset && !that.el_player.paused) {
+            console.log('buffering');
+            that.bufferingDetected = true;
+            that.player.pause();
+          }
+          // if we were buffering but the player has advanced,
+          // then there is no buffering
+          // if that.bufferingDetected and that.currentPlayPos > that.lastPlayPos + that.offset and !that.el_player.paused
+          // 	console.log 'not buffering anymore'
+          // 	that.bufferingDetected = false
+          that.lastPlayPos = that.currentPlayPos;
         };
         duration_sequence = this.duration / 28;
-        sequence = '+=' + (duration_sequence - 1);
+        this.sequence = '+=' + (duration_sequence - 1);
         return this.timelineInfo.add(function() {
           return updateInfo(0);
         }).fromTo('#artists_info li:eq(0) .warper', 0.5, {
@@ -1326,7 +1351,7 @@
         }).to('#artists_info li:eq(0) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(1);
         }).fromTo('#artists_info li:eq(1) .warper', 0.5, {
           alpha: 0,
@@ -1338,7 +1363,7 @@
         }).to('#artists_info li:eq(1) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(2);
         }).fromTo('#artists_info li:eq(2) .warper', 0.5, {
           alpha: 0,
@@ -1350,7 +1375,7 @@
         }).to('#artists_info li:eq(2) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(3);
         }).fromTo('#artists_info li:eq(3) .warper', 0.5, {
           alpha: 0,
@@ -1362,7 +1387,7 @@
         }).to('#artists_info li:eq(3) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(4);
         }).fromTo('#artists_info li:eq(4) .warper', 0.5, {
           alpha: 0,
@@ -1374,7 +1399,7 @@
         }).to('#artists_info li:eq(4) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(5);
         }).fromTo('#artists_info li:eq(5) .warper', 0.5, {
           alpha: 0,
@@ -1385,7 +1410,7 @@
           marginTop: 0
         }).to('#artists_info li:eq(5) .warper', 0.5, {
           alpha: 0
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(6);
         }).fromTo('#artists_info li:eq(6) .warper', 0.5, {
           alpha: 0,
@@ -1397,7 +1422,7 @@
         }).to('#artists_info li:eq(6) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(7);
         }).fromTo('#artists_info li:eq(7) .warper', 0.5, {
           alpha: 0,
@@ -1409,7 +1434,7 @@
         }).to('#artists_info li:eq(7) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(8);
         }).fromTo('#artists_info li:eq(8) .warper', 0.5, {
           alpha: 0,
@@ -1421,7 +1446,7 @@
         }).to('#artists_info li:eq(8) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(9);
         }).fromTo('#artists_info li:eq(9) .warper', 0.5, {
           alpha: 0,
@@ -1433,7 +1458,7 @@
         }).to('#artists_info li:eq(9) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(10);
         }).fromTo('#artists_info li:eq(10) .warper', 0.5, {
           alpha: 0,
@@ -1445,7 +1470,7 @@
         }).to('#artists_info li:eq(10) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(11);
         }).fromTo('#artists_info li:eq(11) .warper', 0.5, {
           alpha: 0,
@@ -1457,7 +1482,7 @@
         }).to('#artists_info li:eq(11) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(12);
         }).fromTo('#artists_info li:eq(12) .warper', 0.5, {
           alpha: 0,
@@ -1469,7 +1494,7 @@
         }).to('#artists_info li:eq(12) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(13);
         }).fromTo('#artists_info li:eq(13) .warper', 0.5, {
           alpha: 0,
@@ -1481,7 +1506,7 @@
         }).to('#artists_info li:eq(13) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(14);
         }).fromTo('#artists_info li:eq(14) .warper', 0.5, {
           alpha: 0,
@@ -1493,7 +1518,7 @@
         }).to('#artists_info li:eq(14) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(15);
         }).fromTo('#artists_info li:eq(15) .warper', 0.5, {
           alpha: 0,
@@ -1505,7 +1530,7 @@
         }).to('#artists_info li:eq(15) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(16);
         }).fromTo('#artists_info li:eq(16) .warper', 0.5, {
           alpha: 0,
@@ -1517,7 +1542,7 @@
         }).to('#artists_info li:eq(16) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(17);
         }).fromTo('#artists_info li:eq(17) .warper', 0.5, {
           alpha: 0,
@@ -1529,7 +1554,7 @@
         }).to('#artists_info li:eq(17) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(18);
         }).fromTo('#artists_info li:eq(18) .warper', 0.5, {
           alpha: 0,
@@ -1541,7 +1566,7 @@
         }).to('#artists_info li:eq(18) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(19);
         }).fromTo('#artists_info li:eq(19) .warper', 0.5, {
           alpha: 0,
@@ -1553,7 +1578,7 @@
         }).to('#artists_info li:eq(19) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(20);
         }).fromTo('#artists_info li:eq(20) .warper', 0.5, {
           alpha: 0,
@@ -1565,7 +1590,7 @@
         }).to('#artists_info li:eq(20) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(21);
         }).fromTo('#artists_info li:eq(21) .warper', 0.5, {
           alpha: 0,
@@ -1577,7 +1602,7 @@
         }).to('#artists_info li:eq(21) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(22);
         }).fromTo('#artists_info li:eq(22) .warper', 0.5, {
           alpha: 0,
@@ -1589,7 +1614,7 @@
         }).to('#artists_info li:eq(22) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(23);
         }).fromTo('#artists_info li:eq(23) .warper', 0.5, {
           alpha: 0,
@@ -1601,7 +1626,7 @@
         }).to('#artists_info li:eq(23) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(24);
         }).fromTo('#artists_info li:eq(24) .warper', 0.5, {
           alpha: 0,
@@ -1613,7 +1638,7 @@
         }).to('#artists_info li:eq(24) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(25);
         }).fromTo('#artists_info li:eq(25) .warper', 0.5, {
           alpha: 0,
@@ -1625,7 +1650,7 @@
         }).to('#artists_info li:eq(25) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(26);
         }).fromTo('#artists_info li:eq(26) .warper', 0.5, {
           alpha: 0,
@@ -1637,7 +1662,7 @@
         }).to('#artists_info li:eq(26) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence).add(function() {
+        }, this.sequence).add(function() {
           return updateInfo(27);
         }).fromTo('#artists_info li:eq(27) .warper', 0.5, {
           alpha: 0,
@@ -1649,7 +1674,7 @@
         }).to('#artists_info li:eq(27) .warper', 0.5, {
           alpha: 0,
           marginTop: -30
-        }, sequence);
+        }, this.sequence);
       }
 
       setTimeLineIntro(curentTime) {
@@ -1904,7 +1929,7 @@
           event.preventDefault();
           return false;
         });
-        //------------------- PLAYER VIDEO DISK ---------------------------#		
+        //------------------- PLAYER VIDEO DISK ---------------------------#	
         return that.el_player.on({
           'play': function() {
             that.el_body.removeClass('video-disk-waiting');
