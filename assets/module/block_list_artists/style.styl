@@ -231,6 +231,7 @@
 			border-radius 100%
 			position relative
 			&:after
+				transition all .3s ease
 				pseudo_full($grey, 1, 4px, 4px )
 				center()
 				border-radius 100%
@@ -263,11 +264,16 @@
 				
 						
 		&:hover
-		&.selected	
+		&.selected
+			font-weight 900
+			span.dot:after
+				width 10px
+				height 10px
+				background #000
+				
 			.warp_contry
 				.contry:after
 					opacity 1
-					font-weight 500
 				
 		@media $landscape_smallwidth
 			span.dot
@@ -280,8 +286,17 @@
 			span.txt
 				display none
 			span.dot
-				background $grey
+				background transparent
 				display block
-				width 4px
-				height 4px
-				border-radius 50%
+				width 40px
+				height 40px
+				border-radius 100%
+				position relative
+				margin-left -18px
+				margin-top -18px
+				&:after
+					pseudo_full($grey, 1, 4px, 4px )
+					center()
+					border-radius 100%
+					
+				

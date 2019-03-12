@@ -2,7 +2,7 @@
 	include ../block_help/index.pug
 	.warp_ul_footer
 		ul#left-ul
-			li.seperateur
+			li
 				a#donation_btn.btnfooterpopin(href=TRANSLATION.donate_link[langage] title=TRANSLATION.donation[langage])
 					span.txt.long_text
 						| #{TRANSLATION.donation[langage]}
@@ -10,7 +10,7 @@
 						| #{TRANSLATION.donation_short[langage]}
 
 						donate_link
-			li.seperateur
+			li
 				a#boutique_btn.btnfooterpopin(href='#boutiquext' title=TRANSLATION.boutique[langage])
 					svg(viewBox="0 0 30 30"  xmlns="http://www.w3.org/2000/svg" overflow="visible")
 						use(href='#cadi', x='0', y='0')

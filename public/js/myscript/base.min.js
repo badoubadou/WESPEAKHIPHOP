@@ -4,169 +4,6 @@
 }).call(this);
 
 (function() {
-  var logo;
-
-  logo = (function() {
-    'use strict';
-    class logo {
-      constructor(el_logowhite1) {
-        this.el_logowhite = el_logowhite1;
-        TweenLite.set('svg', {
-          visibility: 'visible'
-        });
-        MorphSVGPlugin.convertToPath('line');
-        this.drawLogoWhite = new TimelineMax({
-          paused: true,
-          onComplete: this.finishedShowLogo,
-          onCompleteParams: [this.el_logowhite],
-          onReverseComplete: this.finishedHideLogo,
-          onReverseCompleteParams: [this.el_logowhite]
-        });
-        this.drawLogoWhite.from("#mask1_2_black", 1, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }).from("#mask2_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.1).from("#mask3_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.2).from("#mask4_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.3).from("#mask5_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.4).from("#mask6_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.5).from("#mask7_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.6).from("#mask8_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.7).from("#mask9_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.8).from("#mask10_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 0.9).from("#mask11_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1).from("#mask12_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1.1).from("#mask13_black", 1.3, {
-          drawSVG: 0,
-          ease: Power3.easeInOut
-        }, 1.2);
-        this.dLB = new TimelineMax({
-          paused: true
-        });
-        this.reverse_delay = null;
-        this.bindEvents();
-      }
-
-      finishedShowLogo(el_logowhite) {
-        return el_logowhite.trigger('finishedShowLogo');
-      }
-
-      finishedHideLogo(el_logowhite) {
-        return el_logowhite.trigger('finishedHideLogo');
-      }
-
-      showLogoWhite() {
-        return this.drawLogoWhite.play();
-      }
-
-      hideLogoWhite() {
-        var that;
-        console.log('hideLogoWhite');
-        that = this;
-        if (this.el_logowhite) {
-          this.el_logowhite.data('animstatus', 'playing');
-          return this.reverse_delay = TweenMax.delayedCall(4, function() {
-            if (that.drawLogoWhite) {
-              return that.drawLogoWhite.reverse();
-            }
-          });
-        }
-      }
-
-      pausehideLogo() {
-        console.log('pausehideLogo');
-        if (this.el_logowhite) {
-          this.el_logowhite.data('animstatus', 'paused');
-          return this.reverse_delay.pause();
-        }
-      }
-
-      resumehideLogo() {
-        console.log('resumehideLogo');
-        if (this.el_logowhite) {
-          this.el_logowhite.data('animstatus', 'playing');
-          return this.reverse_delay.resume();
-        }
-      }
-
-      destroyLogo() {
-        var svglogo;
-        console.log('destroyLogo -> is in fact move logo ');
-        if (this.el_logowhite) {
-          console.log('do move logo');
-          this.el_logowhite.off();
-          this.drawLogoWhite.seek(this.drawLogoWhite.duration());
-          $('#txth1').remove();
-          svglogo = this.el_logowhite.find('svg').detach();
-          $('#blacklogo').append(svglogo);
-          this.el_logowhite = null;
-          this.reverse_delay = null;
-          return $('.btn_intro a').off().remove();
-        }
-      }
-
-      bindEvents() {
-        var that;
-        that = this;
-        that.el_logowhite.on({
-          'finishedHideLogo': function() {
-            return that.destroyLogo();
-          },
-          'destroyLogo': function() {
-            that.destroyLogo();
-          },
-          'showLogo': function() {
-            that.showLogoWhite();
-          },
-          'hideLogo': function() {
-            that.hideLogoWhite();
-          },
-          'pausehideLogo': function() {
-            that.pausehideLogo();
-          },
-          'resumehideLogo': function() {
-            that.resumehideLogo();
-          }
-        });
-        return $('.logoWSH').on('showLogo', function() {
-          $(this).off();
-          return that.drawLogoWhite.play();
-        });
-      }
-
-    };
-
-    return logo;
-
-  }).call(this);
-
-  module.logo = logo;
-
-}).call(this);
-
-(function() {
   var player_video_vimeo;
 
   player_video_vimeo = (function() {
@@ -1953,6 +1790,169 @@
   }).call(this);
 
   module.player_video = player_video;
+
+}).call(this);
+
+(function() {
+  var logo;
+
+  logo = (function() {
+    'use strict';
+    class logo {
+      constructor(el_logowhite1) {
+        this.el_logowhite = el_logowhite1;
+        TweenLite.set('svg', {
+          visibility: 'visible'
+        });
+        MorphSVGPlugin.convertToPath('line');
+        this.drawLogoWhite = new TimelineMax({
+          paused: true,
+          onComplete: this.finishedShowLogo,
+          onCompleteParams: [this.el_logowhite],
+          onReverseComplete: this.finishedHideLogo,
+          onReverseCompleteParams: [this.el_logowhite]
+        });
+        this.drawLogoWhite.from("#mask1_2_black", 1, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }).from("#mask2_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.1).from("#mask3_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.2).from("#mask4_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.3).from("#mask5_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.4).from("#mask6_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.5).from("#mask7_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.6).from("#mask8_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.7).from("#mask9_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.8).from("#mask10_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 0.9).from("#mask11_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 1).from("#mask12_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 1.1).from("#mask13_black", 1.3, {
+          drawSVG: 0,
+          ease: Power3.easeInOut
+        }, 1.2);
+        this.dLB = new TimelineMax({
+          paused: true
+        });
+        this.reverse_delay = null;
+        this.bindEvents();
+      }
+
+      finishedShowLogo(el_logowhite) {
+        return el_logowhite.trigger('finishedShowLogo');
+      }
+
+      finishedHideLogo(el_logowhite) {
+        return el_logowhite.trigger('finishedHideLogo');
+      }
+
+      showLogoWhite() {
+        return this.drawLogoWhite.play();
+      }
+
+      hideLogoWhite() {
+        var that;
+        console.log('hideLogoWhite');
+        that = this;
+        if (this.el_logowhite) {
+          this.el_logowhite.data('animstatus', 'playing');
+          return this.reverse_delay = TweenMax.delayedCall(4, function() {
+            if (that.drawLogoWhite) {
+              return that.drawLogoWhite.reverse();
+            }
+          });
+        }
+      }
+
+      pausehideLogo() {
+        console.log('pausehideLogo');
+        if (this.el_logowhite) {
+          this.el_logowhite.data('animstatus', 'paused');
+          return this.reverse_delay.pause();
+        }
+      }
+
+      resumehideLogo() {
+        console.log('resumehideLogo');
+        if (this.el_logowhite) {
+          this.el_logowhite.data('animstatus', 'playing');
+          return this.reverse_delay.resume();
+        }
+      }
+
+      destroyLogo() {
+        var svglogo;
+        console.log('destroyLogo -> is in fact move logo ');
+        if (this.el_logowhite) {
+          console.log('do move logo');
+          this.el_logowhite.off();
+          this.drawLogoWhite.seek(this.drawLogoWhite.duration());
+          $('#txth1').remove();
+          svglogo = this.el_logowhite.find('svg').detach();
+          $('#blacklogo').append(svglogo);
+          this.el_logowhite = null;
+          this.reverse_delay = null;
+          return $('.btn_intro a').off().remove();
+        }
+      }
+
+      bindEvents() {
+        var that;
+        that = this;
+        that.el_logowhite.on({
+          'finishedHideLogo': function() {
+            return that.destroyLogo();
+          },
+          'destroyLogo': function() {
+            that.destroyLogo();
+          },
+          'showLogo': function() {
+            that.showLogoWhite();
+          },
+          'hideLogo': function() {
+            that.hideLogoWhite();
+          },
+          'pausehideLogo': function() {
+            that.pausehideLogo();
+          },
+          'resumehideLogo': function() {
+            that.resumehideLogo();
+          }
+        });
+        return $('.logoWSH').on('showLogo', function() {
+          $(this).off();
+          return that.drawLogoWhite.play();
+        });
+      }
+
+    };
+
+    return logo;
+
+  }).call(this);
+
+  module.logo = logo;
 
 }).call(this);
 

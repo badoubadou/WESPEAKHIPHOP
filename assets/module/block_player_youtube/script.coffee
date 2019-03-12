@@ -39,6 +39,7 @@ class player_video_youtube
 		that = @
 		that.el_spiner.trigger 'hidespiner'
 
+
 		btnIntroVisible = ->
 			isMobile = typeof window.orientation != 'undefined' or navigator.userAgent.indexOf('IEMobile') != -1
 			console.log 'finished show btn = '+isMobile

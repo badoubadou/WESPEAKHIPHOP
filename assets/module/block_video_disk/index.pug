@@ -1,16 +1,16 @@
 #block_video_disk.absolute.full_height.full_width.centered_with_tweenmax.overflow_hidden
 	#disk_hole.absolute.centered.layer_top
-	.circular_mask.absolute.centered.layer_3.size_video
+	#playvideofromdisk.circular_mask.absolute.centered.layer_3.size_video
 		#pause-video-btn.layer_3.btn.round_btn.grey_btn
 			span
 				| #{TRANSLATION.txt_pause_video[langage]}
 			span
 				| #{TRANSLATION.txt_play_video[langage]}
 	
-		//- a(href="", title=TRANSLATION.play_video[langage])#play-video-btn.layer_3.btn
-		//- 	span.triangle
-		//- 	span.txt
-		//- 		| #{TRANSLATION.play_video[langage]}
+		a(href="", title=TRANSLATION.play_video[langage])#play-video-btn.layer_3.btn
+			//- span.triangle
+			//- span.txt
+			//- 	| #{TRANSLATION.play_video[langage]}
 			
 	#disk.absolute.centered_with_tweenmax.layer_2.circular_mask.size_platine
 		#platine.absolute.centered_with_tweenmax.layer_0.size_platine
