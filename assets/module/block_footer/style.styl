@@ -42,21 +42,37 @@
 			font-weight 100
 			color #989898
 			padding 0 5px
+			
 			@media $landscape
 				padding 0
 			
-			@media $landscape
-				&.seperateur
+			&.seperateur
+				@media $landscape			
 					padding-right 6px
 					&:after
 						pseudo_full(#989898, 1, 1px, 3px)
 						vert_align_middle()
 						left auto
 						right 1px
-
+				
+			&.seperateur a 
+			&.seperateur a span
+				@media $landscape			
+					padding 0 2px
+				@media $landscape_desktop			
+					padding 0 3px
+					
+			&.afterseperateur a
+			&.afterseperateur a span
+				@media $landscape	
+					padding-left 2px
+				@media $landscape_desktop
+					padding-left 3px
+				
 			a
 				line-height $height_footer
 				padding 0
+			
 				@media $landscape
 					padding 0 2px
 				

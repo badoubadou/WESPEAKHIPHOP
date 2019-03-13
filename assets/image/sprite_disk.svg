@@ -39,21 +39,5 @@
 	<polyline fill="#989898" points="17.7,26.1 17.7,17.3 27.9,17.3"/>
 	<polyline fill="#989898" points="12.1,26.1 12.1,17.3 1.9,17.3"/>
 </g>	 
-<g id="txt_circ">
-	<circle cx="249" cy="250" r="249" fill="#ffce00" />
-	<path id="curve_1" fill="transparent" d="M26.3,250C26.3,126.5,126.5,26.3,250,26.3S473.7,126.5,473.7,250S373.5,473.7,250,473.7
-	S26.3,373.5,26.3,250z"/>
-	<path id="curve_2" fill="transparent" d="M473.7,250c0,123.5-100.1,223.7-223.7,223.7S26.3,373.5,26.3,250S126.5,26.3,250,26.3
-	S473.7,126.5,473.7,250z"/>
-	<text width="500">
-		<textPath class="txt_in_curve" xlink:href="#curve_1" startOffset="7.8939%">
-			We speak HipHop
-		</textPath>
-	</text>
-	<text width="500">
-		<textPath class="txt_in_curve" xlink:href="#curve_2" startOffset="7.8939%">
-			We speak HipHop
-		</textPath>
-	</text>
-</g>
+
 </svg>

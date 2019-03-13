@@ -1476,6 +1476,30 @@
     right: 1px;
   }
 }
+@media screen and (orientation: landscape) {
+  .footer ul li.seperateur a,
+  .footer ul li.seperateur a span {
+    padding: 0 2px;
+  }
+}
+@media screen and (min-width: 78em) and (orientation: landscape) {
+  .footer ul li.seperateur a,
+  .footer ul li.seperateur a span {
+    padding: 0 3px;
+  }
+}
+@media screen and (orientation: landscape) {
+  .footer ul li.afterseperateur a,
+  .footer ul li.afterseperateur a span {
+    padding-left: 2px;
+  }
+}
+@media screen and (min-width: 78em) and (orientation: landscape) {
+  .footer ul li.afterseperateur a,
+  .footer ul li.afterseperateur a span {
+    padding-left: 3px;
+  }
+}
 .footer ul li a {
   line-height: 40px;
   padding: 0;

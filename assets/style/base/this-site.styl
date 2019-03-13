@@ -41,12 +41,16 @@
 	overflow hidden
 
 .short_text
-	@media $landscape
+	@media $landscape_mediumwidth
 		display none !important
 .long_text
 	display none !important
-	@media $landscape
+	@media $landscape_mediumwidth
 		display inline-block !important
+
+.icon
+	@media $mobile_landscape
+		display none
 
 .site
 	position relative

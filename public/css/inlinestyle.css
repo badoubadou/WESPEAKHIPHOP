@@ -513,7 +513,7 @@ p:empty {
 .overflow_hidden {
   overflow: hidden;
 }
-@media screen and (orientation: landscape) {
+@media screen and (min-width: 70em) and (orientation: landscape) {
   .short_text {
     display: none !important;
   }
@@ -521,9 +521,14 @@ p:empty {
 .long_text {
   display: none !important;
 }
-@media screen and (orientation: landscape) {
+@media screen and (min-width: 70em) and (orientation: landscape) {
   .long_text {
     display: inline-block !important;
+  }
+}
+@media screen and (max-width: 48em) and (orientation: landscape) {
+  .icon {
+    display: none;
   }
 }
 .site {
