@@ -3,7 +3,7 @@ class popin
 	constructor: () ->
 		@timelinePopin = null
 		@el_popin = $('#popin')
-		@popin_content = $('.video-container, #abouttxt, #credittxt, #contacttxt, #artist_info, #shareinfo, #logowhite')
+		@popin_content = $('.video-container, #abouttxt, #credittxt, #contacttxt, #artist_info, #shareinfo, #logowhite, #donationinfo')
 		@bindEvents()
 
 	afterclose: (el_popin, popin_content)->

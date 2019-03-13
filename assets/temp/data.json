@@ -21,8 +21,8 @@
 			"fr": "boutique"
 		},
 		"donation": {
-			"en": "donation",
-			"fr": "donation"
+			"en": "Donate",
+			"fr": "Faire un don"
 		},
 		"donation_short": {
 			"en": "don",
@@ -157,8 +157,12 @@
 			"fr": "Suivez nous sur Instagram"
 		},
 		"donate_link": {
-			"en": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D8BNTS4RJU64L&source=url",
-			"fr": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D8BNTS4RJU64L&source=url"
+			"en": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YNRMQ5896438J&source=url",
+			"fr": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YNRMQ5896438J&source=url"
+		},
+		"txt_donation": {
+			"en": "Support the We Speak Hip-Hop project!<br />We invite you to join us on our We Speak Hip-Hop adventure!<br />For the second season of We Speak Hip-Hop, we’re heading for Latin America.<br />From Havana to the hot spots of Medellin, all the way to the heights of Valparaiso, will be connecting with those Latino voices advocating for change.<br />Support us !<br /><br />",
+			"fr": "Soutenez le projet We Speak Hip Hop !<br />Nous voulons poursuivre l’aventure de We Speak Hip Hop avec vous !<br />Pour la saison 2 de We Speak Hip Hop, Cap sur l’Amerique Latine.<br />De la Havanne en passant par les quartiers chauds de Medellín jusqu’aux hauteurs de Valparaiso, rencontre avec les voix latinos les plus engagées …<br />Soutenez-nous !<br /><br />"
 		}
 	},
 	"VIDEOINTRO": {

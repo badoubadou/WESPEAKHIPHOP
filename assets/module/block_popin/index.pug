@@ -86,6 +86,17 @@
 							| #{TRANSLATION.followusfb[langage]}
 						a.txt(href="https://www.instagram.com/we_speak_hip_hop/" target="_blank")
 							| #{TRANSLATION.followusinsta[langage]}
+
+	#donationinfo.hide.layer_top
+		.centered.layer_top
+			div
+				.contentpopin
+					| !{TRANSLATION.txt_donation[langage]}
+					a.btn.round_btn.donation_link.yellow(href=TRANSLATION.donate_link[langage] title=TRANSLATION.donation[langage] target="_blank")
+						| #{TRANSLATION.donation[langage]}
+
+			
+
 						
 	#close.layer_top.btn.hide
 		span.cross

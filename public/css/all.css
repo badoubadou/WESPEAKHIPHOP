@@ -3046,7 +3046,7 @@ span.lign_header {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-weight: 700;
+  font-weight: 200;
 }
 #list_artists li a:hover,
 #list_artists li a.selected {
@@ -3086,6 +3086,7 @@ span.lign_header {
 #list_artists li a .warp_contry {
   display: none;
   font-size: 1em;
+  font-weight: normal;
   position: relative;
 }
 @media screen and (min-width: 60em) and (orientation: landscape) {
@@ -3126,13 +3127,17 @@ span.lign_header {
 }
 #list_artists li a:hover,
 #list_artists li a.selected {
-  font-weight: 900;
+  font-weight: 700;
 }
 #list_artists li a:hover span.dot:after,
 #list_artists li a.selected span.dot:after {
   width: 10px;
   height: 10px;
   background: #000;
+}
+#list_artists li a:hover .warp_contry,
+#list_artists li a.selected .warp_contry {
+  font-weight: 200;
 }
 #list_artists li a:hover .warp_contry .contry:after,
 #list_artists li a.selected .warp_contry .contry:after {

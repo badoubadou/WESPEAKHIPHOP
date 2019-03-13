@@ -89,6 +89,13 @@ body #main {
 @font-face {
   font-family: Gotham;
   font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("https://d2p8kxfsucab5j.cloudfront.net/Gotham-Medium.woff2") format("woff2"), url("https://d2p8kxfsucab5j.cloudfront.net/Gotham-Medium.woff") format("woff");
+}
+@font-face {
+  font-family: Gotham;
+  font-style: normal;
   font-weight: 700;
   font-display: swap;
   src: url("https://d2p8kxfsucab5j.cloudfront.net/Gotham-Bold.woff2") format("woff2"), url("https://d2p8kxfsucab5j.cloudfront.net/Gotham-Bold.woff") format("woff");
