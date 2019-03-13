@@ -382,7 +382,7 @@ class player_video_youtube
 					that.playerYT.playVideo()
 
 
-		$('.startvideofrompopin, #list_artists li a, #play-video-btn, a.watch').on 'click touchstart', (event) ->
+		$('.startvideofrompopin, #list_artists li a, #play-video-btn, a.watch, #smallmap').on 'click touchstart', (event) ->
 			idYoutube = that.YouTubeGetID($(this).attr('href'))
 			checkratio($(this).data('ratiovideo'))
 			checkClassAndTrigger()

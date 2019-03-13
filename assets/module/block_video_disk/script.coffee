@@ -22,7 +22,7 @@ class player_video
 		@el_spiner = $('.lds-dual-ring')
 		@el_body = $('body')
 		@el_disk = $('#disk')
-		@el_btn_play_video = $('#play-video-btn, .startvideofrompopin')
+		@el_btn_play_video = $('#play-video-btn, .startvideofrompopin, #smallmap')
 		@el_artists_info_li = $('#artists_info li')
 		@el_popin_artist_info_info = $('#popin #artist_info .info')
 		@el_artists_info_li = $('#artists_info li')
