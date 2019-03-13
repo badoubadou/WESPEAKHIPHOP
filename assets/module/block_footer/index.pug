@@ -12,7 +12,7 @@
 						donate_link
 			li
 				a#boutique_btn.btnfooterpopin(href='#boutiquext' title=TRANSLATION.boutique[langage])
-					svg(viewBox="0 0 30 30"  xmlns="http://www.w3.org/2000/svg" overflow="visible")
+					svg.short_text(viewBox="0 0 30 30"  xmlns="http://www.w3.org/2000/svg" overflow="visible")
 						use(href='#cadi', x='0', y='0')
 					span.txt.long_text
 						| #{TRANSLATION.boutique[langage]}
@@ -61,7 +61,7 @@
 			
 			li
 				a#share.btnfooterpopin(href='#shareinfo' title=TRANSLATION.partager[langage])
-					svg(viewBox="0 0 13 13"  xmlns="http://www.w3.org/2000/svg" overflow="visible")
+					svg.short_text(viewBox="0 0 13 13"  xmlns="http://www.w3.org/2000/svg" overflow="visible")
 						use(href='#share_svg', x='0', y='0')
-					span.txt
+					span.txt.long_text
 						| #{TRANSLATION.partager[langage]}

@@ -1458,7 +1458,7 @@
 }
 @media screen and (orientation: landscape) {
   .footer ul li.seperateur {
-    padding-right: 11px;
+    padding-right: 6px;
   }
   .footer ul li.seperateur:after {
     content: '';
@@ -1925,6 +1925,10 @@ span.lign_header {
   #artists_info li .about-btn {
     background: #ffce00;
     color: #000;
+    line-height: 20px;
+    height: 20px;
+    border-radius: 15px;
+    padding: 0 10px;
   }
 }
 @media screen and (orientation: landscape) {
@@ -2852,6 +2856,8 @@ span.lign_header {
     list-style: none;
     margin: 0;
     margin: -2px;
+    width: 0;
+    height: 0;
   }
   #list_artists > * {
     display: block;
@@ -4320,6 +4326,10 @@ span.lign_header {
 @media screen and (max-width: 48em) and (orientation: landscape) {
   #pause-video-btn {
     bottom: 15px;
+    padding: 0 5px;
+    font-size: 0.6em;
+    font-weight: 700;
+    line-height: 20px;
   }
 }
 #pause-video-btn span:last-child {
