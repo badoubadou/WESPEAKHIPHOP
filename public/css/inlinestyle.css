@@ -74,10 +74,10 @@ body #main {
   left: 0;
   right: 0;
 }
-.video-container iframe.quatre_tier,
-.video-container object.quatre_tier,
-.video-container embed.quatre_tier {
-  height: 56.25vw;
+.quatre_tier.video-container iframe,
+.quatre_tier.video-container object,
+.quatre_tier.video-container embed {
+  width: 71vw;
 }
 @font-face {
   font-family: Gotham;

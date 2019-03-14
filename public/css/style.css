@@ -1788,7 +1788,9 @@ span.lign_header {
 }
 @media screen and (orientation: landscape) {
   .skip_intro {
-    bottom: 2px;
+    bottom: 50px;
+    left: 85.5%;
+    transform: translateX(-110%);
   }
 }
 .video-container {
@@ -1803,6 +1805,10 @@ span.lign_header {
 }
 .video-container.quatre_tier {
   padding-bottom: 70%;
+}
+.video-container.quatre_tier .playerYTintro,
+.video-container.quatre_tier .playerYT {
+  width: 71vw;
 }
 #popin {
   position: absolute;

@@ -38,7 +38,7 @@ class player_video
 
 		console.log '&&&&&&&&&&&&&&@isMobile = '+@isMobile
 		if @isMobile
-			$('#player').attr('src', 'https://d2p8kxfsucab5j.cloudfront.net/25f500kfaststartmobile.mp4')
+			$('#player').attr('src', 'https://d2e3lhf7z9v1b2.cloudfront.net/25f500kfaststartmobile.mp4')
 			@scale_disk = 1
 		
 		if @player.duration && @player.duration > 1
@@ -48,11 +48,14 @@ class player_video
 		@sounddirection = 0
 		@scratchBank = []
 		@scratchBank.push new Howl(
-				src: [ 'https://d2p8kxfsucab5j.cloudfront.net/video.mp3' ]
-				buffer: true)
+				src: [ 'https://d2e3lhf7z9v1b2.cloudfront.net/video.mp3' ]
+				buffer: true
+				html5: true
+				)
 		@scratchBank.push new Howl(
-				src: [ 'https://d2p8kxfsucab5j.cloudfront.net/video_reverse.mp3' ]
-				buffer: true)
+				src: [ 'https://d2e3lhf7z9v1b2.cloudfront.net/video_reverse.mp3' ]
+				buffer: true
+				html5: true)
 		
 		#------------------- SET FUNCTION ---------------------------#
 		@setTimeLineIntro()

@@ -1,12 +1,15 @@
 var url = require('url');
 var express = require('express');
+const cors = require('cors');
 var compression = require('compression');
 var path = require('path');
 var port = process.env.PORT || 1881; 
 var app = express();
 // viewed at http://localhost:1881
+
 app.use(compression());
 app.disable('x-powered-by');
+
 app.get('/robots.txt', function (req, res) {
     res.type('text/plain');
     res.send("User-agent: *\nDisallow: \nSitemap: http://"+req.headers.host+"/sitemap.xml");
@@ -14,6 +17,11 @@ app.get('/robots.txt', function (req, res) {
 
 app.get('/manifest.json', function (req, res) {
     filePath = '/public/manifest.json'; 
+    res.sendFile(path.join(__dirname + filePath));
+});
+
+app.get('/googlea9ce7ea88d34d673.html', function (req, res) {
+    filePath = '/public/googlea9ce7ea88d34d673.html'; 
     res.sendFile(path.join(__dirname + filePath));
 });
 
