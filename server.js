@@ -21,7 +21,10 @@ app.get('/manifest.json', function (req, res) {
 });
 
 app.get('/googlea9ce7ea88d34d673.html', function (req, res) {
-    filePath = '/public/googlea9ce7ea88d34d673.html'; 
+    filePath = '/public/googlea9ce7ea88d34d673-fr.html'; 
+    if ((req.headers.host == 'www.wespeakhiphop.com') || (req.headers.host == 'wespeakhiphop.com'))
+        filePath = '/public/googlea9ce7ea88d34d673.html'; 
+    
     res.sendFile(path.join(__dirname + filePath));
 });
 
