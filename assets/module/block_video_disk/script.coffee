@@ -400,29 +400,17 @@ class player_video
 				that.timelineKnob.pause()
 				that.el_pause_btn.addClass 'paused'
 				return
-			'playing': ->
-				console.log 'playing'
-				that.timelineKnob.play()
-				that.timelineInfo.play()
-				that.el_pause_btn.removeClass 'paused'
-				return
-			# 'stalled': ->
-			# 	console.log 'stalled'
+			# 'playing': ->
+			# 	console.log 'playing'
+			# 	that.timelineKnob.play()
+			# 	that.timelineInfo.play()
+			# 	that.el_pause_btn.removeClass 'paused'
+			# 	return
+			# 'waiting': ->
+			# 	console.log 'waiting'
 			# 	that.timelineInfo.pause()
 			# 	that.timelineKnob.pause()
 			# 	that.el_pause_btn.addClass 'paused'
 			# 	return
-			# 'suspend': ->
-			# 	console.log 'suspend'
-			# 	that.timelineInfo.pause()
-			# 	that.timelineKnob.pause()
-			# 	that.el_pause_btn.addClass 'paused'
-				# return
-			'waiting': ->
-				console.log 'waiting'
-				that.timelineInfo.pause()
-				that.timelineKnob.pause()
-				that.el_pause_btn.addClass 'paused'
-				return
 
 module.player_video = player_video

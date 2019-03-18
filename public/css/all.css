@@ -3036,6 +3036,145 @@ span.lign_header {
     margin-top: 0px;
   }
 }
+@media screen and (max-width: 48em) and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 4/3) and (orientation: landscape) {
+  #list_artists {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: relative;
+    width: 75vh;
+    height: 75vh;
+    padding: 0;
+    border-radius: 50%;
+    list-style: none;
+    margin: 0;
+    margin: -2px;
+    width: 0;
+    height: 0;
+  }
+  #list_artists > * {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 10px;
+    margin-left: -40px;
+  }
+  #list_artists > *:nth-of-type(1) {
+    transform: rotate(-90deg) translate(37.5vh) rotate(90deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(2) {
+    transform: rotate(-77.14285714285714deg) translate(37.5vh) rotate(77.14285714285714deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(3) {
+    transform: rotate(-64.28571428571428deg) translate(37.5vh) rotate(64.28571428571428deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(4) {
+    transform: rotate(-51.428571428571416deg) translate(37.5vh) rotate(51.428571428571416deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(5) {
+    transform: rotate(-38.571428571428555deg) translate(37.5vh) rotate(38.571428571428555deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(6) {
+    transform: rotate(-25.714285714285698deg) translate(37.5vh) rotate(25.714285714285698deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(7) {
+    transform: rotate(-12.85714285714284deg) translate(37.5vh) rotate(12.85714285714284deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(8) {
+    transform: rotate(1.8e-14deg) translate(37.5vh) rotate(-1.8e-14deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(9) {
+    transform: rotate(12.857142857142875deg) translate(37.5vh) rotate(-12.857142857142875deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(10) {
+    transform: rotate(25.714285714285733deg) translate(37.5vh) rotate(-25.714285714285733deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(11) {
+    transform: rotate(38.57142857142859deg) translate(37.5vh) rotate(-38.57142857142859deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(12) {
+    transform: rotate(51.428571428571445deg) translate(37.5vh) rotate(-51.428571428571445deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(13) {
+    transform: rotate(64.2857142857143deg) translate(37.5vh) rotate(-64.2857142857143deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(14) {
+    transform: rotate(77.14285714285717deg) translate(37.5vh) rotate(-77.14285714285717deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(15) {
+    transform: rotate(90.00000000000003deg) translate(37.5vh) rotate(-90.00000000000003deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(16) {
+    transform: rotate(102.85714285714289deg) translate(37.5vh) rotate(-102.85714285714289deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(17) {
+    transform: rotate(115.71428571428575deg) translate(37.5vh) rotate(-115.71428571428575deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(18) {
+    transform: rotate(128.5714285714286deg) translate(37.5vh) rotate(-128.5714285714286deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(19) {
+    transform: rotate(141.42857142857147deg) translate(37.5vh) rotate(-141.42857142857147deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(20) {
+    transform: rotate(154.28571428571433deg) translate(37.5vh) rotate(-154.28571428571433deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(21) {
+    transform: rotate(167.1428571428572deg) translate(37.5vh) rotate(-167.1428571428572deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(22) {
+    transform: rotate(180.00000000000006deg) translate(37.5vh) rotate(-180.00000000000006deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(23) {
+    transform: rotate(192.85714285714292deg) translate(37.5vh) rotate(-192.85714285714292deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(24) {
+    transform: rotate(205.71428571428578deg) translate(37.5vh) rotate(-205.71428571428578deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(25) {
+    transform: rotate(218.57142857142864deg) translate(37.5vh) rotate(-218.57142857142864deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(26) {
+    transform: rotate(231.4285714285715deg) translate(37.5vh) rotate(-231.4285714285715deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(27) {
+    transform: rotate(244.28571428571436deg) translate(37.5vh) rotate(-244.28571428571436deg);
+    text-align: center;
+  }
+  #list_artists > *:nth-of-type(28) {
+    transform: rotate(257.1428571428572deg) translate(37.5vh) rotate(-257.1428571428572deg);
+    text-align: center;
+  }
+}
 #list_artists li a {
   bottom: 0;
   font-size: 0.65em;
@@ -4160,6 +4299,17 @@ span.lign_header {
     height: 120px;
   }
 }
+@media screen and (max-width: 48em) and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 4/3) and (orientation: landscape) {
+  .size_video {
+    width: 220px;
+    height: 220px;
+  }
+  .size_video .player-dimensions,
+  .size_video video {
+    width: 220px;
+    height: 220px;
+  }
+}
 @media screen and (min-width: 120em) and (orientation: landscape) {
   .size_video {
     width: 380px;
@@ -4201,6 +4351,12 @@ span.lign_header {
     height: 73vh;
   }
 }
+@media screen and (max-width: 48em) and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 4/3) and (orientation: landscape) {
+  .size_disk {
+    width: 65vh;
+    height: 65vh;
+  }
+}
 .size_platine {
   width: 85vw;
   height: 85vw;
@@ -4231,6 +4387,12 @@ span.lign_header {
   .size_platine {
     width: 79vh;
     height: 79vh;
+  }
+}
+@media screen and (max-width: 48em) and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 4/3) and (orientation: landscape) {
+  .size_platine {
+    width: 69vh;
+    height: 69vh;
   }
 }
 .lign_svg {
@@ -4267,6 +4429,12 @@ span.lign_header {
   .lign_svg {
     width: 72vh;
     height: 72vh;
+  }
+}
+@media screen and (max-width: 48em) and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 4/3) and (orientation: landscape) {
+  .lign_svg {
+    width: 65vh;
+    height: 65vh;
   }
 }
 .lign_svg img {

@@ -60,6 +60,14 @@
 		video
 			width 120px
 			height 120px
+			
+	@media $mobile_landscape_square
+		width $size_video_medium
+		height $size_video_medium
+		.player-dimensions
+		video
+			width $size_video_medium
+			height $size_video_medium			
 	
 	@media $landscape_verybig
 		width $size_video_large
@@ -90,6 +98,11 @@
 	@media $mobile_landscape
 		width $size_disk_large
 		height $size_disk_large
+	
+	@media $mobile_landscape_square
+		width 65vh
+		height 65vh
+		
 
 .size_platine
 	width $size_platine_smaller
@@ -114,6 +127,10 @@
 	@media $mobile_landscape
 		width $size_platine_large
 		height $size_platine_large
+		
+	@media $mobile_landscape_square
+		width 69vh
+		height 69vh
 	
 .lign_svg
 	center()
@@ -139,6 +156,10 @@
 	@media $mobile_landscape
 		width $size_ligndisk_large
 		height $size_ligndisk_large
+			
+	@media $mobile_landscape_square
+		width 65vh
+		height 65vh
 
 .lign_svg img
 	width 100%

@@ -80,7 +80,7 @@ $break-xlarg = 75em
 $large_portrait = unquote('screen and (min-width: '+34em+') and (orientation: portrait)')
 
 $mobile_landscape = unquote('screen and (max-width: '+48em+') and (orientation: landscape)')
-$square_landscape = unquote('screen and (max-width: '+48em+') and (min-height: '+48em+') and (orientation: landscape)')
+$mobile_landscape_square = unquote('screen and (max-width: '+48em+') and (min-aspect-ratio 1/1) and (max-aspect-ratio 4/3) and (orientation: landscape)')
 $landscape = unquote('screen and (orientation: landscape)')
 $landscape_desktop = unquote('screen and (min-width: '+78em+') and (orientation: landscape)')
 $landscape_smallwidth = unquote('screen and (min-width: '+60em+') and (orientation: landscape)')
