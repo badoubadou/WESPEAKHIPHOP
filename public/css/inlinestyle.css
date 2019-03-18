@@ -52,33 +52,6 @@ body #main {
   background: #f0f2da;
   background-color: #f0f2da;
 }
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  padding-top: 30px;
-  height: 0;
-  overflow: hidden;
-}
-.video-container iframe,
-.video-container object,
-.video-container embed {
-  width: 100vw;
-  height: 73vw;
-  background: #000;
-  max-height: 100vh;
-  max-width: 160vh;
-  margin: auto;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-.quatre_tier.video-container iframe,
-.quatre_tier.video-container object,
-.quatre_tier.video-container embed {
-  width: 71vw;
-}
 @font-face {
   font-family: Gotham;
   font-style: normal;
