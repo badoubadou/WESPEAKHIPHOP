@@ -3192,12 +3192,22 @@ span.lign_header {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  width: 100px !important;
+  text-align: center;
 }
 @media screen and (orientation: landscape) {
   .skip_intro {
     bottom: 50px;
-    left: 85.5%;
+    left: calc(((100vw - 136vh) / 2) + 136vh);
     transform: translateX(-110%);
+  }
+}
+@media screen and (orientation: landscape) and (max-aspect-ratio: 4/3) {
+  .skip_intro {
+    left: auto;
+    transform: none;
+    right: 10px;
+    bottom: calc(((100vh - 75vw) / 2) + 50px);
   }
 }
 .video-container,

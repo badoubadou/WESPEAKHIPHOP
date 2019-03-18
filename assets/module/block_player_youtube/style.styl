@@ -6,10 +6,18 @@
 	position absolute 
 	z-index 102
 	align_middle()
+	width 100px !important
+	text-align center
 	@media $landscape
 		bottom 50px
-		left 85.5%
+		left calc(((100vw - 136vh)/2) + 136vh)
 		transform translateX(-110%)
+		@media screen and (max-aspect-ratio 4/3)
+			left auto
+			transform none
+			right 10px
+			bottom calc(((100vh - 75vw)/2) + 50px)
+		
 	
 // .video-container
 // 	height 0

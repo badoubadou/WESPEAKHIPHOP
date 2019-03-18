@@ -395,18 +395,16 @@ class player_video
 				that.el_spiner.trigger 'hidespiner'
 				that.el_pause_btn.removeClass 'paused'
 				return
-			# 'playing': ->
-			# 	console.log 'playing'
-			# 	that.el_body.removeClass 'video-disk-waiting'
-			# 	that.timelineKnob.play()
-			# 	that.timelineInfo.play()
-			# 	that.el_spiner.trigger 'hidespiner'
-			# 	that.el_pause_btn.removeClass 'paused'
-			# 	return
 			'pause': ->
 				that.timelineInfo.pause()
 				that.timelineKnob.pause()
 				that.el_pause_btn.addClass 'paused'
+				return
+			'playing': ->
+				console.log 'playing'
+				that.timelineKnob.play()
+				that.timelineInfo.play()
+				that.el_pause_btn.removeClass 'paused'
 				return
 			# 'stalled': ->
 			# 	console.log 'stalled'
@@ -420,11 +418,11 @@ class player_video
 			# 	that.timelineKnob.pause()
 			# 	that.el_pause_btn.addClass 'paused'
 				# return
-			# 'waiting': ->
-			# 	console.log 'waiting'
-			# 	that.timelineInfo.pause()
-			# 	that.timelineKnob.pause()
-			# 	that.el_pause_btn.addClass 'paused'
-			# 	return
+			'waiting': ->
+				console.log 'waiting'
+				that.timelineInfo.pause()
+				that.timelineKnob.pause()
+				that.el_pause_btn.addClass 'paused'
+				return
 
 module.player_video = player_video
