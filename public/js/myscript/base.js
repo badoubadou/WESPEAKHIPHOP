@@ -167,120 +167,6 @@
 }).call(this);
 
 (function() {
-  var popin;
-
-  popin = (function() {
-    'use strict';
-    class popin {
-      constructor() {
-        this.timelinePopin = null;
-        this.el_popin = $('#popin');
-        this.popin_content = $('.video-container, #abouttxt, #credittxt, #contacttxt, #artist_info, #shareinfo, #logowhite, #donationinfo');
-        this.bindEvents();
-      }
-
-      afterclose(el_popin, popin_content) {
-        console.log('afterclose');
-        el_popin.addClass('hide').trigger('closePopin');
-        el_popin.removeAttr('style');
-        el_popin.find('*').removeAttr('style');
-        return popin_content.addClass('hide');
-      }
-
-      closePopin() {
-        console.log('closePopin @timelinePopin : ' + this.timelinePopin);
-        if (this.timelinePopin) {
-          return this.timelinePopin.reverse();
-        } else {
-          this.el_popin.addClass('hide');
-          return this.el_popin.trigger('closePopin');
-        }
-      }
-
-      bindEvents() {
-        var loadPopinAssets, showPopin, that;
-        that = this;
-        loadPopinAssets = function() {
-          return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/sprite-popin.svg', function(data) {
-            var div;
-            div = document.createElement('div');
-            div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
-            $("#sprite_svg").append(div.innerHTML).addClass('done');
-          });
-        };
-        showPopin = function($target) {
-          that.el_popin.trigger('showPopin');
-          that.popin_content.addClass('hide');
-          if (that.el_popin.hasClass('hide')) {
-            that.el_popin.removeClass('hide');
-          }
-          that.el_popin.removeClass('greybg');
-          if (($target === '#abouttxt') || ($target === '#credittxt') || ($target === '#contacttxt')) {
-            that.el_popin.addClass('greybg');
-          }
-          $($target).removeClass('hide');
-          if ($target === '.video-container') {
-            $('.video-container').addClass('trans');
-          }
-          that.timelinePopin = new TimelineMax({
-            onReverseComplete: that.afterclose,
-            onReverseCompleteParams: [that.el_popin, that.popin_content]
-          });
-          return that.timelinePopin.from('#popin', .6, {
-            opacity: 0,
-            ease: Power3.easeOut
-          }).fromTo($target, 0.5, {
-            alpha: 0,
-            marginTop: 30,
-            ease: Power1.easeInOut
-          }, {
-            alpha: 1,
-            marginTop: 0
-          });
-        };
-        
-        //------------------- ABOUT SHARE CREDIT MAIL --------------------------#
-        $('.btnfooterpopin').on('click touchstart', function(e) {
-          loadPopinAssets();
-          showPopin($(this).attr('href'));
-          e.stopPropagation();
-          e.preventDefault();
-          return false;
-        });
-        
-        //------------------- BIO  --------------------------#
-        $('.about-btn').on('click touchstart', function(e) {
-          showPopin('#artist_info');
-          e.stopPropagation();
-          e.preventDefault();
-          return false;
-        });
-        $('body').on('finisedYT', function() {
-          return that.closePopin();
-        });
-        $('#close, #back').on('click touchstart', function(e) {
-          that.closePopin();
-          e.stopPropagation();
-          e.preventDefault();
-          return false;
-        });
-        return this.el_popin.on('showVideo', function() {
-          console.log('belors ?? - showVideo');
-          return showPopin('.video-container');
-        });
-      }
-
-    };
-
-    return popin;
-
-  }).call(this);
-
-  module.popin = popin;
-
-}).call(this);
-
-(function() {
   var player_video_youtube, tag;
 
   player_video_youtube = (function() {
@@ -741,6 +627,120 @@
   module.player_video_youtube = player_video_youtube;
 
   tag = document.createElement('script');
+
+}).call(this);
+
+(function() {
+  var popin;
+
+  popin = (function() {
+    'use strict';
+    class popin {
+      constructor() {
+        this.timelinePopin = null;
+        this.el_popin = $('#popin');
+        this.popin_content = $('.video-container, #abouttxt, #credittxt, #contacttxt, #artist_info, #shareinfo, #logowhite, #donationinfo');
+        this.bindEvents();
+      }
+
+      afterclose(el_popin, popin_content) {
+        console.log('afterclose');
+        el_popin.addClass('hide').trigger('closePopin');
+        el_popin.removeAttr('style');
+        el_popin.find('*').removeAttr('style');
+        return popin_content.addClass('hide');
+      }
+
+      closePopin() {
+        console.log('closePopin @timelinePopin : ' + this.timelinePopin);
+        if (this.timelinePopin) {
+          return this.timelinePopin.reverse();
+        } else {
+          this.el_popin.addClass('hide');
+          return this.el_popin.trigger('closePopin');
+        }
+      }
+
+      bindEvents() {
+        var loadPopinAssets, showPopin, that;
+        that = this;
+        loadPopinAssets = function() {
+          return $.get('https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/sprite-popin.svg', function(data) {
+            var div;
+            div = document.createElement('div');
+            div.innerHTML = (new XMLSerializer).serializeToString(data.documentElement);
+            $("#sprite_svg").append(div.innerHTML).addClass('done');
+          });
+        };
+        showPopin = function($target) {
+          that.el_popin.trigger('showPopin');
+          that.popin_content.addClass('hide');
+          if (that.el_popin.hasClass('hide')) {
+            that.el_popin.removeClass('hide');
+          }
+          that.el_popin.removeClass('greybg');
+          if (($target === '#abouttxt') || ($target === '#credittxt') || ($target === '#contacttxt')) {
+            that.el_popin.addClass('greybg');
+          }
+          $($target).removeClass('hide');
+          if ($target === '.video-container') {
+            $('.video-container').addClass('trans');
+          }
+          that.timelinePopin = new TimelineMax({
+            onReverseComplete: that.afterclose,
+            onReverseCompleteParams: [that.el_popin, that.popin_content]
+          });
+          return that.timelinePopin.from('#popin', .6, {
+            opacity: 0,
+            ease: Power3.easeOut
+          }).fromTo($target, 0.5, {
+            alpha: 0,
+            marginTop: 30,
+            ease: Power1.easeInOut
+          }, {
+            alpha: 1,
+            marginTop: 0
+          });
+        };
+        
+        //------------------- ABOUT SHARE CREDIT MAIL --------------------------#
+        $('.btnfooterpopin').on('click touchstart', function(e) {
+          loadPopinAssets();
+          showPopin($(this).attr('href'));
+          e.stopPropagation();
+          e.preventDefault();
+          return false;
+        });
+        
+        //------------------- BIO  --------------------------#
+        $('.about-btn').on('click touchstart', function(e) {
+          showPopin('#artist_info');
+          e.stopPropagation();
+          e.preventDefault();
+          return false;
+        });
+        $('body').on('finisedYT', function() {
+          return that.closePopin();
+        });
+        $('#close, #back').on('click touchstart', function(e) {
+          that.closePopin();
+          e.stopPropagation();
+          e.preventDefault();
+          return false;
+        });
+        return this.el_popin.on('showVideo', function() {
+          console.log('belors ?? - showVideo');
+          return showPopin('.video-container');
+        });
+      }
+
+    };
+
+    return popin;
+
+  }).call(this);
+
+  module.popin = popin;
 
 }).call(this);
 

@@ -729,6 +729,38 @@ html {
 #popin .contentpopin .logo svg rect {
   fill: #fff;
 }
+#popin #donationinfo {
+  text-transform: none;
+  text-align: center;
+  font-weight: 100;
+  font-size: 1.2em;
+  font-family: Knockout, Helvetica, Arial, sans-serif;
+  width: calc(100% - 50px);
+  max-width: calc(100% - 50px);
+  padding: 0 25px;
+  line-height: 1;
+}
+@media screen and (orientation: landscape) {
+  #popin #donationinfo {
+    width: calc(100% - 100px);
+    max-width: calc(100% - 100px);
+    padding: 0 50px;
+  }
+}
+#popin #donationinfo .title {
+  font-size: 1.5em;
+  color: #ffce00;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+#popin #donationinfo .contentpopin {
+  width: 33%;
+  color: #fefeff;
+}
+#popin #donationinfo .btn {
+  margin-right: 0;
+  text-transform: uppercase;
+}
 #popin #credittxt,
 #popin #abouttxt,
 #popin #contacttxt {
