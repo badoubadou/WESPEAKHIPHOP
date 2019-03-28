@@ -77,16 +77,16 @@ gulp.task('makecoffee', function() {
 
 gulp.task('uglifymyjs', function () {
     return gulp.src('public/js/myscript/base.js')
-        // .pipe(stripDebug())
+        .pipe(stripDebug())
         .pipe(rename('base.min.js'))
-        // .pipe(uglify(/* options */))
+        .pipe(uglify(/* options */))
         .pipe(gulp.dest(dest+'js/myscript/'));
 });
 
 gulp.task('concatalljs', function() {
     return gulp.src(vendor)
         .pipe(concat('script-v9.min.js'))
-        // .pipe(uglify(/* options */))
+        .pipe(uglify(/* options */))
         .pipe(gulp.dest(dest+'js/'));
 });
 

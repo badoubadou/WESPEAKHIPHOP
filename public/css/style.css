@@ -58,8 +58,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 3px;
-    height: 1px;
+    width: 1px;
+    height: 7px;
     background: #989898;
     opacity: 1;
     position: absolute;
@@ -277,6 +277,11 @@ h1 {
     width: calc(100% - 50px);
     margin: 0;
     max-height: 105px;
+  }
+}
+@media screen and (min-width: 78em) and (min-height: 700px) and (orientation: landscape) {
+  h1 {
+    max-height: none;
   }
 }
 .logoWSH {
