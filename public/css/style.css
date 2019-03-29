@@ -2102,8 +2102,12 @@ span.lign_header {
   font-weight: 500;
 }
 #popin #donationinfo .contentpopin {
-  width: 33%;
   color: #fefeff;
+}
+@media screen and (orientation: landscape) {
+  #popin #donationinfo .contentpopin {
+    width: 33%;
+  }
 }
 #popin #donationinfo .btn {
   margin-right: 0;
