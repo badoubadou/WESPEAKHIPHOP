@@ -1,6 +1,6 @@
 ul.sharebtn
 	li
-		a(href="https://www.facebook.com/sharer/sharer.php?u="+pageurl+"&display=popup&ref=plugin&src=share_button" title="facebook share" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=580')")
+		a(href="https://www.facebook.com/sharer/sharer.php?u="+pageurl+"&display=popup&ref=plugin&src=share_button" title="facebook share" onclick="ga('send', 'social', 'Facebook', 'share', 'http://myownpersonaldomain.com'); return !window.open(this.href, 'Facebook', 'width=640,height=580')")
 			svg(viewBox="0 0 50 50"  xmlns="http://www.w3.org/2000/svg" overflow="visible")
 				use(href='#logopartenaire-facebook', x='0', y='0', width='50', height='50')
 	li
