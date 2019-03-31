@@ -391,7 +391,7 @@ class player_video_youtube
 
 		$('.startvideofrompopin, #list_artists li a, #play-video-btn, a.watch, #smallmap').on 'click touchstart', (event) ->
 			idYoutube = that.YouTubeGetID($(this).attr('href'))
-			ga('send', 'event', 'video', $('#artists_info .ontop .name').text(), $('#langage_short').val())
+			ga('send', 'event', 'video', $('#artists_info .ontop .name').text()+' '+$('#langage_short').val(), $('#langage_short').val())
 			checkratio($(this).data('ratiovideo'))
 			checkClassAndTrigger()
 			startYoutube(idYoutube)
