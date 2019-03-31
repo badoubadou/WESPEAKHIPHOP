@@ -60,7 +60,7 @@ class popin
 		
 		#------------------- BIO  --------------------------#
 		$('.about-btn').on 'click touchstart',(e) ->
-			ga('send', 'event', 'About');
+			ga('send', 'event', 'About', $('#artists_info .ontop .name').text(), $('#langage_short').val());
 			showPopin('#artist_info')
 			e.stopPropagation()
 			e.preventDefault()

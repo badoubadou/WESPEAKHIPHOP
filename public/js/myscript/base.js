@@ -615,7 +615,7 @@
         return $('.startvideofrompopin, #list_artists li a, #play-video-btn, a.watch, #smallmap').on('click touchstart', function(event) {
           var idYoutube;
           idYoutube = that.YouTubeGetID($(this).attr('href'));
-          ga('send', 'event', 'video', $('#artists_info .ontop .name'), $('#langage_short').val());
+          ga('send', 'event', 'video', $('#artists_info .ontop .name').text(), $('#langage_short').val());
           checkratio($(this).data('ratiovideo'));
           checkClassAndTrigger();
           startYoutube(idYoutube);
@@ -722,7 +722,7 @@
         
         //------------------- BIO  --------------------------#
         $('.about-btn').on('click touchstart', function(e) {
-          ga('send', 'event', 'About');
+          ga('send', 'event', 'About', $('#artists_info .ontop .name').text(), $('#langage_short').val());
           showPopin('#artist_info');
           e.stopPropagation();
           e.preventDefault();
