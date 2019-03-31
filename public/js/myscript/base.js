@@ -396,6 +396,7 @@
           btnIntroInVisible = function() {
             that.el_video_container.removeClass('hidden hide');
             $('.btn_intro a').on('click', function(event) {
+              ga('send', 'event', 'enter', $('#langage_short').val());
               event.stopPropagation();
               event.preventDefault();
               return false;
@@ -436,6 +437,7 @@
           return false;
         });
         that.el_other_lang.on('click touchstart', function(event) {
+          ga('send', 'event', 'Change Language from :', $('#langage_short').val());
           window.location.href = $(this).attr('href');
           event.stopPropagation();
           event.preventDefault();
@@ -450,6 +452,7 @@
           if (that.el_sound.hasClass('actif')) {
             event_name = 'sound_off';
           }
+          ga('send', 'event', 'Sound : ', event_name);
           $(this).trigger(event_name);
           console.log(event_name);
           that.el_sound.toggleClass('actif');
@@ -460,6 +463,7 @@
         
         //------------------- FULL SCREEN ---------------------------#				
         GoInFullscreen = function(el_body, btn) {
+          ga('send', 'event', 'Fullscreen', 'on');
           btn.addClass('actiffullscreen');
           if (el_body.requestFullscreen) {
             el_body.requestFullscreen();
@@ -475,6 +479,7 @@
           }
         };
         GoOutFullscreen = function() {
+          ga('send', 'event', 'Fullscreen', 'off');
           $('.myfullscreen').removeClass('actiffullscreen');
           if (document.exitFullscreen) {
             document.exitFullscreen();
@@ -553,6 +558,7 @@
           that.el_body.addClass('vid_intro_finished');
         };
         this.el_skip_intro.on('click touchstart', function(event) {
+          ga('send', 'event', 'skip', 'introvideo');
           vid_intro_finished();
           event.stopPropagation();
           event.preventDefault();
@@ -609,6 +615,7 @@
         return $('.startvideofrompopin, #list_artists li a, #play-video-btn, a.watch, #smallmap').on('click touchstart', function(event) {
           var idYoutube;
           idYoutube = that.YouTubeGetID($(this).attr('href'));
+          ga('send', 'event', 'video', $('#artists_info .ontop .name'), $('#langage_short').val());
           checkratio($(this).data('ratiovideo'));
           checkClassAndTrigger();
           startYoutube(idYoutube);
@@ -707,6 +714,7 @@
         $('.btnfooterpopin').on('click touchstart', function(e) {
           loadPopinAssets();
           showPopin($(this).attr('href'));
+          ga('send', 'event', 'Page', $(this).attr('href'));
           e.stopPropagation();
           e.preventDefault();
           return false;
@@ -714,6 +722,7 @@
         
         //------------------- BIO  --------------------------#
         $('.about-btn').on('click touchstart', function(e) {
+          ga('send', 'event', 'About');
           showPopin('#artist_info');
           e.stopPropagation();
           e.preventDefault();
@@ -729,7 +738,6 @@
           return false;
         });
         return this.el_popin.on('showVideo', function() {
-          console.log('belors ?? - showVideo');
           return showPopin('.video-container');
         });
       }
@@ -1464,6 +1472,7 @@
           that.el_tuto = null;
           that.el_window.on('pagehide blur', windowBlurred);
           that.el_window.on('pageshow focus', windowFocused);
+          ga('send', 'event', 'RemoveTutoriel', $('#langage_short').val());
           event.stopPropagation();
           event.preventDefault();
           return false;
@@ -1523,8 +1532,10 @@
         //------------------- SOUND ---------------------------#
         that.el_pause_btn.on('click touchstart', function(event) {
           if ($(this).hasClass('paused')) {
+            ga('send', 'event', 'Sound', 'on');
             that.player.play();
           } else {
+            ga('send', 'event', 'Sound', 'off');
             that.player.pause();
           }
           event.stopPropagation();
@@ -1539,11 +1550,13 @@
             that.timelineInfo.play();
             that.el_spiner.trigger('hidespiner');
             that.el_pause_btn.removeClass('paused');
+            ga('send', 'event', 'videodisk', 'play');
           },
           'pause': function() {
             that.timelineInfo.pause();
             that.timelineKnob.pause();
             that.el_pause_btn.addClass('paused');
+            ga('send', 'event', 'videodisk', 'pause');
           }
         });
       }

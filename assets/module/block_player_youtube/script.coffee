@@ -188,6 +188,8 @@ class player_video_youtube
 				that.el_video_container.removeClass 'hidden hide'
 				
 				$('.btn_intro a').on 'click', (event)->
+					ga('send', 'event', 'enter', $('#langage_short').val());
+
 					event.stopPropagation()
 					event.preventDefault()
 					return false
@@ -222,6 +224,7 @@ class player_video_youtube
 			return false
 
 		that.el_other_lang.on 'click touchstart', (event)->
+			ga('send', 'event', 'Change Language from :', $('#langage_short').val());
 			window.location.href = $(this).attr('href')
 			event.stopPropagation()
 			event.preventDefault()
@@ -233,6 +236,7 @@ class player_video_youtube
 			event_name = 'sound_on'
 			if (that.el_sound.hasClass('actif'))
 				event_name = 'sound_off'
+			ga('send', 'event', 'Sound : ', event_name);
 			$(this).trigger event_name
 			console.log event_name
 			that.el_sound.toggleClass 'actif'
@@ -242,6 +246,7 @@ class player_video_youtube
 
 		#------------------- FULL SCREEN ---------------------------#				
 		GoInFullscreen = (el_body, btn) ->
+			ga('send', 'event', 'Fullscreen', 'on');
 			btn.addClass 'actiffullscreen'
 			if el_body.requestFullscreen
 				el_body.requestFullscreen()
@@ -257,6 +262,7 @@ class player_video_youtube
 			return
 
 		GoOutFullscreen = ->
+			ga('send', 'event', 'Fullscreen', 'off');
 			$('.myfullscreen').removeClass 'actiffullscreen'
 			if document.exitFullscreen
 				document.exitFullscreen()
@@ -331,6 +337,7 @@ class player_video_youtube
 			return
 
 		@el_skip_intro.on 'click touchstart',(event) ->
+			ga('send', 'event', 'skip', 'introvideo');
 			vid_intro_finished()
 			event.stopPropagation()
 			event.preventDefault()
@@ -384,6 +391,7 @@ class player_video_youtube
 
 		$('.startvideofrompopin, #list_artists li a, #play-video-btn, a.watch, #smallmap').on 'click touchstart', (event) ->
 			idYoutube = that.YouTubeGetID($(this).attr('href'))
+			ga('send', 'event', 'video', $('#artists_info .ontop .name'), $('#langage_short').val())
 			checkratio($(this).data('ratiovideo'))
 			checkClassAndTrigger()
 			startYoutube(idYoutube)

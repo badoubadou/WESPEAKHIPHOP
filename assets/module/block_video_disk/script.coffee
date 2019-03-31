@@ -322,6 +322,9 @@ class player_video
 			that.el_tuto = null
 			that.el_window.on 'pagehide blur', windowBlurred
 			that.el_window.on 'pageshow focus', windowFocused
+
+			ga('send', 'event', 'RemoveTutoriel', $('#langage_short').val())
+			
 			event.stopPropagation()
 			event.preventDefault()
 			return false
@@ -378,8 +381,10 @@ class player_video
 		#------------------- SOUND ---------------------------#
 		that.el_pause_btn.on 'click touchstart', (event) ->
 			if $(this).hasClass 'paused'
+				ga('send', 'event', 'Sound', 'on' )
 				that.player.play()
 			else
+				ga('send', 'event', 'Sound', 'off' )
 				that.player.pause()
 
 			event.stopPropagation()
@@ -394,11 +399,13 @@ class player_video
 				that.timelineInfo.play()
 				that.el_spiner.trigger 'hidespiner'
 				that.el_pause_btn.removeClass 'paused'
+				ga('send', 'event', 'videodisk', 'play' )
 				return
 			'pause': ->
 				that.timelineInfo.pause()
 				that.timelineKnob.pause()
 				that.el_pause_btn.addClass 'paused'
+				ga('send', 'event', 'videodisk', 'pause' )
 				return
 			# 'playing': ->
 			# 	console.log 'playing'

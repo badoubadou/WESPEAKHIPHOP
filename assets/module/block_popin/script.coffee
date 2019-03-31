@@ -53,12 +53,14 @@ class popin
 		$('.btnfooterpopin').on 'click touchstart', (e) ->
 			loadPopinAssets()
 			showPopin($(this).attr('href'))
+			ga('send', 'event', 'Page', $(this).attr('href'));
 			e.stopPropagation()
 			e.preventDefault()
 			return false
 		
 		#------------------- BIO  --------------------------#
 		$('.about-btn').on 'click touchstart',(e) ->
+			ga('send', 'event', 'About');
 			showPopin('#artist_info')
 			e.stopPropagation()
 			e.preventDefault()
@@ -74,7 +76,6 @@ class popin
 			return false
 
 		@el_popin.on 'showVideo', ->
-			console.log 'belors ?? - showVideo'
 			showPopin('.video-container')
 
 module.popin = popin
