@@ -53,14 +53,14 @@ class popin
 		$('.btnfooterpopin').on 'click touchstart', (e) ->
 			loadPopinAssets()
 			showPopin($(this).attr('href'))
-			ga('send', 'event', 'Page', $(this).attr('href'));
+			ga('send', 'event', 'Page', $(this).attr('href')+'-'+$('#langage_short').val());
 			e.stopPropagation()
 			e.preventDefault()
 			return false
 		
 		#------------------- BIO  --------------------------#
 		$('.about-btn').on 'click touchstart',(e) ->
-			ga('send', 'event', 'About', $('#artists_info .ontop .name').text(), $('#langage_short').val());
+			ga('send', 'event', 'About', $('#artists_info .ontop .name').text()+'-'+$('#langage_short').val(), $('#langage_short').val());
 			showPopin('#artist_info')
 			e.stopPropagation()
 			e.preventDefault()
