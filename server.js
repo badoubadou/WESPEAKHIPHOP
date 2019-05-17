@@ -19,7 +19,7 @@ const util = require('util');
  };
 
 app.use(compression());
-app.use('/sitemap.xml', forceSsl);
+// app.use('/sitemap.xml', forceSsl);
 app.disable('x-powered-by');
 
 
