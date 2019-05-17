@@ -1,5 +1,6 @@
 var url = require('url');
 var express = require('express');
+const https = require('https');
 const cors = require('cors');
 var compression = require('compression');
 var path = require('path');
@@ -24,7 +25,6 @@ app.get('/googlea9ce7ea88d34d673.html', function (req, res) {
     filePath = '/public/googlea9ce7ea88d34d673-fr.html'; 
     if ((req.headers.host == 'www.wespeakhiphop.com') || (req.headers.host == 'wespeakhiphop.com'))
         filePath = '/public/googlea9ce7ea88d34d673.html'; 
-    
     res.sendFile(path.join(__dirname + filePath));
 });
 
@@ -42,6 +42,9 @@ app.get('/sitemap.xml', function (req, res) {
     filePath = '/public/sitemap.xml';
     if ((req.headers.host == 'www.wespeakhiphop.com') || (req.headers.host == 'wespeakhiphop.com'))
         filePath = '/public/sitemap-en.xml';
+
+    if ((req.headers.host == 'www.wespeakhiphop.fr') || (req.headers.host == 'wespeakhiphop.fr'))
+        res.redirect(status, 'https://' + req.hostname + req.originalUrl);
     
     res.sendFile(path.join(__dirname + filePath));
 });
