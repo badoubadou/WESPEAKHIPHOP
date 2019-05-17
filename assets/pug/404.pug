@@ -1,0 +1,106 @@
+block data
+
+- var all_videos = []
+each it in WSH.channel.item
+	if it.post_type == 'videos'
+		- all_videos.push(it) 
+
+- var videos = []
+- soundid = 0
+each video in all_videos
+	if video.category
+		each cat in video.category
+			if cat.nicename == langage
+				- videos.push(video) 
+
+- videos.sort(function(a, b) {return a.menu_order - b.menu_order;})
+
+each video, id in videos
+	- video.sound_id = (id+1)
+
+- var videos_by_contry = []
+each video in videos
+	each cat in video.category
+		if cat.domain == 'pays'
+			- video.contry_nicename = cat['nicename']
+			- video.contry = cat['#text']
+			- videos_by_contry.push(video)
+
+- var list_pays = []
+each video, id in videos
+	- list_pays.push(video.contry_nicename)
+
+- videos_by_contry.sort(function(a, b){ if(a.contry_nicename < b.contry_nicename) return -1; if(a.contry_nicename > b.contry_nicename) return 1; return 0; })
+
+doctype html
+html(lang= langage) 
+	head
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+		meta(name="HandheldFriendly" content="true")
+		meta(name="author" content="Vina Hiridjee & David Boisseaux")
+		meta(name="description" content=TRANSLATION.descritption[langage])
+		meta(property="og:title" content="We Speak Hiphop")
+		meta(property="og:description" content=TRANSLATION.og_descritption[langage])
+		meta(property="og:type" content="website")
+		meta(property="og:site_name" content="We Speak Hiphop")
+
+		meta(name="twitter:card" content="summary")
+		meta(name="twitter:title" content="We Speak Hiphop")
+		meta(name="twitter:description" content=TRANSLATION.descritption[langage])
+		meta(name="twitter:image" content="https://d2e3lhf7z9v1b2.cloudfront.net/WSH_fb.jpg")
+		meta(name="twitter:image:alt" content="We Speak Hiphop")
+
+		meta(charset="utf-8")
+		meta(property="og:url" content=TRANSLATION.og_url[langage])
+		meta(name="og:image" property="og:image" content="https://d2e3lhf7z9v1b2.cloudfront.net/WSH_fb.jpg")
+		meta(name="og:image" property="og:image:secure_url" content="https://d2e3lhf7z9v1b2.cloudfront.net/WSH_fb.jpg")
+
+		title= TRANSLATION.title_page[langage]
+
+		link(rel='apple-touch-icon', sizes='180x180', href='https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/apple-touch-icon.png')
+		link(rel='icon', type='image/png', sizes='32x32', href='https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/favicon-32x32.png')
+		link(rel='icon', type='image/png', sizes='16x16', href='https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/favicon-16x16.png')
+		link(rel='manifest', href='/manifest.json')
+		link(rel='mask-icon', href='https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/safari-pinned-tab.svg', color='#ffce00')
+		link(rel='shortcut icon', href='https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/favicon.ico')
+		meta(name='msapplication-TileColor', content='#ffce00')
+		meta(name='msapplication-config', content='https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/browserconfig.xml')
+		
+		meta(name='theme-color', content='#ffce00')
+		meta(name="msapplication-TileColor" content="#ffce00")
+		meta(name="msapplication-navbutton-color" content="#ffce00")
+		meta(name="apple-mobile-web-app-status-bar-style" content="#ffce00")
+		meta(name="apple-mobile-web-app-title" content="We Speak Hip hop")
+		meta(name="apple-mobile-web-app-capable" content="yes")
+
+
+
+		link(rel="canonical" href=TRANSLATION.og_url[langage] )
+		link(rel="shortcut icon" href="https://d2e3lhf7z9v1b2.cloudfront.net/icon.ico" type="image/x-icon" )
+		link(rel="apple-touch-icon-precomposed" sizes="152x152" href="https://d2e3lhf7z9v1b2.cloudfront.net/icon.ico")
+		link(rel="apple-touch-icon-precomposed" sizes="144x144" href="https://d2e3lhf7z9v1b2.cloudfront.net/icon.ico")
+		link(rel="apple-touch-icon-precomposed" sizes="120x120" href="https://d2e3lhf7z9v1b2.cloudfront.net/icon.ico")
+		link(rel="apple-touch-icon-precomposed" sizes="114x114" href="https://d2e3lhf7z9v1b2.cloudfront.net/icon.ico")
+		link(rel="apple-touch-icon-precomposed" sizes="72x72"   href="https://d2e3lhf7z9v1b2.cloudfront.net/icon.ico")
+		link(rel="apple-touch-icon-precomposed"                 href="https://d2e3lhf7z9v1b2.cloudfront.net/icon.ico")
+		link(rel="stylesheet"  href="css/inlinestyle.css" inline)
+
+		link(rel="preconnect" href="https://s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/")
+		link(rel="preconnect" href="https://d2e3lhf7z9v1b2.cloudfront.net")
+
+		link(rel="dns-prefetch" href="//www.google-analytics.com")
+		link(rel="dns-prefetch" href="//d2e3lhf7z9v1b2.cloudfront.net")
+		link(rel="dns-prefetch" href="//s3.eu-west-3.amazonaws.com/wespeakhiphop-assets/")
+
+
+	body(class=langage)
+		
+		input#langage_short(type='hidden', value!= langage)
+		#main.absolute.full_height_minus_footer.full_width.full_height_minus_footer_minus_header_mobile
+			|Oups, nothing there. 
+			a(href="http://wespeakhiphop.com")
+				|go back
+
+
+		
+		

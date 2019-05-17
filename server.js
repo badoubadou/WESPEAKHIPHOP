@@ -29,9 +29,9 @@ var options = {
 }
 
 app.use(express.static('public', options));
+/// redirige les request sur le dossier public
 
 app.use(forceSsl);
-
 app.use(compression());
 app.disable('x-powered-by');
 
@@ -50,9 +50,28 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + filePath));
 });
 
+app.get('/sitemap.xml', function(req, res) {
+    filePath = '/public/sitemap.xml';
+    if ((req.headers.host == 'www.wespeakhiphop.com') || (req.headers.host == 'wespeakhiphop.com'))
+        filePath = '/public/sitemap-en.xml';
+    res.sendFile(path.join(__dirname + filePath));
+});
+
 app.get('/en', function(req, res) {
     var filePath = '/public/index_en.html';
     res.sendFile(path.join(__dirname + filePath));
 });
+
+app.use(function(req, res, next){
+    res.status(404);
+    // respond with html page
+    if (req.accepts('html')) {
+        filePath = '/public/404.html';
+        res.sendFile(path.join(__dirname + filePath));
+        return;
+    }
+});
+
+
 
 app.listen(port);
