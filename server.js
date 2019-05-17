@@ -8,8 +8,10 @@ var app = express();
 // viewed at http://localhost:1881
 
 var forceSsl = function (req, res, next) {
-    if (req.headers['x-forwarded-proto'] !== 'https') {
-        return res.redirect(['https://', req.get('Host'), req.url].join(''));
+    if ((req.headers.host == 'www.wespeakhiphop.fr') || (req.headers.host == 'wespeakhiphop.fr')){
+        if (req.headers['x-forwarded-proto'] !== 'https') {
+            return res.redirect(['https://', req.get('Host'), req.url].join(''));
+        }
     }
     return next();
 };
@@ -26,7 +28,9 @@ var options = {
   }
 }
 
-app.use(express.static('public', options))
+app.use(express.static('public', options));
+
+app.use(forceSsl);
 
 app.use(compression());
 app.disable('x-powered-by');
