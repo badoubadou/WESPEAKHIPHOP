@@ -6,10 +6,22 @@ var compression = require('compression');
 var path = require('path');
 var port = process.env.PORT || 1881; 
 var app = express();
+const util = require('util');
 // viewed at http://localhost:1881
 
+
+//---------------- my function 
+ var forceSsl = function (req, res, next) {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+        return res.redirect(['https://', req.get('Host'), req.url].join(''));
+    }
+    return next();
+ };
+
 app.use(compression());
+app.use('/sitemap.xml', forceSsl);
 app.disable('x-powered-by');
+
 
 app.get('/robots.txt', function (req, res) {
     res.type('text/plain');
@@ -42,9 +54,6 @@ app.get('/sitemap.xml', function (req, res) {
     filePath = '/public/sitemap.xml';
     if ((req.headers.host == 'www.wespeakhiphop.com') || (req.headers.host == 'wespeakhiphop.com'))
         filePath = '/public/sitemap-en.xml';
-
-    if ((req.headers.host == 'www.wespeakhiphop.fr') || (req.headers.host == 'wespeakhiphop.fr'))
-        res.redirect(status, 'https://' + req.hostname + req.originalUrl);
     
     res.sendFile(path.join(__dirname + filePath));
 });
