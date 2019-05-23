@@ -35,6 +35,8 @@ app.use(forceSsl);
 app.use(compression());
 app.disable('x-powered-by');
 
+app.use(express.static(__dirname + '/static', { dotfiles: 'allow' } ));
+
 app.get('/googlea9ce7ea88d34d673.html', function (req, res) {
     filePath = '/public/googlea9ce7ea88d34d673-fr.html'; 
     if ((req.headers.host == 'www.wespeakhiphop.com') || (req.headers.host == 'wespeakhiphop.com'))
