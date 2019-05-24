@@ -28,7 +28,7 @@ var options = {
   }
 }
 
-app.use(express.static('public', options));
+app.use(express.static('public', { dotfiles: 'allow' }));
 // app.use(express.static('public', { dotfiles: 'allow' }));
 // app.use(express.static(__dirname + '/static', { dotfiles: 'allow' } ));
 /// redirige les request sur le dossier public
