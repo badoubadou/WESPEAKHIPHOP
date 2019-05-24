@@ -17,7 +17,7 @@ var forceSsl = function (req, res, next) {
 };
 
 var options = {
-  dotfiles: 'allow',
+  dotfiles: 'ignore',
   etag: false,
   extensions: ['htm', 'html'],
   index: false,
@@ -28,15 +28,12 @@ var options = {
   }
 }
 
-app.use(express.static('public', { dotfiles: 'allow' }));
-// app.use(express.static('public', { dotfiles: 'allow' }));
-// app.use(express.static(__dirname + '/static', { dotfiles: 'allow' } ));
+app.use(express.static('public', options));
 /// redirige les request sur le dossier public
 
 app.use(forceSsl);
 app.use(compression());
 app.disable('x-powered-by');
-
 
 app.get('/googlea9ce7ea88d34d673.html', function (req, res) {
     filePath = '/public/googlea9ce7ea88d34d673-fr.html'; 
@@ -48,6 +45,7 @@ app.get('/googlea9ce7ea88d34d673.html', function (req, res) {
 
 app.get('/', function(req, res) {
     filePath = '/public/index.html';
+    console.log('???');
     if ((req.headers.host == 'www.wespeakhiphop.com') || (req.headers.host == 'wespeakhiphop.com'))
         filePath = '/public/index_en.html';
     res.sendFile(path.join(__dirname + filePath));
