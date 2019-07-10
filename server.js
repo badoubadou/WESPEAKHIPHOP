@@ -45,7 +45,6 @@ app.get('/googlea9ce7ea88d34d673.html', function (req, res) {
 
 app.get('/', function(req, res) {
     filePath = '/public/index.html';
-    console.log('???');
     if ((req.headers.host == 'www.wespeakhiphop.com') || (req.headers.host == 'wespeakhiphop.com'))
         filePath = '/public/index_en.html';
     res.sendFile(path.join(__dirname + filePath));
