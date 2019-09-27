@@ -183,6 +183,7 @@ class player_video_youtube
 
 		#------------------- ENTER SITE -------------------#
 		that.el_enter_site.on 'click touchstart', (event)->
+			$('.awards').remove()
 			console.log 'enter site -------------------------------- '
 			btnIntroInVisible = ->
 				that.el_video_container.removeClass 'hidden hide'

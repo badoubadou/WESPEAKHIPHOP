@@ -52,6 +52,19 @@ body #main {
   background: #f0f2da;
   background-color: #f0f2da;
 }
+.cssa {
+  position: fixed;
+  top: 100px;
+  left: 0px;
+  z-index: 99999;
+}
+.cssa a {
+  width: 125px;
+  height: 125px;
+  text-indent: -9999px;
+  display: block;
+  background: url("https://www.cssawards.net/ribbons/brand-award-left.png") no-repeat;
+}
 @font-face {
   font-family: Gotham;
   font-style: normal;
@@ -630,6 +643,22 @@ html {
 #sprite_svg,
 #sprite_svg_disk {
   display: none;
+}
+.cssa {
+  position: fixed;
+  top: 0px;
+  left: 100%;
+  transform: translateX(-100%);
+  z-index: 99999;
+  width: 125px;
+  height: 125px;
+}
+.cssa a {
+  width: 125px;
+  height: 125px;
+  text-indent: -9999px;
+  display: block;
+  background: url("https://www.cssawards.net/ribbons/cssa-featured-light-right.png") no-repeat;
 }
 #popin {
   position: absolute;

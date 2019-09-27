@@ -1979,6 +1979,22 @@ span.lign_header {
     height: 75vw;
   }
 }
+.cssa {
+  position: fixed;
+  top: 0px;
+  left: 100%;
+  transform: translateX(-100%);
+  z-index: 99999;
+  width: 125px;
+  height: 125px;
+}
+.cssa a {
+  width: 125px;
+  height: 125px;
+  text-indent: -9999px;
+  display: block;
+  background: url("https://www.cssawards.net/ribbons/cssa-featured-light-right.png") no-repeat;
+}
 #popin {
   position: absolute;
   top: 0;

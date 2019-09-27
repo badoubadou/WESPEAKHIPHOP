@@ -392,6 +392,7 @@
         //------------------- ENTER SITE -------------------#
         that.el_enter_site.on('click touchstart', function(event) {
           var btnIntroInVisible, delaytween;
+          $('.awards').remove();
           console.log('enter site -------------------------------- ');
           btnIntroInVisible = function() {
             that.el_video_container.removeClass('hidden hide');
@@ -749,81 +750,6 @@
   }).call(this);
 
   module.popin = popin;
-
-}).call(this);
-
-(function() {
-  var spiner;
-
-  spiner = (function() {
-    'use strict';
-    class spiner {
-      constructor(myspiner1) {
-        this.myspiner = myspiner1;
-        this.subring = ['.ring_1', '.ring_2', '.ring_3'];
-        console.log('----------------- > constructor spinner');
-        TweenLite.set(this.subring, {
-          xPercent: -50,
-          yPercent: -50
-        });
-        this.timelineSpiner = new TimelineMax({
-          paused: true,
-          onReverseComplete: this.maskSpiner,
-          onReverseCompleteParams: [this.myspiner],
-          onStart: this.unmaskSpiner,
-          onStartParams: [this.myspiner]
-        }).staggerFromTo(this.subring, 2, {
-          opacity: 0
-        }, {
-          scale: 1,
-          opacity: 1,
-          ease: Power3.easeOut
-        }, 0.5);
-        this.bindEvents();
-        this.showSpiner();
-      }
-
-      maskSpiner(myspiner) {
-        myspiner.trigger('loaderhidden');
-        return myspiner.addClass('no_spinner').hide();
-      }
-
-      unmaskSpiner(myspiner) {
-        console.log('unmaskSpiner -> ');
-        return myspiner.removeClass('no_spinner').show();
-      }
-
-      showSpiner() {
-        var that;
-        that = this;
-        return that.timelineSpiner.play();
-      }
-
-      hideSpiner() {
-        var that;
-        that = this;
-        return that.timelineSpiner.reverse();
-      }
-
-      bindEvents() {
-        var that;
-        that = this;
-        that.myspiner.on('hidespiner', function() {
-          return that.hideSpiner(that.myspiner);
-        });
-        return that.myspiner.on('showspiner', function() {
-          console.log('catch showspiner');
-          return that.showSpiner(that.myspiner);
-        });
-      }
-
-    };
-
-    return spiner;
-
-  }).call(this);
-
-  module.spiner = spiner;
 
 }).call(this);
 
@@ -1580,6 +1506,81 @@
   // 	that.el_pause_btn.addClass 'paused'
   // 	return
   module.player_video = player_video;
+
+}).call(this);
+
+(function() {
+  var spiner;
+
+  spiner = (function() {
+    'use strict';
+    class spiner {
+      constructor(myspiner1) {
+        this.myspiner = myspiner1;
+        this.subring = ['.ring_1', '.ring_2', '.ring_3'];
+        console.log('----------------- > constructor spinner');
+        TweenLite.set(this.subring, {
+          xPercent: -50,
+          yPercent: -50
+        });
+        this.timelineSpiner = new TimelineMax({
+          paused: true,
+          onReverseComplete: this.maskSpiner,
+          onReverseCompleteParams: [this.myspiner],
+          onStart: this.unmaskSpiner,
+          onStartParams: [this.myspiner]
+        }).staggerFromTo(this.subring, 2, {
+          opacity: 0
+        }, {
+          scale: 1,
+          opacity: 1,
+          ease: Power3.easeOut
+        }, 0.5);
+        this.bindEvents();
+        this.showSpiner();
+      }
+
+      maskSpiner(myspiner) {
+        myspiner.trigger('loaderhidden');
+        return myspiner.addClass('no_spinner').hide();
+      }
+
+      unmaskSpiner(myspiner) {
+        console.log('unmaskSpiner -> ');
+        return myspiner.removeClass('no_spinner').show();
+      }
+
+      showSpiner() {
+        var that;
+        that = this;
+        return that.timelineSpiner.play();
+      }
+
+      hideSpiner() {
+        var that;
+        that = this;
+        return that.timelineSpiner.reverse();
+      }
+
+      bindEvents() {
+        var that;
+        that = this;
+        that.myspiner.on('hidespiner', function() {
+          return that.hideSpiner(that.myspiner);
+        });
+        return that.myspiner.on('showspiner', function() {
+          console.log('catch showspiner');
+          return that.showSpiner(that.myspiner);
+        });
+      }
+
+    };
+
+    return spiner;
+
+  }).call(this);
+
+  module.spiner = spiner;
 
 }).call(this);
 
