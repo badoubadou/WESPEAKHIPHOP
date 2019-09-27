@@ -1995,6 +1995,14 @@ span.lign_header {
   display: block;
   background: url("https://www.cssawards.net/ribbons/cssa-featured-light-right.png") no-repeat;
 }
+.awards {
+  display: none;
+}
+@media screen and (min-width: 78em) and (orientation: landscape) {
+  .awards {
+    display: block;
+  }
+}
 #popin {
   position: absolute;
   top: 0;
